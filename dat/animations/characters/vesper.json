@@ -1,0 +1,233 @@
+{
+    "vesper" : {
+        
+        "default" : {
+            "name" : "default",
+            "parts" : {
+                "left-shoulder1" : {
+                    "frames" : [
+                        { 
+                            "angle" : -20
+                        }
+                    ]
+                },
+                "right-shoulder1" : {
+                    "frames" : [
+                        { 
+                            "angle" : -20
+                        }
+                    ]
+                }
+            }
+        },
+        "default_left" : {
+            "name" : "default_left",
+            "parts" : {
+                "left-shoulder1" : {
+                    "frames" : [
+                        { 
+                            "angle" : 40
+                        }
+                    ]
+                },
+                "right-shoulder1" : {
+                    "frames" : [
+                        { 
+                            "angle" : 40
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "idle" : {
+            "name" : "idle",
+            "duration" : ".5",
+            "repeat" : true,
+            "parts" : {
+                "neck" : {
+                    "frames" : [
+                        { 
+                            "y" : 1
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        },
+
+        "front" : {
+            "name" : "look_front",
+            "parts" : {
+                "right-arm" : {
+                    "frames" : [
+                        {
+                            "zindex" : 20
+                        }
+                    ]
+                },
+                "right-bicep" : {
+                    "frames" : [
+                        {
+                            "outline" : false
+                        }
+                    ]
+                },
+                "left-arm" : {
+                    "frames" : [
+                        {
+                            "zindex" : 9000
+                        }
+                    ]
+                },
+                "body-belly" : {
+                    "frames" : [
+                        { 
+                            "x" : 4
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "left" : {
+            "name" : "look_left",
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : 3
+                        }
+                    ]
+                },
+                "head-marks" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "face" : {
+                    "frames" : [
+                        { 
+                            "x" : 1
+                        }
+                    ]
+                },
+                "left-eye-color" : {
+                    "frames" : [
+                        { 
+                            "x" : -2
+                        }
+                    ]
+                },
+                "right-eye-color" : {
+                    "frames" : [
+                        { 
+                            "x" : -2
+                        }
+                    ]
+                },
+                "nose-nose" : {
+                    "frames" : [
+                        { 
+                            "x" : -2
+                        }
+                    ]
+                },
+                "mouth" : {
+                    "frames" : [
+                        { 
+                            "x" : -3
+                        }
+                    ]
+                },
+                "mouth-mouth" : {
+                    "frames" : [
+                        { 
+                            "x" : -3
+                        }
+                    ]
+                },
+                "body-belly" : {
+                    "frames" : [
+                        { 
+                            "x" : -6
+                        }
+                    ]
+                }
+            }
+        },
+        "right" : {
+            "name" : "look_right",
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : -3
+                        }
+                    ]
+                },
+                "head-marks" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "face" : {
+                    "frames" : [
+                        { 
+                            "x" : -1
+                        }
+                    ]
+                },
+                "left-eye-color" : {
+                    "frames" : [
+                        { 
+                            "x" : 2
+                        }
+                    ]
+                },
+                "right-eye-color" : {
+                    "frames" : [
+                        { 
+                            "x" : 2
+                        }
+                    ]
+                },
+                "nose-nose" : {
+                    "frames" : [
+                        { 
+                            "x" : 2
+                        }
+                    ]
+                },
+                "mouth" : {
+                    "frames" : [
+                        { 
+                            "x" : 3
+                        }
+                    ]
+                },
+                "mouth-mouth" : {
+                    "frames" : [
+                        { 
+                            "x" : 3
+                        }
+                    ]
+                },
+                "body-belly" : {
+                    "frames" : [
+                        { 
+                            "x" : 6
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
+                

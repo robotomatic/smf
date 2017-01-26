@@ -1,0 +1,307 @@
+[
+
+    {
+        "name" : "platforms-mid-mid-front-front",
+        "comment" : "front row left",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 300,
+        "items" : [
+
+            {
+                "x" : 900,
+                "y" : 990,
+                "z" : 800,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 60
+                    }
+                ]
+            },
+            {
+                "x" : 900,
+                "y" : 980,
+                "z" : 1100,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 70
+                    }
+                ]
+            },
+            {
+                "x" : 900,
+                "y" : 970,
+                "z" : 1400,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 80
+                    }
+                ]
+            },
+            
+            
+            
+            {
+                "x" : 1500,
+                "y" : 950,
+                "z" : 1400,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 100
+                    }
+                ]
+            },
+            {
+                "x" : 1800,
+                "y" : 940,
+                "z" : 1400,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 110
+                    }
+                ]
+            }
+        ]
+    },
+    
+    
+    
+    
+    
+    
+    {
+        "name" : "platforms-mid-mid-front-front",
+        "comment" : "front row left",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 300,
+        "items" : [
+
+            {
+                "x" : 900,
+                "y" : 1000,
+                "z" : 500,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 50
+                    }
+                ]
+            },
+            
+            {
+                "x" : 1200,
+                "y" : 1000,
+                "z" : 500,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 50
+                    }
+                ]
+            }
+        ]
+    },
+    
+    
+    
+    {
+        "name" : "platforms-mid-mid-front-front",
+        "comment" : "front row center",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 300,
+        "items" : [
+
+            {
+                "x" : 1500,
+                "y" : 1000,
+                "z" : 500,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 50
+                    }
+                ]
+            },
+
+            {
+                "x" : 1800,
+                "y" : 1000,
+                "z" : 500,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 50
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "name" : "platforms-mid-mid-front-front",
+        "comment" : "mid row center",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 300,
+        "items" : [
+
+            {
+                "x" : 1500,
+                "y" : 1000,
+                "z" : 800,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 50
+                    }
+                ]
+            },
+
+            {
+                "x" : 1800,
+                "y" : 1000,
+                "z" : 800,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 50
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "name" : "platforms-mid-mid-front-front",
+        "comment" : "back row center",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 300,
+        "items" : [
+
+            {
+                "x" : 1500,
+                "y" : 1000,
+                "z" : 1100,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 50
+                    }
+                ]
+            },
+
+            {
+                "x" : 1800,
+                "y" : 1000,
+                "z" : 1100,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 50
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "name" : "platforms-mid-mid-front-front",
+        "comment" : "back row center",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 300,
+        "items" : [
+
+            {
+                "x" : 2100,
+                "y" : 1000,
+                "z" : 1100,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 50
+                    }
+                ]
+            },
+            {
+                "x" : 2400,
+                "y" : 1000,
+                "z" : 1100,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 50
+                    }
+                ]
+            }
+        ]
+    }
+]

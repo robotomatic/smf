@@ -1,0 +1,28 @@
+{
+    "horns" : {
+        "left" : {
+            "name" : "look_left",
+            "parts" : {
+                "left_horn" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                }
+            }
+        },
+        "right" : {
+            "name" : "look_right",
+            "parts" : {
+                "right_horn" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

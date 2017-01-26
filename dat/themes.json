@@ -1,0 +1,17 @@
+{
+    "default" : {
+        "file" : "dat/themes/default.json"
+    },
+    "jungle" : {
+        "file" : "dat/themes/jungle.json"
+    },
+    "lava" : {
+        "file" : "dat/themes/lava.json"
+    },
+    "space" : {
+        "file" : "dat/themes/space.json"
+    },
+    "snow" : {
+        "file" : "dat/themes/snow.json"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "rock" : {
+       "name" : "rock",
+       "radius" : 4,
+        "angle" : {
+            "random" : {
+                "low" : -2,
+                "high" : 2
+            }
+        },
+        "color" : {
+            "light" : {
+                "gradient" : {
+                    "start" : "#fdfdfd",
+                    "stop" : "#c7c7c6"
+                }
+            },
+            "dark" : "#b9b7b7"
+        }
+    }
+}

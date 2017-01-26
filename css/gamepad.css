@@ -1,0 +1,78 @@
+.screen-gamepads {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+}
+
+
+.screen-gamepads-group {
+    width: auto;
+    height: auto;
+    margin: 1em;
+    position: relative;
+}
+
+.screen-gamepads-group-left {
+    float: left;
+    -ms-transform: rotate(10deg);
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+}
+.screen-gamepads-group-right {
+    float: right;
+    margin-top: 2.5em;
+    -ms-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+}
+
+.screen-gamepad-button {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;    
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+    display: block;
+    color: gray;
+    z-index: 99999;
+    opacity: .6;
+    padding: 1.5em;
+}
+
+.screen-gamepad-button-top {
+    float: left;
+    margin-left: 1.5em;
+    margin-bottom: -1.5em;
+}
+.screen-gamepad-button-bottom {
+    float: left;
+    margin-left: 1.5em;
+    margin-top: -1.5em;
+    clear: both;
+}
+
+.screen-gamepad-button-left {
+    float: left;
+}
+
+.screen-gamepad-button-first {
+    margin-right: .5em;
+    clear: both;
+}
+
+.screen-gamepad-button-right {
+    float: right;
+}
+
+.screen-gamepad-button-right-pad {
+    margin-right: .5em;
+}

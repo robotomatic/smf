@@ -1,0 +1,166 @@
+{
+    "tail-cat" : {
+        
+        "idle" : {
+            "name" : "idle",
+            "duration" : 5,
+            "repeat" : true,
+            "parts" : {
+                "tail-end" : {
+                    "frames" : [
+                        { 
+                            "angle" : -13
+                        },
+                        { 
+                            "angle" : -53
+                        }
+                    ]
+                }
+                
+            }
+        },
+
+        "idle_left" : {
+            "name" : "idle_left",
+            "duration" : 5,
+            "repeat" : true,
+            "override" : true,
+            "parts" : {
+                "tail-end" : {
+                    "frames" : [
+                        { 
+                            "angle" : 60
+                        }
+                    ]
+                }
+                
+            }
+        },
+
+        "front" : {
+            "name" : "look_front",
+            "parts" : {
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "angle" : 50,
+                            "x" : -15
+                        }
+                    ]
+                },
+                "tail-mid" : {
+                    "frames" : [
+                        { 
+                            "angle" : 50
+                        }
+                    ]
+                },
+                "tail-end" : {
+                    "frames" : [
+                        { 
+                            "angle" : 50
+                        }
+                    ]
+                }
+            }
+        },
+        
+        
+        "left" : {
+            "name" : "look_left",
+            "parts" : {
+                
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "angle" : -50,
+                            "x" : 25
+                        }
+                    ]
+                },
+                "tail-mid" : {
+                    "frames" : [
+                        { 
+                            "angle" : -50
+                        }
+                    ]
+                },
+                "tail-end" : {
+                    "frames" : [
+                        { 
+                            "angle" : -50
+                        }
+                    ]
+                }
+            }
+        },
+        "right" : {
+            "name" : "look_right",
+            "parts" : {
+                
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "angle" : 50,
+                            "x" : -25
+                        }
+                    ]
+                },
+                "tail-mid" : {
+                    "frames" : [
+                        { 
+                            "angle" : 50
+                        }
+                    ]
+                },
+                "tail-end" : {
+                    "frames" : [
+                        { 
+                            "angle" : 50
+                        }
+                    ]
+                }
+            }
+        },
+        
+        
+        "walk_left" : {
+            "name" : "idle",
+            "duration" : ".5",
+            "repeat" : true,
+            "parts" : {
+                "tail-mid" : {
+                    "frames" : [
+                        { 
+                            "angle" : -20
+                        },
+                        {
+                            "angle" : 20
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "walk_right" : {
+            "name" : "idle",
+            "duration" : ".5",
+            "repeat" : true,
+            "parts" : {
+                "tail-mid" : {
+                    "frames" : [
+                        { 
+                            "angle" : 20
+                        },
+                        {
+                            "angle" : -20
+                        }
+                    ]
+                }
+            }
+        }
+
+        
+    }
+}
+                

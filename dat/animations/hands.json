@@ -1,0 +1,22 @@
+{
+    "hands" : {
+        "walk_left" : {
+            "name" : "walk_left",
+            "parts" : {
+                "right-hand" : {
+                    "override" : true,
+                    "zindex" : 19000
+                }
+            }
+        },
+        "walk_right" : {
+            "name" : "walk_right",
+            "parts" : {
+                "left-hand" : {
+                    "override" : true,
+                    "zindex" : 19000
+                }
+            }
+        }
+    }
+}

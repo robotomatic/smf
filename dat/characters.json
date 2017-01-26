@@ -1,0 +1,38 @@
+{
+    "chompy" : {
+        "file" : "dat/characters/chompy.json"
+    },
+    "psycho" : {
+        "file" : "dat/characters/psycho.json"
+    },
+    "yeti" : {
+        "file" : "dat/characters/yeti.json"
+    },
+    "trashcat" : {
+        "file" : "dat/characters/trashcat.json"
+    },
+    "vampy" : {
+        "file" : "dat/characters/vampy.json"
+    },
+    "ggoat" : {
+        "file" : "dat/characters/ggoat.json"
+    },
+    "zee" : {
+        "file" : "dat/characters/zee.json"
+    },
+    "witchy" : {
+        "file" : "dat/characters/witchy.json"
+    },
+    "omegamecha-i" : {
+        "file" : "dat/characters/omegamecha-i.json"
+    },
+    "omegamecha-ii" : {
+        "file" : "dat/characters/omegamecha-ii.json"
+    },
+    "demon" : {
+        "file" : "dat/characters/demon.json"
+    },
+    "vesper" : {
+        "file" : "dat/characters/vesper.json"
+    }
+}

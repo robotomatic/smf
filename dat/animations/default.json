@@ -1,0 +1,215 @@
+{
+    "default" : {
+        "fall" : {
+            "name" : "fall",
+            "repeat" : true,
+            "parts" : {
+                "body" : {
+                    "frames" : [
+                        { 
+                            "width" : 98,
+                            "x" : 1
+                        }
+                    ]
+                }
+            }
+        },
+        "jump" : {
+            "name" : "jump",
+            "repeat" : true,
+            "parts" : {
+                "body" : {
+                    "frames" : [
+                        { 
+                            "width" : 98,
+                            "x" : 1
+                        }
+                    ]
+                }            
+            }
+        },
+        "front" : {
+            "name" : "look_front",
+            "width" : 100,
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : 0
+                        }
+                    ]
+                },
+                "face" : {
+                    "frames" : [
+                        { 
+                            "x" : 0
+                        }
+                    ]
+                },
+                "face-face" : {
+                    "frames" : [
+                        { 
+                            "x" : 0
+                        }
+                    ]
+                },
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "x" : 0
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "x" : 0
+                        }
+                    ]
+                },
+                "nose" : {
+                    "frames" : [
+                        { 
+                            "x" : 0
+                        }
+                    ]
+                }
+                
+            }
+        },
+        "left" : {
+            "name" : "look_left",
+            "width" : 95,
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "face" : {
+                    "frames" : [
+                        { 
+                            "x" : -2
+                        }
+                    ]
+                },
+                "face-face" : {
+                    "frames" : [
+                        { 
+                            "x" : -2
+                        }
+                    ]
+                },
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "nose" : {
+                    "frames" : [
+                        { 
+                            "x" : -7
+                        }
+                    ]
+                }
+                
+            }
+        },
+        "right" : {
+            "name" : "look_right",
+            "width" : 95,
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "face" : {
+                    "frames" : [
+                        { 
+                            "x" : 2
+                        }
+                    ]
+                },
+                "face-face" : {
+                    "frames" : [
+                        { 
+                            "x" : 2
+                        }
+                    ]
+                },
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "nose" : {
+                    "frames" : [
+                        { 
+                            "x" : 7
+                        }
+                    ]
+                }
+            }
+        },
+        "walk" : {
+            "name" : "walk",
+            "duration" : ".1",
+            "repeat" : true,
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "y" : -3
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                "neck" : {
+                    "frames" : [
+                        { 
+                            "y" : -1.5
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                "body" : {
+                    "frames" : [
+                        { 
+                            "y" : -2.5
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

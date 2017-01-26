@@ -1,0 +1,27 @@
+{
+    "blink" : {
+        "blink" : {
+            "name" : "blink",
+            "duration" : ".08",
+            "chance" : 8,
+            "parts" : {
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "height" : ".1",
+                            "y" : 1
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "height" : ".1",
+                            "y" : 1
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
