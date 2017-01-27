@@ -1,0 +1,23 @@
+[
+    
+    {
+        "name" : "liquid-fg",
+        "collide" : false,
+        "cache" : true,
+        "items" : [
+            {
+                "x" : 0,
+                "y": 1100,
+                "z" : -500,
+                "depth" : 5000,
+                "width" : "100%",
+                "height": 500,
+                "name" : "waves-0",
+                "itemtype" : "wave-body-body",
+                "iteminfo" : {
+                    "flood" : true
+                }
+           }
+        ]
+    }
+]

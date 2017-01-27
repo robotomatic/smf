@@ -1,0 +1,332 @@
+<div id="dev" class="dialog shadow">
+    <div id="dev-toolbar-title" class="dialog-toolbar">
+        <div id="dev-toolbar-tools" class="dev-toolbar-tools">
+            <a class="float-left dev-toolbar-tools-tool pad-left-small" id="dev-tools-fps">FPS</a>
+            <a class="float-left dev-toolbar-tools-tool pad-left-small" id="dev-tools-player">Player</a>
+            <a class="float-left dev-toolbar-tools-tool" id="dev-tools-debug">Debug</a>
+            <a class="float-left dev-toolbar-tools-tool" id="dev-tools-size">Size</a>
+            <a class="float-left dev-toolbar-tools-tool" id="dev-tools-quality">Quality</a>
+            <a class="float-left dev-toolbar-tools-tool" id="dev-tools-camera">Camera</a>
+            <a class="float-left dev-toolbar-tools-tool" id="dev-tools-render">Render</a>
+            <a class="float-left dev-toolbar-tools-tool" id="dev-tools-log">Log</a>
+        </div>
+        <div class="dev-toolbar-title">
+            <a id="dev-toolbar-fps" class="float-right dialog-title-title">FPS</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div id="dev-dialog-fps" class="dialog shadow hidden">
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">FPS</a>
+    </div>
+    <div class="dialog-wrap">
+        <div class="dialog-row" id="dev-fps">
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div id="dev-dialog-debug" class="dialog shadow hidden">
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">Debug</a>
+    </div>
+    <div class="dialog-wrap">
+        <div class="dialog-row dialog-row-border">
+            <div class="dialog-check">
+                <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-overlay" value="Overlay"> Show Gamepad Overlay</label>
+            </div>
+        </div>
+        <div class="dialog-row">
+            <div class="dialog-check dialog-check-small float-left">
+                <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-player" value="Player"> Player</label>
+            </div>
+            <div class="dialog-check dialog-check-small float-left">
+                <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-character" value="Character"> Character</label>
+            </div>
+            <div class="dialog-check dialog-check-small float-left">
+                <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-collision" value="Collision"> Collision</label>
+            </div>
+        </div>
+        <div class="dialog-row">
+            <div class="dialog-check dialog-check-small float-left">
+                <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-level" value="Level"> Level</label>
+            </div>
+            <div class="dialog-check dialog-check-small float-left">
+                <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-render" value="Render"> Render</label>
+            </div>
+            <div class="dialog-check dialog-check-small float-left">
+                <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-overdraw" value="Overdraw"> Overdraw</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div id="dev-dialog-size" class="dialog shadow hidden">
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">Size</a>
+    </div>
+    <div class="dialog-wrap">
+        <div class="dialog-row dialog-row-border">
+            <div class="dialog-check float-left">
+                <label class="text-left float-left">
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-stretch" value="Stretch" CHECKED> Stretch (<span id="dev-stretch-label"></span>x)
+                </label>
+            </div>
+            <div class="dialog-check float-right">
+                <label class="text-left float-left">
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-auto" value="Auto" CHECKED> Auto Size
+                </label>
+            </div>
+        </div>
+        <div class="dialog-row">
+            <label class="text-left float-left  dialog-label-short">Size :</label>
+            <input type="number" class="dialog-input float-left text-right" id="dev-view-width" value="" placeholder="Width">
+            <p class="text-left float-left dialog-input-label"> x </p>
+            <input type="number" class="dialog-input float-left text-right" id="dev-view-height" value="" placeholder="Height">
+        </div>
+        <div class="dialog-row">
+            <label class="text-left float-left  dialog-label-short">Ratio :</label> 
+            <input type="number" class="dialog-input float-left text-right" id="dev-view-ratio" value="" placeholder="Ratio">
+            <p class="text-left float-left dialog-input-label"> : 1</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div id="dev-dialog-quality" class="dialog shadow hidden">
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">Quality</a>
+    </div>
+    <div class="dialog-wrap">
+        <div class="dialog-row">
+            <label class="text-left float-left dialog-label-short">Player :</label>
+            <input type="range" class="float-left dialog-input-range" id="dev-quality-player-range" min="1" max="15">
+            <input type="number" class="float-right text-right dialog-input-small" id="dev-quality-player" min="1" max="15">
+        </div>
+        <div class="dialog-row">
+            <label class="text-left float-left dialog-label-short">Level :</label>
+            <input type="range" class="float-left dialog-input-range" id="dev-quality-level-range" min="1" max="15">
+            <input type="number" class="float-right text-right dialog-input-small" id="dev-quality-level" min="1" max="15">
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div id="dev-dialog-camera" class="dialog shadow hidden">
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">Camera</a>
+    </div>
+    <div class="dialog-wrap">
+        <div class="dialog-row">
+            <label class="text-left float-left dialog-label-short">Offset X :</label>
+            <input type="range" class="float-left dialog-input-range" id="dev-camera-offset-x-amount-range" min="-500" max="500">
+            <input type="number" class="float-right text-right dialog-input-small" id="dev-camera-offset-x-amount" min="-500" max="500">
+        </div>
+        <div class="dialog-row">
+            <label class="text-left float-left dialog-label-short">Offset Y :</label>
+            <input type="range" class="float-left dialog-input-range" id="dev-camera-offset-y-amount-range" min="-500" max="500">
+            <input type="number" class="float-right text-right dialog-input-small" id="dev-camera-offset-y-amount" min="-500" max="500">
+        </div>
+        <div class="dialog-row dialog-row-border">
+            <label class="text-left float-left dialog-label-short">Offset Z :</label>
+            <input type="range" class="float-left dialog-input-range" id="dev-camera-offset-z-amount-range" min="-500" max="500">
+            <input type="number" class="float-right text-right dialog-input-small" id="dev-camera-offset-z-amount" min="-500" max="500">
+        </div>
+        <div class="dialog-row dialog-row-border">
+            <label class="text-left float-left dialog-label">Follow Speed :</label>
+            <input type="number" class="float-left text-right dialog-input-small margin-left" id="dev-camera-follow-speed" min="1" max="10">
+        </div>
+        <div class="dialog-row">
+            <div class="dialog-check float-left">
+                <label class="text-left float-left">
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-camera-drift" value="Drift" CHECKED> Drift
+                </label>
+            </div>
+            <div class="dialog-check float-right">
+                <label class="text-left float-left dialog-label-short">Speed :</label>
+                <input type="number" class="float-left text-right dialog-input-small" id="dev-camera-drift-speed" min="0" max="10">
+            </div>
+        </div>
+        <div class="dialog-row dialog-row-border">
+            <label class="text-center float-left dialog-label-short">Min :</label>
+            <input type="number" class="float-left text-right dialog-input-small" id="dev-camera-drift-min" min="0" max="10">
+            
+            <label class="text-center float-left dialog-label-short"> Max :</label>
+            <input type="number" class="float-left text-right dialog-input-small" id="dev-camera-drift-max" min="0" max="10">
+        </div>
+        <div class="dialog-row">
+            <label class="pad-top text-left float-left dialog-label-short">FOV :</label>
+            <input type="range" class="float-left dialog-input-range" id="dev-fov-amount-range" min="0" max="1000">
+            <input type="number" class="float-right text-right dialog-input-small" id="dev-fov-amount" min="0" max="1000">
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div id="dev-dialog-log" class="dialog shadow hidden dialog-resize">
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">Log</a>
+    </div>
+    <div class="dialog-wrap  dialog-wrap resize resize-resize">
+        <div class="dev-body">
+            <p id="dev-log"></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div id="dev-dialog-player" class="dialog shadow hidden dialog-resize">
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">Player</a>
+    </div>
+    <div class="dialog-wrap">
+
+        <div class="dialog-row dialog-row-border">
+            <div class="dialog-check dialog-check float-left">
+                <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-player-player" value="Player"> Debug Player</label>
+            </div>
+            <div class="dialog-check dialog-check float-right">
+                <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-player-character" value="Character"> Debug Character</label>
+            </div>
+        </div>
+        
+        <div class="dialog-row">
+            <label class="text-left float-left dialog-label">Quality :</label>
+            <input type="range" class="float-left dialog-input-range" id="dev-quality-player-player-range" min="1" max="15">
+            <input type="number" class="float-right text-right dialog-input-small" id="dev-quality-player-player" min="1" max="15">
+        </div>
+        
+        
+    </div>
+    <div class="dialog-wrap resize">
+        <div class="dev-body dev-body-white">
+            <canvas class="float-left dialog-canvas" id="dev-player-canvas"></canvas>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="dev-dialog-render" class="dialog shadow hidden dialog-resize">
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">Render</a>
+    </div>
+    <div class="dialog-wrap">
+        <div class="dialog-row dialog-row-border">
+            <div class="dialog-check dialog-check float-left">
+                <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-render-render" value="Render"> Debug Render</label>
+            </div>
+            <div class="dialog-check dialog-check float-right">
+                <label class="text-right float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-render-overdraw" value="Overdraw"> Debug Overdraw</label>
+            </div>
+        </div>
+        <div class="dialog-row">
+            <div class="dialog-check dialog-check-full float-left">
+                <label class="text-left float-left dialog-label">
+                    <span class="dialog-label-color" id="dev-render-occlude-label-front-top-color"></span>
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-front-top-debug" value="Front-Top" CHECKED>
+                    Front-Top : <span id="dev-render-occlude-label-front-top">0</span>
+                </label>
+            </div>
+            <div class="dialog-check dialog-check-full float-left">
+                <label class="text-left float-left dialog-label">
+                    <span class="dialog-label-color" id="dev-render-occlude-label-front-front-color"></span>
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-front-front-debug" value="Front-Front" CHECKED>
+                    Front-Front : <span id="dev-render-occlude-label-front-front">0</span>
+                </label>
+            </div>
+            <div class="dialog-check dialog-check-full float-left margin-bottom">
+                <label class="text-left float-left dialog-label">
+                    <span class="dialog-label-color" id="dev-render-occlude-label-front-bottom-color"></span>
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-front-bottom-debug" value="Front-Bottom" CHECKED>
+                    Front-Bottom : <span id="dev-render-occlude-label-front-bottom">0</span>
+                </label>
+            </div>
+            
+            <div class="dialog-check dialog-check-full float-left">
+                <label class="text-left float-left dialog-label">
+                    <span class="dialog-label-color" id="dev-render-occlude-label-side-front-color"></span>
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-side-front-debug" value="Side-Front" CHECKED>
+                    Side-Front : <span id="dev-render-occlude-label-side-front">0</span>
+                </label>
+            </div>
+            <div class="dialog-check dialog-check-full float-left">
+                <label class="text-left float-left dialog-label">
+                    <span class="dialog-label-color" id="dev-render-occlude-label-side-top-color"></span>
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-side-top-debug" value="Side-Top" CHECKED>
+                    Side-Top : <span id="dev-render-occlude-label-side-top">0</span>
+                </label>
+            </div>
+            <div class="dialog-check dialog-check-full float-left">
+                <label class="text-left float-left dialog-label">
+                    <span class="dialog-label-color" id="dev-render-occlude-label-side-side-color"></span> 
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-side-side-debug" value="Side-Side" CHECKED>
+                    Side-Side : <span id="dev-render-occlude-label-side-side">0</span>
+                </label>
+            </div>
+            <div class="dialog-check dialog-check-full float-left margin-bottom">
+                <label class="text-left float-left dialog-label">
+                    <span class="dialog-label-color" id="dev-render-occlude-label-side-bottom-color"></span> 
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-side-bottom-debug" value="Side-Bottom" CHECKED>
+                    Side-Bottom : <span id="dev-render-occlude-label-side-bottom">0</span>
+                </label>
+            </div>
+            
+            <div class="dialog-check dialog-check-full float-left">
+                <label class="text-left float-left dialog-label">
+                    <span class="dialog-label-color" id="dev-render-occlude-label-items-hidden-color"></span> 
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-items-hidden-debug" value="Items-Hidden" CHECKED>
+                    Hidden : <span id="dev-render-occlude-label-items-hidden">0</span>
+                </label>
+            </div>
+            <div class="dialog-check dialog-check-full float-left">
+                <label class="text-left float-left dialog-label">
+                    <span class="dialog-label-color" id="dev-render-occlude-label-items-color"></span> 
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-items-debug" value="Items" CHECKED>
+                    Items : <span id="dev-render-occlude-label-items">0</span>
+                </label>
+            </div>
+            <div class="dialog-check dialog-check-full float-left">
+                <label class="text-left float-left dialog-label">
+                    <span class="dialog-label-color" id="dev-render-occlude-label-items-overlap-color"></span> 
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-items-overlap-debug" value="Items-Overlap" CHECKED>
+                    Overlaps : <span id="dev-render-occlude-label-items-overlap">0</span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+        

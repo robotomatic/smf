@@ -1,0 +1,466 @@
+{
+    "omegamecha" : {
+
+        "idle" : {
+            "name" : "idle",
+            "duration" : ".5",
+            "repeat" : true,
+            "parts" : {
+
+                "body-torso-shadow-left" : {
+                    "frames" : [
+                        {
+                            "y" : 2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                
+                "body-torso-shadow-right" : {
+                    "frames" : [
+                        {
+                            "y" : 2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                
+                "body-heart" : {
+                    "frames" : [
+                        {
+                            "y" : 2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                
+                "head" : {
+                    "frames" : [
+                        {
+                            "y" : 2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                
+                "body-shoulder-left" : {
+                    "frames" : [
+                        {
+                            "y" : 2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "body-shoulder-right" : {
+                    "frames" : [
+                        {
+                            "y" : 2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                
+                "body-torso-neck-bottom" : {
+                    "frames" : [
+                        {
+                            "y" : 2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "body-torso-shoulders-top" : {
+                    "frames" : [
+                        {
+                            "y" : 2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "body-torso-shoulders-shoulders" : {
+                    "frames" : [
+                        {
+                            "y" : 2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "body-torso-waist" : {
+                    "frames" : [
+                        {
+                            "y" : 2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                
+                "body-hips-top" : {
+                    "frames" : [
+                        {
+                            "y" : 2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "body-hips-hips" : {
+                    "frames" : [
+                        {
+                            "y" : 2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "body-hips-crotch" : {
+                    "frames" : [
+                        {
+                            "y" : 2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "left-knee" : {
+                    "frames" : [
+                        {
+                            "y" : -2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "right-knee" : {
+                    "frames" : [
+                        {
+                            "y" : -2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "left-calf" : {
+                    "frames" : [
+                        {
+                            "y" : 2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "right-calf" : {
+                    "frames" : [
+                        {
+                            "y" : 2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        },
+                
+        
+        "front" : {
+            "name" : "look_front",
+            "parts" : {
+                
+                "body-torso-shadow-left" : {
+                    "frames" : [
+                        {
+                            "width" : 40,
+                            "draw" : false
+                        }
+                    ]
+                },
+                
+                "body-torso-shadow-right" : {
+                    "frames" : [
+                        {
+                            "width" : 40,
+                            "x" : 6,
+                            "draw" : false
+                        }
+                    ]
+                },
+                
+                "body-torso-shadow-right-waist-bottom" : {
+                    "frames" : [
+                        {
+                            "x" : -4
+                        }
+                    ]
+                },
+                "body-torso-shadow-right-waist-hip" : {
+                    "frames" : [
+                        {
+                            "x" : -7
+                        }
+                    ]
+                },
+                
+                
+                "left-leg" : {
+                    "frames" : [
+                        { 
+                            "zindex" : -200
+                        }
+                    ]
+                },
+
+                "right-leg" : {
+                    "frames" : [
+                        { 
+                            "zindex" : -250
+                        }
+                    ]
+                },
+                
+                "left-ear" : {
+                    "frames" : [
+                        { 
+                            "zindex" : 600
+                        }
+                    ]
+                },
+                "right-ear" : {
+                    "frames" : [
+                        { 
+                            "zindex" : 610
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "left" : {
+            "name" : "look_left",
+            "parts" : {
+                
+                "body-torso-shadow-left" : {
+                    "frames" : [
+                        {
+                            "draw" : false
+                        }
+                    ]
+                },
+                
+                "body-heart" : {
+                    "frames" : [
+                        {
+                            "x" : -5
+                        }
+                    ]
+                },
+                
+                "right-leg" : {
+                    "frames" : [
+                        { 
+                            "zindex" : -300
+                        }
+                    ]
+                },
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : 7
+                        }
+                    ]
+                },
+                "face-mouth" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "left-ear" : {
+                    "frames" : [
+                        { 
+                            "zindex" : 600
+                        }
+                    ]
+                },
+                "right-ear" : {
+                    "frames" : [
+                        { 
+                            "zindex" : 1000
+                        }
+                    ]
+                },
+                "right-foot" : {
+                    "frames" : [
+                        { 
+                            "x" : -8,
+                            "pointinfo" : {
+                                "0" : "skip"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "right" : {
+            "name" : "look_right",
+            "parts" : {
+                
+                "body-torso-shadow-right" : {
+                    "frames" : [
+                        {
+                            "draw" : false
+                        }
+                    ]
+                },
+
+                "body-heart" : {
+                    "frames" : [
+                        {
+                            "x" : 15
+                        }
+                    ]
+                },
+                
+                
+                "left-leg" : {
+                    "frames" : [
+                        { 
+                            "zindex" : -300
+                        }
+                    ]
+                },
+                "face-mouth" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : -7
+                        }
+                    ]
+                },
+                "right-ear" : {
+                    "frames" : [
+                        { 
+                            "zindex" : 600
+                        }
+                    ]
+                },
+                "left-ear" : {
+                    "frames" : [
+                        { 
+                            "zindex" : 1000
+                        }
+                    ]
+                },
+                "left-foot" : {
+                    "frames" : [
+                        { 
+                            "x" : 6,
+                            "pointinfo" : {
+                                "1" : "skip"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        
+        
+        
+        "walk" : {
+            "name" : "walk",
+            "repeat" : true,
+            "parts" : {
+                "left-hip" : {
+                    "frames" : [
+                        { 
+                            "y" : -1
+                        }
+                    ]
+                },
+                "right-hip" : {
+                    "frames" : [
+                        { 
+                            "y" : -1
+                        }
+                    ]
+                },
+                "left-shoulder" : {
+                    "frames" : [
+                        { 
+                            "y" : -1
+                        }
+                    ]
+                },
+                "right-shoulder" : {
+                    "frames" : [
+                        { 
+                            "y" : -1
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "walk_left" : {
+            "name" : "walk_left",
+            "repeat" : true,
+            "parts" : {
+                "left-hip" : {
+                    "frames" : [
+                        { 
+                            "y" : -1
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "walk_right" : {
+            "name" : "walk_right",
+            "repeat" : true,
+            "parts" : {
+                "right-hip" : {
+                    "frames" : [
+                        { 
+                            "y" : 1
+                        }
+                    ]
+                }
+            }
+        }
+        
+        
+    }
+}

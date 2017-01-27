@@ -1,0 +1,26 @@
+[
+    {
+        "name" : "platforms-mid-mid-back",
+        "comment" : "platform furthest",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 1030,
+        "items" : [
+
+            {
+                "x" : 750,
+                "y" : 1080,
+                "z" : 200,
+                "itemtype" : "platform",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 1000,
+                        "height": 40
+                    }
+                ]
+            }
+        ]
+    }
+]

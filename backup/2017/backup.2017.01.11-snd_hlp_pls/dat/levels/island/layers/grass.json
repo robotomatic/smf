@@ -1,0 +1,74 @@
+[
+    {
+        "name" : "grass-bottom",
+        "comment" : "grass",
+        "collide" : false,
+        "cache" : true,
+        "depth" : 1,
+        "bottom" : false,
+        "items" : [
+
+            {
+                "x" : 750,
+                "y" : 1070,
+                "z" : 230,
+                "depth" : 820,
+                "itemtype" : "raised-platform-top-1",
+                "parts" : [
+                    {
+                        "x" : 0,
+                        "y" : 0,
+                        "width": 150,
+                        "height": 10
+                    }
+                ]
+            },
+            {
+                "x" : 910,
+                "y" : 1070,
+                "z" : 230,
+                "depth" : 160,
+                "itemtype" : "raised-platform-top-1",
+                "parts" : [
+                    {
+                        "x" : 0,
+                        "y" : 0,
+                        "width": 650,
+                        "height": 10
+                    }
+                ]
+            },
+            {
+                "x" : 910,
+                "y" : 1070,
+                "z" : 1060,
+                "depth" : 100,
+                "itemtype" : "raised-platform-top-1",
+                "parts" : [
+                    {
+                        "x" : 0,
+                        "y" : 0,
+                        "width": 650,
+                        "height": 10
+                    }
+                ]
+            },
+            {
+                "x" : 1570,
+                "y" : 1070,
+                "z" : 230,
+                "depth" : 820,
+                "itemtype" : "raised-platform-top-1",
+                "parts" : [
+                    {
+                        "x" : 0,
+                        "y" : 0,
+                        "width": 150,
+                        "height": 10
+                    }
+                ]
+            }           
+            
+       ]
+    }
+]
