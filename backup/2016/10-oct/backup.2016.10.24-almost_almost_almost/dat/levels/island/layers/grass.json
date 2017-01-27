@@ -1,0 +1,418 @@
+[
+    {
+        "name" : "grass-bottom",
+        "comment" : "grass",
+        "collide" : false,
+        "cache" : true,
+        "depth" : 1,
+        "items" : [
+
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 195,
+                "itemtype" : "grass",
+                "width": 1010,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 230,
+                "itemtype" : "grass",
+                "width": 1010,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 260,
+                "itemtype" : "grass",
+                "width": 1010,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 290,
+                "itemtype" : "grass",
+                "width": 1010,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 320,
+                "itemtype" : "grass",
+                "width": 1010,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 350,
+                "itemtype" : "grass",
+                "width": 1010,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 380,
+                "itemtype" : "grass",
+                "width": 1010,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 410,
+                "itemtype" : "grass",
+                "width": 1010,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 440,
+                "itemtype" : "grass",
+                "width": 1010,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 470,
+                "itemtype" : "grass",
+                "width": 1010,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 500,
+                "itemtype" : "grass",
+                "width": 1010,
+                "height": 20
+            },
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 530,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 560,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 590,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 610,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 640,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 670,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 700,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 730,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 760,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 790,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 810,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 840,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 870,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 900,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 930,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 960,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 990,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+            {
+                "x" : 745,
+                "y" : 1061,
+                "z" : 1010,
+                "itemtype" : "grass",
+                "width": 185,
+                "height": 20
+            },
+             
+            
+            
+            
+            
+            
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 530,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 560,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 590,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 610,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 640,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 670,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 700,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 730,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 760,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 790,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 810,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 840,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 870,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 900,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 930,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 960,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 990,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            },
+             {
+                "x" : 1530,
+                "y" : 1061,
+                "z" : 1010,
+                "itemtype" : "grass",
+                "width": 225,
+                "height": 20
+            }
+           
+            
+            
+            
+       ]
+    }
+]

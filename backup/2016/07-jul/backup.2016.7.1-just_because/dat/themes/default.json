@@ -1,0 +1,264 @@
+{
+"default" :  {
+        "background" : {
+            "color" : "#796d9a"
+        },
+        "items" : {
+             "sky" : {
+                "name" : "sky",
+                "color" : {
+                    "gradient" : {
+                        "start" : "#796d9a",
+                        "stop" : "#c3be8c"
+                    }
+                }
+            },
+            "stars" : {
+                "name" : "stars",
+                "total" : 100,
+                "renderer" : "stars"
+            },
+
+            "clouds" : {
+                "name" : "clouds",
+                "color" : "white",
+                "maxwidth" : 900,
+                "maxheight" : 600,
+                "maxspeed" : 5,
+                "total" : 5,
+                "renderer" : "clouds"
+            },
+            "clouds-mid" : {
+                "name" : "clouds",
+                "color" : "white",
+                "maxwidth" : 800,
+                "maxheight" : 450,
+                "offsety" : 50,
+                "maxspeed" : 20,
+                "total" : 2,
+                "renderer" : "clouds"
+            },
+            "clouds-fg" : {
+                "name" : "clouds",
+                "color" : "white",
+                "maxwidth" : 800,
+                "maxheight" : 450,
+                "offsety" : 50,
+                "maxspeed" : 20,
+                "total" : 3,
+                "renderer" : "clouds"
+            },
+            
+            "shadow" : {
+                "color" : "#424545"
+            },
+            
+            
+            
+            
+            
+            "bg-block-3" : {
+                "name" : "bg-block-3",
+                "color" : "#8d718b"
+            },
+
+
+            "bg-block-2" : {
+                "name" : "bg-block-2",
+                "color" : "#6248b7"
+            },
+            
+            
+            "bg-platform-support-wide" : {
+                "name" : "bg-block-2",
+                "color" : "#4851b7"
+            },
+            
+            "bg-block-1" : {
+                "name" : "bg-block-1",
+                "color" : "#3c94af"
+            },
+            
+            
+            "bg-cube-1" : {
+                "name" : "bg-cube-1",
+                "color" : "#3c94af"
+            },
+            
+            
+            
+            
+            
+            
+            "fg-ground" : {
+                "name" : "ground",
+                "color" : {
+                    "gradient" : {
+                        "start" : "#00e6d4",
+                        "stop" : "#0077a3"
+                    }
+                }
+            },
+            
+
+
+            
+            
+
+            "platform-support" : {
+                "name" : "scaffold-1",
+                "color" : "#1f6759"
+            },
+            "platform-support-wide" : {
+                "name" : "scaffold-1",
+                "color" : "#1f6759"
+            },
+            
+
+            
+            
+            
+            
+            "platform-bg-1" : {
+                "name" : "platform-1",
+                "color" : "#5e16d0"
+            },
+            
+            
+            
+            
+            
+            
+            
+            "platform" : {
+                "name" : "platform-1",
+                "color" : "#f2c818",
+                "itemtype" : "group"
+            },
+
+            "platform-bg" : {
+                "name" : "platform-bg-1",
+                "color" : "#9d8935",
+                "itemtype" : "group"
+            },
+            
+            
+            "platform-tree" : {
+                "name" : "platform-tree-1",
+                "color" : "#f2c818",
+                "itemtype" : "group"
+            },
+
+            
+            
+            
+            
+            
+            
+            
+            "grass" : {
+                "name" : "grass-1",
+                "draw" : false
+            },
+            "grass-dark" : {
+                "name" : "grass-1",
+                "draw" : false
+            },
+            
+            "bush" : {
+                "name" : "bush-1",
+                "draw" : false
+            },
+            
+            "rock" : {
+                "name" : "rock-1",
+                "draw" : false
+            },
+            
+            
+            "ledge-1" : {
+                "name" : "ledge-1",
+                "color" : "#957d2c",
+                
+                "sidecolor" : "#957d2c",
+                "topcolor" : "#b49632",
+                "bottomcolor" : "#867c5a"
+                
+            },
+            
+            
+            
+            
+            
+            "fg-block-2" : {
+                "name" : "bushes",
+                "color" : "#00E600"
+            },
+            "fg-ramp-1" : {
+                "name" : "ramp",
+                "color" : "#088A85"
+            },
+            "fg-ramp-block-1" : {
+                "name" : "ramp-block",
+                "color" : "#088A85"
+            },
+            
+            
+            
+            "fg-block-1" : {
+                "name" : "crate",
+                "cache" : true,
+                "color" : "#70c627",
+                "sidecolor" : "#70c627",
+                "topcolor" : "#bfe63b",
+                "bottomcolor" : "#43ad14"
+            },
+            
+            
+            "flag" : {
+                "name" : "flag",
+                "color" : "black",
+                "amplitude" : 1.5,
+                "offset" : ".1",
+                "renderer" : "flag"
+            },
+            
+            "fg-moving-block-1" : {
+                "name" : "moving-block",
+                "color" : "#957d2c",
+                
+                "sidecolor" : "#957d2c",
+                "topcolor" : "#b49632",
+                "bottomcolor" : "#867c5a"
+            },
+            
+            
+            "wave" : {
+                "name" : "water",
+                "wavelength" : 600,
+                "amplitude" : 1,
+                "offset" : -0.02,
+                 "color" : {
+                    "gradient" : {
+                        "top" : 650,
+                        "height" : 100,
+                        "start" : "#ef8af7",
+                        "stop" : "#9364d3"
+                    }
+                 },
+                "renderer" : "wave"
+            },
+            "wave-body" : {
+                "name" : "water-body",
+                 "color" : {
+                    "gradient" : {
+                        "top" : 650,
+                        "height" : 100,
+                        "start" : "#ef8af7",
+                        "stop" : "#9364d3"
+                    }
+                 }
+            }
+        }
+    }
+}

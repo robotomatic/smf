@@ -1,0 +1,64 @@
+[
+    {
+        "name" : "platforms-mid-mid-back",
+        "comment" : "platform furthest",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 830,
+        "top" : true,
+        "items" : [
+
+            {
+                "x" : 810,
+                "y" : 1080,
+                "z" : 260,
+                "itemtype" : "platform",
+                "iteminfo" : {
+                    "top" : {
+                        "after" : {
+                            "left" : null
+                        }
+                    }
+                },
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 1000,
+                        "height": 40
+                    }
+                ]
+            }
+        ]
+    },
+
+    
+    {
+        "name" : "platforms-mid-mid-front-front",
+        "comment" : "closest platforms",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 130,
+        "top" : true,
+        "items" : [
+
+            {
+                "x" : 2400,
+                "y" : 1070,
+                "z" : 170,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 150,
+                        "height": 50
+                    }
+                ]
+            }
+
+
+        ]
+    }
+]

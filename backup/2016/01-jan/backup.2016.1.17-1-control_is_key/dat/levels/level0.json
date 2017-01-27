@@ -1,0 +1,209 @@
+{
+    "name" : "Foo",
+    "theme" : "foo",
+    "width" : 17200,
+    "height" : 850,
+    "layers" : [
+        {
+            "name" : "bounds",
+            "collide" : true,
+            "items" : [
+                {
+                    "name" : "ceiling",
+                    "x": 0,
+                    "y": 0,
+                    "width": 17200,
+                    "height": 10
+                },
+                {
+                    "name" : "left-wall",
+                    "x": 0,
+                    "y": 0,
+                    "width": 10,
+                    "height": 1000,
+                    "draw" : false
+                },
+                {
+                    "name" : "right-wall",
+                    "x": 17190,
+                    "y": 0,
+                    "width": 10,
+                    "height": 1000
+                },
+                {
+                    "name" : "floor",
+                    "x": 0,
+                    "y": 950,
+                    "width": 17200,
+                    "height": 10
+                }
+            ]
+        },
+
+        {
+            "name" : "players",
+            "cache" : false
+        },
+        
+        {
+            "name" : "front-blocks",
+            "collide" : true,
+            "cache" : false,
+            "outline" : true,
+            "items" : [
+                {
+                    "x": 120,
+                    "y": 540,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 190,
+                    "y": 490,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 205,
+                    "y": 590,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+
+                {
+                    "x": 440,
+                    "y": 340,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 390,
+                    "y": 400,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+
+                {
+                    "x": 1540,
+                    "y": 485,
+                    "width": 30,
+                    "height": 30,
+                    "itemtype" : "fg-block-1"
+                },
+
+                {
+                    "x": 920,
+                    "y": 475,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 1020,
+                    "y": 475,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+
+                {
+                    "x": 980,
+                    "y": 375,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+
+                {
+                    "x": 770,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 870,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 975,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 1080,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                
+                {
+                    "x": 2910,
+                    "y": 475,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+
+                {
+                    "x": 2770,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 2870,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 2975,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 2820,
+                    "y": 475,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                }
+            ]
+        },
+        
+        {
+            "name" : "foreground",
+            "collide" : true,
+            "color" : "red",
+            "cache" : false,
+            "items" : [
+                {
+                    "x": 10,
+                    "y": 700,
+                    "width": 17000,
+                    "height": 300,
+                    "color" : "red",
+                    "itemtype" : "fg-ground1"                    
+                }
+            ]
+        }
+    ]
+}
+        
+        

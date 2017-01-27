@@ -1,0 +1,47 @@
+[
+    {
+        "name" : "front-ledges",
+        "collide" : "top",
+        "cache" : true,
+        "zindex" : 700,
+        "depth" : 10,
+        "items" : [
+
+
+            {
+                "x": 1550,
+                "y": 550,
+                "width": 160,
+                "height": 10,
+                "collide" : "top",
+                "itemtype" : "ledge-1"
+            },
+
+            {
+                "x": 1740,
+                "y": 490,
+                "width": 340,
+                "height": 10,
+                "collide" : "top",
+                "itemtype" : "ledge-1"
+            },
+
+            {
+                "x": 1750,
+                "y": 320,
+                "width": 120,
+                "height": 10,
+                "collide" : "top",
+                "itemtype" : "ledge-1"
+            },
+            {
+                "x": 1950,
+                "y": 290,
+                "width": 120,
+                "height": 10,
+                "collide" : "top",
+                "itemtype" : "ledge-1"
+            }
+        ]
+    }
+]

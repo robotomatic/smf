@@ -1,0 +1,27 @@
+.hidden-mobile {
+    display: none;
+}
+
+.visible-mobile {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .visible-tablet {
+        display: block;
+    }
+    .hidden-tablet {
+        display: none;
+    }
+}
+@media (min-width: 992px) {}
+@media (min-width: 1200px) {}
+@media (min-width: 1500px) {
+    .visible-pc {
+        display: block;
+    }
+    .hidden-pc {
+        display: none;
+    }
+}
+@media (min-width: 1700px) {}

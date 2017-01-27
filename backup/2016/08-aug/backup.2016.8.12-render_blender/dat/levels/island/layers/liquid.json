@@ -1,0 +1,105 @@
+[
+    {
+        "name" : "liquid-bg-bg",
+        "collide" : false,
+        "zindex" : 50,
+        "gravity" : ".9",
+        "viscosity" : ".1",
+        "cache" : false,
+        "items" : [
+            {
+                "x": -800,
+                "y": 1000,
+                "width": 4800,
+                "height": 100,
+                "animate" : true,
+                "name" : "waves-0",
+                "itemtype" : "wave"
+           }
+        ]
+    },
+    
+    {
+        "name" : "liquid-bg",
+        "collide" : false,
+        "zindex" : 350,
+        "gravity" : ".9",
+        "viscosity" : ".1",
+        "cache" : false,
+        "items" : [
+            {
+                "x": -800,
+                "y": 1060,
+                "width": 4800,
+                "height": 100,
+                "animate" : true,
+                "name" : "waves-1",
+                "itemtype" : "wave"
+           }
+        ]
+    },
+    
+    
+    {
+        "name" : "liquid-bg-mid-fg",
+        "collide" : false,
+        "zindex" : 665,
+        "gravity" : ".9",
+        "viscosity" : ".1",
+        "cache" : false,
+        "items" : [
+            {
+                "x": -800,
+                "y": 1090,
+                "width": 4800,
+                "height": 100,
+                "animate" : true,
+                "name" : "waves-1-1",
+                "itemtype" : "wave"
+           }
+        ]
+    },
+    
+    {
+        "name" : "liquid-fg",
+        "collide" : false,
+        "zindex" : 1000,
+        "gravity" : ".9",
+        "viscosity" : ".1",
+        "cache" : false,
+        "items" : [
+            {
+                "x": -780,
+                "y": 1100,
+                "width": 4600,
+                "height": 100,
+                "animate" : true,
+                "name" : "waves-2",
+                "itemtype" : "wave"
+           }
+        ]
+    },
+    
+    
+    
+    
+    
+    {
+        "name" : "liquid-kill",
+        "collide" : true,
+        "zindex" : 999,
+        "gravity" : ".9",
+        "viscosity" : ".9",
+        "damage" : 100,
+        "cache" : true,
+        "items" : [
+            {
+                "x": -700,
+                "y": 1180,
+                "width": 4600,
+                "height": 800,
+                "itemtype" : "wave-body"
+           }
+        ]
+    }
+]

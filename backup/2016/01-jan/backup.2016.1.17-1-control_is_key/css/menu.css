@@ -1,0 +1,22 @@
+.main-content-menu-main-main {
+}
+
+.menu-text {
+    position: relative;
+    float: left;
+    width: 100%;
+    z-index: 999;
+    text-transform: capitalize;
+}
+
+.menu-canvas-text {
+    color: darkgray;
+}
+
+.menu-wrap {
+    margin-left: -1%;
+}
+
+.ui-menu-pad-top {
+    margin-top: 3.3em;
+}

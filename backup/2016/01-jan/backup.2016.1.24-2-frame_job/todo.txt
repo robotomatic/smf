@@ -1,0 +1,233 @@
+todo:
+
+
+trashcat tail
+ninja stuff
+yeti walk **chest
+
+- rotate group
+- draw rotated round
+
+
+- camera and mover lerp
+
+- fix player multiple collision box thing so ramps work better
+
+- draw player collision box debug
+
+- controller support
+
+- make sure spawn is safe
+
+
+- lerp bg parallax
+
+- wave amplitude is (incorrectly) a function of view size
+
+- flag start point uckfayed
+
+- rock collision box afu
+
+
+- grass should always render in front of player
+** Nope : PLayer remains behind colliders _unless_ player is jumping!!!1
+
+- control player z-index somehow
+
+
+- is it possible to lerp between animations?
+
+
+- wave (actually, all) physics should be loaded from level instead of theme (or hard coded...i'm looking at YOU stage.js)
+
+
+- parallax fucked in MP mode - players need to respect parallax...what does this mean? *removed for now
+
+
+- need base shape class
+- move all draw functions to primitives...ugh...
+
+- add shadow to bg - store bg id & poly memory, clip and draw shadow later...can use this for trees tooo 
+
+- make platform top a separate class
+- make stone (rock) a separate class
+- make grass a separate class
+
+- load renderers better! differentiate between structure and material
+
+
+
+
+- draw attention to player damage and respawn!!
+
+
+- split json character, animation, and theme definitions into separate files by item
+
+
+
+
+- tiles
+
+- torches
+
+- quicksand (and in general)
+
+
+- particles
+
+
+
+
+- water/lava/sand/goo fall
+
+- death & respawn
+
+
+- more advanced movers (path, rotate)
+  
+ 
+
+
+
+
+- grass / trees / flowers
+
+- rocks
+
+
+ 
+ 
+- common styles
+
+
+
+- ramps need to slide
+
+    
+
+- player chooser #4 is a liar sometimes
+
+- parallax is wrong
+
+
+
+
+
+- still need to pad jump button a bit...before/after hitting ground -> jump_was_pressed...????/
+- add timer for pre-button push for jumps: still feels "floaty" sometimes like I should have jumed but didn't (pressed too soon i think)
+
+- jitter when moving left (but not right) into wall
+
+
+- cache items at resolution by class name -> block-10-259 :: layer keeps collection ----> test more!!!!
+
+
+
+- see if there is a way to slow game speed w/o delta stepper
+
+
+- ugh. collsion still fucked
+- collision fails if moving diagonally at corner when using x & y hit boxes
+
+
+
+- center player better when not on lowest ground layer...need to hamdle ground not being bottom of level!!!!! 
+
+
+
+
+
+
+
+
+
+- unify game timestamps (animation, player, debug) to all use loop timer for now() - need solution to last(), likely a function...
+
+
+- sync dev ui when loading - save settings would be nice
+
+
+
+- need to fade buttons much quicker when leaving game mode
+- customize label shows up after player ready for some fucked up reason
+
+
+
+
+
+
+- smoother scrolling on level chooser: maybe 1 double-sized canvas panel?
+
+- scale outline weight
+
+- more than 1 visible canvas: 1 for each cached layer. draw once and move relative to fg canvas
+
+
+- need list of item properties : draw, collide, collide-top, canjump, collide-damage, collide-kill, collide-bounce...
+
+- add optional theme physics modifiers (jungle, lava, ice, space, ...)
+
+- implement "real" WebRTC phone controller
+
+
+
+- weapons & death
+
+- hotkeys
+
+- pause game (grey screen)
+
+- toggle sound icon & sound in general
+
+- settings
+
+- armies & leggies
+
+- stretch when jumping, compress when falling
+
+- add random blink, look around state
+  - need multiple "idle" animations (choose randomly but wisely!)
+
+- custom name, color, stats
+
+- draw pixel grid if debug mode
+
+- quads for render and collide: load static level items in areaQuad, actors in pointQuad
+  https://github.com/mikechambers/ExamplesByMesh/tree/master/JavaScript/QuadTree
+
+- find out why player4 is "stronger" than other players - something to do with update order...?
+
+- level editor
+
+- player editor
+
+- player stats:     health =/= strength =/= speed
+                    fast and weak vs. strong and slow - choose wisely!
+                    
+                    i.e. you get 20 points to spend...
+                    
+                    health:   XXXXXXXX--
+                    strength: XXXXX-----
+                    speed:    XXXXXXX---
+                    
+                    - size of character is based on strength - weak characters are small, strong characters are big?
+                    - * need a way to immediately represent how healthy a player is (including what percent is left?)
+                    - strength: weight in collisions, power when pushing, movement speed when lifting
+
+
+
+- 8-bit reservoir dogs chars? "kill the gimp!"
+- horses in suits named Charlie and Whinney
+
+
+- Use 'Bounty Hunters' as a story framework?
+
+- "Angie/Arthur Wreckhouse"
+
+- Business Ferrets
+
+- "The Boondoggle" 
+
+
+- Rock Paper Scissors with player classes?  -> Bruiser -> Hero -> Pinto ->
+

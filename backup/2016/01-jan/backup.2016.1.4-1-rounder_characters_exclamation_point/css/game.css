@@ -1,0 +1,79 @@
+.game-canvas-text {
+    font-family: 'Press Start 2P';
+    position: absolute;
+    margin: 0;
+    width: 50%;
+    z-index: 999;
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+    opacity: 1;
+}
+
+
+.game-canvas-text.player-damage  {
+    color: red;
+}
+
+.game-canvas-text.player-dead  {
+    opacity: .3;
+}
+
+
+.menu-game-button-icon-link-icon-pause.fa {
+    font-size: 2.2em;
+    line-height: 1.55em;
+}
+
+.game-canvas {
+    background-color: #3E3E3E;
+    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+.game-canvas-scale {
+}
+
+
+.game-party-canvas-text  {
+    position: absolute;
+    width: 33%;
+    height: 2em;
+}
+
+.game-party-canvas-text-top {
+    top: 3%;
+}
+
+#game-canvas-text-top-left {
+    left: 2%;
+}
+
+#game-canvas-text-top-center {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+#game-canvas-text-top-right {
+    right: 2%;
+}
+
+.game-party-canvas-text-bottom {
+    bottom: 4%;
+}
+
+#game-canvas-text-bottom-left {
+    left: 2%;
+}
+
+#game-canvas-text-bottom-center {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+#game-canvas-text-bottom-right {
+    right: 2%;
+}

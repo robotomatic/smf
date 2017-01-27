@@ -1,0 +1,504 @@
+todo:
+
+- set camera sway by view type and level
+
+***** figure out render x y z order ******
+
+
+- how hard and expensive is it to skew?
+
+- theme & default renderer
+
+- slopes a bit slopery
+
+- craziness and roundness for 3D projection
+    - can i get rid of seams?
+
+- option to turn off animation (i.e. blur)
+
+
+- set css blur by menu? too blur on level view
+    - see if blur is faster if smaller canvas is zoomed? also look at using quality
+
+- water
+
+- item angles
+
+- control item animation rate in cache?
+
+
+
+
+
+
+
+
+-- implement view image tiles!!!!
+
+- player shadders
+
+
+
+
+
+
+
+
+- add a grass knuckle
+- make sure wind is in the overall same direction for all grass
+
+    
+
+
+
+
+
+- cache all cachables on first run of level (prevent slowdown when loading the first time)
+
+- faster blur?
+
+
+
+- need [option] to move complex items into json files
+- items & theme items should be able to live in separate files
+
+
+- make liquid more efficiient somehow...calculate intersection points and only draw difference at waterline ** need to project as well!!
+
+
+
+- item animations not a thing
+
+
+
+
+
+
+---> consolidate all draw calls into geom classes
+-------------- scratch that --> all CANVAS calls? 
+-----> geom classes inherit shape prototype
+--------> shape class handles ALL draw calls and shape cache
+
+
+- slopes jittery going up and in general
+- vertical movers wanky with passenger
+
+
+
+- draw outline over background arm
+
+- rotate groups (body, headface, etc)
+
+
+- master json config file:
+    - debug
+    - outlines
+    - resolution/quality
+    - zoom (css scale) or not
+    - basic player/game physics
+    - other stuff
+    
+
+- get rid of local storage...? save game state as json?
+
+- lerp item movement - still fucky
+
+
+
+
+- game slow after running level chooser. need to refresh to fix...?
+
+
+- jump max height only when button held
+- jump height depends on velX
+- pause at apex of jump
+
+
+
+- make view padding dynamic:
+    1P: tight when still, zoom out when moving. Make zoom a function of speed
+    MP: tight when close, zoom out when further apart
+
+
+
+- particles (flames) need blank canvas so bg doesn't influence color
+
+
+- logging & error trapping: window.on_error()
+
+
+- better scenery rendering :
+    - clipping seems to be an issue with rocks (msedge & safari)
+    - make sure rock details don't overlap
+    - (optional) outlines
+
+
+- hitboxes and collision is still fucky!!!
+
+
+- fix item renderer
+
+- outline all the things!!!
+
+
+- environment shit: bugs, birds, leaves, flowers, wisps
+
+- ropes/vines
+
+- things in extreme FG
+
+- grass & environment animations - gentle sway and react to player enturbulation
+
+
+
+
+
+
+- curve and hump geometry support
+
+
+- quad tree????!?!??!?!?!?!!??!??
+
+
+- jump window before/after touch ground - need to fix this
+
+- tile variances (darker and lighter)
+
+
+- Ellipse and set line dash not supported by everybody
+
+
+- hash nav not working in MS browsers
+
+
+
+
+- fire particles need to respect physics better...
+
+
+
+
+
+- reduce obj creation
+
+
+
+
+
+
+
+
+
+- (full) controller support
+
+- make sure spawn is safe
+
+
+
+- see if water can invert to make more classic looking waves with peaks
+
+
+
+
+- grass should always render in front of player
+** Nope : Player remains behind colliders _unless_ player is jumping!!!1
+- control player z-index somehow
+
+
+
+
+- wave (actually, all) physics should be loaded from level instead of theme (or hard coded...i'm looking at YOU stage.js)
+
+
+
+
+- add shadow to bg - store bg id & poly memory, clip and draw shadow later...can use this for trees tooo 
+
+
+
+- draw attention to player damage and respawn!!
+
+
+
+
+
+
+- tiles
+
+- torches
+
+- quicksand (and in general)
+
+
+- particles
+
+
+
+- water/lava/sand/goo fall
+
+- death & respawn
+
+
+- more advanced movers (path, rotate)
+  
+ 
+
+
+
+
+- grass / trees / flowers
+
+
+
+ 
+ 
+
+
+
+- ramps need to slide
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+- see if there is a way to slow game speed w/o delta stepper
+- unify game timestamps (animation, player, debug) to all use loop timer for now() - need solution to last(), likely a function...
+
+
+
+
+
+- center player better when not on lowest ground layer...need to hamdle ground not being bottom of level!!!!! 
+
+
+
+
+
+
+
+
+
+
+
+- sync dev ui when loading - save settings would be nice
+
+
+
+
+
+
+
+
+
+- smoother scrolling on level chooser: maybe 1 double-sized canvas panel?
+
+
+- more than 1 visible canvas: 1 for each cached layer. draw once and move relative to fg canvas
+
+
+- need list of item properties : draw, collide, collide-top, canjump, collide-damage, collide-kill, collide-bounce...
+
+- add optional theme physics modifiers (jungle, lava, ice, space, ...)
+
+- implement "real" WebRTC phone controller
+
+
+
+
+
+- weapons & death
+
+- hotkeys
+
+- pause game (grey screen)
+
+- toggle sound icon & sound in general
+
+- settings
+
+
+- fix all animations
+
+- add random blink, look around state
+- need multiple "idle" animations (choose randomly but wisely!)
+
+- custom name, color, stats
+
+- draw pixel grid if debug mode
+
+- quads for render and collide: load static level items in areaQuad, actors in pointQuad
+  https://github.com/mikechambers/ExamplesByMesh/tree/master/JavaScript/QuadTree
+
+- find out why player4 is "stronger" than other players - something to do with update order...?
+
+- level editor
+
+- player editor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- player stats:     health =/= strength =/= speed
+                    fast and weak vs. strong and slow - choose wisely!
+                    
+                    i.e. you get 20 points to spend...
+                    
+                    health:   XXXXXXXX--
+                    strength: XXXXX-----
+                    speed:    XXXXXXX---
+                    
+                    - size of character is based on strength - weak characters are small, strong characters are big?
+                    - * need a way to immediately represent how healthy a player is (including what percent is left?)
+                    - strength: weight in collisions, power when pushing, movement speed when lifting
+
+
+
+
+- Use 'Bounty Hunters' as a story framework? Detective agency? Pizza delivery?
+
+
+
+- "The Boondoggle" -> Map name?
+
+
+- Rock Paper Scissors with player classes?  -> Bruiser -> Hero -> Pinto ->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+yeti walk **chest
+
+
+
+
+
+
+
+Freddy Yeti:
+- Afraid of everything despite size
+- Very destructive on accident
+
+Chompy:
+- Small Arms dealer *hue hue hue*
+- Excited. Stupid like a puppy
+- Very destructive on accident
+
+Edgar:
+- Spooks? Spooky?
+- Lives in graveyard
+- Raised by ghosts maybe?
+- Just wants to fit in but is very awkward due to lack of adult supervision or good role models
+
+Mudpie : 
+- 1978 G.G.O.T.Y 
+- Lost title due to scandal
+- All he cares about is reclaming title
+- Will do anything to pursue goal
+- "Here I am, eating filthy tin cans out of a garbage can instead of off of a plate like a former -and soon to be- G.G.O.T.Y deserves!"
+
+Glowin' Joe O'Malley:
+- Very successful mining mogul
+- Beautiful wife, lovely children and vast estate
+- Not himself lately but totally not a zombie so don't ask or go poking around in the old abandoned mine over yonder
+
+Yury:
+- Russian Vampyr Maffia
+- Getting long in the tooth
+- Needs blood supply maybe?
+
+Trashcat:
+- Fitting in
+- Nothing suspicious here
+- Move along
+
+Omegamecha Candyheart:
+- Vain and prone to violent rages but really just wants to be loved
+- Gay hench-robot?
+
+Evilyn Gloom:
+- Raised by witches
+- Powerful but mischevious
+- Needs direction in her life. Something or someone to care about...
+
+Gawky:
+- Gawlahkeh'lek?
+- Powerful entity from alternate dimension
+- Trapped in this reality on accident
+- Hates it here
+
+
+- Everyone hates goats. With good reason. They are assholes.
+
+
+- Evilyn and Joe noses
+- Gawky arms, tenticles
+_ Gnarbo
+- Zephyr & Vesper & Esmer
+- Bleek, Rez
+- Percy, Laika, Bear, Scunny, Wallaper, Dobbsy, Bash, Sulci and Gyri, Specter, Hoshi, Thorn, Gopnik/Gopnitsa, Pip, Wim and Wam, Grumb
+- Khazi
+
+
+- 8-bit reservoir dogs chars? "kill the gimp!"
+- horses in suits named Charlie and Whinney
+- Business Ferrets
+
+
+- Character who is a bottle (or glass) of booze - possibly gets picked up, broken and brandished by boss 
+
+- A character that hates tall people
+
+
+
+
+
+SKULL HUCKERS

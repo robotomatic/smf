@@ -1,0 +1,73 @@
+[
+    {
+        "name" : "bg-platform-support",
+        "comment" : "Tree supports",
+        "collide" : false,
+        "zindex" : 500,
+        "cache" : true,
+        "items" : [
+
+            {
+                "x": 1100,
+                "y": 310,
+                "width": 30,
+                "height": 320,
+                "itemstyle": "flip",
+                "itemtype" : "platform-support"
+            },
+            {
+                "x": 1210,
+                "y": 310,
+                "width": 30,
+                "height": 200,
+                "itemtype" : "platform-support"
+            },
+
+
+            {
+                "x": 1370,
+                "y": 420,
+                "width": 30,
+                "height": 120,
+                "itemtype" : "platform-support"
+            },
+
+            {
+                "x": 1450,
+                "y": 380,
+                "width": 30,
+                "height": 280,
+                "itemstyle": "flip",
+                "itemtype" : "platform-support"
+            },
+
+
+
+            {
+                "x": 1600,
+                "y": 200,
+                "width": 60,
+                "height": 600,
+                "itemtype" : "platform-support-wide"
+            },
+
+            {
+                "x": 1790,
+                "y": 330,
+                "width": 30,
+                "height": 470,
+                "itemtype" : "platform-support"
+            },
+
+            {
+                "x": 1995,
+                "y": 300,
+                "width": 30,
+                "height": 500,
+                "itemstyle": "flip",
+                "itemtype" : "platform-support"
+            }
+
+        ]
+    }
+]

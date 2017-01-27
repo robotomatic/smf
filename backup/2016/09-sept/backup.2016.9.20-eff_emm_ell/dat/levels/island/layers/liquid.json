@@ -1,0 +1,62 @@
+[
+    {
+        "name" : "liquid-bg-bg",
+        "collide" : false,
+        "zindex" : 50,
+        "cache" : false,
+        "graphics" : "bg_blur",
+        "items" : [
+            {
+                "x": 0,
+                "y": 1000,
+                "z" : 300,
+                "width": "100%",
+                "height": 800,
+                "name" : "waves-0",
+                "itemtype" : "wave-body"
+           }
+        ]
+    },
+    
+    {
+        "name" : "liquid-fg",
+        "collide" : false,
+        "zindex" : 999,
+        "cache" : false,
+        "items" : [
+            {
+                "x": 0,
+                "y": 1100,
+                "width": "100%",
+                "height": 800,
+                "name" : "waves-0",
+                "itemtype" : "wave-body",
+                "iteminfo" : {
+                    "flood" : true
+                }
+           }
+        ]
+    },
+    
+    
+    
+    
+    {
+        "name" : "liquid-kill",
+        "collide" : true,
+        "zindex" : 999,
+        "gravity" : ".9",
+        "viscosity" : ".9",
+        "damage" : 100,
+        "cache" : false,
+        "items" : [
+            {
+                "x": 0,
+                "y": 1200,
+                "width": "100%",
+                "height": 800,
+                "itemtype" : "wave-body"
+           }
+        ]
+    }
+]

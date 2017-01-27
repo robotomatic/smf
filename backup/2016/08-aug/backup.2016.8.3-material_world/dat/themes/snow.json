@@ -1,0 +1,241 @@
+{
+    "snow" : {
+        "background" : {
+            "color" : "#e8f2f5"
+        },
+
+        "items" : {
+            "sky" : {
+                "name" : "sky",
+                "color" : {
+                    "gradient" : {
+                        "start" : "#e8f2f5",
+                        "stop" : "#97999a"
+                    }
+                }
+            },
+
+            
+            "stars" : {
+                "name" : "stars",
+                "draw" : false,
+                "renderer" : {
+                    "name" : "stars",
+                    "total" : 400
+                }
+            },
+
+            "clouds" : {
+                "name" : "clouds",
+                "renderer" : {
+                    "name" : "clouds",
+                    "color" : "white",
+                    "maxwidth" : 1200,
+                    "maxheight" : 800,
+                    "offsety" : 300,
+                    "maxspeed" : 15,
+                    "total" : 15
+                }
+            },
+            
+            
+            "flag" : {
+                "name" : "flag",
+                "renderer" : {
+                    "name" : "flag",
+                    "color" : "white",
+                    "amplitude" : 2,
+                    "offset" : 0.1
+                }
+            },
+            
+            
+            "wave" : {
+                "name" : "snow",
+                "renderer" : {
+                    "name" : "wave",
+                    "wavelength" : 10,
+                    "amplitude" : 4,
+                    "offset" : 0,
+                     "color" : {
+                        "gradient" : {
+                            "top" : 650,
+                            "height" : 300,
+                            "start" : "#f5f5f5",
+                            "stop" : "#b7c7d6"
+                        }
+                     }
+                }
+            },
+            "wave-body" : {
+                "name" : "goo-body",
+                 "color" : {
+                    "gradient" : {
+                        "top" : 650,
+                        "height" : 300,
+                        "start" : "#f5f5f5",
+                        "stop" : "#b7c7d6"
+                    }
+                 }
+            },
+            
+            
+            
+
+            "platform" : {
+                "name" : "platform-1",
+                "itemtype" : "group",
+                "material" : {
+                    "name" : "stone",
+                    "radius" : 5,
+                    "craziness" : 3,
+                    "stones" : {
+                        "size" : 20,
+                        "min" : 5,
+                        "max" : 20
+                    },
+                    "color" : {
+                        "light" : {
+                            "gradient" : {
+                                "start" : "#d0cdc6",
+                                "stop" : "#a7a7a7"
+                            }
+                        },
+                        "dark" : "#d9d9d9",
+                        "projected" : {
+                            "top" : "#c7d3ed",
+                            "side" : "#b7c0d3",
+                            "bottom" : "#97a0b9"
+                        }
+                    }
+                },
+                "top" : {
+                    "color" : {
+                        "light" : "#d4dae2",
+                        "dark" : "#becad1",
+                        "projected" : {
+                            "top" : "#dee8e7",
+                            "side" : "#9cbacb",
+                            "bottom" : "#9bbebe"
+                        }
+                    }
+                }
+            },
+
+            
+            
+            "platform-bg" : {
+                "name" : "platform-bg-1",
+                "itemtype" : "group",
+                "material" : {
+                    "name" : "stone",
+                    "radius" : 5,
+                    "craziness" : 3,
+                    "stones" : {
+                        "size" : 25,
+                        "min" : 5,
+                        "max" : 20
+                    },
+                    "color" : {
+                        "light" : {
+                            "gradient" : {
+                                "start" : "#959897",
+                                "stop" : "#57605f"
+                            }
+                        },
+                        "dark" : "#959897",
+                        "projected" : {
+                            "top" : "#a4bab8",
+                            "side" : "#90adad",
+                            "bottom" : "#90adad"
+                        }
+                    }
+                }
+            },
+            
+            
+            
+            
+            
+            "platform-support" : {
+                "name" : "platform-support-1",
+                "color" : {
+                    "gradient" : {
+                        "start" : "#959897",
+                        "stop" : "#57605f"
+                    }
+                }
+            },
+            
+            "platform-support-wide" : {
+                "name" : "platform-support-wide-1",
+                "color" : {
+                    "gradient" : {
+                        "start" : "#959897",
+                        "stop" : "#57605f"
+                    }
+                }
+            },
+            
+            
+
+            
+            
+            "raised-platform" : {
+                "name" : "raised-platform-1",
+                "itemtype" : "group",
+                "material" : {
+                    "name" : "stone",
+                    "radius" : 5,
+                    "craziness" : 3,
+                    "stones" : {
+                        "size" : 20,
+                        "min" : 5,
+                        "max" : 20
+                    },
+                    "color" : {
+                        "light" : {
+                            "gradient" : {
+                                "start" : "#ced0cf",
+                                "stop" : "#a5afad"
+                            }
+                        },
+                        "dark" : "#d9d9d9",
+                        "projected" : {
+                            "top" : "#c7d3ed",
+                            "side" : "#b7c0d3",
+                            "bottom" : "#97a0b9"
+                        }
+                    }
+                },
+                "top" : {
+                    "color" : {
+                        "light" : "#e3e9ed",
+                        "dark" : "#bcddd6",
+                        "projected" : {
+                            "top" : "#dee8e7",
+                            "side" : "#9cbacb",
+                            "bottom" : "#9bbebe"
+                        }
+                    }
+                }
+            }
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+
+            
+            
+            
+            
+        }
+    }    
+}

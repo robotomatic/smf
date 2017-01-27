@@ -1,0 +1,703 @@
+{
+    "ggoat" : {
+        "name" : "Cranstin",
+        "color" : "#bfbb63",
+        "width" : 18,
+        "height" : 30,
+        "debug" : false,
+        "idlespeed" : 0.2,
+        "animations" : [
+            "default",
+            "blink",
+            "breathe",
+            "horns",
+            "arms",
+            "legs-goat",
+            "goty"
+        ],
+        
+        "parts" : {
+            
+            "groups" : {
+                "body" : {
+                    "zindex" : 480,
+                    "path" : "smooth"
+                },
+                "clothes" : {
+                    "zindex" : 380,
+                    "path" : "smooth",
+                    "color" : "#1a7cd0"
+                }
+            },
+            
+            "head" : {
+                "parts" : {
+                    
+                    "horns"  : {
+                        "color" : "gray",
+                        "parts" : {
+                            "left_horn" : { 
+                                "width" : 6, 
+                                "height" : 8,
+                                "x" : 25, 
+                                "y" : -5,
+                                "zindex" : 0,
+                                "pointinfo" : {
+                                    "0" : "skip"
+                                }
+                            },
+                            "right_horn" : { 
+                                "width" : 6, 
+                                "height" : 8,
+                                "x" : 60, 
+                                "y" : -5,
+                                "zindex" : 0,
+                                "pointinfo" : {
+                                    "1" : "skip"
+                                }
+                            }
+                        }
+                    },
+                    
+                    
+                    "head-head" : {
+                        "group" : "body",
+                        "parts" : {
+                            "head-top"  : { 
+                                "width" : 30,
+                                "height" : 5,
+                                "x" : 35,
+                                "y" : 0
+                            },
+                            "head-middle"  : {
+                                "width" : 60,
+                                "height" : 10,
+                                "x" : 20,
+                                "y" : 4
+                            },
+                            "head-bottom"  : {
+                                "width" : 50,
+                                "height" : 10,
+                                "x" : 25,
+                                "y" : 12
+                            },
+                            "head-snout" : {
+                                "width" : 40,
+                                "height" : 5,
+                                "x" : 45,
+                                "y" : 8
+                            },
+                            "head-snout-bottom" : {
+                                "width" : 40,
+                                "height" : 5,
+                                "x" : 50,
+                                "y" : 13
+                            }
+                        }
+                    },
+                    
+                    "snout" : {
+                        "color" : "#d9d8b1",
+                        "width" : 25,
+                        "height" : 10,
+                        "x" : 62,
+                        "y" : 9,
+                        "path" : "smooth",
+                        "zindex" : 600,
+                        "parts" : {
+                            "snout-nostrils" : {
+                                "parts" : {
+                                    "snout-nostril-left" : {
+                                        "color" : "#676464",
+                                        "width" : 4,
+                                        "height" : 0.1,
+                                        "x" : 67,
+                                        "y" : 11,
+                                        "path" : "smooth",
+                                        "zindex" : 601
+                                    },
+                                    "snout-nostril-right" : {
+                                        "color" : "#676464",
+                                        "width" : 4,
+                                        "height" : 0.1,
+                                        "x" : 81,
+                                        "y" : 11,
+                                        "path" : "smooth",
+                                        "zindex" : 601
+                                    }
+                                }
+                            },
+                            "mouth" : {
+                                "width" : 29,
+                                "height" : 5,
+                                "x" : 60,
+                                "y" : 12,
+                                "angle" : -2,
+                                "pointinfo" : {
+                                    "0" : "round",
+                                    "1" : "round",
+                                    "2" : "round",
+                                    "3" : "round"
+                                },
+                                "parts" : {
+                                    "mouth-inside" : {
+                                        "width" : 25,
+                                        "height" : 0.1,
+                                        "x" : 62,
+                                        "y" : 15,
+                                        "color" : "black",
+                                        "pointinfo" : {
+                                            "0" : "round",
+                                            "1" : "round",
+                                            "2" : "round",
+                                            "3" : "round"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+
+                    "eyes"  : {
+                        "parts" : {
+                            "left-eye" : {
+                                "parts" : {
+                                    "left-eye-dark" : {
+                                        "width" : 18, 
+                                        "height" : 6,
+                                        "x" : 23, 
+                                        "y" : 7,
+                                        "color" : "#91917c",
+                                        "path" : "smooth",
+                                        "zindex" : 1302
+                                    }, 
+                                    "left-eye-white" : {
+                                        "width" : 15, 
+                                        "height" : 3,
+                                        "x" : 25, 
+                                        "y" : 8,
+                                        "color" : "white",
+                                        "path" : "smooth",
+                                        "zindex" : 1303
+                                    }, 
+                                    "left-eye-color" : {
+                                        "width" : 1.5, 
+                                        "height" : 0.2,
+                                        "x" : 35, 
+                                        "y" : 9.5, 
+                                        "color" : "black",
+                                        "zindex" : 1304,
+                                        "path" : "smooth"
+                                    }
+                                }
+                            },
+                            "right-eye" : { 
+                                "parts" : {
+                                    "right-eye-dark" : {
+                                        "width" : 18, 
+                                        "height" : 6,
+                                        "x" : 59, 
+                                        "y" : 7,
+                                        "color" : "#91917c",
+                                        "path" : "smooth",
+                                        "zindex" : 1312
+                                    }, 
+                                    "right-eye-white" : {
+                                        "width" : 15, 
+                                        "height" : 3,
+                                        "x" : 60, 
+                                        "y" : 8,
+                                        "color" : "white",
+                                        "path" : "smooth",
+                                        "zindex" : 1313
+                                    }, 
+                                    "right-eye-color" : {
+                                        "width" : 1.5, 
+                                        "height" : 0.2,
+                                        "x" : 64, 
+                                        "y" : 9.5, 
+                                        "color" : "black",
+                                        "zindex" : 1314,
+                                        "path" : "smooth"
+                                    }
+                                } 
+                            }
+                        }
+                    },
+                    
+                    "ears" : {
+                        "color" : "#d9d8b1",
+                        "parts" : {
+                            "left-ear" : {
+                                "zindex" : 83,
+                                "width" : 15,
+                                "height" : 12,
+                                "x" : 10,
+                                "y" : 15,
+                                "pointinfo" : {
+                                    "0" : "smooth",
+                                    "2" : "smooth"
+                                },
+                                "parts" : {
+                                    "left-ear-inner" : {
+                                        "zindex" : 84,
+                                        "width" : 5,
+                                        "height" : 5,
+                                        "x" : 16,
+                                        "y" : 20,
+                                        "pointinfo" : {
+                                            "0" : "smooth",
+                                            "2" : "smooth"
+                                        },
+                                        "color" : "#b5b491"
+                                    }
+                                }
+                            },
+                            "right-ear" : {
+                                "zindex" : 85,
+                                "width" : 15,
+                                "height" : 12,
+                                "x" : 75,
+                                "y" : 15,
+                                "pointinfo" : {
+                                    "1" : "smooth",
+                                    "3" : "smooth"
+                                },
+                                "parts" : {
+                                    "right-ear-inner" : {
+                                        "zindex" : 86,
+                                        "width" : 5,
+                                        "height" : 5,
+                                        "x" : 79    ,
+                                        "y" : 20,
+                                        "pointinfo" : {
+                                            "1" : "smooth",
+                                            "3" : "smooth"
+                                        },
+                                        "color" : "#b5b491"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            },
+
+            "neck" : {
+                "parts" : {
+                    "neck-top" : {
+                        "group" : "body",
+                        "width" : 30,
+                        "height" : 5,
+                        "x" : 35,
+                        "y" : 20
+                    },
+                    "neck-bottom" : {
+                        "group" : "body",
+                        "width" : 30,
+                        "height" : 5,
+                        "x" : 35,
+                        "y" : 32
+                    }
+                }
+            },
+            
+            "body" : {
+                "parts" : {
+                    "hips" : {
+                        "width" : 53,
+                        "height" : 20,
+                        "x" : 23.5,
+                        "y" : 50,
+                        "path" : "smooth",
+                        "zindex" : 300
+                    },
+                    "shoulders" : {
+                        "group" : "clothes",
+                        "width" : 55,
+                        "height" : 15,
+                        "x" : 22.5,
+                        "y" : 28
+                    },
+                    "chest" : {
+                        "group" : "clothes",
+                        "width" : 50,
+                        "height" : 10,
+                        "x" : 25,
+                        "y" : 40
+                    },
+                    "torso" : {
+                        "group" : "clothes",
+                        "width" : 40,
+                        "height" : 15,
+                        "x" : 30,
+                        "y" : 45
+                    },
+                    "torso-botom" : {
+                        "group" : "clothes",
+                        "width" : 50,
+                        "height" : 5,
+                        "x" : 25,
+                        "y" : 52
+                    },
+                    "waist" : {
+                        "width" : 55,
+                        "height" : 8,
+                        "x" : 22.5,
+                        "y" : 55,
+                        "color" : "#1a7cd0",
+                        "path" : "smooth",
+                        "zindex" : 1900
+                    },
+                    
+                    "belly" : {
+                        "width" : 30,
+                        "height" : 15,
+                        "x" : 38,
+                        "y" : 52,
+                        "zindex" : 350,
+                        "path" : "smooth",
+                        "color" : "#d9d8b1"
+                    },
+                    
+                    "tail" : {
+                        "width" : 10,
+                        "height" : 6,
+                        "x" : 20,
+                        "y" : 63,
+                        "angle" : -30,
+                        "zindex" : -100,
+                        "path" : "smooth",
+                        "color" : "#d9d8b1"
+                    },
+                    
+                    "collar-shadow" : {
+                        "width" : 50,
+                        "height" : 15,
+                        "x" : 25,
+                        "y" : 28.8,
+                        "color" : "#17578e",
+                        "zindex" : 400,
+                        "path" : "smooth"
+                    },
+                    "collar" : {
+                        "width" : 55,
+                        "height" : 15,
+                        "x" : 23,
+                        "y" : 28,
+                        "color" : "#1a7cd0",
+                        "zindex" : 401,
+                        "path" : "smooth"
+                    }
+                    
+                }
+            },
+
+            
+            
+            "arms" : {
+                "parts" : {
+                    "left-arm" : {
+                        "color" : "#1a7cd0",
+                        "zindex" : 200,
+                        "parts" : {
+                            "left-shoulder" : {
+                                "link" : "left-arm",
+                                "width" : 12,
+                                "height" : 1,
+                                "x" : 20,
+                                "y" : 37,
+                                "draw" : false,
+                                "parts" : {
+                                    "left-bicep" : {
+                                        "link" : "left-arm",
+                                        "width" : 12,
+                                        "height" : 15,
+                                        "x" : 20,
+                                        "y" : 37,
+                                        "outline" : true,
+                                        "parts" : {
+                                            "left-elbow" : {
+                                                "link" : "left-arm",
+                                                "width" : 12,
+                                                "height" : 1,
+                                                "x" : 20,
+                                                "y" : 52,
+                                                "parts" : {
+                                                    "left-forearm" : {
+                                                        "link" : "left-arm",
+                                                        "width" : 12,
+                                                        "height" : 14,
+                                                        "x" : 20,
+                                                        "y" : 54,
+                                                        "parts" : {
+                                                            "left-cuff-shadow" : {
+                                                                "width" : 8,
+                                                                "height" : 3,
+                                                                "x" : 22,
+                                                                "y" : 65,
+                                                                "path" : "round",
+                                                                "color" : "#17578e"
+                                                            },
+                                                            "left-cuff" : {
+                                                                "width" : 12,
+                                                                "height" : 3,
+                                                                "x" : 20,
+                                                                "y" : 65.5,
+                                                                "path" : "round"
+                                                            },
+                                                            "left-hand" : {
+                                                                "width" : 12,
+                                                                "height" : 2,
+                                                                "x" : 20,
+                                                                "y" : 69,
+                                                                "color" : "#bfbb63",
+                                                                "path" : "smooth",
+                                                                "parts" : {
+                                                                    "left-hand-fingers" : {
+                                                                        "width" : 5,
+                                                                        "height" : 4,
+                                                                        "x" : 20,
+                                                                        "y" : 70,
+                                                                        "color" : "#bfbb63",
+                                                                        "path" : "round"
+                                                                    },
+                                                                    "left-hand-thumb" : {
+                                                                        "width" : 2,
+                                                                        "height" : 2.5,
+                                                                        "x" : 30,
+                                                                        "y" : 70,
+                                                                        "color" : "#bfbb63",
+                                                                        "path" : "round"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    
+                    "right-arm" : {
+                        "color" : "#1a7cd0",
+                        "zindex" : 250,
+                        "parts" : {
+                            "right-shoulder" : {
+                                "link" : "right-arm",
+                                "width" : 5,
+                                "height" : 1,
+                                "x" : 70,
+                                "y" : 37,
+                                "draw" : false,
+                                "parts" : {
+                                    "right-bicep" : {
+                                        "link" : "right-arm",
+                                        "width" : 12,
+                                        "height" : 15,
+                                        "x" : 68,
+                                        "y" : 37,
+                                        "outline" : true,
+                                        "parts" : {
+                                            "right-elbow" : {
+                                                "link" : "right-arm",
+                                                "width" : 12,
+                                                "height" : 1,
+                                                "x" : 68,
+                                                "y" : 52,
+                                                "parts" : {
+                                                    "right-forearm" : {
+                                                        "link" : "right-arm",
+                                                        "width" : 12,
+                                                        "height" : 14,
+                                                        "x" : 68,
+                                                        "y" : 54,
+                                                        "parts" : {
+                                                            "right-cuff-shadow" : {
+                                                                "width" : 8,
+                                                                "height" : 3,
+                                                                "x" : 70,
+                                                                "y" : 65,
+                                                                "path" : "round",
+                                                                "color" : "#17578e"
+                                                            },
+                                                            "right-cuff" : {
+                                                                "width" : 12,
+                                                                "height" : 3,
+                                                                "x" : 68,
+                                                                "y" : 65.5,
+                                                                "path" : "round"
+                                                            },
+                                                            "right-hand" : {
+                                                                "width" : 12,
+                                                                "height" : 2,
+                                                                "x" : 68,
+                                                                "y" : 69,
+                                                                "color" : "#bfbb63",
+                                                                "path" : "smooth",
+                                                                "parts" : {
+                                                                    "right-hand-thumb" : {
+                                                                        "width" : 2,
+                                                                        "height" : 2.5,
+                                                                        "x" : 68,
+                                                                        "y" : 70,
+                                                                        "color" : "#bfbb63",
+                                                                        "path" : "round"
+                                                                    },
+                                                                    "right-hand-fingers" : {
+                                                                        "width" : 5,
+                                                                        "height" : 4,
+                                                                        "x" : 75,
+                                                                        "y" : 70,
+                                                                        "color" : "#bfbb63",
+                                                                        "path" : "round"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            },            
+            
+            "legs" : {
+                "parts" : {
+                    "left-leg" : { 
+                        "zindex" : 2000,
+                        "parts" : {
+                            "left-hip" : {
+                                "link" : "left-leg",                        
+                                "width" : 12,
+                                "height" : 1,
+                                "x" : 25,
+                                "y" : 60,
+                                "parts" : {
+                                    "left-thigh" : {
+                                        "link" : "left-leg",                        
+                                        "width" : 12, 
+                                        "height" : 10,
+                                        "x" : 25,
+                                        "y" : 60,
+                                        "parts" : {
+                                            "left-knee" : {
+                                                "link" : "left-leg",                        
+                                                "width" : 12, 
+                                                "height" :  5,
+                                                "x" : 25,
+                                                "y" : 73,
+                                                "draw" : false,
+                                                "parts" : {
+                                                    "left-calf" : {
+                                                        "link" : "left-leg",                        
+                                                        "width" : 12, 
+                                                        "height" :  15,
+                                                        "x" : 25,
+                                                        "y" : 77,
+                                                        "parts" : {
+                                                            "left-ankle" : {
+                                                                "link" : "left-leg",                        
+                                                                "width" : 12,
+                                                                "height" : 9,
+                                                                "x" : 25,
+                                                                "y" : 91
+                                                            },
+                                                            "left-hoof" : {
+                                                                "width" : 12,
+                                                                "height" : 1,
+                                                                "x" : 25,
+                                                                "y" : 99,
+                                                                "color" : "black",
+                                                                "pointinfo" : {
+                                                                    "0" : "round",
+                                                                    "1" : "round"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "right-leg" : { 
+                        "zindex" : 2500,
+                        "parts" : {
+                            "right-hip" : {
+                                "link" : "right-leg",                        
+                                "width" : 12,
+                                "height" : 1,
+                                "x" : 63,
+                                "y" : 60,
+                                "parts" : {
+                                    "right-thigh" : {
+                                        "link" : "right-leg",                        
+                                        "width" : 12, 
+                                        "height" :  10,
+                                        "x" : 63,
+                                        "y" : 60,
+                                        "parts" : {
+                                            "right-knee" : {
+                                                "link" : "right-leg",                        
+                                                "width" : 12, 
+                                                "height" :  5,
+                                                "x" : 63,
+                                                "y" : 73,
+                                                "draw" : false,
+                                                "parts" : {
+                                                    "right-calf" : {
+                                                        "link" : "right-leg",                        
+                                                        "width" : 12, 
+                                                        "height" :  15,
+                                                        "x" : 63,
+                                                        "y" : 77,
+                                                        "parts" : {
+                                                            "right-ankle" : {
+                                                                "link" : "right-leg",                        
+                                                                "width" : 12,
+                                                                "height" : 9,
+                                                                "x" : 63,
+                                                                "y" : 91
+                                                            },
+                                                            "right-hoof" : {
+                                                                "width" : 12,
+                                                                "height" : 1,
+                                                                "x" : 63,
+                                                                "y" : 99,
+                                                                "color" : "black",
+                                                                "pointinfo" : {
+                                                                    "0" : "round",
+                                                                    "1" : "round"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                    
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

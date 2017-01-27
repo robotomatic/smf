@@ -1,0 +1,19 @@
+[
+    {
+        "name" : "sky",
+        "collide" : false,
+        "cache" : true,
+        "zindex" : 1,
+        "graphics" : "bg_blur",
+        "items" : [
+            {
+                "x" : -300,
+                "y" : 0,
+                "z" : 500,
+                "width" : 3800,
+                "height" : 1300,
+                "itemtype" : "sky"
+            }
+        ]
+    }
+]

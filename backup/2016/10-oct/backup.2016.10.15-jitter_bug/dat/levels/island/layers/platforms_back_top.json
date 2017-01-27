@@ -1,0 +1,88 @@
+[
+    {
+        "name" : "platforms-back-top-top",
+        "comment" : "platform mid furthest",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 10,
+        "top" : false,
+        "items" : [
+            {
+                "x" : 1030,
+                "y" : 860,
+                "z" : 600,
+                "depth" : 150,
+                "itemtype" : "platform",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 20
+                    }
+                ]
+            },
+
+            {
+                "x" : 1030,
+                "y" : 880,
+                "z" : 740,
+                "itemtype" : "platform",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 20,
+                        "height": 100
+                    }
+                ]
+            },
+
+            {
+                "x" : 1310,
+                "y" : 880,
+                "z" : 740,
+                "itemtype" : "platform",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 20,
+                        "height": 100
+                    }
+                ]
+            },
+
+            {
+                "x" : 1030,
+                "y" : 880,
+                "z" : 600,
+                "itemtype" : "platform",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 20,
+                        "height": 100
+                    }
+                ]
+            }, 
+            
+            {
+                "x" : 1310,
+                "y" : 880,
+                "z" : 600,
+                "itemtype" : "platform",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 20,
+                        "height": 100
+                    }
+                ]
+            }
+        ]
+    }
+    
+]

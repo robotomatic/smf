@@ -1,0 +1,70 @@
+[
+    {
+        "name" : "items-bg-blur",
+        "comment" : "furthest things",
+        "collide" : false,
+        "cache" : true,
+        "depth" : 5,
+        "items" : [
+
+            {
+                "x" : 280,
+                "y" : 980,
+                "z" : 230,
+                "width": 5,
+                "height": 160,
+                "angle" : -20,
+                "itemtype" : "ffg-block-1"
+            },
+            {
+                "x" : 315,
+                "y" : 1005,
+                "z" : 205,
+                "width": 5,
+                "height": 160,
+                "angle" : -20,
+                "itemtype" : "ffg-block-1"
+            },
+            {
+                "x" : 330,
+                "y" : 970,
+                "z" : 228,
+                "width": 5,
+                "height": 160,
+                "angle" : -20,
+                "itemtype" : "ffg-block-1"
+            },
+            
+            
+            
+            
+            {
+                "x" : 2870,
+                "y" : 1020,
+                "z" : 245,
+                "width": 5,
+                "height": 120,
+                "angle" : 10,
+                "itemtype" : "ffg-block-1"
+            },
+            {
+                "x" : 2900,
+                "y" : 1000,
+                "z" : 240,
+                "width": 5,
+                "height": 120,
+                "angle" : 10,
+                "itemtype" : "ffg-block-1"
+            },
+            {
+                "x" : 2880,
+                "y" : 980,
+                "z" : 280,
+                "width": 5,
+                "height": 160,
+                "angle" : 10,
+                "itemtype" : "ffg-block-1"
+            }
+        ]
+    }
+]

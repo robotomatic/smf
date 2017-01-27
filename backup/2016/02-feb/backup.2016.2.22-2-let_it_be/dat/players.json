@@ -1,0 +1,84 @@
+{
+    "players" : [
+        {
+            "id": 1,
+            "name" : "player0",
+            "character_name" : "characterN",
+            "color" : "green",
+            "x" : 2300,
+            "y" : 10,
+            "width" : 75,
+            "height" : 100,
+            "speed" : 3.5
+        },
+        {
+            "id": 2,
+            "name" : "player1",
+            "character_name" : "character0",
+            "color" : "gray",
+            "x" : 350,
+            "y" : 70,
+            "width" : 18,
+            "height" : 28,
+            "speed" : 3.2
+        },
+        {
+            "id": 3,
+            "name" : "player2",
+            "character_name" : "character1",
+            "color" : "#B40404",
+            "x" : 520,
+            "y" : 70,
+            "width" : 18,
+            "height" : 28,
+            "speed" : 3.2,
+            "canFly" : true
+        },
+        {
+            "id": 4,
+            "name" : "player3",
+            "character_name" : "character2",
+            "color" : "blue",
+            "x" : 460,
+            "y" : 60,
+            "width" : 20,
+            "height" : 20,
+            "speed" : 3
+        },
+        {
+            "id": 5,
+            "name" : "player4",
+            "character_name" : "character3",
+            "color" : "blue",
+            "x" : 700,
+            "y" : 35,
+            "width" : 15,
+            "height" : 30,
+            "speed" : 3.5,
+            "canDoubleJump" : true
+        },
+        {
+            "id": 6,
+            "name" : "player5",
+            "character_name" : "character4",
+            "color" : "blue",
+            "x" : 1000,
+            "y" : 35,
+            "width" : 15,
+            "height" : 15,
+            "speed" : 3.5,
+            "canFly" : true
+        },
+        {
+            "id": 7,
+            "name" : "playerA",
+            "character_name" : "characterX",
+            "color" : "#B18904",
+            "x" : 800,
+            "y" : 35,
+            "width" : 12,
+            "height" : 20,
+            "speed" : 3.5
+        }
+    ]
+}

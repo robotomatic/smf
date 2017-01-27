@@ -1,0 +1,20 @@
+.ui-chooser-canvas {
+    float: left;
+}
+
+
+.ui-chooser-navigation-button {
+    font-size: 2em;
+    width: 1em;
+    position: absolute;
+    top: 45%;
+    z-index: 999;
+}
+
+.ui-chooser-navigation-button-left {
+    left : 1em;
+}
+
+.ui-chooser-navigation-button-right {
+    right: 1em;
+}

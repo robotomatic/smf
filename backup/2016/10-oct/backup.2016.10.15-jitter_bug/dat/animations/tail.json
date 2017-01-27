@@ -1,0 +1,215 @@
+{
+    "tail" : {
+        "front" : {
+            "name" : "front",
+            "duration" : ".8",
+            "repeat" : true,
+            "parts" : {
+                "tail-bottom" : {
+                    "frames" : [
+                        {
+                            "lerp" : false,
+                            "x" : 0,
+                            "angle" : 0,
+                            "pointinfo" : {
+                                "0" : "round",
+                                "3" : "skip"
+                            }
+                        }
+                    ]
+                }
+                
+            }
+        },
+        "right" : {
+            "name" : "rignt",
+            "duration" : ".8",
+            "repeat" : true,
+            "parts" : {
+                "tail-bottom" : {
+                    "frames" : [
+                        {
+                            "lerp" : false,
+                            "x" : 0,
+                            "angle" : 0,
+                            "pointinfo" : {
+                                "0" : "round",
+                                "3" : "skip"
+                            }
+                        }
+                    ]
+                }
+                
+            }
+        },
+        "left" : {
+            "name" : "left",
+            "duration" : ".8",
+            "repeat" : true,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        {
+                            "x" : 65
+                        }
+                    ]
+                },
+                "tail-bottom" : {
+                    "frames" : [
+                        {
+                            "lerp" : false,
+                            "x" : 43,
+                            "angle" : 40,
+                            "pointinfo" : {
+                                "1" : "round",
+                                "2" : "skip"
+                            }
+                        }
+                    ]
+                }
+                
+            }
+        },
+        "idle_left" : {
+            "name" : "idle_left",
+            "duration" : "2",
+            "repeat" : true,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        {
+                            "angle" : -5
+                        },
+                        {
+                            "angle" : 5
+                        }
+                    ]
+                }
+            }
+        },
+
+        "idle" : {
+            "name" : "idle_right",
+            "duration" : "2",
+            "repeat" : true,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        {
+                            "angle" : -5
+                        },
+                        {
+                            "angle" : 5
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "walk_left" : {
+            "name" : "walk_left",
+            "duration" :  0.1,
+            "repeat" : true,
+            "loop" : "start",
+            "repeat" : true,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        { 
+                            "angle" : -10
+                        },
+                        { 
+                            "angle" : 0
+                        },
+                        { 
+                            "angle" : -15
+                        },
+                        { 
+                            "angle" : 0
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_right" : {
+            "name" : "walk_right",
+            "duration" :  0.1,
+            "repeat" : true,
+            "loop" : "start",
+            "repeat" : true,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        { 
+                            "angle" : 10
+                        },
+                        { 
+                            "angle" : 0
+                        },
+                        { 
+                            "angle" : 10
+                        },
+                        { 
+                            "angle" : 0
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "fall_left" : {
+            "name" : "fall_left",
+            "repeat" : true,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        {
+                            "angle" : -15
+                        }
+                    ]
+                }
+            }
+        },
+        "fall_right" : {
+            "name" : "fall_right",
+            "repeat" : true,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        {
+                            "angle" : 15
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "jump_left" : {
+            "name" : "jump_left",
+            "repeat" : true,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        {
+                            "angle" : 15
+                        }
+                    ]
+                }
+            }
+        },
+        "jump_right" : {
+            "name" : "jump_right",
+            "repeat" : true,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        {
+                            "angle" : -15
+                        }
+                    ]
+                }            
+            }
+        }
+        
+    }
+}

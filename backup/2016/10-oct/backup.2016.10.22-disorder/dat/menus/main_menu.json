@@ -1,0 +1,41 @@
+{
+    "width" : 800,
+    "height" : 300,
+    "layers" : [
+        {
+            "name" : "bounds",
+            "collide" : true,
+            "draw" : true,
+            "items" : [
+                {
+                    "name" : "ceiling",
+                    "x": -400,
+                    "y": 0,
+                    "width": 1220,
+                    "height": 10
+                },
+                {
+                    "name" : "left-wall",
+                    "x": -10,
+                    "y": 0,
+                    "width": 10,
+                    "height": 400
+                },
+                {
+                    "name" : "right-wall",
+                    "x": 800,
+                    "y": 0,
+                    "width": 10,
+                    "height": 400
+                },
+                {
+                    "name" : "floor",
+                    "x": -20,
+                    "y": 320,
+                    "width": 1240,
+                    "height": 50
+                }
+            ]
+        }
+    ]
+}

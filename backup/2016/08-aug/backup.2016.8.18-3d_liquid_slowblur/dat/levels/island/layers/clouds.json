@@ -1,0 +1,22 @@
+[
+    {
+        "name" : "clouds-bg",
+        "collide" : false,
+        "preview" : true,
+        "zindex" : 10,
+        "blur" : "small",
+        "cache" : false,
+        "items" : [
+            {
+                "x": 0,
+                "y": 0,
+                "z" : 500,
+                "width": 3800,
+                "height": 600,
+                "animate" : true,
+                "name" : "clouds",
+                "itemtype" : "clouds"
+            }
+        ]
+    }
+]

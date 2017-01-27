@@ -1,0 +1,162 @@
+[
+    {
+        "name" : "front-rocks",
+        "collide" : true,
+        "zindex" : 750,
+        "cache" : true,
+        "items" : [
+
+
+            {
+                "x" : 1030,
+                "y" : 558,
+                "itemtype" : "grass",
+                "collide" : false,
+                "width": 50,
+                "height": 70
+            },
+            {
+                "x" : 1085,
+                "y" : 558,
+                "itemtype" : "grass",
+                "collide" : false,
+                "width": 50,
+                "height": 70
+            },
+            {
+                "x" : 1080,
+                "y" : 570,
+                "itemtype" : "rock",
+                "collide" : "top",
+                "width": 50,
+                "height": 55
+            },
+            {
+                "x" : 1040,
+                "y" : 558,
+                "itemtype" : "grass",
+                "collide" : false,
+                "width": 50,
+                "height": 70
+            },
+            {
+                "x" : 1060,
+                "y" : 558,
+                "itemtype" : "grass",
+                "collide" : false,
+                "width": 50,
+                "height": 70
+            },
+
+
+
+
+
+            {
+                "x" : 2280,
+                "y" : 528,
+                "itemtype" : "grass",
+                "collide" : false,
+                "width": 50,
+                "height": 70
+            },
+            {
+                "x" : 2330,
+                "y" : 548,
+                "itemtype" : "rock",
+                "collide" : "top",
+                "width": 50,
+                "height": 50,
+                "angle" : "-1"
+            },
+
+            {
+                "x" : 2323,
+                "y" : 539,
+                "itemtype" : "grass",
+                "collide" : false,
+                "width": 30,
+                "height": 60
+            },
+
+
+            {
+                "x" : 2355,
+                "y" : 569,
+                "itemtype" : "rock",
+                "collide" : "top",
+                "width": 30,
+                "height": 30,
+                "angle" : "-2"
+            },
+
+            {
+                "x" : 2325,
+                "y" : 529,
+                "itemtype" : "grass",
+                "collide" : false,
+                "width": 50,
+                "height": 70
+            },
+
+
+
+
+
+
+
+
+
+            {
+                "x" : 2930,
+                "y" : 627,
+                "itemtype" : "rock",
+                "collide" : "top",
+                "width": 50,
+                "height": 50,
+                "angle" : "-2"
+            },
+            {
+                "x" : 2880,
+                "y" : 608,
+                "itemtype" : "grass",
+                "collide" : false,
+                "width": 50,
+                "height": 70
+            },
+            {
+                "x" : 2895,
+                "y" : 608,
+                "itemtype" : "grass",
+                "collide" : false,
+                "width": 50,
+                "height": 70
+            },
+            {
+                "x" : 2920,
+                "y" : 607,
+                "itemtype" : "grass",
+                "collide" : false,
+                "width": 50,
+                "height": 70
+            },
+            {
+                "x" : 2953,
+                "y" : 658,
+                "itemtype" : "rock",
+                "collide" : "top",
+                "width": 40,
+                "height": 20,
+                "angle" : "-2"
+            },
+            {
+                "x" : 2940,
+                "y" : 608,
+                "itemtype" : "grass",
+                "collide" : false,
+                "width": 50,
+                "height": 70
+            }
+        ]
+    }
+]

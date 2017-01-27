@@ -1,0 +1,239 @@
+[
+    {
+        "name" : "background-3",
+        "blur" : 0.08,
+        "parallax" : 0.03,
+        "drawdetails" : false,
+        "zindex" : 100,
+        "collide" : false,
+        "cache" : true,
+        "items" : [
+            {
+                "x": 150,
+                "y": 550,
+                "width": 2800,
+                "height": 240,
+                "itemtype" : "bg-block-3"
+            },
+            {
+                "x": 300,
+                "y": 350,
+                "width": 2000,
+                "height": 540,
+                "itemtype" : "bg-block-3"
+            },
+            {
+                "x": 530,
+                "y": 170,
+                "width": 200,
+                "height": 200,
+                "itemtype" : "bg-block-3"
+            },
+            {
+                "x": 450,
+                "y": 260,
+                "width": 500,
+                "height": 240,
+                "itemtype" : "bg-block-3"
+            },
+            {
+                "x": 1800,
+                "y": 350,
+                "width": 800,
+                "height": 540,
+                "itemtype" : "bg-block-3"
+            },
+            {
+                "x": 1200,
+                "y": 250,
+                "width": 700,
+                "height": 740,
+                "itemtype" : "bg-block-3"
+            },
+            {
+                "x": 1000,
+                "y": 50,
+                "width": 300,
+                "height": 740,
+                "itemtype" : "bg-block-3"
+            },
+            {
+                "x": 1000,
+                "y": 200,
+                "width": 180,
+                "height": 180,
+                "itemtype" : "bg-block-3"
+            }
+
+
+        ]
+    },
+    
+    {
+        "name" : "background-2",
+        "blur" : 0.1,
+        "parallax" : 0.05,
+        "drawdetails" : false,
+        "zindex" : 200,
+        "collide" : false,
+        "cache" : true,
+        "items" : [
+            {
+                "x": 200,
+                "y": 475,
+                "width": 240,
+                "height": 240,
+                "itemtype" : "bg-block-2"
+            },
+
+            {
+                "x": 870,
+                "y": 575,
+                "width": 240,
+                "height": 240,
+                "itemtype" : "bg-block-2"
+            },
+            {
+                "x": 1270,
+                "y": 175,
+                "width": 540,
+                "height": 240,
+                "itemtype" : "bg-block-2"
+            },
+            {
+                "x": 1620,
+                "y": 450,
+                "width": 240,
+                "height": 240,
+                "itemtype" : "bg-block-2"
+            },
+            {
+                "x": 2105,
+                "y": 495,
+                "width": 620,
+                "height": 240,
+                "itemtype" : "bg-block-2"
+            },
+            {
+                "x": 2000,
+                "y": 555,
+                "width": 240,
+                "height": 240,
+                "itemtype" : "bg-block-2"
+            },
+            {
+                "x": 2170,
+                "y": 250,
+                "width": 120,
+                "height": 140,
+                "itemtype" : "bg-block-2"
+            },
+
+            {
+                "x": 1300,
+                "y": 355,
+                "width": 60,
+                "height": 500,
+                "itemtype" : "bg-platform-support-wide"
+            },
+
+
+            {
+                "x": 1700,
+                "y": 355,
+                "width": 60,
+                "height": 500,
+                "itemtype" : "bg-platform-support-wide"
+            },
+
+            {
+                "x": 2200,
+                "y": 355,
+                "width": 60,
+                "height": 200,
+                "itemtype" : "bg-platform-support-wide"
+            }
+
+        ]
+    },
+    
+    {
+        "name" : "background-1",
+        "blur" : 0.2,
+        "parallax" : 0.08,
+        "collide" : false,
+        "zindex" : 300,
+        "drawdetails" : false,
+        "cache" : true,
+        "items" : [
+
+            {
+                "x": 600,
+                "y": 490,
+                "width": 150,
+                "height": 140,
+                "itemtype" : "bg-block-1"
+            },
+
+            {
+                "x": 1870,
+                "y": 575,
+                "width": 640,
+                "height": 140,
+                "itemtype" : "bg-block-1"
+            },
+
+            {
+                "x": 820,
+                "y": 305,
+                "width": 140,
+                "height": 140,
+                "itemtype" : "bg-block-1"
+            },
+            {
+                "x": 850,
+                "y": 350,
+                "width": 240,
+                "height": 240,
+                "itemtype" : "bg-block-1"
+            },
+
+            {
+                "x": 800,
+                "y": 440,
+                "width": 450,
+                "height": 340,
+                "itemtype" : "bg-block-1"
+            },
+
+            {
+                "x": 870,
+                "y": 595,
+                "width": 140,
+                "height": 140,
+                "itemtype" : "bg-block-1"
+            },
+            {
+                "x": 1490,
+                "y": 520,
+                "width": 240,
+                "height": 180,
+                "itemtype" : "bg-block-1"
+            },
+            {
+                "x": 1375,
+                "y": 475,
+                "width": 340,
+                "height": 140,
+                "itemtype" : "bg-block-1"
+            },
+            {
+                "x": 1780,
+                "y": 290,
+                "width": 140,
+                "height": 140,
+                "itemtype" : "bg-block-1"
+            }
+        ]
+    }
+]

@@ -1,0 +1,75 @@
+[
+    {
+        "name" : "front-props",
+        "collide" : true,
+        "zindex" : 750,
+        "depth" : 5,
+        "cache" : true,
+        "items" : [
+            {
+                "x" : 330,
+                "y" : 1056,
+                "itemtype" : "prop-1",
+                "collide" : "top",
+                "width": 50,
+                "height": 20
+            },
+            {
+                "x" : 290,
+                "y" : 1028,
+                "itemtype" : "prop-1",
+                "collide" : "top",
+                "width": 50,
+                "height": 50
+            },
+            {
+                "x" : 260,
+                "y" : 1048,
+                "itemtype" : "prop-1",
+                "collide" : "top",
+                "width": 40,
+                "height": 30
+            },
+            {
+                "x" : 1080,
+                "y" : 970,
+                "itemtype" : "prop-1",
+                "collide" : "top",
+                "width": 50,
+                "height": 55
+            },
+            {
+                "x" : 2330,
+                "y" : 948,
+                "itemtype" : "prop-1",
+                "collide" : "top",
+                "width": 50,
+                "height": 50
+            },
+            {
+                "x" : 2365,
+                "y" : 969,
+                "itemtype" : "prop-1",
+                "collide" : "top",
+                "width": 30,
+                "height": 30
+            },
+            {
+                "x" : 2930,
+                "y" : 1027,
+                "itemtype" : "prop-1",
+                "collide" : "top",
+                "width": 50,
+                "height": 50
+            },
+            {
+                "x" : 2960,
+                "y" : 1048,
+                "itemtype" : "prop-1",
+                "collide" : "top",
+                "width": 40,
+                "height": 30
+            }
+        ]
+    }
+]

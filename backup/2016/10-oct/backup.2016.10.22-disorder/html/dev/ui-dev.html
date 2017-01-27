@@ -1,0 +1,152 @@
+<div id="dev" class="dialog shadow">
+    <div id="dev-toolbar-title" class="dialog-toolbar">
+        <div id="dev-toolbar-tools" class="dev-toolbar-tools">
+            <a class="float-left dev-toolbar-tools-tool pad-left-small" id="dev-tools-fps">FPS</a>
+            <a class="float-left dev-toolbar-tools-tool pad-left-small" id="dev-tools-player">Player</a>
+            <a class="float-left dev-toolbar-tools-tool" id="dev-tools-debug">Debug</a>
+            <a class="float-left dev-toolbar-tools-tool" id="dev-tools-size">Size</a>
+            <a class="float-left dev-toolbar-tools-tool" id="dev-tools-quality">Quality</a>
+            <a class="float-left dev-toolbar-tools-tool" id="dev-tools-3d">3D</a>
+            <a class="float-left dev-toolbar-tools-tool" id="dev-tools-log">Log</a>
+        </div>
+        <div class="dev-toolbar-title">
+            <a id="dev-toolbar-fps" class="float-right dialog-title-title">FPS</a>
+        </div>
+    </div>
+</div>
+
+<div id="dev-dialog-fps" class="dialog shadow hidden">
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">FPS</a>
+    </div>
+    <div class="dialog-wrap">
+        <div class="dialog-row" id="dev-fps">
+        </div>
+    </div>
+</div>
+    
+<div id="dev-dialog-debug" class="dialog shadow hidden">
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">Debug</a>
+    </div>
+    <div class="dialog-wrap">
+        <div class="dialog-row dialog-row-border">
+            <div class="dialog-check">
+                <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-overlay" value="Overlay"> Show Gamepad Overlay</label>
+            </div>
+        </div>
+        <div class="dialog-row">
+            <div class="dialog-check dialog-check-small float-left">
+                <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-player" value="Player"> Player</label>
+            </div>
+            <div class="dialog-check dialog-check-small float-left">
+                <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-character" value="Character"> Character</label>
+            </div>
+            <div class="dialog-check dialog-check-small float-right">
+                <label class="text-left float-right"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-level" value="Level"> Level</label>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<div id="dev-dialog-size" class="dialog shadow hidden">
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">Size</a>
+    </div>
+    <div class="dialog-wrap">
+        <div class="dialog-row dialog-row-border">
+            <div class="dialog-check float-left">
+                <label class="text-left float-left">
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-stretch" value="Stretch" CHECKED> Stretch (<span id="dev-stretch-label"></span>x)
+                </label>
+            </div>
+            <div class="dialog-check float-right">
+                <label class="text-left float-left">
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-auto" value="Auto" CHECKED> Auto Size
+                </label>
+            </div>
+        </div>
+        <div class="dialog-row">
+            <label class="text-left float-left  dialog-label-short">Size :</label>
+            <input type="number" class="dialog-input float-left text-right" id="dev-view-width" value="" placeholder="Width">
+            <p class="text-left float-left dialog-input-label"> x </p>
+            <input type="number" class="dialog-input float-left text-right" id="dev-view-height" value="" placeholder="Height">
+        </div>
+        <div class="dialog-row">
+            <label class="text-left float-left  dialog-label-short">Ratio :</label> 
+            <input type="number" class="dialog-input float-left text-right" id="dev-view-ratio" value="" placeholder="Ratio">
+            <p class="text-left float-left dialog-input-label"> : 1</p>
+        </div>
+    </div>
+</div>
+
+<div id="dev-dialog-quality" class="dialog shadow hidden">
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">Quality</a>
+    </div>
+    <div class="dialog-wrap">
+        <div class="dialog-row">
+            <label class="text-left float-left dialog-label-short">Player :</label>
+            <input type="range" class="float-left dialog-input-range" id="dev-quality-player-range" min="1" max="15">
+            <input type="number" class="float-left text-right dialog-input-small" id="dev-quality-player" min="1" max="15">
+        </div>
+        <div class="dialog-row">
+            <label class="text-left float-left dialog-label-short">Level :</label>
+            <input type="range" class="float-left dialog-input-range" id="dev-quality-level-range" min="1" max="15">
+            <input type="number" class="float-left text-right dialog-input-small" id="dev-quality-level" min="1" max="15">
+        </div>
+    </div>
+</div>
+        
+<div id="dev-dialog-3d" class="dialog shadow hidden">
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">3D</a>
+    </div>
+    <div class="dialog-wrap">
+        <div class="dialog-row">
+            <label class="text-left float-left dialog-label-short">Zoom :</label>
+            <input type="range" class="float-left dialog-input-range" id="dev-zoom-amount-range" min="-100" max="500">
+            <input type="number" class="float-left text-right dialog-input-small" id="dev-zoom-amount" min="-100" max="500">
+        </div>
+        <div class="dialog-row">
+            <label class="pad-top text-left float-left dialog-label-short">FOV :</label>
+            <input type="range" class="float-left dialog-input-range" id="dev-fov-amount-range" min="0" max="1000">
+            <input type="number" class="float-left text-right dialog-input-small" id="dev-fov-amount" min="0" max="1000">
+        </div>
+        <div class="dialog-row">
+            <label class="text-left float-left dialog-label-short">Blur :</label>
+            <input type="range" class="float-left dialog-input-range" id="dev-blur-amount-range" min="0" max="10">
+            <input type="number" class="float-left text-right dialog-input-small" id="dev-blur-amount" min="0" max="10">
+        </div>
+    </div>
+</div>
+
+<div id="dev-dialog-log" class="dialog shadow hidden dialog-resize">
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">Log</a>
+    </div>
+    <div class="dialog-wrap resize">
+        <div class="dev-body">
+            <p id="dev-log"></p>
+        </div>
+    </div>
+</div>
+
+<div id="dev-dialog-player" class="dialog shadow hidden dialog-resize">
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">Player</a>
+    </div>
+    <div class="dialog-wrap resize">
+        <div class="dev-body dev-body-white">
+            <canvas class="float-left dialog-canvas" id="dev-player-canvas"></canvas>
+        </div>
+    </div>
+</div>
+        

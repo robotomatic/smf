@@ -1,0 +1,141 @@
+[
+    {
+        "name" : "platforms-back-back",
+        "comment" : "platform furthest",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 150,
+        "top" : true,
+        "items" : [
+
+            {
+                "x" : -50,
+                "y" : 780,
+                "z" : 850,
+                "itemtype" : "platform",
+                "collide" : false,
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 60,
+                        "width": 120,
+                        "height": 480
+                    },
+                    {
+                        "x": 120,
+                        "y": 0,
+                        "width": 120,
+                        "height": 400
+                    }
+                ]
+            },
+            
+            
+            
+            
+            
+
+            {
+                "x" : 1500,
+                "y" : 780,
+                "z" : 1450,
+                "itemtype" : "platform",
+                "collide" : false,
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 480
+                    }
+                ]
+            },
+            
+
+            {
+                "x" : 1600,
+                "y" : 780,
+                "z" : 1550,
+                "itemtype" : "platform",
+                "collide" : false,
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 40,
+                        "width": 80,
+                        "height": 480
+                    },
+                    {
+                        "x": 80,
+                        "y": 20,
+                        "width": 60,
+                        "height": 400
+                    },
+                    {
+                        "x": 140,
+                        "y": 0,
+                        "width": 130,
+                        "height": 480
+                    },
+                    {
+                        "x": 270,
+                        "y": 60,
+                        "width": 120,
+                        "height": 480
+                    }
+                ]
+            },
+            
+
+            
+            {
+                "x" : 1900,
+                "y" : 780,
+                "z" : 1450,
+                "itemtype" : "platform",
+                "collide" : false,
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 120,
+                        "width": 50,
+                        "height": 380
+                    }
+                ]
+            },
+    
+            
+            
+            {
+                "x" : 3000,
+                "y" : 840,
+                "z" : 850,
+                "itemtype" : "platform",
+                "collide" : false,
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 120,
+                        "height": 370
+                    },
+                    {
+                        "x": 120,
+                        "y": 60,
+                        "width": 120,
+                        "height": 400
+                    }
+                ]
+            }
+            
+            
+
+        ]
+    }
+    
+]

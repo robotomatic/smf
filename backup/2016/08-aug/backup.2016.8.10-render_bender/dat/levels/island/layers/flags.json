@@ -1,0 +1,30 @@
+[
+    {
+        "name" : "front-flags",
+        "collide" : false,
+        "cache" : false,
+        "zindex" : 680,
+        "animate" : true,
+        "items" : [
+            {
+                "x": 520,
+                "y": 705,
+                "z" : 5,
+                "width": 60,
+                "height": 85,
+                "itemtype" : "flag",
+                "name": "flag-1"
+            },
+
+            {
+                "x": 2680,
+                "y": 664,
+                "z" : 5,
+                "width": 60,
+                "height": 85,
+                "itemtype" : "flag",
+                "name": "flag-1"
+            }
+        ]
+    }
+]

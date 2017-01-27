@@ -1,0 +1,72 @@
+[
+    {
+        "name" : "items-bg-blur",
+        "comment" : "furthest things",
+        "zindex" : 160,
+        "graphics" : "bg_blur",
+        "collide" : false,
+        "cache" : true,
+        "depth" : 5,
+        "items" : [
+
+            {
+                "x" : 30,
+                "y" : 1070,
+                "z" : 200,
+                "width": 5,
+                "height": 160,
+                "angle" : -20,
+                "itemtype" : "ffg-block-1"
+            },
+            {
+                "x" : 70,
+                "y" : 1020,
+                "z" : 180,
+                "width": 5,
+                "height": 160,
+                "angle" : -20,
+                "itemtype" : "ffg-block-1"
+            },
+            {
+                "x" : 100,
+                "y" : 1050,
+                "z" : 205,
+                "width": 5,
+                "height": 160,
+                "angle" : -20,
+                "itemtype" : "ffg-block-1"
+            },
+            
+            
+            
+            
+            {
+                "x" : 2870,
+                "y" : 1020,
+                "z" : 225,
+                "width": 5,
+                "height": 120,
+                "angle" : 10,
+                "itemtype" : "ffg-block-1"
+            },
+            {
+                "x" : 2900,
+                "y" : 1000,
+                "z" : 220,
+                "width": 5,
+                "height": 120,
+                "angle" : 10,
+                "itemtype" : "ffg-block-1"
+            },
+            {
+                "x" : 2880,
+                "y" : 980,
+                "z" : 240,
+                "width": 5,
+                "height": 160,
+                "angle" : 10,
+                "itemtype" : "ffg-block-1"
+            }
+        ]
+    }
+]

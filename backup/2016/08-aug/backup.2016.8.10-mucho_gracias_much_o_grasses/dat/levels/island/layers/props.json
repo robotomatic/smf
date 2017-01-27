@@ -1,0 +1,99 @@
+[
+    {
+        "name" : "front-props",
+        "collide" : true,
+        "zindex" : 750,
+        "depth" : 5,
+        "cache" : true,
+        "items" : [
+            
+            {
+                "x" : 340,
+                "y" : 1060,
+                "z" : 30,
+                "itemtype" : "prop-1",
+                "collide" : "top",
+                "width": 40,
+                "height": 20,
+                "zindex" : 0
+            },
+            {
+                "x" : 290,
+                "y" : 1030,
+                "z" : 25,
+                "itemtype" : "prop-1",
+                "collide" : "top",
+                "width": 50,
+                "height": 50,
+                "zindex" : 10
+            },
+            {
+                "x" : 260,
+                "y" : 1050,
+                "z" : 20,
+                "itemtype" : "prop-1",
+                "collide" : "top",
+                "width": 40,
+                "height": 30,
+                "zindex" : 20
+            },
+            
+            
+            
+            {
+                "x" : 1080,
+                "y" : 973,
+                "z" : 20,
+                "itemtype" : "prop-1",
+                "collide" : "top",
+                "width": 55,
+                "height": 55
+            },
+            
+            
+            
+            {
+                "x" : 2330,
+                "y" : 950,
+                "z" : 25,
+                "itemtype" : "prop-1",
+                "collide" : "top",
+                "width": 50,
+                "height": 50
+            },
+            {
+                "x" : 2365,
+                "y" : 970,
+                "z" : 20,
+                "itemtype" : "prop-1",
+                "collide" : "top",
+                "width": 30,
+                "height": 30,
+                "zindex" : 10
+            },
+            
+            
+            
+            
+            {
+                "x" : 2930,
+                "y" : 1030,
+                "z" : 25,
+                "itemtype" : "prop-1",
+                "collide" : "top",
+                "width": 50,
+                "height": 50
+            },
+            {
+                "x" : 2960,
+                "y" : 1050,
+                "z" : 20,
+                "itemtype" : "prop-1",
+                "collide" : "top",
+                "width": 40,
+                "height": 30,
+                "zindex" : 10
+            }
+        ]
+    }
+]

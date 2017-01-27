@@ -1,0 +1,73 @@
+.screen-gamepad {
+    width: 15em;
+    height: 7em;
+    position: absolute;
+    z-index: 99990;
+    bottom: 3em;
+    background-color: white;
+    opacity: .6;
+    -moz-border-radius: 80px;
+    -webkit-border-radius: 80px;
+    border-radius: 80px;
+}
+
+.screen-gamepad-left {
+    left: 2em;
+}
+
+.screen-gamepad-right {
+    right: 2.5em;
+    width: 7em;
+}
+
+.screen-gamepad-buttons {
+    width: auto;
+    height: auto;
+    position: absolute;
+    z-index: 99999;
+    bottom: 3.7em;
+}
+
+.screen-gamepad-buttons-left {
+    left: 2em;
+    
+}
+
+.screen-gamepad-buttons-right {
+    right: 3.2em;
+}
+
+.screen-gamepad-button {
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;    
+    
+    width: 1em;
+    height: 1.2em;
+    margin-left: .5em;
+    background-color: white;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-size: 4em;
+    line-height: 1em;
+    padding: .1em .2em .1em .2em;
+    color: gray;
+    font-weight: bold;
+    text-align: center;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.screen-gamepad-button-first {
+    margin-left: .2em;
+}
+
+#screen-gamepad-button-jump {
+    line-height: 1.4em;
+}

@@ -1,0 +1,590 @@
+{
+    "arms" : {
+        "front" : {
+            "name" : "look_front",
+            "parts" : {
+                "left-bicep" : {
+                    "frames" : [
+                        {
+                            "outline" : "left"
+                        }
+                    ]
+                },
+                "right-bicep" : {
+                    "frames" : [
+                        {
+                            "outline" : "right"
+                        }
+                    ]
+                }
+            }
+        },
+        "left" : {
+            "name" : "look_left",
+            "parts" : {
+                "left-arm" : {
+                    "frames" : [
+                        {
+                            "zindex" : 20
+                        }
+                    ]
+                },
+                "left-bicep" : {
+                    "frames" : [
+                        {
+                            "outline" : false
+                        }
+                    ]
+                },
+                "right-arm" : {
+                    "frames" : [
+                        {
+                            "zindex" : 9000
+                        }
+                    ]
+                }
+            }
+        },
+        "right" : {
+            "name" : "look_right",
+            "parts" : {
+                "right-arm" : {
+                    "frames" : [
+                        {
+                            "zindex" : 20
+                        }
+                    ]
+                },
+                "right-bicep" : {
+                    "frames" : [
+                        {
+                            "outline" : false
+                        }
+                    ]
+                },
+                "left-arm" : {
+                    "frames" : [
+                        {
+                            "zindex" : 9000
+                        }
+                    ]
+                }
+            }
+        },
+
+        "idle" : {
+            "name" : "idle",
+            "duration" : ".5",
+            "repeat" : true,
+            "parts" : {
+                "arms" : {
+                    "frames" : [
+                        { 
+                            "y" : -1
+                        },
+                        {
+                            "y" : -2
+                        }
+                    ]
+                },
+                "left-shoulder" : {
+                    "frames" : [
+                        { 
+                            "angle" : 40
+                        },
+                        {
+                            "angle" : 20
+                        }
+                    ]
+                },
+                "left-elbow" : {
+                    "frames" : [
+                        { 
+                            "angle" : -20
+                        },
+                        {
+                            "angle" : 0
+                        }
+                    ]
+                },
+                "left-hand" : {
+                    "frames" : [
+                        { 
+                            "angle" : -5
+                        },
+                        {
+                            "angle" : 0
+                        }
+                    ]
+                },
+                "right-shoulder" : {
+                    "frames" : [
+                        { 
+                            "angle" : -40
+                        },
+                        {
+                            "angle" : -20
+                        }
+                    ]
+                },
+                "right-elbow" : {
+                    "frames" : [
+                        { 
+                            "angle" : 20
+                        },
+                        {
+                            "angle" : 0
+                        }
+                    ]
+                },
+                "right-hand" : {
+                    "frames" : [
+                        { 
+                            "angle" : 5
+                        },
+                        {
+                            "angle" : 0
+                        }
+                    ]
+                }
+            }
+        },
+        "idle_left" : {
+            "name" : "idle_left",
+            "parts" : {
+                "left-shoulder" : {
+                    "frames" : [
+                        {
+                            "angle" : -5
+                        }
+                    ]
+                },
+                "left-elbow" : {
+                    "frames" : [
+                        {
+                            "angle" : 20
+                        }
+                    ]
+                },
+                "left-hand" : {
+                    "frames" : [
+                        {
+                            "angle" : -10
+                        }
+                    ]
+                }
+            }
+        },
+        "idle_right" : {
+            "name" : "idle_right",
+            "parts" : {
+                "right-shoulder" : {
+                    "frames" : [
+                        {
+                            "angle" : 5
+                        }
+                    ]
+                },
+                "right-elbow" : {
+                    "frames" : [
+                        {
+                            "angle" : -20
+                        }
+                    ]
+                },
+                "right-hand" : {
+                    "frames" : [
+                        {
+                            "angle" : 10
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "walk" : {
+            "name" : "walk",
+            "repeat" : false,
+            "parts" : {
+                "arms" : {
+                    "frames" : [
+                        {
+                            "y" : -2
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_left" : {
+            "name" : "walk_left",
+            "duration" :  0.1,
+            "repeat" : true,
+            "loop" : "start",
+            "parts" : {
+                "right-shoulder" : {
+                    "frames" : [
+                        {
+                            "angle" : 40
+                        },
+                        {
+                            "angle" : 0
+                        },
+                        {
+                            "angle" : -60
+                        },
+                        {
+                            "angle" : 0
+                        }
+                    ]
+                },
+                "right-elbow" : {
+                    "frames" : [
+                        {
+                            "angle" : 50
+                        },
+                        {
+                            "angle" : 60
+                        },
+                        {
+                            "angle" : 70
+                        },
+                        {
+                            "angle" : 60
+                        }
+                    ]
+                },
+                "left-shoulder" : {
+                    "frames" : [
+                        {
+                            "angle" : -60
+                        },
+                        {
+                            "angle" : 0
+                        },
+                        {
+                            "angle" : 40
+                        },
+                        {
+                            "angle" : 0
+                        }
+                    ]
+                },
+                "left-elbow" : {
+                    "frames" : [
+                        {
+                            "angle" : 60
+                        },
+                        {
+                            "angle" : 70
+                        },
+                        {
+                            "angle" : 60
+                        },
+                        {
+                            "angle" : 50
+                        }
+                    ]
+                },
+                "left-hand-thumb" : {
+                    "frames" : [
+                        {
+                            "x" : -10
+                        }
+                    ]
+                },
+                "right-hand-thumb" : {
+                    "frames" : [
+                        {
+                            "x" : 1
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_right" : {
+            "name" : "walk_right",
+            "duration" :  0.1,
+            "repeat" : true,
+            "parts" : {
+                "right-shoulder" : {
+                    "frames" : [
+                        {
+                            "angle" : 40
+                        },
+                        {
+                            "angle" : 0
+                        },
+                        {
+                            "angle" : -60
+                        },
+                        {
+                            "angle" : 0
+                        }
+                    ]
+                },
+                "right-elbow" : {
+                    "frames" : [
+                        {
+                            "angle" : -50
+                        },
+                        {
+                            "angle" : -60
+                        },
+                        {
+                            "angle" : -70
+                        },
+                        {
+                            "angle" : -60
+                        }
+                    ]
+                },
+                "left-shoulder" : {
+                    "frames" : [
+                        {
+                            "angle" : -60
+                        },
+                        {
+                            "angle" : 0
+                        },
+                        {
+                            "angle" : 40
+                        },
+                        {
+                            "angle" : 0
+                        }
+                    ]
+                },
+                "left-elbow" : {
+                    "frames" : [
+                        {
+                            "angle" : -60
+                        },
+                        {
+                            "angle" : -70
+                        },
+                        {
+                            "angle" : -60
+                        },
+                        {
+                            "angle" : -50
+                        }
+                    ]
+                },
+                "left-hand-thumb" : {
+                    "frames" : [
+                        {
+                            "x" : -1
+                        }
+                    ]
+                },
+                "right-hand-thumb" : {
+                    "frames" : [
+                        {
+                            "x" : 10
+                        }
+                    ]
+                }
+                
+            }
+        },
+
+        "jump" : {
+            "name" : "jump",
+            "repeat" : true,
+            "parts" : {
+            }
+        },
+        "jump_left" : {
+            "name" : "jump_left",
+            "duration" :  0.8,
+            "repeat" : true,
+            "reset" : false,
+            "loop" : "start",
+            "parts" : {
+                "left-shoulder" : {
+                    "frames" : [
+                        {
+                            "angle" : 40
+                        },
+                        {
+                            "angle" : 20
+                        }
+                    ]
+                },
+                "right-shoulder" : {
+                    "frames" : [
+                        {
+                            "angle" : -60
+                        },
+                        {
+                            "angle" : -20
+                        }
+                    ]
+                },
+                "left-elbow" : {
+                    "frames" : [
+                        {
+                            "angle" : 10
+                        },
+                        {
+                            "angle" : 90
+                        }
+                    ]
+                },
+                "left-hand-thumb" : {
+                    "frames" : [
+                        {
+                            "x" : -10
+                        }
+                    ]
+                },
+                "right-elbow" : {
+                    "frames" : [
+                        {
+                            "angle" : 90
+                        }
+                    ]
+                }
+            }
+        },
+        "jump_right" : {
+            "name" : "jump_right",
+            "duration" :  0.8,
+            "repeat" : true,
+            "reset" : false,
+            "loop" : "start",
+            "parts" : {
+                "left-shoulder" : {
+                    "frames" : [
+                        {
+                            "angle" : 60
+                        },
+                        {
+                            "angle" : 20
+                        }
+                    ]
+                },
+                "right-shoulder" : {
+                    "frames" : [
+                        {
+                            "angle" : -40
+                        },
+                        {
+                            "angle" : -20
+                        }
+                    ]
+                },
+                "left-elbow" : {
+                    "frames" : [
+                        {
+                            "angle" : -90
+                        }
+                    ]
+                },
+                "right-elbow" : {
+                    "frames" : [
+                        {
+                            "angle" : -10
+                        },
+                        {
+                            "angle" : -90
+                        }
+                    ]
+                },
+                "right-hand-thumb" : {
+                    "frames" : [
+                        {
+                            "x" : 10
+                        }
+                    ]
+                }
+            }
+        },
+
+        "fall_left" : {
+            "name" : "fall_left",
+            "duration" :  0.8,
+            "repeat" : true,
+            "reset" : false,
+            "loop" : "start",
+            "parts" : {
+                "left-shoulder" : {
+                    "frames" : [
+                        {
+                            "angle" : 60
+                        }
+                    ]
+                },
+                "left-elbow" : {
+                    "frames" : [
+                        {
+                            "angle" : 20
+                        }
+                    ]
+                },
+                "left-hand-thumb" : {
+                    "frames" : [
+                        {
+                            "x" : -10
+                        }
+                    ]
+                },
+                "right-shoulder" : {
+                    "frames" : [
+                        {
+                            "angle" : -80
+                        }
+                    ]
+                },
+                "right-elbow" : {
+                    "frames" : [
+                        {
+                            "angle" : 20
+                        }
+                    ]
+                }
+            }
+        },
+        "fall_right" : {
+            "name" : "fall_right",
+            "repeat" : true,
+            "parts" : {
+                "right-shoulder" : {
+                    "frames" : [
+                        {
+                            "angle" : -60
+                        }
+                    ]
+                },
+                "right-elbow" : {
+                    "frames" : [
+                        {
+                            "angle" : -20
+                        }
+                    ]
+                },
+                "right-hand-thumb" : {
+                    "frames" : [
+                        {
+                            "x" : 10
+                        }
+                    ]
+                },
+                "left-shoulder" : {
+                    "frames" : [
+                        {
+                            "angle" : 80
+                        }
+                    ]
+                },
+                "left-elbow" : {
+                    "frames" : [
+                        {
+                            "angle" : -20
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

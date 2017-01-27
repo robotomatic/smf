@@ -1,0 +1,41 @@
+[
+    {
+        "name" : "background-1",
+        "blur" : "small",
+        "collide" : false,
+        "zindex" : 300,
+        "depth" : 80,
+        "cache" : true,
+        "items" : [
+
+            {
+                "x": 700,
+                "y": 1000,
+                "z" : 80,
+                "width": 140,
+                "height": 200,
+                "itemtype" : "bg-block-1"
+            },
+
+            {
+                "x": 1700,
+                "y": 900,
+                "z" : 80,
+                "width": 140,
+                "height": 300,
+                "itemtype" : "bg-block-1"
+            },
+
+
+            {
+                "x": 2100,
+                "y": 1000,
+                "z" : 80,
+                "width": 140,
+                "height": 200,
+                "itemtype" : "bg-block-1"
+            }
+
+        ]
+    }
+]

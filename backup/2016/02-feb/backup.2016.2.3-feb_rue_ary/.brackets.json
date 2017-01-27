@@ -1,0 +1,9 @@
+{
+    "jscodehints.detectedExclusions": [
+        "E:/work/workspace/robotomatic.com/web/SMF/backup/backup.2015.09.22-gradients_and_groundfix/js/views.js",
+        "E:/work/workspace/robotomatic.com/web/SMF/backup/backup.2015.09.22-gradients_and_groundfix/js/view_game.js",
+        "E:/work/workspace/robotomatic.com/web/SMF/backup/backup.2015.09.22-gradients_and_groundfix/js/view_player.js",
+        "E:/work/workspace/robotomatic.com/web/SMF/backup/backup.2015.09.22-gradients_and_groundfix/js/view_stage.js",
+        "E:/work/workspace/robotomatic.com/web/SMF/backup/backup.2015.09.26-before_layer_cache/js/ajax.js"
+    ]
+}

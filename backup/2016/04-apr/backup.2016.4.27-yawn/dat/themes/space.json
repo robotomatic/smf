@@ -1,0 +1,91 @@
+{
+    "space" :  {
+        "background" : {
+            "color" : "gray"
+        },
+        "items" : {
+            "bg-1" : {
+                "name" : "bg-1",
+                "color" : "lightgray"
+            },
+            
+            "bg-cube-1" : {
+                "name" : "bg-cube-1",
+                "renderer" : "tile",
+                "tilewidth" : 50,
+                "tileheight" : 50,
+                "parts" : {
+                    "dark-bottom" : {
+                        "color" : "#9fc4c4",
+                        "width" : 100,
+                        "height" : 2,
+                        "x" : 0,
+                        "y" : 98
+                    },
+                    "dark-side" : {
+                        "color" : "#9fc4c4",
+                        "width" : 2,
+                        "height" : 100,
+                        "x" : 98,
+                        "y" : 0
+                    },
+                    "light-top" : {
+                        "color" : "#ddfdfd",
+                        "width" : 100,
+                        "height" : 2,
+                        "x" : 0,
+                        "y" : 0
+                    },
+                    "light-side" : {
+                        "color" : "#ddfdfd",
+                        "width" : 2,
+                        "height" : 100,
+                        "x" : 0,
+                        "y" : 0
+                    },
+                    "face-color" : {
+                        "color" : "#b8d9d9",
+                        "width" : 98,
+                        "height" : 98,
+                        "x" : 1,
+                        "y" : 1
+                    }
+                }
+            },
+            
+            
+            
+            "fg-ground-4" : {
+                "name" : "fg-ground-4",
+                "color" : "#676666"
+            },
+            
+            "fg-ground-3" : {
+                "name" : "fg-ground-3",
+                "color" : "#8e8989"
+            },
+            
+            "fg-ground-2" : {
+                "name" : "fg-ground-2",
+                "color" : "darkgray"
+            },
+            
+            "fg-ground-1" : {
+                "name" : "fg-ground-1",
+                "color" : "gray"
+            },
+            
+            
+            
+            
+            "fg-block-1" : {
+                "name" : "fg-block-1",
+                "color" : "#718d89"
+            },
+            "fg-block-2" : {
+                "name" : "fg-block-2",
+                "color" : "#a3a8a8"
+            }
+        }
+    }
+}

@@ -1,0 +1,496 @@
+{
+    "witchy" : {
+
+        
+        "walk_left" : {
+            "name" : "walk_left",
+            "duration" : ".1",
+            "repeat" : true,
+            "parts" : {
+                "skirt-bottom" : {
+                    "frames" : [
+                        { 
+                            "angle" : 5,
+                            "y" : -1,
+                            "x" : -1
+                        },
+                        { 
+                            "angle" : 0,
+                            "y" : 1,
+                            "x" : 1
+                        }
+                    ]
+                },
+                "skirt-hem" : {
+                    "frames" : [
+                        { 
+                            "angle" : 5,
+                            "y" : -1,
+                            "x" : -1
+                        },
+                        { 
+                            "angle" : 0,
+                            "y" : 1,
+                            "x" : 1
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "walk_right" : {
+            "name" : "walk_right",
+            "duration" : ".1",
+            "repeat" : true,
+            "parts" : {
+                "skirt-bottom" : {
+                    "frames" : [
+                        { 
+                            "angle" : -5,
+                            "y" : -1,
+                            "x" : -1
+                        },
+                        { 
+                            "angle" : 0,
+                            "y" : 1,
+                            "x" : 1
+                        }
+                    ]
+                },
+                "skirt-hem" : {
+                    "frames" : [
+                        { 
+                            "angle" : -5,
+                            "y" : -1,
+                            "x" : -1
+                        },
+                        { 
+                            "angle" : 0,
+                            "y" : 1,
+                            "x" : 1
+                        }
+                    ]
+                }
+            }
+        },
+        
+        
+        "walk" : {
+            "name" : "walk",
+            "duration" : ".1",
+            "repeat" : true,
+            "parts" : {
+                "hair-pigtail-left-mid" : {
+                    "frames" : [
+                        { 
+                            "x" : -2,
+                            "angle" : -5
+                            
+                        },
+                        { 
+                            "x" : 0,
+                            "angle" : 0
+                        }
+                    ]
+                },
+                "hair-pigtail-right-mid" : {
+                    "frames" : [
+                        { 
+                            "x" : 2,
+                            "angle" : 5
+                            
+                        },
+                        { 
+                            "x" : 0,
+                            "angle" : 0
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "jump" : {
+            "name" : "jump",
+            "repeat" : false,
+            "parts" : {
+                "hair-pigtail-left-mid" : {
+                    "frames" : [
+                        { 
+                            "y" : 5
+                            
+                        }
+                    ]
+                },
+                "hair-pigtail-right-mid" : {
+                    "frames" : [
+                        { 
+                            "y" : 5
+                        }
+                    ]
+                },
+                "hair-pigtail-left-bow" : {
+                    "frames" : [
+                        { 
+                            "y" : 2
+                            
+                        }
+                    ]
+                },
+                "hair-pigtail-right-bow" : {
+                    "frames" : [
+                        { 
+                            "y" : 2
+                        }
+                    ]
+                },
+                "skirt-bottom" : {
+                    "frames" : [
+                        { 
+                            "width" : 120,
+                            "x" : -7,
+                            "y" : -1
+                        }
+                    ]
+                },
+                "skirt-hem" : {
+                    "frames" : [
+                        { 
+                            "width" : 120,
+                            "x" : -7,
+                            "y" : -1
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "jump_left" : {
+            "name" : "jump_left",
+            "repeat" : false,
+            "parts" : {
+                "skirt-bottom" : {
+                    "frames" : [
+                        { 
+                            "angle" : 12,
+                            "x" : -5
+                        }
+                    ]
+                },
+                "skirt-hem" : {
+                    "frames" : [
+                        { 
+                            "angle" : 12,
+                            "x" : -5
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "jump_right" : {
+            "name" : "jump_right",
+            "repeat" : false,
+            "parts" : {
+                "skirt-bottom" : {
+                    "frames" : [
+                        { 
+                            "angle" : -12,
+                            "x" : 5
+                        }
+                    ]
+                },
+                "skirt-hem" : {
+                    "frames" : [
+                        { 
+                            "angle" : -12,
+                            "x" : 5
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "fall_left" : {
+            "name" : "fall_left",
+            "repeat" : false,
+            "parts" : {
+                "skirt-bottom" : {
+                    "frames" : [
+                        { 
+                            "angle" : 12,
+                            "x" : -5
+                        }
+                    ]
+                },
+                "skirt-hem" : {
+                    "frames" : [
+                        { 
+                            "angle" : 12,
+                            "x" : -5
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "fall_right" : {
+            "name" : "fall_right",
+            "repeat" : false,
+            "parts" : {
+                "skirt-bottom" : {
+                    "frames" : [
+                        { 
+                            "angle" : -5,
+                            "x" : 5
+                        }
+                    ]
+                },
+                "skirt-hem" : {
+                    "frames" : [
+                        { 
+                            "angle" : -5,
+                            "x" : 5
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "fall" : {
+            "name" : "fall",
+            "repeat" : false,
+            "parts" : {
+                "hair-pigtail-left" : {
+                    "frames" : [
+                        { 
+                            "angle" : 40
+                            
+                        }
+                    ]
+                },
+                "hair-pigtail-right" : {
+                    "frames" : [
+                        { 
+                            "angle" : -40
+                            
+                        }
+                    ]
+                },
+                "hair-pigtail-left-bow" : {
+                    "frames" : [
+                        { 
+                            "x" : 4,
+                            "y" : -2
+                            
+                        }
+                    ]
+                },
+                "hair-pigtail-right-bow" : {
+                    "frames" : [
+                        { 
+                            "x" : -4,
+                            "y" : -2
+                        }
+                    ]
+                },
+                "skirt-bottom" : {
+                    "frames" : [
+                        { 
+                            "width" : 120,
+                            "x" : -7,
+                            "y" : -5
+                        }
+                    ]
+                },
+                "skirt-hem" : {
+                    "frames" : [
+                        { 
+                            "width" : 120,
+                            "x" : -7,
+                            "y" : -5
+                        }
+                    ]
+                }
+            }
+        },
+        
+        
+        "idle" : {
+            "name" : "idle",
+            "duration" : ".5",
+            "repeat" : true,
+            "parts" : {
+
+                "neck" : {
+                    "frames" : [
+                        {
+                            "y" : 2
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        },
+        
+        
+        "left" : {
+            "name" : "look_left",
+            "parts" : {
+                "mouth" : {
+                    "frames" : [
+                        {
+                            "x" : -1,
+                            "angle" : -10
+                        }
+                    ]
+                },
+                "hair-bangs" : {
+                    "frames" : [
+                        {
+                            "x" : -2
+                        }
+                    ]
+                },
+                "hair-bangs-left" : {
+                    "frames" : [
+                        {
+                            "width" : 80
+                        }
+                    ]
+                },
+                "hair-bangs-right" : {
+                    "frames" : [
+                        {
+                            "x" : -5,
+                            "width" : 120
+                        }
+                    ]
+                },
+                "hair-pigtail-left" : {
+                    "frames" : [
+                        {
+                            "x" : 5
+                        }
+                    ]
+                },
+                "hair-pigtail-right" : {
+                    "frames" : [
+                        {
+                            "x" : -2
+                        }
+                    ]
+                },
+                "hair-pigtail-right-mid" : {
+                    "frames" : [
+                        {
+                            "x" : 2
+                        }
+                    ]
+                },
+                "neck" : {
+                    "frames" : [
+                        {
+                            "x" : -2
+                        }
+                    ]
+                },
+                "left-eye-color" : {
+                    "frames" : [
+                        {
+                            "x" : -2
+                        }
+                    ]
+                },
+                "right-eye-color" : {
+                    "frames" : [
+                        {
+                            "x" : -2
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "right" : {
+            "name" : "look_right",
+            "parts" : {
+                "mouth" : {
+                    "frames" : [
+                        {
+                            "x" : 1,
+                            "angle" : 10
+                        }
+                    ]
+                },
+                "hair-bangs" : {
+                    "frames" : [
+                        {
+                            "x" : 2
+                        }
+                    ]
+                },
+                "hair-bangs-left" : {
+                    "frames" : [
+                        {
+                            "width" : 120
+                        }
+                    ]
+                },
+                "hair-bangs-right" : {
+                    "frames" : [
+                        {
+                            "x" : 7,
+                            "width" : 80
+                        }
+                    ]
+                },
+                "hair-pigtail-left" : {
+                    "frames" : [
+                        {
+                            "x" : 2
+                        }
+                    ]
+                },
+                "hair-pigtail-left-mid" : {
+                    "frames" : [
+                        {
+                            "x" : -2
+                        }
+                    ]
+                },
+                "hair-pigtail-right" : {
+                    "frames" : [
+                        {
+                            "x" : -5
+                        }
+                    ]
+                },
+                "neck" : {
+                    "frames" : [
+                        {
+                            "x" : 2
+                        }
+                    ]
+                },
+                "left-eye-color" : {
+                    "frames" : [
+                        {
+                            "x" : 2
+                        }
+                    ]
+                },
+                "right-eye-color" : {
+                    "frames" : [
+                        {
+                            "x" : 2
+                        }
+                    ]
+                }
+            }
+        }
+        
+        
+    }
+}

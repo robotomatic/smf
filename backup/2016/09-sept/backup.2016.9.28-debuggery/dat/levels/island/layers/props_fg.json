@@ -1,0 +1,70 @@
+[
+    {
+        "name" : "items-fg-blur",
+        "comment" : "closest things",
+        "zindex" : 9999,
+        "graphics" : "fg_blur",
+        "collide" : false,
+        "cache" : true,
+        "depth" : 5,
+        "items" : [
+
+            {
+                "x" : 50,
+                "y" : 1050,
+                "z" : -40,
+                "width": 5,
+                "height": 160,
+                "angle" : -20,
+                "itemtype" : "ffg-block-1"
+            },
+            {
+                "x" : 100,
+                "y" : 1000,
+                "z" : -50,
+                "width": 5,
+                "height": 160,
+                "angle" : -20,
+                "itemtype" : "ffg-block-1"
+            },
+            {
+                "x" : 200,
+                "y" : 1020,
+                "z" : -35,
+                "width": 5,
+                "height": 160,
+                "angle" : -20,
+                "itemtype" : "ffg-block-1"
+            },
+            
+            
+            {
+                "x" : 3000,
+                "y" : 990,
+                "z" : -45,
+                "width": 5,
+                "height": 120,
+                "angle" : 10,
+                "itemtype" : "ffg-block-1"
+            },
+            {
+                "x" : 3020,
+                "y" : 990,
+                "z" : -30,
+                "width": 5,
+                "height": 120,
+                "angle" : 10,
+                "itemtype" : "ffg-block-1"
+            },
+            {
+                "x" : 3050,
+                "y" : 980,
+                "z" : -40,
+                "width": 5,
+                "height": 160,
+                "angle" : 10,
+                "itemtype" : "ffg-block-1"
+            }
+        ]
+    }
+]

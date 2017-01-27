@@ -1,0 +1,119 @@
+[
+    {
+        "name" : "liquid-bg-bg",
+        "collide" : false,
+        "zindex" : 50,
+        "gravity" : ".9",
+        "viscosity" : ".1",
+        "cache" : false,
+        "items" : [
+            {
+                "x": -800,
+                "y": 650    ,
+                "width": 4800,
+                "height": 100,
+                "animate" : true,
+                "name" : "waves-0",
+                "itemtype" : "wave"
+           }
+        ]
+    },
+    
+    {
+        "name" : "liquid-bg",
+        "collide" : false,
+        "zindex" : 150,
+        "gravity" : ".9",
+        "viscosity" : ".1",
+        "cache" : false,
+        "items" : [
+            {
+                "x": -800,
+                "y": 660    ,
+                "width": 4800,
+                "height": 100,
+                "animate" : true,
+                "name" : "waves-1",
+                "itemtype" : "wave"
+           }
+        ]
+    },
+    
+    {
+        "name" : "liquid-bg-mid",
+        "collide" : false,
+        "zindex" : 250,
+        "gravity" : ".9",
+        "viscosity" : ".1",
+        "cache" : false,
+        "items" : [
+            {
+                "x": -800,
+                "y": 689,
+                "width": 4800,
+                "height": 100,
+                "animate" : true,
+                "name" : "waves-1-1",
+                "itemtype" : "wave"
+           }
+        ]
+    },
+    
+    {
+        "name" : "liquid-bg-mid-fg",
+        "collide" : false,
+        "zindex" : 650,
+        "gravity" : ".9",
+        "viscosity" : ".1",
+        "cache" : false,
+        "items" : [
+            {
+                "x": -800,
+                "y": 690    ,
+                "width": 4800,
+                "height": 100,
+                "animate" : true,
+                "name" : "waves-1-1",
+                "itemtype" : "wave"
+           }
+        ]
+    },
+    
+    {
+        "name" : "liquid-fg",
+        "collide" : false,
+        "zindex" : 1000,
+        "gravity" : ".9",
+        "viscosity" : ".1",
+        "cache" : false,
+        "items" : [
+            {
+                "x": -780,
+                "y": 700,
+                "width": 4600,
+                "height": 100,
+                "animate" : true,
+                "name" : "waves-2",
+                "itemtype" : "wave"
+           }
+        ]
+    },
+    
+    {
+        "name" : "liquid-kill",
+        "collide" : true,
+        "zindex" : 1001,
+        "gravity" : ".9",
+        "viscosity" : ".9",
+        "damage" : 100,
+        "items" : [
+            {
+                "x": -700,
+                "y": 780,
+                "width": 4600,
+                "height": 800,
+                "itemtype" : "wave-body"
+           }
+        ]
+    }
+]

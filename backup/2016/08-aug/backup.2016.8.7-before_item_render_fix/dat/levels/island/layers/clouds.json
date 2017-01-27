@@ -1,0 +1,20 @@
+[
+    {
+        "name" : "clouds",
+        "collide" : false,
+        "preview" : true,
+        "zindex" : 10,
+        "cache" : false,
+        "items" : [
+            {
+                "x": -300,
+                "y": -300,
+                "width": 3800,
+                "height": 1200,
+                "animate" : true,
+                "name" : "clouds",
+                "itemtype" : "clouds"
+            }
+        ]
+    }
+]

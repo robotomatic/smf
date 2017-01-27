@@ -1,0 +1,26 @@
+{
+    "name" : "island",
+    "width" : 3200,
+    "height" : 1200,
+    "debug" : false,
+    "layers" : {
+        "level" : {
+            "file" : "dat/levels/island/layers/level.json"
+        },
+        "sky" : {
+            "file" : "dat/levels/island/layers/sky.json"
+        },
+        "liquid" : {
+            "file" : "dat/levels/island/layers/liquid.json"
+        },
+        "platforms-back" : {
+            "file" : "dat/levels/island/layers/platforms_back.json"
+        },
+        "platforms-back-top" : {
+            "file" : "dat/levels/island/layers/platforms_back_top.json"
+        },
+        "platforms-mid-mid" : {
+            "file" : "dat/levels/island/layers/platforms_mid_mid.json"
+        }
+    }
+ }

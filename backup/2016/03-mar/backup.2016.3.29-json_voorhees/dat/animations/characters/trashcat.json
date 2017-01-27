@@ -1,0 +1,304 @@
+{
+    "trashcat" : {
+        
+        "random" : {
+            "name" : "rando",
+            "duration" : 2,
+            "chance" : 9,
+            "loop" : "start",
+            "parts" : {
+                "mouth-mouth" : {
+                    "frames" : [
+                        {
+                            "height" : 0
+                        }
+                    ]
+                }
+            }
+        },
+
+        "random_left" : {
+            "name" : "random_left",
+            "duration" : 0.05,
+            "chance" : 8,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        { 
+                            "y" : 10,
+                            "pointinfo" : {
+                                "1" : "smooth",
+                                "3" : "smooth"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "random_right" : {
+            "name" : "random_right",
+            "duration" : 0.05,
+            "chance" : 8,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        { 
+                            "y" : 10,
+                            "pointinfo" : {
+                                "0" : "smooth",
+                                "2" : "smooth"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "random_front" : {
+            "name" : "random_right",
+            "duration" : 0.05,
+            "chance" : 8,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        { 
+                            "y" : 10,
+                            "pointinfo" : {
+                                "0" : "smooth",
+                                "2" : "smooth"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "front" : {
+            "name" : "front",
+            "parts" : {
+                "tail" : {
+                    "x" : 5
+                }
+            }
+        },
+        
+        
+        "left" : {
+            "name" : "look_left",
+            "parts" : {
+                "left-eye-color" : {
+                    "x" : -2
+                },
+                "right-eye-color" : {
+                    "x" : -2
+                },
+                "mouth" : {
+                    "x" : -5
+                },
+                "belly" : {
+                    "x" : -8
+                },
+                "tail" : {
+                    "x" : 95,
+                    "angle" : -50,
+                    "pointinfo" : {
+                        "0" : "smooth",
+                        "2" : "smooth"
+                    }                    
+                },
+                "tail-band" : {
+                    "x" : -5
+                }                
+            }
+        },
+    
+
+        "right" : {
+            "name" : "look_right",
+            "parts" : {
+                "left-eye-color" : {
+                    "x" : 2
+                },
+                "right-eye-color" : {
+                    "x" : 2
+                },
+                "mouth" : {
+                    "x" : 5
+                },
+                "belly" : {
+                    "x" : 8
+                },
+                "tail" : {
+                    "x" : -5,
+                    "angle" : -50,
+                    "pointinfo" : {
+                        "1" : "smooth",
+                        "3" : "smooth"
+                    }                                
+                }
+            }
+        },
+
+        "idle" : {
+            "name" : "idle",
+            "duration" : ".5",
+            "repeat" : true,
+            "parts" : {
+                "belly" : {
+                    "frames" : [
+                        { 
+                            "y" : 1
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "tail" : {
+                    "frames" : [
+                        { 
+                            "y" : 0
+                        },
+                        {
+                            "y" : -2
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "walk" : {
+            "name" : "walk",
+            "duration" : ".1",
+            "repeat" : true,
+            "parts" : {
+                "belly" : {
+                    "frames" : [
+                        { 
+                            "y" : -2.5
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "tail" : {
+                    "frames" : [
+                        { 
+                            "y" : -5
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        },
+
+        "walk_left" : {
+            "name" : "walk-left",
+            "repeat" : true,
+            "parts" : {
+                "left-hand-fingers" : {
+                    "frames" : [
+                        { 
+                            "x" : 3
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_right" : {
+            "name" : "walk-right",
+            "repeat" : true,
+            "parts" : {
+                "right-hand-fingers" : {
+                    "frames" : [
+                        { 
+                            "x" : -3
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "jump" : {
+            "name" : "jump",
+            "repeat" : true,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        { 
+                            "y" : 24
+                        }
+                    ]
+                }
+            }
+        },
+        "jump_left" : {
+            "name" : "jump-left",
+            "repeat" : true,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        { 
+                            "angle" : -10,
+                            "pointinfo" : {
+                                "1" : "smooth",
+                                "3" : "smooth"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "jump_right" : {
+            "name" : "jump-right",
+            "repeat" : true,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        { 
+                            "angle" : 10,
+                            "pointinfo" : {
+                                "0" : "smooth",
+                                "2" : "smooth"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        
+        
+        "fall" : {
+            "name" : "fall-left",
+            "repeat" : true,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        { 
+                            "angle" : -60
+                        }
+                    ]
+                }
+            }
+        },
+        "fall_right" : {
+            "name" : "fall-right",
+            "repeat" : true,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        { 
+                            "angle" : 60
+                        }
+                    ]
+                }
+            }
+        }
+        
+        
+    }
+}

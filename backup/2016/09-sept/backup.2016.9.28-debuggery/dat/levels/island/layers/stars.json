@@ -1,0 +1,20 @@
+[
+    {
+        "name" : "stars",
+        "collide" : false,
+        "zindex" : 2,
+        "graphics" : "bg_blur",
+        "cache" : true,
+        "items" : [
+            {
+                "x": -300,
+                "y": -300,
+                "z" : 510,
+                "width": 3800,
+                "height": 1600,
+                "animate" : true,
+                "itemtype" : "stars"
+            }
+        ]
+    }
+]

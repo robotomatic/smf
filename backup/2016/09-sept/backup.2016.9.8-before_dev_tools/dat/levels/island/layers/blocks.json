@@ -1,0 +1,229 @@
+[
+    {
+        "name" : "front-blocks",
+        "collide" : true,
+        "cache" : true,
+        "zindex" : 800,
+        "depth" : 10,
+        "items" : [
+
+            {
+                "x": 120,
+                "y": 1000,
+                "z" : 20,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+
+
+            {
+                "x": 390,
+                "y": 715,
+                "z" : 25,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+
+
+
+
+
+
+            {
+                "x": 850,
+                "y": 820,
+                "z" : 20,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+            {
+                "x": 900,
+                "y": 820,
+                "z" : 20,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+            {
+                "x": 950,
+                "y": 820,
+                "z" : 20,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+            {
+                "x": 1000,
+                "y": 820,
+                "z" : 20,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+            {
+                "x": 1050,
+                "y": 820,
+                "z" : 20,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+            {
+                "x": 1100,
+                "y": 820,
+                "z" : 20,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+
+
+
+
+
+
+            {
+                "x": 1360,
+                "y": 570,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+
+
+
+
+
+            {
+                "x": 1840,
+                "y": 620,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+
+
+
+
+
+
+
+
+            {
+                "x": 2150,
+                "y": 680,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+            {
+                "x": 2200,
+                "y": 680,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+            {
+                "x": 2250,
+                "y": 680,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+
+
+            
+            
+            
+
+            {
+                "x": 2360,
+                "y": 710,
+                "z" : 30,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+            {
+                "x": 2410,
+                "y": 710,
+                "z" : 30,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+
+
+
+
+
+
+
+
+
+            {
+                "x": 2085,
+                "y": 980,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+
+            {
+                "x": 2135,
+                "y": 980,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+
+
+
+            {
+                "x": 2180,
+                "y": 875,
+                "z" : 20,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+           {
+                "x": 2230,
+                "y": 875,
+                "z" : 20,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+
+            
+            
+            
+
+            {
+                "x": 2720,
+                "y": 800,
+                "z" : 20,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+
+
+
+
+            {
+                "x": 2860,
+                "y": 975,
+                "z" : 10,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            }
+
+        ]
+    }
+]

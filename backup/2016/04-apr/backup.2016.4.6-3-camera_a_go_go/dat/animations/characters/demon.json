@@ -1,0 +1,484 @@
+{
+    "demon" : {
+        
+        "random" : {
+            "name" : "rando",
+            "duration" : 4,
+            "chance" : 60,
+            "parts" : {
+                "mouth-top" : {
+                    "frames" : [
+                        { 
+                            "height" : 200,
+                            "y" : -2
+                        }
+                    ]
+                },
+                "mouth-bottom" : {
+                    "frames" : [
+                        { 
+                            "height" : 1000
+                        }
+                    ]
+                },
+                "lip" : {
+                    "frames" : [
+                        { 
+                            "y" : 9
+                        }
+                    ]
+                },
+                "lip-lip" : {
+                    "frames" : [
+                        { 
+                            "width" : 60,
+                            "x" : 10
+                        }
+                    ]
+                },
+                "face-chin" : {
+                    "frames" : [
+                        { 
+                            "height" : 150
+                        }
+                    ]
+                }
+            }
+        },
+
+        "blink" : {
+            "name" : "blink",
+            "duration" : 0.03,
+            "chance" : 8,
+            "parts" : {
+                "eye-middle-white" : {
+                    "frames" : [
+                        { 
+                            "height" : 1,
+                            "y" : 4,
+                            "x" : 4,
+                            "angle" : 35
+                        },
+                        {
+                            "height" : 100,
+                            "y" : 0,
+                            "angle" : 0
+                        }
+                    ]
+                },
+                "eye-left-white" : {
+                    "frames" : [
+                        { 
+                            "height" : 1,
+                            "y" : 5,
+                            "x" : 4,
+                            "angle" : 35
+                        },
+                        {
+                            "height" : 100,
+                            "y" : 0,
+                            "angle" : 0
+                        }
+                    ]
+                },
+                "eye-right-white" : {
+                    "frames" : [
+                        { 
+                            "height" : 1,
+                            "y" : 5,
+                            "x" : 4,
+                            "angle" : 35
+                        },
+                        {
+                            "height" : 100,
+                            "y" : 0,
+                            "angle" : 0
+                        }
+                    ]
+                }
+            }
+        },
+
+        "default" : {
+            "name" : "default",
+            "parts" : {
+                "eye-left" : {
+                    "frames" : [
+                        { 
+                            "angle" : 20,
+                            "x" : 2
+                        }
+                    ]
+                },
+                "eye-right" : {
+                    "frames" : [
+                        { 
+                            "angle" : -20,
+                            "x" : -2
+                        }
+                    ]
+                }
+            }
+        },
+        
+        
+        "left" : {
+            "name" : "look_left",
+            "parts" : {
+                "face-chin" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "face-back" : {
+                    "frames" : [
+                        { 
+                            "x" : 25,
+                            "width" : 120
+                        }
+                    ]
+                },
+                "mouth" : {
+                    "frames" : [
+                        { 
+                            "x" : -12
+                        }
+                    ]
+                },
+                "lip" : {
+                    "frames" : [
+                        { 
+                            "x" : 2
+                        }
+                    ]
+                },
+                
+                
+                "eye-middle" : {
+                    "frames" : [
+                        { 
+                            "x" : -10
+                        }
+                    ]
+                },
+                "eye-middle-color" : {
+                    "frames" : [
+                        { 
+                            "x" : -3,
+                            "y" : -2
+                        }
+                    ]
+                },
+                "eye-middle-pupil" : {
+                    "frames" : [
+                        { 
+                            "x" : -0.5,
+                            "y" : -1
+                        }
+                    ]
+                },
+                "eye-left" : {
+                    "frames" : [
+                        { 
+                            "x" : -10
+                        }
+                    ]
+                },
+                "eye-left-color" : {
+                    "frames" : [
+                        { 
+                            "x" : -3,
+                            "y" : -2
+                        }
+                    ]
+                },
+                "eye-left-pupil" : {
+                    "frames" : [
+                        { 
+                            "x" : -1,
+                            "y" : -0.5
+                        }
+                    ]
+                },
+                "eye-right" : {
+                    "frames" : [
+                        { 
+                            "x" : -10
+                        }
+                    ]
+                },
+                "eye-right-color" : {
+                    "frames" : [
+                        { 
+                            "x" : -3,
+                            "y" : -3
+                        }
+                    ]
+                },
+                "eye-right-pupil" : {
+                    "frames" : [
+                        { 
+                            "y" : -0.5
+                        }
+                    ]
+                },
+                
+                
+                "teeth-top-tooth-1" : {
+                    "frames" : [
+                        { 
+                            "angle" : 50,
+                            "pointinfo" : {
+                                "3" : "skip"
+                            }
+                        }
+                    ]
+                },
+                "teeth-top-tooth-2" : {
+                    "frames" : [
+                        { 
+                            "angle" : 50,
+                            "pointinfo" : {
+                                "3" : "skip"
+                            }
+                        }
+                    ]
+                },
+                "teeth-top-tooth-3" : {
+                    "frames" : [
+                        { 
+                            "angle" : 50,
+                            "pointinfo" : {
+                                "3" : "skip"
+                            }
+                        }
+                    ]
+                },
+                "teeth-top-tooth-4" : {
+                    "frames" : [
+                        { 
+                            "angle" : 50,
+                            "pointinfo" : {
+                                "3" : "skip"
+                            }
+                        }
+                    ]
+                },
+                "teeth-top-tooth-5" : {
+                    "frames" : [
+                        { 
+                            "angle" : 50,
+                            "pointinfo" : {
+                                "3" : "skip"
+                            }
+                        }
+                    ]
+                },
+                "teeth-bottom-tooth-1" : {
+                    "frames" : [
+                        { 
+                            "angle" : -50,
+                            "pointinfo" : {
+                                "0" : "skip"
+                            }
+                        }
+                    ]
+                },
+                "teeth-bottom-tooth-2" : {
+                    "frames" : [
+                        { 
+                            "angle" : -50,
+                            "pointinfo" : {
+                                "0" : "skip"
+                            }
+                        }
+                    ]
+                },
+                "teeth-bottom-tooth-3" : {
+                    "frames" : [
+                        { 
+                            "angle" : -50,
+                            "pointinfo" : {
+                                "0" : "skip"
+                            }
+                        }
+                    ]
+                },
+                "teeth-bottom-tooth-4" : {
+                    "frames" : [
+                        { 
+                            "angle" : -50,
+                            "pointinfo" : {
+                                "0" : "skip"
+                            }
+                        }
+                    ]
+                },
+                "teeth-bottom-tooth-5" : {
+                    "frames" : [
+                        { 
+                            "angle" : -50,
+                            "pointinfo" : {
+                                "0" : "skip"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "right" : {
+            "name" : "look_right",
+            "parts" : {
+                "face-chin" : {
+                    "frames" : [
+                        { 
+                            "x" : 10
+                        }
+                    ]
+                },
+                "face-back" : {
+                    "frames" : [
+                        { 
+                            "x" : -30,
+                            "width" : 120
+                        }
+                    ]
+                },
+                "mouth" : {
+                    "frames" : [
+                        { 
+                            "x" : 12
+                        }
+                    ]
+                },
+                "lip" : {
+                    "frames" : [
+                        { 
+                            "x" : -2
+                        }
+                    ]
+                },
+                "eye-middle" : {
+                    "frames" : [
+                        { 
+                            "x" : 10
+                        }
+                    ]
+                },
+                "eye-middle-color" : {
+                    "frames" : [
+                        { 
+                            "x" : 3,
+                            "y" : 1
+                        }
+                    ]
+                },
+                "eye-middle-pupil" : {
+                    "frames" : [
+                        { 
+                            "x" : 0.5,
+                            "y" : 0.5
+                        }
+                    ]
+                },
+                "eye-left" : {
+                    "frames" : [
+                        { 
+                            "x" : 10
+                        }
+                    ]
+                },
+                "eye-left-color" : {
+                    "frames" : [
+                        { 
+                            "x" : 3,
+                            "y" : 1
+                        }
+                    ]
+                },
+                "eye-left-pupil" : {
+                    "frames" : [
+                        { 
+                            "x" : 1
+                        }
+                    ]
+                },
+                "eye-right" : {
+                    "frames" : [
+                        { 
+                            "x" : 10
+                        }
+                    ]
+                },
+                "eye-right-color" : {
+                    "frames" : [
+                        { 
+                            "x" : 3,
+                            "y" : 1
+                        }
+                    ]
+                },
+                "eye-right-pupil" : {
+                    "frames" : [
+                        { 
+                            "x" : 1,
+                            "y" : 0.5
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "walk" : {
+            "name" : "walk",
+            "duration" : ".2",
+            "repeat" : true,
+            "override" : true,
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "y" : 8
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "idle" : {
+            "name" : "idle",
+            "duration" : ".5",
+            "repeat" : true,
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "y" : 8
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "face" : {
+                    "frames" : [
+                        { 
+                            "width" : 105,
+                            "x" : -3
+                        },
+                        {
+                            "width" : 100,
+                            "x" : 0
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

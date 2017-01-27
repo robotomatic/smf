@@ -1,0 +1,86 @@
+#dev {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+}
+
+#dev-toolbar {
+    float: right;
+    cursor: pointer;
+}
+
+
+.dev-toolbar-tools {
+    float: left;
+    width: 0;
+    height: 1.5em;
+    overflow: hidden;
+}
+
+.dev-toolbar-tools-tool {
+    font-size: .8em;
+    margin: .5em;
+    padding-right: 1em;
+    border-right: 1px solid darkgray;
+}
+
+.dev-toolbar-title {
+    float: right;
+    width: 5em;
+}
+
+#dev-toolbar-fps {
+    width: 4em;
+    text-align: right;
+    float: right;
+    margin-right: 1em;
+}
+
+
+#dev-fps {
+    float: left;
+    width: 100%;
+    height: auto;
+}
+
+.dev-row-fps {
+    float: left;
+    width: 100%;
+    height: auto;
+}
+
+.dev-fps-row-fps {
+    float: left;
+    width: 33%;
+    font-size: .8em;
+    padding: 0;
+    margin: 0;
+}
+
+.dev-body {
+    clear: both;
+    float: left;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.dev-body-white {
+    background-color: rgba(255, 255, 255, 0.43);
+}
+
+#dev-log {
+    float: left;
+    width: auto;
+    height: 100%;
+    color: lightgray;
+    font-size: .8em;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+
+.dev-margin-top {
+    margin-top: 1em;
+}

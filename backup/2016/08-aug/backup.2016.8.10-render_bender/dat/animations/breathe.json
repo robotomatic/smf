@@ -1,0 +1,41 @@
+{
+    "breathe" : {
+        "idle" : {
+            "name" : "idle",
+            "duration" : ".5",
+            "repeat" : true,
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "y" : 1
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "body" : {
+                    "frames" : [
+                        { 
+                            "y" : 1
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "chest" : {
+                    "frames" : [
+                        { 
+                            "y" : 3
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        }
+    }    
+}

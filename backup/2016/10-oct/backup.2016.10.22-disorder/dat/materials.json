@@ -1,0 +1,14 @@
+{
+    "grass" : {
+        "file" : "dat/materials/grass.json"
+    },
+    "ground" : {
+        "file" : "dat/materials/ground.json"
+    },
+    "rock" : {
+        "file" : "dat/materials/rock.json"
+    },
+    "wood" : {
+        "file" : "dat/materials/wood.json"
+    }
+}

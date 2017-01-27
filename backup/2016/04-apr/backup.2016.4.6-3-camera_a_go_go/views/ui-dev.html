@@ -1,0 +1,45 @@
+<div class="dev-tools fg-color-main border ui-shadow dev-tools-collapse dev-tools-animate-collapse fade-hide " id="dev-ui">
+    <a href="#" id="dev-tools-button" class="fg-color-main menu-game-button-icon-link-icon"><i class="fa fa-cog fa-flip-horizontal dev-tools-button"></i></a>
+    <div class="dev-tools-fps-inner shadow"></div>
+    <div class="float-left dev-tools-fps" id="dev-tools-fps">
+        <p class="dev-tools-text" id="dev-fps">FPS: 0</p>
+        <p class="dev-tools-text" id="dev-avg-fps">AVG: 0</p>
+    </div>
+    <div class="dev-tools-inner dev-tools-inner-collapse" id="dev-tools-inner"></div>
+    <div class="dev-tools-inner-wrap fade-hide" id="dev-tools-inner-wrap">
+        
+        <div class="dev-tools-group">
+            <div class="dev-tools-group">
+                <label id="dev-step-label" class="dev-tools-label fg-color-white ">Game Speed: </label>
+                <input id="dev-step" class="dev-tools-range-slider" type=range min=1 max=100 value=100 step=1>
+            </div>
+        </div>
+        
+        <div class="dev-tools-group-group">
+
+            <label class="dev-tools-label fg-color-white ">Show Debug Info: </label>
+
+            <div class="dev-tools-group">
+                <div class="switch">
+                    <input id="dev-level-debug" class="cmn-toggle cmn-toggle-round dev-tools-toggle" type="checkbox">
+                    <label for="dev-level-debug">Level</label>
+                </div>        
+            </div>
+
+            <div class="dev-tools-group">
+                <div class="switch">
+                    <input id="dev-player-debug" class="cmn-toggle cmn-toggle-round dev-tools-toggle" type="checkbox">
+                    <label for="dev-player-debug">Player</label>
+                </div>        
+            </div>
+
+            <div class="dev-tools-group">
+                <div class="switch">
+                    <input id="dev-npc-debug" class="cmn-toggle cmn-toggle-round dev-tools-toggle" type="checkbox">
+                    <label for="dev-npc-debug">NPCs</label>
+                </div>        
+            </div>
+        </div>
+        
+    </div>
+</div>

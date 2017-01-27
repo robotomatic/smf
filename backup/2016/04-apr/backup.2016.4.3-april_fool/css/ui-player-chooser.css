@@ -1,0 +1,192 @@
+.ui-player-chooser {
+    margin: 0;
+    width: 25%;
+    float: left;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;    
+}
+
+.ui-player-chooser-player-panel {
+    width: 100%;
+    float: left;
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.ui-player-chooser-player-panel-inner {
+    position: relative;
+    z-index: 999;
+}
+
+.ui-player-chooser-canvas {
+    margin: 3%;
+    width: 94%;
+    float: left;
+    //overflow: hidden;
+}
+
+.ui-player-chooser-card-start-button {
+    margin: -2.5em auto;
+    float: none;
+}
+
+.ui-player-chooser-ui {
+    -webkit-transition: all .5s linear;
+}
+
+.ui-player-chooser-head {
+    float: left;
+    width: 100%;
+    position: relative;
+    z-index: 9999;
+    height: 8%;
+}
+
+.ui-player-chooser-head.closed {
+    height: 40%;
+}
+
+.ui-player-chooser-body {
+    height: 55%;
+}
+
+.ui-player-chooser-body.closed {
+    height: 0;
+}
+
+.ui-player-chooser-foot {
+    width: 100%;
+    display: block;
+    float: left;
+    position: relative;
+    z-index: 9999;
+    height: 55%;
+}
+
+.ui-player-chooser-foot.closed {
+    height: 65%;
+}
+
+
+.ui-player-chooser-title {
+    line-height: 1em;
+    position: absolute;
+    bottom: 25%;
+    z-index: 9999;
+}
+
+.ui-player-chooser-title.closed {
+    bottom: 15%;
+}
+
+
+.ui-player-chooser-close {
+    position: absolute;
+    z-index: 9999;
+    cursor: pointer;
+    left: 0;
+    right: 0;
+    bottom: -1em;
+    font-weight: normal;
+    font-size: 1.5em;
+    line-height: 1.9em;
+    height: 1.8em;
+    width: 1.8em;
+    margin: 0 auto;
+}
+
+.ui-player-chooser-close:hover {
+    background-color: #94CE23;
+}
+
+.ui-player-chooser-content {
+    float: left;
+    position: relative;
+    width: 100%;
+}
+
+.ui-player-chooser-canvas-text {
+    position: absolute;
+    float: none;
+}
+
+.ui-player-chooser-canvas-button-custom {
+    width: 60%;
+    height: 75%;
+    cursor: pointer;
+    z-index: 999;
+    position: absolute;
+    top: 15%;
+    left: 20%;
+}
+
+
+.ui-player-chooser-navigation-button {
+    font-size: 2em;
+    width: 1em;
+    position: relative;
+    z-index: 999;
+}
+
+.ui-player-chooser-navigation-button-left {
+    float: left;
+    margin-left: .5em;
+}
+
+.ui-player-chooser-navigation-button-right {
+    float: right;
+    margin-right: .5em;
+}
+
+.ui-player-chooser-button-bar {
+    width: 2.8em;
+    height: 3em;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 999;
+}
+
+.ui-player-chooser-button-bar-button {
+     font-size: 1em;
+}
+
+.ui-player-chooser-button-icon {
+    padding: .1em .2em .2em .2em;
+    width: 2.2em;
+    height: 2.2em;
+}
+
+.ui-player-chooser-button-icon-middle {
+    width: 2.8em;
+    height: 2.4em;
+    margin: -.3em 1em;
+    padding-top: .3em;
+}
+
+.ui-player-chooser-button-icon-link {
+    font-size: 1.5em;
+}
+
+.ui-player-chooser-button-icon-link-icon.fa {
+    font-size: 1.2em;
+    line-height: 1.2em;
+}
+
+.menu-game-button-icon-link-wrench {
+    font-size: 1.4em;
+    line-height: 1.5em;
+}
+
+.ui-player-chooser-custom-button-bar {
+    width: 5em;
+    margin: 1.5em auto;
+}
+
+#ui-player-chooser-custom-ok-icon {
+    font-size: 1.4em;
+}
+

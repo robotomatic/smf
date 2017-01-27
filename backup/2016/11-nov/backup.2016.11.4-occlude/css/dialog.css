@@ -1,0 +1,139 @@
+.dialog {
+    position: absolute;
+    z-index: 999;
+    width: auto;
+    height: auto;
+    background: rgba(22, 21, 21, 0.5);
+    font-size: .8em;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.25)    
+}
+
+.dialog-toolbar {
+    float: left;
+    width: 100%;
+    height: auto;
+    background-color: rgba(32, 32, 33, 0.25);
+    cursor: pointer;
+}
+
+.dialog-title {
+    float: left;
+    width: 100%;
+    height: auto;
+    background-color: rgba(32, 32, 33, 0.35);
+    font-weight: bold;
+}
+
+.dialog-title-title {
+    font-size: .8em;
+    padding: .5em 1em .8em .5em;
+}
+
+.dialog-title-close {
+    background-color: rgba(255, 255, 255, 0.6);
+    color: black;
+    font-size: .8em;
+    line-height: .4em;
+    padding: .2em .3em .5em .3em;
+    margin: .7em .5em;
+    cursor: pointer;
+}
+
+.dialog-wrap {
+    clear: both;
+    float: left;
+    width: 20em;
+    padding: 1em;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.dialog-wrap.resize {
+/*    height: 5em;*/
+}
+
+.dialog-wrap.resize-resize {
+    height: 5em;
+}
+
+.dialog-row {
+    float: left;
+    width: 100%;
+    height: auto;
+    padding-bottom: 1em;
+    margin-bottom: 0;
+}
+
+.dialog-row-border {
+    border-bottom: 1px solid darkgray;
+    margin-bottom: 1em;
+}
+
+
+.dialog-label-color {
+    float: left;
+    margin-top: 2px;
+    margin-right: 5px;
+    width: 1em;
+    height: 1em;
+    border: 1px solid black;
+}
+
+
+.dialog-row > label {
+    font-size: .9em;
+}
+
+.dialog-label-large {
+    width: 8em;
+}
+
+.dialog-label-short {
+    width: 4.5em;
+}
+
+
+.dialog-input-label {
+    margin: 0;
+    width: 2em;
+    text-align: center;
+}
+
+.dialog-input {
+    width: 4em;
+}
+
+.dialog-input-small {
+    width: 3em;
+}
+
+.dialog-input-range {
+    margin: 0 1em 0 1em;
+}
+
+.dialog-input-toggle {
+    font-size: .8em;
+    padding: .5em;
+    cursor: pointer;
+}
+
+.dialog-check {
+    width: auto;
+    position: relative;
+}
+
+.dialog-check-full {
+    width: 100%;
+}
+
+.dialog-check-small {
+    width: 6.6em;
+}
+
+
+.dialog-canvas {
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,68 @@
+{
+    "blink" : { 
+        "file" : "dat/animations/blink.json"
+    },
+    "breathe" : {
+        "file" : "dat/animations/breathe.json"
+    },
+    "default" : {
+        "file" : "dat/animations/default.json"
+    },
+    "arms" : {
+        "file" : "dat/animations/arms.json"
+    },
+    "hands" : {
+        "file" : "dat/animations/hands.json"
+    },
+    "legs" : {
+        "file" : "dat/animations/legs.json"
+    },
+    "legs-goat" : {
+        "file" : "dat/animations/legs-goat.json"
+    },
+    "feet" : {
+        "file" : "dat/animations/feet.json"
+    },
+    "tail" : {
+        "file" : "dat/animations/tail.json"
+    },
+    "cape" : {
+        "file" : "dat/animations/cape.json"
+    },
+    "horns" : {
+        "file" : "dat/animations/horns.json"
+    },
+    "hat" : {
+        "file" : "dat/animations/hat.json"
+    },
+    "psycho" : {
+        "file" : "dat/animations/characters/psycho.json"
+    },
+    "chompy" : {
+        "file" : "dat/animations/characters/chompy.json"
+    },
+    "trashcat" : {
+        "file" : "dat/animations/characters/trashcat.json"
+    },
+    "yeti" : {
+        "file" : "dat/animations/characters/yeti.json"
+    },
+    "vampi" : {
+        "file" : "dat/animations/characters/vampi.json"
+    },
+    "goty" : {
+        "file" : "dat/animations/characters/goty.json"
+    },
+    "zee" : {
+        "file" : "dat/animations/characters/zee.json"
+    },
+    "omegamecha" : {
+        "file" : "dat/animations/characters/omegamecha.json"
+    },
+    "witchy" : {
+        "file" : "dat/animations/characters/witchy.json"
+    },
+    "demon" : {
+        "file" : "dat/animations/characters/demon.json"
+    }
+}

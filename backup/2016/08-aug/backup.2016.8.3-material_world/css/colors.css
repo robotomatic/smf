@@ -1,0 +1,68 @@
+/*
+.bg-main {
+    background: #45cfe8 ;
+    background: -moz-radial-gradient(center, ellipse cover,  #45cfe8  0%, #00ffff 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#45cfe8 ), color-stop(100%,#00ffff));
+    background: -webkit-radial-gradient(center, ellipse cover,  #45cfe8  0%,#00ffff 100%);
+    background: -o-radial-gradient(center, ellipse cover,  #45cfe8  0%,#00ffff 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  #45cfe8  0%,#00ffff 100%);
+    background: radial-gradient(ellipse at center,  #45cfe8  0%,#00ffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45cfe8 ', endColorstr='#00ffff',GradientType=1 );
+}
+
+.bg-toolbar {
+    background: #00ffff;
+    background: -moz-linear-gradient(left,  #00ffff 0%, #45cfe8  52%, #00ffff 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#00ffff), color-stop(52%,#45cfe8 ), color-stop(100%,#00ffff));
+    background: -webkit-linear-gradient(left,  #00ffff 0%,#45cfe8  52%,#00ffff 100%);
+    background: -o-linear-gradient(left,  #00ffff 0%,#45cfe8  52%,#00ffff 100%);
+    background: -ms-linear-gradient(left,  #00ffff 0%,#45cfe8  52%,#00ffff 100%);
+    background: linear-gradient(to right,  #00ffff 0%,#45cfe8  52%,#00ffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffff', endColorstr='#00ffff',GradientType=1 );
+}
+*/
+
+.bg-main {
+    background: #31f9cb; /* Old browsers */
+    background: -moz-linear-gradient(top,  #31f9cb 18%, #ffffff 67%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #31f9cb 18%, #ffffff 67%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #31f9cb 18%, #ffffff 67%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31f9cb', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+.bg-color-red {
+    background-color: red;
+}
+
+.bg-color-main {
+    background-color: #00ffff ;
+}
+
+.bg-color-ok {
+    background-color: #94CE23;
+    background: #94CE23;
+}
+
+.bg-color-selected {
+    background-color: #A5DF00;
+    background: #A5DF00;
+}
+
+.bg-color-white {
+    background-color: white;
+}
+
+.fg-color-main {
+    color: white;
+    border-color: white;
+}
+
+.fg-color-light {
+    color: lightgray;
+    border-color: lightgray;
+}
+
+.fg-color-dark {
+    color: darkgray;
+    border-color: darkgray;
+}

@@ -1,0 +1,63 @@
+[
+    {
+        "name" : "front-flags",
+        "collide" : false,
+        "cache" : false,
+        "zindex" : 650,
+        "animate" : true,
+        "items" : [
+            {
+                "x": 520,
+                "y": 302,
+                "width": 60,
+                "height": 85,
+                "itemtype" : "flag",
+                "name": "flag-1"
+            },
+            {
+                "x": 520,
+                "y": 318,
+                "itemtype" : "grass",
+                "collide" : false,
+                "width": 50,
+                "height": 70
+            },
+            {
+                "x": 530,
+                "y": 318,
+                "itemtype" : "grass",
+                "collide" : false,
+                "width": 50,
+                "height": 70
+            },
+
+
+
+            {
+                "x": 2680,
+                "y": 262,
+                "width": 60,
+                "height": 85,
+                "itemtype" : "flag",
+                "name": "flag-1"
+            },
+            {
+                "x": 2685,
+                "y": 278,
+                "itemtype" : "grass",
+                "collide" : false,
+                "width": 50,
+                "height": 70
+            },
+            {
+                "x": 2695,
+                "y": 278,
+                "itemtype" : "grass",
+                "collide" : false,
+                "width": 50,
+                "height": 70
+            }
+
+        ]
+    }
+]

@@ -1,0 +1,121 @@
+.logo {
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    letter-spacing: -1em;
+    font-weight: bold;
+    color: white;
+}
+
+.logo-bottom {
+    -webkit-text-stroke: 15px white;
+    font-size: 1.5em;
+    margin-left: -2.6em;
+    position: relative;
+    z-index: 500;
+}
+
+.logo-top {
+    text-shadow: -1px -1px 0 #969696,
+                 1px -1px 0 #969696,
+                 -1px 1px 0 #969696,
+                 1px 1px 0 #969696;      
+    position: relative;
+    z-index: 999;
+}
+
+.logo-shadow {
+    text-shadow: -1px -1px 0 #969696,
+                 1px 1px 0 #969696,
+                 -1px -1px 0 #969696,
+                 1px 1px 0 #969696,
+                 0px 0px 240px rgba(0,0,0,.4),
+                 -40px 0px 250px rgba(0,0,0,.2);
+}
+
+.logo-shadow-inside {
+    text-shadow: 0px 0px 10px rgba(0,0,0,.8);
+}
+
+.logo-words {
+}
+
+.logo > .super {
+    font-size: 12em;
+    line-height: .5em;
+    color: #CCCC00;
+}
+
+
+
+.logo > .super.logo-top {
+    margin-left: -2.45em;
+    color: #E4F009;
+}
+
+
+.logo > .murder {
+    font-size: 12em;
+    line-height: .8em;
+    color: #C17676;
+}
+
+.logo > .murder.logo-top {
+    margin-left: -3.18em;
+    color: #FF7373;
+}
+
+.logo > .murder.logo-bottom {
+    margin-left: -3.3em;
+}
+
+.logo > .friends {
+    font-size: 11em;
+    line-height: .8em;
+    color: #C5A47F;
+}
+
+.logo > .friends.logo-top {
+    margin-left: -3.02em;
+    color: #FAAC58;
+}
+
+.logo > .friends.logo-bottom {
+    margin-left: -3.15em;
+}
+
+.logo-words-letters {
+    -webkit-backface-visibility: hidden;
+    display: inline-block;
+    position: relative;
+    -moz-transform-origin: bottom;
+    -ms-transform-origin: bottom;
+    -webkit-transform-origin: bottom;
+    transform-origin: bottom;
+    -webkit-transition: rotate 600ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition:         rotate 600ms cubic-bezier(0.785, 0.135, 0.15, 0.86);    
+}
+
+.logo-words-letters-wobble {
+/*
+  -webkit-animation: wobble 1.2s infinite;
+  -moz-animation:    wobble 1.2s infinite;
+  animation:         wobble 1.2s infinite;
+*/
+}
+
+@-webkit-keyframes wobble {
+  0%   { -webkit-transform: rotate(-8deg); }
+  50% { -webkit-transform: rotate(8deg); }
+  100% { -webkit-transform: rotate(-8deg); }
+}
+@-moz-keyframes wobble {
+  0%   { -moz-transform: rotate(-8deg); }
+  50%   { -moz-transform: rotate(8deg); }
+  100% { -moz-transform: rotate(-8deg); }
+}
+@keyframes wobble {
+  0%   { transform: rotate(-8deg); }
+  50%   { transform: rotate(8deg); }
+  100% { transform: rotate(-8deg); }
+}

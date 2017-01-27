@@ -1,0 +1,1201 @@
+{
+    "default" : {
+        "random" : {
+            "name" : "random",
+            "duration" : ".08",
+            "chance" : 2,
+            "parts" : {
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "height" : 1,
+                            "y" : 3
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "height" : 1,
+                            "y" : 3
+                        }
+                    ]
+                }
+            }
+        },
+        "idle" : {
+            "name" : "idle",
+            "duration" : ".5",
+            "repeat" : true,
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "y" : 3
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "neck" : {
+                    "frames" : [
+                        { 
+                            "y" : 5
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "body" : {
+                    "frames" : [
+                        { 
+                            "y" : 5
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "left_leg" : {
+                    "frames" : [
+                        { 
+                            "zindex" : 0,
+                            "y" : 0
+                        }
+                    ]
+                },
+                "right_leg" : {
+                    "frames" : [
+                        { 
+                            "zindex" : 0,
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        },
+        "fall" : {
+            "name" : "fall",
+            "repeat" : true,
+            "parts" : {
+                "body" : {
+                    "frames" : [
+                        { 
+                            "width" : 98,
+                            "height" : 95,
+                            "x" : 1,
+                            "y" : -2
+                        }
+                    ]
+                }
+            }
+        },
+        "jump" : {
+            "name" : "jump",
+            "repeat" : true,
+            "parts" : {
+                "body" : {
+                    "frames" : [
+                        { 
+                            "width" : 98,
+                            "height" : 110,
+                            "x" : 1,
+                            "y" : 2
+                        }
+                    ]
+                }            
+            }
+        },
+        "left" : {
+            "name" : "look_left",
+            "width" : 95,
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "face" : {
+                    "frames" : [
+                        { 
+                            "x" : -2
+                        }
+                    ]
+                },
+                "face-face" : {
+                    "frames" : [
+                        { 
+                            "x" : -2
+                        }
+                    ]
+                },
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "nose" : {
+                    "frames" : [
+                        { 
+                            "x" : -7
+                        }
+                    ]
+                },
+                "left_leg" : {
+                    "frames" : [
+                        { 
+                            "zindex" : 0
+                        }
+                    ]
+                },
+                "right_leg" : {
+                    "frames" : [
+                        { 
+                            "zindex" : 5
+                        }
+                    ]
+                }
+                
+            }
+        },
+        "right" : {
+            "name" : "look_right",
+            "width" : 95,
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "face" : {
+                    "frames" : [
+                        { 
+                            "x" : 2
+                        }
+                    ]
+                },
+                "face-face" : {
+                    "frames" : [
+                        { 
+                            "x" : 2
+                        }
+                    ]
+                },
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "nose" : {
+                    "frames" : [
+                        { 
+                            "x" : 7
+                        }
+                    ]
+                },
+                "left_leg" : {
+                    "frames" : [
+                        { 
+                            "zindex" : 5
+                        }
+                    ]
+                },
+                "right_leg" : {
+                    "frames" : [
+                        { 
+                            "zindex" : 0
+                        }
+                    ]
+                }
+            }
+        },
+        "walk" : {
+            "name" : "walk",
+            "duration" : ".1",
+            "repeat" : true,
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "y" : 3
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                "neck" : {
+                    "frames" : [
+                        { 
+                            "y" : 1.5
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                "body" : {
+                    "frames" : [
+                        { 
+                            "y" : 2.5
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_left" : {
+            "name" : "walk_left",
+            "duration" : ".1",
+            "repeat" : true,
+            "parts" : {
+                "left_leg" : {
+                    "frames" : [
+                        { 
+                            "x" : 0,
+                            "y" : -10
+                        },
+                        { 
+                            "x" : 0,
+                            "y" : 0
+                        }
+                    ]
+                },
+                "right_leg" : {
+                    "frames" : [
+                        { 
+                            "x" : 0,
+                            "y" : 0    
+                        },
+                        { 
+                            "x" : 0,
+                            "y" : -10
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_right" : {
+            "name" : "walk_right",
+            "duration" : ".1",
+            "repeat" : true,
+            "parts" : {
+                "left_leg" : {
+                    "frames" : [
+                        { 
+                            "x" : 0,
+                            "y" : -10
+                        },
+                        { 
+                            "x" : 0,
+                            "y" : 0
+                        }
+                    ]
+                },
+                "right_leg" : {
+                    "frames" : [
+                        { 
+                            "x" : 0,
+                            "y" : 0
+                        },
+                        { 
+                            "x" : 0,
+                            "y" : -10
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "horns" : {
+        "left" : {
+            "name" : "look_left",
+            "width" : 95,
+            "parts" : {
+                "left_horn" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                }
+            }
+        },
+        "right" : {
+            "name" : "look_right",
+            "width" : 95,
+            "parts" : {
+                "right_horn" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "psycho" : {
+        "idle" : {
+            "name" : "idle",
+            "duration" : 2,
+            "repeat" : true,
+            "parts" : {
+                "mask" : {
+                    "frames" : [
+                        { 
+                            "y" : 0.5
+                        },
+                        { 
+                            "y" : 0
+                        },
+                        { 
+                            "y" : -0.5
+                        }
+                    ]
+                }
+            }
+        },
+        "left" : {
+            "name" : "look_left",
+            "parts" : {
+                "mask" : {
+                    "frames" : [
+                        { 
+                            "x" : -8
+                        }
+                    ]
+                },
+                "hair" : {
+                    "frames" : [
+                        { 
+                            "x" : -8
+                        }
+                    ]
+                },
+                "left-eye" : {
+                    "override" : true,
+                    "frames" : [
+                        { 
+                            "x" : 5,
+                            "width" : 80
+                        }
+                    ]
+                },
+                "hood-top-top" : {
+                    "repeat" : true,
+                    "frames" : [
+                        { 
+                            "x" : 115
+                        }
+                    ]
+                }
+            }
+        },
+        "right" : {
+            "name" : "look_right",
+            "parts" : {
+                "mask" : {
+                    "frames" : [
+                        { 
+                            "x" : 8
+                        }
+                    ]
+                },
+                "hair" : {
+                    "frames" : [
+                        { 
+                            "x" : 8
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "override" : true,
+                    "frames" : [
+                        { 
+                            "x" : -5,
+                            "width" : 80
+                        }
+                    ]
+                },
+                "hood-top-top" : {
+                    "repeat" : true,
+                    "frames" : [
+                        { 
+                            "x" : -10
+                        }
+                    ]
+                }
+            }
+        },
+        "walk" : {
+            "name" : "walk",
+            "duration" : ".2",
+            "repeat" : true,
+            "parts" : {
+                "hood-top-top" : {
+                    "frames" : [
+                        { 
+                            "y" : 5
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        },
+        "fall" : {
+            "name" : "fall",
+            "width" : 100,
+            "height" : 99,
+            "repeat" : true,
+            "parts" : {
+                "hair" : {
+                    "frames" : [
+                        { 
+                            "y" : -2,
+                            "height" : 150
+                        }
+                    ]
+                },
+                "hood-top-top" : {
+                    "frames" : [
+                        { 
+                            "y" : -10
+                        }
+                    ]
+                }
+            }
+        },
+        "jump" : {
+            "name" : "jump",
+            "repeat" : true,
+            "parts" : {
+                "hair" : {
+                    "frames" : [
+                        { 
+                            "y" : -2
+                        }
+                    ]
+                },
+                "mask" : {
+                    "frames" : [
+                        { 
+                            "y" : -5
+                        }
+                    ]
+                },
+                "hood-top-top" : {
+                    "frames" : [
+                        { 
+                            "y" : 10
+                        }
+                    ]
+                }
+            }
+        },
+        "fall_left" : {
+            "name" : "fall-left",
+            "repeat" : true,
+            "parts" : {
+                "hood-top-top" : {
+                    "frames" : [
+                        { 
+                            "x" : -10
+                        }
+                    ]
+                }
+            }
+        },
+        "fall_right" : {
+            "name" : "fall-right",
+            "repeat" : true,
+            "parts" : {
+                "hood-top-top" : {
+                    "frames" : [
+                        { 
+                            "x" : 10
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "tail" : {
+        "idle" : {
+            "name" : "idle",
+            "duration" : ".5",
+            "repeat" : true,
+            "parts" : {
+                "tail-bottom" : {
+                    "frames" : [
+                        { 
+                            "y" : 5
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                },
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "y" : 10
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        },
+        "fall" : {
+            "name" : "fall",
+            "width" : 100,
+            "height" : 99,
+            "repeat" : true,
+            "parts" : {
+                "tail-bottom" : {
+                    "frames" : [
+                        { 
+                            "y" : -2
+                        }
+                    ]
+                },
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "y" : -10
+                        }
+                    ]
+                }
+            }
+        },
+        "jump" : {
+            "name" : "jump",
+            "repeat" : true,
+            "parts" : {
+                "tail-bottom" : {
+                    "frames" : [
+                        { 
+                            "y" : 2
+                        }
+                    ]
+                },
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "y" : 15
+                        }
+                    ]
+                }
+            }
+        },
+        "jump_left" : {
+            "name" : "jump-left",
+            "repeat" : true,
+            "parts" : {
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "x" : -10
+                        }
+                    ]
+                }
+            }
+        },
+        "jump_right" : {
+            "name" : "jump-right",
+            "repeat" : true,
+            "parts" : {
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "x" : 10
+                        }
+                    ]
+                }
+            }
+        },
+        "left" : {
+            "name" : "look_left",
+            "width" : 95,
+            "parts" : {
+                "tail-bottom" : {
+                    "frames" : [
+                        { 
+                            "x" : 20
+                        }
+                    ]
+                },
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "x" : 125
+                        }
+                    ]
+                }
+            }
+        },
+        "right" : {
+            "name" : "look_right",
+            "width" : 95,
+            "parts" : {
+                "tail-bottom" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "x" : -12
+                        }
+                    ]
+                }
+            }
+        },
+        "walk" : {
+            "name" : "walk_left",
+            "duration" : ".12",
+            "repeat" : true,
+            "parts" : {
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "width" : 98,
+                            "height" : 90
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_left" : {
+            "name" : "walk_left",
+            "duration" : ".12",
+            "repeat" : true,
+            "parts" : {
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "y" : 10
+                        },
+                        { 
+                            "x" : 2,
+                            "y" : 2
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_right" : {
+            "name" : "walk_right",
+            "duration" : ".12",
+            "repeat" : true,
+            "parts" : {
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "y" : 10
+                        },
+                        { 
+                            "x" : -2,
+                            "y" : 2
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "belly" : {
+        "idle" : {
+            "name" : "idle",
+            "duration" : ".5",
+            "repeat" : true,
+            "parts" : {
+                "belly" : {
+                    "frames" : [
+                        { 
+                            "y" : 5
+                        },
+                        {
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "trex" : {
+        "idle" : {
+            "name" : "idle",
+            "duration" : ".8",
+            "repeat" : true,
+            "parts" : {
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : true
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : false
+                        }
+                    ]
+                },
+                "gator-mouth-bottom" : {
+                    "frames" : [
+                        { 
+                            "y" : 1.5
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                "chin" : {
+                    "frames" : [
+                        { 
+                            "y" : 1.8
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        },
+        "idle_left" : {
+            "name" : "idle_left",
+            "repeat" : true,
+            "parts" : {
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : false
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : true
+                        }
+                    ]
+                }
+            }
+        },
+        "fall" : {
+            "name" : "fall",
+            "repeat" : true,
+            "parts" : {
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : true
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : false
+                        }
+                    ]
+                },
+                "belly" : {
+                    "frames" : [
+                        { 
+                            "y" : -2
+                        }
+                    ]
+                }
+            }
+        },
+        "fall_left" : {
+            "name" : "fall_left",
+            "repeat" : true,
+            "parts" : {
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : false
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : true
+                        }
+                    ]
+                }
+            }
+        },
+        "fall_right" : {
+            "name" : "fall_right",
+            "repeat" : true,
+            "parts" : {
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : true
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : false
+                        }
+                    ]
+                }
+            }
+        },
+        "jump" : {
+            "name" : "jump",
+            "repeat" : true,
+            "parts" : {
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : true
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : false
+                        }
+                    ]
+                },
+                "belly" : {
+                    "frames" : [
+                        { 
+                            "y" : 2
+                        }
+                    ]
+                }            
+            }
+        },
+        "jump_left" : {
+            "name" : "jump_left",
+            "repeat" : true,
+            "parts" : {
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : false
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : true
+                        }
+                    ]
+                }
+            }
+        },
+        "jump_right" : {
+            "name" : "jump_right",
+            "repeat" : true,
+            "parts" : {
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : true
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : false
+                        }
+                    ]
+                }
+            }
+        },
+        "walk" : {
+            "name" : "walk",
+            "duration" : ".1",
+            "repeat" : true,
+            "parts" : {
+                "belly" : {
+                    "frames" : [
+                        { 
+                            "y" : 2.5
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        },
+        "left" : {
+            "name" : "look_left",
+            "width" : 95,
+            "parts" : {
+                "head-top" : {
+                    "frames" : [
+                        { 
+                            "x" : -10
+                        }
+                    ]
+                },
+                "hood-middle" : {
+                    "frames" : [
+                        { 
+                            "x" : 15
+                        }
+                    ]
+                },
+                "snout" : {
+                    "frames" : [
+                        { 
+                            "x" : -70
+                        }
+                    ]
+                },
+                "nose-bottom" : {
+                    "frames" : [
+                        { 
+                            "x" : 43
+                        }
+                    ]
+                },
+                "chin" : {
+                    "frames" : [
+                        { 
+                            "x" : 25
+                        }
+                    ]
+                },
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : false
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : true
+                        }
+                    ]
+                },
+                "hood-bottom" : {
+                    "frames" : [
+                        { 
+                            "x" : 7
+                        }
+                    ]
+                },
+                "teeth" : {
+                    "frames" : [
+                        { 
+                            "x" : 35
+                        }
+                    ]
+                },
+                "gator-mouth" : {
+                    "frames" : [
+                        { 
+                            "x" : 45
+                        }
+                    ]
+                },
+                "gator-mouth-bottom" : {
+                    "frames" : [
+                        { 
+                            "x" : 34
+                        }
+                    ]
+                },
+                "gator-brow" : {
+                    "frames" : [
+                        { 
+                            "width" : 110,
+                            "x" : -15
+                        }
+                    ]
+                },
+                "neck-top" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "torso" : {
+                    "frames" : [
+                        { 
+                            "width" : 110,
+                            "x" : 0
+                        }
+                    ]
+                },
+                "belly" : {
+                    "frames" : [
+                        { 
+                            "width" : 90,
+                            "x" : -15
+                        }
+                    ]
+                },
+                "left_leg" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                }
+            }
+        },
+        "right" : {
+            "name" : "look_right",
+            "width" : 95,
+            "parts" : {
+                "snout" : {
+                    "frames" : [
+                        { 
+                            "x" : 10
+                        }
+                    ]
+                },
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : true
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "draw" : false
+                        }
+                    ]
+                },
+                "gator-brow" : {
+                    "frames" : [
+                        { 
+                            "width" : 110,
+                            "x" : 2
+                        }
+                    ]
+                },
+                "neck-top" : {
+                    "frames" : [
+                        { 
+                            "y" : 4
+                        }
+                    ]
+                },
+                "shoulders" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "belly" : {
+                    "frames" : [
+                        { 
+                            "width" : 90,
+                            "x" : 20
+                        }
+                    ]
+                },
+                "torso" : {
+                    "frames" : [
+                        { 
+                            "width" : 110,
+                            "x" : -2
+                        }
+                    ]
+                },
+                "torso-belly" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "left_leg" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_left" : {
+            "name" : "walk_left",
+            "repeat" : true,
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : -2
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_right" : {
+            "name" : "walk_right",
+            "repeat" : true,
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : 2
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
+
+
+

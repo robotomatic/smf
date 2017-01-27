@@ -1,0 +1,38 @@
+{
+    "name" : "island",
+    "width" : 3200,
+    "height" : 1200,
+    "debug" : false,
+    "layers" : {
+        "level" : {
+            "file" : "dat/levels/island/layers/level.json"
+        },
+        "sky" : {
+            "file" : "dat/levels/island/layers/sky.json"
+        },
+        "liquid" : {
+            "file" : "dat/levels/island/layers/liquid.json"
+        },
+        "platforms-blur" : {
+            "file" : "dat/levels/island/layers/platforms_blur.json"
+        },
+        "platforms-left-left" : {
+            "file" : "dat/levels/island/layers/platforms_left_left.json"
+        },
+        "platforms-mid-left" : {
+            "file" : "dat/levels/island/layers/platforms_mid_left.json"
+        },
+        "platforms-mid-mid" : {
+            "file" : "dat/levels/island/layers/platforms_mid_mid.json"
+        },
+        "platforms-right-right" : {
+            "file" : "dat/levels/island/layers/platforms_right_right.json"
+        },
+        "props-bg" : {
+            "file" : "dat/levels/island/layers/props_bg.json"
+        },
+        "props-fg" : {
+            "file" : "dat/levels/island/layers/props_fg.json"
+        }
+    }
+ }

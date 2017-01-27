@@ -1,0 +1,43 @@
+{
+    "bruiser" : {
+        "left" : {
+            "name" : "look_left",
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : 3
+                        }
+                    ]
+                },
+                "face" : {
+                    "frames" : [
+                        { 
+                            "x" : 1
+                        }
+                    ]
+                }
+            }
+        },
+        "right" : {
+            "name" : "look_right",
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : -3
+                        }
+                    ]
+                },
+                "face" : {
+                    "frames" : [
+                        { 
+                            "x" : -1
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
+                

@@ -1,0 +1,28 @@
+{
+    "feet" : {
+        "left" : {
+            "name" : "look_left",
+            "parts" : {
+                "left-foot" : {
+                    "frames" : [
+                        { 
+                            "x" : -3
+                        }
+                    ]
+                },
+                "right-foot" : {
+                    "frames" : [
+                        { 
+                            "x" : -2
+                        }
+                    ]
+                }
+            }
+        },
+        "right" : {
+            "name" : "look_right",
+            "parts" : {
+            }
+        }
+    }
+}

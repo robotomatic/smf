@@ -1,0 +1,39 @@
+{
+   "wood" : {
+       "name" : "wood",
+        "direction" : "horizontal",
+        "bark" : false,
+        "sectionwidth" : 2.5,
+        "linewidth" : 0.5,
+        "color" : {
+            "light" : "#b5b0a0",
+            "dark" : "#ddc066",
+            "projected" : {
+                "top" : "#c6c1b3",
+                "side" : "#aca89c",
+                "bottom" : "#969283"
+            }
+        }
+   },
+    "bark" : {
+        "name" : "bark",
+        "direction" : "vertical",
+        "bark" : true,
+        "sectionwidth" : 5,
+        "linewidth" : 2,
+        "color" : {
+            "light" : {
+                "gradient" : {
+                    "start" : "#918f89",
+                    "stop" : "#a39e8e"
+                }
+            },
+            "dark" : "#817962",
+            "projected" : {
+                "top" : "#a39e8e",
+                "side" : "#a39e8e",
+                "bottom" : "#a39e8e"
+            }
+        }
+   }
+}

@@ -1,0 +1,430 @@
+{
+    "demon" : {
+        "name" : "Gawky",
+        "color" : "#b26464",
+        "width" : 16,
+        "height" : 40,
+        "debug" : false,
+        "idlespeed" : 2,
+        "animations" : [
+            "default",
+            "arms",
+            "hands",
+            "demon"
+        ],
+        
+        "emitter" : {
+            "x" : 8,
+            "y" : 8,
+            "size" : 8
+        },
+        
+        "parts" : {
+            
+            "groups" : {
+                "head" : {
+                    "zindex" : 420,
+                    "path" : "smooth"
+                },
+                "mouth" : {
+                    "zindex" : 450,
+                    "path" : "smooth",
+                    "color" : "black",
+                    "clip" : "start"
+                }
+            },
+            
+            "head" : {
+                "parts" : {
+                    
+                    "face" : {
+                        "parts" : {
+                            "face-top" : {
+                                "width" : 40,
+                                "height" : 10,
+                                "x" : 30,
+                                "y" : 0,
+                                "group" : "head"
+                            },
+                            "face-back" : {
+                                "width" : 30,
+                                "height" : 8,
+                                "x" : 35,
+                                "y" : 8,
+                                "group" : "head"
+                            },
+                            "face-mid" : {
+                                "width" : 80,
+                                "height" : 12,
+                                "x" : 10,
+                                "y" : 9,
+                                "group" : "head"
+                            },
+                            "face-bottom-chin" : {
+                                "width" : 60,
+                                "height" : 10,
+                                "x" : 20,
+                                "y" : 18,
+                                "group" : "head"
+                            },
+                            "face-chin" : {
+                                "width" : 30,
+                                "height" : 10,
+                                "x" : 35,
+                                "y" : 22,
+                                "group" : "head"
+                            }
+                            
+                        }
+                    },
+                    
+                    "mouth" : {
+                        "parts" : {
+                            "mouth-top" : {
+                                "width" : 10,
+                                "height" : 2,
+                                "x" : 45,
+                                "y" : 20,
+                                "group" : "mouth"
+                            },
+                            "mouth-bottom" : {
+                                "width" : 40,
+                                "height" : 1,
+                                "x" : 30,
+                                "y" : 22,
+                                "group" : "mouth"
+                            },
+                            
+                            "teeth" : {
+                                "color" : "white",
+                                "parts" : {
+                                    "teeth-top" : {
+                                        "parts" : {
+                                            "teeth-top-gums" : {
+                                                "width" : 60,
+                                                "height" : 5,
+                                                "x" : 20,
+                                                "y" : 15,
+                                                "color" : "#744343",
+                                                "path" : "smooth"
+                                            },
+                                            "teeth-top-tooth-1" : {
+                                                "width" : 6,
+                                                "height" : 2,
+                                                "x" : 30,
+                                                "y" : 20,
+                                                "angle" : -25,
+                                                "pointinfo" : {
+                                                    "2" : "skip"
+                                                }
+                                            },
+                                            "teeth-top-tooth-2" : {
+                                                "width" : 6,
+                                                "height" : 2,
+                                                "x" : 39,
+                                                "y" : 20,
+                                                "angle" : -25,
+                                                "pointinfo" : {
+                                                    "2" : "skip"
+                                                }
+                                            },
+                                            "teeth-top-tooth-3" : {
+                                                "width" : 6,
+                                                "height" : 2,
+                                                "x" : 48,
+                                                "y" : 20,
+                                                "angle" : -25,
+                                                "pointinfo" : {
+                                                    "2" : "skip"
+                                                }
+                                            },
+                                            "teeth-top-tooth-4" : {
+                                                "width" : 6,
+                                                "height" : 2,
+                                                "x" : 57,
+                                                "y" : 20,
+                                                "angle" : -25,
+                                                "pointinfo" : {
+                                                    "2" : "skip"
+                                                }
+                                            },
+                                            "teeth-top-tooth-5" : {
+                                                "width" : 6,
+                                                "height" : 2,
+                                                "x" : 66,
+                                                "y" : 20,
+                                                "angle" : -25,
+                                                "pointinfo" : {
+                                                    "2" : "skip"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    
+                                    "teeth-bottom" : {
+                                        "parts" : {
+                                            "teeth-bottom-gums" : {
+                                                "width" : 60,
+                                                "height" : 5,
+                                                "x" : 20,
+                                                "y" : 30,
+                                                "color" : "#744343",
+                                                "path" : "smooth"
+                                            },
+                                            "teeth-bottom-tooth-1" : {
+                                                "width" : 6,
+                                                "height" : 2,
+                                                "x" : 30,
+                                                "y" : 28,
+                                                "angle" : 25,
+                                                "pointinfo" : {
+                                                    "1" : "skip"
+                                                }
+                                            },
+                                            "teeth-bottom-tooth-2" : {
+                                                "width" : 6,
+                                                "height" : 2,
+                                                "x" : 39,
+                                                "y" : 28,
+                                                "angle" : 25,
+                                                "pointinfo" : {
+                                                    "1" : "skip"
+                                                }
+                                            },
+                                            "teeth-bottom-tooth-3" : {
+                                                "width" : 6,
+                                                "height" : 2,
+                                                "x" : 48,
+                                                "y" : 28,
+                                                "angle" : 25,
+                                                "pointinfo" : {
+                                                    "1" : "skip"
+                                                }
+                                            },
+                                            "teeth-bottom-tooth-4" : {
+                                                "width" : 6,
+                                                "height" : 2,
+                                                "x" : 57,
+                                                "y" : 28,
+                                                "angle" : 25,
+                                                "pointinfo" : {
+                                                    "1" : "skip"
+                                                }
+                                            },
+                                            "teeth-bottom-tooth-5" : {
+                                                "width" : 6,
+                                                "height" : 2,
+                                                "x" : 66,
+                                                "y" : 28,
+                                                "angle" : 25,
+                                                "pointinfo" : {
+                                                    "1" : "skip"
+                                                },
+                                                "clip" : "end"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                        
+                            "lip" : {
+                                "width" : 25,
+                                "height" : 1.2,
+                                "x" : 37.5,
+                                "y" : 24,
+                                "color" : "#804848",
+                                "path" : "smooth",
+                                "parts" : {
+                                    "lip-lip" : {
+                                        "width" : 50,
+                                        "height" : 1,
+                                        "x" : 25,
+                                        "y" : 23.2,
+                                        "color" : "#b26464",
+                                        "path" : "smooth"
+                                    }
+                                    
+                                }
+                            }
+                        
+                        }
+                    },
+                    
+                    "eye-middle" : {
+                        "width" : 20,
+                        "height" : 8.5,
+                        "x" : 40,
+                        "y" : 4,
+                        "color" : "#7b3f3f",
+                        "pointinfo" : {
+                            "1" : "smooth",
+                            "3" : "smooth"
+                        },
+                        "angle" : -49,
+                        "parts" : {
+                            "eye-middle-white" : {
+                                "width" : 20,
+                                "height" : 7.5,
+                                "x" : 40,
+                                "y" : 4,
+                                "color" : "white",
+                                "pointinfo" : {
+                                    "1" : "skip",
+                                    "3" : "smooth"
+                                },
+                                "angle" : 5,
+                                "clip" : "start"
+                            },
+                            "eye-middle-color" : {
+                                "width" : 10,
+                                "height" : 4,
+                                "x" : 45,
+                                "y" : 6,
+                                "color" : "green",
+                                "pointinfo" : {
+                                    "0" : "round",
+                                    "1" : "round",
+                                    "2" : "round",
+                                    "3" : "round"
+                                },
+                                "parts" : {
+                                    "eye-middle-pupil" : {
+                                        "width" : 5,
+                                        "height" : 2,
+                                        "x" : 47.5,
+                                        "y" : 7,
+                                        "color" : "black",
+                                        "pointinfo" : {
+                                            "0" : "round",
+                                            "1" : "round",
+                                            "2" : "round",
+                                            "3" : "round"
+                                        },
+                                        "clip" : "end"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    
+                    
+                    "eye-left" : {
+                        "width" : 20,
+                        "height" : 8.5,
+                        "x" : 20,
+                        "y" : 10,
+                        "color" : "#7b3f3f",
+                        "pointinfo" : {
+                            "1" : "smooth",
+                            "3" : "smooth"
+                        },
+                        "angle" : -49,
+                        "parts" : {
+                            "eye-left-white" : {
+                                "width" : 20,
+                                "height" : 7.5,
+                                "x" : 20,
+                                "y" : 10,
+                                "color" : "white",
+                                "pointinfo" : {
+                                    "1" : "skip",
+                                    "3" : "smooth"
+                                },
+                                "angle" : 5,
+                                "clip" : "start"
+                            },
+                            "eye-left-color" : {
+                                "width" : 10,
+                                "height" : 4,
+                                "x" : 25,
+                                "y" : 12,
+                                "color" : "green",
+                                "pointinfo" : {
+                                    "0" : "round",
+                                    "1" : "round",
+                                    "2" : "round",
+                                    "3" : "round"
+                                },
+                                "parts" : {
+                                    "eye-left-pupil" : {
+                                        "width" : 5,
+                                        "height" : 2,
+                                        "x" : 27.5,
+                                        "y" : 13,
+                                        "color" : "black",
+                                        "pointinfo" : {
+                                            "0" : "round",
+                                            "1" : "round",
+                                            "2" : "round",
+                                            "3" : "round"
+                                        },
+                                        "clip" : "end"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    
+                    "eye-right" : {
+                        "width" : 20,
+                        "height" : 8.5,
+                        "x" : 60,
+                        "y" : 10,
+                        "color" : "#7b3f3f",
+                        "pointinfo" : {
+                            "1" : "smooth",
+                            "3" : "smooth"
+                        },
+                        "angle" : -49,
+                        "parts" : {
+                            "eye-right-white" : {
+                                "width" : 20,
+                                "height" : 7.5,
+                                "x" : 60,
+                                "y" : 10,
+                                "color" : "white",
+                                "pointinfo" : {
+                                    "1" : "skip",
+                                    "3" : "smooth"
+                                },
+                                "angle" : 5,
+                                "clip" : "start"
+                            },
+                            "eye-right-color" : {
+                                "width" : 10,
+                                "height" : 4,
+                                "x" : 65,
+                                "y" : 12,
+                                "color" : "green",
+                                "pointinfo" : {
+                                    "0" : "round",
+                                    "1" : "round",
+                                    "2" : "round",
+                                    "3" : "round"
+                                },
+                                "parts" : {
+                                    "eye-right-pupil" : {
+                                        "width" : 5,
+                                        "height" : 2,
+                                        "x" : 67.5,
+                                        "y" : 13,
+                                        "color" : "black",
+                                        "pointinfo" : {
+                                            "0" : "round",
+                                            "1" : "round",
+                                            "2" : "round",
+                                            "3" : "round"
+                                        },
+                                        "clip" : "end"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    
+                }
+            }
+        }
+    }
+ }

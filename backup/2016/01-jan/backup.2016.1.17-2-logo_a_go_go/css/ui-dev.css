@@ -1,0 +1,145 @@
+#dev-ui.game-ui {
+    background-color: transparent;
+}
+
+.dev-tools {
+    position: absolute;
+    z-index: 999;
+    width: 10em;
+    height: 20em;
+    margin-top: -16.6em;
+    padding: 0;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.dev-tools-collapse {
+    margin-top: .6em;
+    height: 2.8em;
+}
+
+.dev-tools-animate-collapse {
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+}
+
+.dev-tools-inner {
+    width: 100%;
+    height: 17em;
+    position: absolute;
+    opacity: .6;
+    background-color: #4E5F5F;
+}
+
+.dev-tools-inner-collapse {
+    width: 0;
+    height: 0;
+}
+
+.dev-tools-inner-wrap {
+    position: relative;
+    width: 88%;
+    height: 17em;
+    padding: 6%;
+}
+
+#dev-tools-button, #dev-tools-button:hover {
+    position: absolute;
+    right: .3em;
+    bottom: .1em;
+    text-decoration: none;
+    font-size: 1.8em;
+    line-height: 1.4em;
+    margin-top: 0;
+    z-index: 9999;
+}
+
+.dev-tools-fps {
+    position: absolute;
+    bottom: .5em;
+    left: .5em;
+    width: 10em;
+    height: 2em;
+}
+
+.dev-tools-fps-inner {
+    position: absolute;
+    opacity: .8;
+    background-color: white;
+    bottom: .3em;
+    left: .4em;
+    width: 6em;
+    height: 2.2em;
+    -moz-border-radius: 80px;
+    -webkit-border-radius: 80px;
+    border-radius: 80px;
+}
+
+.dev-tools p {
+    clear: both;
+    float: left;
+    margin: 0;
+    margin-left: -.5em;
+    width: 12em;
+    height: 1.8em;
+    text-indent: 1.5em;
+    font-size: .8em;
+    font-weight: bold;
+    line-height: 1.8em;
+    padding: 0;
+}
+
+#dev-avg-fps {
+    margin-top: -.45em;
+    line-height: 1.2em;
+}
+
+.aok {
+    color : #04B404;
+}
+
+.uhoh {
+    color: #AEB404;
+}
+
+.afu {
+    color : #B43104;
+}
+
+
+.dev-tools-group {
+    float: left;
+    width: 100%;
+    height: auto;
+    margin-top: .5em;
+}
+
+.dev-tools-group-group {
+    float: left;
+    margin-top: 1.2em;
+    padding-top: 1em;
+    height: auto;
+    width: 100%;
+    border-top: 1px solid #205758;
+}
+
+.dev-tools-label {
+    text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+    padding-bottom: .5em;
+}
+
+.dev-tools-range-slider {
+    float: left;
+    padding-top: .5em;
+    width: 100%;
+    background-color: transparent;
+}
+
+
+.dev-tools-toggle {
+    width: 2em;
+}

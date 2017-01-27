@@ -1,0 +1,366 @@
+{
+    "space" : {
+        "background" : {
+            "color" : "#796d9a"
+        },
+        "items" : {
+             "sky" : {
+                "name" : "sky",
+                "color" : {
+                    "gradient" : {
+                        "start" : "#796d9a",
+                        "stop" : "#403d4a"
+                    }
+                }
+            },
+            
+            "stars" : {
+                "name" : "stars",
+                "total" : 300,
+                "renderer" : "stars"
+            },
+            
+            "clouds" : {
+                "name" : "clouds",
+                "draw" : false
+            },
+            "clouds-mid" : {
+                "name" : "clouds",
+                "draw" : false
+            },
+            "clouds-fg" : {
+                "name" : "clouds",
+                "draw" : false
+            },
+            
+           "fg-ground" : {
+                "name" : "rocks",
+                "color" : {
+                    "gradient" : {
+                        "start" : "#533a3a",
+                        "stop" : "#261b1b"
+                    }
+                }
+            },
+            
+            
+            
+            "platform-tree" : {
+                "name" : "platform-tree-1",
+                "colortoplight" : "#a0a5a4",
+                "colortopdark" : "##8f9191",
+                "colorlight" : {
+                    "gradient" : {
+                        "start" : "#78d3c1",
+                        "stop" : "#4dad9a"
+                    }
+                },
+                "colordark" : "#7c7b79",
+                "renderer" : "plastic"
+            },
+            "platform" : {
+                "name" : "platform-1",
+                "colortoplight" : "#a0a5a4",
+                "colortopdark" : "##8f9191",
+                "colorlight" : {
+                    "gradient" : {
+                        "start" : "#78d3c1",
+                        "stop" : "#4dad9a"
+                    }
+                },
+                "colordark" : "#7c7b79",
+                "renderer" : "plastic"
+            },
+            
+            "platform-bg" : {
+                "name" : "platform-bg-1",
+                "colorlight" : {
+                    "gradient" : {
+                        "start" : "#68a398",
+                        "stop" : "#2a7264"
+                    }
+                },
+                "colordark" : "#7c7b79",
+                "renderer" : "plastic-bg"
+            },
+            
+            
+            
+            
+            
+            
+            "grass" : {
+                "name" : "grass-1",
+                "draw" : false
+            },
+            "grass-dark" : {
+                "name" : "grass-1",
+                "draw" : false
+            },
+            
+            "bush" : {
+                "name" : "bush-1",
+                "draw" : false
+            },
+            
+            
+
+            
+            "rock" : {
+                "name" : "rock-1",
+                "parts" : {
+                    "face" : {
+                        "color" : "#7cc0d4",
+                        "width" : 100,
+                        "height" : 100,
+                        "x" : 0,
+                        "y" : 0
+                    },
+                    "square" : {
+                        "color" : "#598896",
+                        "width" : 50,
+                        "height" : 50,
+                        "x" : 25,
+                        "y" : 25
+                    }
+                }
+            },
+            
+            
+            
+            
+            
+            
+            "bg-block-3" : {
+                "name" : "bg-block-3",
+                "color" : "#888888"
+            },
+            
+            
+            
+            "bg-block-2" : {
+                "name" : "bg-block-2",
+                "color" : "#8a8b8b"
+            },
+            "bg-platform-support-wide" : {
+                "name" : "bg-block-2",
+                "color" : "#8a8b8b",
+                "beamwidth" : 5,
+                "sectionheight" : 60,
+                "cross" : true,
+                "renderer" : "scaffold"
+            },
+            
+            "bg-block-1" : {
+                "name" : "bg-block-1",
+                "color" : "#777696"
+            },
+            "bg-cube-1" : {
+                "name" : "bg-cube-1",
+                "parts" : {
+                    "face" : {
+                        "color" : "#897e7a",
+                        "width" : 80,
+                        "height" : 80,
+                        "x" : 10,
+                        "y" : 10
+                    },
+                    "square" : {
+                        "color" : "#6a6867",
+                        "width" : 50,
+                        "height" : 50,
+                        "x" : 25,
+                        "y" : 25
+                    }
+                }
+            },
+            
+            
+            
+            "platform-support" : {
+                "name" : "scaffold-1",
+                "color" : "#605a5a",
+                "beamwidth" : 5,
+                "sectionheight" : 30,
+                "cross" : true,
+                "renderer" : "scaffold"
+            },
+            "platform-support-wide" : {
+                "name" : "scaffold-1",
+                "color" : "#605a5a",
+                "beamwidth" : 5,
+                "sectionheight" : 60,
+                "cross" : true,
+                "renderer" : "scaffold"
+            },
+
+            
+            
+            "ledge-1" : {
+                "name" : "ledge-1",
+                "color" : "#a3d5d9"
+            },
+            "fg-block-2" : {
+                "name" : "rocks",
+                "color" : "#533a3a"
+            },
+            "fg-ramp-1" : {
+                "name" : "ramp",
+                "color" : "#533a3a"
+            },
+            "fg-ramp-block-1" : {
+                "name" : "ramp-block",
+                "color" : "#533a3a"
+            },
+            "fg-moving-block-1" : {
+                "name" : "moving-block",
+                "color" : "#a3d5d9"
+            },
+            
+            
+            
+           "fg-block-1" : {
+                "name" : "boxes",
+                "parts" : {
+                    "back" : {
+                        "color" : "#031852",
+                        "width" : 100,
+                        "height" : 100,
+                        "x" : 0,
+                        "y" : 0,
+                        "parts" : {
+                            "face" : {
+                                "color" : "#0499b4",
+                                "parts" : {
+                                    "side"  : { 
+                                        "width" : 80,
+                                        "height" : 80,
+                                        "x" : 10,
+                                        "y" : 10
+                                    }
+                                }
+                            },
+                            "center" : {
+                                "color" : "rgb(255, 255, 0)",
+                                "parts" : {
+                                    "side"  : { 
+                                        "width" : 40,
+                                        "height" : 40,
+                                        "x" : 30,
+                                        "y" : 30,
+                                        "actions" : [
+                                            {
+                                                "color" : "rgb(146, 177, 46)",
+                                                "steps" : 50
+                                            },
+                                            {
+                                                "color" : "rgb(252, 248, 248)",
+                                                "steps" : 50
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            
+            "flag" : {
+                "name" : "flag",
+                "color" : "green",
+                "amplitude" : 2,
+                "offset" : ".1",
+                "renderer" : "flag"
+            },
+            
+            
+            "wave" : {
+                "name" : "goo",
+                "wavelength" : 80,
+                "amplitude" : ".5",
+                "offset" : "-.05",
+                "color" : {
+                    "gradient" : {
+                        "start" : "#84fa58",
+                        "stop" : "#6fc44f"
+                    }
+                },
+                "renderer" : "wave"
+            },
+            
+            "wave-1" : {
+                "name" : "goo-1",
+                "draw" : false
+            },
+            
+            "wave-2" : {
+                "name" : "goo-2",
+                "wavelength" : 160,
+                "amplitude" : ".5",
+                "offset" : "-.05",
+                 "color" : {
+                    "gradient" : {
+                        "start" : "#84fa58",
+                        "stop" : "#6fc44f"
+                    }
+                 },
+                "renderer" : "wave"
+            },
+            
+            "wave-body" : {
+                "name" : "goo-body",
+                 "color" : "#6fc44f"
+            },
+            
+            
+            
+            "bg-cube-1" : {
+                "name" : "bg-cube-1",
+                "renderer" : "tile",
+                "tilewidth" : 50,
+                "tileheight" : 50,
+                "parts" : {
+                    "dark-bottom" : {
+                        "color" : "#9fc4c4",
+                        "width" : 100,
+                        "height" : 2,
+                        "x" : 0,
+                        "y" : 98
+                    },
+                    "dark-side" : {
+                        "color" : "#9fc4c4",
+                        "width" : 2,
+                        "height" : 100,
+                        "x" : 98,
+                        "y" : 0
+                    },
+                    "light-top" : {
+                        "color" : "#ddfdfd",
+                        "width" : 100,
+                        "height" : 2,
+                        "x" : 0,
+                        "y" : 0
+                    },
+                    "light-side" : {
+                        "color" : "#ddfdfd",
+                        "width" : 2,
+                        "height" : 100,
+                        "x" : 0,
+                        "y" : 0
+                    },
+                    "face-color" : {
+                        "color" : "#b8d9d9",
+                        "width" : 98,
+                        "height" : 98,
+                        "x" : 1,
+                        "y" : 1
+                    }
+                }
+            }
+            
+            
+            
+        }
+    }    
+}

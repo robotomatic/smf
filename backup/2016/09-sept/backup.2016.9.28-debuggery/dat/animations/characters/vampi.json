@@ -1,0 +1,199 @@
+{
+    "vampi" : {
+        
+        "idle" : {
+            "name" : "idle",
+            "parts" : {
+                "left-arm" : {
+                    "zindex" : 200
+                },
+                "right-arm" : {
+                    "zindex" : 250
+                }
+            }
+        },
+        
+        "left" : {
+            "name" : "look_left",
+            "parts" : {
+                "right-ear-inner" : {
+                    "zindex" : 9999
+                },
+                "mouth" : {
+                    "frames" : [
+                        {
+                            "x" : -5
+                        }
+                    ]
+                },
+                "chin" : {
+                    "frames" : [
+                        {
+                            "x" : -5
+                        }
+                    ]
+                },
+                "teeth" : {
+                    "frames" : [
+                        {
+                            "x" : -5
+                        }
+                    ]
+                }
+            }
+        },
+        "right" : {
+            "name" : "look_right",
+            "parts" : {
+                "left-ear-inner" : {
+                    "zindex" : 9999
+                },
+                "chin" : {
+                    "frames" : [
+                        {
+                            "x" : 5
+                        }
+                    ]
+                },
+                "mouth" : {
+                    "frames" : [
+                        {
+                            "x" : 5
+                        }
+                    ]
+                },
+                "teeth" : {
+                    "frames" : [
+                        {
+                            "x" : 5
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "random" : {
+            "name" : "rando",
+            "duration" : 2,
+            "chance" : 10,
+            "parts" : {
+                "left-eye-dark" : {
+                    "frames" : [
+                        {
+                            "height" : 120,
+                            "y" : -1
+                        }
+                        
+                    ]
+                },
+                "left-eye-white" : {
+                    "frames" : [
+                        {
+                            "height" : 150,
+                            "y" : -1
+                        }
+                        
+                    ]
+                },
+                "right-eye-dark" : {
+                    "frames" : [
+                        {
+                            "height" : 120,
+                            "y" : -1
+                        }
+                        
+                    ]
+                },
+                "right-eye-white" : {
+                    "frames" : [
+                        {
+                            "height" : 150,
+                            "y" : -1
+                        }
+                        
+                    ]
+                },
+                "mouth-middle" : {
+                    "frames" : [
+                        {
+                            "height" : 600,
+                            "width" : 200,
+                            "x" : -10
+                        }
+                        
+                    ]
+                },
+                "mouth-bottom" : {
+                    "frames" : [
+                        {
+                            "y" : 7
+                        }
+                        
+                    ]
+                },
+                "head-bottom" : {
+                    "frames" : [
+                        {
+                            "y" : 2.5
+                        }
+                        
+                    ]
+                },
+                "chin" : {
+                    "frames" : [
+                        {
+                            "y" : 7
+                        }
+                        
+                    ]
+                },
+                "neck-top" : {
+                    "frames" : [
+                        {
+                            "y" : 3
+                        }
+                        
+                    ]
+                },
+                "left-ear-outer" : {
+                    "frames" : [
+                        {
+                            "angle" : -20,
+                            "y" : 3
+                        }
+                        
+                    ]
+                },
+                "left-ear-inner" : {
+                    "frames" : [
+                        {
+                            "angle" : -20,
+                            "y" : 2
+                        }
+                        
+                    ]
+                },
+                "right-ear-outer" : {
+                    "frames" : [
+                        {
+                            "angle" : 20,
+                            "y" : 3
+                        }
+                        
+                    ]
+                },
+                "right-ear-inner" : {
+                    "frames" : [
+                        {
+                            "angle" : 20,
+                            "y" : 2
+                        }
+                        
+                    ]
+                }
+            }
+        }
+        
+        
+    }
+}

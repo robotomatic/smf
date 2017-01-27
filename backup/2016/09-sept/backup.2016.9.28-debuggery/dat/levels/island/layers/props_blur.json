@@ -1,0 +1,98 @@
+[
+    {
+        "name" : "props-blur",
+        "comment" : "props furthest",
+        "zindex" : 250,
+        "graphics" : "bg_blur",
+        "collide" : false,
+        "cache" : true,
+        "depth" : 30,
+        "top" : true,
+        "items" : [
+
+            {
+                "x" : 960,
+                "y" : 860,
+                "z" : 155,
+                "itemtype" : "prop-1",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 40,
+                        "height": 50
+                    }
+                ]
+            }
+
+        ]
+    },
+    
+
+    {
+        "name" : "flags-blur",
+        "collide" : false,
+        "cache" : false,
+        "graphics" : "bg_blur",
+        "zindex" : 700,
+        "animate" : true,
+        "items" : [
+            
+            
+            {
+                "x": 1430,
+                "y": 665,
+                "z" : 220,
+                "width": 60,
+                "height": 85,
+                "itemtype" : "flag",
+                "name": "flag-1"
+            }
+        ]
+    },
+
+    
+    
+    
+    
+    {
+        "name" : "blocks-blur",
+        "collide" : false,
+        "cache" : true,
+        "graphics" : "bg_blur",
+        "zindex" : 800,
+        "depth" : 10,
+        "items" : [
+
+            {
+                "x": 110,
+                "y": 700,
+                "z" : 270,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+            
+            {
+                "x": 2850,
+                "y": 900,
+                "z" : 180,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            },
+            {
+                "x": 2900,
+                "y": 900,
+                "z" : 180,
+                "width": 40,
+                "height": 40,
+                "itemtype" : "fg-block-1"
+            }
+
+
+
+        ]
+    }
+]

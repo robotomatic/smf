@@ -1,0 +1,335 @@
+[
+    {
+        "name" : "platforms-left-back",
+        "comment" : "platform furthest",
+        "zindex" : 650,
+        "collide" : "top",
+        "cache" : true,
+        "depth" : 50,
+        "top" : true,
+        "items" : [
+
+            {
+                "x" : 80,
+                "y" : 1080,
+                "z" : 20,
+                "depth" : 80,
+                "itemtype" : "platform",
+                "iteminfo" : {
+                    "top" : {
+                        "after" : null,
+                        "front" : false
+                    }
+                },
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 40,
+                        "collide" : false
+                    }
+                ]
+            },
+                    
+            
+            
+            {
+                "x" : 180,
+                "y" : 500,
+                "z" : 30,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 360,
+                        "width": 80,
+                        "height": 100,
+                        "collide" : "top"
+                    },
+
+                    {
+                        "x": 80,
+                        "y": 0,
+                        "width": 80,
+                        "height": 50,
+                        "collide" : "top"
+                    },
+                    {
+                        "x": 160,
+                        "y": 70,
+                        "width": 120,
+                        "height": 20,
+                        "collide" : "top"
+                    },
+
+                    {
+                        "x": 280,
+                        "y": 150,
+                        "width": 100,
+                        "height": 20,
+                        "collide" : "top"
+                    },
+
+
+                    {
+                        "x": 0,
+                        "y": 560,
+                        "width": 380,
+                        "height": 20,
+                        "collide" : false
+                    }
+
+
+
+
+
+
+                ]
+            }
+
+        ]
+    },
+
+    {
+        "name" : "platforms-left-mid-bg",
+        "comment" : "platform backgrounds",
+        "collide" : false,
+        "zindex" : 660,
+        "cache" : true,
+        "depth" : 5,
+        "items" : [
+
+            {
+                "x" : 345,
+                "y" : 800,
+                "z" : 50,
+                "itemtype" : "platform-bg",
+                "collide" : false,
+                "parts" : [
+                    
+                    {
+                        "x": 0,
+                        "y": 30,
+                        "width": 170,
+                        "height": 280
+                    },
+                    {
+                        "x": 170,
+                        "y": 0,
+                        "width": 120,
+                        "height": 250
+                    },
+                    {
+                        "x": 295,
+                        "y": 0,
+                        "width": 10,
+                        "height": 120,
+                        "ramp" : "left"
+                    },
+                    {
+                        "x": 320,
+                        "y": 120,
+                        "width": 60,
+                        "height": 220
+                    }
+                ]
+            }
+
+        ]
+    },
+
+    {
+        "name" : "platforms-left-mid",
+        "comment" : "front platforms",
+        "collide" : "top",
+        "zindex" : 670,
+        "cache" : true,
+        "depth" : 30,
+        "top" : true,
+        "items" : [
+
+            {
+                "x": 620,
+                "y": 1080,
+                "z" : 20,
+                "itemtype" : "platform",
+                "iteminfo" : {
+                    "top" : {
+                        "after" : null
+                    }
+                },
+                "parts" : [
+                    
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 60,
+                        "height": 40,
+                        "collide" : false
+                    }
+                ]
+            },
+            
+            {
+                "x" : 250,
+                "y" : 910,
+                "z" : 20,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 30,
+                        "width": 110,
+                        "height": 50,
+                        "collide" : "top"
+                    },
+                    {
+                        "x": 110,
+                        "y": 30,
+                        "width": 60,
+                        "height": 50,
+                        "ramp" : "left",
+                        "collide" : "top"
+
+                    },
+                    {
+                        "x": 170,
+                        "y": 80,
+                        "width": 130,
+                        "height": 20,
+                        "collide" : "top"
+                    },
+                    {
+                        "x": 300,
+                        "y": 120,
+                        "width": 70,
+                        "height": 50,
+                        "collide" : "top"
+                    },
+                    {
+                        "x": 80,
+                        "y": 120,
+                        "width": 180,
+                        "height": 50,
+                        "collide" : false
+                    },
+                    {
+                        "x": 20,
+                        "y": 80,
+                        "width": 60,
+                        "height": 80,
+                        "ramp" : "left-top",
+                        "collide" : false
+                    }
+                ]
+            }
+
+
+        ]
+    },
+
+    {
+        "name" : "platforms-left-mid-tops",
+        "comment" : "front platform tops",
+        "collide" : "top",
+        "zindex" : 680,
+        "cache" : true,
+        "depth" : 20,
+        "top" : true,
+        "items" : [
+
+            {
+                "x": 340,
+                "y": 790,
+                "z" : 20,
+                "itemtype" : "platform",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 30,
+                        "width": 120,
+                        "height": 20,
+                        "collide" : "top"
+                    },
+                    {
+                        "x": 100,
+                        "y": 0,
+                        "width": 70,
+                        "height": 30,
+                        "ramp" : "right",
+                        "collide" : "top"
+                    },
+                    {
+                        "x": 170,
+                        "y": 0,
+                        "width": 145,
+                        "height": 30,
+                        "collide" : "top"
+                    },
+                    {
+                        "x": 170,
+                        "y": 30,
+                        "width": 145,
+                        "height": 30,
+                        "collide" : false
+                    },
+                    {
+                        "x": 120,
+                        "y": 50,
+                        "width": 50,
+                        "height": 30,
+                        "collide" : false,
+                        "ramp" : "right-top"
+                    },
+                    {
+                        "x": 20,
+                        "y": 50,
+                        "width": 90,
+                        "height": 30,
+                        "collide" : false
+                    }
+                ]
+            }
+
+        ]
+    },
+
+    {
+        "name" : "platforms-left-front",
+        "comment" : "closest platforms",
+        "collide" : "top",
+        "cache" : true,
+        "zindex" : 690,
+        "depth" : 20,
+        "top" : true,
+        "items" : [
+
+            {
+                "x" : 80,
+                "y" : 1080,
+                "z" : 0,
+                "itemtype" : "platform",
+                "iteminfo" : {
+                    "top" : {
+                        "before" : null
+                    }
+                },
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 600,
+                        "height": 40
+                    }
+                ]
+            }
+
+
+        ]
+    }
+]

@@ -1,0 +1,1680 @@
+{
+    "characterN" : {
+        "name" : "Chompzilla",
+        "width" : 30,
+        "height" : 45,
+        "idlespeed" : ".5",
+        "color" : "green",
+        "animations" : [
+            "default", 
+            "tail", 
+            "belly",
+            "trex"
+        ],
+        "parts" : {
+            "groups" : {
+                "tail" : {
+                    "path" : "chain",
+                    "zindex" : 1
+                },
+                "belly" : {
+                    "path" : "smooth",
+                    "zindex" : 3,
+                    "color" : "#2c9b2c"
+                },
+                "mouth" : {
+                    "path" : "smooth",
+                    "zindex" : 100,
+                    "color" : "black",
+                    "clip" : "start"
+                },
+                "body" : {
+                    "zindex" : 2,
+                    "path" : "smooth"
+                }
+            },
+            "head" : {
+                "parts" : {
+                    "hood" : {
+                        "group" : "body",
+                        "parts" : {
+                            "head-top"  : { 
+                                "width" : 55,
+                                "height" : 5,
+                                "x" : 25,
+                                "y" : 0
+                            },
+                            "gator-brow"  : {
+                                "width" : 85,
+                                "height" : 15,
+                                "x" : 8,
+                                "y" : 3
+                            },
+                            "hood-middle"  : {
+                                "width" : 80,
+                                "height" : 25,
+                                "x" : 0,
+                                "y" : 15
+                            },
+                            "hood-bottom"  : {
+                                "width" : 50,
+                                "height" : 10,
+                                "x" : 18,
+                                "y" : 40
+                            }
+                        }
+                    },
+                    "face" : {
+                        "parts" : {
+                            "eyes"  : {
+                                "width" : 80,
+                                "height" : 10,
+                                "x" : 10,
+                                "y" : 10,
+                                "zindex" : 300,
+                                "parts" : {
+                                    "left-eye" : { 
+                                        "parts" : {
+                                            "left-eye-white" : {
+                                                "width" : 10, 
+                                                "height" : 5,
+                                                "x" : 25, 
+                                                "y" : 18,
+                                                "zindex" : 112,
+                                                "pointinfo" : {
+                                                    "1" : "smooth",
+                                                    "3" : "smooth"
+                                                },
+                                                "color" : "white",
+                                                "clip" : "start",
+                                                "zindex" : 301
+                                            },
+                                            "left-eye-color" : {
+                                                "width" : 12, 
+                                                "height" : 12,
+                                                "x" : 25, 
+                                                "y" : 18,
+                                                "zindex" : 113,
+                                                "color" : "black",
+                                                "pointinfo" : {
+                                                    "0" : "smooth"
+                                                },
+                                                "clip" : "end",
+                                                "zindex" : 302
+                                            }
+                                        }
+                                    },
+                                    "right-eye" : {
+                                        "parts" : {
+                                            "right-eye-white" : {
+                                                "width" : 10, 
+                                                "height" : 5,
+                                                "x" : 60, 
+                                                "y" : 18,
+                                                "zindex" : 122,
+                                                "pointinfo" : {
+                                                    "0" : "smooth",
+                                                    "2" : "smooth"
+                                                },
+                                                "color" : "white",
+                                                "clip" : "start",
+                                                "zindex" : 303
+                                            },
+                                            "right-eye-color" : {
+                                                "width" : 12, 
+                                                "height" : 12,
+                                                "x" : 57, 
+                                                "y" : 18,
+                                                "zindex" : 123,
+                                                "color" : "black",
+                                                "pointinfo" : {
+                                                    "1" : "smooth"
+                                                },
+                                                "clip" : "end",
+                                                "zindex" : 304
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "snout" : {
+                        "parts" : {
+                            "nose" : {
+                                "group" : "body",
+                                "width" : 75,
+                                "height" : 27,
+                                "x" : 40,
+                                "y" : 10
+                            },
+                            "nose-bottom" : {
+                                "group" : "body",
+                                "width" : 60,
+                                "height" : 2,
+                                "x" : 26,
+                                "y" : 37,
+                                "pointinfo" : {
+                                    "2" : "no-smooth",
+                                    "3" : "no-smooth"
+                                }
+                            },
+                            "chin" : {
+                                "group" : "body",
+                                "width" : 40,
+                                "height" : 10,
+                                "x" : 45,
+                                "y" : 38
+                            },
+                            "mouth" : {
+                                "group" : "mouth",
+                                "parts" : {
+                                    "gator-mouth" : {
+                                        "width" : 55,
+                                        "height" : 2,
+                                        "x" : 28,
+                                        "y" : 39
+                                    },
+                                    "gator-mouth-bottom" : {
+                                        "width" : 35,
+                                        "height" : 7,
+                                        "x" : 43,
+                                        "y" : 40
+                                    }
+                                }  
+                            },
+                            "tongue" : {
+                                "color" : "#862f2f",
+                                "width" : 50,
+                                "height" : 10,
+                                "x" : 20,
+                                "y" : 46,
+                                "zindex" : 101,
+                                "path" : "smooth"
+                            },
+                            "teeth" : {
+                                "parts" : {
+                                    "tooth1" : {
+                                        "color" : "white",
+                                        "width" : 7,
+                                        "height" : 4,
+                                        "x" : 42,
+                                        "y" : 39,
+                                        "zindex" : 101
+                                    },
+                                    "tooth2" : {
+                                        "color" : "white",
+                                        "width" : 7,
+                                        "height" : 4,
+                                        "x" : 58,
+                                        "y" : 39,
+                                        "zindex" : 102
+                                    },
+                                    "tooth3" : {
+                                        "color" : "white",
+                                        "width" : 7,
+                                        "height" : 4,
+                                        "x" : 74,
+                                        "y" : 39,
+                                        "clip" : "end",
+                                        "zindex" : 103
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "neck" : {
+                "group" : "body",
+                "parts" : {
+                    "neck-top" : {
+                        "width" : 40,
+                        "height" : 10,
+                        "x" : 20,
+                        "y" : 45
+                    },
+                    "neck-bottom" : {
+                        "width" : 55,
+                        "height" : 8,
+                        "x" : 15,
+                        "y" : 55
+                    }
+                }
+            },
+            "tail" : {
+                "group" : "tail",
+                "parts" : {
+                    "tail-bottom" : {
+                        "width" : 50,
+                        "height" : 15,
+                        "x" : 8,
+                        "y" : 75
+                    },
+                    "tail-top" : {
+                        "width" : 15,
+                        "height" : 10,
+                        "x" : -20,
+                        "y" : 80
+                    }
+                }
+            },
+            "body" : {
+                "group" : "body",
+                "parts" : {
+                    "shoulders" : {
+                        "width" : 70,
+                        "height" : 10,
+                        "x" : 5,
+                        "y" : 60
+                    },
+                    "torso" : {
+                        "width" : 80,
+                        "height" : 15,
+                        "x" : 0,
+                        "y" : 70
+                    },
+                    "torso-belly" : {
+                        "width" : 70,
+                        "height" : 5,
+                        "x" : 5,
+                        "y" : 85
+                    }
+                }
+            },
+            "belly" : {
+                "group" : "belly",
+                "parts" : {
+                    "belly-top" : {
+                        "width" : 30,
+                        "height" : 12,
+                        "x" : 28,
+                        "y" : 62
+                    },
+                    "belly-mid" : {
+                        "width" : 40,
+                        "height" : 17,
+                        "x" : 23,
+                        "y" : 71
+                    },
+                    "belly-bottom" : {
+                        "width" : 30,
+                        "height" : 2,
+                        "x" : 27,
+                        "y" : 88
+                    }
+                }
+            },
+            "legs" : {
+                "parts" : {
+                    "left_leg" : { 
+                        "width" : 10, 
+                        "height" :  15,
+                        "x" : 8,
+                        "y" : 85,
+                        "zindex" : 0
+                    },
+                    "right_leg" : { 
+                        "width" : 10, 
+                        "height" : 15,
+                        "x" : 65, 
+                        "y" : 85,
+                        "zindex" : 0 
+                    }
+                }
+            }
+        }
+    },
+    "character0" : {
+        "name" : "Psycho Slasher",
+        "color" : "#5a4747",
+        "width" : 16,
+        "height" : 30,
+        "idlespeed" : ".35",
+        "animations" : [
+            "default",
+            "hood",
+            "psycho"
+        ],
+        "parts" : {
+            "groups" : {
+                "hood" : {
+                    "zindex" : 0,
+                    "path" : "chain"
+                },
+                "mask" : {
+                    "zindex" : 3,
+                    "path" : "round",
+                    "color" : "white"
+                },
+                "hair" : {
+                    "zindex" : 2,
+                    "path" : "round",
+                    "color" : "red"
+                },
+                "body" : {
+                    "zindex" : 1,
+                    "path" : "smooth"
+                }
+            },
+            "head" : {
+                "parts" : {
+                    "hood-top" : {
+                        "group" : "hood",
+                        "parts" : {
+                            "hood-top-mid" : {
+                                "width" : 80,
+                                "height" : 22,
+                                "x" : 10,
+                                "y" : 9
+                            },
+                            "hood-top-top" : {
+                                "width" : 15,
+                                "height" : 5,
+                                "x" : -10,
+                                "y" : 15
+                            }
+                        }
+                    },
+                    "hood" : {
+                        "group" : "body",
+                        "parts" : {
+                            "top-top"  : { 
+                                "width" : 40,
+                                "height" : 5,
+                                "x" : 30,
+                                "y" : 5
+                            },
+                            "top"  : { 
+                                "width" : 80,
+                                "height" : 5,
+                                "x" : 10,
+                                "y" : 8
+                            },
+                            "middle"  : {
+                                "width" : 100,
+                                "height" : 30,
+                                "x" : 0,
+                                "y" : 13
+                            },
+                            "bottom"  : {
+                                "width" : 90,
+                                "height" : 10,
+                                "x" : 5,
+                                "y" : 36
+                            }
+                        }
+                    },
+                    
+                    "hair" : {
+                        "group" : "hair",
+                        "parts" : {
+                            "hair-top"  : {
+                                "width" : 65,
+                                "height" : 2,
+                                "x" : 15,
+                                "y" : 14
+                            },
+                            "hair-main"  : {
+                                "width" : 45,
+                                "height" : 8,
+                                "x" : 45,
+                                "y" : 10
+                            }
+                        }
+                    },
+                    
+                    
+                    "mask" : {
+                        "color" : "white",
+                        "parts" : {
+                            "main"  : {
+                                "group" : "mask",
+                                "width" : 90,
+                                "height" : 18,
+                                "x" : 7,
+                                "y" : 15
+                            },
+                            "chin"  : {
+                                "group" : "mask",
+                                "width" : 80,
+                                "height" : 5,
+                                "x" : 12,
+                                "y" : 35
+                            },
+                            "eyes"  : {
+                                "color" : "black",
+                                "parts" : {
+                                    "left-eye" : { 
+                                        "width" : 10, 
+                                        "height" : 10,
+                                        "x" : 12, 
+                                        "y" : 20
+                                    },
+                                    "right-eye" : { 
+                                        "width" : 10, 
+                                        "height" : 10,
+                                        "x" : 82, 
+                                        "y" : 20 
+                                    }
+                                }
+                            },
+                            "nose" : {
+                                "color" : "black",
+                                "width" : 20,
+                                "height" : 10,
+                                "x" : 42,
+                                "y" : 24
+                            },
+                            "tooth1" : {
+                                "width" : 10,
+                                "height" : 5,
+                                "x" : 27,
+                                "y" : 40
+                            },
+                            "tooth2" : {
+                                "width" : 10,
+                                "height" : 5,
+                                "x" : 47,
+                                "y" : 40
+                            },
+                            "tooth3" : {
+                                "width" : 10,
+                                "height" : 5,
+                                "x" : 67,
+                                "y" : 40
+                            }
+                        }
+                    }
+                    
+                
+                }
+            },
+            "neck" : {
+                "group" : "body",
+                "parts" : {
+                    "neck-top" : {
+                        "width" : 60,
+                        "height" : 5,
+                        "x" : 20,
+                        "y" : 50
+                    },
+                    "neck-bottom" : {
+                        "width" : 60,
+                        "height" : 5,
+                        "x" : 20,
+                        "y" : 55
+                    }
+                }
+            },
+            "body" : {
+                "group" : "body",
+                "parts" : {
+                    "shoulders" : {
+                        "width" : 80,
+                        "height" : 10,
+                        "x" : 10,
+                        "y" : 60
+                    },
+                    "torso" : {
+                        "width" : 75,
+                        "height" : 15,
+                        "x" : 12.5,
+                        "y" : 70
+                    },
+                    "belly" : {
+                        "width" : 60,
+                        "height" : 5,
+                        "x" : 20,
+                        "y" : 82
+                    }
+                }
+            },
+            "legs" : {
+                "parts" : {
+                    "left_leg" : { 
+                        "parts" : {
+                            "left-thigh" : {
+                                "width" : 10, 
+                                "height" :  8,
+                                "x" : 20,
+                                "y" : 85
+                            },
+                            "left-calf" : {
+                                "color" : "black",
+                                "width" : 10, 
+                                "height" :  8,
+                                "x" : 20,
+                                "y" : 95
+                            }
+                        }
+                    },
+                    "right_leg" : { 
+                        "parts" : {
+                            "right-thigh" : {
+                                "width" : 10, 
+                                "height" :  8,
+                                "x" : 70,
+                                "y" : 85
+                            },
+                            "right-calf" : {
+                                "color" : "black",
+                                "width" : 10, 
+                                "height" :  8,
+                                "x" : 70,
+                                "y" : 95
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "character1" : {
+        "name" : "Gario",
+        "width" : 22,
+        "height" : 34, 
+        "idlespeed" : ".45",
+        "color" : "#B40404",
+        "animations" : [
+            "default",
+            "eyebrows",
+            "horns"
+        ],
+        "parts" : {
+            "groups" : {
+                "body" : {
+                    "zindex" : 10,
+                    "path" : "smooth"
+                },
+                "belt" : {
+                    "zindex" : 11,
+                    "path" : "smooth",
+                    "color" : "black"
+                },
+                "pants" : {
+                    "zindex" : 12,
+                    "path" : "smooth",
+                    "color" : "#624343"
+                },
+                "face" : {
+                    "zindex" : 13,
+                    "path" : "round",
+                    "color" : "red"
+                },
+                "stache" : {
+                    "zindex" : 14,
+                    "path" : "smooth",
+                    "color" : "black"
+                }
+            },
+            "head" : {
+                "parts" : {
+                    "horns"  : {
+                        "color" : "gray",
+                        "parts" : {
+                            "left_horn" : { 
+                                "width" : 10, 
+                                "height" : 5,
+                                "x" : 10, 
+                                "y" : 0 
+                            },
+                            "right_horn" : { 
+                                "width" : 10, 
+                                "height" : 5,
+                                "x" : 80, 
+                                "y" : 0 
+                            }
+                        }
+                    },
+                    "face" : {
+                        "parts" : {
+                            "forehead"  : { 
+                                "group" : "body",
+                                "width" : 90,
+                                "height" : 5,
+                                "x" : 5,
+                                "y" : 5
+                            },
+                            "main"  : {
+                                "group" : "body",
+                                "width" : 100,
+                                "height" : 35,
+                                "x" : 0,
+                                "y" : 10
+                            },
+                            "face-face" : {
+                                "group" : "face",
+                                "width" : 90,
+                                "height" : 30,
+                                "x" : 5,
+                                "y" : 10,
+                                "color" : "red"
+                            },
+                            "eyes"  : {
+                                "parts" : {
+                                    "left-eye" : {
+                                        "parts" : {
+                                            "left-eye-white" : {
+                                                "width" : 15, 
+                                                "height" : 5,
+                                                "x" : 10, 
+                                                "y" : 17, 
+                                                "color" : "white",
+                                                "pointinfo" : {
+                                                    "0" : "round",
+                                                    "1" : "round",
+                                                    "2" : "round",
+                                                    "3" : "round"
+                                                }
+                                            }, 
+                                            "left-eye-color" : {
+                                                "width" : 8, 
+                                                "height" : 3,
+                                                "x" : 13, 
+                                                "y" : 17, 
+                                                "color" : "green",
+                                                "pointinfo" : {
+                                                    "0" : "round",
+                                                    "1" : "round",
+                                                    "2" : "round",
+                                                    "3" : "round"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "right-eye" : { 
+                                        "parts" : {
+                                            "right-eye-white" : {
+                                                "width" : 15, 
+                                                "height" : 5,
+                                                "x" : 75, 
+                                                "y" : 17,
+                                                "color" : "white",
+                                                "pointinfo" : {
+                                                    "0" : "round",
+                                                    "1" : "round",
+                                                    "2" : "round",
+                                                    "3" : "round"
+                                                }
+                                            },
+                                            "right-eye-color" : {
+                                                "width" : 8, 
+                                                "height" : 3,
+                                                "x" : 79, 
+                                                "y" : 17,
+                                                "color" : "green",
+                                                "pointinfo" : {
+                                                    "0" : "round",
+                                                    "1" : "round",
+                                                    "2" : "round",
+                                                    "3" : "round"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "left-eyebrow" : {
+                                "color" : "black",
+                                "width" : 17, 
+                                "height" : 3,
+                                "x" : 9, 
+                                "y" : 15 
+                            },
+                            "right-eyebrow" : { 
+                                "color" : "black",
+                                "width" : 17, 
+                                "height" : 3,
+                                "x" : 74, 
+                                "y" : 15 
+                            },
+                            "chin"  : {
+                                "group" : "body",
+                                "width" : 80,
+                                "height" : 5,
+                                "x" : 10,
+                                "y" : 45
+                            },
+                            "nose" : {
+                                "parts" : {
+                                    "stache" : {
+                                        "group" : "stache",
+                                        "width" : 30,
+                                        "height" : 6,
+                                        "x" : 35,
+                                        "y" : 24,
+                                        "pointinfo" : {
+                                            "2" : "no-smooth",
+                                            "3" : "no-smooth"
+                                        }
+                                    },
+                                    "top" : {
+                                        "color" : {
+                                            "gradient" : {
+                                                "start" : "red",
+                                                "stop" : "#B40404"
+                                            }
+                                        },
+                                        "width" : 20,
+                                        "height" : 12,
+                                        "x" : 40,
+                                        "y" : 16,
+                                        "pointinfo" : {
+                                            "2" : "round",
+                                            "3" : "round"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "neck" : {
+                "group" : "body",
+                "parts" : {
+                    "neck-top" : {
+                        "width" : 60,
+                        "height" : 10,
+                        "x" : 20,
+                        "y" : 45
+                    },
+                    "neck-bottom" : {
+                        "width" : 60,
+                        "height" : 5,
+                        "x" : 20,
+                        "y" : 55
+                    }
+                }
+            },
+            "body" : {
+                "parts" : {
+                    "shoulders" : {
+                        "group" : "body",
+                        "width" : 70,
+                        "height" : 5,
+                        "x" : 15,
+                        "y" : 60
+                    },
+                    "torso-top" : {
+                        "group" : "body",
+                        "width" : 70,
+                        "height" : 3,
+                        "x" : 15,
+                        "y" : 67
+                    },
+                    "torso-mid" : {
+                        "group" : "body",
+                        "width" : 75,
+                        "height" : 10,
+                        "x" : 12.5,
+                        "y" : 75
+                    },
+                    "torso-bottom" : {
+                        "group" : "body",
+                        "width" : 60,
+                        "height" : 5,
+                        "x" : 20,
+                        "y" : 83
+                    },
+                    "belt" : {
+                        "group" : "belt",
+                        "width" : 75,
+                        "height" : 10,
+                        "x" : 12.5,
+                        "y" : 74
+                    },
+                    "belt-buckle" : {
+                        "width" : 15,
+                        "height" : 6,
+                        "x" : 40,
+                        "y" : 72,
+                        "color" : "#b9b92c"
+                    },
+                    "pants-top" : {
+                        "group" : "pants",
+                        "width" : 75,
+                        "height" : 8,
+                        "x" : 12.5,
+                        "y" : 78
+                    },
+                    "pants-bottom" : {
+                        "group" : "pants",
+                        "width" : 60,
+                        "height" : 5,
+                        "x" : 20,
+                        "y" : 83
+                    }
+                }
+            },
+            "legs" : {
+                "parts" : {
+                    "left_leg" : {
+                        "parts" : {
+                            "left-calf" : {
+                                "width" : 10, 
+                                "height" :  11,
+                                "x" : 20,
+                                "y" : 85,
+                                "color" : "#624343",
+                                "zindex" : 0
+                            },
+                            "left-hoof" : {
+                                "width" : 10, 
+                                "height" :  2,
+                                "x" : 20,
+                                "y" : 98,
+                                "color" : "black",
+                                "zindex" : 1
+                            }
+                        }
+                    },
+                    "right_leg" : { 
+                        "parts" : {
+                            "right-calf" : {
+                                "width" : 10, 
+                                "height" : 11,
+                                "x" : 70, 
+                                "y" : 85,
+                                "color" : "#624343",
+                                "zindex" : 0
+                            },
+                            "right-hoof" : {
+                                "width" : 10, 
+                                "height" : 2,
+                                "x" : 70, 
+                                "y" : 98,
+                                "color" : "black",
+                                "zindex" : 1
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "character2" : {
+        "name" : "NinjA",
+        "width" : 15,
+        "height" : 15, 
+        "idlespeed" : ".4",
+        "color" : "black",
+        "animations" : [
+            "default"
+        ],
+        "parts" : {
+            "groups" : {
+                "body" : {
+                    "zindex" : 2,
+                    "path" : "smooth"
+                },
+                "face" : {
+                    "zindex" : 3,
+                    "path" : "round",
+                    "color" : "pink"
+                }
+            },
+            "head" : {
+                "parts" : {
+                    "face" : {
+                        "parts" : {
+                            "mask" : {
+                                "group" : "body",
+                                "parts" : {
+                                    "top"  : { 
+                                        "width" : 75,
+                                        "height" : 5,
+                                        "x" : 12,
+                                        "y" : 0
+                                    },
+                                    "forehead"  : { 
+                                        "width" : 90,
+                                        "height" : 5,
+                                        "x" : 5,
+                                        "y" : 5
+                                    },
+                                    "main"  : {
+                                        "width" : 100,
+                                        "height" : 5,
+                                        "x" : 0,
+                                        "y" : 10
+                                    },
+                                    "bottom"  : {
+                                        "width" : 100,
+                                        "height" : 5,
+                                        "x" : 0,
+                                        "y" : 40
+                                    },
+                                    "chin"  : {
+                                        "width" : 80,
+                                        "height" : 5,
+                                        "x" : 10,
+                                        "y" : 45
+                                    }
+                                }
+                            },
+                            "face-face"  : {
+                                "group" : "face",
+                                "width" : 96,
+                                "height" : 25,
+                                "x" : 2,
+                                "y" : 15,
+                                "color" : "pink"
+                            },
+                            "eyes"  : {
+                                "color" : "black",
+                                "parts" : {
+                                    "left-eye" : { 
+                                        "width" : 20, 
+                                        "height" : 7,
+                                        "x" : 10, 
+                                        "y" : 25 
+                                    },
+                                    "right-eye" : { 
+                                        "width" : 20, 
+                                        "height" : 7,
+                                        "x" : 70, 
+                                        "y" : 25 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "neck" : {
+                "group" : "body",
+                "parts" : {
+                    "neck-top" : {
+                        "width" : 60,
+                        "height" : 15,
+                        "x" : 20,
+                        "y" : 45
+                    },
+                    "neck-middle" : {
+                        "width" : 60,
+                        "height" : 10,
+                        "x" : 20,
+                        "y" : 60
+                    }
+                    
+                }
+            },
+            "body" : {
+                "group" : "body",
+                "width" : 80,
+                "height" : 20,
+                "x" : 10,
+                "y" : 70
+            },
+            "legs" : {
+                "parts" : {
+                    "left_leg" : { 
+                        "width" : 10, 
+                        "height" :  21,
+                        "x" : 20,
+                        "y" : 85
+                    },
+                    "right_leg" : { 
+                        "width" : 10, 
+                        "height" : 21,
+                        "x" : 70, 
+                        "y" : 85 
+                    }
+                }
+            }
+        }
+    },
+    "character3" : {
+        "name" : "NinjB",
+        "width" : 20,
+        "height" : 20, 
+        "idlespeed" : ".43",
+        "color" : "black",
+        "animations" : [
+            "default"
+        ],
+        "parts" : {
+            "groups" : {
+                "body" : {
+                    "zindex" : 2,
+                    "path" : "smooth"
+                },
+                "face" : {
+                    "zindex" : 3,
+                    "path" : "round",
+                    "color" : "pink"
+                }
+            },
+            "head" : {
+                "parts" : {
+                    "face" : {
+                        "parts" : {
+                            "mask" : {
+                                "group" : "body",
+                                "parts" : {
+                                    "top"  : { 
+                                        "width" : 70,
+                                        "height" : 15,
+                                        "x" : 15,
+                                        "y" : 0
+                                    },
+                                    "forehead"  : { 
+                                        "width" : 100,
+                                        "height" : 30,
+                                        "x" : 0,
+                                        "y" : 10
+                                    },
+                                    "mouth-top"  : {
+                                        "width" : 100,
+                                        "height" : 3,
+                                        "x" : 0,
+                                        "y" : 40
+                                    },
+                                    "mouth"  : {
+                                        "width" : 90,
+                                        "height" : 7,
+                                        "x" : 5,
+                                        "y" : 43
+                                    },
+                                    "chin"  : {
+                                        "width" : 80,
+                                        "height" : 5,
+                                        "x" : 10,
+                                        "y" : 50
+                                    }
+                                }
+                            },
+                            "face-face"  : {
+                                "group" : "face",
+                                "width" : 96,
+                                "height" : 20,
+                                "x" : 2,
+                                "y" : 20,
+                                "color" : "pink"
+                            },
+                            "eyes"  : {
+                                "color" : "black",
+                                "parts" : {
+                                    "left-eye" : { 
+                                        "width" : 10, 
+                                        "height" : 10,
+                                        "x" : 10, 
+                                        "y" : 25 
+                                    },
+                                    "right-eye" : { 
+                                        "width" : 10, 
+                                        "height" : 10,
+                                        "x" : 80, 
+                                        "y" : 25 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "neck" : {
+                "group" : "body",
+                "parts" : {
+                    "neck-top" : { 
+                        "width" : 60,
+                        "height" : 10,
+                        "x" : 20,
+                        "y" : 50
+                    }
+                }
+            },
+            "body" : {
+                "group" : "body",
+                "width" : 80,
+                "height" : 20,
+                "x" : 10,
+                "y" : 65
+            },
+            "legs" : {
+                "parts" : {
+                    "left_leg" : { 
+                        "width" : 10, 
+                        "height" :  25,
+                        "x" : 20,
+                        "y" : 75
+                    },
+                    "right_leg" : { 
+                        "width" : 10, 
+                        "height" : 25,
+                        "x" : 70, 
+                        "y" : 75 
+                    }
+                }
+            }
+        }
+    },
+    "character4" : {
+        "name" : "NinjC",
+        "width" : 15,
+        "height" : 30, 
+        "idlespeed" : ".38",
+        "color" : "black",
+        "animations" : [
+            "default"
+        ],
+        "parts" : {
+            "groups" : {
+                "body" : {
+                    "zindex" : 2,
+                    "path" : "smooth"
+                },
+                "face" : {
+                    "zindex" : 3,
+                    "path" : "round",
+                    "color" : "pink"
+                }
+            },
+            "head" : {
+                "parts" : {
+                    "face" : {
+                        "parts" : {
+                            "mask" : {
+                                "group" : "body",
+                                "parts" : {
+                                    "forehead"  : { 
+                                        "width" : 80,
+                                        "height" : 5,
+                                        "x" : 10,
+                                        "y" : 10
+                                    },
+                                    "brow"  : { 
+                                        "width" : 100,
+                                        "height" : 5,
+                                        "x" : 0,
+                                        "y" : 15
+                                    },
+                                    "mouth-top"  : {
+                                        "width" : 100,
+                                        "height" : 5,
+                                        "x" : 0,
+                                        "y" : 35
+                                    },
+                                    "mouth"  : {
+                                        "width" : 90,
+                                        "height" : 10,
+                                        "x" : 5,
+                                        "y" : 40
+                                    },
+                                    "chin"  : {
+                                        "width" : 70,
+                                        "height" : 5,
+                                        "x" : 15,
+                                        "y" : 50
+                                    }
+                                }
+                            },
+                            "face-face"  : {
+                                "group" : "face",
+                                "width" : 96,
+                                "height" : 15,
+                                "x" : 2,
+                                "y" : 20,
+                                "color" : "pink"
+                            },
+                            "eyes"  : {
+                                "color" : "black",
+                                "parts" : {
+                                    "left-eye" : { 
+                                        "width" : 15, 
+                                        "height" : 3,
+                                        "x" : 10, 
+                                        "y" : 25 
+                                    },
+                                    "right-eye" : { 
+                                        "width" : 15, 
+                                        "height" : 3,
+                                        "x" : 75, 
+                                        "y" : 25 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "neck" : {
+                "group" : "body",
+                "parts" : {
+                    "neck-top" : {
+                        "width" : 60,
+                        "height" : 4,
+                        "x" : 20,
+                        "y" : 53
+                    },
+                    "neck-mid" : {
+                        "width" : 60,
+                        "height" : 4,
+                        "x" : 20,
+                        "y" : 57
+                    }
+                }
+            },
+            "body" : {
+                "group" : "body",
+                "width" : 80,
+                "height" : 15,
+                "x" : 10,
+                "y" : 65
+            },
+            "legs" : {
+                "parts" : {
+                    "left_leg" : { 
+                        "width" : 10, 
+                        "height" :  25,
+                        "x" : 20,
+                        "y" : 75
+                    },
+                    "right_leg" : { 
+                        "width" : 10, 
+                        "height" : 25,
+                        "x" : 70, 
+                        "y" : 75 
+                    }
+                }
+            }
+        }
+    },
+    "characterX" : {
+        "name" : "Trashcat",
+        "width" : 12,
+        "height" : 15, 
+        "idlespeed" : ".2",
+        "color" : "#DF7401",
+        "animations" : [
+            "default", 
+            "coon", 
+            "tail"
+        ],
+        "parts" : {
+            "groups" : {
+                "body" : {
+                    "zindex" : 10,
+                    "path" : "smooth"
+                },
+                "tail" : {
+                    "zindex" : 1,
+                    "color" : "black",
+                    "draw" : false
+                },
+                "mask" : {
+                    "zindex" : 13,
+                    "path" : "smooth",
+                    "color" : "#886A08"
+                }
+            },
+            "tail" : {
+                "parts" : {
+                    "tail-top" : {
+                        "width" : 28,
+                        "height" : 25,
+                        "x" : 34,
+                        "y" : 45,
+                        "draw" : false
+                    },
+                    "tail-bottom" : {
+                        "width" : 25,
+                        "height" : 15,
+                        "x" : 30,
+                        "y" : 60,
+                        "draw" : false
+                    }
+                }
+            },
+            "head" : {
+                "color" : "#B18904",
+                "parts" : {
+                    "horns"  : {
+                        "color" : "black",
+                        "parts" : {
+                            "left_horn" : { 
+                                "width" : 10, 
+                                "height" : 5,
+                                "x" : 10, 
+                                "y" : 0,
+                                "zindex" : 1
+                            },
+                            "right_horn" : { 
+                                "width" : 10, 
+                                "height" : 5,
+                                "x" : 80, 
+                                "y" : 0,
+                                "zindex" : 1
+                            }
+                        }
+                    },
+                    "hood" : {
+                        "group" : "body",
+                        "parts" : {
+                            "top"  : { 
+                                "width" : 90,
+                                "height" : 5,
+                                "x" : 5,
+                                "y" : 5
+                            },
+                            "middle"  : {
+                                "width" : 100,
+                                "height" : 25,
+                                "x" : 0,
+                                "y" : 10
+                            },
+                            "bottom"  : {
+                                "width" : 80,
+                                "height" : 5,
+                                "x" : 10,
+                                "y" : 35
+                            }
+                        }
+                    },
+                    "face" : {
+                        "parts" : {
+                            "mask"  : {
+                                "group" : "mask",
+                                "parts" : {
+                                    "mask-left" : {
+                                        "width" : 30,
+                                        "height" : 15,
+                                        "x" : 5,
+                                        "y" : 15
+                                    },
+                                    "mask-mid-left" : {
+                                        "width" : 14,
+                                        "height" : 18,
+                                        "x" : 35,
+                                        "y" : 13
+                                    },
+                                    "mask-mid-right" : {
+                                        "width" : 14,
+                                        "height" : 18,
+                                        "x" : 51,
+                                        "y" : 13
+                                    },
+                                    "mask-right" : {
+                                        "width" : 30,
+                                        "height" : 15,
+                                        "x" : 65,
+                                        "y" : 15
+                                    }
+                                }
+                            },
+                            "eyes"  : {
+                                "parts" : {
+                                    "left-eye" : {
+                                        "parts" : {
+                                            "left-eye-white" : {
+                                                "width" : 15, 
+                                                "height" : 5,
+                                                "x" : 10, 
+                                                "y" : 20,
+                                                "color" : "white",
+                                                "path" : "smooth"
+                                            }, 
+                                            "left-eye-color" : {
+                                                "width" : 8, 
+                                                "height" : 4,
+                                                "x" : 13, 
+                                                "y" : 21, 
+                                                "color" : "black",
+                                                "path" : "smooth"
+                                            }
+                                        }
+                                    },
+                                    "right-eye" : { 
+                                        "parts" : {
+                                            "right-eye-white" : {
+                                                "width" : 15, 
+                                                "height" : 5,
+                                                "x" : 75, 
+                                                "y" : 20,
+                                                "color" : "white",
+                                                "path" : "smooth"
+                                            }, 
+                                            "right-eye-color" : {
+                                                "width" : 8, 
+                                                "height" : 4,
+                                                "x" : 79, 
+                                                "y" : 21, 
+                                                "color" : "black",
+                                                "path" : "smooth"
+                                            }
+                                        } 
+                                    }
+                                }
+                            },
+                            "nose" : {
+                                "color" : "black",
+                                "width" : 20,
+                                "height" : 10,
+                                "x" : 40,
+                                "y" : 24,
+                                "path" : "smooth"
+                            }
+                        }
+                    }
+                }
+            },
+            
+            "legs" : {
+                "color" : "#886A08",
+                "parts" : {
+                    "left_leg" : { 
+                        "width" : 10, 
+                        "height" : 20,
+                        "x" : 25,
+                        "y" : 85,
+                        "zindex" : 0
+                    },
+                    "right_leg" : { 
+                        "width" : 10, 
+                        "height" : 20,
+                        "x" : 65, 
+                        "y" : 85,
+                        "zindex" : 0
+                    }
+                }
+            },
+            
+            "neck" : {
+                "group" : "body",
+                "color" : "#B18904",
+                "width" : 60,
+                "height" : 15,
+                "x" : 20,
+                "y" : 35
+            },
+            "body" : {
+                "group" : "body",
+                "parts" : {
+                    "torso" : {
+                        "width" : 70,
+                        "height" : 10,
+                        "x" : 15,
+                        "y" : 50
+                    },
+                    "trunk" : {
+                        "width" : 80,
+                        "height" : 20,
+                        "x" : 10,
+                        "y" : 60
+                    },
+                    "torso-bottom" : {
+                        "width" : 60,
+                        "height" : 10,
+                        "x" : 20,
+                        "y" : 80
+                    }
+                }
+            }
+        }
+    },
+    "characterG" : {
+        "name" : "Guerilla Gorilla",
+        "hidden" : true,
+        "width" : 25,
+        "height" : 35, 
+        "idlespeed" : ".23",
+        "color" : "#6d6c66",
+        "animations" : [
+            "default",
+            "ape"
+        ],
+        "parts" : {
+            "groups" : {
+                "body" : {
+                    "zindex" : 2,
+                    "path" : "smooth"
+                },
+                "face" : {
+                    "zindex" : 3,
+                    "path" : "round",
+                    "color" : "#9f9d96"
+                }
+            },
+            "head" : {
+                "parts" : {
+                    "face" : {
+                        "parts" : {
+                            "mask" : {
+                                "group" : "body",
+                                "parts" : {
+                                    "forehead"  : { 
+                                        "width" : 40,
+                                        "height" : 5,
+                                        "x" : 30,
+                                        "y" : 0
+                                    },
+                                    "brow"  : { 
+                                        "width" : 50,
+                                        "height" : 15,
+                                        "x" : 25,
+                                        "y" : 5
+                                    },
+                                    "middle"  : {
+                                        "width" : 60,
+                                        "height" : 5,
+                                        "x" : 20,
+                                        "y" : 25
+                                    },
+                                    "chin"  : {
+                                        "width" : 40,
+                                        "height" : 5,
+                                        "x" : 30,
+                                        "y" : 30
+                                    }
+                                }
+                            },
+                            "eyes"  : {
+                                "color" : "black",
+                                "parts" : {
+                                    "left-eye" : { 
+                                        "parts" : {
+                                            "left-eye-white" : {
+                                                "width" : 10, 
+                                                "height" : 1,
+                                                "x" : 30, 
+                                                "y" : 15,
+                                                "color" : "white",
+                                                "path" : "smooth"
+                                            },
+                                            "left-eye-color" : {
+                                                "width" : 3, 
+                                                "height" : 1,
+                                                "x" : 33, 
+                                                "y" : 15,
+                                                "path" : "smooth"
+                                            }
+                                        }
+                                    },
+                                    "right-eye" : { 
+                                        "parts" : {
+                                            "right-eye-white" : {
+                                                "width" : 10, 
+                                                "height" : 1,
+                                                "x" : 60, 
+                                                "y" : 15,
+                                                "color" : "white",
+                                                "path" : "smooth"
+                                            },
+                                            "right-eye-color" : {
+                                                "width" : 3, 
+                                                "height" : 1,
+                                                "x" : 64, 
+                                                "y" : 15,
+                                                "path" : "smooth"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "neck" : {
+                "group" : "body",
+                "parts" : {
+                    "neck-top" : {
+                        "width" : 20,
+                        "height" : 5,
+                        "x" : 40,
+                        "y" : 32
+                    },
+                    "neck-bottom" : {
+                        "width" : 20,
+                        "height" : 5,
+                        "x" : 40,
+                        "y" : 37
+                    }
+                }
+            },
+            "body" : {
+                "group" : "body",
+                "parts" : {
+                    "shoulders" : {
+                        "width" : 80,
+                        "height" : 20,
+                        "x" : 10,
+                        "y" : 40
+                    },
+                    "torso" : {
+                        "width" : 60,
+                        "height" : 20,
+                        "x" : 20,
+                        "y" : 65
+                    },
+                    "hips" : {
+                        "width" : 40,
+                        "height" : 10,
+                        "x" : 30,
+                        "y" : 85
+                    }
+                }
+            },
+            "legs" : {
+                "parts" : {
+                    "left_leg" : { 
+                        "width" : 10, 
+                        "height" :  15,
+                        "x" : 27,
+                        "y" : 90,
+                        "zindex" : 0
+                    },
+                    "right_leg" : { 
+                        "width" : 10, 
+                        "height" : 15,
+                        "x" : 63, 
+                        "y" : 90,
+                        "zindex" : 0
+                    }
+                }
+            }
+        }
+    }
+}

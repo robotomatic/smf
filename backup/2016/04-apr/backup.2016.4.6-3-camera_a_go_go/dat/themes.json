@@ -1,0 +1,11 @@
+{
+    "space" : {
+        "file" : "dat/themes/space.json"
+    },
+    "jungle" : {
+        "file" : "dat/themes/jungle.json"
+    },
+    "lava" : {
+        "file" : "dat/themes/lava.json"
+    }
+}

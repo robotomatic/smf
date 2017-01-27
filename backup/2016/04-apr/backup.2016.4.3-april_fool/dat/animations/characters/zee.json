@@ -1,0 +1,595 @@
+{
+    "zee" : {
+
+        "default" : {
+            "name" : "default",
+            "duration" : 1.5,
+            "repeat" : true,
+            "parts" : {
+                
+                "implant-main" : {
+                    "frames" : [
+                        { 
+                            "color" : "#b9f861"
+                        },
+                        { 
+                            "color" : "#a4ff25"
+                        }
+                    ]
+                },
+                
+                "left-eye-color" : {
+                    "frames" : [
+                        { 
+                            "width" : 150,
+                            "height" : 150,
+                            "x" : -1,
+                            "y" : -0.5
+                        },
+                        { 
+                            "width" : 100,
+                            "height" : 100,
+                            "x" : 0,
+                            "y" : 0
+                        }
+                    ]
+                },
+                
+                "right-eye-color" : {
+                    "frames" : [
+                        { 
+                            "width" : 100,
+                            "height" : 100,
+                            "x" : 0,
+                            "y" : 0
+                        },
+                        { 
+                            "width" : 120,
+                            "height" : 150,
+                            "x" : -1,
+                            "y" : -1
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "random" : {
+            "name" : "random",
+            "duration" : ".3",
+            "override" : true,
+            "repeat" : false,
+            "loop" : "start",
+            "chance" : 3,
+            "parts" : {
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "height" : 70,
+                            "y" : 0.5
+                        },
+                        { 
+                            "height" : 100,
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "idle" : {
+            "name" : "idle",
+            "duration" : 1,
+            "repeat" : true,
+            "parts" : {
+                
+                "mouth-tooth" : {
+                    "frames" : [
+                        { 
+                            "y" : 5
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                
+                "mouth-chin" : {
+                    "frames" : [
+                        { 
+                            "y" : 5
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                
+                "mouth-shadow" : {
+                    "frames" : [
+                        { 
+                            "height" : 110
+                        },
+                        { 
+                            "height" : 100
+                        }
+                    ]
+                },
+                
+                "chin" : {
+                    "frames" : [
+                        { 
+                            "y" : 2
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                
+                
+                "neck-shadow" : {
+                    "frames" : [
+                        { 
+                            "y" : 2
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                
+                "neck-collar" : {
+                    "frames" : [
+                        { 
+                            "y" : 2
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                
+                
+                "neck-bottom" : {
+                    "frames" : [
+                        { 
+                            "y" : 2
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                "belt" : {
+                    "frames" : [
+                        { 
+                            "y" : 2
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                "belt-buckle" : {
+                    "frames" : [
+                        { 
+                            "y" : 2
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                "pants-top" : {
+                    "frames" : [
+                        { 
+                            "y" : 2
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                "pants-bottom" : {
+                    "frames" : [
+                        { 
+                            "y" : 1
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        },
+
+        "walk" : {
+            "name" : "walk",
+            "duration" : ".2",
+            "repeat" : true,
+            "parts" : {
+                "belt" : {
+                    "frames" : [
+                        { 
+                            "y" : 2
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                "belt-buckle" : {
+                    "frames" : [
+                        { 
+                            "y" : 2
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                "pants-top" : {
+                    "frames" : [
+                        { 
+                            "y" : 2
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                },
+                "pants-bottom" : {
+                    "frames" : [
+                        { 
+                            "y" : 1
+                        },
+                        { 
+                            "y" : 0
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "left" : {
+            "name" : "look_left",
+            "parts" : {
+                
+                "mouth-shadow" : {
+                    "frames" : [
+                        { 
+                            "width" : 120
+                        }
+                    ]
+                },
+                
+                "neck-shadow" : {
+                    "frames" : [
+                        { 
+                            "width" : 70,
+                            "x" : 18
+                        }
+                    ]
+                },
+                
+                "mouth-tongue" : {
+                    "frames" : [
+                        { 
+                            "x" : 2
+                        }
+                    ]
+                },
+                "mouth" : {
+                    "frames" : [
+                        { 
+                            "x" : -12
+                        }
+                    ]
+                },
+                "mouth-mouth" : {
+                    "frames" : [
+                        { 
+                            "x" : -3
+                        }
+                    ]
+                },
+                "implant" : {
+                    "frames" : [
+                        { 
+                            "zindex" : -300
+                        }
+                    ]
+                },
+                "right-ear" : {
+                    "frames" : [
+                        { 
+                            "x" : 7
+                        }
+                    ]
+                },
+                "cheek" : {
+                    "frames" : [
+                        { 
+                            "x" : 15
+                        }
+                    ]
+                },
+                "forehead" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "x" : 4
+                        }
+                    ]
+                },
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "x" : 4
+                        }
+                    ]
+                },
+                "right-eye-junk" : {
+                    "frames" : [
+                        { 
+                            "x" : -3
+                        }
+                    ]
+                },
+                "right-arm" : {
+                    "frames" : [
+                        { 
+                            "x" : -1,
+                            "y" : 1
+                        }
+                    ]
+                },
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : -7
+                        }
+                    ]
+                },
+                "neck" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "neck-collar" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "left-eye-color" : {
+                    "frames" : [
+                        { 
+                            "x" : -2,
+                            "y" : 0.5
+                        }
+                    ]
+                },
+                "right-eye-color" : {
+                    "frames" : [
+                        { 
+                            "x" : -2
+                        }
+                    ]
+                },
+                "belt-buckle" : {
+                    "frames" : [
+                        { 
+                            "x" : -10
+                        }
+                    ]
+                },
+                "right-foot" : {
+                    "frames" : [
+                        { 
+                            "x" : -2,
+                            "pointinfo" : {
+                                "0" : "smooth"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+
+        "front" : {
+            "name" : "look_front",
+            "parts" : {
+                "left-eye-junk" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "right-eye-junk" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "implant" : {
+                    "frames" : [
+                        { 
+                        }
+                    ]
+                }
+            }
+        },
+        
+        "right" : {
+            "name" : "look_right",
+            "parts" : {
+
+                "neck-shadow" : {
+                    "frames" : [
+                        { 
+                            "width" : 70,
+                            "x" : -8
+                        }
+                    ]
+                },
+                
+                "mouth-shadow" : {
+                    "frames" : [
+                        { 
+                            "width" : 120,
+                            "x" : -10
+                        }
+                    ]
+                },
+                
+                
+                "mouth-tongue" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "mouth" : {
+                    "frames" : [
+                        { 
+                            "x" : 12
+                        }
+                    ]
+                },
+                "mouth-mouth" : {
+                    "frames" : [
+                        { 
+                            "x" : 3
+                        }
+                    ]
+                },
+                "implant" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "left-ear" : {
+                    "frames" : [
+                        { 
+                            "x" : -7
+                        }
+                    ]
+                },
+                "cheek" : {
+                    "frames" : [
+                        { 
+                            "x" : -17
+                        }
+                    ]
+                },
+                "forehead" : {
+                    "frames" : [
+                        { 
+                            "x" : -7
+                        }
+                    ]
+                },
+                "right-eye" : {
+                    "frames" : [
+                        { 
+                            "x" : -4,
+                            "y" : -1
+                        }
+                    ]
+                },
+                "left-eye" : {
+                    "frames" : [
+                        { 
+                            "x" : -4
+                        }
+                    ]
+                },
+                "left-eye-junk" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "right-arm" : {
+                    "frames" : [
+                        { 
+                            "x" : -2,
+                            "y" : 1
+                        }
+                    ]
+                },
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : 7
+                        }
+                    ]
+                },
+                "neck" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "neck-collar" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "left-eye-color" : {
+                    "frames" : [
+                        { 
+                            "x" : 3,
+                            "y" : 0.5
+                        }
+                    ]
+                },
+                "right-eye-color" : {
+                    "frames" : [
+                        { 
+                            "x" : 1,
+                            "y" : 1
+                        }
+                    ]
+                },
+                "belt-buckle" : {
+                    "frames" : [
+                        { 
+                            "x" : 10
+                        }
+                    ]
+                },
+                "left-foot" : {
+                    "frames" : [
+                        { 
+                            "x" : 2,
+                            "pointinfo" : {
+                                "1" : "smooth"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

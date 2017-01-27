@@ -1,0 +1,139 @@
+{
+    "hat" : {
+        
+        "front" : {
+            "name" : "look_front",
+            "parts" : {
+                "hat" : {
+                    "frames" : [
+                        { 
+
+                            "x" : -1
+                        }
+                    ]
+                },
+                "hat-band" : {
+                    "frames" : [
+                        { 
+                            "angle" : -2
+                        }
+                    ]
+                },
+                "hat-top-main" : {
+                    "frames" : [
+                        {
+                            "angle" : -2,
+                            "x" : -2
+                        }
+                    ]
+                },
+                "hat-mid" : {
+                    "frames" :  [
+                        {
+                            "angle" : -2
+                        }
+                    ]
+                },
+                "hat-brim" : {
+                    "frames" : [
+                        { 
+                            "x" : 2,
+                            "y" : -0.5,
+                            "height" : 150,
+                            "angle" : -2
+                        }
+                    ]
+                }
+            }
+        },
+        
+        
+        "left" : {
+            "name" : "look_left",
+            "parts" : {
+                "hat" : {
+                    "frames" : [
+                        {
+                            "x" : 0,
+                            "y" : 1
+                        }
+                    ]
+                },
+                "hat-band" : {
+                    "frames" : [
+                        {
+                            "angle" : 6
+                        }
+                    ]
+                },
+                "hat-top-main" : {
+                    "frames" : [
+                        {
+                            "angle" : 6,
+                            "x" : -3
+                        }
+                    ]
+                },
+                "hat-mid" : {
+                    "frames" : [
+                        {
+                        "angle" : 6
+                        }
+                    ]
+                },
+                "hat-brim" : {
+                    "frames" : [
+                        { 
+                            "x" : -15,
+                            "angle" : 6
+                        }
+                    ]
+                }
+            }
+        }, 
+        "right" : {
+            "name" : "look_right",
+            "parts" : {
+                "hat" : {
+                    "frames" : [
+                        { 
+
+                            "x" : 1,
+                            "y" : 1
+                        }
+                    ]
+                },
+                "hat-band" : {
+                    "frames" : [
+                        { 
+                            "angle" : -6
+                        }
+                    ]
+                },
+                "hat-top-main" : {
+                    "frames" : [
+                        {
+                            "angle" : -6,
+                            "x" : 0
+                        }
+                    ]
+                },
+                "hat-mid" : {
+                    "frames" :  [
+                        {
+                            "angle" : -6
+                        }
+                    ]
+                },
+                "hat-brim" : {
+                    "frames" : [
+                        { 
+                            "x" : 5,
+                            "angle" : -6
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

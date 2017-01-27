@@ -1,0 +1,63 @@
+{
+   "grass-top-back" : {
+        "name" : "grass-top-back",
+        "renderer" : {
+            "name" : "grass",
+            "color" : {
+                "light" : {
+                    "gradient" : {
+                        "start" : "#c8d8ac",
+                        "stop" : "#a0c954"
+                    }
+                },
+                "dark" : "#71811c"
+            }
+        }
+   },
+   "grass-top-front" : {
+        "name" : "grass-top-front",
+        "renderer" : {
+            "name" : "grass",
+            "color" : {
+                "light" : {
+                    "gradient" : {
+                        "start" : "#adc158",
+                        "stop" : "#87af3c"
+                    }
+                },
+                "dark" : "#71811c"
+            }
+        }
+   },
+   "grass-dark" : {
+        "name" : "grass-dark",
+        "renderer" : {
+            "name" : "grass",
+            "color" : {
+                "light" : {
+                    "gradient" : {
+                        "start" : "#a4be75",
+                        "stop" : "#84a545"
+                    }
+                },
+                "dark" : "#71811c"
+            }
+        }
+   },
+
+   "grass" : {
+       "name" : "grass",
+        "renderer" : {
+            "name" : "grass",
+            "color" : {
+                "light" : {
+                    "gradient" : {
+                        "start" : "#b6d380",
+                        "stop" : "#a0c954"
+                    } 
+                },
+                "dark" : "#71811c"
+            }
+        }
+   }
+}

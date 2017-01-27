@@ -1,0 +1,102 @@
+function AnimationManager(name, animation, character) {
+    this.name = name;
+    this.animation = animation;
+    this.animationRepeat = animation.repeat;
+    this.currentFrame = 0;
+    this.lastRender = timestamp();
+    this.animationOver = false;
+}
+
+AnimationManager.prototype.start = function(now, character) {
+    this.lastRender = now;
+    this.currentFrame = 0;
+    this.animationOver = false;
+    this.animate(character);
+}
+
+AnimationManager.prototype.next = function(now, character) {
+    if (!this.animation) return;
+    
+    // todo: pass in timestamp
+    
+    var dt = (now - this.lastRender) / 1000;
+    if (dt >= this.animation.duration) {
+        this.currentFrame++;
+        this.lastRender = timestamp();
+    }
+    this.animate(character);
+}
+
+AnimationManager.prototype.animate = function(character) {
+    if (!this.animation || this.animationOver) return;
+    
+    
+    var parts = this.animation.parts;
+    var keys = Object.keys(parts);
+    
+    
+    
+    for (var i = 0; i < keys.length; i++) this.animateCharacterState(character, keys[i], parts[keys[i]]);
+}
+
+AnimationManager.prototype.animateCharacterState = function(character, partname, animation) {
+    
+    part = this.getPart(partname, character);
+    if (!part) return;
+    
+    
+    var frame;
+    if (animation && animation.frames) {
+        var t = animation.frames.length;
+        var framenum = 0;
+        if (t > 1) {
+            if (this.currentFrame < t) framenum = this.currentFrame;
+            else {
+                if (this.animationRepeat) framenum = this.currentFrame = 0;
+                else {
+                    this.animationOver = true;
+                    this.animation = null;
+                    return;
+                }
+            }
+        } else {
+            if (this.currentFrame > 0 && !this.animationRepeat) {
+                this.animationOver = true;
+                this.animation = null;
+                return;
+            }
+        }
+        frame = animation.frames[framenum];
+    } else frame = animation;
+    this.applyAnimation(frame, part);
+    if (part.parts) {
+        
+        var keys = Object.keys(part.parts);
+        
+        for (var i = 0; i < keys.length; i++) {
+            this.animateCharacterState(character, keys[i], animation);
+        }
+    }
+}
+
+AnimationManager.prototype.getPart = function(partname, parts) {
+    var keys = Object.keys(parts);
+    for (var i = 0; i < keys.length; i++) {
+        var part = keys[i];
+        if (partname == part) return parts[part];
+        else if (parts[part].parts) {
+            var partpart = this.getPart(partname, parts[part].parts);
+            if (partpart) return partpart;
+        }
+    }
+}
+
+AnimationManager.prototype.applyAnimation = function(animation, part) {
+    if (animation && part.height && part.width) {
+        if (animation.height) part.height *= animation.height / 100;
+        if (animation.width) part.width *= animation.width / 100;
+        if (animation.x) part.x += animation.x;
+        if (animation.y) part.y += animation.y;
+    }
+    return part;
+}

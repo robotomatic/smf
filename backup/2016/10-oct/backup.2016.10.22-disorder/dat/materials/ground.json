@@ -1,0 +1,42 @@
+{
+   "ground" : {
+       "name" : "ground",
+        "step" : 20,
+        "radius" : 50,
+        "craziness" : 0,
+        "color" : {
+            "light" : {
+                "gradient" : {
+                    "start" : "#d0cdc6",
+                    "stop" : "#a7a7a7"
+                }
+            },
+            "dark" : "#7c7b79",
+            "projected" : {
+                "top" : "#92938b",
+                "side" : "#a5a5a2",
+                "bottom" : "#92938b"
+            }
+        }
+   },
+   "ground-dark" : {
+       "name" : "ground-dark",
+        "step" : 25,
+        "radius" : 10,
+        "craziness" : 1,
+        "color" : {
+            "light" : {
+                "gradient" : {
+                    "start" : "#716e6e",
+                    "stop" : "#b7b7b7"
+                }
+            },
+            "dark" : "#55544f",
+            "projected" : {
+                "top" : "#92938b",
+                "side" : "#92938b",
+                "bottom" : "#92938b"
+            }
+        }
+   }
+}

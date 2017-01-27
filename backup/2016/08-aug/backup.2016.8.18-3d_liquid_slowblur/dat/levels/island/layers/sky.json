@@ -1,0 +1,36 @@
+[
+    {
+        "name" : "sky",
+        "collide" : false,
+        "cache" : false,
+        "zindex" : 1,
+        "blur" : "small",
+        "items" : [
+            {
+                "x": 0,
+                "y": 0,
+                "width": "100%",
+                "height": 1300,
+                "itemtype" : "sky"
+            }
+        ]
+    },
+    
+    {
+        "name" : "stars",
+        "collide" : false,
+        "zindex" : 2,
+        "blur" : "small",
+        "cache" : false,
+        "items" : [
+            {
+                "x": -300,
+                "y": -300,
+                "width": 3800,
+                "height": 1200,
+                "animate" : true,
+                "itemtype" : "stars"
+            }
+        ]
+    }
+]

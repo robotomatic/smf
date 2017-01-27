@@ -1,0 +1,11 @@
+{
+    "level0" : {
+        "file" : "dat/levels/level0.json"
+    },
+    "level2" : {
+        "file" : "dat/levels/level2.json"
+    },
+    "level4" : {
+        "file" : "dat/levels/level4.json"
+    }
+}

@@ -1,0 +1,42 @@
+.ui-level-chooser {
+    margin: 0;
+    width: 100%;
+    float: left;
+}
+
+.ui-level-chooser-head {
+    width: 100%;
+}
+
+.ui-level-chooser-button-bar {
+    width: 2.8em;
+}
+
+.ui-level-chooser-navigation-button {
+    position: absolute;
+    top: 55%;
+}
+.ui-level-chooser-navigation-button-left {
+    left: 3%;
+}
+
+.ui-level-chooser-navigation-button-right {
+    right: 3%;
+}
+
+
+.ui-level-chooser-canvas {
+    margin: 5% 10%;
+    width: 80%;
+    float: left;
+    //overflow: hidden;
+    -webkit-transition: margin-left 2s linear;
+}
+
+.ui-level-chooser-canvas.level-prev {
+    margin-left: 120%;
+}
+
+.ui-level-chooser-canvas.level-next {
+    margin-left: -120%;
+}

@@ -1,0 +1,663 @@
+{
+"jungle" :  {
+        "background" : {
+            "color" : "#2ECCFA"
+        },
+    
+        "items" : {
+            "sky" : {
+                "name" : "sky",
+                "color" : {
+                    "gradient" : {
+                        "top" : 1,
+                        "height" : 800,
+                        "start" : "#2ECCFA",
+                        "stop" : "#edfbff"
+                    }
+                }
+            },
+            
+            "stars" : {
+                "name" : "stars",
+                "draw" : false,
+                "renderer" : {
+                    "name" : "stars",
+                    "total" : 0
+                }
+            },
+
+            "clouds" : {
+                "name" : "clouds",
+                "renderer" : {
+                    "name" : "clouds",
+                    "color" : "white",
+                    "maxwidth" : 400,
+                    "maxheight" : 200,
+                    "maxspeed" : 5,
+                    "total" : 15
+                }
+            },
+            
+            
+            "wave" : {
+                "name" : "water",
+                "renderer" : {
+                    "name" : "wave",
+                    "wavelength" : 600,
+                    "amplitude" : 1,
+                    "offset" : -0.02,
+                     "color" : {
+                        "gradient" : {
+                            "top" : 1000,
+                            "height" : 200,
+                            "start" : "#8adef7",
+                            "stop" : "#6094a2"
+                        }
+                     }
+                }
+            },
+            
+            "wave-body" : {
+                "name" : "water-body",
+                 "color" : {
+                    "gradient" : {
+                        "top" : 1000,
+                        "height" : 200,
+                        "start" : "#8adef7",
+                        "stop" : "#6094a2"
+                    }
+                 }
+            },
+             
+            
+            
+            
+           "grass-top-back" : {
+                "name" : "grass-top-back",
+                "renderer" : {
+                    "name" : "grass",
+                    "color" : {
+                        "light" : {
+                            "gradient" : {
+                                "start" : "#c8d8ac",
+                                "stop" : "#a0c954"
+                            }
+                        },
+                        "dark" : "#71811c"
+                    }
+                }
+           },
+           "grass-top-front" : {
+                "name" : "grass-top-front",
+                "renderer" : {
+                    "name" : "grass",
+                    "color" : {
+                        "light" : {
+                            "gradient" : {
+                                "start" : "#adc158",
+                                "stop" : "#87af3c"
+                            }
+                        },
+                        "dark" : "#71811c"
+                    }
+                }
+           },
+            
+           "grass-dark" : {
+                "name" : "grass-dark",
+                "renderer" : {
+                    "name" : "grass",
+                    "color" : {
+                        "light" : {
+                            "gradient" : {
+                                "start" : "#a4be75",
+                                "stop" : "#84a545"
+                            }
+                        },
+                        "dark" : "#71811c"
+                    }
+                }
+           },
+           "grass" : {
+                "name" : "grass",
+                "renderer" : {
+                    "name" : "grass",
+                    "color" : {
+                        "light" : {
+                            "gradient" : {
+                                "start" : "#b6d380",
+                                "stop" : "#a0c954"
+                            } 
+                        },
+                        "dark" : "#71811c"
+                    }
+                }
+           },
+            
+            
+            
+            
+            
+           "flag" : {
+                "name" : "flag",
+                "renderer" : {
+                    "name" : "flag",
+                    "color" : "blue",
+                    "amplitude" : 1.5,
+                    "offset" : 0.1
+                },
+                "before" : [
+                    {
+                        "align" : {
+                            "x" : "center",
+                            "y" : "bottom"
+                        },
+                        "x" : 17,
+                        "y" : -40,
+                        "width": 26,
+                        "height": 40,
+                        "itemtype" :  "grass-dark",
+                        "iteminfo" : {
+                            "angle" : {
+                                "start" : -5,
+                                "stop" : 5
+                            }                            
+                        }
+                    }
+                ],
+                "after" : [
+                    {
+                        "align" : {
+                            "x" : "center",
+                            "y" : "bottom"
+                        },
+                        "x" : 12,
+                        "y" : -29,
+                        "width": 40,
+                        "height": 30,
+                        "itemtype" : "grass",
+                        "iteminfo" : {
+                            "angle" : {
+                                "start" : -5,
+                                "stop" : 5
+                            }                            
+                        }
+                    }
+                ]
+            },
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            "bg-block-1" : {
+                "name" : "bg-block-1",
+                "color" : {
+                    "gradient" : {
+                        "start" : "#87af3c",
+                        "stop" : "#6f9031"
+                    },
+                    "projected" : {
+                        "top" : "#a0c954",
+                        "side" : "#86a054",
+                        "bottom" : "#66862a"
+                    }
+                }
+            },
+            
+            
+            
+            
+            
+            
+
+
+            
+            
+            
+            
+            
+            "platform" : {
+                "name" : "platform-1",
+                "itemtype" : "group",
+                "material" : {
+                    "name" : "ground",
+                    "step" : 20,
+                    "radius" : 10,
+                    "craziness" : 1,
+                    "color" : {
+                        "light" : {
+                            "gradient" : {
+                                "start" : "#d0cdc6",
+                                "stop" : "#a7a7a7"
+                            }
+                        },
+                        "dark" : "#7c7b79",
+                        "projected" : {
+                            "top" : "#92938b",
+                            "side" : "#a5a5a2",
+                            "bottom" : "#92938b"
+                        }
+                    }
+                },
+                "top" : {
+                    "color" : {
+                        "light" : "#87af3c",
+                        "dark" : "#6f9031",
+                        "projected" : {
+                            "top" : "#a0c954",
+                            "side" : "#86a054",
+                            "bottom" : "#66862a"
+                        }
+                    },
+                    "before" : [
+                        {
+                            "align" : {
+                                "x" : "left"
+                            },
+                            "x" : 2,
+                            "y" : -17,
+                            "width": 20,
+                            "height": 17,
+                            "itemtype" :  "grass-top-back",
+                            "iteminfo" : {
+                                "mid" : 2,
+                                "angle" : {
+                                    "start" : -5,
+                                    "stop" : -10
+                                }
+                            }
+                        },
+                        {
+                            "align" : {
+                                "x" : "right"
+                            },
+                            "x" : -25,
+                            "y" : -17,
+                            "width": 20,
+                            "height": 17,
+                            "itemtype" :  "grass-top-back",
+                            "iteminfo" : {
+                                "mid" : 3,
+                                "angle" : {
+                                    "start" : 5,
+                                    "stop" : 10
+                                }
+                            }
+                        }
+                    ],
+                    "after" : [
+                        {
+                            "align" : {
+                                "x" : "left"
+                            },
+                            "x" : 5,
+                            "y" : -15,
+                            "width": 10,
+                            "height": 15,
+                            "zindex"  : 19,
+                            "itemtype" : "grass-dark",
+                            "iteminfo" : {
+                                "mid" : 2,
+                                "angle" : {
+                                    "start" : -5,
+                                    "stop" : -10
+                                }
+                            }
+                        },
+                        {
+                            "align" : {
+                                "x" : "left"
+                            },
+                            "x" : 0,
+                            "y" : -15,
+                            "width": 20,
+                            "height": 16,
+                            "zindex"  : 20,
+                            "itemtype" : "grass-top-front",
+                            "iteminfo" : {
+                                "mid" : 2,
+                                "angle" : {
+                                    "start" : -5,
+                                    "stop" : -10
+                                }
+                            }
+                        },
+                        {
+                            "align" : {
+                                "x" : "right"
+                            },
+                            "x" : -20,
+                            "y" : -15,
+                            "width": 10,
+                            "height": 15,
+                            "zindex"  : 19,
+                            "itemtype" : "grass-dark",
+                            "iteminfo" : {
+                                "mid" : 3,
+                                "angle" : {
+                                    "start" : 5,
+                                    "stop" : 10
+                                }
+                            }
+                        },
+                        {
+                            "align" : {
+                                "x" : "right"
+                            },
+                            "x" : -25,
+                            "y" : -15,
+                            "width": 20,
+                            "height": 16,
+                            "zindex"  : 20,
+                            "itemtype" : "grass-top-front",
+                            "iteminfo" : {
+                                "mid" : 3,
+                                "angle" : {
+                                    "start" : 5,
+                                    "stop" : 10
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+
+            "platform-bg" : {
+                "name" : "platform-bg-1",
+                "itemtype" : "group",
+                "material" : {
+                    "name" : "ground",
+                    "step" : 25,
+                    "radius" : 10,
+                    "craziness" : 1,
+                    "color" : {
+                        "light" : {
+                            "gradient" : {
+                                "start" : "#716e6e",
+                                "stop" : "#b7b7b7"
+                            }
+                        },
+                        "dark" : "#55544f",
+                        "projected" : {
+                            "top" : "#92938b",
+                            "side" : "#92938b",
+                            "bottom" : "#92938b"
+                        }
+                    }
+                }
+            },
+            
+
+            
+            "platform-support" : {
+                "name" : "platform-support-1",
+                "material" : {
+                    "name" : "wood",
+                    "direction" : "vertical",
+                    "bark" : true,
+                    "sectionwidth" : 5,
+                    "linewidth" : 2,
+                    "color" : {
+                        "light" : {
+                            "gradient" : {
+                                "start" : "#918f89",
+                                "stop" : "#a39e8e"
+                            }
+                        },
+                        "dark" : "#817962"
+                    }
+                }
+            },
+            
+            "platform-support-wide" : {
+                "name" : "platform-support-wide-1",
+                "material" : {
+                    "name" : "wood",
+                    "direction" : "vertical",
+                    "bark" : true,
+                    "sectionwidth" : 5,
+                    "linewidth" : 2,
+                    "color" : {
+                        "light" : {
+                            "gradient" : {
+                                "start" : "#918f89",
+                                "stop" : "#a39e8e"
+                            }
+                        },
+                        "dark" : "#817962"
+                    }
+                }
+            },
+
+            
+            "ledge-1" : {
+                "name" : "ledge-1",
+                "material" : {
+                    "name" : "wood",
+                    "direction" : "horizontal",
+                    "bark" : false,
+                    "sectionwidth" : 2.5,
+                    "linewidth" : 0.5,
+                    "color" : {
+                        "light" : "#b5b0a0",
+                        "dark" : "#ddc066",
+                        "projected" : {
+                            "top" : "#c6c1b3",
+                            "side" : "#aca89c",
+                            "bottom" : "#969283"
+                        }
+                    }
+                }
+            },
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            "raised-platform" : {
+                "name" : "raised-platform-1",
+                "itemtype" : "group",
+                "material" : {
+                    "name" : "wood",
+                    "direction" : "horizontal",
+                    "bark" : false,
+                    "sectionwidth" : 5,
+                    "linewidth" : 0.5,
+                    "color" : {
+                        "light" : "#b5b0a0",
+                        "dark" : "#bfbbac",
+                        "projected" : {
+                            "top" : "#c6c1b3",
+                            "side" : "#aca89c",
+                            "bottom" : "#969283"
+                        }
+                    }
+                },
+                "top" : {
+                    "color" : {
+                        "light" : "#918f89",
+                        "dark" : "#817962",
+                        "projected" : {
+                            "top" : "#a5a4a1",
+                            "side" : "#7b7974",
+                            "bottom" : "#726c59"
+                        }
+                    }
+                }
+            },
+
+            
+            
+            
+            
+            "prop-1" : {
+                "name" : "prop-1",
+                "depth" : 0,
+                "material" : {
+                    "name" : "rock",
+                    "radius" : 4,
+                    "angle" : {
+                        "random" : {
+                            "low" : -2,
+                            "high" : 2
+                        }
+                    },
+                    "color" : {
+                        "light" : {
+                            "gradient" : {
+                                "start" : "#fdfdfd",
+                                "stop" : "#c7c7c6"
+                            }
+                        },
+                        "dark" : "#b9b7b7"
+                    }
+                },
+                "before" : [
+                    {
+                        "align" : {
+                            "x" : "left",
+                            "y" : "bottom"
+                        },
+                        "x" : -12,
+                        "y" : -38,
+                        "width": 30,
+                        "height": 35,
+                        "itemtype" : "grass-dark",
+                        "iteminfo" : {
+                            "mid" : 1,
+                            "angle" : {
+                                "start" : -10,
+                                "stop" : -25
+                            }
+                        }
+                    },
+                    {
+                        "align" : {
+                            "x" : "right",
+                            "y" : "bottom"
+                        },
+                        "x" : -20,
+                        "y" : -38,
+                        "width": 30,
+                        "height": 35,
+                        "itemtype" :  "grass-dark",
+                        "iteminfo" : {
+                            "mid" : 7,
+                            "angle" : {
+                                "start" : 10,
+                                "stop" : 25
+                            }
+                        }
+                    }
+                ],
+                "after" : [
+                    {
+                        "align" : {
+                            "x" : "left",
+                            "y" : "bottom"
+                        },
+                        "x" : -15,
+                        "y" : -24,
+                        "width": 30,
+                        "height": 25,
+                        "itemtype" : "grass",
+                        "iteminfo" : {
+                            "angle" : {
+                                "start" : -5,
+                                "stop" : -20
+                            }
+                        }
+                    },
+                    {
+                        "align" : {
+                            "x" : "right",
+                            "y" : "bottom"
+                        },
+                        "x" : -17,
+                        "y" : -24,
+                        "width": 30,
+                        "height": 25,
+                        "itemtype" : "grass",
+                        "iteminfo" : {
+                            "angle" : {
+                                "start" : 5,
+                                "stop" : 20
+                            }
+                        }
+                    }
+                ]
+            },
+            
+            
+
+
+            
+            
+            
+            "fg-block-1" : {
+                "name" : "crate",
+                "cache" : true,
+                "color" : {
+                    "color" : "#DBA901",
+                    "projected" : {
+                        "top" : "#e6bf3b",
+                        "side" : "#c6a127",
+                        "bottom" : "#ad8a14"
+                    }
+                }
+            },
+
+            
+            "ffg-block-1" : {
+                "name" : "reed",
+                "cache" : true,
+                "color" : {
+                    "color" : "#e6da94",
+                    "projected" : {
+                        "top" : "#e2dab0",
+                        "side" : "#e0d074",
+                        "bottom" : "#e6da94"
+                    }
+                }
+            },
+
+            
+            
+            
+            "fg-moving-block-1" : {
+                "name" : "moving-block",
+                "color" : {
+                    "color" : "#957d2c",
+                    "projected" : {
+                        "top" : "#b49632",
+                        "side" : "#957d2c",
+                        "bottom" : "#867c5a"                    
+                    }
+                }
+            }
+            
+            
+            
+            
+            
+        }
+    }
+}

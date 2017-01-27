@@ -1,0 +1,89 @@
+[
+    {
+        "name" : "platforms-right-right-back",
+        "comment" : "platform furthest",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 50,
+        "top" : true,
+        "items" : [
+
+            {
+                "x" : 2600,
+                "y" : 1080,
+                "z" : 110,
+                "itemtype" : "platform",
+                "iteminfo" : {
+                    "top" : {
+                        "after" : {
+                            "right" : null
+                        }
+                    }
+                },
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 420,
+                        "height": 40
+                    }
+                ]
+            }
+        ]
+    },
+    
+    {
+        "name" : "platforms-right-right-front",
+        "comment" : "closest platforms",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 60,
+        "top" : true,
+        "items" : [
+ 
+            {
+                "x" : 2840,
+                "y" : 1080,
+                "z" : 50,
+                "itemtype" : "platform",
+                "iteminfo" : {
+                    "top" : {
+                        "before" : null,
+                        "after" : null
+                    },
+                    "front" : false
+                },
+                "parts" : [
+                   {
+                        "x": 0,
+                        "y": 0,
+                        "width": 180,
+                        "height": 40
+                    }
+                ]
+            },
+            
+           {
+                "x" : 2800,
+                "y" : 1080,
+                "z" : 0,
+                "itemtype" : "platform",
+                "iteminfo" : {
+                    "top" : {
+                        "before" : {
+                            "right" : null
+                        }
+                    }
+                },
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 220,
+                        "height": 40
+                    }
+                ]
+            }
+        ]
+    }
+]
