@@ -1,0 +1,702 @@
+{
+    "name" : "Lava Mountain",
+    "width" : 3200,
+    "height" : 700,
+    "background" : {
+        "color" : "#B40404"
+    },
+    "layers" : [
+        {
+            "name" : "bounds",
+            "collide" : true,
+            "draw" : false,
+            "items" : [
+                {
+                    "name" : "ceiling",
+                    "x": 0,
+                    "y": 0,
+                    "width": 3200,
+                    "height": 10
+                },
+                {
+                    "name" : "left-wall",
+                    "x": 0,
+                    "y": 0,
+                    "width": 10,
+                    "height": 700,
+                    "color": "#FFFFFF",
+                    "draw" : false
+                },
+                {
+                    "name" : "right-wall",
+                    "x": 3190,
+                    "y": 0,
+                    "width": 10,
+                    "height": 700
+                },
+                {
+                    "name" : "floor",
+                    "x": 0,
+                    "y": 650,
+                    "width": 3200,
+                    "height": 10
+                }
+            ]
+        },
+        {
+            "name" : "gradient",
+            "collide" : false,
+            "width" : "100%",
+            "items" : [
+                {
+                    "name" : "bg",
+                    "x": 0,
+                    "y": 0,
+                    "width": "100%",
+                    "height": 700,
+                    "color" : {
+                        "gradient" : {
+                            "start" : "#B40404",
+                            "stop" : "#5F04B4"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name" : "background-0",
+            "cssblur" : "blur-max",
+            "blur" : "1.5",
+            "scale" : ".9",
+            "lighten" : ".2",
+            "parallax" : ".7",
+            "collide" : false,
+            "items" : [
+                {
+                    "x": 0,
+                    "y": 600,
+                    "width": 3200,
+                    "height": 640,
+                    "color" : "#3B170B"
+                },
+                {
+                    "x": 100,
+                    "y": 550,
+                    "width": 3000,
+                    "height": 240,
+                    "color" : "#3B170B"
+                },
+                {
+                    "x": 300,
+                    "y": 350,
+                    "width": 2000,
+                    "height": 540,
+                    "color" : "#3B170B"
+                },
+                {
+                    "x": 530,
+                    "y": 170,
+                    "width": 200,
+                    "height": 200,
+                    "color" : "#3B170B"
+                },
+                {
+                    "x": 450,
+                    "y": 260,
+                    "width": 500,
+                    "height": 240,
+                    "color" : "#3B170B"
+                },
+                {
+                    "x": 1800,
+                    "y": 350,
+                    "width": 800,
+                    "height": 540,
+                    "color" : "#3B170B"
+                },
+                {
+                    "x": 1200,
+                    "y": 250,
+                    "width": 700,
+                    "height": 740,
+                    "color" : "#3B170B"
+                },
+                {
+                    "x": 1000,
+                    "y": 50,
+                    "width": 300,
+                    "height": 740,
+                    "color" : "#3B170B"
+                },
+                {
+                    "x": 1000,
+                    "y": 200,
+                    "width": 180,
+                    "height": 180,
+                    "color" : "#3B170B"
+                }
+            ]
+        },
+        {
+            "name" : "background-1",
+            "cssblur" : "blur-large",
+            "blur" : "1.2",
+            "scale" : ".95",
+            "lighten" : "0",
+            "parallax" : ".8",
+            "collide" : false,
+            "items" : [
+                {
+                    "x": 640,
+                    "y": 275,
+                    "width": 240,
+                    "height": 240,
+                    "color" : "#6E6E6E", 
+                    "itemtype" : "bg-block"
+                },
+                {
+                    "x": 420,
+                    "y": 475,
+                    "width": 240,
+                    "height": 240,
+                    "color" : "#6E6E6E", 
+                    "itemtype" : "bg-block"
+                },
+
+                {
+                    "x": 380,
+                    "y": 375,
+                    "width": 240,
+                    "height": 240,
+                    "color" : "#6E6E6E", 
+                    "itemtype" : "bg-block"
+                },
+
+                {
+                    "x": 870,
+                    "y": 575,
+                    "width": 240,
+                    "height": 240,
+                    "color" : "#6E6E6E", 
+                    "itemtype" : "bg-block"
+                },
+                {
+                    "x": 1270,
+                    "y": 175,
+                    "width": 540,
+                    "height": 240,
+                    "color" : "#6E6E6E", 
+                    "itemtype" : "bg-block"
+                },
+                {
+                    "x": 1620,
+                    "y": 450,
+                    "width": 240,
+                    "height": 240,
+                    "color" : "#6E6E6E", 
+                    "itemtype" : "bg-block"
+                },
+                {
+                    "x": 2175,
+                    "y": 475,
+                    "width": 490,
+                    "height": 240,
+                    "color" : "#6E6E6E", 
+                    "itemtype" : "bg-block"
+                },
+                {
+                    "x": 2000,
+                    "y": 555,
+                    "width": 240,
+                    "height": 240,
+                    "color" : "#6E6E6E", 
+                    "itemtype" : "bg-block"
+                }
+            ]
+        },
+        {
+            "name" : "background",
+            "cssblur" : "blur-small",
+            "blur" : "1",
+            "lighten" : ".2",
+            "scale" : ".99",
+            "parallax" : ".9",
+            "collide" : false,
+            "items" : [
+                {
+                    "x": 525,
+                    "y": 255,
+                    "width": 140,
+                    "height": 140,
+                    "color" : "#5F04B4"
+                },
+                {
+                    "x": 350,
+                    "y": 430,
+                    "width": 240,
+                    "height": 240,
+                    "color" : "#5F04B4"
+                },
+
+                {
+                    "x": 650,
+                    "y": 490,
+                    "width": 150,
+                    "height": 140,
+                    "color" : "#5F04B4"
+                },
+
+                {
+                    "x": 1870,
+                    "y": 575,
+                    "width": 640,
+                    "height": 140,
+                    "color" : "#5F04B4"
+                },
+                
+                {
+                    "x": 820,
+                    "y": 305,
+                    "width": 140,
+                    "height": 140,
+                    "color" : "#5F04B4"
+                },
+                {
+                    "x": 850,
+                    "y": 350,
+                    "width": 240,
+                    "height": 240,
+                    "color" : "#5F04B4"
+                },
+
+                {
+                    "x": 800,
+                    "y": 440,
+                    "width": 450,
+                    "height": 340,
+                    "color" : "#5F04B4"
+                },
+
+                {
+                    "x": 870,
+                    "y": 595,
+                    "width": 140,
+                    "height": 140,
+                    "color" : "#5F04B4"
+                },
+                {
+                    "x": 1490,
+                    "y": 520,
+                    "width": 240,
+                    "height": 180,
+                    "color" : "#5F04B4"
+                },
+                {
+                    "x": 1375,
+                    "y": 475,
+                    "width": 340,
+                    "height": 140,
+                    "color" : "#5F04B4"
+                },
+                {
+                    "x": 1780,
+                    "y": 490,
+                    "width": 340,
+                    "height": 340,
+                    "color" : "#5F04B4"
+                },
+                {
+                    "x": 2470,
+                    "y": 310,
+                    "width": 140,
+                    "height": 540,
+                    "color" : "#5F04B4"
+                },
+                {
+                    "x": 2450,
+                    "y": 460,
+                    "width": 240,
+                    "height": 240,
+                    "color" : "#5F04B4"
+                }
+            ]
+        },
+        {
+            "name" : "players-shadows",
+            "cache" : false
+        },
+        {
+            "name" : "front-ledges",
+            "collide" : true,
+            "cache" : false,
+            "items" : [
+                {
+                    "x": 480,
+                    "y": 450,
+                    "width": 100,
+                    "height": 10,
+                    "color" : "#424242",
+                    "collide" : "top"
+                },
+                {
+                    "x": 580,
+                    "y": 500,
+                    "width": 150,
+                    "height": 10,
+                    "color" : "#424242",
+                    "collide" : "top"
+                },
+
+
+                {
+                    "x": 760,
+                    "y": 450,
+                    "width": 150,
+                    "height": 10,
+                    "color" : "#424242",
+                    "collide" : "top"
+                },
+
+                {
+                    "x": 1300,
+                    "y": 600,
+                    "width": 260,
+                    "height": 10,
+                    "color" : "#424242",
+                    "collide" : "top"
+                },
+                {
+                    "x": 1500,
+                    "y": 550,
+                    "width": 260,
+                    "height": 10,
+                    "color" : "#424242",
+                    "collide" : "top"
+                },
+                {
+                    "x": 1790,
+                    "y": 500,
+                    "width": 320,
+                    "height": 10,
+                    "color" : "#424242",
+                    "collide" : "top"
+                },
+
+                {
+                    "x": 1750,
+                    "y": 320,
+                    "width": 120,
+                    "height": 10,
+                    "color" : "#424242",
+                    "collide" : "top"
+                },
+                {
+                    "x": 1950,
+                    "y": 290,
+                    "width": 120,
+                    "height": 10,
+                    "color" : "#424242",
+                    "collide" : "top"
+                },
+                {
+                    "x": 2150,
+                    "y": 250,
+                    "width": 120,
+                    "height": 10,
+                    "color" : "#424242",
+                    "collide" : "top"
+                }
+            ]
+        },
+        {
+            "name" : "players",
+            "cache" : false
+        },
+        {
+            "name" : "front-blocks",
+            "collide" : true,
+            "cache" : false,
+            "items" : [
+                {
+                    "x": 350,
+                    "y": 580,
+                    "width": 180,
+                    "height": 80,
+                    "color" : "#A901DB"
+                },
+                {
+                    "x": 310,
+                    "y": 510,
+                    "width": 80,
+                    "height": 80,
+                    "color" : "#A901DB"
+                },
+                {
+                    "x": 280,
+                    "y": 585,
+                    "width": 80,
+                    "height": 80,
+                    "color" : "#A901DB"
+                },
+                {
+                    "x": 480,
+                    "y": 630,
+                    "width": 180,
+                    "height": 20,
+                    "color" : "#A901DB"
+                },
+                {
+                    "x": 400,
+                    "y": 600,
+                    "width": 60,
+                    "height": 25,
+                    "color" : "#A901DB"
+                },
+                
+                {
+                    "x": 1350,
+                    "y": 340,
+                    "width": 70,
+                    "height": 70,
+                    "color" : "#A901DB"
+                },
+                {
+                    "x": 1300,
+                    "y": 550,
+                    "width": 120,
+                    "height": 120,
+                    "color" : "#A901DB"
+                },
+                {
+                    "x": 1200,
+                    "y": 1350,
+                    "width": 80,
+                    "height": 80,
+                    "color" : "#A901DB"
+                },
+                {
+                    "x": 1420,
+                    "y": 450,
+                    "width": 80,
+                    "height": 40,
+                    "color" : "#A901DB"
+                },
+                
+                {
+                    "x": 2240,
+                    "y": 350,
+                    "width": 180,
+                    "height": 400,
+                    "color" : "#A901DB"
+                },
+                {
+                    "x": 2540,
+                    "y": 520,
+                    "width": 180,
+                    "height": 240,
+                    "color" : "#A901DB"
+                },
+                
+
+                {
+                    "x": 1540,
+                    "y": 120,
+                    "width": 180,
+                    "height": 140,
+                    "color" : "#A901DB"
+                },
+                {
+                    "x": 1080,
+                    "y": 250,
+                    "width": 180,
+                    "height": 40,
+                    "color" : "#A901DB"
+                }
+            ]
+        },
+        {
+            "name" : "front-crates",
+            "collide" : true,
+            "cache" : false,
+            "items" : [
+                {
+                    "x": 205,
+                    "y": 590,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+                
+                
+                {
+                    "x": 550,
+                    "y": 340,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+                {
+                    "x": 620,
+                    "y": 290,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+                
+
+                {
+                    "x": 440,
+                    "y": 340,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+                {
+                    "x": 390,
+                    "y": 400,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+
+                {
+                    "x": 2040,
+                    "y": 355,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+
+                {
+                    "x": 920,
+                    "y": 475,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+                {
+                    "x": 1030,
+                    "y": 475,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+
+                {
+                    "x": 980,
+                    "y": 375,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+
+                {
+                    "x": 980,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+                {
+                    "x": 1080,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+                
+                {
+                    "x": 2800,
+                    "y": 475,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+
+                {
+                    "x": 2770,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+                
+                
+                {
+                    "x": 1140,
+                    "y": 475,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+                {
+                    "x": 1090,
+                    "y": 375,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+                
+
+                {
+                    "x": 1820,
+                    "y": 200,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+                
+                
+                
+                {
+                    "x": 2870,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+                {
+                    "x": 2075,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+                {
+                    "x": 2150,
+                    "y": 475,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                },
+                {
+                    "x": 2470,
+                    "y": 435,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "crate-red"
+                }
+            ]
+        },
+        {
+            "name" : "foreground",
+            "width" : "100%",
+            "collide" : false,
+            "items" : [
+                {
+                    "name" : "front-ground",
+                    "x": 0,
+                    "y": 650,
+                    "width": "100%",
+                    "height": 150,
+                    "color" : {
+                        "gradient" : {
+                            "start" : "#B40404",
+                            "stop" : "#000000"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

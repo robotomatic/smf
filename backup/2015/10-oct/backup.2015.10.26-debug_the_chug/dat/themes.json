@@ -1,0 +1,201 @@
+{
+    "jungle" :  {
+        "background" : {
+            "color" : "#2ECCFA"
+        },
+        "items" : {
+            "sky" : {
+                "name" : "sky",
+                "color" : {
+                    "gradient" : {
+                        "start" : "#2ECCFA",
+                        "stop" : "#FFFFFF"
+                    }
+                }
+            },
+            "fg-ground" : {
+                "name" : "grass",
+                "color" : {
+                    "gradient" : {
+                        "start" : "#00E600",
+                        "stop" : "#00A300"
+                    }
+                }
+            },
+            "bg-block-3" : {
+                "name" : "bg-block-3",
+                "color" : "#243B0B"
+            },
+            "bg-block-2" : {
+                "name" : "bg-block-2",
+                "color" : "#088A85"
+            },
+            "bg-block-1" : {
+                "name" : "bg-block-1",
+                "color" : "#74DF00"
+            },
+            "ledge-1" : {
+                "name" : "ledge-1",
+                "color" : "#585858"
+            },
+            "fg-block-2" : {
+                "name" : "bushes",
+                "color" : "#00E600"
+            },
+            "fg-ramp-1" : {
+                "name" : "ramp",
+                "color" : "#088A85"
+            },
+            "fg-ramp-block-1" : {
+                "name" : "ramp-block",
+                "color" : "#088A85"
+            },
+            "fg-block-1" : {
+                "name" : "crate",
+                "parts" : {
+                    "back" : {
+                        "color" : "#DBA901",
+                        "width" : 100,
+                        "height" : 100,
+                        "x" : 0,
+                        "y" : 0,
+                        "parts" : {
+                            "face" : {
+                                "color" : "#FFAD33",
+                                "parts" : {
+                                    "side"  : { 
+                                        "width" : 70,
+                                        "height" : 70,
+                                        "x" : 15,
+                                        "y" : 15
+                                    }
+                                }
+                            },
+                            "cross" : {
+                                "color" : "#DBA901",
+                                "parts" : {
+                                    "top-left"  : { 
+                                        "width" : 20,
+                                        "height" : 20,
+                                        "x" : 25,
+                                        "y" : 25
+                                    },
+                                    "top-right"  : { 
+                                        "width" : 20,
+                                        "height" : 20,
+                                        "x" : 55,
+                                        "y" : 25
+                                    },
+                                    "center"  : { 
+                                        "width" : 20,
+                                        "height" : 20,
+                                        "x" : 40,
+                                        "y" : 40
+                                    },
+                                    "bottom-left"  : { 
+                                        "width" : 20,
+                                        "height" : 20,
+                                        "x" : 25,
+                                        "y" : 55
+                                    },
+                                    "bottom-right"  : { 
+                                        "width" : 20,
+                                        "height" : 20,
+                                        "x" : 55,
+                                        "y" : 55
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "lava" : {
+        "background" : {
+            "color" : "#B40404"
+        },
+        "items" : {
+             "sky" : {
+                "name" : "sky",
+                "color" : {
+                    "gradient" : {
+                        "start" : "#B40404",
+                        "stop" : "#5F04B4"
+                    }
+                }
+            },
+            "fg-ground" : {
+                "name" : "rocks",
+                "color" : {
+                    "gradient" : {
+                        "start" : "#B40404",
+                        "stop" : "#000000"
+                    }
+                }
+            },
+            "bg-block-3" : {
+                "name" : "bg-block-3",
+                "color" : "#3B170B"
+            },
+            "bg-block-2" : {
+                "name" : "bg-block-2",
+                "color" : "#6E6E6E"
+            },
+            "bg-block-1" : {
+                "name" : "bg-block-1",
+                "color" : "#5F04B4"
+            },
+            "ledge-1" : {
+                "name" : "ledge-1",
+                "color" : "#424242"
+            },
+            "fg-block-2" : {
+                "name" : "rocks",
+                "color" : "#A901DB"
+            },
+            "fg-ramp-1" : {
+                "name" : "ramp",
+                "color" : "red"
+            },
+           "fg-block-1" : {
+                "name" : "boxes",
+                "parts" : {
+                    "back" : {
+                        "color" : "#8A2908",
+                        "width" : 100,
+                        "height" : 100,
+                        "x" : 0,
+                        "y" : 0,
+                        "parts" : {
+                            "face" : {
+                                "color" : "#B43104",
+                                "parts" : {
+                                    "side"  : { 
+                                        "width" : 80,
+                                        "height" : 80,
+                                        "x" : 10,
+                                        "y" : 10
+                                    }
+                                }
+                            },
+                            "square" : {
+                                "color" : "#8A2908",
+                                "parts" : {
+                                    "side"  : { 
+                                        "width" : 40,
+                                        "height" : 40,
+                                        "x" : 30,
+                                        "y" : 30
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

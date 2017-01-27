@@ -1,0 +1,131 @@
+@font-face {
+    font-family: 'SourceSansPro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('SourceSansPro'), local('SourceSansPro-Regular'), url(../fonts/SourceSansPro-Regular.ttf) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+@font-face {
+    font-family: 'Slackey';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Slackey'), url(../fonts/Slackey.ttf) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+    }
+@font-face {
+    font-family: 'Press Start 2P';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Press Start 2P'), local('PressStart2P-Regular'), url(../fonts/PressStart2P-Regular.ttf) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+html {
+    font-family: 'SourceSansPro';
+    font-weight: 400; 
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #00c9ed;
+    background: -moz-radial-gradient(center, ellipse cover,  #00c9ed 0%, #00ffff 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#00c9ed), color-stop(100%,#00ffff));
+    background: -webkit-radial-gradient(center, ellipse cover,  #00c9ed 0%,#00ffff 100%);
+    background: -o-radial-gradient(center, ellipse cover,  #00c9ed 0%,#00ffff 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  #00c9ed 0%,#00ffff 100%);
+    background: radial-gradient(ellipse at center,  #00c9ed 0%,#00ffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00c9ed', endColorstr='#00ffff',GradientType=1 );
+}
+
+.white-bg {
+    background-color: white;
+}
+
+.middle {
+    display: table; 
+    position: absolute; 
+    height: 100%; 
+    width: 100%;
+}
+
+.center {
+    display: table-cell; 
+    vertical-align: middle;
+    text-align: center;
+}
+
+.relative {
+    position: relative;
+}
+
+.round-corners {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.circle {
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.shadow {
+    -webkit-box-shadow: 0px 0px 20px 2px rgba(0,0,0,0.29);
+    -moz-box-shadow: 0px 0px 20px 2px rgba(0,0,0,0.29);
+    box-shadow: 0px 0px 20px 2px rgba(0,0,0,0.29);
+}
+
+.shadow-none {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.shadow-invert {
+    -webkit-box-shadow: inset 0px 0px 20px 2px rgba(0,0,0,0.29);
+    -moz-box-shadow: inset 0px 0px 20px 2px rgba(0,0,0,0.29);
+    box-shadow: inset 0px 0px 20px 2px rgba(0,0,0,0.29);
+}
+
+.text-shadow {
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
+}
+
+.no-margin-left {
+    margin-left: 0 !important;
+}
+
+.no-margin-right {
+    margin-right: 0 !important;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+full-width {
+    width: 100%;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}

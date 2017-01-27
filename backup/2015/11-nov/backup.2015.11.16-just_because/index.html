@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>SUPER MURDER FRIENDS</title>
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
+        <link rel="stylesheet" href="css/card.css" type="text/css" />
+        <link rel="stylesheet" href="css/logo.css" type="text/css" />
+        <link rel="stylesheet" href="css/colors.css" type="text/css" />
+        <link rel="stylesheet" href="css/main.css" type="text/css" />
+        <link rel="stylesheet" href="css/ui-main-buttons.css" type="text/css" />
+        <link rel="stylesheet" href="css/menu.css" type="text/css" />
+        <link rel="stylesheet" href="css/menu-player.css" type="text/css" />
+        <link rel="stylesheet" href="css/game.css" type="text/css" />
+        <link rel="stylesheet" href="css/ui-range.css" type="text/css" />
+        <link rel="stylesheet" href="css/ui-toggle.css" type="text/css" />
+        <link rel="stylesheet" href="css/ui-player-chooser.css" type="text/css" />
+        <link rel="stylesheet" href="css/ui-level-chooser.css" type="text/css" />
+        <link rel="stylesheet" href="css/ui-dev.css" type="text/css" />
+        <link rel="stylesheet" href="css/animate_fade.css" type="text/css" />
+        <link rel="stylesheet" href="css/animate_slide.css" type="text/css" />
+        <link rel="stylesheet" href="css/breakpoints.css" type="text/css" />
+        <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+    </head>
+    <body>
+        <div class="auto fade-in  bg-color-main bg-main" id="main">
+            <div class="main-content-head bg-color-main bg-toolbar fg-color-main border-bottom slide slide-up ui-shadow" id="main-content-head"></div>
+            <div class="center menu main-content main-content-window fit-height" id="main-content"></div>
+            <div class="bg-color-main bg-toolbar fg-color-main fade-border border slide slide-down ui-shadow" id="main-content-foot">
+            
+                <div class="fade-in main-content-button-bar" id="main-content-button-bar">
+                    <div class="main-content-button-bar-button fade-in">
+                        <div class="menu-game-button-icon menu-game-button-icon-small bg-color-main fg-color-main border circle ui-shadow">
+                            <a href="#" class="fade-hide menu-game-button-icon-link fg-color-main" id="main-content-button-home">
+                                <i class="menu-game-button-icon-link-icon fa fa-home"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="main-content-button-bar-button fade-in">
+                        <div class="menu-game-button-icon bg-color-main fg-color-main border circle ui-shadow">
+                            <a href="#" class="fade-hide menu-game-button-icon-link fg-color-main" id="main-content-button-settings">
+                                <i class="menu-game-button-icon-link-icon fa fa-gear"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="main-content-button-bar-button fade-in">
+                        <div id="main-content-game-button" class="menu-game-button-icon menu-game-button-icon-large bg-color-main fg-color-main bg-color-ok border circle ui-shadow relative">
+                        </div>
+                    </div>
+                    <div class="main-content-button-bar-button fade-in">
+                        <div class="menu-game-button-icon bg-color-main fg-color-main border circle ui-shadow">
+                            <a href="#" class="fade-hide menu-game-button-icon-link fg-color-main menu-game-button-icon-link-icon" id="main-content-button-fullscreen">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-square-o fa-stack-2x"></i>
+                                    <i class="fa fa-arrows-alt fa-stack-1x"></i>
+                                </span>                            
+                            </a>
+                        </div>
+                    </div>
+                    <div class="main-content-button-bar-button fade-in">
+                        <div class="menu-game-button-icon menu-game-button-icon-small bg-color-main fg-color-main border circle ui-shadow">
+                            <a href="#" class="fade-hide menu-game-button-icon-link fg-color-main" id="main-content-button-volume">
+                                <i class="menu-game-button-icon-link-icon fa fa-volume-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </body>
+    <script type="text/javascript" src="js/lib/util.js"></script>
+    <script type="text/javascript" src="js/lib/json.js"></script>
+    <script type="text/javascript" src="js/lib/ajax.js"></script>
+    <script type="text/javascript" src="js/lib/input.js"></script>
+    <script type="text/javascript" src="js/lib/ui.js"></script>
+    <script type="text/javascript" src="js/lib/collision.js"></script>
+    <script type="text/javascript" src="js/lib/draw.js"></script>
+    <script type="text/javascript" src="js/engine/game_loop.js"></script>
+    <script type="text/javascript" src="js/engine/game_controller.js"></script>    
+    <script type="text/javascript" src="js/engine/game_loader.js"></script>    
+    <script type="text/javascript" src="js/engine/game_settings.js"></script>    
+    <script type="text/javascript" src="js/engine/controller/menu.js"></script>    
+    <script type="text/javascript" src="js/engine/controller/menu_player_chooser.js"></script>    
+    <script type="text/javascript" src="js/engine/controller/menu_level_chooser.js"></script>    
+    <script type="text/javascript" src="js/engine/controller/game_party.js"></script>    
+    <script type="text/javascript" src="js/engine/world/geometry/point.js"></script>
+    <script type="text/javascript" src="js/engine/world/geometry/rectangle.js"></script>
+    <script type="text/javascript" src="js/engine/world/stage.js"></script>
+    <script type="text/javascript" src="js/engine/world/levels.js"></script>
+    <script type="text/javascript" src="js/engine/world/level.js"></script>
+    <script type="text/javascript" src="js/engine/world/layer.js"></script>
+    <script type="text/javascript" src="js/engine/world/themes.js"></script>
+    <script type="text/javascript" src="js/engine/world/theme.js"></script>
+    <script type="text/javascript" src="js/engine/world/item_cache.js"></script>
+    <script type="text/javascript" src="js/engine/world/item_animator.js"></script>
+    <script type="text/javascript" src="js/engine/world/item_renderer.js"></script>
+    
+    <script type="text/javascript" src="js/engine/world/renderer/item_renderer_waves.js"></script>
+    <script type="text/javascript" src="js/engine/world/renderer/item_renderer_clouds.js"></script>
+    <script type="text/javascript" src="js/engine/world/renderer/item_renderer_stars.js"></script>
+    <script type="text/javascript" src="js/engine/world/renderer/item_renderer_flag.js"></script>
+    <script type="text/javascript" src="js/engine/world/renderer/item_renderer_wood.js"></script>
+    <script type="text/javascript" src="js/engine/world/renderer/item_renderer_scaffold.js"></script>
+    <script type="text/javascript" src="js/engine/world/renderer/item_renderer_ground.js"></script>
+    <script type="text/javascript" src="js/engine/world/renderer/item_renderer_metal.js"></script>
+    <script type="text/javascript" src="js/engine/world/renderer/item_renderer_gears.js"></script>
+    
+    <script type="text/javascript" src="js/engine/world/actor/characters.js"></script>
+    <script type="text/javascript" src="js/engine/world/actor/character.js"></script>
+    <script type="text/javascript" src="js/engine/world/actor/character_animator.js"></script>
+    <script type="text/javascript" src="js/engine/world/actor/character_renderer.js"></script>
+    <script type="text/javascript" src="js/engine/world/actor/animations.js"></script>
+    <script type="text/javascript" src="js/engine/world/actor/animation.js"></script>
+    <script type="text/javascript" src="js/engine/world/actor/animation_manager.js"></script>
+    <script type="text/javascript" src="js/engine/world/actor/player.js"></script>
+    <script type="text/javascript" src="js/engine/world/actor/players.js"></script>
+    <script type="text/javascript" src="js/engine/world/actor/npc.js"></script>
+    <script type="text/javascript" src="js/engine/world/actor/npcs.js"></script>
+    <script type="text/javascript" src="js/engine/view/view.js"></script>
+    <script type="text/javascript" src="js/engine/view/view_level.js"></script>
+    <script type="text/javascript" src="js/engine/view/view_party.js"></script>
+    <script type="text/javascript" src="js/engine/view/view_party_camera.js"></script>
+    <script type="text/javascript" src="js/engine/view/view_characters.js"></script>
+    <script type="text/javascript" src="js/engine/view/ui.js"></script>
+    <script type="text/javascript" src="js/engine/view/dev.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>    
+</html>

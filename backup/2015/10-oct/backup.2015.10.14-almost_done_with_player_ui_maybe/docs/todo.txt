@@ -1,0 +1,71 @@
+todo:
+
+- first char jumpy glitch thing
+
+- hotkeys
+
+- add level/stage/world/whatever-the-fuck chooser
+
+- remove fake level/player/camera loader
+
+- implement "real" WebRTC phone controller
+
+- player UI sometimes fucked when view si unscaled?
+
+- weapons & death
+
+- pause game (grey screen)
+
+- toggle sound icon & sound
+
+- armies & leggies
+
+- stretch when jumping, compress when falling
+
+- add random blink, look around state
+  - need multiple "idle" animations (choose randomly but wisely!)
+
+- custom name, color, stats
+
+- draw pixel grid if debug mode
+
+- add collision box to players to prevent sliding when jumping
+
+- Better camera system: 
+    - need camera hit box to prevent jumpiness
+      http://blog.mimeoverse.com/post/581467761/the-ideal-platformer-camera-should-minimize
+    - add cushion to game view scaling
+
+- fix player at edge-of-bounds camera situation
+
+- quads for render and collide: load static level items in areaQuad, actors in pointQuad
+  https://github.com/mikechambers/ExamplesByMesh/tree/master/JavaScript/QuadTree
+
+- find out why player4 is "stronger" than other players - something to do with update order...?
+
+- "bullet through paper" is still a thing: need to fix collisions!!!
+
+- level editor
+
+- ramps
+
+- player editor
+
+- player stats:     health =/= strength =/= speed
+                    fast and weak vs. strong and slow - choose wisely!
+                    
+                    i.e. you get 20 points to spend...
+                    
+                    health:   XXXXXXXX--
+                    strength: XXXXX-----
+                    speed:    XXXXXXX---
+                    
+                    - size of character is based on strength - weak characters are small, strong characters are big?
+                    - * need a way to immediately represent how healthy a player is (including what percent is left?)
+                    - strength: weight in collisions, power when pushing, movement speed when lifting
+
+
+
+
+- 8-bit reservoir dogs chars? "kill the gimp!"
+- horses in suits named Charlie and Whinney

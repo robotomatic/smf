@@ -1,0 +1,13 @@
+.menu-game-button-icon-link-icon-pause.fa {
+    line-height: 1.8em;
+}
+
+.game-canvas-text {
+    font-family: 'Press Start 2P';
+    position: absolute;
+    margin: 0;
+    width: 50%;
+    z-index: 999;
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+}

@@ -1,0 +1,110 @@
+/* latin */
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Press Start 2P'), local('PressStart2P-Regular'), url(../fnt/PressStart2P-Regular.ttf) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+html {
+    font-family: 'Press Start 2P';
+    font-weight: 400; 
+    background-color: aqua;
+}
+
+body {
+    margin: 0;
+}
+
+canvas {
+    position: absolute;
+    display: block;
+}
+
+ignore.blur-small {
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);    
+}
+
+ignore.blur-large {
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);    
+}
+
+ignore.blur-max {
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);    
+}
+
+#stage-wrap {
+    margin: .5em auto 0 auto;
+    width: 99%;
+    height: 30em;
+    display: block;
+}
+
+.camera-wrap {
+    float: left;
+    display: block;
+    margin: .5%;
+    background-color: black;
+}
+
+.camera-canvas {
+    background-color: black;
+}
+
+.phone-portrait {
+    width: 10%;
+    height: 12em;
+}
+
+.phone-landscape {
+    width: 20%;
+    height: 12em;
+}
+
+.tablet-portrait {
+    width: 15%;
+    height: 15em;
+}
+
+.tablet-landscape {
+    width: 20%;
+    height: 15em;
+}
+
+.pc-screen {
+    width: 30%;
+    height: 15em;
+    margin-right: 0;
+}
+
+.middle {
+    display: table; 
+    position: absolute; 
+    height: 100%; 
+    width: 100%;
+}
+
+.center {
+    display: table-cell; 
+    vertical-align: middle;
+    text-align: center;
+}
+
+.loader {
+    color: white;
+    font-size: 1.2em;
+    text-decoration: none;
+}

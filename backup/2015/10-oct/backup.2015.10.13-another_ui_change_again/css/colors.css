@@ -1,0 +1,49 @@
+.bg-main {
+    background: #45cfe8 ;
+    background: -moz-radial-gradient(center, ellipse cover,  #45cfe8  0%, #00ffff 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#45cfe8 ), color-stop(100%,#00ffff));
+    background: -webkit-radial-gradient(center, ellipse cover,  #45cfe8  0%,#00ffff 100%);
+    background: -o-radial-gradient(center, ellipse cover,  #45cfe8  0%,#00ffff 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  #45cfe8  0%,#00ffff 100%);
+    background: radial-gradient(ellipse at center,  #45cfe8  0%,#00ffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45cfe8 ', endColorstr='#00ffff',GradientType=1 );
+}
+
+.bg-toolbar {
+    background: #00ffff;
+    background: -moz-linear-gradient(left,  #00ffff 0%, #45cfe8  52%, #00ffff 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#00ffff), color-stop(52%,#45cfe8 ), color-stop(100%,#00ffff));
+    background: -webkit-linear-gradient(left,  #00ffff 0%,#45cfe8  52%,#00ffff 100%);
+    background: -o-linear-gradient(left,  #00ffff 0%,#45cfe8  52%,#00ffff 100%);
+    background: -ms-linear-gradient(left,  #00ffff 0%,#45cfe8  52%,#00ffff 100%);
+    background: linear-gradient(to right,  #00ffff 0%,#45cfe8  52%,#00ffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffff', endColorstr='#00ffff',GradientType=1 );
+}
+
+.bg-color-main {
+    background-color: #00ffff ;
+}
+
+.bg-color-ok {
+    background-color: #94CE23;
+    background: #94CE23;
+}
+
+.bg-color-white {
+    background-color: white;
+}
+
+.fg-color-main {
+    color: white;
+    border-color: white;
+}
+
+.fg-color-light {
+    color: lightgray;
+    border-color: lightgray;
+}
+
+.fg-color-dark {
+    color: gray;
+    border-color: gray;
+}

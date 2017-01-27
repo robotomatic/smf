@@ -1,0 +1,72 @@
+<div class="center menu menu-game fit-height fade-hide" id="game-content">
+    <div ui-height="4" class="ui-height"></div>
+    <div ui-height="90" class="ui-height main-menu-image-image round-corners" id="menu-party-player">
+
+        // move devtools to bottom-right corner of main view
+        // this shit needs to live in its own file
+        // find out why animations aren't running in party player chooser
+        // change char loader so it only uses 1 engine instance :
+        //                  - need 4 platforms in level
+        //                  - need multiple instances of chars
+        
+        <div ui-height="70" class="ui-height menu-party-player-player menu-party-player-player-left">
+            <div class="flip">
+                <div class="card" id="menu-game-player-view-player-button-card-1"> 
+
+                    <div class="face front">                
+                        <div ui-height="75" class="ui-height menu-party-player-player-inner shadow round-corners" id="menu-party-player-1">
+                            <div ui-height="65" class="ui-height menu-player-canvas-relative menu-party-player-canvas" id="menu-canvas-1"></div>
+                            <p ui-top="-82" class="ui-top menu-text text-center">PLAYER 1</p>        
+                            <p ui-top="55" class="ui-top menu-canvas-text menu-canvas-text-party text-center" id="menu-canvas-1-ui"></p>        
+                            <div ui-item-link="menu-canvas-1" ui-item-link-point="bc" class="ui-item-link menu-game-party-player-button-bottom-wrap">
+                                <a href="#" class="fade-in menu-game-player-button-bottom menu-game-player-button-bottom-left" id="menu-game-player-view-player-button-prev-1">
+                                    <i ui-min-scale="30" ui-max-scale="30" ui-scale-h="8" class="ui-scale-h menu-game-player-view-player-button-icon circle shadow fa fa-chevron-circle-left"></i>
+                                </a>
+                                <a id="menu-game-player-view-player-button-flip-1" href="#" class="fade-in menu-game-player-button-bottom menu-game-player-button-bottom-large  menu-game-player-button-bottom-middle ">
+                                    <i ui-min-scale="45" ui-max-scale="45" ui-scale-h="8" class="ui-scale-h menu-game-player-view-player-button-icon circle shadow fa fa-wrench"></i>
+                                </a>
+                                <a href="#" class="fade-in menu-game-player-button-bottom menu-game-player-button-bottom-right" id="menu-game-player-view-player-button-next-1">
+                                    <i ui-min-scale="30" ui-max-scale="30" ui-scale-h="8" class="ui-scale-h menu-game-player-view-player-button-icon circle shadow fa fa-chevron-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="face back">                
+                        <div ui-height="75" class="ui-height menu-party-player-player-inner shadow round-corners" id="menu-party-player-custom-1">
+                            <div ui-height="65" class="ui-height menu-player-canvas-relative menu-party-player-canvas" id="menu-canvas-custom-1"></div>
+                            <p ui-top="-82" class="ui-top menu-text text-center">CUSTOM OPTIONS</p>        
+                            <p ui-top="30" class="ui-top menu-canvas-text menu-canvas-text-party text-center" id="menu-canvas-custom-1-ui">CUSTOM, BABY!</p>        
+                            <div ui-item-link="menu-canvas-custom-1" ui-item-link-point="bc" class="ui-item-link menu-game-party-player-button-bottom-wrap">
+                                <a href="#" class="fade-in menu-game-player-button-bottom menu-game-player-button-bottom-left" id="menu-game-player-view-player-button-prev-1">
+                                    <i ui-min-scale="30" ui-max-scale="30" ui-scale-h="8" class="ui-scale-h menu-game-player-view-player-button-icon circle shadow fa fa-undo"></i>
+                                </a>
+                                <a id="menu-game-player-view-player-button-unflip-1" href="#" class="fade-in menu-game-player-button-bottom menu-game-player-button-bottom-large  menu-game-player-button-bottom-middle ">
+                                    <i ui-min-scale="45" ui-max-scale="45" ui-scale-h="8" class="ui-scale-h menu-game-player-view-player-button-icon circle shadow fa fa-check"></i>
+                                </a>
+                                <a href="#" class="fade-in menu-game-player-button-bottom menu-game-player-button-bottom-right" id="menu-game-player-view-player-button-next-1">
+                                    <i ui-min-scale="30" ui-max-scale="30" ui-scale-h="8" class="ui-scale-h menu-game-player-view-player-button-icon circle shadow fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+            
+        
+    </div>
+    
+    <div ui-item-link="menu-party-player" ui-item-link-point="bc" class="ui-item-link menu-game-player-button-bottom-wrap">
+        <a href="#" class="fade-in menu-game-player-button-bottom menu-game-player-button-bottom-left">
+            <i ui-min-scale="40" ui-max-scale="40" ui-scale-h="8" class="ui-scale-h menu-game-player-view-player-button-icon circle  fa fa-home"></i>
+        </a>
+        <a href="#menu-party-level" class="fade-in menu-game-player-button-bottom menu-game-player-button-bottom-large menu-game-player-button-bottom-middle">
+            <i ui-min-scale="55" ui-max-scale="55" ui-scale-h="8" class="ui-scale-h menu-game-player-view-player-button-icon circle  fa fa-check"></i>
+        </a>
+        
+        
+    </div>
+</div>

@@ -1,0 +1,726 @@
+{
+    "name" : "Mountain",
+    "theme" : "lava",
+    "width" : 3200,
+    "height" : 800,
+    "layers" : [
+        {
+            "name" : "bounds",
+            "collide" : true,
+            "draw" : false,
+            "items" : [
+                {
+                    "name" : "ceiling",
+                    "x": 0,
+                    "y": 0,
+                    "width": 3200,
+                    "height": 10
+                },
+                {
+                    "name" : "left-wall",
+                    "x": 0,
+                    "y": 0,
+                    "width": 10,
+                    "height": 850,
+                    "draw" : false
+                },
+                {
+                    "name" : "right-wall",
+                    "x": 3190,
+                    "y": 0,
+                    "width": 10,
+                    "height": 850
+                },
+                {
+                    "name" : "floor",
+                    "x": 0,
+                    "y": 850,
+                    "width": 3200,
+                    "height": 10
+                }
+            ]
+        },
+        {
+            "name" : "sky",
+            "collide" : false,
+            "cache" : true,
+            "preview" : false,
+            "width" : "100%",
+            "height" : "100%",
+            "items" : [
+                {
+                    "x": 0,
+                    "y": 0,
+                    "width": "100%",
+                    "height": "100%",
+                    "itemtype" : "sky"
+                }
+            ]
+        },
+        {
+            "name" : "stars",
+            "collide" : false,
+            "preview" : false,
+            "cache" : false,
+            "items" : [
+                {
+                    "x": -300,
+                    "y": -300,
+                    "width": 3800,
+                    "height": 1200,
+                    "animate" : true,
+                    "itemtype" : "stars"
+                }
+            ]
+        },
+        {
+            "name" : "background-3",
+            "blur" : "1.5",
+            "scale" : ".9",
+            "lighten" : ".2",
+            "parallax" : ".7",
+            "collide" : false,
+            "cache" : true,
+            "items" : [
+                {
+                    "x": 0,
+                    "y": 600,
+                    "width": 3200,
+                    "height": 640,
+                    "itemtype" : "bg-block-3"
+                },
+                {
+                    "x": 100,
+                    "y": 550,
+                    "width": 3000,
+                    "height": 240,
+                    "itemtype" : "bg-block-3"
+                },
+                {
+                    "x": 300,
+                    "y": 350,
+                    "width": 2000,
+                    "height": 540,
+                    "itemtype" : "bg-block-3"
+                },
+                {
+                    "x": 530,
+                    "y": 170,
+                    "width": 200,
+                    "height": 200,
+                    "itemtype" : "bg-block-3"
+                },
+                {
+                    "x": 450,
+                    "y": 260,
+                    "width": 500,
+                    "height": 240,
+                    "itemtype" : "bg-block-3"
+                },
+                {
+                    "x": 1800,
+                    "y": 350,
+                    "width": 800,
+                    "height": 540,
+                    "itemtype" : "bg-block-3"
+                },
+                {
+                    "x": 1200,
+                    "y": 250,
+                    "width": 700,
+                    "height": 740,
+                    "itemtype" : "bg-block-3"
+                },
+                {
+                    "x": 1000,
+                    "y": 50,
+                    "width": 300,
+                    "height": 740,
+                    "itemtype" : "bg-block-3"
+                },
+                {
+                    "x": 1000,
+                    "y": 200,
+                    "width": 180,
+                    "height": 180,
+                    "itemtype" : "bg-block-3"
+                }
+            ]
+        },
+        {
+            "name" : "background-2",
+            "blur" : "1.2",
+            "scale" : ".95",
+            "lighten" : "0",
+            "parallax" : ".8",
+            "collide" : false,
+            "cache" : true,
+            "items" : [
+                {
+                    "x": 640,
+                    "y": 275,
+                    "width": 240,
+                    "height": 240,
+                    "itemtype" : "bg-block-2"
+                },
+                {
+                    "x": 420,
+                    "y": 475,
+                    "width": 240,
+                    "height": 240,
+                    "itemtype" : "bg-block-2"
+                },
+
+                {
+                    "x": 380,
+                    "y": 375,
+                    "width": 240,
+                    "height": 240,
+                    "itemtype" : "bg-block-2"
+                },
+
+                {
+                    "x": 870,
+                    "y": 575,
+                    "width": 240,
+                    "height": 240,
+                    "itemtype" : "bg-block-2"
+                },
+                {
+                    "x": 1270,
+                    "y": 175,
+                    "width": 540,
+                    "height": 240,
+                    "itemtype" : "bg-block-2"
+                },
+                {
+                    "x": 1620,
+                    "y": 450,
+                    "width": 240,
+                    "height": 240,
+                    "itemtype" : "bg-block-2"
+                },
+                {
+                    "x": 2175,
+                    "y": 475,
+                    "width": 490,
+                    "height": 240,
+                    "itemtype" : "bg-block-2"
+                },
+                {
+                    "x": 2000,
+                    "y": 555,
+                    "width": 240,
+                    "height": 240,
+                    "itemtype" : "bg-block-2"
+                }
+            ]
+        },
+        {
+            "name" : "background-1",
+            "blur" : "1",
+            "lighten" : ".2",
+            "scale" : ".99",
+            "parallax" : ".9",
+            "collide" : false,
+            "cache" : true,
+            "items" : [
+                {
+                    "x": 525,
+                    "y": 255,
+                    "width": 140,
+                    "height": 140,
+                    "itemtype" : "bg-block-1"
+                },
+                {
+                    "x": 350,
+                    "y": 430,
+                    "width": 240,
+                    "height": 240,
+                    "itemtype" : "bg-block-1"
+                },
+
+                {
+                    "x": 650,
+                    "y": 490,
+                    "width": 150,
+                    "height": 140,
+                    "itemtype" : "bg-block-1"
+                },
+
+                {
+                    "x": 1870,
+                    "y": 575,
+                    "width": 640,
+                    "height": 140,
+                    "itemtype" : "bg-block-1"
+                },
+                
+                {
+                    "x": 820,
+                    "y": 305,
+                    "width": 140,
+                    "height": 140,
+                    "itemtype" : "bg-block-1"
+                },
+                {
+                    "x": 850,
+                    "y": 350,
+                    "width": 240,
+                    "height": 240,
+                    "itemtype" : "bg-block-1"
+                },
+
+                {
+                    "x": 800,
+                    "y": 440,
+                    "width": 450,
+                    "height": 340,
+                    "itemtype" : "bg-block-1"
+                },
+
+                {
+                    "x": 870,
+                    "y": 595,
+                    "width": 140,
+                    "height": 140,
+                    "itemtype" : "bg-block-1"
+                },
+                {
+                    "x": 1490,
+                    "y": 520,
+                    "width": 240,
+                    "height": 180,
+                    "itemtype" : "bg-block-1"
+                },
+                {
+                    "x": 1375,
+                    "y": 475,
+                    "width": 340,
+                    "height": 140,
+                    "itemtype" : "bg-block-1"
+                },
+                {
+                    "x": 1780,
+                    "y": 490,
+                    "width": 340,
+                    "height": 340,
+                    "itemtype" : "bg-block-1"
+                },
+                {
+                    "x": 2470,
+                    "y": 310,
+                    "width": 140,
+                    "height": 540,
+                    "itemtype" : "bg-block-1"
+                },
+                {
+                    "x": 2450,
+                    "y": 460,
+                    "width": 240,
+                    "height": 240,
+                    "itemtype" : "bg-block-1"
+                }
+            ]
+        },
+        {
+            "name" : "front-ledges",
+            "collide" : true,
+            "cache" : false,
+            "outline" : true,
+            "items" : [
+                {
+                    "x": 480,
+                    "y": 450,
+                    "width": 100,
+                    "height": 10,
+                    "collide" : "top",
+                    "itemtype" : "ledge-1"
+                },
+                {
+                    "x": 580,
+                    "y": 500,
+                    "width": 150,
+                    "height": 10,
+                    "collide" : "top",
+                    "itemtype" : "ledge-1"
+                },
+
+
+                {
+                    "x": 760,
+                    "y": 450,
+                    "width": 150,
+                    "height": 10,
+                    "collide" : "top",
+                    "itemtype" : "ledge-1"
+                },
+
+                {
+                    "x": 1300,
+                    "y": 660,
+                    "width": 260,
+                    "height": 10,
+                    "collide" : "top",
+                    "itemtype" : "ledge-1"
+                },
+                {
+                    "x": 1500,
+                    "y": 550,
+                    "width": 260,
+                    "height": 10,
+                    "collide" : "top",
+                    "itemtype" : "ledge-1"
+                },
+                {
+                    "x": 1790,
+                    "y": 500,
+                    "width": 320,
+                    "height": 10,
+                    "collide" : "top",
+                    "itemtype" : "ledge-1"
+                },
+
+                {
+                    "x": 1750,
+                    "y": 320,
+                    "width": 120,
+                    "height": 10,
+                    "collide" : "top",
+                    "itemtype" : "ledge-1"
+                },
+                {
+                    "x": 1950,
+                    "y": 290,
+                    "width": 120,
+                    "height": 10,
+                    "collide" : "top",
+                    "itemtype" : "ledge-1"
+                },
+                {
+                    "x": 2150,
+                    "y": 250,
+                    "width": 120,
+                    "height": 10,
+                    "collide" : "top",
+                    "itemtype" : "ledge-1"
+                }
+            ]
+        },
+        {
+            "name" : "front-rocks",
+            "collide" : true,
+            "cache" : false,
+            "outline" : true,
+            "items" : [
+                {
+                    "x": 350,
+                    "y": 580,
+                    "width": 180,
+                    "height": 80,
+                    "itemtype" : "fg-block-2"
+                },
+                {
+                    "x": 310,
+                    "y": 510,
+                    "width": 80,
+                    "height": 80,
+                    "itemtype" : "fg-block-2"
+                },
+                {
+                    "x": 280,
+                    "y": 585,
+                    "width": 80,
+                    "height": 80,
+                    "itemtype" : "fg-block-2"
+                },
+                {
+                    "x": 480,
+                    "y": 630,
+                    "width": 180,
+                    "height": 20,
+                    "itemtype" : "fg-block-2"
+                },
+                {
+                    "x": 1220,
+                    "y": 600,
+                    "width": 100,
+                    "height": 65,
+                    "itemtype" : "fg-block-2"
+                },
+                
+                {
+                    "x": 1350,
+                    "y": 340,
+                    "width": 70,
+                    "height": 70,
+                    "itemtype" : "fg-block-2"
+                },
+                {
+                    "x": 1300,
+                    "y": 550,
+                    "width": 120,
+                    "height": 120,
+                    "itemtype" : "fg-block-2"
+                },
+                {
+                    "x": 1200,
+                    "y": 1350,
+                    "width": 80,
+                    "height": 80,
+                    "itemtype" : "fg-block-2"
+                },
+                {
+                    "x": 1420,
+                    "y": 450,
+                    "width": 80,
+                    "height": 40,
+                    "itemtype" : "fg-block-2"
+                },
+                
+                {
+                    "x": 2240,
+                    "y": 350,
+                    "width": 180,
+                    "height": 400,
+                    "itemtype" : "fg-block-2"
+                },
+                {
+                    "x": 2540,
+                    "y": 520,
+                    "width": 180,
+                    "height": 240,
+                    "itemtype" : "fg-block-2"
+                },
+                
+
+                {
+                    "x": 1540,
+                    "y": 120,
+                    "width": 180,
+                    "height": 140,
+                    "itemtype" : "fg-block-2"
+                },
+                {
+                    "x": 1080,
+                    "y": 250,
+                    "width": 180,
+                    "height": 40,
+                    "itemtype" : "fg-block-2"
+                }
+            ]
+        },
+        {
+            "name" : "front-blocks",
+            "collide" : true,
+            "cache" : false,
+            "outline" : true,
+            "items" : [
+                {
+                    "x": 205,
+                    "y": 590,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                
+                
+                {
+                    "x": 550,
+                    "y": 340,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 620,
+                    "y": 290,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                
+
+                {
+                    "x": 440,
+                    "y": 340,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 390,
+                    "y": 400,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+
+                {
+                    "x": 2040,
+                    "y": 355,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+
+                {
+                    "x": 920,
+                    "y": 475,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 1030,
+                    "y": 475,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+
+                {
+                    "x": 980,
+                    "y": 375,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+
+                {
+                    "x": 980,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 1080,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                
+                {
+                    "x": 2800,
+                    "y": 475,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+
+                {
+                    "x": 2770,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                
+                
+                {
+                    "x": 1140,
+                    "y": 475,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 1090,
+                    "y": 375,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                
+
+                {
+                    "x": 1820,
+                    "y": 200,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                
+                
+                
+                {
+                    "x": 2870,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 2075,
+                    "y": 575,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 2150,
+                    "y": 475,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                },
+                {
+                    "x": 2470,
+                    "y": 435,
+                    "width": 40,
+                    "height": 40,
+                    "itemtype" : "fg-block-1"
+                }
+            ]
+        },
+        {
+            "name" : "front-movers",
+            "collide" : true,
+            "cache" : false,
+            "outline" : true,
+            "items" : [
+                {
+                    "x": 1950,
+                    "y": 690,
+                    "width": 200,
+                    "height": 10,
+                    "collide" : "top",
+                    "itemtype" : "fg-moving-block-1",
+                    "actions" : [
+                        {
+                            "x" : "-15000",
+                            "duration" : 8
+                        },
+                        {
+                            "x" : 15000,
+                            "duration" : 8
+                        }
+                    ]
+                }
+            ]
+        },
+         {
+            "name" : "players",
+            "cache" : false,
+            "outline" : true
+        },
+        {
+            "name" : "lava",
+            "collide" : false,
+            "cache" : false,
+            "outline" : true,
+            "items" : [
+                {
+                    "x": -700,
+                    "y": 680,
+                    "width": 4600,
+                    "height": 100,
+                    "animate" : true,
+                    "itemtype" : "wave"
+                }
+            ]
+        }
+    ]
+}

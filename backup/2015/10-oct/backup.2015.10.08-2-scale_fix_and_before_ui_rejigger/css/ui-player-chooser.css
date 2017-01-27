@@ -1,0 +1,50 @@
+.ui-player-chooser {
+    margin: 0 1%;
+    margin-top: 2%;
+    width: 23%;
+    float: left;
+}
+
+.ui-player-chooser-content {
+    float: left;
+    width: 100%;
+    background-color: #00c9ed;
+}
+
+
+.ui-player-chooser-button-bar {
+    margin-top: .2em;
+    width: 10em;
+    height: 3em;
+}
+
+.ui-player-chooser-button-bar-button {
+     font-size: 1em;
+ }
+
+.ui-player-chooser-button-icon {
+    padding: .1em .2em .2em .2em;
+    width: 2em;
+    height: 2em;
+}
+
+.ui-player-chooser-button-icon-middle {
+    width: 2.8em;
+    height: 2.4em;
+    margin: -.3em 1em;
+    padding-top: .3em;
+}
+
+.ui-player-chooser-button-icon-link {
+    font-size: 1.5em;
+}
+
+.ui-player-chooser-button-icon-link-icon.fa {
+    font-size: 1.2em;
+    line-height: 1.2em;
+}
+
+.ui-player-chooser-custom-button-bar {
+    width: 5em;
+    margin-top: 1.2em;
+}

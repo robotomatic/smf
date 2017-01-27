@@ -1,0 +1,22 @@
+.main-content-menu-main-main {
+    //background-color: #3E3E3E;
+}
+
+.menu-text {
+    font-family: 'SourceSansPro';
+    color: gray;
+    position: relative;
+    float: left;
+    width: 100%;
+    z-index: 999;
+}
+
+.menu-canvas-text {
+    font-family: 'Press Start 2P';
+    color: darkgray;
+}
+
+.menu-wrap {
+    padding-left: 1%;
+    padding-right: 1%;
+}

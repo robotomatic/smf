@@ -1,0 +1,137 @@
+.game-button {
+    background-color: #00D8F2;
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
+    text-decoration: none;
+    display: block;
+    width: 49%;
+    max-height: 4em;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 20px 2px rgba(0,0,0,0.29);
+    -moz-box-shadow: 0px 0px 20px 2px rgba(0,0,0,0.29);
+    box-shadow: 0px 0px 20px 2px rgba(0,0,0,0.29);
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center;
+}
+.game-button-small {
+    width: 24%;
+}
+
+.game-button-large {
+    width: 67%;
+}
+
+.game-button-icon {
+}
+
+.game-button-label {
+    text-indent: 5%;
+}
+
+.menu-game-players-icon {
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
+    text-decoration: none;
+    float: left;
+    display: block;
+    
+}
+
+.menu-game {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+}
+
+.main-menu-image {
+    width: 100%;
+    height: auto;
+}
+
+.main-menu-image-image {
+    width: 100%;
+    background-color: white;
+}
+
+.menu-game-menu {
+    width: 90%;
+    height: auto;
+    max-height: 12em;
+    margin: 0 auto;
+    display: block;
+}
+
+.menu-game-button-bottom-wrap {
+    position: absolute;
+    width: 18em;
+    height: 7em;
+}
+
+.menu-game-players {
+    width: 4.5em;
+    margin: .8em .5em;
+    float: left;
+    background-color: #00D8F2;
+    display: block;
+    position: relative;
+    z-index: 999;
+}
+
+.menu-game-players-party {
+    margin-top: 0;
+    width: 6.3em;
+}
+
+
+.menu-game-players-icon {
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
+    text-decoration: none;
+    float: left;
+    display: block;
+}
+
+.menu-game-players-icon > i {
+    position: relative;
+    float: left;
+}
+
+.menu-game-players-icon-mp-top {
+    z-index: 999;
+}
+
+.menu-game-players-icon-mp i {
+    margin-left: -.1em;
+}
+
+
+.menu-game-players-text {
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
+    float: left;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 1.5em;
+}
+
+
+
+@media (min-width: 768px) {}
+@media (min-width: 992px) {
+    .game-button {
+        width: 24%;
+    }
+    .menu-game-players-icon-mp i {
+        margin-left: -.2em;
+    }
+    
+}
+@media (min-width: 1200px) {}
+@media (min-width: 1500px) {}
+@media (min-width: 1700px) {}

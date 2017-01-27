@@ -1,0 +1,32 @@
+<div class="center menu menu-game fit-height">
+    <div ui-height="3" class="ui-height"></div>
+    <div ui-height="90" class="ui-height main-menu-player round-corners shadow" id="menu-party-level">
+        <div ui-height="60" class="ui-height round-corners" id="menu-level-canvas"></div>
+        
+        <p class="menu-canvas-text text-center" id="menu-level-text"></p>        
+        
+        <a href="#" ui-item-link="menu-level-canvas" ui-item-link-point="bl" class="ui-item-link menu-game-player-view-player-button menu-game-player-view-player-button-prev fade-in" id="menu-game-player-view-level-button-prev">
+            <i ui-min-scale="30" ui-max-scale="35" ui-scale-h="8" class="ui-scale-h menu-game-player-view-player-button-icon circle shadow fa fa-chevron-circle-left"></i>
+        </a>
+        <a href="#" ui-item-link="menu-level-canvas" ui-item-link-point="br" class="ui-item-link menu-game-player-view-player-button menu-game-player-view-player-button-next fade-in" id="menu-game-player-view-level-button-next">
+            <i ui-min-scale="30" ui-max-scale="35" ui-scale-h="8" class="ui-scale-h menu-game-player-view-player-button-icon circle shadow fa fa-chevron-circle-right"></i>
+        </a>
+    </div>
+    <div ui-item-link="menu-party-level" ui-item-link-point="bc" class="ui-item-link menu-game-player-button-bottom-wrap">
+        <a href="#" class="fade-in menu-game-player-button-bottom menu-game-player-button-bottom-left">
+            <i ui-min-scale="40" ui-max-scale="40" ui-scale-h="8" class="ui-scale-h menu-game-player-view-player-button-icon circle shadow fa fa-home"></i>
+        </a>
+        <a href="#game-party" class="fade-in menu-game-player-button-bottom menu-game-player-button-bottom-large menu-game-player-button-bottom-middle">
+            <i ui-min-scale="55" ui-max-scale="55" ui-scale-h="8" class="ui-scale-h menu-game-player-view-player-button-icon circle shadow fa fa-check"></i>
+        </a>
+        <a href="#menu-party" class="fade-in menu-game-player-button-bottom menu-game-player-button-bottom-right">
+            <div class="menu-game-player-view-player-button-icon circle shadow menu-game-players-icon-menu-button">
+                <span ui-top="17" class="ui-top menu-game-players-icon menu-game-players-icon-online-mp menu-game-players-icon-mp">
+                    <i ui-scale-h="45" class="ui-scale-h fa fa-male menu-game-players-icon-online-first"></i>
+                    <i ui-scale-h="45" class="ui-scale-h fa fa-male menu-game-players-icon-online-mp-top"></i>
+                    <i ui-scale-h="45" class="ui-scale-h fa fa-male"></i>
+                </span>
+            </div>
+        </a>
+    </div>
+</div>

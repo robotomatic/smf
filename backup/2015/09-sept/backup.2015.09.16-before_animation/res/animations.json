@@ -1,0 +1,42 @@
+{
+    "idle" : {
+        "name" : "idle",
+        "duration" : 10,
+        "repeat" : true,
+        "parts" : {
+            "left_eye" : {
+                "frames" : [
+                    { 
+                        "height" : 0 
+                    }
+                ]
+            },
+            "right_eye" : {
+                "frames" : [
+                    { 
+                        "height" : 0 
+                    }
+                ]
+            }
+        }
+    },
+    "walk" : {
+        "name" : "walk",
+        "duration" : 20,
+        "repeat" : true,
+        "parts" : {
+            "legs" : {
+                "frames" : [
+                    { 
+                        "width" : 60, 
+                        "height" : 80
+                    },
+                    { 
+                        "width" : 80,
+                        "height" : 100
+                    }
+                ]
+            }
+        }
+    }
+}

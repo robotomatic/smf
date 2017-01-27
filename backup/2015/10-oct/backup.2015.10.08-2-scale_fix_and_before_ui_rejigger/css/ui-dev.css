@@ -1,0 +1,56 @@
+.dev-tools {
+    position: absolute;
+    z-index: 999;
+    width: auto;
+    height: auto;
+    background-color: white;
+    color: darkgray;
+    padding: .5em .5em .2em .5em;
+}
+
+.dev-tools-button, .dev-tools-button:hover {
+    color: darkgray;
+    text-decoration: none;
+    margin-top: -.1em;
+}
+
+.dev-tools-fps {
+    width: 10em;
+    height: 2em;
+    overflow: hidden;
+}
+
+.dev-tools-collapse {
+    height: 1px;
+    width: 1px;
+    visibility: hidden;
+}
+
+.dev-tools-animate-collapse {
+    -webkit-transition: width .2s ease-in-out;
+    -moz-transition: width .2s ease-in-out;
+    -o-transition: width .2s ease-in-out;
+    transition: width .2s ease-in-out;
+}
+
+.dev-tools p {
+    clear: both;
+    float: left;
+    margin: 0;
+    width: 4em;
+    font-weight: bold;
+    line-height: 1em;
+    padding: 0;
+}
+
+.aok {
+    color : #04B404;
+}
+
+.uhoh {
+    color: #AEB404;
+}
+
+.afu {
+    color : #B43104;
+}

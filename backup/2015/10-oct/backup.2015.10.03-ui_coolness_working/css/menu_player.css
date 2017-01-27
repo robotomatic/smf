@@ -1,0 +1,57 @@
+.main-menu-player {
+    width: 80%;
+    margin-left: 10%;
+    background-color: #00D8F2;
+}
+
+.main-menu-player > div > canvas {
+    -moz-border-radius: 10px 10px 0 0;
+    -webkit-border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 0 0;
+    background-color: red;
+}
+
+.menu-game-player-view-player-button {
+    text-decoration: none;
+    position: absolute;
+    z-index: 999;
+}
+
+.menu-game-player-view-player-button-icon {
+    color: white;
+    background-color: #00D8F2;
+    padding: .2em;
+    float: left;
+    display: block;
+    position: relative;
+    z-index: 999;
+    width: 1em;
+    height: 1em;
+    text-indent: 0;
+}
+
+.menu-canvas-text {
+    font-family: 'Press Start 2P';
+    position: relative;
+    z-index: 999;
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+}
+
+
+.main-menu-player-nav {
+    width: 80%;
+    margin: 0 10%;
+}
+
+@media (min-width: 768px) {
+}
+@media (min-width: 992px) {
+}
+@media (min-width: 1200px) {
+}
+@media (min-width: 1500px) {
+}
+@media (min-width: 1700px) {
+}
+

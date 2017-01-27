@@ -1,0 +1,61 @@
+#main {
+    position: absolute;
+    width: 100%;
+}
+
+.main-content {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+}
+
+#main-content-head {
+    width: 100%;
+    background-color: white;
+    border-bottom: 2px solid darkgray;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3.2em;
+    z-index: 999;
+}
+
+.main-content-foot {
+    width: 100%;
+    background-color: white;
+    border-top: 2px solid darkgray;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 300;
+}
+
+.main-content-window {
+    background-color: #313130;
+    position: relative;
+    width: 100%;
+    float: left;
+    z-index: 1;
+    overflow: hidden;
+    background: #00c9ed;
+    background: -moz-radial-gradient(center, ellipse cover,  #00c9ed 0%, #00ffff 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#00c9ed), color-stop(100%,#00ffff));
+    background: -webkit-radial-gradient(center, ellipse cover,  #00c9ed 0%,#00ffff 100%);
+    background: -o-radial-gradient(center, ellipse cover,  #00c9ed 0%,#00ffff 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  #00c9ed 0%,#00ffff 100%);
+    background: radial-gradient(ellipse at center,  #00c9ed 0%,#00ffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00c9ed', endColorstr='#00ffff',GradientType=1 );
+}
+
+#main-content-foot {
+    width: 100%;
+    background-color: white;
+    display: block;
+    z-index: 900;
+    height: 3.2em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}

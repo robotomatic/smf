@@ -1,0 +1,59 @@
+html {
+    background-color: aqua;
+}
+
+#stage-wrap {
+    margin: 2em auto;
+    width: 99%;
+    height: 30em;
+    display: block;
+}
+
+#stage-canvas {
+    display: block;
+}
+
+canvas {
+    background-color: black;
+    }
+
+.camera-wrap {
+    float: left;
+    margin-top: 2em;
+    display: block;
+    margin: .5%;
+    background-color: white;
+}
+
+.phone-portrait {
+    width: 12em;
+    height: 24em;
+}
+
+.phone-landscape {
+    width: 24em;
+    height: 12em;
+}
+
+.tablet-portrait {
+    width: 20em;
+    height: 25em;
+}
+
+.tablet-landscape {
+    width: 30em;
+    height: 20em;
+}
+
+.pc-screen {
+    width: 26.6em;
+    height: 25em;
+    margin-right: 0;
+}
+
+
+
+.camera-canvas {
+    display: block;
+}
+

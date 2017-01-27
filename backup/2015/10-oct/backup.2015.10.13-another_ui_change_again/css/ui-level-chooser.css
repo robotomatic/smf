@@ -1,0 +1,17 @@
+.ui-level-chooser {
+    margin: 0;
+    width: 100%;
+    float: left;
+}
+
+.ui-level-chooser-head {
+    width: 100%;
+}
+
+.ui-level-chooser-button-bar {
+    width: 2.8em;
+}
+
+.ui-level-chooser-navigation-button {
+    margin: 0;
+}

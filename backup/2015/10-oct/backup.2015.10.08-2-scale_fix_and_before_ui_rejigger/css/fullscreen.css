@@ -1,0 +1,25 @@
+.main-content.fullscreen {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    background-color: white;
+}
+
+.hidden-fullscreen.fullscreen {
+    display: none;
+}
+
+.main-content-window.fullscreen {
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.fullscreen > .round-corners {
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}

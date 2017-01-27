@@ -1,0 +1,546 @@
+{
+    "character0" : {
+        "name" : "SkullFace",
+        "color" : "gray",
+        "parts" : {
+            "head" : {
+                "parts" : {
+                    "horns"  : {
+                        "color" : "gray",
+                        "parts" : {
+                            "left_horn" : { 
+                                "width" : 10, 
+                                "height" : 5,
+                                "x" : 10, 
+                                "y" : 0 
+                            },
+                            "right_horn" : { 
+                                "width" : 10, 
+                                "height" : 5,
+                                "x" : 80, 
+                                "y" : 0 
+                            }
+                        }
+                    },
+                    "hood" : {
+                        "parts" : {
+                            "top"  : { 
+                                "width" : 90,
+                                "height" : 5,
+                                "x" : 5,
+                                "y" : 5
+                            },
+                            "middle"  : {
+                                "width" : 100,
+                                "height" : 35,
+                                "x" : 0,
+                                "y" : 10
+                            },
+                            "bottom"  : {
+                                "width" : 80,
+                                "height" : 5,
+                                "x" : 10,
+                                "y" : 45
+                            }
+                        }
+                    },
+                    "face" : {
+                        "parts" : {
+                            "main"  : {
+                                "width" : 90,
+                                "height" : 20,
+                                "x" : 5,
+                                "y" : 15,
+                                "color" : "white"
+                            },
+                            "chin"  : {
+                                "width" : 80,
+                                "height" : 5,
+                                "x" : 10,
+                                "y" : 35,
+                                "color" : "white"
+                            },
+                            "eyes"  : {
+                                "color" : "black",
+                                "parts" : {
+                                    "left_eye" : { 
+                                        "width" : 10, 
+                                        "height" : 10,
+                                        "x" : 10, 
+                                        "y" : 20 
+                                    },
+                                    "right_eye" : { 
+                                        "width" : 10, 
+                                        "height" : 10,
+                                        "x" : 80, 
+                                        "y" : 20 
+                                    }
+                                }
+                            },
+                            "nose" : {
+                                "color" : "black",
+                                "width" : 20,
+                                "height" : 10,
+                                "x" : 40,
+                                "y" : 24
+                            },
+                            "tooth1" : {
+                                "color" : "white",
+                                "width" : 10,
+                                "height" : 5,
+                                "x" : 25,
+                                "y" : 40
+                            },
+                            "tooth2" : {
+                                "color" : "white",
+                                "width" : 10,
+                                "height" : 5,
+                                "x" : 45,
+                                "y" : 40
+                            },
+                            "tooth3" : {
+                                "color" : "white",
+                                "width" : 10,
+                                "height" : 5,
+                                "x" : 65,
+                                "y" : 40
+                            }
+                        }
+                    }
+                }
+            },
+            "neck" : {
+                "width" : 60,
+                "height" : 20,
+                "x" : 20,
+                "y" : 45
+            },
+            "body" : {
+                "width" : 80,
+                "height" : 30,
+                "x" : 10,
+                "y" : 60
+            },
+            "legs" : {
+                "color" : "black",
+                "parts" : {
+                    "left_leg" : { 
+                        "width" : 10, 
+                        "height" :  10,
+                        "x" : 20,
+                        "y" : 90
+                    },
+                    "right_leg" : { 
+                        "width" : 10, 
+                        "height" : 10,
+                        "x" : 70, 
+                        "y" : 90 
+                    }
+                }
+            }
+        }
+    },
+    "character1" : {
+        "name" : "Gario",
+        "parts" : {
+            "head" : {
+                "parts" : {
+                    "horns"  : {
+                        "color" : "gray",
+                        "parts" : {
+                            "left_horn" : { 
+                                "width" : 10, 
+                                "height" : 5,
+                                "x" : 10, 
+                                "y" : 0 
+                            },
+                            "right_horn" : { 
+                                "width" : 10, 
+                                "height" : 5,
+                                "x" : 80, 
+                                "y" : 0 
+                            }
+                        }
+                    },
+                    "face" : {
+                        "parts" : {
+                            "forehead"  : { 
+                                "width" : 90,
+                                "height" : 5,
+                                "x" : 5,
+                                "y" : 5
+                            },
+                            "main"  : {
+                                "width" : 100,
+                                "height" : 35,
+                                "x" : 0,
+                                "y" : 10,
+                                "color" : "pink"
+                            },
+                            "eyes"  : {
+                                "color" : "black",
+                                "parts" : {
+                                    "left_eye" : { 
+                                        "width" : 10, 
+                                        "height" : 10,
+                                        "x" : 10, 
+                                        "y" : 15 
+                                    },
+                                    "right_eye" : { 
+                                        "width" : 10, 
+                                        "height" : 10,
+                                        "x" : 80, 
+                                        "y" : 15 
+                                    }
+                                }
+                            },
+                            "chin"  : {
+                                "width" : 80,
+                                "height" : 5,
+                                "x" : 10,
+                                "y" : 45,
+                                "color" : "pink"
+                            },
+                            "nose" : {
+                                "color" : "red",
+                                "width" : 20,
+                                "height" : 10,
+                                "x" : 40,
+                                "y" : 18
+                            }
+                        }
+                    }
+                }
+            },
+            "neck" : {
+                "width" : 60,
+                "height" : 10,
+                "x" : 20,
+                "y" : 50
+            },
+            "body" : {
+                "width" : 80,
+                "height" : 30,
+                "x" : 10,
+                "y" : 60
+            },
+            "legs" : {
+                "parts" : {
+                    "left_leg" : { 
+                        "width" : 10, 
+                        "height" :  10,
+                        "x" : 20,
+                        "y" : 90
+                    },
+                    "right_leg" : { 
+                        "width" : 10, 
+                        "height" : 10,
+                        "x" : 70, 
+                        "y" : 90 
+                    }
+                }
+            }
+        }
+    },
+    "character2" : {
+        "name" : "Louisey",
+        "parts" : {
+            "head" : {
+                "parts" : {
+                    "horns"  : {
+                        "color" : "gray",
+                        "parts" : {
+                            "left_horn" : { 
+                                "width" : 10, 
+                                "height" : 10,
+                                "x" : 10, 
+                                "y" : 0 
+                            },
+                            "right_horn" : { 
+                                "width" : 10, 
+                                "height" : 10,
+                                "x" : 80, 
+                                "y" : 0 
+                            }
+                        }
+                    },
+                    "face" : {
+                        "parts" : {
+                            "forehead"  : { 
+                                "width" : 90,
+                                "height" : 10,
+                                "x" : 5,
+                                "y" : 10
+                            },
+                            "main"  : {
+                                "width" : 100,
+                                "height" : 20,
+                                "x" : 0,
+                                "y" : 20,
+                                "color" : "pink"
+                            },
+                            "eyes"  : {
+                                "color" : "black",
+                                "parts" : {
+                                    "left_eye" : { 
+                                        "width" : 10, 
+                                        "height" : 10,
+                                        "x" : 10, 
+                                        "y" : 25 
+                                    },
+                                    "right_eye" : { 
+                                        "width" : 10, 
+                                        "height" : 10,
+                                        "x" : 80, 
+                                        "y" : 25 
+                                    }
+                                }
+                            },
+                            "mouth"  : {
+                                "width" : 90,
+                                "height" : 10,
+                                "x" : 5,
+                                "y" : 40
+                            },
+                            "chin"  : {
+                                "width" : 80,
+                                "height" : 5,
+                                "x" : 10,
+                                "y" : 50
+                            }
+                        }
+                    }
+                }
+            },
+            "neck" : {
+                "width" : 60,
+                "height" : 10,
+                "x" : 20,
+                "y" : 50
+            },
+            "body" : {
+                "width" : 80,
+                "height" : 20,
+                "x" : 10,
+                "y" : 60
+            },
+            "legs" : {
+                "parts" : {
+                    "left_leg" : { 
+                        "width" : 10, 
+                        "height" :  30,
+                        "x" : 20,
+                        "y" : 80
+                    },
+                    "right_leg" : { 
+                        "width" : 10, 
+                        "height" : 30,
+                        "x" : 70, 
+                        "y" : 80 
+                    }
+                }
+            }
+        }
+    },
+    "character3" : {
+        "name" : "Pooch",
+        "parts" : {
+            "head" : {
+                "parts" : {
+                    "horns"  : {
+                        "color" : "gray",
+                        "parts" : {
+                            "left_horn" : { 
+                                "width" : 10, 
+                                "height" : 10,
+                                "x" : 10, 
+                                "y" : 0 
+                            },
+                            "right_horn" : { 
+                                "width" : 10, 
+                                "height" : 10,
+                                "x" : 80, 
+                                "y" : 0 
+                            }
+                        }
+                    },
+                    "face" : {
+                        "parts" : {
+                            "forehead"  : { 
+                                "width" : 80,
+                                "height" : 5,
+                                "x" : 10,
+                                "y" : 10
+                            },
+                            "brow"  : { 
+                                "width" : 100,
+                                "height" : 5,
+                                "x" : 0,
+                                "y" : 15
+                            },
+                            "main"  : {
+                                "width" : 100,
+                                "height" : 15,
+                                "x" : 0,
+                                "y" : 20,
+                                "color" : "pink"
+                            },
+                            "eyes"  : {
+                                "color" : "black",
+                                "parts" : {
+                                    "left_eye" : { 
+                                        "width" : 15, 
+                                        "height" : 3,
+                                        "x" : 10, 
+                                        "y" : 25 
+                                    },
+                                    "right_eye" : { 
+                                        "width" : 15, 
+                                        "height" : 3,
+                                        "x" : 75, 
+                                        "y" : 25 
+                                    }
+                                }
+                            },
+                            "mouth"  : {
+                                "width" : 90,
+                                "height" : 15,
+                                "x" : 5,
+                                "y" : 35
+                            },
+                            "chin"  : {
+                                "width" : 80,
+                                "height" : 5,
+                                "x" : 10,
+                                "y" : 50
+                            }
+                        }
+                    }
+                }
+            },
+            "neck" : {
+                "width" : 60,
+                "height" : 10,
+                "x" : 20,
+                "y" : 50
+            },
+            "body" : {
+                "width" : 80,
+                "height" : 20,
+                "x" : 10,
+                "y" : 60
+            },
+            "legs" : {
+                "parts" : {
+                    "left_leg" : { 
+                        "width" : 10, 
+                        "height" :  30,
+                        "x" : 20,
+                        "y" : 80
+                    },
+                    "right_leg" : { 
+                        "width" : 10, 
+                        "height" : 30,
+                        "x" : 70, 
+                        "y" : 80 
+                    }
+                }
+            }
+        }
+    },
+    "character4" : {
+        "name" : "Choad",
+        "parts" : {
+            "head" : {
+                "parts" : {
+                    "horns"  : {
+                        "color" : "gray",
+                        "parts" : {
+                            "left_horn" : { 
+                                "width" : 10, 
+                                "height" : 20,
+                                "x" : 10, 
+                                "y" : 0 
+                            },
+                            "right_horn" : { 
+                                "width" : 10, 
+                                "height" : 20,
+                                "x" : 80, 
+                                "y" : 0 
+                            }
+                        }
+                    },
+                    "face" : {
+                        "parts" : {
+                            "forehead"  : { 
+                                "width" : 90,
+                                "height" : 5,
+                                "x" : 5,
+                                "y" : 20
+                            },
+                            "face"  : {
+                                "width" : 100,
+                                "height" : 20,
+                                "x" : 0,
+                                "y" : 25,
+                                "color" : "pink"
+                            },
+                            "eyes"  : {
+                                "color" : "black",
+                                "parts" : {
+                                    "left_eye" : { 
+                                        "width" : 20, 
+                                        "height" : 7,
+                                        "x" : 10, 
+                                        "y" : 30 
+                                    },
+                                    "right_eye" : { 
+                                        "width" : 20, 
+                                        "height" : 7,
+                                        "x" : 70, 
+                                        "y" : 30 
+                                    }
+                                }
+                            },
+                            "chin"  : {
+                                "width" : 80,
+                                "height" : 5,
+                                "x" : 10,
+                                "y" : 45,
+                                "color" : "pink"
+                            }
+                        }
+                    }
+                }
+            },
+            "neck" : {
+                "width" : 60,
+                "height" : 20,
+                "x" : 20,
+                "y" : 50
+            },
+            "body" : {
+                "width" : 80,
+                "height" : 20,
+                "x" : 10,
+                "y" : 70
+            },
+            "legs" : {
+                "parts" : {
+                    "left_leg" : { 
+                        "width" : 10, 
+                        "height" :  10,
+                        "x" : 20,
+                        "y" : 90
+                    },
+                    "right_leg" : { 
+                        "width" : 10, 
+                        "height" : 10,
+                        "x" : 70, 
+                        "y" : 90 
+                    }
+                }
+            }
+        }
+    }
+}

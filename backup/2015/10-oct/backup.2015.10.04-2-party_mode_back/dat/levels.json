@@ -1,0 +1,10 @@
+{
+    "level1" : {
+        "name" : "Monster Island",
+        "file" : "levels/level1.json"
+    },
+    "level2" : {
+        "name" : "Lava World",
+        "file" : "levels/level2.json"
+    }
+}

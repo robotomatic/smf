@@ -1,0 +1,69 @@
+{
+    "width" : 10000,
+    "height" : 100,
+    "background" : {
+        "color" : "white"
+    },
+    "layers" : [
+        {
+            "name" : "back",
+            "collide" : false,
+            "width" : "100%",
+            "items" : [
+                {
+                    "name" : "bg",
+                    "x": 0,
+                    "y": 0,
+                    "width": "100%",
+                    "height": 150,
+                    "color" : "white"
+                }
+            ]
+        },
+        {
+            "name" : "players-shadows",
+            "cache" : false
+        },
+        {
+            "name" : "players",
+            "cache" : false
+        },
+        {
+            "name" : "bounds",
+            "collide" : true,
+            "draw" : false,
+            "items" : [
+                {
+                    "name" : "ceiling",
+                    "x": 0,
+                    "y": 0,
+                    "width": 10000,
+                    "height": 10
+                },
+                {
+                    "name" : "left-wall",
+                    "x": 0,
+                    "y": 0,
+                    "width": 10,
+                    "height": 150,
+                    "color": "#FFFFFF",
+                    "draw" : false
+                },
+                {
+                    "name" : "right-wall",
+                    "x": 10000,
+                    "y": 0,
+                    "width": 10,
+                    "height": 150
+                },
+                {
+                    "name" : "floor",
+                    "x": 0,
+                    "y": 50,
+                    "width": 10000,
+                    "height": 50
+                }
+            ]
+        }
+    ]
+}

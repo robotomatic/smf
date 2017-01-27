@@ -1,0 +1,92 @@
+#main-content-button-bar {
+    position: relative;
+    width: 24.5em;
+    height: auto;
+    margin: -2.2em auto;
+    z-index: 990;
+}
+
+.menu-game-button {
+     font-size: 1em;
+     float: left;
+ }
+
+.menu-game-button-icon {
+    padding: .4em;
+    float: left;
+    display: block;
+    position: relative;
+    width: 3em;
+    height: 3em;
+}
+
+.menu-game-button-icon-fade {
+    padding: .4em;
+    float: left;
+    display: block;
+    position: relative;
+    width: 3em;
+    height: 3em;
+}
+
+.menu-game-button-icon-small {
+    width: 2.5em;
+    height: 2.5em;
+    margin: .25em .5em;
+}
+
+.menu-game-button-icon-large {
+    width: 4em;
+    height: 4em;
+    margin: -.5em 1em;
+}
+
+.menu-game-button-icon-link {
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 100%;
+    float: left;
+    text-align: center;
+    z-index: 999;
+}
+
+
+
+
+
+#main-content-button-home { 
+    font-size: 1.15em;
+    line-height: 2.65em;
+}
+
+#main-content-button-settings { 
+    font-size: 1.3em;
+    line-height: 2.7em;
+}
+
+#main-content-button-fullscreen { 
+    font-size: .85em;
+    line-height: 3.55em;
+}
+
+#main-content-button-volume { 
+    font-size: 1em;
+    line-height: 2.9em;
+}
+
+
+
+
+
+.menu-game-button-icon-link-text {
+    font-size: 1.3em;
+    line-height: 3.2em;
+}
+
+.menu-game-button-icon-link-icon.fa {
+    font-size: 1.5em;
+    line-height: 1.4em;
+    position: relative;
+    z-index: 999;
+}

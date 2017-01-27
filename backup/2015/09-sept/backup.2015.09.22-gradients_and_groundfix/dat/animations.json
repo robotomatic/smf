@@ -1,0 +1,428 @@
+{
+    "default" : {
+        "idle" : {
+            "name" : "idle",
+            "duration" : ".1",
+            "repeat" : false,
+            "parts" : {
+                "eyes" : {
+                    "frames" : [
+                        { 
+                            "height" : 50,
+                            "y" : 2
+                        }
+                    ]
+                }
+            }
+        },
+        "fall" : {
+            "name" : "fall",
+            "width" : 100,
+            "height" : 99,
+            "repeat" : true,
+            "parts" : {
+                "body" : {
+                    "frames" : [
+                        { 
+                            "width" : 98,
+                            "x" : 1,
+                            "y" : -2
+                        }
+                    ]
+                },
+                "legs" : {
+                    "frames" : [
+                        { 
+                            "height" : 150,
+                            "y" : -2
+                        }
+                    ]
+                }
+            }
+        },
+        "jump" : {
+            "name" : "jump",
+            "duration" : ".1",
+            "repeat" : true,
+            "parts" : {
+                "body" : {
+                    "frames" : [
+                        { 
+                            "width" : 98,
+                            "x" : 1,
+                            "y" : -2
+                        }
+                    ]
+                },
+                "legs" : {
+                    "frames" : [
+                        { 
+                            "height" : 150,
+                            "y" : -2
+                        }
+                    ]
+                }            
+            }
+        },
+        "look_left" : {
+            "name" : "look_left",
+            "width" : 95,
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "face" : {
+                    "frames" : [
+                        { 
+                            "x" : -2
+                        }
+                    ]
+                },
+                "left_eye" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "right_eye" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                },
+                "nose" : {
+                    "frames" : [
+                        { 
+                            "x" : -7
+                        }
+                    ]
+                }
+            }
+        },
+        "look_right" : {
+            "name" : "look_right",
+            "width" : 95,
+            "parts" : {
+                "head" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "face" : {
+                    "frames" : [
+                        { 
+                            "x" : 2
+                        }
+                    ]
+                },
+                "left_eye" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "right_eye" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "nose" : {
+                    "frames" : [
+                        { 
+                            "x" : 7
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_left" : {
+            "name" : "walk_left",
+            "duration" : ".12",
+            "repeat" : true,
+            "parts" : {
+                "left_leg" : {
+                    "frames" : [
+                        { 
+                            "x" : 0
+                        },
+                        { 
+                            "x" : 5,
+                            "y" : -2.5
+                        }
+                    ]
+                },
+                "right_leg" : {
+                    "frames" : [
+                        { 
+                            "x" : 0,
+                            "y" : -2.5    
+                        },
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_right" : {
+            "name" : "walk_right",
+            "duration" : ".12",
+            "repeat" : true,
+            "parts" : {
+                "left_leg" : {
+                    "frames" : [
+                        { 
+                            "x" : 0,
+                            "y" : -2.5
+                        },
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                },
+                "right_leg" : {
+                    "frames" : [
+                        { 
+                            "x" : 0
+                        },
+                        { 
+                            "x" : -5,
+                            "y" : -2.5
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "horns" : {
+        "look_left" : {
+            "name" : "look_left",
+            "width" : 95,
+            "parts" : {
+                "left_horn" : {
+                    "frames" : [
+                        { 
+                            "x" : 5
+                        }
+                    ]
+                }
+            }
+        },
+        "look_right" : {
+            "name" : "look_right",
+            "width" : 95,
+            "parts" : {
+                "right_horn" : {
+                    "frames" : [
+                        { 
+                            "x" : -5
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "tail" : {
+        "fall" : {
+            "name" : "fall",
+            "width" : 100,
+            "height" : 99,
+            "repeat" : true,
+            "parts" : {
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "width" : 98,
+                            "height" : 90
+                        }
+                    ]
+                }
+            }
+        },
+        "jump" : {
+            "name" : "jump",
+            "duration" : ".1",
+            "repeat" : true,
+            "parts" : {
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "y" : 15,
+                            "height" : 90
+                        }
+                    ]
+                }
+            }
+        },
+        "look_left" : {
+            "name" : "look_left",
+            "width" : 95,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        { 
+                            "y" : 10
+                        }
+                    ]
+                },
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "x" : 55
+                        }
+                    ]
+                },
+                "tail-bottom" : {
+                    "frames" : [
+                        { 
+                            "x" : 45
+                        }
+                    ]
+                }
+            }
+        },
+        "look_right" : {
+            "name" : "look_right",
+            "width" : 95,
+            "parts" : {
+                "tail" : {
+                    "frames" : [
+                        { 
+                            "y" : 10
+                        }
+                    ]
+                },
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "x" : -50
+                        }
+                    ]
+                },
+                "tail-bottom" : {
+                    "frames" : [
+                        { 
+                            "x" : -35
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_left" : {
+            "name" : "walk_left",
+            "duration" : ".12",
+            "repeat" : true,
+            "parts" : {
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "width" : 98,
+                            "height" : 90
+                        },
+                        { 
+                            "y" : 15,
+                            "height" : 90
+                        }
+                    ]
+                }
+            }
+        },
+        "walk_right" : {
+            "name" : "walk_right",
+            "duration" : ".12",
+            "repeat" : true,
+            "parts" : {
+                "tail-top" : {
+                    "frames" : [
+                        { 
+                            "width" : 98,
+                            "height" : 90
+                        },
+                        { 
+                            "y" : 15,
+                            "height" : 90
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "trex" : {
+        "look_left" : {
+            "name" : "look_left",
+            "width" : 95,
+            "parts" : {
+                "snout" : {
+                    "frames" : [
+                        { 
+                            "x" : -60
+                        }
+                    ]
+                },
+                "hood-bottom" : {
+                    "frames" : [
+                        { 
+                            "x" : -8
+                        }
+                    ]
+                },
+                "teeth" : {
+                    "frames" : [
+                        { 
+                            "x" : 18
+                        }
+                    ]
+                },
+                "gator-mouth" : {
+                    "frames" : [
+                        { 
+                            "x" : 28
+                        }
+                    ]
+                },
+                "gator-brow" : {
+                    "frames" : [
+                        { 
+                            "width" : 110,
+                            "x" : -15
+                        }
+                    ]
+                }
+            }
+        },
+        "look_right" : {
+            "name" : "look_right",
+            "width" : 95,
+            "parts" : {
+                "snout" : {
+                    "frames" : [
+                        { 
+                            "x" : 3
+                        }
+                    ]
+                },
+                "gator-brow" : {
+                    "frames" : [
+                        { 
+                            "width" : 110
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
+
+
+

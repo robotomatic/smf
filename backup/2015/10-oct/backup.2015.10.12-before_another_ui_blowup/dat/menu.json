@@ -1,0 +1,105 @@
+{
+    "width" : 300,
+    "height" : 800,
+    "background" : {
+        "color" : "white"
+    },
+    "layers" : [
+        {
+            "name" : "bg",
+            "collide" : false,
+            "draw" : true,
+            "items" : [
+                {
+                    "name" : "bg",
+                    "x": 0,
+                    "y": 0,
+                    "width": 300,
+                    "height": 800,
+                    "color" : "white",
+                    "collide" : false
+                }
+            ]
+        },
+        {
+            "name" : "bounds",
+            "collide" : true,
+            "draw" : false,
+            "items" : [
+                {
+                    "name" : "bg",
+                    "x": 0,
+                    "y": 0,
+                    "width": 300,
+                    "height": 800,
+                    "color" : "white",
+                    "collide" : false
+                },
+                {
+                    "name" : "ceiling",
+                    "color" : "magenta",
+                    "x": 0,
+                    "y": 0,
+                    "width": 300,
+                    "height": 10
+                },
+                {
+                    "name" : "left-wall",
+                    "x": 0,
+                    "y": 0,
+                    "width": 10,
+                    "height": 800,
+                    "color": "#FFFFFF",
+                    "draw" : false
+                },
+                {
+                    "name" : "right-wall",
+                    "x": 290,
+                    "y": 0,
+                    "width": 10,
+                    "height": 800
+                },
+                {
+                    "name" : "floor1",
+                    "color" : "red",
+                    "x": 0,
+                    "y": 200,
+                    "width": 300,
+                    "height": 10
+                },
+                {
+                    "name" : "floor2",
+                    "color" : "blue",
+                    "x": 0,
+                    "y": 394,
+                    "width": 300,
+                    "height": 10
+                },
+                {
+                    "name" : "floor3",
+                    "color" : "green",
+                    "x": 0,
+                    "y": 587,
+                    "width": 300,
+                    "height": 10
+                },
+                {
+                    "name" : "floor4",
+                    "color" : "yellow",
+                    "x": 0,
+                    "y": 763,
+                    "width": 300,
+                    "height": 10
+                }
+            ]
+        },
+        {
+            "name" : "players-shadows",
+            "cache" : false
+        },
+        {
+            "name" : "players",
+            "cache" : false
+        }
+    ]
+}

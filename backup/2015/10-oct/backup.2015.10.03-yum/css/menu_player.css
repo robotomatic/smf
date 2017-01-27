@@ -1,0 +1,106 @@
+.main-menu-player {
+    background-color: #00D8F2;
+}
+
+.main-menu-player > div > canvas {
+    -moz-border-radius: 10px 10px 0 0;
+    -webkit-border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 0 0;
+    background-color: red;
+}
+
+.menu-game-player-view-player-button {
+    text-decoration: none;
+    position: absolute;
+    z-index: 999;
+}
+
+.menu-game-player-view-player-button-icon {
+    color: white;
+    background-color: #00D8F2;
+    padding: .2em;
+    float: left;
+    display: block;
+    position: relative;
+    z-index: 999;
+    width: 1em;
+    height: 1em;
+}
+
+
+.menu-game-player-button-bottom-wrap {
+    position: absolute;
+    width: 17.5em;
+    height: 5em;
+}
+
+ .menu-game-player-button-bottom {
+     font-size: 1em;
+     float: left;
+ }
+
+ .menu-game-player-button-bottom-left {
+ }
+
+.game-button-home {
+    text-indent: .05em;
+}
+
+ .menu-game-player-button-bottom-middle {
+     margin-top: -1em;
+     margin-left: 1em;
+ }
+
+.menu-game-player-button-bottom-middle > .menu-game-player-view-player-button-icon {
+    text-indent: .05em;
+    padding: .4em;
+}
+
+ .menu-game-player-button-bottom-right {
+     margin-left: 1em;
+ }
+
+.menu-game-player-button-bottom-middle > .menu-game-player-view-player-button-icon.fa-pause {
+    text-indent: .1em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.menu-canvas-text {
+    font-family: 'Press Start 2P';
+    position: relative;
+    z-index: 999;
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+}
+
+
+.main-menu-player-nav {
+    width: 80%;
+    margin: 0 10%;
+}
+
+@media (min-width: 768px) {
+}
+@media (min-width: 992px) {
+}
+@media (min-width: 1200px) {
+}
+@media (min-width: 1500px) {
+}
+@media (min-width: 1700px) {
+}
+

@@ -1,0 +1,14 @@
+{
+    "players" : [
+        {
+            "character_name" : "character0",
+            "name" : "Player 1",
+            "color" : "red",
+            "x" : 20,
+            "y" : 400,
+            "width" : 18,
+            "height" : 26,
+            "speed" : 3.2
+        }
+    ]
+}

@@ -1,0 +1,124 @@
+todo:
+
+- move todo to root
+
+- still need to pad jump button a bit...before/after hitting ground -> jump_was_pressed...????/
+
+
+- jitter when moving left (but not right) into wall
+
+- cache items at resolution by class name -> block-10-259 :: layer keeps collection
+
+
+
+- see if there is a way to slow game speed w/o delta stepper
+
+- ugh. collsion still fucked
+
+- center player better when not on lowest ground layer...need to hamdle ground not being bottom of level!!!!! 
+
+
+- common item styles
+
+- water/lava/goo sine wave thing..?
+
+
+
+
+
+
+- first char jumpy glitch thing - is this still a thing?
+- player UI sometimes fucked when view is unscaled? - this this still a thing?
+
+
+
+- unify game timestamps (animation, player, debug) to all use loop timer for now() - need solution to last(), likely a function...
+
+- spacebar to pause: 
+
+- sync dev ui when loading - save settings would be nice
+
+- smooth x in party_view the same as y to prevent (unwanted) screenshake
+
+
+- need to fade buttons much quicker when leaving game mode
+
+- collision fails if moving diagonally at corner when using x & y hit boxes
+
+- logo take too long to load - better, but still...
+
+- customize label shows up after player ready for some fucked up reason
+
+
+
+- add timer for pre-button push for jumps: still feels "floaty" sometimes like I should have jumed but didn't (pressed too soon i think)
+
+- ramps/rotation
+
+- most assets can be cached - render 1 block at a given resolution and stamp the rest (!)
+
+- smoother scrolling on level chooser: maybe 1 double-sized canvas panel?
+
+- scale outline weight
+
+- more than 1 visible canvas: 1 for each cached layer. draw once and move relative to fg canvas
+
+- game camera situation - much better! keep working on it. someday figure out what lerp really is
+
+- add water/lava/goo
+
+- need list of item properties : draw, collide, collide-top, canjump, collide-damage, collide-kill, collide-bounce...
+
+- add optional theme physics modifiers (jungle, lava, ice, space, ...)
+
+- implement "real" WebRTC phone controller
+
+
+
+- weapons & death
+
+- hotkeys
+
+- pause game (grey screen)
+
+- toggle sound icon & sound in general
+
+- settings
+
+- armies & leggies
+
+- stretch when jumping, compress when falling
+
+- add random blink, look around state
+  - need multiple "idle" animations (choose randomly but wisely!)
+
+- custom name, color, stats
+
+- draw pixel grid if debug mode
+
+- quads for render and collide: load static level items in areaQuad, actors in pointQuad
+  https://github.com/mikechambers/ExamplesByMesh/tree/master/JavaScript/QuadTree
+
+- find out why player4 is "stronger" than other players - something to do with update order...?
+
+- level editor
+
+- player editor
+
+- player stats:     health =/= strength =/= speed
+                    fast and weak vs. strong and slow - choose wisely!
+                    
+                    i.e. you get 20 points to spend...
+                    
+                    health:   XXXXXXXX--
+                    strength: XXXXX-----
+                    speed:    XXXXXXX---
+                    
+                    - size of character is based on strength - weak characters are small, strong characters are big?
+                    - * need a way to immediately represent how healthy a player is (including what percent is left?)
+                    - strength: weight in collisions, power when pushing, movement speed when lifting
+
+
+
+- 8-bit reservoir dogs chars? "kill the gimp!"
+- horses in suits named Charlie and Whinney

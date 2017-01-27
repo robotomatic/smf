@@ -1,0 +1,114 @@
+.ui-player-chooser {
+    margin: 0 1%;
+    width: 23%;
+    float: left;
+}
+
+.ui-player-chooser-player-panel {
+    width: 100%;
+    float: left;
+    position: relative;
+    display: block;
+}
+
+.ui-player-chooser-head {
+    float: left;
+    width: 100%;
+}
+
+.ui-player-chooser-title {
+    line-height: .8em;
+}
+
+.ui-player-chooser-close {
+    position: absolute;
+    z-index: 9999;
+    cursor: pointer;
+    right: .5em;
+    top: .18em;
+    height: 1.5em;
+    width: 1em;
+    color: darkgray;
+}
+
+
+.ui-player-chooser-close:hover {
+    color: darkgray;
+}
+
+.ui-player-chooser-content {
+    float: left;
+    position: relative;
+    width: 100%;
+    background-color: white;
+    border: 2px solid darkgray;
+}
+
+.ui-player-chooser-canvas, .ui-player-chooser-custom-canvas {
+    border-top: 2px solid lightgray;
+    border-bottom: 2px solid lightgray;
+    float: left;
+    width: 100%;
+    overflow: hidden;
+}
+
+.ui-player-chooser-canvas-text {
+    position: absolute;
+    float: none;
+}
+
+
+.ui-player-chooser-button-bar {
+    width: 10.8em;
+    height: 3em;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 999;
+}
+
+.ui-player-chooser-button-bar-button {
+     font-size: 1em;
+ }
+
+.ui-player-chooser-button-icon {
+    padding: .1em .2em .2em .2em;
+    width: 2em;
+    height: 2em;
+}
+
+.ui-player-chooser-button-icon-middle {
+    width: 2.8em;
+    height: 2.4em;
+    margin: -.3em 1em;
+    padding-top: .3em;
+}
+
+.ui-player-chooser-button-icon-link {
+    font-size: 1.5em;
+}
+
+.ui-player-chooser-button-icon-link-icon.fa {
+    font-size: 1.2em;
+    line-height: 1.2em;
+}
+
+.ui-player-chooser-custom-button-bar {
+    width: 5em;
+    margin: 1.5em auto;
+}
+
+#ui-player-chooser-custom-ok-icon {
+    font-size: 1.4em;
+}
+
+
+
+.ui-player-chooser-bottom {
+    width: 100%;
+    display: block;
+    float: left;
+    position: relative;
+    z-index: 900;
+}

@@ -1,0 +1,14 @@
+.menu-game-mp {
+    width: 14vw;
+    margin: 0 auto;
+}
+
+.fa.menu-game-players-icon-mp-player {
+    margin-left: 2vw;
+    width: 2.2vw;
+}
+
+.fa.menu-game-players-icon-mp-plus {
+    font-size: 2vw;
+    margin-top: -.2vw;
+}

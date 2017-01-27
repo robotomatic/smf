@@ -1,0 +1,218 @@
+{
+    "idle" : {
+        "name" : "idle",
+        "duration" : ".5",
+        "repeat" : true,
+        "parts" : {
+            "eyes" : {
+                "frames" : [
+                    { 
+                        "height" : 1
+                    },
+                    { 
+                        "height" : 100
+                    }
+                ]
+            }
+        }
+    },
+    "fall" : {
+        "name" : "fall",
+        "duration" : 1,
+        "parts" : {
+            "left_eye" : {
+                "frames" : [
+                    { 
+                    }
+                ]
+            },
+            "right_eye" : {
+                "frames" : [
+                    { 
+                    }
+                ]
+            }
+        }
+    },
+    "jump" : {
+        "name" : "jump",
+        "duration" : 1,
+        "parts" : {
+            "left_eye" : {
+                "frames" : [
+                    { 
+                        "y" : -1
+                    }
+                ]
+            },
+            "right_eye" : {
+                "frames" : [
+                    { 
+                        "y" : -1
+                    }
+                ]
+            },
+            "nose" : {
+                "frames" : [
+                    { 
+                        "y" : -2
+                    }
+                ]
+            }
+        }
+    },
+    "look_left" : {
+        "name" : "look_left",
+        "width" : 95,
+        "parts" : {
+            "head" : {
+                "frames" : [
+                    { 
+                        "x" : -5
+                    }
+                ]
+            },
+            "face" : {
+                "frames" : [
+                    { 
+                        "x" : -2
+                    }
+                ]
+            },
+            "left_horn" : {
+                "frames" : [
+                    { 
+                        "x" : 5
+                    }
+                ]
+            },
+            "left_eye" : {
+                "frames" : [
+                    { 
+                        "x" : -5
+                    }
+                ]
+            },
+            "right_eye" : {
+                "frames" : [
+                    { 
+                        "x" : -5
+                    }
+                ]
+            },
+            "nose" : {
+                "frames" : [
+                    { 
+                        "x" : -7
+                    }
+                ]
+            }
+        }
+    },
+    "look_right" : {
+        "name" : "look_right",
+        "width" : 95,
+        "parts" : {
+            "head" : {
+                "frames" : [
+                    { 
+                        "x" : 5
+                    }
+                ]
+            },
+            "face" : {
+                "frames" : [
+                    { 
+                        "x" : 2
+                    }
+                ]
+            },
+            "right_horn" : {
+                "frames" : [
+                    { 
+                        "x" : -5
+                    }
+                ]
+            },
+            "left_eye" : {
+                "frames" : [
+                    { 
+                        "x" : 5
+                    }
+                ]
+            },
+            "right_eye" : {
+                "frames" : [
+                    { 
+                        "x" : 5
+                    }
+                ]
+            },
+            "nose" : {
+                "frames" : [
+                    { 
+                        "x" : 7
+                    }
+                ]
+            }
+        }
+    },
+    "walk_left" : {
+        "name" : "walk_left",
+        "duration" : ".1",
+        "repeat" : true,
+        "parts" : {
+            "left_leg" : {
+                "frames" : [
+                    { 
+                        "x" : 0
+                    },
+                    { 
+                        "x" : 5,
+                        "y" : -2
+                    }
+                ]
+            },
+            "right_leg" : {
+                "frames" : [
+                    { 
+                        "x" : 0,
+                        "y" : -2
+                    },
+                    { 
+                        "x" : -5
+                    }
+                ]
+            }
+        }
+    },
+    "walk_right" : {
+        "name" : "walk_right",
+        "duration" : ".1",
+        "repeat" : true,
+        "parts" : {
+            "left_leg" : {
+                "frames" : [
+                    { 
+                        "x" : 0,
+                        "y" : -2
+                    },
+                    { 
+                        "x" : 5
+                    }
+                ]
+            },
+            "right_leg" : {
+                "frames" : [
+                    { 
+                        "x" : 0
+                    },
+                    { 
+                        "x" : -5,
+                        "y" : -2
+                    }
+                ]
+            }
+        }
+    }
+}
