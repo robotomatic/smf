@@ -22,7 +22,7 @@ function ViewCamera() {
         max : 3,
         amount : 0.05,
         speed : 1,
-        enabled : false
+        enabled : true
     }
     
     this.center = new Point(0, 0);
@@ -106,56 +106,26 @@ ViewCamera.prototype.getCenterPointShake = function(now) {
     this.shake.elapsed = now - this.shake.start;
 }
 
-    // todo:
-    //
-    // - fix this shit
-    // - fix jump box camera thingmy
-    // - still z-sorting issues...drawing discrete geoms might fix
-    // - remove seams?
-    //
-
-        
-//    var dh = mbr.height * d;
-//    mbr.y = mbr.y + (mbr.height - dh) / 2;
-//    mbr.height = dh;
-
 
 ViewCamera.prototype.scaleMbr = function(mbr, width, height) {
+
+   var scale = width / mbr.width;
+    var svh = height / scale;
+    if (svh < mbr.height) {
+        var d = mbr.height / svh;
+        mbr.y += svh / 2;
+        mbr.height = svh;
+        var dw = mbr.width * d;
+        mbr.x = mbr.x + (mbr.width - dw) / 2;
+        mbr.width = dw;
+    }
     
-    var sh = height / mbr.height;
-    var nh = mbr.height * sh;
-    var hd = height - nh;
-    mbr.y += hd / 2;
-    
-    var sw = width / mbr.width;
-    var nw = mbr.width * sw;
-    var wd = width - nw;
-    mbr.x += wd / 2;
-    
-    mbr.scale = sw;
-    return mbr;
+    mbr.scale = width / mbr.width;
+    return mbr;    
 }
 
-//ViewCamera.prototype.scaleMbr = function(mbr, width, height) {
-//    
-//    mbr.scale = width / mbr.width;
-//    var sh = mbr.height * mbr.scale;
-//    if (sh < height) {
-//        var hd = height - sh;
-//        mbr.height += hd;
-//        var hhd = hd / 2;
-//        mbr.y -= hhd;
-//    }
-//    var sw = mbr.width * mbr.scale;
-//    if (sw < width) {
-//        var wd = width - sw;
-//        mbr.width += wd;
-//        var hwd = wd / 2;
-//        mbr.x -= hwd;
-//    }
-//    return mbr;
-//}
-    
+
+
 ViewCamera.prototype.getCameraBox = function(mbr) {
 
     if (!this.lastview) {

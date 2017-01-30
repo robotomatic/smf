@@ -71,8 +71,6 @@ StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItem = function(m
         geometry : item.geometry
     }
     this.renderitems.all.push(newitem);
-    
-//    this.getRenderItemsStageLevelLayerItemsItemGeometry(item, window);
 }
 
 StageRendererStart.prototype.getRenderItemsStagePlayers = function(mbr, window, cp, graphics, stage) {
@@ -108,11 +106,6 @@ StageRendererStart.prototype.getRenderItemsStagePlayersPlayer = function(mbr, wi
         mbr : playermbr
     }
     this.renderitems.all.push(newitem);
-
-//    var px = player.box.x + (player.box.width / 2);
-//    var py = player.box.y + (player.box.height / 2);
-//    var pz = player.box.z;
-//    this.getRenderItemsStageLevelLayerItemsItemGeometryGeometry(window, player, "player", "", box, px, py, pz);
 }
 
 
@@ -125,49 +118,9 @@ StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItemCenter = func
     var mbrcp = mbr.getCenter();
 
     var ix = item.x + (item.width / 2);
-//    var iy = item.y + (item.height / 2);
     var iy = item.y;
-//    var iz = item.z + (item.depth / 2);
     var iz = item.z + (item.depth);
     var pd = distance3D(ix, iy, iz, mbrcp.x, mbrcp.y, mbrcp.z);
     
     return pd;
 }
-
-
-
-
-
-//StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItemGeometry = function(item, window) {
-//    var keys = Object.keys(item.geometry);
-//    var t = keys.length;
-//    for (var i = 0; i < t; i++) {
-//        if (keys[i] == "projected") continue;
-//        var geom = item.geometry[keys[i]];
-//        if (!geom.length) continue;
-//        var gmbr = geom[0].getMbr();
-//        var ix = gmbr.x + (gmbr.width / 2);
-//        var iy = gmbr.y + (gmbr.height / 2);
-//        var iz = 0;
-//        if (keys[i] == "fronts") iz = item.z;
-//        else if (keys[i] == "sides") iz = item.z + (gmbr.width / 2);
-//        else iz = item.z + (gmbr.height / 2);
-//        this.getRenderItemsStageLevelLayerItemsItemGeometryGeometry(window, item, "item", keys[i], geom, ix, iy, iz);
-//    }
-//}
-//
-//StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItemGeometryGeometry = function(window, item, type, name, geom, x, y, z) {
-//    var cp = window.getCenter();
-//    var dist = distance3D(x, y, z, cp.x, cp.y, cp.z);
-//    var newitem = {
-//        x : x,
-//        y : y,
-//        z : z,
-//        distance : dist,
-//        item : item,
-//        type : type,
-//        name : name,
-//        geometry : geom
-//    }
-//    this.renderitems.geometry.push(newitem);
-//}

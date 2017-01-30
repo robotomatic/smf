@@ -23,12 +23,16 @@ Players.prototype.loadJson = function(json) {
 
 Players.prototype.addPlayer = function(player) {
     this.players.push(player);
+    updateDevPlayers(this.players);
 }
 
 Players.prototype.getPlayers = function() {
     return this.players;
 }
 
+Players.prototype.update = function(when, delta) {
+    updateDevPlayers(this.players);
+}
 
 Players.prototype.getMbr = function(mbr) {
     var minx, miny, maxx, maxy, minz, maxz;
@@ -36,6 +40,7 @@ Players.prototype.getMbr = function(mbr) {
     for (var i = 0; i < t; i++) {
         var player = this.players[i];
         if (!player) continue;
+        if (!player.getscamera) continue;
         var item = this.players[i].getMbr();
         if (!minx || item.x <= minx) minx = item.x;
         if (!miny || item.y <= miny) miny = item.y;

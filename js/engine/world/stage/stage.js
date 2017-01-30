@@ -45,6 +45,7 @@ Stage.prototype.updateNPCs = function(now, delta) { if (this.npcs) this.npcs.upd
 
 Stage.prototype.updatePlayers = function(now, delta) { 
     if (!this.players || !this.players.players) return;
+    this.players.update(now, delta);
     for (var i = 0; i < this.players.players.length; i++) this.updatePlayer(now, delta, this.players.players[i]);
 }
 Stage.prototype.updatePlayer = function(now, delta, player) {

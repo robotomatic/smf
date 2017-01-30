@@ -29,6 +29,7 @@ function initializeDev(game) {
     initializeDevCamera();
     initializeDevRender();
     initializeDevFPS();
+    initializeDevPlayers();
     initializeDevPlayer();
     resizeDev();
 }

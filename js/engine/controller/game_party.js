@@ -118,6 +118,7 @@ GameParty.prototype.loadLevel = function() {
         var hp = 1000;
         
         var pc = new Player(i, name, color, x, y, z, width, height, speed, char, hp, this);
+        if (i == 0) pc.getscamera = true;
         
         if (this.level.speed) pc.controller.speed = this.level.speed;
         if (this.level.jumpspeed) pc.controller.jumpspeed = this.level.jumpspeed;

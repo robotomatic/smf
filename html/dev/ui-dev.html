@@ -2,7 +2,7 @@
     <div id="dev-toolbar-title" class="dialog-toolbar">
         <div id="dev-toolbar-tools" class="dev-toolbar-tools">
             <a class="float-left dev-toolbar-tools-tool pad-left-small" id="dev-tools-fps">FPS</a>
-            <a class="float-left dev-toolbar-tools-tool pad-left-small" id="dev-tools-player">Player</a>
+            <a class="float-left dev-toolbar-tools-tool pad-left-small" id="dev-tools-players">Players</a>
             <a class="float-left dev-toolbar-tools-tool" id="dev-tools-debug">Debug</a>
             <a class="float-left dev-toolbar-tools-tool" id="dev-tools-size">Size</a>
             <a class="float-left dev-toolbar-tools-tool" id="dev-tools-quality">Quality</a>
@@ -200,6 +200,35 @@
         </div>
     </div>
 </div>
+
+
+
+
+<div id="dev-dialog-players" class="dialog shadow hidden dialog-resize">
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">Players</a>
+    </div>
+    <div class="dialog-wrap" id="dev-dialog-players-players">
+        
+        <div id="dev-dialog-players-players-player-template" class="dialog-row dialog-row-border" style="display: none;">
+            
+            
+            <label class="text-left float-left" id="dev-dialog-players-players-player-template-id"></label>
+            <label class="text-left float-left" id="dev-dialog-players-players-player-template-name"></label>
+            
+            <div class="dialog-check float-right" id="dev-dialog-players-players-player-template-camera">
+                <label class="text-left float-left">
+                    <input type="checkbox" class="dialog-toggle float-left dev-toggle-player-camera" id="dev-dialog-players-players-player-template-camera-camera" value="Auto" CHECKED> Camera
+                </label>
+            </div>
+            
+            
+        </div>
+        
+    </div>
+</div>
+
 
 
 

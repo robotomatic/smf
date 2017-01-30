@@ -17,7 +17,7 @@ function Item() {
     
     this.item3D = new Item3D(this);
     this.projectedlocation = new Point(0, 0);
-
+    
     this.extrude = 0;
     
     this.last_ax = 0;
@@ -398,26 +398,24 @@ Item.prototype.translate = function(window, width, height) {
 
 
 
-//Item.prototype.render = function(now, ctx, renderer, name, width, height) {
-//    this.item3D.renderItem3DPart(now, ctx, renderer, name);
-//}
 
 
-
-Item.prototype.render = function(now, renderer, width, height, ctx = null) {
-    if (!ctx) this.renderStart(now, width, height, ctx);
-    this.renderRender(now, renderer, ctx);
-    if (!ctx) this.renderEnd(now, ctx);
+Item.prototype.render = function(now, renderer, width, height, ctx) {
+    if (!ctx) {
+        this.renderStart(now, width, height);
+        this.renderRender(now, renderer, this.ctx);
+        this.renderEnd(now);
+    } else {
+        this.renderRender(now, renderer, ctx);
+    }
 }
 
-Item.prototype.renderStart = function(now, width, height, ctx) {
+Item.prototype.renderStart = function(now, width, height) {
 
-    if (!ctx) return;
-    
     var imbr = this.getProjectedMbr();
+    
     this.projectedlocation.x = imbr.x;
     this.projectedlocation.y = imbr.y;
-
     
     clearRect(this.ctx, 0, 0, this.canvas.width, this.canvas.height);
     
@@ -442,13 +440,10 @@ Item.prototype.renderStart = function(now, width, height, ctx) {
 }
 
 Item.prototype.renderRender = function(now, renderer, ctx) {
-    this.item3D.renderItem3D(now, ctx ? ctx : this.ctx, renderer);
+    this.item3D.renderItem3D(now, ctx, renderer);
 }
 
-Item.prototype.renderEnd = function(when, ctx) {
-    
-    if (!ctx) return;
-    
+Item.prototype.renderEnd = function(when) {
     this.image.x = 0;
     this.image.y = 0;
     this.image.width = this.canvas.width;
@@ -459,13 +454,3 @@ Item.prototype.renderEnd = function(when, ctx) {
 Item.prototype.drawImage = function(ctx) {
     this.image.draw(ctx, this.projectedlocation.x, this.projectedlocation.y, this.canvas.width, this.canvas.height);
 }
-
-Item.prototype.drawImageAtPoint = function(ctx, x, y) {
-    this.image.draw(ctx, x, y, this.canvas.width, this.canvas.height);
-}
-
-Item.prototype.patchImage = function(ctx, x, y, w, h) {
-    this.image.patch(ctx, x, y, w, h);
-}
-
-
