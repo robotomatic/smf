@@ -3,7 +3,7 @@
 var devplayers = new Array();
 
 function initializeDevPlayers() {
-    
+    devplayers = new Array();
 }
 
 function updateDevPlayers(players) {

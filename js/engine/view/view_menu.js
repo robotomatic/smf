@@ -5,7 +5,7 @@ function MenuView(id, width, height, scale, levelquality, playerquality) {
     this.ready = false;
     var controller = this;
     this.view.parent.onclick = function() {
-        window.location.hash="#menu-player";
+        window.location.hash="#game";
     }
 }
 
@@ -30,7 +30,7 @@ MenuView.prototype.render = function(now, game) {
         this.ready = true;
     }
     this.view.renderer.mbr.width = stage.level.width;
-    this.view.renderer.mbr.height = stage.level.height + 60;
+    this.view.renderer.mbr.height = stage.level.height - 50;
     this.view.renderer.mbr.x = 0;
     var canvas = this.view.graphics.main.canvas;
     var scale = this.view.renderer.mbr.width / canvas.width;
@@ -53,7 +53,8 @@ MenuView.prototype.update = function(now, delta, game) {
 
 MenuView.prototype.updateNPC = function(stage, npc) {
     var player = npc.player;
-    var viewpad = 10;
+    var viewpad = 100;
+    var hviewpad = viewpad / 2;
     
     if (player.controller.x <= viewpad) {
         player.controller.x = viewpad;
@@ -61,6 +62,14 @@ MenuView.prototype.updateNPC = function(stage, npc) {
     } else if (player.controller.x >= stage.level.width - (player.controller.width + viewpad)) {
         player.controller.x = stage.level.width - (player.controller.width + viewpad);
         if (player.controller.move_right) player.controller.right(false);        
+    }
+
+    if (player.controller.z <= -hviewpad) {
+        player.controller.z = -hviewpad;
+        if (player.controller.move_in) player.controller.in(false);
+    } else if (player.controller.z >= stage.level.layers[0].depth - viewpad) {
+        player.controller.z = stage.level.layers[0].depth - viewpad;
+        if (player.controller.move_out) player.controller.out(false);
     }
     
     if (!player.controller.paused && !player.controller.move_left && !player.controller.move_right && player.controller.grounded) {
@@ -73,6 +82,14 @@ MenuView.prototype.updateNPC = function(stage, npc) {
             if (player.controller.x < stage.level.width - (player.controller.width + viewpad))  {
                 npc.doActionTimeout("right", true, false, random(1000, 3000));
             }
+//        } else if (dir == 2) {
+//            if (player.controller.z > -hviewpad)  {
+//                npc.doActionTimeout("in", true, false, random(1000, 3000));
+//            }
+//        } else if (dir == 3) {
+//            if (player.controller.z < stage.level.layers[0].depth - viewpad)  {
+//                npc.doActionTimeout("out", true, false, random(1000, 3000));
+//            }
         } else {
             if (!player.controller.falling) {
                 var pw = player.controller.x + (player.controller.width / 2);

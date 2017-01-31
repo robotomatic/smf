@@ -138,6 +138,7 @@ MenuMain.prototype.loadPlayer = function(id, x, y, z, character) {
     var player = new Player(id, character.name, "", x, y, z, pw, ph, speed, char);
     player.controller.jumpspeed = 5;
     player.info.ready = true;
+    player.info.alive = true;
     player.controller.lookThreshold = .1;
     return player;
 }

@@ -11,6 +11,16 @@ var sizes = false;
 var dialogs = new Array();
 
 function initializeDev(game) {
+    
+    fpsmain = null;
+    devlog = null;
+    devfps = null;
+    devfpstype = [];
+    elapsed = [];
+    delay = 5;
+    sizes = false;
+    dialogs = new Array();
+    
     gamecontroller = game;
     document.getElementById("dev-toolbar-fps").onclick = function() {
         toggleDev();
