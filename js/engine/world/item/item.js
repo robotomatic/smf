@@ -17,6 +17,7 @@ function Item() {
     
     this.item3D = new Item3D(this);
     this.projectedlocation = new Point(0, 0);
+    this.projectedlocation_backup = new Point(0, 0);
     
     this.extrude = 0;
     
@@ -412,6 +413,9 @@ Item.prototype.render = function(now, renderer, width, height, ctx) {
 
 Item.prototype.renderStart = function(now, width, height) {
 
+    this.projectedlocation_backup.x = this.projectedlocation.x;
+    this.projectedlocation_backup.y = this.projectedlocation.y;
+    
     var imbr = this.getProjectedMbr();
     
     this.projectedlocation.x = imbr.x;
@@ -453,4 +457,6 @@ Item.prototype.renderEnd = function(when) {
 
 Item.prototype.drawImage = function(ctx) {
     this.image.draw(ctx, this.projectedlocation.x, this.projectedlocation.y, this.canvas.width, this.canvas.height);
+    this.projectedlocation.x = this.projectedlocation_backup.x;
+    this.projectedlocation.y = this.projectedlocation_backup.y;
 }

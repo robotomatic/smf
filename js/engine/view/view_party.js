@@ -13,8 +13,8 @@ function PartyView(id, width, height, scale, levelquality, playerquality) {
     
     this.offset = {
         x : 0,
-        y : 0,
-        z : 300
+        y : 100,
+        z : 200
     }
     
 }
