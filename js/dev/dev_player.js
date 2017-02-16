@@ -11,6 +11,9 @@ function initializeDevPlayer() {
 }
 
 function updateDevPlayer(img) {
+    
+    return;
+    
     devplayerimg.data = img.data;
     devplayerimg.width = img.width;
     devplayerimg.height = img.height;
@@ -18,6 +21,9 @@ function updateDevPlayer(img) {
 }
 
 function resizeDevPlayerCanvas() {
+    
+    return;
+    
     if (!devplayercanvas) devplayercanvas = document.getElementById("dev-player-canvas");
     if (!devplayercanvas) return;
     if (!devplayerctx) devplayerctx = devplayercanvas.getContext("2d");
