@@ -101,6 +101,8 @@ function Item() {
     this.ctx = this.canvas.getContext("2d")
     this.image = new Image(null, 0, 0, 0, 0);
     this.imagepad = 10;
+    
+    this.showing = false;
 }
 
 Item.prototype.loadJson = function(json) {

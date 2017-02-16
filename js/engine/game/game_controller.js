@@ -60,10 +60,7 @@ GameController.prototype.loadView = function() {
 }
 
 GameController.prototype.showView = function(view, data) {
-    if (view.indexOf("party") > -1) this.showMenuPlayerChooser(data);
-    else if (view.indexOf("game") > -1) this.showGameParty(data);
-    else if (view.indexOf("level") > -1) this.showMenuLevelChooser(data);
-    else if (view.indexOf("player")> -1) this.showMenuPlayerChooser(data);
+    if (view.indexOf("game") > -1) this.showGameParty(data);
     else this.showMenu(data);
 }
 
@@ -79,44 +76,6 @@ GameController.prototype.showMenu = function(data) {
                 var p = document.getElementById("menu-player-wrap");
                 controller.currentview = "menu";
                 controller.game = new MenuMain(controller);
-                controller.start();
-            }
-        );
-    });
-}
-
-GameController.prototype.showMenuPlayerChooser = function(data) {
-    this.stop();
-    var controller = this;
-    this.loadUI(data, function() {
-        controller.gameloader.loadMenuPlayerChooser(
-            "dat/menus/player_menu.json",
-            "dat/characters.json", 
-            "dat/animations.json",
-            "html/menu_player/ui-player-chooser.html",
-            function() {
-                var p = document.getElementById("menu-player-wrap");
-                controller.currentview = "menu-player-chooser";
-                controller.game = new MenuPlayerChooser(controller, p);
-                controller.start();
-            }
-        );
-    });
-}
-
-GameController.prototype.showMenuLevelChooser = function(data) {
-    this.stop();
-    var controller = this;
-    this.loadUI(data, function() {
-        controller.gameloader.loadMenuLevelChooser(
-            "dat/levels.json",
-            "dat/themes.json",
-            "dat/materials.json",
-            "html/menu_level/ui-level-chooser.html",
-            function() {
-                var p = document.getElementById("menu-level-wrap");
-                controller.currentview = "menu-level-chooser";
-                controller.game = new MenuLevelChooser(controller, p);
                 controller.start();
             }
         );

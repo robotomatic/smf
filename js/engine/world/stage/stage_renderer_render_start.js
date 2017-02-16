@@ -52,11 +52,17 @@ StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItem = function(m
     item.translate(mbr, width, height);
     var floodlevel = null;
     item.item3D.createItem3D(renderer, mbr, floodlevel);
-    if (!item.isVisible(window, mbr)) return;
+    
+    if (!item.isVisible(window, mbr)) {
+        item.showing = false;
+        return;
+    }
+    item.showing = true;
+    
     var iz = item.z;
     if (item.width == "100%") iz = item.z + item.depth;
  
-    var id = this.getRenderItemsStageLevelLayerItemsItemCenter(mbr, cp, item);
+    var id = this.getRenderItemsStageLevelLayerItemsItemCenter(mbr, cp, item, 0, 0, 0);
     
     var itemmbr = item.getMbr();
     var newitem = {
@@ -92,8 +98,14 @@ StageRendererStart.prototype.getRenderItemsStagePlayersPlayer = function(mbr, wi
     box.x -= pad;
     box.width += pad * 2;
     var playermbr = player.getMbr();
+
+    if (!player.isVisible(window, mbr)) {
+        player.showing = false;
+        return;
+    }
+    player.showing = true;
     
-    var id = this.getRenderItemsStageLevelLayerItemsItemCenter(mbr, cp, player.controller);
+    var id = this.getRenderItemsStageLevelLayerItemsItemCenter(mbr, cp, player.controller, 0, 0, -20);
     
     var newitem = {
         type : "player",
@@ -109,7 +121,7 @@ StageRendererStart.prototype.getRenderItemsStagePlayersPlayer = function(mbr, wi
 }
 
 
-StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItemCenter = function(mbr, cp, item) {
+StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItemCenter = function(mbr, cp, item, ox, oy, oz) {
     
     if (item.width == "100%") {
         return item.z + item.depth;
@@ -117,9 +129,9 @@ StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItemCenter = func
 
     var mbrcp = mbr.getCenter();
 
-    var ix = item.x + (item.width / 2);
-    var iy = item.y;
-    var iz = item.z + (item.depth);
+    var ix = item.x + (item.width / 2) + ox;
+    var iy = item.y + oy;
+    var iz = item.z + (item.depth) + oz;
     var pd = distance3D(ix, iy, iz, mbrcp.x, mbrcp.y, mbrcp.z);
     
     return pd;

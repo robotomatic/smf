@@ -1,6 +1,11 @@
 todo:
 
 
+- fix blur so items don't get bigger
+- find and remove hidden geometry
+- find slowdown - are players rendering when offscreen? are items?
+
+
 *** break "wide" or "high" or "deep" geometries up a bit -- add a point every x (or so) units so occlusion code is work good
 
 

@@ -20,6 +20,8 @@ function Player(id, name, color, x, y, z, width, height, speed, character, hp, l
     this.ctx = this.canvas.getContext("2d")
     this.image = new Image(null, 0, 0, 0, 0);
     this.imagepad = 50;
+
+    this.showing = false;
     
     this.playerdebugger = new PlayerDebugger(this.player);
 }
@@ -38,6 +40,16 @@ Player.prototype.getLocation = function() {
     return this.controller.getLocation();
 }
     
+Player.prototype.isVisible = function(w, wmbr, pad = 0) {
+    var mbr = this.box;
+    if (mbr.x > (w.x + w.width + pad)) return false;
+    if ((mbr.x + mbr.width) < w.x - pad) return false;
+    if (mbr.y > (w.y + w.height + pad)) return false;
+    if ((mbr.y + mbr.height) < w.y - pad) return false;
+    if (mbr.z + mbr.depth < w.z - pad - 500) return false;
+    return true;
+}
+
 Player.prototype.setCharacter = function(character) { 
     this.character = character; 
 }
