@@ -93,8 +93,17 @@ function Item() {
         fronts : new Array(),
         tops : new Array(),
         sides : new Array(),
-        bottoms : new Array()
+        bottoms : new Array(),
+        visible : {
+            top: true,
+            bottom: true,
+            left: true,
+            right : true,
+            front: true,
+            back : true
+        }
     }
+
     this.projectedmbr = new Rectangle(0, 0, 0, 0);
 
     this.canvas = document.createElement('canvas');
@@ -237,7 +246,7 @@ Item.prototype.isVisible = function(w, wmbr, pad = 0) {
         if ((mbr.y + mbr.height) < w.y - pad) return false;
     }
     if (this.depth != "100%") {
-        if (mbr.z + mbr.depth < w.z - pad) return false;
+        if (mbr.z + mbr.depth < w.z - 100 - pad) return false;
     }
     return true;
 }

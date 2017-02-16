@@ -13,6 +13,7 @@ function Item3D(item) {
     this.polytop = new Polygon();
     this.top = new Polygon();
     this.dotop = false;
+    this.dopoly = true;
     this.frontcolor = "red";
     this.sidecolor = "red";
     this.topcolor = "white";
@@ -165,6 +166,9 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
 
 Item3D.prototype.getItemProjectedGeometry = function() {
     
+
+    if (!this.dopoly) return;
+
     // todo: need better poly-join codes
     
     var sides = false;
@@ -175,10 +179,10 @@ Item3D.prototype.getItemProjectedGeometry = function() {
         if (this.item.geometry.sides[0].points[0].x < this.item.geometry.fronts[0].points[0].x) left = true;
         else right = true;
     }
-    var top = this.item.geometry.tops.length > 0 && this.item.top !== false;
+    var top = this.item.geometry.tops.length > 0 && this.item.top !== false && this.item.geometry.visible.top;
     var bottom = this.item.geometry.bottoms.length > 0 && this.item.bottom !== false;
     this.item.geometry.projected.points.length = 0;
-    if (left) {
+    if (left && this.item.geometry.visible.left) {
         this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[0]);
         if (top) {
             this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[0]);
@@ -199,7 +203,7 @@ Item3D.prototype.getItemProjectedGeometry = function() {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
         }
-    } else if (right) {
+    } else if (right && this.item.geometry.visible.right) {
         this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
         if (top) {
             this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[0]);
@@ -221,21 +225,21 @@ Item3D.prototype.getItemProjectedGeometry = function() {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
         }
     } else {
-        if (top) {
+        if (top && this.item.geometry.visible.top) {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
-        } else if (bottom) {
+        } else if (bottom && this.item.geometry.visible.bottom) {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
             this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
-        } else {
+        } else if (this.item.geometry.visible.front) {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
@@ -255,38 +259,42 @@ Item3D.prototype.renderItem3D = function(now, ctx, renderer) {
     
     var x = this.item.projectedlocation.x;
     var y = this.item.projectedlocation.y;
-    
-    this.polygon.setPoints(this.item.geometry.projected.points);
-    this.polygon.translate(-x, -y, 1);
-    ctx.fillStyle = this.sidecolor;
-    ctx.beginPath();
-    this.polygon.draw(ctx);
-    
-    this.renderItemParts3D(ctx, this.item.geometry.fronts, this.frontcolor, x, y);
-    this.renderItemParts3D(ctx, this.item.geometry.sides, this.sidecolor, x, y);
-    if (this.item.bottom === true) {
-        this.renderItemParts3D(ctx, this.item.geometry.bottoms, this.bottomcolor, x, y);
+
+    if (this.dopoly) {
+        this.polygon.setPoints(this.item.geometry.projected.points);
+        this.polygon.translate(-x, -y, 1);
+        ctx.fillStyle = this.sidecolor;
+        ctx.beginPath();
+        this.polygon.draw(ctx);
     }
-    if (this.dotop) this.renderItemParts3D(ctx, this.item.geometry.tops, this.topcolor, x, y);
+    
+    if (this.item.geometry.visible.front) {
+        this.renderItemParts3D(ctx, this.item.geometry.fronts, this.frontcolor, x, y);
+    }
+    if (this.item.geometry.visible.left || this.item.geometry.visible.right) {
+        if (this.item.geometry.sides.length) {
+            var sides = true;
+            if (this.item.geometry.sides[0].points[0].x < this.item.geometry.fronts[0].points[0].x) {
+                if (!this.item.geometry.visible.left) sides = false;
+            } else {
+                if (!this.item.geometry.visible.right) sides = false;
+            }
+            if (sides) {
+                this.renderItemParts3D(ctx, this.item.geometry.sides, this.sidecolor, x, y);
+            }
+        }
+    }
+    if (this.item.bottom === true) {
+        if (this.item.geometry.visible.bottom) {
+            this.renderItemParts3D(ctx, this.item.geometry.bottoms, this.bottomcolor, x, y);
+        }
+    }
+    if (this.dotop) {
+        if (this.item.geometry.visible.top) {
+            this.renderItemParts3D(ctx, this.item.geometry.tops, this.topcolor, x, y);
+        }
+    }
 }
-
-
-
-//Item3D.prototype.renderItem3DPart = function(now, ctx, renderer, name) {
-//    if (!renderer.shouldThemeProject(this.item)) return;
-//    if (this.item.draw == false) return;
-//    var x = this.item.projectedlocation.x;
-//    var y = this.item.projectedlocation.y;
-//    this.getColors(renderer);
-//    if (name == "fronts") this.renderItemParts3D(ctx, this.item.geometry.fronts, this.frontcolor, x, y);
-//    else if (name == "sides") this.renderItemParts3D(ctx, this.item.geometry.sides, this.sidecolor, x, y);
-//    else if ((name == "bottoms") && (this.item.bottom === true)) {
-//        this.renderItemParts3D(ctx, this.item.geometry.bottoms, this.bottomcolor, x, y);
-//    } else if ((name == "tops") && (this.dotop)) this.renderItemParts3D(ctx, this.item.geometry.tops, this.topcolor, x, y);
-//}
-
-
-
 
 Item3D.prototype.getColors = function(renderer) {
     this.frontcolor = "pink";

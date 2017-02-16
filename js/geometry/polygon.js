@@ -476,6 +476,7 @@ Polygon.prototype.createPolygon = function(items) {
 
 Polygon.prototype.path = function(ctx) {
     var points = this.points;
+    if (points.length == 0) return;
     var dx = 0;
     var dy = 0;
     if (points[0].info && points[0].info == "round") {

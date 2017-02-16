@@ -3,6 +3,7 @@
 function StageRenderer() {
     this.renderitems = {
         all : new Array(),
+        hsr : new Array(),
         geometry : new Array(),
         overlap : {
             front_top : new Array(),
@@ -18,6 +19,7 @@ function StageRenderer() {
         }
     }
     this.itemcache = new ItemCache();
+    this.hsr = new StageHSR();
     this.stagerenderer_start = new StageRendererStart(this.renderitems, this.itemcache);
     this.stagerenderer_render = new StageRendererRender(this.renderitems, this.itemcache);
     this.stagerenderer_debug = new StageRendererDebug(this.renderitems);
@@ -37,6 +39,10 @@ StageRenderer.prototype.render = function(now, graphics, camera, stage, mbr, win
     this.clearGraphics(graphics);
     this.getFlood(stage);
     this.stagerenderer_start.renderStart(mbr, window, graphics, camera, stage, this.flood);
+    if (!this.hsr.ready) {
+        this.hsr.removeItemsHiddenSurfaces(this.renderitems.hsr);
+        this.hsr.ready = true;
+    }
     this.stagerenderer_render.renderRender(now, graphics, camera, stage, mbr, window, this.flood, levelquality, playerquality);
     this.stagerenderer_debug.renderDebug(now, graphics, camera, stage, mbr, window, this.debug);
     this.stagerenderer_end.renderEnd(graphics, mbr);

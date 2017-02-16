@@ -4,7 +4,7 @@ function LayerBuilder() {
     this.flood = null;
 }
 
-LayerBuilder.prototype.buildItems = function(items, renderer, layer) { 
+LayerBuilder.prototype.buildItems = function(items, renderer, layer) {
     if (!items.items.length) return;
     var newitems = new Array();
     var t = items.items.length;

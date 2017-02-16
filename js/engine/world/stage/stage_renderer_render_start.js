@@ -11,6 +11,7 @@ StageRendererStart.prototype.renderStart = function(mbr, window, graphics, camer
 
 StageRendererStart.prototype.getRenderItems = function(mbr, window, graphics, camera, stage, flood) {
     this.renderitems.all.length = 0;
+    this.renderitems.hsr.length = 0;
     this.renderitems.geometry.length = 0;
     var cp = window.getCenter();
     this.getRenderItemsStageItems(mbr, window, cp, graphics, stage, flood);
@@ -52,8 +53,10 @@ StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItem = function(m
     item.translate(mbr, width, height);
     var floodlevel = null;
     item.item3D.createItem3D(renderer, mbr, floodlevel);
+
+    this.renderitems.hsr.push(item);
     
-    if (!item.isVisible(window, mbr)) {
+    if (!item.isVisible(window, mbr, 100)) {
         item.showing = false;
         return;
     }

@@ -8,7 +8,7 @@
             "file" : "dat/levels/island/layers/level.json"
         },
         
-        "level" : {
+        "liquid" : {
             "file" : "dat/levels/island/layers/liquid.json"
         },
         
