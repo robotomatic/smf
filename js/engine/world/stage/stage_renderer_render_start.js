@@ -90,7 +90,6 @@ StageRendererStart.prototype.getRenderItemsStagePlayers = function(mbr, window, 
 }
 
 StageRendererStart.prototype.getRenderItemsStagePlayersPlayer = function(mbr, window, cp, graphics, player) {
-    // todo: see if player is visible
     player.smooth();
     player.translate(mbr, mbr.width, mbr.height);
     var box = new Rectangle(player.box.x, player.box.y, player.box.width, player.box.height);
@@ -99,13 +98,13 @@ StageRendererStart.prototype.getRenderItemsStagePlayersPlayer = function(mbr, wi
     box.width += pad * 2;
     var playermbr = player.getMbr();
 
-    if (!player.isVisible(window, mbr)) {
+    if (!player.isVisible(window, mbr, 50)) {
         player.showing = false;
         return;
     }
     player.showing = true;
     
-    var id = this.getRenderItemsStageLevelLayerItemsItemCenter(mbr, cp, player.controller, 0, 0, -20);
+    var id = this.getRenderItemsStageLevelLayerItemsItemCenter(mbr, cp, player.controller, 0, 0, -10);
     
     var newitem = {
         type : "player",

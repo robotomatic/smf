@@ -19,7 +19,7 @@ function Player(id, name, color, x, y, z, width, height, speed, character, hp, l
     this.canvas = document.createElement('canvas');
     this.ctx = this.canvas.getContext("2d")
     this.image = new Image(null, 0, 0, 0, 0);
-    this.imagepad = 50;
+    this.imagepad = 100;
 
     this.showing = false;
     
@@ -147,6 +147,7 @@ Player.prototype.translate = function(window, width, height) {
     var wc = window.getCenter();
     this.box = projectRectangle3D(this.box, this.box.z, scale, x, y, wc);
     this.scalefactor = bw / this.box.width;
+    this.scale = this.box.width / this.controller.width;
     if (this.controller.grounded) {
         this.controller.gp.x = round(this.box.x + (this.box.width / 2));
         this.controller.gp.y = round(this.box.y + this.box.height);
@@ -168,9 +169,10 @@ Player.prototype.render = function(now, quality, width, height) {
 
 Player.prototype.renderStart = function(now, width, height) {
     clearRect(this.ctx, 0, 0, this.canvas.width, this.canvas.height);
-    this.projectedlocation.x = this.box.x - this.imagepad;
-    this.projectedlocation.y = this.box.y - this.imagepad;
-    var doublepad = this.imagepad * 2;
+    var sip = this.imagepad;
+    this.projectedlocation.x = this.box.x - sip;
+    this.projectedlocation.y = this.box.y - sip;
+    var doublepad = sip * 2;
     this.canvas.width = this.box.width + doublepad;
     this.canvas.height = this.box.height + doublepad;
 }

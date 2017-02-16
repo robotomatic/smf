@@ -100,7 +100,7 @@ function Item() {
     this.canvas = document.createElement('canvas');
     this.ctx = this.canvas.getContext("2d")
     this.image = new Image(null, 0, 0, 0, 0);
-    this.imagepad = 10;
+    this.imagepad = 50;
     
     this.showing = false;
 }
@@ -397,6 +397,7 @@ Item.prototype.translate = function(window, width, height) {
     this.box.width = round(iw);
     this.box.height = round(ih);
     this.box.depth = round(id);
+    this.scale = this.box.width / this.width;
  }
 
 
@@ -437,10 +438,12 @@ Item.prototype.renderStart = function(now, width, height) {
     }
     if (this.projectedlocation.x + iwidth > width) iwidth = width - this.projectedlocation.x;
     if (this.projectedlocation.y + iheight > height) iheight = height - this.projectedlocation.y;
+
+    var sip = this.imagepad;
     
-    this.projectedlocation.x -= this.imagepad;
-    this.projectedlocation.y -= this.imagepad;
-    var doublepad = this.imagepad * 2;
+    this.projectedlocation.x -= sip;
+    this.projectedlocation.y -= sip;
+    var doublepad = sip * 2;
     this.canvas.width = iwidth + doublepad;
     this.canvas.height = iheight + doublepad;
 }
