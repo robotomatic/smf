@@ -22,24 +22,22 @@ StageRendererRender.prototype.renderRenderItems = function(now, graphics, camera
 }
 
 StageRendererRender.prototype.renderItem = function(now, window, graphics, camera, item, renderer, distance) {
-
     if (item.width == "100%" || !camera.shouldBlur(distance)) {
         item.render(now, renderer, graphics.canvas.width, graphics.canvas.height, graphics.ctx);
         return;
     }
-    
     item.render(now, renderer, graphics.canvas.width, graphics.canvas.height);
-    blurCanvas(item.canvas, item.ctx, camera.getBlurAmount(distance), 1);
-    item.drawImage(graphics.ctx);
+    var blur = camera.getBlurAmount(distance);
+    blurCanvas(item.canvas, item.ctx, blur, 1);
+    item.drawImage(graphics.ctx, blur);
 }
 
 StageRendererRender.prototype.renderPlayer = function(now, window, graphics, camera, player, quality, distance) {
-
     player.render(now, quality, graphics.canvas.width, graphics.canvas.height);
-
+    var blur = 0;
     if (camera.shouldBlur(distance)) {
-        blurCanvas(player.canvas, player.ctx, camera.getBlurAmount(distance), 1);
+        blur = camera.getBlurAmount(distance)
+        blurCanvas(player.canvas, player.ctx, blur, 1);
     }
-    
-    player.drawImage(graphics.ctx);
+    player.drawImage(graphics.ctx, blur);
 }

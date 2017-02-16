@@ -457,8 +457,9 @@ Item.prototype.renderEnd = function(when) {
     this.image.data = this.canvas;
 }
 
-Item.prototype.drawImage = function(ctx) {
-    this.image.draw(ctx, this.projectedlocation.x, this.projectedlocation.y, this.canvas.width, this.canvas.height);
+Item.prototype.drawImage = function(ctx, offset = 0) {
+    this.image.draw(ctx, this.projectedlocation.x + offset, this.projectedlocation.y + offset, this.canvas.width - (offset * 2), this.canvas.height);
+//    this.image.draw(ctx, this.projectedlocation.x + offset, this.projectedlocation.y + offset, this.canvas.width - (offset * 2), this.canvas.height - (offset * 2));
     this.projectedlocation.x = this.projectedlocation_backup.x;
     this.projectedlocation.y = this.projectedlocation_backup.y;
 }

@@ -49,7 +49,7 @@ ViewCamera.prototype.shouldBlur = function(distance) {
 
 ViewCamera.prototype.getBlurAmount = function(distance) {
     if (distance < this.blur.near_min_distance) return this.getBlurAmountNear(distance);
-    if (distance >= this.blur.far_max_distance) return this.blur.amount;
+    if (distance >= this.blur.far_max_distance) return this.blur.far_amount;
     var dp = distance - this.blur.far_min_distance;
     var mp = this.blur.far_max_distance - this.blur.far_min_distance;
     var d = round(dp / mp); 
@@ -58,8 +58,7 @@ ViewCamera.prototype.getBlurAmount = function(distance) {
 
 ViewCamera.prototype.getBlurAmountNear = function(distance) {
     if (distance > this.blur.near_min_distance) return 0;
-    if (distance >= this.blur.near_max_distance) return this.blur.amount;
-
+    if (distance >= this.blur.near_max_distance) return this.blur.near_amount;
     var dp = Math.abs(distance - this.blur.near_min_distance);
     var mp = Math.abs(this.blur.near_max_distance - this.blur.near_min_distance);
     var d = round(dp / mp); 

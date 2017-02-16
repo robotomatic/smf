@@ -189,6 +189,6 @@ Player.prototype.renderEnd = function(when) {
     updateDevPlayer(this.image);
 }
 
-Player.prototype.drawImage = function(ctx) {
-    this.image.draw(ctx, this.projectedlocation.x, this.projectedlocation.y, this.canvas.width, this.canvas.height);
+Player.prototype.drawImage = function(ctx, offset = 0) {
+    this.image.draw(ctx, this.projectedlocation.x + offset, this.projectedlocation.y + offset, this.canvas.width - (offset * 2), this.canvas.height - (offset * 2));
 }
