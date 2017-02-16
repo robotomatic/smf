@@ -7,20 +7,26 @@ function MenuView(id, width, height, scale, levelquality, playerquality) {
     this.view.parent.onclick = function() {
         window.location.hash="#game";
     }
+    this.view.renderer.camera.blur.blur = false;
+    this.view.renderer.camera.drift.enabled = false;
 }
 
 MenuView.prototype.view;
+
 MenuView.prototype.resizeText = function() { this.view.resizeText(); }
+
 MenuView.prototype.show = function() { 
     this.resizeUI();
     this.view.show(); 
 }
+
 MenuView.prototype.hide = function() { this.view.hide(); }
 
 MenuView.prototype.resize = function() { 
     this.view.resize();
     this.resizeUI();
 }
+
 MenuView.prototype.resizeUI = function() { this.view.resizeUI(); }
 
 MenuView.prototype.render = function(now, game) { 

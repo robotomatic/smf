@@ -5,11 +5,11 @@ function StageRendererStart(renderitems, itemcache) {
     this.itemcache = itemcache;
 }
 
-StageRendererStart.prototype.renderStart = function(mbr, window, graphics, stage, flood) {
-    this.getRenderItems(mbr, window, graphics, stage, flood);
+StageRendererStart.prototype.renderStart = function(mbr, window, graphics, camera, stage, flood) {
+    this.getRenderItems(mbr, window, graphics, camera, stage, flood);
 }
 
-StageRendererStart.prototype.getRenderItems = function(mbr, window, graphics, stage, flood) {
+StageRendererStart.prototype.getRenderItems = function(mbr, window, graphics, camera, stage, flood) {
     this.renderitems.all.length = 0;
     this.renderitems.geometry.length = 0;
     var cp = window.getCenter();

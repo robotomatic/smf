@@ -12,7 +12,7 @@ function StageRendererDebug(renderitems) {
     this.polygon = new Polygon();
 }
 
-StageRendererDebug.prototype.renderDebug = function(now, graphics, stage, mbr, window, debug) {
+StageRendererDebug.prototype.renderDebug = function(now, graphics, camera, stage, mbr, window, debug) {
     var g = graphics["main"];
     if (debug.render) this.renderDebugItems(g, mbr, window);
     if (debug.overdraw) this.renderDebugItemsOverlap(g);    

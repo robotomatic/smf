@@ -33,12 +33,12 @@ StageRenderer.prototype.reset = function(now, graphics) {
     this.itemcache.reset();
 }
 
-StageRenderer.prototype.render = function(now, graphics, stage, mbr, window, levelquality, playerquality) {
+StageRenderer.prototype.render = function(now, graphics, camera, stage, mbr, window, levelquality, playerquality) {
     this.clearGraphics(graphics);
     this.getFlood(stage);
-    this.stagerenderer_start.renderStart(mbr, window, graphics, stage, this.flood);
-    this.stagerenderer_render.renderRender(now, graphics, stage, mbr, window, this.flood, levelquality, playerquality);
-    this.stagerenderer_debug.renderDebug(now, graphics, stage, mbr, window, this.debug);
+    this.stagerenderer_start.renderStart(mbr, window, graphics, camera, stage, this.flood);
+    this.stagerenderer_render.renderRender(now, graphics, camera, stage, mbr, window, this.flood, levelquality, playerquality);
+    this.stagerenderer_debug.renderDebug(now, graphics, camera, stage, mbr, window, this.debug);
     this.stagerenderer_end.renderEnd(graphics, mbr);
 }
 

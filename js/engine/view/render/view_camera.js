@@ -24,6 +24,16 @@ function ViewCamera() {
         speed : 1,
         enabled : true
     }
+
+    this.blur = {
+        blur : true,
+        near_min_distance : 10,
+        near_max_distance : -100,
+        near_amount : 2.5, 
+        far_min_distance : 600,
+        far_max_distance : 1000,
+        far_amount : 1.5
+    }
     
     this.center = new Point(0, 0);
     this.center.z = 0;
@@ -31,6 +41,30 @@ function ViewCamera() {
     
     this.box = new Rectangle(0, 0, 0, 0);
     this.box.z = 0;
+}
+
+ViewCamera.prototype.shouldBlur = function(distance) {
+    return (this.blur.blur && (distance >= this.blur.far_min_distance || distance <= this.blur.near_min_distance));
+}
+
+ViewCamera.prototype.getBlurAmount = function(distance) {
+    if (distance < this.blur.near_min_distance) return this.getBlurAmountNear(distance);
+    if (distance >= this.blur.far_max_distance) return this.blur.amount;
+    var dp = distance - this.blur.far_min_distance;
+    var mp = this.blur.far_max_distance - this.blur.far_min_distance;
+    var d = round(dp / mp); 
+    return round(this.blur.far_amount * d);
+}
+
+ViewCamera.prototype.getBlurAmountNear = function(distance) {
+    if (distance > this.blur.near_min_distance) return 0;
+    if (distance >= this.blur.near_max_distance) return this.blur.amount;
+
+    var dp = Math.abs(distance - this.blur.near_min_distance);
+    var mp = Math.abs(this.blur.near_max_distance - this.blur.near_min_distance);
+    var d = round(dp / mp); 
+    return round(this.blur.near_amount * d);
+    
 }
 
 ViewCamera.prototype.shakeScreen = function(magnitude, duration) {

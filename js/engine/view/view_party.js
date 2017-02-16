@@ -16,7 +16,9 @@ function PartyView(id, width, height, scale, levelquality, playerquality) {
         y : 100,
         z : 200
     }
-    
+
+    this.view.renderer.camera.blur.blur = true;
+    this.view.renderer.camera.drift.enabled = true;
 }
 
 PartyView.prototype.view;
