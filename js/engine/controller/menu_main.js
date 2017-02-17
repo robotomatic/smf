@@ -155,6 +155,7 @@ MenuMain.prototype.loadView = function() {
 MenuMain.prototype.start = function() {
     this.loop.start();
     this.loop.showViews();
+    this.gamecontroller.initDebug();
     this.running = true;
 }
 

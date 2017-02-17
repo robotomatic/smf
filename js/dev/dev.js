@@ -7,7 +7,7 @@ var devfps = null;
 var devfpstype = [];
 var elapsed = [];
 var delay = 5;
-var sizes = false;
+var dialogs = new Array();
 var dialogs = new Array();
 
 function initializeDev(game) {
@@ -18,7 +18,6 @@ function initializeDev(game) {
     devfpstype = [];
     elapsed = [];
     delay = 5;
-    sizes = false;
     dialogs = new Array();
     
     gamecontroller = game;
@@ -50,7 +49,6 @@ function resizeDev() {
     var style = window.getComputedStyle(gp);
     var chk = document.getElementById("dev-overlay");
     chk.checked = (style.display === 'none') ? false : true;
-    updateDevView();
 }
 
 function toggleDev() {
@@ -110,5 +108,4 @@ function updateDevView() {
     updateDevViewQuality(v);
     updateDevRender();
     updateDevDebug();
-    sizes = true;
-}
+ }

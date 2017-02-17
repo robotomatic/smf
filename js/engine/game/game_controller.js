@@ -42,6 +42,7 @@ GameController.prototype.saveGameSettings = function() {
 
 GameController.prototype.loadView = function() {
     if (this.game && this.gamesettings) this.saveGameSettings();
+    this.game = null;
     var controller = this;
     if (window.location.hash) {
         if (!controller.ignorefade) this.fadeOut(controller.element);
@@ -119,7 +120,6 @@ GameController.prototype.swapUI = function(data, callback) {
         controller.maincontent.innerHTML = "";
         controller.maincontent.innerHTML = main[0].innerHTML;
         controller.maincontent.innerHTML += controller.dev;
-        initializeDev(controller);
     }
     this.resize();
     if (callback) callback();
@@ -133,6 +133,12 @@ GameController.prototype.start = function() {
     }
     this.fadeIn();
     this.ignorefade = false;
+}
+
+
+GameController.prototype.initDebug = function() {
+    initializeDev(this);
+    updateDevView();
 }
 
 GameController.prototype.resize = function() {

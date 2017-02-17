@@ -156,6 +156,7 @@ GameParty.prototype.start = function() {
     if (!this.level) return;
     this.loop.start();
     this.loop.showViews();
+    this.gamecontroller.initDebug();
     this.running = true;
     this.startPlayers();
 }

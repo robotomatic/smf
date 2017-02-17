@@ -33,8 +33,6 @@ function createDevFPSType(type) {
 
 function logDevFPS(type, fps, aps) {
 
-    if (!sizes) updateDevView();
-    
     if (!devfps) devfps = document.getElementById("dev-fps");
     if (!devfps) return;
     var pid = "dev-fps-" + type;
