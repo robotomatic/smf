@@ -8,7 +8,6 @@ var devfpstype = [];
 var elapsed = [];
 var delay = 5;
 var dialogs = new Array();
-var dialogs = new Array();
 
 function initializeDev(game) {
     
@@ -34,7 +33,6 @@ function initializeDev(game) {
     
     initializeDevDebug();
     initializeDevSize();
-    initializeDevQuality();
     initializeDevCamera();
     initializeDevRender();
     initializeDevFPS();
@@ -105,7 +103,6 @@ function updateDevView() {
     var v = vv.view;
     updateDevViewSize(v);
     updateDevViewCamera(vv);
-    updateDevViewQuality(v);
     updateDevRender();
     updateDevDebug();
  }
