@@ -12,7 +12,6 @@ StageRendererStart.prototype.renderStart = function(mbr, window, graphics, camer
 StageRendererStart.prototype.getRenderItems = function(mbr, window, graphics, camera, stage, flood) {
     this.renderitems.all.length = 0;
     this.renderitems.hsr.length = 0;
-    this.renderitems.geometry.length = 0;
     var cp = window.getCenter();
     this.getRenderItemsStageItems(mbr, window, cp, graphics, stage, flood);
     this.getRenderItemsStagePlayers(mbr, window, cp, graphics, stage, flood);

@@ -6,7 +6,6 @@
             <a class="float-left dev-toolbar-tools-tool" id="dev-tools-debug">Debug</a>
             <a class="float-left dev-toolbar-tools-tool" id="dev-tools-size">Size</a>
             <a class="float-left dev-toolbar-tools-tool" id="dev-tools-camera">Camera</a>
-            <a class="float-left dev-toolbar-tools-tool" id="dev-tools-render">Render</a>
             <a class="float-left dev-toolbar-tools-tool" id="dev-tools-log">Log</a>
         </div>
         <div class="dev-toolbar-title">
@@ -62,9 +61,6 @@
             </div>
             <div class="dialog-check dialog-check-small float-left">
                 <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-render" value="Render"> Render</label>
-            </div>
-            <div class="dialog-check dialog-check-small float-left">
-                <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-overdraw" value="Overdraw"> Overdraw</label>
             </div>
         </div>
     </div>
@@ -251,98 +247,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-<div id="dev-dialog-render" class="dialog shadow hidden dialog-resize">
-    <div class="dialog-title dialog-drag">
-        <a class="float-left dialog-title-close circle">x</a>
-        <a class="float-right dialog-title-title">Render</a>
-    </div>
-    <div class="dialog-wrap">
-        <div class="dialog-row dialog-row-border">
-            <div class="dialog-check dialog-check float-left">
-                <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-render-render" value="Render"> Debug Render</label>
-            </div>
-            <div class="dialog-check dialog-check float-right">
-                <label class="text-right float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-render-overdraw" value="Overdraw"> Debug Overdraw</label>
-            </div>
-        </div>
-        <div class="dialog-row">
-            <div class="dialog-check dialog-check-full float-left">
-                <label class="text-left float-left dialog-label">
-                    <span class="dialog-label-color" id="dev-render-occlude-label-front-top-color"></span>
-                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-front-top-debug" value="Front-Top" CHECKED>
-                    Front-Top : <span id="dev-render-occlude-label-front-top">0</span>
-                </label>
-            </div>
-            <div class="dialog-check dialog-check-full float-left">
-                <label class="text-left float-left dialog-label">
-                    <span class="dialog-label-color" id="dev-render-occlude-label-front-front-color"></span>
-                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-front-front-debug" value="Front-Front" CHECKED>
-                    Front-Front : <span id="dev-render-occlude-label-front-front">0</span>
-                </label>
-            </div>
-            <div class="dialog-check dialog-check-full float-left margin-bottom">
-                <label class="text-left float-left dialog-label">
-                    <span class="dialog-label-color" id="dev-render-occlude-label-front-bottom-color"></span>
-                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-front-bottom-debug" value="Front-Bottom" CHECKED>
-                    Front-Bottom : <span id="dev-render-occlude-label-front-bottom">0</span>
-                </label>
-            </div>
-            
-            <div class="dialog-check dialog-check-full float-left">
-                <label class="text-left float-left dialog-label">
-                    <span class="dialog-label-color" id="dev-render-occlude-label-side-front-color"></span>
-                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-side-front-debug" value="Side-Front" CHECKED>
-                    Side-Front : <span id="dev-render-occlude-label-side-front">0</span>
-                </label>
-            </div>
-            <div class="dialog-check dialog-check-full float-left">
-                <label class="text-left float-left dialog-label">
-                    <span class="dialog-label-color" id="dev-render-occlude-label-side-top-color"></span>
-                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-side-top-debug" value="Side-Top" CHECKED>
-                    Side-Top : <span id="dev-render-occlude-label-side-top">0</span>
-                </label>
-            </div>
-            <div class="dialog-check dialog-check-full float-left">
-                <label class="text-left float-left dialog-label">
-                    <span class="dialog-label-color" id="dev-render-occlude-label-side-side-color"></span> 
-                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-side-side-debug" value="Side-Side" CHECKED>
-                    Side-Side : <span id="dev-render-occlude-label-side-side">0</span>
-                </label>
-            </div>
-            <div class="dialog-check dialog-check-full float-left margin-bottom">
-                <label class="text-left float-left dialog-label">
-                    <span class="dialog-label-color" id="dev-render-occlude-label-side-bottom-color"></span> 
-                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-side-bottom-debug" value="Side-Bottom" CHECKED>
-                    Side-Bottom : <span id="dev-render-occlude-label-side-bottom">0</span>
-                </label>
-            </div>
-            
-            <div class="dialog-check dialog-check-full float-left">
-                <label class="text-left float-left dialog-label">
-                    <span class="dialog-label-color" id="dev-render-occlude-label-items-hidden-color"></span> 
-                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-items-hidden-debug" value="Items-Hidden" CHECKED>
-                    Hidden : <span id="dev-render-occlude-label-items-hidden">0</span>
-                </label>
-            </div>
-            <div class="dialog-check dialog-check-full float-left">
-                <label class="text-left float-left dialog-label">
-                    <span class="dialog-label-color" id="dev-render-occlude-label-items-color"></span> 
-                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-items-debug" value="Items" CHECKED>
-                    Items : <span id="dev-render-occlude-label-items">0</span>
-                </label>
-            </div>
-            <div class="dialog-check dialog-check-full float-left">
-                <label class="text-left float-left dialog-label">
-                    <span class="dialog-label-color" id="dev-render-occlude-label-items-overlap-color"></span> 
-                    <input type="checkbox" class="dialog-toggle float-left" id="dev-render-occlude-label-items-overlap-debug" value="Items-Overlap" CHECKED>
-                    Overlaps : <span id="dev-render-occlude-label-items-overlap">0</span>
-                </label>
-            </div>
-        </div>
-    </div>
-</div>
-        

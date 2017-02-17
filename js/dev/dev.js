@@ -34,7 +34,6 @@ function initializeDev(game) {
     initializeDevDebug();
     initializeDevSize();
     initializeDevCamera();
-    initializeDevRender();
     initializeDevFPS();
     initializeDevPlayers();
     initializeDevPlayer();
@@ -103,6 +102,5 @@ function updateDevView() {
     var v = vv.view;
     updateDevViewSize(v);
     updateDevViewCamera(vv);
-    updateDevRender();
     updateDevDebug();
  }

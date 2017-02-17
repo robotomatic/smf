@@ -3,20 +3,7 @@
 function StageRenderer() {
     this.renderitems = {
         all : new Array(),
-        hsr : new Array(),
-        geometry : new Array(),
-        overlap : {
-            front_top : new Array(),
-            front_front : new Array(),
-            front_bottom : new Array(),
-            side_front : new Array(),
-            side_top : new Array(),
-            side_side : new Array(),
-            side_bottom : new Array(),
-            hidden : new Array(),
-            items : new Array(),
-            overlaps : new Array()
-        }
+        hsr : new Array()
     }
     this.itemcache = new ItemCache();
     this.hsr = new StageHSR();

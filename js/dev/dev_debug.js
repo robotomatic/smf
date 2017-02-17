@@ -22,18 +22,6 @@ function initializeDevDebug() {
     document.getElementById("dev-debug-level").onchange = function() {
         setDebugLevel(this.checked);
     };
-    document.getElementById("dev-debug-render").onchange = function() {
-        setDebugRender(this.checked);
-    };
-    document.getElementById("dev-debug-render-render").onchange = function() {
-        setDebugRender(this.checked);
-    };
-    document.getElementById("dev-debug-overdraw").onchange = function() {
-        setDebugOverdraw(this.checked);
-    };
-    document.getElementById("dev-debug-render-overdraw").onchange = function() {
-        setDebugOverdraw(this.checked);
-    };
 }
 
 function updateDevDebug() {
@@ -41,7 +29,6 @@ function updateDevDebug() {
     updateDevDebugPlayer();
     updateDevDebugCharacter();
     updateDevDebugRender();
-    updateDevDebugOverdraw();
 }
 
 function toggleOverlay() {
@@ -137,18 +124,4 @@ function setDebugRender(debug) {
 function updateDevDebugRender() {
     var debug = gamecontroller.game.loop.game.stage.stagerenderer.debug.render;
     document.getElementById("dev-debug-render").checked = debug;
-    document.getElementById("dev-debug-render-render").checked = debug;
-}
-
-function setDebugOverdraw(debug) {
-    if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    gamecontroller.game.loop.game.stage.stagerenderer.debug.overdraw = debug;
-    updateDevDebugOverdraw();
-}
-
-function updateDevDebugOverdraw() {
-    var debug = gamecontroller.game.loop.game.stage.stagerenderer.debug.overdraw;
-    document.getElementById("dev-debug-overdraw").checked = debug;
-    document.getElementById("dev-debug-render-overdraw").checked = debug;
 }
