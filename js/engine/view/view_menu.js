@@ -1,7 +1,7 @@
 "use strict";
 
-function MenuView(id, width, height, scale, levelquality, playerquality) {
-    this.view = new View(id, width, height, scale, levelquality, playerquality);
+function MenuView(id, width, height, scale) {
+    this.view = new View(id, width, height, scale);
     this.ready = false;
     var controller = this;
     this.view.parent.onclick = function() {

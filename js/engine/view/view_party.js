@@ -1,7 +1,7 @@
 "use strict";
 
-function PartyView(id, width, height, scale, levelquality, playerquality) {
-    this.view = new View(id, width, height, scale, levelquality, playerquality);
+function PartyView(id, width, height, scale) {
+    this.view = new View(id, width, height, scale);
     var controller = this;
     this.view.parent.onclick = function() {
         /*

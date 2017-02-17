@@ -413,9 +413,9 @@ Item.prototype.translate = function(window, width, height) {
 
 
 
-Item.prototype.render = function(now, renderer, width, height, ctx) {
+Item.prototype.render = function(now, renderer, width, height, ctx, scale = 1) {
     if (!ctx) {
-        this.renderStart(now, width, height);
+        this.renderStart(now, width, height, scale);
         this.renderRender(now, renderer, this.ctx);
         this.renderEnd(now);
     } else {
@@ -437,6 +437,7 @@ Item.prototype.renderStart = function(now, width, height) {
     
     var iwidth = imbr.width;
     var iheight = imbr.height;
+    
     if (this.projectedlocation.x < 0) {
         iwidth += this.projectedlocation.x;
         this.projectedlocation.x = 0;
@@ -470,8 +471,14 @@ Item.prototype.renderEnd = function(when) {
 }
 
 Item.prototype.drawImage = function(ctx, offset = 0) {
-    this.image.draw(ctx, this.projectedlocation.x + offset, this.projectedlocation.y + offset, this.canvas.width - (offset * 2), this.canvas.height);
-//    this.image.draw(ctx, this.projectedlocation.x + offset, this.projectedlocation.y + offset, this.canvas.width - (offset * 2), this.canvas.height - (offset * 2));
+    
+    var px = this.projectedlocation.x;
+    var py = this.projectedlocation.y;
+    var cw = this.canvas.width;
+    var ch = this.canvas.height;
+    
+    this.image.draw(ctx, px + offset, py + offset, cw - (offset * 2), ch);
+
     this.projectedlocation.x = this.projectedlocation_backup.x;
     this.projectedlocation.y = this.projectedlocation_backup.y;
 }

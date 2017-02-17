@@ -1,12 +1,10 @@
 "use strict";
 
-function ViewRenderer(levelquality, playerquality) {
+function ViewRenderer() {
     this.debug = false;
     this.mbr = new Rectangle(0, 0, 0, 0);
     this.window = new Rectangle(0, 0, 0, 0);
     this.camera = new ViewCamera();
-    this.levelquality = levelquality;
-    this.playerquality = playerquality;
     this.image = new Image(null, 0, 0, 0, 0);
     this.tiltshift = false;
     this.blurcanvas = document.createElement("canvas");
@@ -34,7 +32,7 @@ ViewRenderer.prototype.render = function(now, stage, view, graphics) {
     this.window.depth = 1;
     this.window.scale = this.mbr.scale;
 
-    stage.render(now, graphics, this.camera, this.mbr, this.window, this.levelquality, this.playerquality);
+    stage.render(now, graphics, this.camera, this.mbr, this.window);
     
     clearRect(view.ctx, 0, 0, view.canvas.width, view.canvas.height);
     this.image.width = width;

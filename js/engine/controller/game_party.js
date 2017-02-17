@@ -18,8 +18,6 @@ function GameParty(gamecontroller, gamesettings, levelsettings, playersettings) 
     this.height = 100;
     this.fov = 10;
     this.scale = 0;
-    this.levelquality = 1;
-    this.playerquality = 1;
     this.device = "";
     this.gamequality = new GameQuality(this, 1);
     
@@ -142,10 +140,8 @@ GameParty.prototype.loadLevel = function() {
     var w = this.width;
     var h = this.height;
     var s = this.scale;
-    var lq = this.levelquality;
-    var pq = this.playerquality;
     
-    this.view = new PartyView("game-canvas", w, h, s, lq, pq);
+    this.view = new PartyView("game-canvas", w, h, s);
     this.loop.loadViews(new Array(this.view));
     
     if (!this.running && this.started) {

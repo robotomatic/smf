@@ -61,8 +61,8 @@ Stage.prototype.collide = function(player) {
 Stage.prototype.collideWithPlayers = function(player) { if (this.players) this.players.collidePlayer(player); } 
 Stage.prototype.collideWithLevel = function(player) { if (this.level) this.level.collidePlayer(player); }
 
-Stage.prototype.render = function(now, graphics, camera, mbr, window, levelquality, playerquality) { 
-    this.stagerenderer.render(now, graphics, camera, this, mbr, window, levelquality, playerquality);
+Stage.prototype.render = function(now, graphics, camera, mbr, window) { 
+    this.stagerenderer.render(now, graphics, camera, this, mbr, window);
 }
 
 Stage.prototype.reset = function(now, graphics) { 

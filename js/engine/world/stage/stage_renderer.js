@@ -35,7 +35,7 @@ StageRenderer.prototype.reset = function(now, graphics) {
     this.itemcache.reset();
 }
 
-StageRenderer.prototype.render = function(now, graphics, camera, stage, mbr, window, levelquality, playerquality) {
+StageRenderer.prototype.render = function(now, graphics, camera, stage, mbr, window) {
     this.clearGraphics(graphics);
     this.getFlood(stage);
     this.stagerenderer_start.renderStart(mbr, window, graphics, camera, stage, this.flood);
@@ -43,7 +43,7 @@ StageRenderer.prototype.render = function(now, graphics, camera, stage, mbr, win
         this.hsr.removeItemsHiddenSurfaces(this.renderitems.hsr);
         this.hsr.ready = true;
     }
-    this.stagerenderer_render.renderRender(now, graphics, camera, stage, mbr, window, this.flood, levelquality, playerquality);
+    this.stagerenderer_render.renderRender(now, graphics, camera, stage, mbr, window, this.flood);
     this.stagerenderer_debug.renderDebug(now, graphics, camera, stage, mbr, window, this.debug);
     this.stagerenderer_end.renderEnd(graphics, mbr);
 }

@@ -161,9 +161,9 @@ Player.prototype.translate = function(window, width, height) {
 
 
 
-Player.prototype.render = function(now, quality, width, height) {
+Player.prototype.render = function(now, width, height) {
     this.renderStart(now, width, height);
-    this.renderRender(now, quality);
+    this.renderRender(now);
     this.renderEnd(now);
 }
 
@@ -177,7 +177,7 @@ Player.prototype.renderStart = function(now, width, height) {
     this.canvas.height = this.box.height + doublepad;
 }
 
-Player.prototype.renderRender = function(now, quality) {
+Player.prototype.renderRender = function(now) {
     this.character.draw(now, this.ctx, this, this.imagepad);
     this.playerdebugger.drawDebug(now, this.ctx);
 }
@@ -192,5 +192,12 @@ Player.prototype.renderEnd = function(when) {
 }
 
 Player.prototype.drawImage = function(ctx, offset = 0) {
-    this.image.draw(ctx, this.projectedlocation.x + offset, this.projectedlocation.y + offset, this.canvas.width - (offset * 2), this.canvas.height - (offset * 2));
+    
+    var px = this.projectedlocation.x;
+    var py = this.projectedlocation.y;
+    
+    var cw = this.canvas.width;
+    var ch = this.canvas.height;
+    
+    this.image.draw(ctx, px + offset, py + offset, cw - (offset * 2), ch - (offset * 2));
 }

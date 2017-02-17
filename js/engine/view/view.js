@@ -1,13 +1,13 @@
 "use strict";
 
-function View(id, width, height, scale, levelquality, playerquality) {
+function View(id, width, height, scale) {
     if (!id) return;
     this.id = id;
     this.width = width;
     this.height = height;
     this.maxwidth = width;
     this.maxheight = height;
-    this.renderer = new ViewRenderer(levelquality, playerquality);
+    this.renderer = new ViewRenderer();
     this.scale = scale;
     this.parent = document.getElementById(this.id);
     

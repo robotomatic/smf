@@ -23,8 +23,6 @@ function MenuMain(gamecontroller) {
     this.height = 100;
     this.fov = 10;
     this.scale = 0;
-    this.levelquality = 1;
-    this.playerquality = 1;
     this.device = "";
     this.gamequality = new GameQuality(this, 2);
     
@@ -145,7 +143,7 @@ MenuMain.prototype.loadPlayer = function(id, x, y, z, character) {
 
 MenuMain.prototype.loadView = function() {
     this.loop.hideViews();
-    this.view = new MenuView("menu-canvas", this.width, this.height, this.scale, this.levelquality, this.playerquality);
+    this.view = new MenuView("menu-canvas", this.width, this.height, this.scale);
     this.loop.loadViews(new Array(this.view));
     if (!this.running && this.started) {
         this.resize();
