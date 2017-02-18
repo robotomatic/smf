@@ -251,7 +251,7 @@ Item3D.prototype.getItemProjectedGeometry = function() {
 
 
 
-Item3D.prototype.renderItem3D = function(now, ctx, renderer) {
+Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
     if (!renderer.shouldThemeProject(this.item)) return;
     if (this.item.draw == false) return;
 
@@ -262,15 +262,16 @@ Item3D.prototype.renderItem3D = function(now, ctx, renderer) {
 
     if (this.dopoly) {
         this.polygon.setPoints(this.item.geometry.projected.points);
-        this.polygon.translate(-x, -y, 1);
+        this.polygon.translate(-x, -y, scale);
         ctx.fillStyle = this.sidecolor;
         ctx.beginPath();
         this.polygon.draw(ctx);
     }
     
     if (this.item.geometry.visible.front) {
-        this.renderItemParts3D(ctx, this.item.geometry.fronts, this.frontcolor, x, y);
+        this.renderItemParts3D(ctx, this.item.geometry.fronts, this.frontcolor, x, y, scale);
     }
+    
     if (this.item.geometry.visible.left || this.item.geometry.visible.right) {
         if (this.item.geometry.sides.length) {
             var sides = true;
@@ -280,18 +281,20 @@ Item3D.prototype.renderItem3D = function(now, ctx, renderer) {
                 if (!this.item.geometry.visible.right) sides = false;
             }
             if (sides) {
-                this.renderItemParts3D(ctx, this.item.geometry.sides, this.sidecolor, x, y);
+                this.renderItemParts3D(ctx, this.item.geometry.sides, this.sidecolor, x, y, scale);
             }
         }
     }
+    
     if (this.item.bottom === true) {
         if (this.item.geometry.visible.bottom) {
-            this.renderItemParts3D(ctx, this.item.geometry.bottoms, this.bottomcolor, x, y);
+            this.renderItemParts3D(ctx, this.item.geometry.bottoms, this.bottomcolor, x, y, scale);
         }
     }
+    
     if (this.dotop) {
         if (this.item.geometry.visible.top) {
-            this.renderItemParts3D(ctx, this.item.geometry.tops, this.topcolor, x, y);
+            this.renderItemParts3D(ctx, this.item.geometry.tops, this.topcolor, x, y, scale);
         }
     }
 }
@@ -328,14 +331,14 @@ Item3D.prototype.getColors = function(renderer) {
     this.frontcolor = themecolor.front ? themecolor.front : this.sidecolor;
 }
     
-Item3D.prototype.renderItemParts3D = function(ctx, parts, color, x, y) {
+Item3D.prototype.renderItemParts3D = function(ctx, parts, color, x, y, scale) {
     ctx.beginPath();
     ctx.fillStyle = color;
     var t = parts.length;
     for (var i = 0; i < t; i++) {
         var p = parts[i];
         this.polygon.setPoints(p.points);
-        this.polygon.translate(-x, -y, 1);
+        this.polygon.translate(-x, -y, scale);
         this.polygon.path(ctx);
     }
     ctx.fill();

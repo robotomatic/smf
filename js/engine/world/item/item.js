@@ -416,14 +416,14 @@ Item.prototype.translate = function(window, width, height) {
 Item.prototype.render = function(now, renderer, width, height, ctx, scale = 1) {
     if (!ctx) {
         this.renderStart(now, width, height, scale);
-        this.renderRender(now, renderer, this.ctx);
+        this.renderRender(now, renderer, this.ctx, scale);
         this.renderEnd(now);
     } else {
         this.renderRender(now, renderer, ctx);
     }
 }
 
-Item.prototype.renderStart = function(now, width, height) {
+Item.prototype.renderStart = function(now, width, height, scale = 1) {
 
     this.projectedlocation_backup.x = this.projectedlocation.x;
     this.projectedlocation_backup.y = this.projectedlocation.y;
@@ -432,8 +432,6 @@ Item.prototype.renderStart = function(now, width, height) {
     
     this.projectedlocation.x = imbr.x;
     this.projectedlocation.y = imbr.y;
-    
-    clearRect(this.ctx, 0, 0, this.canvas.width, this.canvas.height);
     
     var iwidth = imbr.width;
     var iheight = imbr.height;
@@ -450,16 +448,22 @@ Item.prototype.renderStart = function(now, width, height) {
     if (this.projectedlocation.y + iheight > height) iheight = height - this.projectedlocation.y;
 
     var sip = this.imagepad;
+    var doublepad = sip * 2;
+    
+    iwidth *= scale;
+    iheight *= scale;
+    this.projectedlocation.x *= scale;
+    this.projectedlocation.y *= scale;
     
     this.projectedlocation.x -= sip;
     this.projectedlocation.y -= sip;
-    var doublepad = sip * 2;
+    
     this.canvas.width = iwidth + doublepad;
     this.canvas.height = iheight + doublepad;
 }
 
-Item.prototype.renderRender = function(now, renderer, ctx) {
-    this.item3D.renderItem3D(now, ctx, renderer);
+Item.prototype.renderRender = function(now, renderer, ctx, scale = 1) {
+    this.item3D.renderItem3D(now, renderer, ctx, scale);
 }
 
 Item.prototype.renderEnd = function(when) {
@@ -470,12 +474,12 @@ Item.prototype.renderEnd = function(when) {
     this.image.data = this.canvas;
 }
 
-Item.prototype.drawImage = function(ctx, offset = 0) {
+Item.prototype.drawImage = function(ctx, scale = 1, offset = 0) {
     
-    var px = this.projectedlocation.x;
-    var py = this.projectedlocation.y;
-    var cw = this.canvas.width;
-    var ch = this.canvas.height;
+    var px = this.projectedlocation.x * scale;
+    var py = this.projectedlocation.y * scale;
+    var cw = this.canvas.width * scale;
+    var ch = this.canvas.height * scale;
     
     this.image.draw(ctx, px + offset, py + offset, cw - (offset * 2), ch);
 

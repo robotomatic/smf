@@ -161,24 +161,31 @@ Player.prototype.translate = function(window, width, height) {
 
 
 
-Player.prototype.render = function(now, width, height) {
-    this.renderStart(now, width, height);
-    this.renderRender(now);
+Player.prototype.render = function(now, width, height, scale = 1) {
+    this.renderStart(now, width, height, scale);
+    this.renderRender(now, scale);
     this.renderEnd(now);
 }
 
-Player.prototype.renderStart = function(now, width, height) {
-    clearRect(this.ctx, 0, 0, this.canvas.width, this.canvas.height);
+Player.prototype.renderStart = function(now, width, height, scale = 1) {
+
     var sip = this.imagepad;
-    this.projectedlocation.x = this.box.x - sip;
-    this.projectedlocation.y = this.box.y - sip;
     var doublepad = sip * 2;
-    this.canvas.width = this.box.width + doublepad;
-    this.canvas.height = this.box.height + doublepad;
+    
+    var bx = this.box.x * scale;
+    var by = this.box.y * scale;
+    
+    this.projectedlocation.x = bx - sip;
+    this.projectedlocation.y = by - sip;
+
+    var bw = this.box.width * scale;
+    var bh = this.box.height * scale;
+    this.canvas.width = bw + doublepad;
+    this.canvas.height = bh + doublepad;
 }
 
-Player.prototype.renderRender = function(now) {
-    this.character.draw(now, this.ctx, this, this.imagepad);
+Player.prototype.renderRender = function(now, scale = 1) {
+    this.character.draw(now, this.ctx, this, scale, this.imagepad);
     this.playerdebugger.drawDebug(now, this.ctx);
 }
 
@@ -191,13 +198,13 @@ Player.prototype.renderEnd = function(when) {
     updateDevPlayer(this.image);
 }
 
-Player.prototype.drawImage = function(ctx, offset = 0) {
+Player.prototype.drawImage = function(ctx, scale = 1, offset = 0) {
     
-    var px = this.projectedlocation.x;
-    var py = this.projectedlocation.y;
+    var px = this.projectedlocation.x * scale;
+    var py = this.projectedlocation.y * scale;
     
-    var cw = this.canvas.width;
-    var ch = this.canvas.height;
+    var cw = this.canvas.width * scale;
+    var ch = this.canvas.height * scale;
     
     this.image.draw(ctx, px + offset, py + offset, cw - (offset * 2), ch - (offset * 2));
 }

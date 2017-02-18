@@ -22,15 +22,19 @@ StageRendererRender.prototype.renderRenderItems = function(now, graphics, camera
 }
 
 StageRendererRender.prototype.renderItem = function(now, window, graphics, camera, item, renderer, distance) {
+
     if (item.width == "100%" || !camera.shouldBlur(distance)) {
         item.render(now, renderer, graphics.canvas.width, graphics.canvas.height, graphics.ctx);
         return;
     }
     
-    item.render(now, renderer, graphics.canvas.width, graphics.canvas.height);
     var blur = camera.getBlurAmount(distance);
-    blurCanvas(item.canvas, item.ctx, blur, 1);
-    item.drawImage(graphics.ctx, blur);
+    // blurCanvas(item.canvas, item.ctx, blur, 1);  <--- Maybe use this to smooth blur?
+    var scalerender = blur;
+    var scaledraw = 1 / scalerender;
+    
+    item.render(now, renderer, graphics.canvas.width, graphics.canvas.height, null, scalerender);
+    item.drawImage(graphics.ctx, scaledraw, 0);
 }
 
 StageRendererRender.prototype.renderPlayer = function(now, window, graphics, camera, player, distance) {
@@ -38,14 +42,17 @@ StageRendererRender.prototype.renderPlayer = function(now, window, graphics, cam
     var pw = graphics.canvas.width;
     var ph = graphics.canvas.height;
 
-    player.render(now, pw, ph);
+    var scalerender = 1;
+    var scaledraw = 1;
     
     if (camera.shouldBlur(distance)) {
         var blur = camera.getBlurAmount(distance)
-        blurCanvas(player.canvas, player.ctx, blur, 1);
-        player.drawImage(graphics.ctx, blur);
-    } else {
-        player.drawImage(graphics.ctx);
+        // blurCanvas(item.canvas, item.ctx, blur, 1);  <--- Maybe use this to smooth blur?
+        scalerender = blur;
+        scaledraw = 1 / scalerender;
     }
+    
+    player.render(now, pw, ph, scalerender);
+    player.drawImage(graphics.ctx, scaledraw, 0);
     
 }
