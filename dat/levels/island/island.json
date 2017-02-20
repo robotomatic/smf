@@ -1,6 +1,6 @@
 {
     "name" : "island",
-    "width" : 3200,
+    "width" : 5000,
     "height" : 1200,
     "debug" : false,
     "layers" : {
@@ -20,7 +20,6 @@
         "bridge" : {
             "file" : "dat/levels/island/layers/bridge.json"
         }
-        
         
     }
  }

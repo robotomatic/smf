@@ -85,6 +85,496 @@
                         "height": 110
                     }
                 ]
+            },
+            {
+                "x" : 1800,
+                "y" : 940,
+                "z" : 1700,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 110
+                    }
+                ]
+            },
+            {
+                "x" : 1800,
+                "y" : 940,
+                "z" : 2000,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 110
+                    }
+                ]
+            },
+            {
+                "x" : 2100,
+                "y" : 940,
+                "z" : 2000,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 110
+                    }
+                ]
+            },
+            {
+                "x" : 2100,
+                "y" : 930,
+                "z" : 2300,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 120
+                    }
+                ]
+            },
+            {
+                "x" : 2400,
+                "y" : 930,
+                "z" : 2300,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 120
+                    }
+                ]
+            },
+            {
+                "x" : 2700,
+                "y" : 930,
+                "z" : 2600,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 120
+                    }
+                ]
+            },
+            {
+                "x" : 2700,
+                "y" : 930,
+                "z" : 2300,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 120
+                    }
+                ]
+            },
+            {
+                "x" : 2700,
+                "y" : 930,
+                "z" : 2000,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 120
+                    }
+                ]
+            },
+            {
+                "x" : 3000,
+                "y" : 930,
+                "z" : 2600,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 120
+                    }
+                ]
+            },
+            {
+                "x" : 3000,
+                "y" : 900,
+                "z" : 2300,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 150
+                    }
+                ]
+            },
+            {
+                "x" : 3000,
+                "y" : 930,
+                "z" : 2000,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 120
+                    }
+                ]
+            },
+            {
+                "x" : 3300,
+                "y" : 930,
+                "z" : 2600,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 120
+                    }
+                ]
+            },
+            {
+                "x" : 3300,
+                "y" : 930,
+                "z" : 2300,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 120
+                    }
+                ]
+            },
+            {
+                "x" : 3300,
+                "y" : 930,
+                "z" : 2000,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 120
+                    }
+                ]
+            },
+            
+            {
+                "x" : 3600,
+                "y" : 930,
+                "z" : 2600,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 120
+                    }
+                ]
+            },
+            {
+                "x" : 3600,
+                "y" : 960,
+                "z" : 2300,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 90
+                    }
+                ]
+            },
+            {
+                "x" : 3600,
+                "y" : 980,
+                "z" : 2000,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 70
+                    }
+                ]
+            },
+            
+            {
+                "x" : 3600,
+                "y" : 1000,
+                "z" : 1700,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 50
+                    }
+                ]
+            },
+            {
+                "x" : 3600,
+                "y" : 1020,
+                "z" : 1400,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 30
+                    }
+                ]
+            },
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            {
+                "x" : 3900,
+                "y" : 1020,
+                "z" : 2600,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 30
+                    }
+                ]
+            },
+            {
+                "x" : 3900,
+                "y" : 1020,
+                "z" : 2300,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 30
+                    }
+                ]
+            },
+            {
+                "x" : 3900,
+                "y" : 1020,
+                "z" : 2000,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 30
+                    }
+                ]
+            },
+            
+            {
+                "x" : 3900,
+                "y" : 1020,
+                "z" : 1700,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 30
+                    }
+                ]
+            },
+            {
+                "x" : 3900,
+                "y" : 1020,
+                "z" : 1400,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 30
+                    }
+                ]
+            },
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            {
+                "x" : 3300,
+                "y" : 1020,
+                "z" : 1700,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 30
+                    }
+                ]
+            },
+            {
+                "x" : 3300,
+                "y" : 1020,
+                "z" : 1400,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 30
+                    }
+                ]
+            },
+            {
+                "x" : 3000,
+                "y" : 1020,
+                "z" : 1700,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 30
+                    }
+                ]
+            },
+            {
+                "x" : 3000,
+                "y" : 1020,
+                "z" : 1400,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 30
+                    }
+                ]
+            },
+            {
+                "x" : 2700,
+                "y" : 1020,
+                "z" : 1400,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 30
+                    }
+                ]
+            },
+            {
+                "x" : 2700,
+                "y" : 1020,
+                "z" : 1100,
+                "itemtype" : "platform",
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 30
+                    }
+                ]
             }
         ]
     },
