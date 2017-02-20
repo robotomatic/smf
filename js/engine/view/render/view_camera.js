@@ -27,12 +27,16 @@ function ViewCamera() {
 
     this.blur = {
         blur : true,
-        near_min_distance : 10,
-        near_max_distance : -100,
-        near_amount : .25, 
-        far_min_distance : 600,
-        far_max_distance : 1000,
-        far_amount : .5
+        near : {
+            min_distance : 0,
+            max_distance : 100,
+            amount : .25
+        }, 
+        far : {
+            min_distance : 600,
+            max_distance : 2000,
+            amount : .5
+        }
     }
     
     this.center = new Point(0, 0);
@@ -44,29 +48,25 @@ function ViewCamera() {
 }
 
 ViewCamera.prototype.shouldBlur = function(distance) {
-    return (this.blur.blur && (distance >= this.blur.far_min_distance || distance <= this.blur.near_min_distance));
+    return (this.blur.blur && (distance >= this.blur.far.min_distance || distance <= this.blur.near.min_distance));
 }
 
 ViewCamera.prototype.getBlurAmount = function(distance) {
-    if (distance < this.blur.near_min_distance) return this.getBlurAmountNear(distance);
-    if (distance >= this.blur.far_max_distance) return this.blur.far_amount;
-    var maxd = this.blur.far_max_distance - this.blur.far_min_distance;
-    var d = distance - this.blur.far_min_distance;
-    var dd = maxd - d;
-    var p = d / maxd;
-    var ap = this.blur.far_amount * p;
-    return 1 - ap;
+    if (distance >= this.blur.far.max_distance) return this.blur.far.amount;
+    if (distance <= -this.blur.near.max_distance) return this.blur.near.amount;
+    if (distance > -this.blur.near.min_distance) return 1;
+    if (distance < -this.blur.near.min_distance) return this.getBlurAmountByDistance(Math.abs(distance), this.blur.near);
+    else return this.getBlurAmountByDistance(distance, this.blur.far);
 }
 
-ViewCamera.prototype.getBlurAmountNear = function(distance) {
-    if (distance > this.blur.near_min_distance) return 0;
-    if (distance <= this.blur.near_max_distance) return this.blur.near_amount;
-    var maxd = this.blur.near_max_distance - this.blur.near_min_distance;
-    var d = distance - this.blur.near_min_distance;
-    var dd = maxd + d;
+ViewCamera.prototype.getBlurAmountByDistance = function(distance, blur) {
+    var maxd = blur.max_distance - blur.min_distance;
+    var d = distance - blur.min_distance;
     var p = d / maxd;
-    var ap = this.blur.near_amount * p;
-    return 1 - ap;
+    var ap = blur.amount * p;
+    var dd = 1 - blur.amount;
+    var out = dd * ap;
+    return 1 - out;
 }
 
 ViewCamera.prototype.shakeScreen = function(magnitude, duration) {
