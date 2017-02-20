@@ -13,7 +13,9 @@ function Item3D(item) {
     this.polytop = new Polygon();
     this.top = new Polygon();
     this.dotop = false;
-    this.dopoly = false;
+    
+    this.dopoly = true;
+    
     this.frontcolor = "red";
     this.sidecolor = "red";
     this.topcolor = "white";
@@ -189,7 +191,7 @@ Item3D.prototype.getItemProjectedGeometry = function() {
     var sides = false;
     var left = false;
     var right = false;
-    if (this.item.geometry.sides.length) {
+    if (this.item.geometry.sides.length && this.item.geometry.sides[0].points.length) {
         sides = true;
         if (this.item.geometry.sides[0].points[0].x < this.item.geometry.fronts[0].points[0].x) left = true;
         else right = true;
@@ -240,21 +242,21 @@ Item3D.prototype.getItemProjectedGeometry = function() {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
         }
     } else {
-        if (top && this.item.geometry.visible.top) {
+        if (top && this.item.geometry.visible.top && this.item.geometry.tops.length && this.item.geometry.tops[0].points.length) {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
-        } else if (bottom && this.item.geometry.visible.bottom) {
+        } else if (bottom && this.item.geometry.visible.bottom && this.item.geometry.bottoms.length && this.item.geometry.bottoms[0].points.length) {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
             this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
-        } else if (this.item.geometry.visible.front) {
+        } else if (this.item.geometry.visible.front && this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length) {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
@@ -275,7 +277,7 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
     var x = this.item.projectedlocation.x;
     var y = this.item.projectedlocation.y;
 
-    if (this.dopoly) {
+    if (this.dopoly && this.item.geometry.visible.front) {
         this.polygon.setPoints(this.item.geometry.projected.points);
         this.polygon.translate(-x, -y, scale);
         ctx.fillStyle = this.sidecolor;
@@ -349,8 +351,8 @@ Item3D.prototype.getColors = function(renderer) {
 Item3D.prototype.renderItemParts3D = function(ctx, parts, color, x, y, scale) {
     ctx.beginPath();
     ctx.fillStyle = color;
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 1;
+//    ctx.strokeStyle = color;
+//    ctx.lineWidth = 1;
     var t = parts.length;
     for (var i = 0; i < t; i++) {
         var p = parts[i];
@@ -359,5 +361,5 @@ Item3D.prototype.renderItemParts3D = function(ctx, parts, color, x, y, scale) {
         this.polygon.path(ctx);
     }
     ctx.fill();
-    ctx.stroke();
+//    ctx.stroke();
 }
