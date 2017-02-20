@@ -14,7 +14,7 @@ Line.prototype.getPoints = function() {
 
 Line.prototype.scale = function(scale) {
     var d = this.length() * scale;
-    var a = this.angle() * (Math.PI / 180);
+    var a = this.angle() * (MATH_PI / 180);
     this.end.x = this.start.x + d * Math.cos(a);
     this.end.y = this.start.y + d * Math.sin(a);
 }
@@ -52,7 +52,6 @@ Line.prototype.normalize = function() {
     this.end.x = endx;
     this.end.y = endy;
     return this;
-//    return new Line(new Point(startx, starty), new Point(endx, endy));
 }
 
 Line.prototype.getMbr = function() {
