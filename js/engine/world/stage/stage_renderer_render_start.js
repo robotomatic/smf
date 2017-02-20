@@ -94,10 +94,10 @@ StageRendererStart.prototype.getRenderItemsStagePlayers = function(mbr, window, 
 StageRendererStart.prototype.getRenderItemsStagePlayersPlayer = function(mbr, window, cp, graphics, player) {
     player.smooth();
     player.translate(mbr, mbr.width, mbr.height);
-    var box = new Rectangle(player.box.x, player.box.y, player.box.width, player.box.height);
-    var pad = 50;
-    box.x -= pad;
-    box.width += pad * 2;
+//    var box = new Rectangle(player.box.x, player.box.y, player.box.width, player.box.height);
+//    var pad = 50;
+//    box.x -= pad;
+//    box.width += pad * 2;
     var playermbr = player.getMbr();
 
     if (!player.isVisible(window, mbr, 50)) {
@@ -115,7 +115,7 @@ StageRendererStart.prototype.getRenderItemsStagePlayersPlayer = function(mbr, wi
         z : player.controller.z,
         distance: id,
         item : player,
-        box : box,
+//        box : box,
         mbr : playermbr
     }
     this.renderitems.all.push(newitem);

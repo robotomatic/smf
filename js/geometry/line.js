@@ -3,11 +3,12 @@
 function Line(start, end) {
     this.start = start ? start : new Point(0, 0);
     this.end = end ? end : new Point(0, 0);
+    this.points = [this.start, this.end];
     this.mbr = null;
 }
 
 Line.prototype.getPoints = function() {
-    return new Array(this.start, this.end);
+    return this.points;
 }
 
 
@@ -46,7 +47,12 @@ Line.prototype.normalize = function() {
         starty = this.end.y;
         endy = this.start.y;
     }
-    return new Line(new Point(startx, starty), new Point(endx, endy));
+    this.start.x = startx;
+    this.start.y = starty;
+    this.end.x = endx;
+    this.end.y = endy;
+    return this;
+//    return new Line(new Point(startx, starty), new Point(endx, endy));
 }
 
 Line.prototype.getMbr = function() {

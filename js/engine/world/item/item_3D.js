@@ -28,11 +28,18 @@ function Item3D(item) {
 
 Item3D.prototype.createItem3D = function(renderer, window, floodlevel = null) {
     
+    // todo: fix this shit
     this.item.geometry.projected.points.length = 0;
-    this.item.geometry.fronts.length = 0;
-    this.item.geometry.tops.length = 0;
-    this.item.geometry.sides.length = 0;
-    this.item.geometry.bottoms.length = 0;
+    
+    if (this.item.geometry.fronts.length) this.item.geometry.fronts[0].points.length = 0;
+    if (this.item.geometry.tops.length) this.item.geometry.tops[0].points.length = 0;
+    if (this.item.geometry.sides.length) this.item.geometry.sides[0].points.length = 0;
+    if (this.item.geometry.bottoms.length) this.item.geometry.bottoms[0].points.length = 0;
+    
+//    this.item.geometry.fronts.length = 0;
+//    this.item.geometry.tops.length = 0;
+//    this.item.geometry.sides.length = 0;
+//    this.item.geometry.bottoms.length = 0;
     
     if (!renderer.shouldThemeProject(this.item)) return;
     
@@ -72,7 +79,8 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
 
     if (!this.polygon || !this.polygon.points) return;
     
-    this.item.geometry.fronts[this.item.geometry.fronts.length] = new Polygon(this.polygon.getPoints());
+    if (!this.item.geometry.fronts[0]) this.item.geometry.fronts[0] = new Polygon(this.polygon.getPoints());
+    else this.item.geometry.fronts[0].setPoints(this.polygon.getPoints())
 
     var wc = window.getCenter();
     var t = this.polygon.points.length;
@@ -120,9 +128,11 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
             }
         }
         
-        var p = new Polygon();
-        p.setPoints(this.projectedpolygon.getPoints());
-        view[view.length] = p;
+        if (!view[0]) {
+            var p = new Polygon();
+            view[0] = p;
+        }
+        view[0].setPoints(this.projectedpolygon.getPoints());
     }
     
     this.p1.x = round(this.polygon.points[t - 1].x);
@@ -133,9 +143,12 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
     if (shouldProject(this.p1, this.p2, scale, x, y, wc, this.cp)) {
         this.projectedpolygon.points.length = 0;
         this.projectedpolygon = project3D(this.p1, this.p2, depth, this.projectedpolygon, scale, x, y, wc, this.np1, this.np2);
-        var p = new Polygon();
-        p.setPoints(this.projectedpolygon.getPoints());
-        this.item.geometry.sides[this.item.geometry.sides.length] = p;
+        
+        if (!this.item.geometry.sides[0]) {
+            var p = new Polygon();
+            this.item.geometry.sides[0] = p;
+        }
+        this.item.geometry.sides[0].setPoints(this.projectedpolygon.getPoints());
     }
     
     var t = this.polygon.points.length;
@@ -154,9 +167,11 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
             this.projectedpolygon.points[1].x = this.p2.x;
         }
         
-        var p = new Polygon();
-        p.setPoints(this.projectedpolygon.getPoints());
-        this.item.geometry.tops[this.item.geometry.tops.length] = p;
+        if (!this.item.geometry.tops[0]) {
+            var p = new Polygon();
+            this.item.geometry.tops[0] = p;
+        }
+        this.item.geometry.tops[0].setPoints(this.projectedpolygon.getPoints());
     }
     
     if (this.item.bottom !== true) this.item.geometry.bottoms.length = 0;
@@ -273,7 +288,7 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
     }
     
     if (this.item.geometry.visible.left || this.item.geometry.visible.right) {
-        if (this.item.geometry.sides.length) {
+        if (this.item.geometry.sides.length && this.item.geometry.sides[0].points.length) {
             var sides = true;
             if (this.item.geometry.sides[0].points[0].x < this.item.geometry.fronts[0].points[0].x) {
                 if (!this.item.geometry.visible.left) sides = false;
