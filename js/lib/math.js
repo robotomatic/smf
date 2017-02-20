@@ -1,3 +1,10 @@
+
+var MATH_PI = Math.PI;
+var MATH_FLOOR = Math.floor;
+var MATH_ROUND = Math.round;
+var MATH_ATAN = Math.atan2;
+var MATH_SQRT = Math.sqrt;
+
 function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
@@ -8,7 +15,7 @@ function lerp(a, b, u) {
 }
 
 function random(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return MATH_FLOOR(Math.random() * (max - min + 1)) + min;
 }
 
 function clamp(num) { 
@@ -16,22 +23,22 @@ function clamp(num) {
 }
 
 function round(num) { 
-    return Math.round(num * 100) / 100;
+    return MATH_ROUND(num * 100) / 100;
 }
 
 function angleRadians(p1, p2) {
-    return Math.atan2(p2.y - p1.y, p2.x - p1.x);
+    return MATH_ATAN(p2.y - p1.y, p2.x - p1.x);
 }
 
 function angleDegrees(p1, p2) {
-    return Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
+    return MATH_ATAN(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
 }
 
 function distance(x1, y1, x2, y2) {
-    return Math.sqrt( ( x2 -= x1 ) * x2 + ( y2 -= y1 ) * y2 );
+    return MATH_SQRT( ( x2 -= x1 ) * x2 + ( y2 -= y1 ) * y2 );
 }
 
 function distance3D(x1, y1, z1, x2, y2, z2) {
-    return Math.sqrt( ( x2 -= x1 ) * x2 + ( y2 -= y1 ) * y2 + ( z2 -= z1 ) * z2 );
+    return MATH_SQRT( ( x2 -= x1 ) * x2 + ( y2 -= y1 ) * y2 + ( z2 -= z1 ) * z2 );
 }
 
