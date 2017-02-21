@@ -34,7 +34,7 @@ LayerBuilder.prototype.buildItem = function(renderer, layer, item, index, newite
 
     item.initialize();
     
-    if (theme.items) {
+    if (theme.items && item.addparts) {
         for (var i = 0; i < theme.items.length; i++) {
             this.buildItemItem(renderer, theme, item, theme.items[i], newitems);
         }

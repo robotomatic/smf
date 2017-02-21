@@ -68,6 +68,9 @@ function Item() {
     
     this.actions = null;
     this.action = null;
+    
+    
+    this.addparts = true;
     this.parts = null;
     this.keys = null;
     
@@ -146,6 +149,8 @@ Item.prototype.loadJson = function(json) {
     this.actions = json.actions;
     this.top = json.top;
     this.bottom = json.bottom;
+    
+    if (json.addparts != undefined) this.addparts = json.addparts;
     this.parts = json.parts;
 }
 
