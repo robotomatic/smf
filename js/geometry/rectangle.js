@@ -11,33 +11,33 @@ function Rectangle(x, y, width, height, angle) {
     
     this.scale = 0;
 
-    this.center = new Point(0, 0);
+    this.center = geometryfactory.getPoint(0, 0);
     this.center.z = 0;
     this.mbr = null;
     this.polygon = null;
     
     this.points = new Array(
-        new Point(0, 0),
-        new Point(0, 0),
-        new Point(0, 0),
-        new Point(0, 0)
+        geometryfactory.getPoint(0, 0),
+        geometryfactory.getPoint(0, 0),
+        geometryfactory.getPoint(0, 0),
+        geometryfactory.getPoint(0, 0)
     );
     
     this.tempPoints = new Array(
-        new Point(0, 0),
-        new Point(0, 0),
-        new Point(0, 0),
-        new Point(0, 0)
+        geometryfactory.getPoint(0, 0),
+        geometryfactory.getPoint(0, 0),
+        geometryfactory.getPoint(0, 0),
+        geometryfactory.getPoint(0, 0)
     );
     
     this.lines = new Array(
-        new Line(0, 0),
-        new Line(0, 0),
-        new Line(0, 0),
-        new Line(0, 0)
+        geometryfactory.getLine(0, 0),
+        geometryfactory.getLine(0, 0),
+        geometryfactory.getLine(0, 0),
+        geometryfactory.getLine(0, 0)
     );
 
-    this.tempLine = new Line(0, 0);
+    this.tempLine = geometryfactory.getLine(0, 0);
 }
 
 Rectangle.prototype.reset = function() {
@@ -90,7 +90,7 @@ Rectangle.prototype.getMbr = function() {
     var h = maxy - miny;
     var d = maxz - minz;
 
-    if (!this.mbr) this.mbr = new Rectangle(0, 0, 0, 0);
+    if (!this.mbr) this.mbr = geometryfactory.getRectangle(0, 0, 0, 0);
     
     this.mbr.x = minx;
     this.mbr.y = miny;
@@ -190,13 +190,13 @@ Rectangle.prototype.drawOutline = function(ctx, color, weight) {
 }
 
 Rectangle.prototype.drawRound = function(ctx) {
-    if (!this.polygon) this.polygon = new Polygon();
+    if (!this.polygon) this.polygon = geometryfactory.getPolygon();
     this.polygon.setPoints(this.getPoints());
     this.polygon.drawRound(ctx);
 }
 
 Rectangle.prototype.drawSmooth = function(ctx) {
-    if (!this.polygon) this.polygon = new Polygon();
+    if (!this.polygon) this.polygon = geometryfactory.getPolygon();
     this.polygon.setPoints(this.getPoints());
     this.polygon.drawSmooth(ctx);
 }

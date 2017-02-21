@@ -10,12 +10,12 @@ function Player(id, name, color, x, y, z, width, height, speed, character, hp, l
     this.collider = new PlayerCollider(this);
     this.collided = false;
     this.camera = new PlayerCamera(this);
-    this.box = new Rectangle(0, 0, 0, 0);
+    this.box = geometryfactory.getRectangle(0, 0, 0, 0);
     this.scalefactor = 0;
 
     this.getscamera = false;
     
-    this.projectedlocation = new Point(0, 0);
+    this.projectedlocation = geometryfactory.getPoint(0, 0);
     this.canvas = document.createElement('canvas');
     this.ctx = this.canvas.getContext("2d")
     this.image = new Image(null, 0, 0, 0, 0);

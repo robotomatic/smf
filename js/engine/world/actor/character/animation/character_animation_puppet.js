@@ -1,7 +1,7 @@
 "use strict";
 
 function CharacterAnimationPuppet() {
-    this.animbox = new Rectangle(0, 0, 0, 0);;
+    this.animbox = geometryfactory.getRectangle(0, 0, 0, 0);;
     this.animchar = null;
     this.indexchar = null;
 }
@@ -49,7 +49,7 @@ CharacterAnimationPuppet.prototype.indexCharacterPuppetParts = function(parts) {
         if (p[i] == "pad" || p[i] == "keys" || p[i] == "group") continue;
         var pp = parts[p[i]];
         pp.reset = new CharacterAnimationInfo();
-        pp.reset.box = new Rectangle(pp.x, pp.y, pp.width, pp.height);
+        pp.reset.box = geometryfactory.getRectangle(pp.x, pp.y, pp.width, pp.height);
         pp.reset.angle = pp.angle;
         pp.reset.draw = pp.draw;
         pp.reset.zindex = pp.zindex;
@@ -58,11 +58,11 @@ CharacterAnimationPuppet.prototype.indexCharacterPuppetParts = function(parts) {
         pp.reset.color = pp.color;
         
         pp.last = new CharacterAnimationInfo();
-        pp.last.box = new Rectangle(pp.x, pp.y, pp.width, pp.height);
+        pp.last.box = geometryfactory.getRectangle(pp.x, pp.y, pp.width, pp.height);
         pp.last.angle = 0;
         
         pp.trans = new CharacterAnimationInfo();
-        pp.trans.box = new Rectangle(pp.x, pp.y, pp.width, pp.height);
+        pp.trans.box = geometryfactory.getRectangle(pp.x, pp.y, pp.width, pp.height);
         pp.trans.angle = 0;
         
         this.indexchar[p[i]] = pp;

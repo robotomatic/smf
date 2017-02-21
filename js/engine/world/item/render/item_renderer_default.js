@@ -1,6 +1,6 @@
 function ItemRendererDefault() {
-    this.rectangle = new Rectangle(0, 0, 0, 0);
-    this.triangle = new Triangle(0, 0, 0, 0, 0);
+    this.rectangle = geometryfactory.getRectangle(0, 0, 0, 0);
+    this.triangle = geometryfactory.getTriangle(0, 0, 0, 0, 0);
 }
 
 ItemRendererDefault.prototype.render = function(ctx, color, item, window, x, y, scale) { 

@@ -68,16 +68,16 @@ ItemMaterialGround.prototype.drawGroundLines = function(ctx, x, y, width, height
     if (height <= step) step = height / 2;
     var amp = random(0, 10);
     var inc = 1 * scale;
-    var p = new Polyline();
+    var p = geometryfactory.getPolyline();
     for (var i = step; i <= height + step; i+= step) {
         var s = i;
         p.points.length = 0;
-        p.addPoint(new Point(x, y + s));
+        p.addPoint(geometryfactory.getPoint(x, y + s));
         for (var ii = 0; ii <= width + wstep; ii += wstep) {
             amp+= inc;
             if (amp > 10) inc = -1 * scale;
             else if (amp < 0) inc = 1 * scale;
-            p.addPoint(new Point(x + ii, y + s + amp));
+            p.addPoint(geometryfactory.getPoint(x + ii, y + s + amp));
         }
         ctx.beginPath();
         p.draw(ctx);
@@ -110,16 +110,16 @@ ItemMaterialGround.prototype.drawGroundStones = function(ctx, x, y, width, heigh
 }
 
 ItemMaterialGround.prototype.drawGroundStone = function(ctx, x, y, width, height, scale, color, darkcolor) {
-    var poly = new Polygon();
+    var poly = geometryfactory.getPolygon();
     var amt = width / 5;
-    poly.addPoint(new Point(x, y));
-    poly.addPoint(new Point(x + width / 2, y - amt));
-    poly.addPoint(new Point(x + width, y));
-    poly.addPoint(new Point(x +width + amt, y + height / 2));
-    poly.addPoint(new Point(x + width, y + height));
-    poly.addPoint(new Point(x + width / 2, y + height + amt));
-    poly.addPoint(new Point(x, y + height));
-    poly.addPoint(new Point(x - amt, y + height / 2));
+    poly.addPoint(geometryfactory.getPoint(x, y));
+    poly.addPoint(geometryfactory.getPoint(x + width / 2, y - amt));
+    poly.addPoint(geometryfactory.getPoint(x + width, y));
+    poly.addPoint(geometryfactory.getPoint(x +width + amt, y + height / 2));
+    poly.addPoint(geometryfactory.getPoint(x + width, y + height));
+    poly.addPoint(geometryfactory.getPoint(x + width / 2, y + height + amt));
+    poly.addPoint(geometryfactory.getPoint(x, y + height));
+    poly.addPoint(geometryfactory.getPoint(x - amt, y + height / 2));
     var a = random(0, 360);
     var points = poly.rotate(a);
     poly.setPoints(points);

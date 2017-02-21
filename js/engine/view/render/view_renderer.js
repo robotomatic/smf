@@ -2,14 +2,14 @@
 
 function ViewRenderer() {
     this.debug = false;
-    this.mbr = new Rectangle(0, 0, 0, 0);
-    this.window = new Rectangle(0, 0, 0, 0);
+    this.mbr = geometryfactory.getRectangle(0, 0, 0, 0);
+    this.window = geometryfactory.getRectangle(0, 0, 0, 0);
     this.camera = new ViewCamera();
     this.image = new Image(null, 0, 0, 0, 0);
     this.tiltshift = false;
     this.blurcanvas = document.createElement("canvas");
     this.blurctx = this.blurcanvas.getContext("2d");
-    this.circle = new Circle(0, 0, 0);
+    this.circle = geometryfactory.getCircle(0, 0, 0);
 }
 
 ViewRenderer.prototype.update = function(now, stage, view) {

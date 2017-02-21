@@ -2,8 +2,8 @@
 
 function ItemRendererThemeMaterial() {
     this.materials = null;
-    this.box = new Rectangle();
-    this.polygon = new Polygon();
+    this.box = geometryfactory.getRectangle();
+    this.polygon = geometryfactory.getPolygon();
     this.itemmaterals = new ItemMaterial();
 }
 

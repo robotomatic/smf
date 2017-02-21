@@ -29,10 +29,10 @@ function ItemDynamicGrass() {
     this.bladesway = 5;
     this.swayamount = 0.5;
     
-    this.rectangle = new Rectangle(0, 0, 0, 0);
-    this.point = new Point(0, 0);
-    this.polygon = new Polygon();
-    this.bladepoly = new Polygon();
+    this.rectangle = geometryfactory.getRectangle(0, 0, 0, 0);
+    this.point = geometryfactory.getPoint(0, 0);
+    this.polygon = geometryfactory.getPolygon();
+    this.bladepoly = geometryfactory.getPolygon();
     this.image = new Image(null, 0, 0, 0, 0);
 }
 
@@ -165,7 +165,7 @@ ItemDynamicGrass.prototype.drawGrassBlade = function(ctx, bladex, bladey, bladeh
     this.polygon.addPoint(this.point);
     this.polygon.pathSimple(ctx);
     return {
-        polygon : new Polygon(this.polygon.getPoints()),
+        polygon : geometryfactory.getPolygon(this.polygon.getPoints()),
         startx : cx, 
         startangle : startangle,
         angle : 0,

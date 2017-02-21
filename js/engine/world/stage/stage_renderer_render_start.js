@@ -94,7 +94,7 @@ StageRendererStart.prototype.getRenderItemsStagePlayers = function(mbr, window, 
 StageRendererStart.prototype.getRenderItemsStagePlayersPlayer = function(mbr, window, cp, graphics, player) {
     player.smooth();
     player.translate(mbr, mbr.width, mbr.height);
-//    var box = new Rectangle(player.box.x, player.box.y, player.box.width, player.box.height);
+//    var box = geometryfactory.getRectangle(player.box.x, player.box.y, player.box.width, player.box.height);
 //    var pad = 50;
 //    box.x -= pad;
 //    box.width += pad * 2;

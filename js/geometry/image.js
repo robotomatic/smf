@@ -10,7 +10,7 @@ function Image(data, x, y, width, height) {
         x : 0,
         y : 0
     };
-    this.rectangle = new Rectangle(0, 0, 0, 0);
+    this.rectangle = geometryfactory.getRectangle(0, 0, 0, 0);
 }
 
 Image.prototype.clipY = function(y) {

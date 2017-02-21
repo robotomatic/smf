@@ -3,9 +3,9 @@
 function ItemRendererTheme() {
     this.itemrendererdynamic = new ItemRendererThemeDynamic();
     this.itemrenderermaterial = new ItemRendererThemeMaterial();
-    this.box = new Rectangle();
-    this.triangle = new Triangle(0, 0, 0, 0, 0);
-    this.polygon = new Polygon();
+    this.box = geometryfactory.getRectangle();
+    this.triangle = geometryfactory.getTriangle(0, 0, 0, 0, 0);
+    this.polygon = geometryfactory.getPolygon();
 }
 
 ItemRendererTheme.prototype.render = function(ctx, color, item, window, x, y, titem, materials, scale) { 

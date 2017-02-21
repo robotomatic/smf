@@ -59,12 +59,12 @@ ItemMaterialPlastic.prototype.drawPlasticCels = function(ctx, material, x, y, wi
 
 ItemMaterialPlastic.prototype.drawPlasticCel = function(ctx, material, x, y, w, h) {
     
-    var poly = new Polygon();
+    var poly = geometryfactory.getPolygon();
 
     var hw = w / 2;
     var hh = w / 4;
     
-    var p = new Point(0, 0);
+    var p = geometryfactory.getPoint(0, 0);
 
     p.x = x + hw;
     p.y = y;

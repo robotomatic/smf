@@ -3,23 +3,23 @@
 function CharacterRenderer() {
     this.groupdefs = new Array();
     this.rendermanager = new CharacterRenderManager();
-    this.clippath = new Polygon();
-    this.linkpathStart = new Polygon();
+    this.clippath = geometryfactory.getPolygon();
+    this.linkpathStart = geometryfactory.getPolygon();
     this.linkpathType = "";
-    this.linkpathEnd = new Polygon();
+    this.linkpathEnd = geometryfactory.getPolygon();
     this.linkpathColor = "";
-    this.path = new Polygon();
+    this.path = geometryfactory.getPolygon();
     
-    this.box = new Rectangle(0, 0, 0, 0);
-    this.newbox = new Rectangle(0, 0, 0, 0);    
-    this.polygon = new Polygon();
+    this.box = geometryfactory.getRectangle(0, 0, 0, 0);
+    this.newbox = geometryfactory.getRectangle(0, 0, 0, 0);    
+    this.polygon = geometryfactory.getPolygon();
     
     this.width = 0;
     this.height = 0;
     this.debug = false;
     this.debugrects;
-    this.rotatepoly = new Polygon();
-    this.rotateline = new Line();
+    this.rotatepoly = geometryfactory.getPolygon();
+    this.rotateline = geometryfactory.getLine();
 }
 
 CharacterRenderer.prototype.draw = function(ctx, playerchar) {
@@ -148,12 +148,12 @@ CharacterRenderer.prototype.addLinkPath = function(poly) {
         var spps = this.linkpathStart.points[this.linkpathStart.points.length - 2];
         var sppe = this.linkpathStart.points[this.linkpathStart.points.length -1];
         var cs = getLineIntersection(spps.x, spps.y, sppe.x, sppe.y, poly.points[1].x, poly.points[1].y, poly.points[2].x, poly.points[2].y);
-        if (cs.onLine1 && cs.onLine2) this.linkpathStart.points[this.linkpathStart.points.length - 1] = new Point(cs.x, cs.y);
+        if (cs.onLine1 && cs.onLine2) this.linkpathStart.points[this.linkpathStart.points.length - 1] = geometryfactory.getPoint(cs.x, cs.y);
         else this.linkpathStart.addPoint(poly.points[1]);
         var epps = this.linkpathEnd.points[this.linkpathEnd.points.length - 2];
         var eppe = this.linkpathEnd.points[this.linkpathEnd.points.length -1];
         var ce = getLineIntersection(epps.x, epps.y, eppe.x, eppe.y, poly.points[0].x, poly.points[0].y, poly.points[3].x, poly.points[3].y);
-        if (ce.onLine1 && ce.onLine2) this.linkpathEnd.points[this.linkpathEnd.points.length - 1] = new Point(ce.x, ce.y);
+        if (ce.onLine1 && ce.onLine2) this.linkpathEnd.points[this.linkpathEnd.points.length - 1] = geometryfactory.getPoint(ce.x, ce.y);
         else this.linkpathEnd.addPoint(poly.points[0]);
     } else {
         this.linkpathStart.addPoint(poly.points[1]);

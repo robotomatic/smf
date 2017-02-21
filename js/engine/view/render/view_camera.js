@@ -39,11 +39,11 @@ function ViewCamera() {
         }
     }
     
-    this.center = new Point(0, 0);
+    this.center = geometryfactory.getPoint(0, 0);
     this.center.z = 0;
     this.lastview = null;
     
-    this.box = new Rectangle(0, 0, 0, 0);
+    this.box = geometryfactory.getRectangle(0, 0, 0, 0);
     this.box.z = 0;
 }
 

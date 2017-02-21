@@ -82,13 +82,13 @@ function ItemRenderer(theme, materials) {
     this.itemrendererdefault = new ItemRendererDefault();
     this.itemrenderertheme = new ItemRendererTheme();
 
-    this.box = new Rectangle(0, 0, 0, 0);
-    this.polygon = new Polygon();
+    this.box = geometryfactory.getRectangle(0, 0, 0, 0);
+    this.polygon = geometryfactory.getPolygon();
     
-    this.p1 = new Point(0, 0);
-    this.p2 = new Point(0, 0);
-    this.np1 = new Point(0, 0);
-    this.np2 = new Point(0, 0);
+    this.p1 = geometryfactory.getPoint(0, 0);
+    this.p2 = geometryfactory.getPoint(0, 0);
+    this.np1 = geometryfactory.getPoint(0, 0);
+    this.np2 = geometryfactory.getPoint(0, 0);
 }
 
 ItemRenderer.prototype.reset = function() {

@@ -8,11 +8,11 @@ function Polygon(points) {
     this.outline = new Array();
     this.leftpoints = new Array();
     this.rightpoints = new Array();
-    this.point = new Point(0, 0);
-    this.line = new Line(new Point(0, 0), new Point(0, 0));
+    this.point = geometryfactory.getPoint(0, 0);
+    this.line = geometryfactory.getLine(geometryfactory.getPoint(0, 0), geometryfactory.getPoint(0, 0));
     this.crazy = 0;
-    this.mbr = new Rectangle(0, 0, 0, 0);
-    this.center = new Point(0, 0);
+    this.mbr = geometryfactory.getRectangle(0, 0, 0, 0);
+    this.center = geometryfactory.getPoint(0, 0);
     this.cache = false;
     this.id = "";
     if (points) this.setPoints(points);
@@ -59,7 +59,7 @@ Polygon.prototype.scale = function(scale) {
     var mbr = this.getMbr();
     var points = new Array();
 
-    var line = new Line()
+    var line = geometryfactory.getLine()
     line.start.x = mbr.x;
     line.start.y = mbr.y;
     
@@ -67,10 +67,10 @@ Polygon.prototype.scale = function(scale) {
         line.end.x = this.points[i].x;
         line.end.y = this.points[i].y;
         line.scale(scale);
-        points[i] = new Point(line.end.x, line.end.y);
+        points[i] = geometryfactory.getPoint(line.end.x, line.end.y);
     }
     this.mbr.width = 0;
-    return new Polygon(points);
+    return geometryfactory.getPolygon(points);
 }
     
 Polygon.prototype.craziness = function(crazy) {
@@ -87,7 +87,7 @@ Polygon.prototype.craziness = function(crazy) {
             else  npx += amt;
         }
         npy += 2;
-        var np = new Point(npx, npy);
+        var np = geometryfactory.getPoint(npx, npy);
         this.points[i] = np;
     }
     this.mbr.width = 0;
@@ -172,7 +172,7 @@ Polygon.prototype.addPointXY = function(x, y, info = null) {
         }
     }
     if (!ok) return;
-    this.points[this.points.length] = new Point(x, y, info);
+    this.points[this.points.length] = geometryfactory.getPoint(x, y, info);
     this.mbr.width = 0;
 }
 
@@ -244,7 +244,7 @@ Polygon.prototype.filterPoints = function(rects) {
             if (!minpy || (this.points[i].y < minpy)) minpy = this.points[i].y;
             if (!maxpx || (this.points[i].x > maxpx)) maxpx = this.points[i].x;
             if (!maxpy || (this.points[i].y > maxpy)) maxpy = this.points[i].y;
-            this.outline[this.outline.length] = new Point(this.points[i].x, this.points[i].y);
+            this.outline[this.outline.length] = geometryfactory.getPoint(this.points[i].x, this.points[i].y);
             if (this.points[i].info) this.outline[this.outline.length - 1].setInfo(this.points[i].info);
         }
     }
@@ -264,10 +264,10 @@ Polygon.prototype.filterPoints = function(rects) {
         this.line.end.y = this.outline[i].y;
         angle = this.line.angle();
         if (angle <= 90 && angle >= -90) {
-            this.leftpoints[this.leftpoints.length] = new Point(this.outline[i].x, this.outline[i].y);
+            this.leftpoints[this.leftpoints.length] = geometryfactory.getPoint(this.outline[i].x, this.outline[i].y);
             if (this.outline[i].info) this.leftpoints[this.leftpoints.length - 1].setInfo(this.outline[i].info);
         } else {
-            this.rightpoints[this.rightpoints.length] = new Point(this.outline[i].x, this.outline[i].y);
+            this.rightpoints[this.rightpoints.length] = geometryfactory.getPoint(this.outline[i].x, this.outline[i].y);
             if (this.outline[i].info) this.rightpoints[this.rightpoints.length - 1].setInfo(this.outline[i].info);
         }
     }
@@ -309,14 +309,14 @@ Polygon.prototype.createPolygon = function(items) {
 
     if (items.length == 1) {
         var item = items[0];
-        this.points[0] = new Point(item.x, item.y);
-        this.points[1] = new Point(item.x + item.width, item.y);
-        this.tops[0] = new Line(this.points[0], this.points[1]);
-        this.points[2] = new Point(item.x + item.width, item.y + item.height);
-        this.sides[0] = new Line(this.points[1], this.points[2]);
-        this.points[3] = new Point(item.x, item.y + item.height);
-        this.bottoms[0] = new Line(this.points[2], this.points[3]);
-        this.sides[1] = new Line(this.points[3], this.points[0]);
+        this.points[0] = geometryfactory.getPoint(item.x, item.y);
+        this.points[1] = geometryfactory.getPoint(item.x + item.width, item.y);
+        this.tops[0] = geometryfactory.getLine(this.points[0], this.points[1]);
+        this.points[2] = geometryfactory.getPoint(item.x + item.width, item.y + item.height);
+        this.sides[0] = geometryfactory.getLine(this.points[1], this.points[2]);
+        this.points[3] = geometryfactory.getPoint(item.x, item.y + item.height);
+        this.bottoms[0] = geometryfactory.getLine(this.points[2], this.points[3]);
+        this.sides[1] = geometryfactory.getLine(this.points[3], this.points[0]);
         return this.points;
     }
 
@@ -368,28 +368,28 @@ Polygon.prototype.createPolygon = function(items) {
             
             var cx = cx1;
             if (px2 > cx1 && cy1 > py1) cx = px2;
-            var sp = new Point(cx, cy1);
+            var sp = geometryfactory.getPoint(cx, cy1);
             
             var cxx = cx2;
             if (i == 0 && nx1 < cx2) cxx = nx1;
             
             if (cxx < cx) cxx = cx2;
             
-            var ep = new Point(cxx, cy1);
+            var ep = geometryfactory.getPoint(cxx, cy1);
             
             if (current.ramp) {
                 if (current.ramp == "left") {
                     this.points[this.points.length] = sp;
-                    this.tops[this.tops.length] = new Line(this.points[this.points.length - 2], new Point(cx2, cy2));                    
+                    this.tops[this.tops.length] = geometryfactory.getLine(this.points[this.points.length - 2], geometryfactory.getPoint(cx2, cy2));                    
                 } else if (current.ramp == "right") {
                     this.points[this.points.length] = ep;
-                    this.tops[this.tops.length] = new Line(this.points[this.points.length - 2], ep);                    
+                    this.tops[this.tops.length] = geometryfactory.getLine(this.points[this.points.length - 2], ep);                    
                 }
             } else {
                 this.points[this.points.length] = sp;                
                 this.points[this.points.length] = ep;
                 if (this.points.length > 1) {
-                    var l = new Line(sp, ep);
+                    var l = geometryfactory.getLine(sp, ep);
                     if (l.length() > 1) this.tops[this.tops.length] = l;
                 }
             }
@@ -399,26 +399,26 @@ Polygon.prototype.createPolygon = function(items) {
                 if (px2 > cx1) cx = px2;
 
                 if (current.ramp && current.ramp == "left") {
-                    this.points[this.points.length] = new Point(cx, cy1);
-                    this.points[this.points.length] = new Point(cx2, cy2);
+                    this.points[this.points.length] = geometryfactory.getPoint(cx, cy1);
+                    this.points[this.points.length] = geometryfactory.getPoint(cx2, cy2);
                 } else {
-                    this.points[this.points.length] = new Point(cx, cy1);
-                    this.points[this.points.length] = new Point(cx2, cy1);
+                    this.points[this.points.length] = geometryfactory.getPoint(cx, cy1);
+                    this.points[this.points.length] = geometryfactory.getPoint(cx2, cy1);
                 }
                 
-                this.tops[this.tops.length] = new Line(this.points[this.points.length - 2], this.points[this.points.length - 1]);    
+                this.tops[this.tops.length] = geometryfactory.getLine(this.points[this.points.length - 2], this.points[this.points.length - 1]);    
                 turn = true;
             }
             
             if (!current.ramp || !current.ramp == "left") {
                 if (!current.ramp || current.ramp != "right-top") {
-                    if (cx1 != nx1) this.points[this.points.length] = new Point(cx2, cy2);
+                    if (cx1 != nx1) this.points[this.points.length] = geometryfactory.getPoint(cx2, cy2);
                 }
                 if (nx2 > cx1 && (i < t - 1)) {
                     cx1 = nx2;
                 }
                 if (!current.ramp || current.ramp != "left-top") {
-                    this.points[this.points.length] = new Point(cx1, cy2);
+                    this.points[this.points.length] = geometryfactory.getPoint(cx1, cy2);
                 }
             }
         }
@@ -429,17 +429,17 @@ Polygon.prototype.createPolygon = function(items) {
 
         var pp = this.points[this.points.length - 1];
         
-        this.points[this.points.length] = new Point(pp.x - prev.height, pp.y);
+        this.points[this.points.length] = geometryfactory.getPoint(pp.x - prev.height, pp.y);
         var tt = t - 2;
         for (var ii = tt; ii > -1; ii--) {
             var it = items[ii];
-            this.points[this.points.length] = new Point(it.x + it.width, it.y + it.height);    
-            if (!it.ramp) this.points[this.points.length] = new Point(it.x, it.y + it.height);    
+            this.points[this.points.length] = geometryfactory.getPoint(it.x + it.width, it.y + it.height);    
+            if (!it.ramp) this.points[this.points.length] = geometryfactory.getPoint(it.x, it.y + it.height);    
         }
     } else {
         if (cx1 <= nx2) nx2 = cx1;
-        this.points[this.points.length] = new Point(nx2, ny2);
-        this.points[this.points.length] = new Point(nx1, ny2);
+        this.points[this.points.length] = geometryfactory.getPoint(nx2, ny2);
+        this.points[this.points.length] = geometryfactory.getPoint(nx1, ny2);
         
         // could be here
         
@@ -585,7 +585,7 @@ Polygon.prototype.pathRound = function(ctx, amount) {
     if (npx > spx) dx = -dx;
     var dy = Math.abs(spy - npy) / amount;
     if (npy > spy) dy = -dy;
-    var startpoint = new Point(spx - dx, spy - dy);
+    var startpoint = geometryfactory.getPoint(spx - dx, spy - dy);
     ctx.moveTo(startpoint.x, startpoint.y);
     npx += dx;
     npy += dy;

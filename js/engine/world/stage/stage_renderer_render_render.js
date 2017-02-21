@@ -2,7 +2,7 @@
 
 function StageRendererRender(renderitems, itemcache) {
     this.renderitems = renderitems;
-    this.np = new Point(0, 0);
+    this.np = geometryfactory.getPoint(0, 0);
     this.doblur = false;
 }
 

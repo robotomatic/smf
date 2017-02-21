@@ -11,7 +11,7 @@ function Players(players) {
         height : 5
     };
     this.debug = false;
-    this.mbr = new Rectangle(0, 0, 0, 0);
+    this.mbr = geometryfactory.getRectangle(0, 0, 0, 0);
 }
 
 Players.prototype.loadJson = function(json) {
@@ -49,7 +49,7 @@ Players.prototype.getMbr = function(mbr) {
         if (!minz || item.z <= minz) minz = item.z;
         if (!maxz || item.z + item.depth >= maxz) maxz = item.z + item.depth;
     }
-    if (!mbr) mbr = new Rectangle(0, 0, 0, 0);
+    if (!mbr) mbr = geometryfactory.getRectangle(0, 0, 0, 0);
     mbr.x = minx;
     mbr.y = miny;
     mbr.z = minz;

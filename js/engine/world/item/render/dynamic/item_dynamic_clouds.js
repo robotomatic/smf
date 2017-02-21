@@ -148,14 +148,14 @@ Cloud.prototype.draw = function(ctx, x, y, width, height) {
         sbx = x;
         sby = y + (height  - sbh);
 
-        points[points.length] = new Point(sbx, sby + sbh);
+        points[points.length] = geometryfactory.getPoint(sbx, sby + sbh);
 
-        points[points.length] = new Point(sbx, sby);
-        points[points.length] = new Point(sbx + sbw, sby);
+        points[points.length] = geometryfactory.getPoint(sbx, sby);
+        points[points.length] = geometryfactory.getPoint(sbx + sbw, sby);
     } else {
         sbx = x;
         sbw = 0;
-        points[points.length] = new Point(x, y + height);
+        points[points.length] = geometryfactory.getPoint(x, y + height);
     }
     
     var fbw = this.mid * dw;
@@ -163,16 +163,16 @@ Cloud.prototype.draw = function(ctx, x, y, width, height) {
     var fbx = sbx + sbw;
     var fby = y;
 
-    points[points.length] = new Point(fbx, fby);
-    points[points.length] = new Point(fbx + fbw, fby);
+    points[points.length] = geometryfactory.getPoint(fbx, fby);
+    points[points.length] = geometryfactory.getPoint(fbx + fbw, fby);
     
     var ebw = this.endw * dw;
     var ebh = height * this.endh;
     var ebx = fbx + fbw;
     var eby = y + (height - ebh);
 
-    points[points.length] = new Point(ebx, eby);
-    points[points.length] = new Point(ebx + ebw, eby);
+    points[points.length] = geometryfactory.getPoint(ebx, eby);
+    points[points.length] = geometryfactory.getPoint(ebx + ebw, eby);
     
     if (this.optend < 2) {
         var obw = this.optionalw * dw;
@@ -180,14 +180,14 @@ Cloud.prototype.draw = function(ctx, x, y, width, height) {
         var obx = ebx + ebw;
         var oby = y + (height - obh);
         
-        points[points.length] = new Point(obx, oby);
-        points[points.length] = new Point(obx + obw, oby);
-        points[points.length] = new Point(obx + obw, oby + obh);
+        points[points.length] = geometryfactory.getPoint(obx, oby);
+        points[points.length] = geometryfactory.getPoint(obx + obw, oby);
+        points[points.length] = geometryfactory.getPoint(obx + obw, oby + obh);
     } else {
-        points[points.length] = new Point(ebx + ebw, eby + ebh);
+        points[points.length] = geometryfactory.getPoint(ebx + ebw, eby + ebh);
     }
     
-    var poly = new Polygon();
+    var poly = geometryfactory.getPolygon();
     poly.setPoints(points);
     poly.drawRound(ctx);
     

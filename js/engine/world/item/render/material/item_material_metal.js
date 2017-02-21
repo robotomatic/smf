@@ -62,8 +62,8 @@ ItemMaterialMetal.prototype.drawMetalRects = function(ctx, x, y, width, height, 
 }
 
 ItemMaterialMetal.prototype.drawMetalRect = function(ctx, x, y, width, height, scale, color, darkcolor) {
-    var rect = new Rectangle(x, y, width, height);
-    var poly = new Polygon();
+    var rect = geometryfactory.getRectangle(x, y, width, height);
+    var poly = geometryfactory.getPolygon();
     poly.setPoints(rect.getPoints());
     var a = random(-15, 15);
     var points = poly.rotate(a);

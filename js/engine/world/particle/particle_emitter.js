@@ -20,8 +20,8 @@ function ParticleEmitter(info) {
     this.leftright = 0;
     this.updown = 0;
     
-    this.cp = new Point(0, 0);
-    this.lp = new Point(0, 0);
+    this.cp = geometryfactory.getPoint(0, 0);
+    this.lp = geometryfactory.getPoint(0, 0);
 }
 
 ParticleEmitter.prototype.stop = function() {
@@ -91,7 +91,7 @@ ParticleEmitter.prototype.update = function(x, y, scale, ctx) {
             ctx.fillStyle = gradient;
 
             ctx.beginPath();
-            var c = new Circle(p.location.x, p.location.y, p.radius * scale);
+            var c = geometryfactory.getCircle(p.location.x, p.location.y, p.radius * scale);
             c.draw(ctx);
         }
         

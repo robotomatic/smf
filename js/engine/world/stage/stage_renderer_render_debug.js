@@ -2,14 +2,14 @@
 
 function StageRendererDebug(renderitems) {
     this.renderitems = renderitems;
-    this.line = new Line(new Point(0, 0), new Point(0, 0));
+    this.line = geometryfactory.getLine(geometryfactory.getPoint(0, 0), geometryfactory.getPoint(0, 0));
     
     this.temp = {
         canvas : null,
         ctx : null
     };
-    this.mbr = new Rectangle(0, 0, 0, 0);
-    this.polygon = new Polygon();
+    this.mbr = geometryfactory.getRectangle(0, 0, 0, 0);
+    this.polygon = geometryfactory.getPolygon();
 }
 
 StageRendererDebug.prototype.renderDebug = function(now, graphics, camera, stage, mbr, window, debug) {
@@ -42,7 +42,7 @@ StageRendererDebug.prototype.renderDebugItemsItemCenter = function(graphics, win
     var mbryh = cp.y + 20; 
     
     var p = 5;
-    var c = new Circle(mbrxw - p, mbryh - p, p * 2);
+    var c = geometryfactory.getCircle(mbrxw - p, mbryh - p, p * 2);
     graphics.ctx.fillStyle = "cyan";
     graphics.ctx.beginPath();
     c.draw(graphics.ctx);
@@ -62,7 +62,7 @@ StageRendererDebug.prototype.renderDebugItemsItemText = function(graphics, item)
 //    if (tx < 0) tx = 100;
     
     var ty = item.box.y + 10;
-    var t = new Text(tx, ty, message);
+    var t = geometryfactory.getText(tx, ty, message);
     graphics.ctx.fillStyle = "white";
     graphics.ctx.beginPath();
     t.draw(graphics.ctx, 9);

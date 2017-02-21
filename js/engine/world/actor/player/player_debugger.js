@@ -3,7 +3,7 @@
 function PlayerDebugger(player) {
     this.player = player;
     this.debug = false;
-    this.rect = new Rectangle(0, 0, 0, 0);
+    this.rect = geometryfactory.getRectangle(0, 0, 0, 0);
 }
 
 PlayerDebugger.prototype.drawDebug = function(now, ctx) {
@@ -66,7 +66,7 @@ PlayerDebugger.prototype.drawDebug = function(now, ctx) {
 
 //    var jpx = (this.player.controller.jumpstartx - this.player.controller.x) * scale;
 //    var jpy = (this.player.controller.jumpstarty - this.player.controller.y) * scale;
-//    var jr = new Rectangle(x + jpx - 5, y + jpy - 5, 10, 10);
+//    var jr = geometryfactory.getRectangle(x + jpx - 5, y + jpy - 5, 10, 10);
 //    ctx.fillStyle = "red";
 //    ctx.beginPath();
 //    jr.draw(ctx);
@@ -74,7 +74,7 @@ PlayerDebugger.prototype.drawDebug = function(now, ctx) {
     
 //    var gpx = (this.player.controller.groundpoint.x - px) * scale;
 //    var gpy = (this.player.controller.groundpoint.y - py) * scale;
-//    var gr = new Rectangle(x + gpx - 2, y + gpy - 4, 4, 8);
+//    var gr = geometryfactory.getRectangle(x + gpx - 2, y + gpy - 4, 4, 8);
 //    ctx.fillStyle = "white";
 //    ctx.beginPath();
 //    gr.draw(ctx);
@@ -98,7 +98,7 @@ PlayerDebugger.prototype.drawDebugText = function(ctx, x, y, scale) {
     var tx = round(this.player.box.x + this.player.box.width + pad);
     var ty = round(this.player.box.y - (pad * 4));
     
-    var t = new Text(tx, ty, message);
+    var t = geometryfactory.getText(tx, ty, message);
     ctx.beginPath();
     t.draw(ctx);
 }
@@ -111,7 +111,7 @@ PlayerDebugger.prototype.drawDebugText = function(ctx, x, y, scale) {
 
 
 PlayerDebugger.prototype.drawDebugRect = function(window, ctx, x, y, scale, rect, color) {
-    var r = new Rectangle(x, y, rect.width * scale, rect.height * scale);
+    var r = geometryfactory.getRectangle(x, y, rect.width * scale, rect.height * scale);
     
     
     ctx.beginPath();
@@ -127,7 +127,7 @@ PlayerDebugger.prototype.drawDebugItem = function(window, ctx, x, y, scale, item
     var ix = (item.x - px) * scale;
     var iy = (item.y - py) * scale;
     var color = item.color;
-    var rect = new Rectangle(x + ix, y + iy, item.width * scale, item.height * scale);
+    var rect = geometryfactory.getRectangle(x + ix, y + iy, item.width * scale, item.height * scale);
 
     ctx.beginPath();
     rect.drawOutline(ctx, color, 2);

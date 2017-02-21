@@ -10,7 +10,7 @@ function PlayerController(player, x, y, z, width, height, speed) {
     this.width = width;
     this.height = height;
     this.depth = 10;
-    this.location = new Point(0, 0);
+    this.location = geometryfactory.getPoint(0, 0);
 
     this.lastX = x;
     this.lastY = y;
@@ -60,8 +60,8 @@ function PlayerController(player, x, y, z, width, height, speed) {
     this.falling = false;
     this.floating = false;
     this.grounded = false;
-    this.groundpoint = new Point(0, 0);
-    this.gp = new Point(0, 0);
+    this.groundpoint = geometryfactory.getPoint(0, 0);
+    this.gp = geometryfactory.getPoint(0, 0);
 
     this.jumpThreshold = 50;
     

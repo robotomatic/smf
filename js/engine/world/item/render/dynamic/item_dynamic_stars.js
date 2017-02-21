@@ -2,7 +2,7 @@
 
 function ItemDynamicStars() {
     this.stars = new Array();
-    this.rect = new Rectangle(0, 0, 0, 0);
+    this.rect = geometryfactory.getRectangle(0, 0, 0, 0);
 }
 
 ItemDynamicStars.prototype.draw = function(ctx, color, item, window, x, y, width, height, titem, scale) {

@@ -55,9 +55,9 @@ ItemMaterialWood.prototype.drawLineVertical = function(ctx, material, x, y, widt
     for (var i = 0; i < sections; i++) {
         var ix = x + sectionwidth * (i + 1);
         var iy = y;
-        var start = new Point(ix, iy);
-        var end = new Point(ix, iy + h);
-        var l = new Line(start, end);
+        var start = geometryfactory.getPoint(ix, iy);
+        var end = geometryfactory.getPoint(ix, iy + h);
+        var l = geometryfactory.getLine(start, end);
         ctx.beginPath();
         l.draw(ctx, color, lw);
     }
@@ -69,9 +69,9 @@ ItemMaterialWood.prototype.drawLineHorizontal = function(ctx, material, x, y, wi
     for (var i = 0; i < sections; i++) {
         var ix = x;
         var iy = y + sectionheight * (i + 1);
-        var start = new Point(ix, iy);
-        var end = new Point(ix + w, iy);
-        var l = new Line(start, end);
+        var start = geometryfactory.getPoint(ix, iy);
+        var end = geometryfactory.getPoint(ix + w, iy);
+        var l = geometryfactory.getLine(start, end);
         ctx.beginPath();
         l.draw(ctx, color, lw);
     }

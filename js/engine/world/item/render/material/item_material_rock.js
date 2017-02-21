@@ -26,7 +26,7 @@ ItemMaterialRock.prototype.draw = function(ctx, color, material, item, polygon, 
 
 ItemMaterialRock.prototype.drawLines = function(ctx, x, y, width, height, scale, color) {
 
-    var l = new Line();
+    var l = geometryfactory.getLine();
     
     var px = x;
     var py = y;

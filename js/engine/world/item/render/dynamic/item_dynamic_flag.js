@@ -11,10 +11,10 @@ function ItemDynamicFlag() {
     this.fx = 0;
     this.fy = 0;
 
-    this.poly = new Polygon();
-    this.rect = new Rectangle(0, 0, 0, 0);
+    this.poly = geometryfactory.getPolygon();
+    this.rect = geometryfactory.getRectangle(0, 0, 0, 0);
 
-    this.point = new Point(0, 0);
+    this.point = geometryfactory.getPoint(0, 0);
     
     this.flags = new Array();
     

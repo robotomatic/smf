@@ -11,8 +11,8 @@ function ItemDynamicWaves() {
     this.y = 0;
     this.x = 0;
     
-    this.poly = new Polygon();
-    this.point = new Point(0, 0);
+    this.poly = geometryfactory.getPolygon();
+    this.point = geometryfactory.getPoint(0, 0);
     this.top = 0;
 
     
