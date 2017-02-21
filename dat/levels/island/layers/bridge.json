@@ -19,7 +19,23 @@
                         "x": 0,
                         "y": 0,
                         "width": 50,
-                        "height": 90
+                        "height": 20
+                    }
+                ]
+            },
+            {
+                "x" : 1200,
+                "y" : 980,
+                "z" : 1400,
+                "itemtype" : "platform",
+                "addparts" : false,
+                "parts" : [
+
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 70
                     }
                 ]
             },
