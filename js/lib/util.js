@@ -1,5 +1,8 @@
 "use strict";
 
+var DATE_NOW = new Date();    
+
+
 function clearRect(ctx, x, y, width, height) { 
     ctx.clearRect(x, y, width, height); 
 }
@@ -10,8 +13,7 @@ function isArray(what) {
 
 function timestamp() {
     if (window.performance && window.performance.now) return window.performance.now();
-    var now = new Date();    
-    return now.getTime();
+    return DATE_NOW.getTime();
 }
 
 function debounce(func, wait, immediate) {
