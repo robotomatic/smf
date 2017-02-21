@@ -201,19 +201,19 @@ Item3D.prototype.getItemProjectedGeometry = function() {
     this.item.geometry.projected.points.length = 0;
     if (left && this.item.geometry.visible.left) {
         this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[0]);
-        if (top) {
+        if (top && this.item.geometry.tops.length && this.item.geometry.tops[0].points.length) {
             this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
             this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[3]);
-        } else if (bottom) {
+        } else if (bottom && this.item.geometry.bottoms.length && this.item.geometry.bottoms[0].points.length) {
             this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[1]);
-        } else {
+        } else if (this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
             this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
@@ -222,19 +222,19 @@ Item3D.prototype.getItemProjectedGeometry = function() {
         }
     } else if (right && this.item.geometry.visible.right) {
         this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
-        if (top) {
+        if (top && this.item.geometry.tops.length && this.item.geometry.tops[0].points.length) {
             this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[2]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
-        } else if (bottom) {
+        } else if (bottom && this.item.geometry.bottoms.length && this.item.geometry.bottoms[0].points.length) {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[2]);
-        } else {
+        } else if (this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[1]);
@@ -242,7 +242,8 @@ Item3D.prototype.getItemProjectedGeometry = function() {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
         }
     } else {
-        if (top && this.item.geometry.visible.top && this.item.geometry.tops.length && this.item.geometry.tops[0].points.length) {
+        if (top && this.item.geometry.visible.top && this.item.geometry.tops.length && this.item.geometry.tops[0].points.length
+            && this.item.geometry.visible.front && this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[1]);
@@ -256,7 +257,7 @@ Item3D.prototype.getItemProjectedGeometry = function() {
             this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
-        } else if (this.item.geometry.visible.front && this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length) {
+        } else if (this.item.geometry.visible.front && this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
