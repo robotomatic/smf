@@ -93,7 +93,7 @@
                 "left-ear" : {
                     "frames" : [
                         {
-                            "zindex" : 0
+                            "zindex" : -1
                         }
                     ]
                 },
