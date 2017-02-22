@@ -58,7 +58,7 @@ ViewRenderer.prototype.renderTilt = function(view, stage, mbr, width, height) {
     this.circle.x = cx;
     this.circle.y = cy;
     
-    var cr = Math.min(width, height) / 2;
+    var cr = MATH_MIN(width, height) / 2;
     this.circle.radius = cr;
 
     var cir = cr - (cr / 3);

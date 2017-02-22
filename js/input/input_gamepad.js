@@ -134,7 +134,7 @@ GamepadInput.prototype.stick = function(pad, value) {
 }
 
 GamepadInput.prototype.applyDeadzone = function(number, threshold){
-    var percentage = (Math.abs(number) - threshold) / (1 - threshold);
+    var percentage = (MATH_ABS(number) - threshold) / (1 - threshold);
     if(percentage < 0) percentage = 0;
     return percentage * (number > 0 ? 1 : -1);
 }

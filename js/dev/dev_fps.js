@@ -45,12 +45,12 @@ function logDevFPS(type, fps, aps) {
     elapsed[type] = 0;
     
     var f = document.getElementById(pid);
-    if (f) f.innerHTML = Math.round(fps * 1000) / 1000;
+    if (f) f.innerHTML = MATH_ROUND(fps * 1000) / 1000;
     var a = document.getElementById(paid);
-    if (a) a.innerHTML = Math.round(aps * 1000) / 1000;
+    if (a) a.innerHTML = MATH_ROUND(aps * 1000) / 1000;
     
     if (type == "tick") {
         if (!fpsmain) fpsmain = document.getElementById("dev-toolbar-fps");
-        if (fpsmain) fpsmain.innerHTML = (Math.round(fps * 1000) / 1000) + " FPS";
+        if (fpsmain) fpsmain.innerHTML = (MATH_ROUND(fps * 1000) / 1000) + " FPS";
     }
 }

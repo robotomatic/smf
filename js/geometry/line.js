@@ -15,8 +15,8 @@ Line.prototype.getPoints = function() {
 Line.prototype.scale = function(scale) {
     var d = this.length() * scale;
     var a = this.angle() * (MATH_PI / 180);
-    this.end.x = this.start.x + d * Math.cos(a);
-    this.end.y = this.start.y + d * Math.sin(a);
+    this.end.x = this.start.x + d * MATH_COS(a);
+    this.end.y = this.start.y + d * MATH_SIN(a);
 }
 
 
@@ -84,10 +84,10 @@ Line.prototype.length = function() {
 
 Line.prototype.rotate = function(deg) {
     deg += this.angle();
-    var a = deg * (Math.PI / 180);
+    var a = deg * (MATH_PI / 180);
     var d = this.length();
-    var nx = this.start.x + d * Math.cos(a);
-    var ny = this.start.y + d * Math.sin(a);
+    var nx = this.start.x + d * MATH_COS(a);
+    var ny = this.start.y + d * MATH_SIN(a);
     this.end.x = nx;
     this.end.y = ny;
     return this;

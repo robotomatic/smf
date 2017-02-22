@@ -96,7 +96,7 @@ MenuMain.prototype.addCharacters = function() {
             } else {
                 var ok = true;
                 for (var ii = 0; ii < this.players.players.length; ii++) {
-                    var d = Math.abs(this.players.players[ii].controller.x - testx);
+                    var d = MATH_ABS(this.players.players[ii].controller.x - testx);
                     if (d < 20) {
                         ok = false;
                         break;

@@ -16,7 +16,7 @@ function lightenColor(color, luminosity) {
 	var newColor = "#", c, i, black = 0, white = 255;
 	for (i = 0; i < 3; i++) {
 		c = parseInt(color.substr(i*2,2), 16);
-		c = Math.round(Math.min(Math.max(black, c + (luminosity * white)), white)).toString(16);
+		c = MATH_ROUND(MATH_MIN(MATH_MAX(black, c + (luminosity * white)), white)).toString(16);
 		newColor += ("00"+c).substr(c.length);
 	}
 	return newColor; 
@@ -31,7 +31,7 @@ function darkenColor(color, darkness) {
 	var newColor = "#", c, i, black = 0, white = 255;
 	for (i = 0; i < 3; i++) {
 		c = parseInt(color.substr(i*2,2), 16);
-		c = Math.round(Math.min(Math.max(black, c + (luminosity * white)), white)).toString(16);
+		c = MATH_ROUND(MATH_MIN(MATH_MAX(black, c + (luminosity * white)), white)).toString(16);
 		newColor += ("00"+c).substr(c.length);
 	}
 	return newColor; 
@@ -45,7 +45,7 @@ function fadeToColor(rgbColor1, rgbColor2, ratio) {
         newColor = [];
     for (var i = 0; i < color1.length; i++) {
         difference = color2[i] - color1[i];
-        newColor.push(Math.floor(parseInt(color1[i], 10) + difference * ratio));
+        newColor.push(MATH_FLOOR(parseInt(color1[i], 10) + difference * ratio));
     }
     return 'rgb(' + newColor + ')';
 }

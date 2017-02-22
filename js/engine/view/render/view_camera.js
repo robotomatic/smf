@@ -55,7 +55,7 @@ ViewCamera.prototype.getBlurAmount = function(distance) {
     if (distance >= this.blur.far.max_distance) return this.blur.far.amount;
     if (distance <= -this.blur.near.max_distance) return this.blur.near.amount;
     if (distance > -this.blur.near.min_distance) return 1;
-    if (distance < -this.blur.near.min_distance) return this.getBlurAmountByDistance(Math.abs(distance), this.blur.near);
+    if (distance < -this.blur.near.min_distance) return this.getBlurAmountByDistance(MATH_ABS(distance), this.blur.near);
     else return this.getBlurAmountByDistance(distance, this.blur.far);
 }
 
@@ -196,19 +196,19 @@ ViewCamera.prototype.smoothCameraBox = function(mbr) {
     var d = this.speed;
     
     var dx = (mbr.x - this.lastview.x) / d;
-    if (Math.abs(dx)) mbr.x = this.lastview.x + dx;
+    if (MATH_ABS(dx)) mbr.x = this.lastview.x + dx;
 
     var dy = (mbr.y - this.lastview.y) / d;
-    if (Math.abs(dy)) mbr.y =  this.lastview.y + dy;
+    if (MATH_ABS(dy)) mbr.y =  this.lastview.y + dy;
 
     var dz = (mbr.z - this.lastview.z) / d;
-    if (Math.abs(dz)) mbr.z =  this.lastview.z + dz;
+    if (MATH_ABS(dz)) mbr.z =  this.lastview.z + dz;
 
     var dw = (mbr.width - this.lastview.width) / d;
-    if (Math.abs(dw)) mbr.width = this.lastview.width + dw;
+    if (MATH_ABS(dw)) mbr.width = this.lastview.width + dw;
     
     var dh = (mbr.height - this.lastview.height) / d;
-    if (Math.abs(dh)) mbr.height =  this.lastview.height + dh;
+    if (MATH_ABS(dh)) mbr.height =  this.lastview.height + dh;
     
     return mbr;
 }

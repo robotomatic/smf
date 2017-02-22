@@ -52,7 +52,7 @@ ParticleEmitter.prototype.update = function(x, y, scale, ctx) {
         y += (this.y * scale);
     }
     
-    var size = this.size + Math.random() * 1;
+    var size = this.size + MATH_RANDOM() * 1;
 
     if (!this.particles.length) for(var i = 0; i < this.max; i++) this.particles.push(new Particle(x, y, size));    
 
@@ -77,9 +77,9 @@ ParticleEmitter.prototype.update = function(x, y, scale, ctx) {
         }
         
         
-        p.opacity = Math.round(p.death / p.life * 100) / 100;
+        p.opacity = MATH_ROUND(p.death / p.life * 100) / 100;
 
-//        p.radius *= Math.random() * 1;
+//        p.radius *= MATH_RANDOM() * 1;
         
         if ((p.radius * scale) > .1) {
             
@@ -106,10 +106,10 @@ ParticleEmitter.prototype.update = function(x, y, scale, ctx) {
             p.location.y = clamp(p.location.y + p.speed.y);
         }
         
-        if (Math.abs(p.location.x - x) > this.maxdx * scale) p.death = -1;
-        if (Math.abs(p.location.y - y) > this.maxdy * scale) p.death = -1;
+        if (MATH_ABS(p.location.x - x) > this.maxdx * scale) p.death = -1;
+        if (MATH_ABS(p.location.y - y) > this.maxdy * scale) p.death = -1;
         
-        if(p.death < 0 || p.radius < 0) this.particles[i] = new Particle(x, y, this.size + Math.random() * 1);
+        if(p.death < 0 || p.radius < 0) this.particles[i] = new Particle(x, y, this.size + MATH_RANDOM() * 1);
     }
     
     this.cp.x = clamp(x);

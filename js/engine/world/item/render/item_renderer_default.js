@@ -13,7 +13,7 @@ ItemRendererDefault.prototype.render = function(ctx, color, item, window, x, y, 
     if (item.angle) {
         ctx.save();
         ctx.translate(x + width / 2, y + height / 2);
-        var rad = item.angle * Math.PI / 180;
+        var rad = item.angle * MATH_PI / 180;
         ctx.rotate(rad);
         x = -width / 2;
         y = -height / 2;
@@ -49,7 +49,7 @@ ItemRendererDefault.prototype.drawPart = function(ctx, part, x, y, width, height
     if (angle || part.angle) {
         ctx.save();
         ctx.translate(part_x + part_width / 2, part_y + part_height / 2);
-        var rad = round(part.angle * Math.PI / 180);
+        var rad = round(part.angle * MATH_PI / 180);
         ctx.rotate(rad);
         part_x = round(-part_width / 2);
         part_y = round(-part_height / 2);

@@ -225,12 +225,12 @@ PlayerCollider.prototype.updateCollisionBox = function() {
     if (!this.lastbox.width) this.lastbox.width = this.collisionbox.width;
     if (!this.lastbox.height) this.lastbox.height = this.collisionbox.height;
     
-    var x1 = Math.min(this.lastbox.x, this.collisionbox.x);
-    var y1 = Math.min(this.lastbox.y, this.collisionbox.y);
-    var z1 = Math.min(this.lastbox.z, this.collisionbox.z);
-    var x2 = Math.max(this.lastbox.x, this.collisionbox.x);
-    var y2 = Math.max(this.lastbox.y, this.collisionbox.y);
-    var z2 = Math.max(this.lastbox.z, this.collisionbox.z);
+    var x1 = MATH_MIN(this.lastbox.x, this.collisionbox.x);
+    var y1 = MATH_MIN(this.lastbox.y, this.collisionbox.y);
+    var z1 = MATH_MIN(this.lastbox.z, this.collisionbox.z);
+    var x2 = MATH_MAX(this.lastbox.x, this.collisionbox.x);
+    var y2 = MATH_MAX(this.lastbox.y, this.collisionbox.y);
+    var z2 = MATH_MAX(this.lastbox.z, this.collisionbox.z);
     
     this.movebox.x = x1;
     this.movebox.y = y1;

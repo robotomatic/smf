@@ -75,7 +75,7 @@ ItemDynamicWaves.prototype.drawWaves = function(ctx, color, item, window, x, y, 
     ctx.fillStyle = color;
     
     var wl = wavelength * scale;
-    var freq = 2 * Math.PI * (1 /  wl);
+    var freq = 2 * MATH_PI * (1 /  wl);
     var amp  = amplitude * scale;
 
     
@@ -105,7 +105,7 @@ ItemDynamicWaves.prototype.drawWaves = function(ctx, color, item, window, x, y, 
     
     for ( var i = x; i < ww - x; i += step ) {
 
-        cy = amp * Math.sin(freq * c + this.x);
+        cy = amp * MATH_SIN(freq * c + this.x);
         cy *= scale;
         
         this.point.x = i;

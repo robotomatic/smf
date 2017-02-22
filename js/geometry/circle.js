@@ -7,7 +7,7 @@ function Circle(x, y, radius) {
 }
 
 Circle.prototype.path = function(ctx) {
-    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
+    ctx.arc(this.x, this.y, this.radius, 0, 2 * MATH_PI, false);
     ctx.closePath();
 }
 

@@ -305,7 +305,7 @@ PlayerController.prototype.touchFloor = function(amount) {
 
     if (this.bounce) {
         this.velY = -this.velY / 3; 
-        if (Math.abs(this.velY) < 1) this.velY = 0;
+        if (MATH_ABS(this.velY) < 1) this.velY = 0;
     } else this.velY = 0;
 
     
@@ -382,7 +382,7 @@ PlayerController.prototype.action = function(action) {
 
 
 PlayerController.prototype.getSpeed = function() {
-    return Math.sqrt(Math.abs(this.velX) + Math.abs(this.velY) + Math.abs(this.velZ));
+    return MATH_SQRT(MATH_ABS(this.velX) + MATH_ABS(this.velY) + MATH_ABS(this.velZ));
 }
 
 
@@ -428,7 +428,7 @@ PlayerController.prototype.updateJumpInfo = function(physics) {
 
 PlayerController.prototype.updateJumpHeight = function(physics) {
     var jumpspeed = -this.jumpspeed;
-    var jumpspeedsquare = Math.pow(jumpspeed, 2);
+    var jumpspeedsquare = MATH_POW(jumpspeed, 2);
     var jumpgravity = 2 * physics.gravity;
     this.maxjumpheight = (jumpspeedsquare / jumpgravity) + this.height;
 }

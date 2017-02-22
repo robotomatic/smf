@@ -105,7 +105,7 @@ MenuView.prototype.updateNPC = function(stage, npc) {
                     if (stage.players.players[ii] == player) continue;
                     if (stage.players.players[ii].controller.paused) {
                         var npcw = stage.players.players[ii].controller.x + (stage.players.players[ii].controller.width / 2)
-                        var d = Math.abs(pw - npcw);
+                        var d = MATH_ABS(pw - npcw);
                         if (d < 30) {
                             safe = false;
                             break;

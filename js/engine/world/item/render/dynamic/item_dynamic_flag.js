@@ -46,7 +46,7 @@ ItemDynamicFlag.prototype.drawFlag = function(ctx, item, x, y, width, height, sc
 //    var dx = x + width / 2;
 //    var dy = y + height / 2;
 //    ctx.translate(dx, dy);
-//    var rad = a * Math.PI / 180;
+//    var rad = a * MATH_PI / 180;
 //    ctx.rotate(rad);
 //    x = -width / 2;
 //    y = -height / 2;
@@ -65,7 +65,7 @@ ItemDynamicFlag.prototype.drawFlag = function(ctx, item, x, y, width, height, sc
     var offset = flag.renderer.offset;
     
     var wl = wavelength * scale;
-    var freq = 2 * Math.PI * (1 /  wl);
+    var freq = 2 * MATH_PI * (1 /  wl);
     
     var amp  = amplitude * scale;
 
@@ -77,7 +77,7 @@ ItemDynamicFlag.prototype.drawFlag = function(ctx, item, x, y, width, height, sc
     var step = 5 * scale;
     var c = 0;
     for (var i = x; i < width + x - 2; i += step) {
-        cy = amp * Math.sin(freq * c + this.fx);
+        cy = amp * MATH_SIN(freq * c + this.fx);
         cy *= scale;
         
         this.point.x = i;
@@ -87,7 +87,7 @@ ItemDynamicFlag.prototype.drawFlag = function(ctx, item, x, y, width, height, sc
         c += step;
     }
     for (var i = width + x - 2; i > bottomright; i -= step) {
-        cy = amp * Math.sin(freq * c + this.fx);
+        cy = amp * MATH_SIN(freq * c + this.fx);
         cy *= scale;
 
         this.point.x = i;

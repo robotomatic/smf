@@ -123,8 +123,8 @@ function collideFineVertical(item1, item2, result) {
     var vY = clamp((item1.y + (item1.height / 2)) - (item2.y + (item2.height / 2)));
     var hHeights = clamp((item1.height / 2) + (item2.height / 2));
     var ih = item1.height / 2;
-    if (Math.abs(vY) < hHeights) {
-        var oY = clamp(hHeights - Math.abs(vY));
+    if (MATH_ABS(vY) < hHeights) {
+        var oY = clamp(hHeights - MATH_ABS(vY));
         if (oY) {
             var colDir = null;
             var colY = 0;
@@ -155,8 +155,8 @@ function collideFineHorizontal(item1, item2, result) {
     var vX = clamp((item1.x + (item1.width / 2)) - (item2.x + (item2.width / 2)));
     var hWidths = clamp((item1.width / 2) + (item2.width / 2));
     var iw = item1.width / 2;
-    if (Math.abs(vX) < hWidths) {
-        var oX = clamp(hWidths - Math.abs(vX));
+    if (MATH_ABS(vX) < hWidths) {
+        var oX = clamp(hWidths - MATH_ABS(vX));
         if (oX) {
             var colDir = null;
             var colX = 0;
@@ -187,8 +187,8 @@ function collideFineDepth(item1, item2, result) {
     var vZ = clamp((item1.z + (item1.depth / 2)) - (item2.z + (item2.depth / 2)));
     var hDepths = clamp((item1.depth / 2) + (item2.depth / 2));
     var id = item1.depth / 2;
-    if (Math.abs(vZ) < hDepths) {
-        var oZ = clamp(hDepths - Math.abs(vZ));
+    if (MATH_ABS(vZ) < hDepths) {
+        var oZ = clamp(hDepths - MATH_ABS(vZ));
         if (oZ) {
             var colDir = null;
             var colZ = 0;
