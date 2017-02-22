@@ -11,7 +11,7 @@ function Players(players) {
         height : 5
     };
     this.debug = false;
-    this.mbr = geometryfactory.getRectangle(0, 0, 0, 0);
+    this.mbr = new Rectangle(0, 0, 0, 0);
 }
 
 Players.prototype.loadJson = function(json) {

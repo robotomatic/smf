@@ -51,6 +51,7 @@ GameLoop.prototype.run = function(now) {
     if (!this.running) return;
     if (!now) return;
     this.gameperformance.tick(now);
+    geometryfactory.reset();
     if (this.steprender) this.runStep(now);
     else this.runUpdate(now);
 }

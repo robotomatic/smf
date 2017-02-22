@@ -2,16 +2,16 @@
 
 function Item3D(item) {
     this.item = item;
-    this.p1 = geometryfactory.getPoint(0, 0);
-    this.p2 = geometryfactory.getPoint(0, 0);
-    this.cp = geometryfactory.getPoint(0, 0);
-    this.np = geometryfactory.getPoint(0, 0);
-    this.np1 = geometryfactory.getPoint(0, 0);
-    this.np2 = geometryfactory.getPoint(0, 0);
-    this.polygon = geometryfactory.getPolygon();
-    this.projectedpolygon = geometryfactory.getPolygon();
-    this.polytop = geometryfactory.getPolygon();
-    this.top = geometryfactory.getPolygon();
+    this.p1 = new Point(0, 0);
+    this.p2 = new Point(0, 0);
+    this.cp = new Point(0, 0);
+    this.np = new Point(0, 0);
+    this.np1 = new Point(0, 0);
+    this.np2 = new Point(0, 0);
+    this.polygon = new Polygon();
+    this.projectedpolygon = new Polygon();
+    this.polytop = new Polygon();
+    this.top = new Polygon();
     this.dotop = false;
     
     this.dopoly = true;
@@ -81,7 +81,7 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
 
     if (!this.polygon || !this.polygon.points) return;
     
-    if (!this.item.geometry.fronts[0]) this.item.geometry.fronts[0] = geometryfactory.getPolygon(this.polygon.getPoints());
+    if (!this.item.geometry.fronts[0]) this.item.geometry.fronts[0] = new Polygon(this.polygon.getPoints());
     else this.item.geometry.fronts[0].setPoints(this.polygon.getPoints())
 
     var wc = window.getCenter();
@@ -131,7 +131,7 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
         }
         
         if (!view[0]) {
-            var p = geometryfactory.getPolygon();
+            var p = new Polygon();
             view[0] = p;
         }
         view[0].setPoints(this.projectedpolygon.getPoints());
@@ -147,7 +147,7 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
         this.projectedpolygon = project3D(this.p1, this.p2, depth, this.projectedpolygon, scale, x, y, wc, this.np1, this.np2);
         
         if (!this.item.geometry.sides[0]) {
-            var p = geometryfactory.getPolygon();
+            var p = new Polygon();
             this.item.geometry.sides[0] = p;
         }
         this.item.geometry.sides[0].setPoints(this.projectedpolygon.getPoints());
@@ -170,7 +170,7 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
         }
         
         if (!this.item.geometry.tops[0]) {
-            var p = geometryfactory.getPolygon();
+            var p = new Polygon();
             this.item.geometry.tops[0] = p;
         }
         this.item.geometry.tops[0].setPoints(this.projectedpolygon.getPoints());
@@ -299,7 +299,9 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
     if (this.item.geometry.visible.left || this.item.geometry.visible.right) {
         if (this.item.geometry.sides.length && this.item.geometry.sides[0].points.length) {
             var sides = true;
-            if (this.item.geometry.sides[0].points[0].x < this.item.geometry.fronts[0].points[0].x) {
+            if (this.item.geometry.sides[0] && this.item.geometry.sides[0].points[0] && 
+                this.item.geometry.fronts[0] && this.item.geometry.fronts[0].points[0] && 
+                this.item.geometry.sides[0].points[0].x < this.item.geometry.fronts[0].points[0].x) {
                 if (!this.item.geometry.visible.left) sides = false;
             } else {
                 if (!this.item.geometry.visible.right) sides = false;

@@ -1,8 +1,8 @@
 "use strict";
 
 function Line(start, end) {
-    this.start = start ? start : geometryfactory.getPoint(0, 0);
-    this.end = end ? end : geometryfactory.getPoint(0, 0);
+    this.start = start ? start : new Point(0, 0);
+    this.end = end ? end : new Point(0, 0);
     this.points = [this.start, this.end];
     this.mbr = null;
 }
@@ -56,7 +56,7 @@ Line.prototype.normalize = function() {
 
 Line.prototype.getMbr = function() {
     var normal = this.normalize();
-    if (!this.mbr) this.mbr = geometryfactory.getRectangle(0, 0, 0, 0);
+    if (!this.mbr) this.mbr = new Rectangle(0, 0, 0, 0);
     this.mbr.x = normal.start;
     this.mbr.y = normal.end;
     this.mbr.width = normal.end.x - normal.start.x;
@@ -90,7 +90,7 @@ Line.prototype.rotate = function(deg) {
     var ny = this.start.y + d * Math.sin(a);
     this.end.x = nx;
     this.end.y = ny;
-    return geometryfactory.getLine(this.start, this.end);
+    return this;
 }
 
 

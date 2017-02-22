@@ -3,9 +3,9 @@
 function PlayerCollider(player) {
     this.levelcollisions = new Array();
     this.player = player;
-    this.collisionbox = geometryfactory.getRectangle(0, 0, 0, 0);
-    this.lastbox = geometryfactory.getRectangle(0, 0, 0, 0);
-    this.movebox = geometryfactory.getRectangle(0, 0, 0, 0);
+    this.collisionbox = new Rectangle(0, 0, 0, 0);
+    this.lastbox = new Rectangle(0, 0, 0, 0);
+    this.movebox = new Rectangle(0, 0, 0, 0);
     this.movebox.depth = 0;
     this.result = null;
     this.updateCollisionBox();

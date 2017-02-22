@@ -2,14 +2,15 @@
 
 function StageRendererDebug(renderitems) {
     this.renderitems = renderitems;
-    this.line = geometryfactory.getLine(geometryfactory.getPoint(0, 0), geometryfactory.getPoint(0, 0));
+    this.line = new Line(new Point(0, 0), new Point(0, 0));
     
     this.temp = {
         canvas : null,
         ctx : null
     };
-    this.mbr = geometryfactory.getRectangle(0, 0, 0, 0);
-    this.polygon = geometryfactory.getPolygon();
+    
+    this.mbr = new Rectangle(0, 0, 0, 0);
+    this.polygon = new Polygon();
 }
 
 StageRendererDebug.prototype.renderDebug = function(now, graphics, camera, stage, mbr, window, debug) {

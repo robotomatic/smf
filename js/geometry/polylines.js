@@ -30,27 +30,27 @@ Polylines.prototype.createPolylines = function(lines) {
         var sp = line.start;
         var ep = line.end;
         if (!current) {
-            current = geometryfactory.getPolyline();
+            current = new Polyline();
             current.addPoint(sp)
             current.addPoint(ep)
         } else {
             var cp = current.points[current.points.length - 1];
-            var l = geometryfactory.getLine(cp, sp);
+            var l = new Line(cp, sp);
             var d = l.length();
             if (d < 2) {
                 current.addPoint(ep);
             } else {
-                var p = geometryfactory.getPolyline();
+                var p = new Polyline();
                 p.addPoints(current.points);
                 this.polylines[this.polylines.length] = p;
-                current = geometryfactory.getPolyline();
+                current = new Polyline();
                 current.addPoint(sp);
                 current.addPoint(ep);
             }
         }
     }
     if (current && current.points) {
-        var p = geometryfactory.getPolyline();
+        var p = new Polyline();
         p.addPoints(current.points);
         this.polylines[this.polylines.length] = p;
     }

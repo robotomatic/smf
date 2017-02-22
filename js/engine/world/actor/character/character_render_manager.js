@@ -2,7 +2,7 @@
 
 function CharacterRenderManager() {
     this.groups = new Array();
-    this.groupnames = new Array();
+    this.groupnames = {};
     this.loaded = false;
 }
 
@@ -14,7 +14,7 @@ CharacterRenderManager.prototype.updateCharacter = function(box, parts, pad, col
 
 CharacterRenderManager.prototype.resetCharacterParts = function(box, parts, pad, color) {
     this.groups.length = 0;
-    this.groupnames = new Array();
+    this.groupnames = {};
     this.updateCharacterParts(box, parts, pad, color);
 }
 
@@ -40,6 +40,7 @@ CharacterRenderManager.prototype.updateCharacterPart = function(box, partname, p
 }
 
 CharacterRenderManager.prototype.updateCharacterGroup = function(box, parts, addpad, color) {
+    if (!parts.group) return;
     var group = this.getGroup(parts.group);
     var pad = .8 + addpad;
     if (parts.width && parts.height) this.addCharacterGroupPart(parts, box, pad, group, color);
@@ -92,16 +93,17 @@ CharacterRenderManager.prototype.addCharacterGroupPart = function(part, box, pad
     var part_height = box.height * ((part.height + pad) / 100);
     var part_width = box.width * ((part.width + pad) / 100);
     
-    var part_x = box.x + (box.width * ((part.x - (pad / 2)) / 100));
-    var part_y = box.y + (box.height * ((part.y - (pad / 2)) / 100));
+    var part_x = round(box.x + (box.width * ((part.x - (pad / 2)) / 100)));
+    var part_y = round(box.y + (box.height * ((part.y - (pad / 2)) / 100)));
     
-    group.rects[group.rects.length] = new Rectangle(part_x, part_y, part_width, part_height);
+    // todo: can I cache this stuff?
+    group.rects[group.rects.length] = geometryfactory.getRectangle(part_x, part_y, part_width, part_height);
     
     var current = group.points.length; 
-    group.points[group.points.length] = new Point(part_x, part_y);
-    group.points[group.points.length] = new Point(part_x + part_width, part_y);
-    group.points[group.points.length] = new Point(part_x + part_width, part_y + part_height);
-    group.points[group.points.length] = new Point(part_x, part_y + part_height);
+    group.points[group.points.length] = geometryfactory.getPoint(part_x, part_y);
+    group.points[group.points.length] = geometryfactory.getPoint(part_x + part_width, part_y);
+    group.points[group.points.length] = geometryfactory.getPoint(part_x + part_width, part_y + part_height);
+    group.points[group.points.length] = geometryfactory.getPoint(part_x, part_y + part_height);
     if (part.pointinfo) {
         var k = Object.keys(part.pointinfo);
         for (var i = 0; i < k.length; i++) {
@@ -112,7 +114,7 @@ CharacterRenderManager.prototype.addCharacterGroupPart = function(part, box, pad
         group.angle = part.angle;
         var cpx = part_x + (part_width / 2);
         var cpy = part_y + (part_height / 2);
-        var cp = new Point(cpx, cpy);
+        var cp = geometryfactory.getPoint(cpx, cpy);
         group.center = cp;
         if (part.parts) {
             group.parts = part.parts;

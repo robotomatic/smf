@@ -3,7 +3,7 @@
 function ItemCache() {
 
 //    this.cache = new Array();
-//    this.box = geometryfactory.getRectangle(0, 0, 0, 0);
+//    this.box = new Rectangle(0, 0, 0, 0);
 //    this.image = new Image(null, 0, 0, 0, 0);
 //    this.debug = false;
 //    this.itemdebugger = new ItemDebugger();

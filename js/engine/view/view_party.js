@@ -17,7 +17,7 @@ function PartyView(id, width, height, scale) {
         z : 200
     }
 
-    this.view.renderer.camera.blur.blur = true;
+    this.view.renderer.camera.blur.blur = false;
     this.view.renderer.camera.drift.enabled = true;
 }
 

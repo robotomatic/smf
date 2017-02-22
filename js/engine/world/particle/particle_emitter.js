@@ -20,8 +20,8 @@ function ParticleEmitter(info) {
     this.leftright = 0;
     this.updown = 0;
     
-    this.cp = geometryfactory.getPoint(0, 0);
-    this.lp = geometryfactory.getPoint(0, 0);
+    this.cp = new Point(0, 0);
+    this.lp = new Point(0, 0);
 }
 
 ParticleEmitter.prototype.stop = function() {

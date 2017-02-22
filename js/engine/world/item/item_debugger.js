@@ -1,9 +1,9 @@
 "use strict";
 
 function ItemDebugger() {
-    this.polygon = geometryfactory.getPolygon();
-    this.rect = geometryfactory.getRectangle();
-    this.text = geometryfactory.getText();
+    this.polygon = new Polygon();
+    this.rect = new Rectangle();
+    this.text = new Text();
     this.textsize = 10;
 }
 

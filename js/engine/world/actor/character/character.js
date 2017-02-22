@@ -15,7 +15,7 @@ function Character() {
     this.animator;
     this.renderer;
     this.hidden;
-    this.mbr = geometryfactory.getRectangle();
+    this.mbr = new Rectangle();
     
     this.direction = "";
     this.state = "";

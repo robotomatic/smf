@@ -1,6 +1,6 @@
 function PlayerCamera(player) {
     this.player = player;
-    this.camerabox = geometryfactory.getRectangle(player.controller.x, player.controller.y, player.controller.width, player.controller.height);    
+    this.camerabox = new Rectangle(player.controller.x, player.controller.y, player.controller.width, player.controller.height);    
 }
 
 PlayerCamera.prototype.updateCameraBox = function(scale) {

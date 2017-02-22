@@ -12,12 +12,12 @@ function Item() {
     this.lastX = 0;
     this.lastY = 0;
     this.lastZ = 0;
-    this.location = geometryfactory.getPoint(0, 0);
+    this.location = new Point(0, 0);
     
     
     this.item3D = new Item3D(this);
-    this.projectedlocation = geometryfactory.getPoint(0, 0);
-    this.projectedlocation_backup = geometryfactory.getPoint(0, 0);
+    this.projectedlocation = new Point(0, 0);
+    this.projectedlocation_backup = new Point(0, 0);
     
     this.extrude = 0;
     
@@ -74,25 +74,25 @@ function Item() {
     this.parts = null;
     this.keys = null;
     
-    this.mbr = geometryfactory.getRectangle();
+    this.mbr = new Rectangle();
     
-    this.box = geometryfactory.getRectangle(0, 0, 0, 0);
+    this.box = new Rectangle(0, 0, 0, 0);
     
     this.top = false;
-    this.polygon = geometryfactory.getPolygon();
+    this.polygon = new Polygon();
     this.tops = new Array();
     
     this.pad = 5;
     this.polylines = new Polylines();
     this.polytops = new Array();
-    this.np = geometryfactory.getPoint(0, 0);
+    this.np = new Point(0, 0);
     
-    this.pnew = geometryfactory.getPoint(0, 0);
-    this.np1 = geometryfactory.getPoint(0, 0);
-    this.np2 = geometryfactory.getPoint(0, 0);
+    this.pnew = new Point(0, 0);
+    this.np1 = new Point(0, 0);
+    this.np2 = new Point(0, 0);
     
     this.geometry = {
-        projected : geometryfactory.getPolygon(),
+        projected : new Polygon(),
         fronts : new Array(),
         tops : new Array(),
         sides : new Array(),
@@ -107,7 +107,7 @@ function Item() {
         }
     }
 
-    this.projectedmbr = geometryfactory.getRectangle(0, 0, 0, 0);
+    this.projectedmbr = new Rectangle(0, 0, 0, 0);
 
     this.canvas = document.createElement('canvas');
     this.ctx = this.canvas.getContext("2d")
@@ -278,7 +278,7 @@ Item.prototype.createPolygonTops = function() {
 Item.prototype.createPolygonTop = function(top) {
     // todo: this is part of the theme
     var pad = 1;
-    var pg = geometryfactory.getPolygon();
+    var pg = new Polygon();
     var p;
     var np;
     for (var i = 0; i < top.points.length; i++) {

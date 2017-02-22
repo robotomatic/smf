@@ -3,7 +3,7 @@
 function PlayerDebugger(player) {
     this.player = player;
     this.debug = false;
-    this.rect = geometryfactory.getRectangle(0, 0, 0, 0);
+    this.rect = new Rectangle(0, 0, 0, 0);
 }
 
 PlayerDebugger.prototype.drawDebug = function(now, ctx) {

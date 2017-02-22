@@ -3,23 +3,23 @@
 function CharacterRenderer() {
     this.groupdefs = new Array();
     this.rendermanager = new CharacterRenderManager();
-    this.clippath = geometryfactory.getPolygon();
-    this.linkpathStart = geometryfactory.getPolygon();
+    this.clippath = new Polygon();
+    this.linkpathStart = new Polygon();
     this.linkpathType = "";
-    this.linkpathEnd = geometryfactory.getPolygon();
+    this.linkpathEnd = new Polygon();
     this.linkpathColor = "";
-    this.path = geometryfactory.getPolygon();
+    this.path = new Polygon();
     
-    this.box = geometryfactory.getRectangle(0, 0, 0, 0);
-    this.newbox = geometryfactory.getRectangle(0, 0, 0, 0);    
-    this.polygon = geometryfactory.getPolygon();
+    this.box = new Rectangle(0, 0, 0, 0);
+    this.newbox = new Rectangle(0, 0, 0, 0);    
+    this.polygon = new Polygon();
     
     this.width = 0;
     this.height = 0;
     this.debug = false;
     this.debugrects;
-    this.rotatepoly = geometryfactory.getPolygon();
-    this.rotateline = geometryfactory.getLine();
+    this.rotatepoly = new Polygon();
+    this.rotateline = new Line();
 }
 
 CharacterRenderer.prototype.draw = function(ctx, playerchar) {

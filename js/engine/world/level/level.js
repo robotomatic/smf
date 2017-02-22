@@ -20,8 +20,8 @@ function Level(width, height) {
     this.layerkeys = new Array();
     this.itemrenderer = new ItemRenderer();
     
-    this.rect = geometryfactory.getRectangle(0, 0, 0, 0);
-    this.text = geometryfactory.getText(0, 0, "");
+    this.rect = new Rectangle(0, 0, 0, 0);
+    this.text = new Text(0, 0, "");
     
     this.flood = false;
     

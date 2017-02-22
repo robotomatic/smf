@@ -2,6 +2,7 @@
 
 (function() {
     var controller;
+    
     var last = 0;
     
     var hz = 60;
@@ -40,6 +41,7 @@
 
     function game() {
         log("game", "new");
+        
         controller = new GameController();
         controller.loadView();
         controller.resize();
