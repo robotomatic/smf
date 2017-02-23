@@ -1,16 +1,18 @@
 "use strict";
 
-var devplayers = new Array();
+var devplayers;
 
 function initializeDevPlayers() {
     devplayers = new Array();
 }
 
 function updateDevPlayers(players) {
+    if (!devplayers) return;
     for (var i = 0; i < players.length; i++) updateDevPlayersPlayer(players[i]);
 }
 
 function updateDevPlayersPlayer(player) {
+    if (!devplayers) return;
     var id = player.id;
     if (!devplayers[id]) devPlayersAddPlayer(player);
     devPlayersUpdatePlayer(player);
@@ -19,6 +21,8 @@ function updateDevPlayersPlayer(player) {
 function devPlayersAddPlayer(player) {
 
     var id = player.id;
+    if (!devplayers || devplayers[id]) return;
+    
     var name = player.name;
     
     var template = document.getElementById("dev-dialog-players-players-player-template");

@@ -8,6 +8,7 @@ function MenuView(id, width, height, scale) {
         window.location.hash="#game";
     }
     this.view.renderer.camera.blur.blur = false;
+    this.view.renderer.camera.blur.shift = true;
     this.view.renderer.camera.drift.enabled = false;
 }
 

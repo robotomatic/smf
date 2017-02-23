@@ -26,16 +26,19 @@ function ViewCamera() {
     }
 
     this.blur = {
-        blur : true,
+        blur : false,
+        shift : true,
         near : {
             min_distance : 0,
             max_distance : 100,
-            amount : .25
+            amount : .25,
+            shift : 2.5
         }, 
         far : {
             min_distance : 600,
             max_distance : 2000,
-            amount : .5
+            amount : .5,
+            shift : 1.5
         }
     }
     
@@ -48,7 +51,7 @@ function ViewCamera() {
 }
 
 ViewCamera.prototype.shouldBlur = function(distance) {
-    return (this.blur.blur && (distance >= this.blur.far.min_distance || distance <= this.blur.near.min_distance));
+    return ((this.blur.blur || this.blur.shift)  && (distance >= this.blur.far.min_distance || distance <= this.blur.near.min_distance));
 }
 
 ViewCamera.prototype.getBlurAmount = function(distance) {
@@ -68,6 +71,24 @@ ViewCamera.prototype.getBlurAmountByDistance = function(distance, blur) {
     var out = dd * ap;
     return 1 - out;
 }
+
+
+ViewCamera.prototype.getBlurShiftAmount = function(distance) {
+    if (distance >= this.blur.far.max_distance) return this.blur.far.shift;
+    if (distance <= -this.blur.near.max_distance) return this.blur.near.shift;
+    if (distance > -this.blur.near.min_distance) return 1;
+    if (distance < -this.blur.near.min_distance) return this.getBlurShiftByDistance(MATH_ABS(distance), this.blur.near);
+    else return this.getBlurShiftByDistance(distance, this.blur.far);
+}
+
+ViewCamera.prototype.getBlurShiftByDistance = function(distance, blur) {
+    var maxd = blur.max_distance - blur.min_distance;
+    var d = distance - blur.min_distance;
+    var p = d / maxd;
+    var ap = blur.shift * p;
+    return ap;
+}
+
 
 ViewCamera.prototype.shakeScreen = function(magnitude, duration) {
     this.shake.magnitude = magnitude;

@@ -3,7 +3,7 @@
 function StageRendererRender(renderitems, itemcache) {
     this.renderitems = renderitems;
     this.np = new Point(0, 0);
-    this.doblur = false;
+    this.doblur = true;
 }
 
 StageRendererRender.prototype.renderRender = function(now, graphics, camera, stage, mbr, window, flood) {
@@ -27,11 +27,16 @@ StageRendererRender.prototype.renderItem = function(now, window, graphics, camer
         item.render(now, renderer, graphics.canvas.width, graphics.canvas.height, graphics.ctx);
         return;
     }
-    var blur = camera.getBlurAmount(distance);
-    var scalerender = blur;
+    var scalerender = 1;
+    if (this.doblur && camera.blur.blur) {
+        scalerender = camera.getBlurAmount(distance);;
+    }
     var scaledraw = 1 / scalerender;
     item.render(now, renderer, graphics.canvas.width, graphics.canvas.height, null, scalerender);
-    if (this.doblur) blurCanvas(item.canvas, item.ctx, 0.5, 1);
+    if (this.doblur && camera.blur.shift) {
+        var shift = camera.getBlurShiftAmount(distance);
+        blurCanvas(item.canvas, item.ctx, shift, 1);
+    }
     item.drawImage(graphics.ctx, scaledraw, 0);
 }
 
@@ -42,15 +47,17 @@ StageRendererRender.prototype.renderPlayer = function(now, window, graphics, cam
     var scaledraw = 1;
     var b = camera.shouldBlur(distance);
     if (b) {
-        var blur = camera.getBlurAmount(distance)
-        scalerender = blur;
+        if (this.doblur && camera.blur.blur) {
+            scalerender = camera.getBlurAmount(distance);
+        }
         scaledraw = 1 / scalerender;
-        player.render(now, pw, ph, scalerender);
-        if (this.doblur) blurCanvas(player.canvas, player.ctx, 0.5, 1);
+        player.render(now, pw, ph, null, scalerender);
+        if (this.doblur && camera.blur.shift) {
+            var shift = camera.getBlurShiftAmount(distance);
+            blurCanvas(player.canvas, player.ctx, shift, 1);
+        }
         player.drawImage(graphics.ctx, scaledraw, 0);
-        
     } else {
-        player.render(now, pw, ph, scalerender);
-        player.drawImage(graphics.ctx, scaledraw, 0);
+        player.render(now, pw, ph, graphics.ctx, scalerender);
     }
 }
