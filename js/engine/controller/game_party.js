@@ -62,7 +62,7 @@ GameParty.prototype.loadLevel = function() {
     this.players = new Players();
     var charnames = Object.keys(this.gameloader.characters.characters);
     var players = this.playersettings.players;
-    players.length = 0;
+    if (players) players.length = 0;
     
     var playertotal = 0;
     
