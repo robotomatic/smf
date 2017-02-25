@@ -112,7 +112,7 @@ GameParty.prototype.loadLevel = function() {
         }
         
         
-        var speed = 2;
+        var speed = 3;
         var hp = 1000;
         
         var pc = new Player(i, name, color, x, y, z, width, height, speed, char, hp, this);
