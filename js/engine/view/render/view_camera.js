@@ -27,7 +27,7 @@ function ViewCamera() {
 
     this.blur = {
         blur : false,
-        shift : true,
+        shift : false,
         near : {
             min_distance : 0,
             max_distance : 100,
@@ -35,7 +35,7 @@ function ViewCamera() {
             shift : 2.5
         }, 
         far : {
-            min_distance : 600,
+            min_distance : 1000,
             max_distance : 2000,
             amount : .5,
             shift : 1.5
