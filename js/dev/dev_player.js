@@ -5,12 +5,17 @@ var devplayerctx = null;
 var devplayerimg = new Image(null, 0, 0, 0, 0);
 
 function initializeDevPlayer() {
+    
+    if (!__dev) return;
+    
     document.getElementById("dev-player-canvas").resize = function() {
         resizeDevPlayerCanvas();
     };
 }
 
 function updateDevPlayer(img) {
+    
+    if (!__dev) return;
     
     return;
     
@@ -21,6 +26,8 @@ function updateDevPlayer(img) {
 }
 
 function resizeDevPlayerCanvas() {
+    
+    if (!__dev) return;
     
     return;
     

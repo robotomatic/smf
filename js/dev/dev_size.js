@@ -1,6 +1,9 @@
 "use strict";
 
 function initializeDevSize() {
+    
+    if (!__dev) return;
+    
     document.getElementById("dev-stretch").onclick = function() {
         toggleStretch();
     };
@@ -19,16 +22,25 @@ function initializeDevSize() {
 }
 
 function toggleStretch() {
+    
+    if (!__dev) return;
+    
     updateViews("toggleStretch");
     updateDevView();
 }
 
 function toggleAuto() {
+    
+    if (!__dev) return;
+    
     updateViews("toggleAuto");
     updateDevView();
 }
 
 function changeSize() {
+    
+    if (!__dev) return;
+    
     var ww = document.getElementById("dev-view-width");
     var w = ww.value;
     var hh = document.getElementById("dev-view-height");
@@ -38,6 +50,9 @@ function changeSize() {
 }
 
 function changeRatio() {
+    
+    if (!__dev) return;
+    
     var rr = document.getElementById("dev-view-ratio");
     var r = rr.value;
     updateViews("setRatio", r);
@@ -45,6 +60,9 @@ function changeRatio() {
 }
 
 function updateDevViewSize(v) {
+    
+    if (!__dev) return;
+    
     var vs = round(v.viewscale);
     var vv = document.getElementById("dev-stretch-label");
     vv.innerText = vs;

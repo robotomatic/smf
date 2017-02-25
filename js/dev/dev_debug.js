@@ -1,6 +1,9 @@
 "use strict";
 
 function initializeDevDebug() {
+    
+    if (!__dev) return;
+    
     document.getElementById("dev-overlay").onclick = function() {
         toggleOverlay();
     };
@@ -25,6 +28,9 @@ function initializeDevDebug() {
 }
 
 function updateDevDebug() {
+    
+    if (!__dev) return;
+    
     updateDevDebugOverlay();
     updateDevDebugPlayer();
     updateDevDebugCharacter();
@@ -32,6 +38,9 @@ function updateDevDebug() {
 }
 
 function toggleOverlay() {
+    
+    if (!__dev) return;
+    
     var gp = document.getElementById("gamepads");
     if (!gp) return;
     var hide = gp.className.indexOf("hidden-all") > -1;
@@ -55,6 +64,9 @@ function toggleOverlay() {
 }
 
 function updateDevDebugOverlay() {
+    
+    if (!__dev) return;
+    
     var gp = document.getElementById("gamepads");
     if (!gp) return;
     var hide = gp.className.indexOf("hidden-all") > -1;
@@ -62,6 +74,8 @@ function updateDevDebugOverlay() {
 }
 
 function setDebugPlayer(debug) {
+    
+    if (!__dev) return;
     
     return;
     
@@ -73,6 +87,8 @@ function setDebugPlayer(debug) {
 
 function updateDevDebugPlayer() {
     
+    if (!__dev) return;
+    
     return;
     
     var debug = gamecontroller.game.loop.game.stage.players.debug;
@@ -81,6 +97,8 @@ function updateDevDebugPlayer() {
 }
 
 function setDebugCharacter(debug) {
+    
+    if (!__dev) return;
     
     return;
     
@@ -93,6 +111,8 @@ function setDebugCharacter(debug) {
 
 function updateDevDebugCharacter() {
     
+    if (!__dev) return;
+    
     return;
     
     if (!gamecontroller.game.loop.game.stage.players.players.length) return;
@@ -102,6 +122,9 @@ function updateDevDebugCharacter() {
 }
 
 function setDebugCollision(debug) {
+    
+    if (!__dev) return;
+    
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     // todo
@@ -109,12 +132,18 @@ function setDebugCollision(debug) {
 }
 
 function setDebugLevel(debug) {
+    
+    if (!__dev) return;
+    
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     gamecontroller.game.loop.game.stage.stagerenderer.itemcache.debug = debug;
 }
 
 function setDebugRender(debug) {
+    
+    if (!__dev) return;
+    
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     gamecontroller.game.loop.game.stage.stagerenderer.debug.render = debug;
@@ -122,6 +151,9 @@ function setDebugRender(debug) {
 }
 
 function updateDevDebugRender() {
+    
+    if (!__dev) return;
+    
     var debug = gamecontroller.game.loop.game.stage.stagerenderer.debug.render;
     document.getElementById("dev-debug-render").checked = debug;
 }

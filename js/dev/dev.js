@@ -11,6 +11,8 @@ var dialogs = new Array();
 
 function initializeDev(game) {
     
+    if (!__dev) return;
+    
     fpsmain = null;
     devlog = null;
     devfps = null;
@@ -41,6 +43,9 @@ function initializeDev(game) {
 }
 
 function resizeDev() {
+    
+    if (!__dev) return;
+    
     var gp = document.getElementById("gamepads");
     if (!gp) return;
     var style = window.getComputedStyle(gp);
@@ -49,6 +54,9 @@ function resizeDev() {
 }
 
 function toggleDev() {
+    
+    if (!__dev) return;
+    
     var tt = document.getElementById("dev-toolbar-tools");
     if (!tt) return;
     var w = tt.offsetWidth;
@@ -60,6 +68,9 @@ function toggleDev() {
 }
 
 function toggleDevDialog(did) {
+    
+    if (!__dev) return;
+    
     var typ = did.replace("dev-tools-", "");
     var nid = "dev-dialog-" + typ;
     var d = document.getElementById(nid);
@@ -85,17 +96,26 @@ function toggleDevDialog(did) {
 
 
 function updateViews(f, args) {
+    
+    if (!__dev) return;
+    
     if (!gamecontroller || !gamecontroller.game) return;
     if (!Array.isArray(gamecontroller.game)) updateView(gamecontroller.game.loop.game.views, f, args); 
     else for (var i = 0; i < gamecontroller.game.length; i++) updateView(gamecontroller.game[i].loop.game.views, f, args); 
 }
 
 function updateView(v, f, a) {
+    
+    if (!__dev) return;
+    
     var t = v.length;
     for (var i = 0; i < t; i++) v[i].view[f](a);
 }
 
 function updateDevView() {
+    
+    if (!__dev) return;
+    
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];

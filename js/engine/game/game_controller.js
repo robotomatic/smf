@@ -1,5 +1,8 @@
 "use strict";
 
+var __dev = false;
+
+
 function GameController() {
     this.input = new Input();
     this.maincontent = document.getElementById("main-content");
@@ -24,6 +27,9 @@ function GameController() {
 }
 
 GameController.prototype.loadDev = function() {
+    
+    if (!__dev) return;
+    
     var controller = this;
     this.gameloader.loadDev("html/dev/ui-dev.html", function() {
         controller.dev = controller.gameloader.dev;

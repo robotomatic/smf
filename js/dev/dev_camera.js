@@ -1,6 +1,9 @@
 "use strict";
 
 function initializeDevCamera() {
+    
+    if (!__dev) return;
+    
     document.getElementById("dev-camera-offset-x-amount").onchange = function() {
         setDevCameraOffsetX(this.value);
     };
@@ -57,6 +60,9 @@ function initializeDevCamera() {
 
 
 function updateDevViewCamera(v) {
+    
+    if (!__dev) return;
+    
     updateDevViewCameraOffset(v);
     updateDevViewCameraDepthOfFieldBlur(v);
     updateDevViewCameraFollowSpeed(v);
@@ -70,6 +76,9 @@ function updateDevViewCamera(v) {
 
 
 function setDevCameraOffsetX(x) {
+    
+    if (!__dev) return;
+    
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
@@ -78,6 +87,9 @@ function setDevCameraOffsetX(x) {
 }
 
 function setDevCameraOffsetY(y) {
+    
+    if (!__dev) return;
+    
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
@@ -86,6 +98,9 @@ function setDevCameraOffsetY(y) {
 }
 
 function setDevCameraOffsetZ(z) {
+    
+    if (!__dev) return;
+    
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
@@ -94,6 +109,9 @@ function setDevCameraOffsetZ(z) {
 }
 
 function updateDevViewCameraOffset(vv) {
+    
+    if (!__dev) return;
+    
     if (!vv.offset) return;
     var x = vv.offset.x;
     var xx = document.getElementById("dev-camera-offset-x-amount");
@@ -118,6 +136,9 @@ function updateDevViewCameraOffset(vv) {
 
 
 function setDevCameraFollowSpeed(speed) {
+    
+    if (!__dev) return;
+    
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
@@ -126,12 +147,18 @@ function setDevCameraFollowSpeed(speed) {
 }
 
 function updateDevViewCameraFollowSpeed(vv) {
+    
+    if (!__dev) return;
+    
     var speed = vv.view.renderer.camera.speed;
     document.getElementById("dev-camera-follow-speed").value = speed;
 }
 
 
 function updateDevViewCameraDepthOfFieldBlur(vv) {
+    
+    if (!__dev) return;
+    
     updateDevViewCameraDepthOfFieldBlurBlur(vv);
     updateDevViewCameraDepthOfFieldBlurShift(vv);
 }
@@ -140,6 +167,9 @@ function updateDevViewCameraDepthOfFieldBlur(vv) {
 
 
 function setDevCameraDepthOfFieldBlurBlur(blur) {
+    
+    if (!__dev) return;
+    
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
@@ -148,12 +178,18 @@ function setDevCameraDepthOfFieldBlurBlur(blur) {
 }
 
 function updateDevViewCameraDepthOfFieldBlurBlur(vv) {
+    
+    if (!__dev) return;
+    
     var blur = vv.view.renderer.camera.blur.blur;
     var vb = document.getElementById("dev-camera-dof-blur-blur");
     vb.checked = blur;
 }
 
 function setDevCameraDepthOfFieldBlurShift(shift) {
+    
+    if (!__dev) return;
+    
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
@@ -162,6 +198,9 @@ function setDevCameraDepthOfFieldBlurShift(shift) {
 }
 
 function updateDevViewCameraDepthOfFieldBlurShift(vv) {
+    
+    if (!__dev) return;
+    
     var shift = vv.view.renderer.camera.blur.shift;
     var vb = document.getElementById("dev-camera-dof-blur-shift");
     vb.checked = shift;
@@ -170,6 +209,9 @@ function updateDevViewCameraDepthOfFieldBlurShift(vv) {
 
 
 function setDevCameraDrift(drift) {
+    
+    if (!__dev) return;
+    
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
@@ -178,6 +220,9 @@ function setDevCameraDrift(drift) {
 }
 
 function setDevCameraDriftMin(min) {
+    
+    if (!__dev) return;
+    
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
@@ -186,6 +231,9 @@ function setDevCameraDriftMin(min) {
 }
 
 function setDevCameraDriftMax(max) {
+    
+    if (!__dev) return;
+    
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
@@ -194,6 +242,9 @@ function setDevCameraDriftMax(max) {
 }
 
 function setDevCameraDriftSpeed(speed) {
+    
+    if (!__dev) return;
+    
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
@@ -202,6 +253,9 @@ function setDevCameraDriftSpeed(speed) {
 }
 
 function updateDevViewCameraDrift(vv) {
+    
+    if (!__dev) return;
+    
     var drift = vv.view.renderer.camera.drift.enabled;
     var vd = document.getElementById("dev-camera-drift");
     vd.checked = drift;
@@ -223,11 +277,17 @@ function updateDevViewCameraDrift(vv) {
 
 
 function setDevCameraFOV(z) {
+    
+    if (!__dev) return;
+    
     setFOV(Number(z));
     updateDevViewCameraFOV();
 }
 
 function updateDevViewCameraFOV() {
+    
+    if (!__dev) return;
+    
     var z = getFOV();
     var zz = document.getElementById("dev-fov-amount");
     zz.value = z;

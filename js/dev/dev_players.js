@@ -3,15 +3,24 @@
 var devplayers;
 
 function initializeDevPlayers() {
+    
+    if (!__dev) return;
+    
     devplayers = new Array();
 }
 
 function updateDevPlayers(players) {
+    
+    if (!__dev) return;
+    
     if (!devplayers) return;
     for (var i = 0; i < players.length; i++) updateDevPlayersPlayer(players[i]);
 }
 
 function updateDevPlayersPlayer(player) {
+    
+    if (!__dev) return;
+    
     if (!devplayers) return;
     var id = player.id;
     if (!devplayers[id]) devPlayersAddPlayer(player);
@@ -19,7 +28,9 @@ function updateDevPlayersPlayer(player) {
 }
 
 function devPlayersAddPlayer(player) {
-
+    
+    if (!__dev) return;
+    
     var id = player.id;
     if (!devplayers || devplayers[id]) return;
     
@@ -62,12 +73,18 @@ function devPlayersAddPlayer(player) {
 }
     
 function devPlayersUpdatePlayer(player) {
+    
+    if (!__dev) return;
+    
     var id = player.id;
     var item = devplayers[id];
     if (!item) return;
 }
 
 function devPlayersUpdatePlayerCamera(id, check) {
+    
+    if (!__dev) return;
+    
     var player = devplayers[id];
     if (!player) return;
     player.player.getscamera = check;

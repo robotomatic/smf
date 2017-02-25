@@ -1,12 +1,18 @@
 "use strict";
 
 function initializeDevFPS() {
+    
+    if (!__dev) return;
+    
     createDevFPSType("tick");
     createDevFPSType("update");
     createDevFPSType("render");
 }
 
 function createDevFPSType(type) {
+    
+    if (!__dev) return;
+    
     if (!devfps) devfps = document.getElementById("dev-fps");
     if (!devfps) return;
     devfpstype[type] = [];
@@ -32,7 +38,9 @@ function createDevFPSType(type) {
 }
 
 function logDevFPS(type, fps, aps) {
-
+    
+    if (!__dev) return;
+    
     if (!devfps) devfps = document.getElementById("dev-fps");
     if (!devfps) return;
     var pid = "dev-fps-" + type;
