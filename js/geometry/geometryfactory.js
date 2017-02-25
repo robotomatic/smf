@@ -24,7 +24,11 @@ GeometryFactory.prototype.init = function() {
     for (var i = 0; i < this.pointtot; i++) this.points.push(new Point(0, 0));
     for (var i = 0; i < this.linetot; i++) this.lines.push(new Line(new Point(0, 0), new Point(0, 0)));
     for (var i = 0; i < this.recttot; i++) this.rects.push(new Rectangle(0, 0, 0, 0));
-    for (var i = 0; i < this.polytot; i++) this.polys.push(new Polygon());
+    for (var i = 0; i < this.polytot; i++) {
+        var p = new Polygon();
+        p.factory = true;
+        this.polys.push(p);
+    }
 }
 
 GeometryFactory.prototype.reset = function() {
