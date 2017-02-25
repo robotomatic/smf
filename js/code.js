@@ -9,14 +9,14 @@
     var fps = round(1000 / hz);
     var min = 1;
 
-//    var timeouts = [];    
-//    var messageName = "zero-timeout-message";
-//    function setZeroTimeout(fn) {
-//        timeouts.push(fn);
-//        window.postMessage(messageName, "*");
-//    }    
-//    window.addEventListener("message", handleMessage, true);
-//    window.setZeroTimeout = setZeroTimeout;    
+    var timeouts = [];    
+    var messageName = "zero-timeout-message";
+    function setZeroTimeout(fn) {
+        timeouts.push(fn);
+        window.postMessage(messageName, "*");
+    }    
+    window.addEventListener("message", handleMessage, true);
+    window.setZeroTimeout = setZeroTimeout;    
     function handleMessage(event) {
         if (event.source == window && event.data == messageName) {
             event.stopPropagation();
