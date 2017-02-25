@@ -21,7 +21,7 @@ function initializeDevCamera() {
     };
 
     document.getElementById("dev-camera-dof-blur-blur").onchange = function() {
-        setDevCameraDepthOfFieldBlur(this.checked);
+        setDevCameraDepthOfFieldBlurBlur(this.checked);
     };
     document.getElementById("dev-camera-dof-blur-shift").onchange = function() {
         setDevCameraDepthOfFieldBlurShift(this.checked);
@@ -131,19 +131,23 @@ function updateDevViewCameraFollowSpeed(vv) {
 }
 
 
+function updateDevViewCameraDepthOfFieldBlur(vv) {
+    updateDevViewCameraDepthOfFieldBlurBlur(vv);
+    updateDevViewCameraDepthOfFieldBlurShift(vv);
+}
 
 
 
 
-function setDevCameraDepthOfFieldBlur(blur) {
+function setDevCameraDepthOfFieldBlurBlur(blur) {
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
     vv.view.renderer.camera.blur.blur = blur;
-    updateDevViewCameraDepthOfFieldBlur(vv);
+    updateDevViewCameraDepthOfFieldBlurBlur(vv);
 }
 
-function updateDevViewCameraDepthOfFieldBlur(vv) {
+function updateDevViewCameraDepthOfFieldBlurBlur(vv) {
     var blur = vv.view.renderer.camera.blur.blur;
     var vb = document.getElementById("dev-camera-dof-blur-blur");
     vb.checked = blur;
