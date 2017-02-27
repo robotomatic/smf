@@ -1,6 +1,6 @@
 "use strict";
 
-var __dev = false;
+var __dev = true;
 
 
 function GameController() {
