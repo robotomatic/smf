@@ -2,6 +2,7 @@
 
 function Polyline() {
     this.points = new Array();
+    this.factory = false;
 }
 
 Polyline.prototype.x = function() {
@@ -25,7 +26,8 @@ Polyline.prototype.addPoints = function(points) {
 }
 
 Polyline.prototype.addPoint = function(point) {
-    this.points[this.points.length] = new Point(point.x, point.y);
+//    this.points[this.points.length] = this.factory ? geometryfactory.getPoint(x, y, info) : new Point(x, y, info);
+    this.points[this.points.length] = geometryfactory.getPoint(point.x, point.y, point.info);
 }
 
 Polyline.prototype.translate = function(x, y, scale) {

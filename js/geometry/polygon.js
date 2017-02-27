@@ -175,7 +175,8 @@ Polygon.prototype.addPointXY = function(x, y, info = null) {
         }
     }
     if (!ok) return;
-    this.points[this.points.length] = this.factory ? geometryfactory.getPoint(x, y, info) : new Point(x, y, info);
+//    this.points[this.points.length] = this.factory ? geometryfactory.getPoint(x, y, info) : new Point(x, y, info);
+    this.points[this.points.length] = geometryfactory.getPoint(x, y, info);
     this.mbr.width = 0;
 }
 
