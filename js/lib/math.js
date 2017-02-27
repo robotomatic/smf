@@ -31,7 +31,7 @@ function clamp(num) {
 }
 
 function round(num) { 
-    return MATH_ROUND(num * 100) / 100;
+    return Number(MATH_ROUND(num * 100) / 100);
 }
 
 function angleRadians(p1, p2) {
