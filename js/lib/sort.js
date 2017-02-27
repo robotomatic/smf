@@ -23,6 +23,11 @@ function sortById(a, b){
 }
 
 function sortByDistance(a, b){
+    if (a.type == "player" && b.type == "player" && b.z == a.z) {
+        if ( a.height < b.height ) return 1;
+        if ( a.height > b.height ) return -1;
+        return 0;
+    }
     return b.distance - a.distance;
 }
 

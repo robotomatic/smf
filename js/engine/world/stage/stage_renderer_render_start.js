@@ -65,6 +65,7 @@ StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItem = function(m
     if (item.width == "100%") iz = item.z + item.depth;
  
     var id = this.getRenderItemsStageLevelLayerItemsItemCenter(mbr, cp, item, 0, 0, 0);
+    if (isNaN(id)) id = 0;
     
     var itemmbr = item.getMbr();
     var newitem = {
@@ -113,6 +114,7 @@ StageRendererStart.prototype.getRenderItemsStagePlayersPlayer = function(mbr, wi
         name : player.name,
         y : player.controller.y,
         z : player.controller.z,
+        height : player.controller.height,
         distance: id,
         item : player,
 //        box : box,
