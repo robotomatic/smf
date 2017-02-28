@@ -1,5 +1,6 @@
 "use strict";
 
+var devinit = false;
 var gamecontroller = null;
 var fpsmain = null;
 var devlog = null;
@@ -13,6 +14,9 @@ function initializeDev(game) {
     
     if (!__dev) return;
     
+    if (devinit) return;
+    devinit = true;
+    
     fpsmain = null;
     devlog = null;
     devfps = null;
@@ -22,7 +26,7 @@ function initializeDev(game) {
     dialogs = new Array();
     
     gamecontroller = game;
-    document.getElementById("dev-toolbar-fps").onclick = function() {
+    document.getElementById("dev-toolbar").onclick = function() {
         toggleDev();
     };
 
