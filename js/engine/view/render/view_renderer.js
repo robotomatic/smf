@@ -32,7 +32,7 @@ ViewRenderer.prototype.render = function(now, stage, view, graphics) {
     this.window.depth = 1;
     this.window.scale = this.mbr.scale;
 
-    stage.render(now, graphics, this.camera, this.mbr, this.window);
+    stage.render(now, graphics["main"], this.camera, this.mbr, this.window);
     
     clearRect(view.ctx, 0, 0, view.canvas.width, view.canvas.height);
     this.image.width = width;

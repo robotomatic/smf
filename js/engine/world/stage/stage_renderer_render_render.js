@@ -7,7 +7,7 @@ function StageRendererRender(renderitems, itemcache) {
 }
 
 StageRendererRender.prototype.renderRender = function(now, graphics, camera, stage, mbr, window, flood) {
-    this.renderRenderItems(now, graphics["main"], camera, stage, mbr, window, flood);
+    this.renderRenderItems(now, graphics, camera, stage, mbr, window, flood);
 }
 
 StageRendererRender.prototype.renderRenderItems = function(now, graphics, camera, stage, mbr, window, flood) {

@@ -14,9 +14,8 @@ function StageRendererDebug(renderitems) {
 }
 
 StageRendererDebug.prototype.renderDebug = function(now, graphics, camera, stage, mbr, window, debug) {
-    var g = graphics["main"];
-    if (debug.render) this.renderDebugItems(g, mbr, window);
-    if (debug.overdraw) this.renderDebugItemsOverlap(g);    
+    if (debug.render) this.renderDebugItems(graphics, mbr, window);
+    if (debug.overdraw) this.renderDebugItemsOverlap(graphics);    
 }
 
 StageRendererDebug.prototype.renderDebugItems = function(graphics, mbr, window) {

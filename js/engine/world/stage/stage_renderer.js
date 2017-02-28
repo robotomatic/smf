@@ -36,12 +36,8 @@ StageRenderer.prototype.render = function(now, graphics, camera, stage, mbr, win
 }
 
 StageRenderer.prototype.clearGraphics = function(graphics) { 
-    var keys = Object.keys(graphics);
-    for (var i = 0; i < keys.length; i++)  {
-        var g = graphics[keys[i]];
-        clearRect(g.ctx, 0, 0, g.canvas.width, g.canvas.height);
-        g.ctx.beginPath();
-    }
+    clearRect(graphics.ctx, 0, 0, graphics.canvas.width, graphics.canvas.height);
+    graphics.ctx.beginPath();
 }
 
 StageRenderer.prototype.getFlood = function(stage) {

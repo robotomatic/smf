@@ -44,9 +44,8 @@ StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItem = function(m
     var y = mbr.y;
     var z = mbr.z;
     var scale = mbr.scale;
-    var g = graphics["main"];
-    var width = g.canvas.width;
-    var height = g.canvas.height;
+    var width = graphics.canvas.width;
+    var height = graphics.canvas.height;
     var renderer = stage.level.itemrenderer;
     item.smooth();
     item.translate(mbr, width, height);
