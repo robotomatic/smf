@@ -27,6 +27,18 @@ function getStyle(el, property) {
 
 
 
+function show(e) {
+    if (!e || !e.className) return;
+    e.className = e.className.replace(/\bhidden\b/,'');
+}
+
+function hide(e) {
+    if (!e || !e.className) return;
+    if (e.className.indexOf("hidden") > -1) return;
+    e.className += " hidden";
+}
+
+
 function showError(error) {
     alert(error.responseText);
 }
