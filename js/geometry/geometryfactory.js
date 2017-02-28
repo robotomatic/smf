@@ -98,7 +98,7 @@ GeometryFactory.prototype.getCircle = function(x, y, radius) {
     }
     this.circles[this.circlenum].x = x;
     this.circles[this.circlenum].y = y;
-    this.circles[this.circlenum].redius = radius;
+    this.circles[this.circlenum].radius = radius;
     return this.circles[this.circlenum];
 }
 
