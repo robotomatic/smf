@@ -105,6 +105,8 @@ View.prototype.resize = function() {
     var rwidth = rect.width;
     var rheight = rect.height;
     
+    if (!rwidth || !rheight) return;
+    
     logDev();
     logDev("window: " + rwidth + " x " + rheight);
 
