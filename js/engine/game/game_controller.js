@@ -1,6 +1,6 @@
 "use strict";
 
-var __dev = true;
+var __dev = false;
 
 
 function GameController() {
@@ -20,19 +20,33 @@ function GameController() {
     };
     this.currentview = "menu";
     this.gamesettings = null;
-    this.dev = null;
+    this.devtools = null;
     this.loadDev();
     this.loadGameSettings();
     return this;
 }
 
-GameController.prototype.loadDev = function() {
-    
-    if (!__dev) return;
-    
+
+GameController.prototype.dev = function() {
+    var d = document.getElementById("dev");
+    if (!d) return;
+    if (!__dev) {
+        __dev = true;
+        this.initDebug();
+        show(d);
+    } else {
+        __dev = false;
+        hide(d);
+    }
+}
+
+
+GameController.prototype.loadDev = function(callback) {
+    if (this.devtools) return;
     var controller = this;
     this.gameloader.loadDev("html/dev/ui-dev.html", function() {
-        controller.dev = controller.gameloader.dev;
+        controller.devtools = controller.gameloader.dev;
+        if (callback) callback();
     });
 }
 
@@ -80,9 +94,8 @@ GameController.prototype.showMenu = function(data) {
             "dat/characters.json", 
             "dat/animations.json",
             function() {
-                var p = document.getElementById("menu-player-wrap");
                 controller.currentview = "menu";
-                controller.game = new MenuMain(controller);
+                controller.game = new GameControllerMenuMain(controller);
                 controller.start();
             }
         );
@@ -100,11 +113,11 @@ GameController.prototype.showGameParty = function(data) {
             "dat/characters.json", 
             "dat/animations.json",
             function() {
-                controller.currentview = "game-party";
+                controller.currentview = "game";
                 var gamesettings = controller.gamesettings.getSettings("game-party");
                 var levelsettings = controller.gamesettings.getSettings("menu-level-chooser");
                 var playersettings = controller.gamesettings.getSettings("menu-player-chooser");
-                controller.game = new GameParty(controller, gamesettings, levelsettings, playersettings);
+                controller.game = new GameControllerGame(controller, gamesettings, levelsettings, playersettings);
                 controller.start();
             }
         );
@@ -125,7 +138,7 @@ GameController.prototype.swapUI = function(data, callback) {
     if (main.length) {
         controller.maincontent.innerHTML = "";
         controller.maincontent.innerHTML = main[0].innerHTML;
-        controller.maincontent.innerHTML += controller.dev;
+        if (controller.devtools) controller.maincontent.innerHTML += controller.devtools;
     }
     this.resize();
     if (callback) callback();
@@ -145,6 +158,7 @@ GameController.prototype.start = function() {
 GameController.prototype.initDebug = function() {
     initializeDev(this);
     updateDevView();
+    resizeDev();
 }
 
 GameController.prototype.resize = function() {

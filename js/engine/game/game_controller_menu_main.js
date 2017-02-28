@@ -1,6 +1,6 @@
 "use strict";
 
-function MenuMain(gamecontroller) {
+function GameControllerMenuMain(gamecontroller) {
     this.gamecontroller = gamecontroller;
     this.input = this.gamecontroller.input;
     this.input.setMenu(this);
@@ -30,31 +30,31 @@ function MenuMain(gamecontroller) {
     return this;
 }
 
-MenuMain.prototype.loadSettings = function() {}
+GameControllerMenuMain.prototype.loadSettings = function() {}
     
-MenuMain.prototype.getSettings = function() {}
+GameControllerMenuMain.prototype.getSettings = function() {}
 
-MenuMain.prototype.load = function() {
+GameControllerMenuMain.prototype.load = function() {
     this.loadLevel();
     this.loadCharacters();
     this.loadView();
     this.addCharacters();
 }
 
-MenuMain.prototype.loadLevel = function() { 
+GameControllerMenuMain.prototype.loadLevel = function() { 
     this.loop.loadLevel(this.level);
     this.level.buildColliders();
 }
 
-MenuMain.prototype.loadCharacters = function() { for (var charname in this.characters.characters) this.loadCharacter(charname); }
+GameControllerMenuMain.prototype.loadCharacters = function() { for (var charname in this.characters.characters) this.loadCharacter(charname); }
 
-MenuMain.prototype.loadCharacter = function(charname) {
+GameControllerMenuMain.prototype.loadCharacter = function(charname) {
     var chars = this.characters.characters;
     var character = chars[charname];
     this.loadCharacterAnimations(character);
 }
     
-MenuMain.prototype.loadCharacterAnimations = function(character) {
+GameControllerMenuMain.prototype.loadCharacterAnimations = function(character) {
     var charanims = new Array();
     for (var a in character.animations) charanims[character.animations[a]] = this.animations[character.animations[a]];
     character.setAnimator(new CharacterAnimator(charanims));
@@ -62,7 +62,7 @@ MenuMain.prototype.loadCharacterAnimations = function(character) {
     return character;
 }
     
-MenuMain.prototype.addCharacters = function() {
+GameControllerMenuMain.prototype.addCharacters = function() {
     var chars = this.characters.characters;
     var charnames = this.charnames;
     this.players = new Players();
@@ -126,7 +126,7 @@ MenuMain.prototype.addCharacters = function() {
     this.loop.loadNPCs(this.npcs);
 }
 
-MenuMain.prototype.loadPlayer = function(id, x, y, z, character) {
+GameControllerMenuMain.prototype.loadPlayer = function(id, x, y, z, character) {
     var char = new Character().loadJson(character.json);
     char = this.loadCharacterAnimations(char);
     var speed = 2;
@@ -141,7 +141,7 @@ MenuMain.prototype.loadPlayer = function(id, x, y, z, character) {
     return player;
 }
 
-MenuMain.prototype.loadView = function() {
+GameControllerMenuMain.prototype.loadView = function() {
     this.loop.hideViews();
     this.view = new MenuView("menu-canvas", this.width, this.height, this.scale);
     this.loop.loadViews(new Array(this.view));
@@ -152,23 +152,23 @@ MenuMain.prototype.loadView = function() {
     fadeIn(document.getElementById("menu-canvas-canvas"));    
 }
 
-MenuMain.prototype.start = function() {
+GameControllerMenuMain.prototype.start = function() {
     this.gamecontroller.initDebug();
     this.loop.start();
     this.loop.showViews();
     this.running = true;
 }
 
-MenuMain.prototype.stop = function() {
+GameControllerMenuMain.prototype.stop = function() {
     this.loop.stop();
     this.running = false;
 }
 
-MenuMain.prototype.resize = function() {
+GameControllerMenuMain.prototype.resize = function() {
     this.loop.resize();
 }
 
-MenuMain.prototype.startGame = function() {
+GameControllerMenuMain.prototype.startGame = function() {
     var b = document.getElementById("start-game");
     window.location = b.href;
 }

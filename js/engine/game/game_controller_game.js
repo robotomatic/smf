@@ -1,6 +1,6 @@
 "use strict";
 
-function GameParty(gamecontroller, gamesettings, levelsettings, playersettings) {
+function GameControllerGame(gamecontroller, gamesettings, levelsettings, playersettings) {
     this.gamecontroller = gamecontroller;
     this.input = this.gamecontroller.input;
     this.loop = new GameLoop(this.input);
@@ -25,9 +25,9 @@ function GameParty(gamecontroller, gamesettings, levelsettings, playersettings) 
     return this;
 }
 
-GameParty.prototype.getSettings = function() { return this.settings; }
+GameControllerGame.prototype.getSettings = function() { return this.settings; }
 
-GameParty.prototype.load = function() {
+GameControllerGame.prototype.load = function() {
     var controller = this;
     var level = this.gameloader.levels[this.levelsettings.levelname];
     if (level) {
@@ -42,7 +42,7 @@ GameParty.prototype.load = function() {
     })
 }
 
-GameParty.prototype.loadLevel = function() {
+GameControllerGame.prototype.loadLevel = function() {
 
     this.level = this.gameloader.level;
     
@@ -151,7 +151,7 @@ GameParty.prototype.loadLevel = function() {
 }
 
 
-GameParty.prototype.start = function() {
+GameControllerGame.prototype.start = function() {
     this.started = true;
     if (!this.level) return;
     this.gamecontroller.initDebug();
@@ -161,19 +161,19 @@ GameParty.prototype.start = function() {
     this.startPlayers();
 }
 
-GameParty.prototype.startPlayers = function() {
+GameControllerGame.prototype.startPlayers = function() {
     for (var i = 0; i < this.players.players.length; i++) this.level.resetPlayer(this.players.players[i], 1);
 }
 
-GameParty.prototype.stop = function() {
+GameControllerGame.prototype.stop = function() {
     this.loop.stop();
     this.running = false;
 }
 
-GameParty.prototype.resize = function() {
+GameControllerGame.prototype.resize = function() {
     this.loop.resize();
 }
 
-GameParty.prototype.playerDied = function(player) {
+GameControllerGame.prototype.playerDied = function(player) {
     this.level.resetPlayer(player);
 }
