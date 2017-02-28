@@ -537,6 +537,14 @@ PlayerController.prototype.updateLocation = function(now, delta, physics) {
     var velX = 0;
     var velY = 0;
     var velZ = 0;
+    
+    
+    
+//    NewVelocity = Velocity + Acceleration * DeltaTime;
+//    Position += (1/2) * (Velocity + NewVelocity) * DeltaTime;
+//    Velocity = NewVelocity;    
+    
+    
 
     if (this.move_left && this.move_right) {
         if (this.lastMoveRight < this.lastMoveLeft) {
