@@ -4,7 +4,7 @@ function GeometryFactory() {
 
     this.points = new Array();
     this.pointnum = -1;
-    this.pointtot = 100000;
+    this.pointtot = 20000;
     
     this.lines = new Array();
     this.linenum = -1;
