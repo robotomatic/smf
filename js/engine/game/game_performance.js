@@ -1,7 +1,8 @@
 "use strict"
 
-function GamePerformance(step) {
-    
+function GamePerformance(game, step) {
+
+    this.game = game;
     this.step = step;
     
     this.lt = 0;
@@ -21,61 +22,102 @@ function GamePerformance(step) {
     this.trps = 0;
     this.arps = 0;
     this.nr = 0;
+    
+    this.start = 0;
+    this.frame = 0;
+    this.fps = 0;
+    
+    this.last = timestamp();
+    this.count = 1;
+    this.total = 0;
+    this.avg = 0;
+}
+
+
+GamePerformance.prototype.getFPS = function (when) {
+    this.frame++;		
+    var d = timestamp();
+    var time = ( d - this.start ) / 1000;
+    this.fps = floor((this.frame / time));		
+    if( time > 1 ){			
+        this.start = timestamp();			
+        this.frame = 0;		
+    }		
+    this.total += this.fps;
+    this.count++;
+    this.avg = clamp(this.total / this.count);
 }
 
 GamePerformance.prototype.tick = function(when) {
-    this.nt += 1;
-    if (this.lt) {
-        this.tps = this.calculateFPS(when, this.lt);
-        this.ttps += this.tps;
-        this.atps = this.calculateAverageFPS(this.ttps, this.nt);
-    }
-    this.lt = when;
-    this.logFPS("tick", this.tps, this.atps);
+//    this.nt += 1;
+//    if (this.lt) {
+//        this.tps = this.calculateFPS(when, this.lt);
+//        this.ttps += this.tps;
+//        this.atps = this.calculateAverageFPS(this.ttps, this.nt);
+//    }
+//    this.lt = when;
+//    this.logFPS("tick", this.tps, this.atps);
 }
 
+
+
+
 GamePerformance.prototype.updateStart = function(when) {
-    this.nu += 1;
-    if (this.lu) {
-        this.ups = this.calculateFPS(when, this.lu);
-        this.tups += this.ups;
-        this.aups = this.calculateAverageFPS(this.tups, this.nu);
-    }
-    this.lu = when;
-    this.logFPS("update", this.ups, this.aups);
+//    this.nu += 1;
+//    if (this.lu) {
+//        this.ups = this.calculateFPS(when, this.lu);
+//        this.tups += this.ups;
+//        this.aups = this.calculateAverageFPS(this.tups, this.nu);
+//    }
+//    this.lu = when;
+//    this.logFPS("update", this.ups, this.aups);
 }
 
 GamePerformance.prototype.updateEnd = function(when) {
 }
 
+
+
+
 GamePerformance.prototype.renderStart = function(when) {
-    this.nr += 1;
-    if (this.lr) {
-        this.rps = this.calculateFPS(when, this.lr);
-        this.trps += this.rps;
-        this.arps = this.calculateAverageFPS(this.trps, this.nr);
-    }
-    this.lr = when;
-    this.logFPS("render", this.rps, this.arps);
+//    this.nr += 1;
+//    if (this.lr) {
+//        this.rps = this.calculateFPS(when, this.lr);
+//        this.trps += this.rps;
+//        this.arps = this.calculateAverageFPS(this.trps, this.nr);
+//    }
+//    this.lr = when;
+//    this.logFPS("render", this.rps, this.arps);
 }
 
 GamePerformance.prototype.renderEnd = function(when) {
+    this.getFPS(timestamp());
+    this.game.fps("FPS", this.fps, this.avg);
 }
 
+
+
+
+
+
 GamePerformance.prototype.calculateFPS = function(when, last) {
-    return 1000 / (when - last); 
+//    return 1000 / (when - last); 
 }
 
 GamePerformance.prototype.calculateAverageFPS = function(fps, num) {
-    return fps / num;
+//    return fps / num;
 }
 
 GamePerformance.prototype.logFPS = function(type, fps, avg) {
-    logDevFPS(type, clamp(fps), clamp(avg));
+//    if (!__dev) return;
+//    this.game.fps(type, fps, avg);
 }
 
 GamePerformance.prototype.reset = function(when) {
-    logDev();
-    logDev("Reset Graphics ---> " + when);
-    logDev();
+//    logDev();
+//    logDev("Reset Graphics ---> " + when);
+//    logDev();
 }
+
+
+

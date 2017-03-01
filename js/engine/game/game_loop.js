@@ -20,7 +20,7 @@ function GameLoop(input) {
     
     this.dorender = false;
     
-    this.gameperformance = new GamePerformance(this.step);
+    this.gameperformance = new GamePerformance(this.game, this.step);
 }
 GameLoop.prototype.loadLevel = function(level) { this.game.setLevel(level); }
 GameLoop.prototype.loadPlayers = function(players) { this.game.setPlayers(players); }

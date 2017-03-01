@@ -25,6 +25,10 @@ function View(id, width, height, scale) {
     }
     
     this.viewscale = 1;
+    
+    this.fps = 0;
+    this.avg = 0;
+    this.fpstext = new Text(5, 10, "FPS: ");
 
     this.ready = false;
     this.createGraphics();
@@ -222,4 +226,21 @@ View.prototype.updateUI = function() {
 View.prototype.render = function(now, stage) {
     if (!this.ready) this.initialize(stage);
     this.renderer.render(now, stage, this.view, this.graphics);
+    this.renderFPS();
+}
+
+View.prototype.updateFPS = function(type, fps, avg) {
+    this.fps = fps;
+    this.avg = avg;
+}
+
+View.prototype.renderFPS = function() {
+    if (!__dev) return;
+    var fps = round(this.fps);
+    if (fps < 10) fps = "0" + fps;
+    var avg = round(this.avg);
+    if (avg < 10) avg = "0" + avg;
+    this.fpstext.message = "FPS: " + fps + "\n" + "AVG: " + avg;
+    this.view.ctx.beginPath();
+    this.fpstext.draw(this.view.ctx, 8);
 }

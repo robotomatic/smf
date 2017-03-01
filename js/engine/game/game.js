@@ -31,6 +31,14 @@ Game.prototype.render = function(now) {
     }
 }
 
+Game.prototype.fps = function(type, fps, avg) {
+    if (!this.views) return;
+    var t = this.views.length;
+    for (var i = 0; i < t; i++) {
+        this.views[i].view.updateFPS(type, fps, avg); 
+    }
+}
+
 Game.prototype.reset = function(now) {
     this.stage.reset(now);
 }
