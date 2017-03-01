@@ -1,6 +1,6 @@
 "use strict";
 
-var __dev = false;
+var __dev = true;
 
 
 function GameController() {
@@ -33,7 +33,6 @@ GameController.prototype.dev = function() {
     if (!__dev) {
         __dev = true;
         this.initDebug();
-        show(d);
     } else {
         __dev = false;
         hide(d);
@@ -42,6 +41,7 @@ GameController.prototype.dev = function() {
 
 
 GameController.prototype.loadDev = function(callback) {
+    if (!__dev) return;
     if (this.devtools) return;
     var controller = this;
     this.gameloader.loadDev("html/dev/ui-dev.html", function() {
@@ -158,6 +158,7 @@ GameController.prototype.start = function() {
 GameController.prototype.initDebug = function() {
     initializeDev(this);
     updateDevView();
+    show(document.getElementById("dev"));
     resizeDev();
 }
 
