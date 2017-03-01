@@ -171,6 +171,9 @@ Level.prototype.resetPlayer = function(player, timeout) {
     player.controller.stop();
 
     var t = this.colliders.length;
+    
+    if (t == 0) return;
+    
     var spawnitem = null;
     while (spawnitem == null) {
         var r = random(0, t - 1);
