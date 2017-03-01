@@ -1,6 +1,5 @@
 "use strict";
 
-var devinit = false;
 var gamecontroller = null;
 var fpsmain = null;
 var devlog = null;
@@ -13,9 +12,6 @@ var dialogs = new Array();
 function initializeDev(game) {
     
     if (!__dev) return;
-    
-    if (devinit) return;
-    devinit = true;
     
     fpsmain = null;
     devlog = null;
