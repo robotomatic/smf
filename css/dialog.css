@@ -25,9 +25,16 @@
     font-weight: bold;
 }
 
+.dialog-toolbar-title {
+    font-size: 1em;
+    font-weight: bold;
+    padding: .15em .5em;
+    float: left;
+}
+
 .dialog-title-title {
     font-size: 1em;
-    padding: .1em .5em;
+    padding: .2em;
     float: left;
 }
 
