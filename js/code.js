@@ -24,7 +24,6 @@ function game() {
 
 function runAnimationFrame(when) {
     controller.run(when);
-    var now = timestamp();
-    controller.render(now);
+    controller.render(timestamp());
     window.requestAnimFrame(runAnimationFrame);
 }
