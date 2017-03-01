@@ -585,9 +585,9 @@ Polygon.prototype.pathRound = function(ctx, amount) {
     var spy = points[0].y;
     var npx = points[1].x;
     var npy = points[1].y;
-    var dx = MATH_ABS(spx - npx) / amount;
+    var dx = abs(spx - npx) / amount;
     if (npx > spx) dx = -dx;
-    var dy = MATH_ABS(spy - npy) / amount;
+    var dy = abs(spy - npy) / amount;
     if (npy > spy) dy = -dy;
     var startpoint = new Point(spx - dx, spy - dy);
     ctx.moveTo(startpoint.x, startpoint.y);
@@ -610,10 +610,10 @@ Polygon.prototype.pathRound = function(ctx, amount) {
             epx = points[0].x;
             epy = points[0].y;
         }
-        dx = MATH_ABS(cpx - epx) / amount;
+        dx = abs(cpx - epx) / amount;
         if (epx < cpx) npx = cpx - dx;
         else npx = cpx + dx;
-        dy = MATH_ABS(cpy - epy) / amount;
+        dy = abs(cpy - epy) / amount;
         if (epy < cpy) npy = cpy - dy;
         else npy = cpy + dy;
         ctx.quadraticCurveTo(cpx, cpy, npx, npy);
@@ -631,10 +631,10 @@ Polygon.prototype.pathRound = function(ctx, amount) {
     cpy = points[points.length - 2].y;
     epx = points[points.length - 1].x;
     epy = points[points.length - 1].y;
-    dx = MATH_ABS(cpx - epx) / amount;
+    dx = abs(cpx - epx) / amount;
     if (cpx < epx) npx = epx - dx;
     else npx = epx + dx;
-    dy = MATH_ABS(cpy - epy) / amount;
+    dy = abs(cpy - epy) / amount;
     if (cpy < epy) npy = epy - dy;
     else npy = epy + dy;
     ctx.lineTo(npx, npy);
@@ -642,10 +642,10 @@ Polygon.prototype.pathRound = function(ctx, amount) {
     cpy = epy;
     epx = points[0].x;
     epy = points[0].y;
-    dx = MATH_ABS(cpx - epx) / amount;
+    dx = abs(cpx - epx) / amount;
     if (epx < cpx) npx = cpx - dx;
     else npx = cpx + dx;
-    dy = MATH_ABS(cpy - epy) / amount;
+    dy = abs(cpy - epy) / amount;
     if (epy < cpy) npy = cpy - dy;
     else npy = cpy + dy;
     ctx.quadraticCurveTo(cpx, cpy, npx, npy);
@@ -653,10 +653,10 @@ Polygon.prototype.pathRound = function(ctx, amount) {
     cpy = npy;
     epx = points[0].x;
     epy = points[0].y;
-    dx = MATH_ABS(cpx - epx) / amount;
+    dx = abs(cpx - epx) / amount;
     if (epx < cpx) npx = epx + dx;
     else npx = epx - dx;
-    dy = MATH_ABS(cpy - epy) / amount;
+    dy = abs(cpy - epy) / amount;
     if (epy < cpy) npy = epy + dy;
     else npy = epy - dy;
     ctx.lineTo(npx, npy);

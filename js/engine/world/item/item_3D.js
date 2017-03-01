@@ -98,8 +98,8 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
 
         if (!shouldProject(this.p1, this.p2, scale, x, y, wc, this.cp)) continue;
         
-        var horiz = MATH_ABS(this.p1.y - this.p2.y) < 3;
-        var vert = MATH_ABS(this.p1.x - this.p2.x) < 3;
+        var horiz = abs(this.p1.y - this.p2.y) < 3;
+        var vert = abs(this.p1.x - this.p2.x) < 3;
         var top = horiz && (this.p1.x < this.p2.x);
         var bottom = horiz && !top;
         var left = vert && (this.p1.y > this.p2.y);

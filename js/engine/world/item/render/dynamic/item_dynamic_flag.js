@@ -77,7 +77,7 @@ ItemDynamicFlag.prototype.drawFlag = function(ctx, item, x, y, width, height, sc
     var step = 5 * scale;
     var c = 0;
     for (var i = x; i < width + x - 2; i += step) {
-        cy = amp * MATH_SIN(freq * c + this.fx);
+        cy = amp * sin(freq * c + this.fx);
         cy *= scale;
         
         this.point.x = i;
@@ -87,7 +87,7 @@ ItemDynamicFlag.prototype.drawFlag = function(ctx, item, x, y, width, height, sc
         c += step;
     }
     for (var i = width + x - 2; i > bottomright; i -= step) {
-        cy = amp * MATH_SIN(freq * c + this.fx);
+        cy = amp * sin(freq * c + this.fx);
         cy *= scale;
 
         this.point.x = i;

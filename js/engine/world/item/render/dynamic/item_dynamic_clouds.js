@@ -26,8 +26,8 @@ ItemDynamicClouds.prototype.drawClouds = function(ctx, item, x, y, width, height
 
         var total = clouds.renderer.total;
 
-        var ix = MATH_ABS(item.x);
-        var iy = MATH_ABS(item.y);
+        var ix = abs(item.x);
+        var iy = abs(item.y);
 
         var xsector = item.width / total;
         
@@ -53,7 +53,7 @@ ItemDynamicClouds.prototype.drawClouds = function(ctx, item, x, y, width, height
 
             cloud.x -= cloud.speed;
             if (cloud.x + cloud.width < item.x) {
-                cloud.x = item.x + item.width + MATH_ABS(item.x);
+                cloud.x = item.x + item.width + abs(item.x);
                 
                 cloud.width = random(maxwidth * .6, maxwidth);
                 cloud.height = random(maxheight * .6, maxheight);

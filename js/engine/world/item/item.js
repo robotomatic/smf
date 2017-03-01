@@ -378,7 +378,7 @@ Item.prototype.translate = function(window, width, height) {
 
     if (iz < -(__fov - 1)) {
         var nz = __fov - 1;
-        id -= MATH_ABS(iz) - MATH_ABS(nz);
+        id -= abs(iz) - abs(nz);
         iz = -nz;
     }
     var dwd = id / iw;
@@ -391,7 +391,7 @@ Item.prototype.translate = function(window, width, height) {
     this.pnew.y = iy + ih;
     this.np2 = projectPoint3D(this.pnew, iz, scale, x, y, wc, this.np2);
 
-    var nw = MATH_ABS(this.np2.x - this.np1.x);
+    var nw = abs(this.np2.x - this.np1.x);
     iw = nw;
 
     this.scalefactor = iw / bw;

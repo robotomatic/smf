@@ -23,7 +23,44 @@ function lerp(a, b, u) {
 }
 
 function random(min, max) {
-    return MATH_FLOOR(Math.random() * (max - min + 1)) + min;
+    if (min == undefined || max == undefined) return MATH_RANDOM();
+    return MATH_FLOOR(MATH_RANDOM() * (max - min + 1)) + min;
+}
+
+function sqrt(num) { 
+    return MATH_SQRT(num);
+}
+
+function abs(num) { 
+    return MATH_ABS(num);
+}
+
+function pow(num, p) { 
+    return MATH_POW(num, p);
+}
+
+function min(num1, num2) { 
+    return MATH_MIN(num1, num2);
+}
+
+function max(num1, num2) { 
+    return MATH_MAX(num1, num2);
+}
+
+function cos(num) { 
+    return MATH_COS(num);
+}
+
+function sin(num) { 
+    return MATH_SIN(num);
+}
+
+function atan(num) { 
+    return MATH_ATAN(num);
+}
+
+function floor(num) { 
+    return MATH_FLOOR(num);
 }
 
 function clamp(num) { 
