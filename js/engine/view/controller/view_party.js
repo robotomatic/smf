@@ -13,8 +13,8 @@ function PartyView(id, width, height, scale) {
     
     this.offset = {
         x : 0,
-        y : 100,
-        z : 200
+        y : -50,
+        z : 100
     }
 
     this.view.renderer.camera.blur.blur = false;
