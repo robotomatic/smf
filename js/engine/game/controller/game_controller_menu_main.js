@@ -71,7 +71,7 @@ GameControllerMenuMain.prototype.addCharacters = function() {
     if (this.numplayers === 0) this.numplayers = playertotal;
     var currentchar = 0;
     
-//    this.numplayers = 1;
+    this.numplayers = 1;
     var mychar = "psycho";
     
     var rando = random(0, playertotal - 1);
@@ -83,7 +83,7 @@ GameControllerMenuMain.prototype.addCharacters = function() {
         else character = chars[charnames[random(0, playertotal - 1)]];
         
 //        character = chars[charnames[rando]];
-//        character = chars[mychar];
+        if (this.numplayers == 1) character = chars[mychar];
         
         var playerx;
         var found = false;
@@ -138,6 +138,7 @@ GameControllerMenuMain.prototype.loadPlayer = function(id, x, y, z, character) {
     player.controller.jumpspeed = 5;
     player.info.ready = true;
     player.info.alive = true;
+    player.getscamera = true;
     player.controller.lookThreshold = .1;
     return player;
 }

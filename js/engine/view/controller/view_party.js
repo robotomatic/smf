@@ -63,7 +63,6 @@ PartyView.prototype.render = function(now, game) {
     this.view.renderer.mbr.z -= offz;
     this.view.renderer.mbr.depth += offz;
     
-    stage.players.sortByHeight();
     this.view.render(now, stage);
 }
 

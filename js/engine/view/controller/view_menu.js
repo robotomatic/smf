@@ -7,6 +7,12 @@ function MenuView(id, width, height, scale) {
     this.view.parent.onclick = function() {
         window.location.hash="#game";
     }
+    this.follow = true;
+    this.offset = {
+        x : 0,
+        y : 0,
+        z : 20
+    }
     this.view.renderer.camera.blur.blur = false;
     this.view.renderer.camera.blur.shift = false;
     this.view.renderer.camera.drift.enabled = false;
@@ -31,6 +37,11 @@ MenuView.prototype.resize = function() {
 MenuView.prototype.resizeUI = function() { this.view.resizeUI(); }
 
 MenuView.prototype.render = function(now, game) { 
+    if (this.follow) this.renderFollow(now, game);
+    else this.renderStatic(now, game);
+}
+
+MenuView.prototype.renderStatic = function(now, game) { 
     var stage = game.stage;
     if (!this.ready) {
         stage.players.sortByHeight();
@@ -48,11 +59,35 @@ MenuView.prototype.render = function(now, game) {
     this.view.render(now, stage);
 }
 
+MenuView.prototype.renderFollow = function(now, game) { 
+
+    var stage = game.stage;
+    this.view.renderer.mbr = stage.players.getMbr(this.view.renderer.mbr);
+
+    var offx = this.offset.x;
+    this.view.renderer.mbr.x -= offx;
+    this.view.renderer.mbr.width += offx;
+    
+    var offy = this.offset.y;
+    this.view.renderer.mbr.y -= offy;
+    this.view.renderer.mbr.height += offy;
+    
+    var offz = this.offset.z;
+    this.view.renderer.mbr.z -= offz;
+    this.view.renderer.mbr.depth += offz;
+    
+    this.view.render(now, stage);
+}
+
+
+
 MenuView.prototype.update = function(now, delta, game) {
     var stage = game.stage;
     this.view.update(now, delta, stage);
     if (!stage.players || !stage.players.players.length) return;
-    for (var i = 0; i < stage.players.players.length; i++) {
+    var t = stage.players.players.length;
+    this.follow = t == 1;
+    for (var i = 0; i < t; i++) {
         var npc = stage.npcs.npcs[i];
         this.updateNPC(stage, npc);
     }
