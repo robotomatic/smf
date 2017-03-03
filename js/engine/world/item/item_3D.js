@@ -8,6 +8,7 @@ function Item3D(item) {
     this.np = new Point(0, 0);
     this.np1 = new Point(0, 0);
     this.np2 = new Point(0, 0);
+    this.line = new Line(new Point(0, 0), new Point(0, 0));
     this.polygon = new Polygon();
     this.projectedpolygon = new Polygon();
     this.polytop = new Polygon();
@@ -37,11 +38,6 @@ Item3D.prototype.createItem3D = function(renderer, window, floodlevel = null) {
     if (this.item.geometry.tops.length) this.item.geometry.tops[0].points.length = 0;
     if (this.item.geometry.sides.length) this.item.geometry.sides[0].points.length = 0;
     if (this.item.geometry.bottoms.length) this.item.geometry.bottoms[0].points.length = 0;
-    
-//    this.item.geometry.fronts.length = 0;
-//    this.item.geometry.tops.length = 0;
-//    this.item.geometry.sides.length = 0;
-//    this.item.geometry.bottoms.length = 0;
     
     if (!renderer.shouldThemeProject(this.item)) return;
     
@@ -293,6 +289,11 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
     }
     
     if (this.item.geometry.visible.front) {
+
+        //
+        // todo: this can eventually go -- item cache will draw fronts
+        //
+        
         this.renderItemParts3D(ctx, this.item.geometry.fronts, this.frontcolor, x, y, scale);
     }
     
@@ -320,7 +321,40 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
     
     if (this.dotop) {
         if (this.item.geometry.visible.top) {
-            this.renderItemParts3D(ctx, this.item.geometry.tops, this.topcolor, x, y, scale);
+            this.renderItemParts3D(ctx, this.item.geometry.tops, this.topcolor, x, y, scale, false);
+            
+            var lc = this.sidecolor;
+            var lw = 1;
+            
+            ctx.strokeStyle = lc;
+            ctx.lineWidth = lw;
+            ctx.beginPath();
+            
+            if (this.item.geometry.visible.left) {
+                this.line.start.x = this.polygon.points[3].x;
+                this.line.start.y = this.polygon.points[3].y;
+                this.line.end.x = this.polygon.points[0].x;
+                this.line.end.y = this.polygon.points[0].y;
+                this.line.path(ctx);
+            }
+            
+            if (this.item.geometry.visible.right) {
+                this.line.start.x = this.polygon.points[1].x;
+                this.line.start.y = this.polygon.points[1].y;
+                this.line.end.x = this.polygon.points[2].x;
+                this.line.end.y = this.polygon.points[2].y;
+                this.line.path(ctx);
+            }
+            
+            if (this.item.geometry.visible.back) {
+                this.line.start.x = this.polygon.points[0].x;
+                this.line.start.y = this.polygon.points[0].y;
+                this.line.end.x = this.polygon.points[1].x;
+                this.line.end.y = this.polygon.points[1].y;
+                this.line.path(ctx);
+            }
+            
+            ctx.stroke();
         }
     }
 }
