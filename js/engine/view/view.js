@@ -245,6 +245,7 @@ View.prototype.renderFPS = function() {
     var avg = round(this.avg);
     if (avg < 10) avg = "0" + avg;
     this.fpstext.message = "FPS: " + fps + "\n" + "AVG: " + avg;
+    this.view.ctx.fillStyle = "black";
     this.view.ctx.beginPath();
     this.fpstext.draw(this.view.ctx, 8);
 }
