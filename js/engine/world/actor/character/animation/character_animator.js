@@ -4,7 +4,6 @@ function CharacterAnimator(animations) {
     this.loader = new CharacterAnimationLoader(animations);
     this.puppet = new CharacterAnimationPuppet();
     this.currentAnimations = new Array();
-    this.newCurrent = new Array();
     this.animstates = new Array();
     this.idlespeed = .1;
 }
@@ -15,13 +14,12 @@ CharacterAnimator.prototype.animate = function(now, character) {
     this.updateAnimations(now, character.direction, character.state);
     this.reapAnimations(now);
     this.runAnimations(now);
-    this.applyAnimations(now);
     this.blendAnimations(now);
 }
     
 CharacterAnimator.prototype.updateAnimations = function(now, direction, state) {
     this.animstates.length = 0;
-    this.animstates[this.animstates.length] = "default";
+    this.animstates[0] = "default";
     if (direction) {
         this.animstates[this.animstates.length] = "default_" + direction;
         this.animstates[this.animstates.length] = direction;
@@ -37,19 +35,21 @@ CharacterAnimator.prototype.updateAnimations = function(now, direction, state) {
 }
     
 CharacterAnimator.prototype.reapAnimations = function(now) {
-    this.newCurrent = [];
-    var t = this.animstates.length;
-    if (!t) return this.newCurrent;
-    for (var i = 0; i < t; i++) {
-        var animname = this.animstates[i];
-        if (!animname) continue;
-        var keys = Object.keys(this.currentAnimations);
-        for (var ii = 0; ii < keys.length; ii++) {
-            var key = keys[ii];
-            if (this.currentAnimations[key].name == animname) this.newCurrent[key] = this.currentAnimations[key];
+    var keys = Object.keys(this.currentAnimations);
+    for (var i = 0; i < keys.length; i++) {
+        var key = keys[i];
+        var curanim = this.currentAnimations[key];
+        curanim.running = false;
+        var tt = this.animstates.length;
+        for (var ii = 0; ii < tt; ii++) {
+            var animname = this.animstates[ii];
+            if (!animname) continue;
+            if (curanim.name == animname) {
+                this.currentAnimations[key].running = true;            
+                break;
+            }
         }
     }
-    this.currentAnimations = this.newCurrent;
 }
 
 CharacterAnimator.prototype.runAnimations = function(now) {
@@ -57,13 +57,6 @@ CharacterAnimator.prototype.runAnimations = function(now) {
         if (!this.animstates[i]) continue;
         this.animateState(now, this.animstates[i]);
     }
-}
-
-CharacterAnimator.prototype.applyAnimations = function(now) {
-    
-    // todo: collect list of animations to apply to puppet parts
-    // todo: iterate through list and update puppet part
-    
 }
 
 CharacterAnimator.prototype.animateState = function(now, state) {
@@ -77,7 +70,12 @@ CharacterAnimator.prototype.animateState = function(now, state) {
         this.animateCharacterBox(stateanim);
         var animname = animtype + "-" + state;
         if (this.currentAnimations[animname]) {
-            this.currentAnimations[animname].next(now, this.puppet.indexchar);
+            if (this.currentAnimations[animname].running && !this.currentAnimations[animname].animationOver) {            
+                this.currentAnimations[animname].next(now, this.puppet.indexchar);
+            } else {
+                this.currentAnimations[animname].reset(state, stateanim);
+                this.currentAnimations[animname].start(now, this.puppet.indexchar);
+            }
         } else {
             this.currentAnimations[animname] = new CharacterAnimationManager(state, stateanim);
             this.currentAnimations[animname].start(now, this.puppet.indexchar);

@@ -1,25 +1,41 @@
 "use strict";
 
 function CharacterAnimationManager(name, animation) {
+    this.name = "";
+    this.animation = null;
+    this.animationAnimator  = new CharacterAnimationManagerAnimator();
+    this.animationRepeat = false;
+    this.animationReset = false;
+    this.currentFrame = 0;
+    this.lastRender = 0;
+    this.animationOver = false;
+    this.running = false;
+    this.prevframe = null;
+    this.frame = null;
+    this.lerp = null;
+    this.reset(name, animation);
+}
+
+CharacterAnimationManager.prototype.reset = function(name, animation) {
     this.name = name;
     this.animation = animation;
-    this.animationAnimator  = new CharacterAnimationManagerAnimator();
     this.animationRepeat = animation.repeat ? animation.repeat : false;
     this.animationReset = animation.reset;
     this.currentFrame = 0;
     this.lastRender = timestamp();
     this.animationOver = false;
-    this.partCache = new Array();
+    this.running = false;
     this.prevframe = null;
     this.frame = null;
     this.lerp = null;
 }
 
+
 CharacterAnimationManager.prototype.start = function(now, indexchar) {
     this.lastRender = now;
     this.currentFrame = 0;
+    this.running = true;
     this.animationOver = false;
-    this.partCache.length = 0;
     this.animate(indexchar, 0);
 }
 
@@ -108,4 +124,5 @@ CharacterAnimationManager.prototype.getNextFrame = function(animation, lerp) {
 
 CharacterAnimationManager.prototype.finishAnimation = function() {
     this.animationOver = true;
+    this.running = false;
 }
