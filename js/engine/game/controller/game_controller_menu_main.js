@@ -71,7 +71,8 @@ GameControllerMenuMain.prototype.addCharacters = function() {
     if (this.numplayers === 0) this.numplayers = playertotal;
     var currentchar = 0;
     
-//    var mychar = "yeti";
+//    this.numplayers = 1;
+    var mychar = "psycho";
     
     var rando = random(0, playertotal - 1);
     
