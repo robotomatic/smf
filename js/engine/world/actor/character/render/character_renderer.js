@@ -5,13 +5,10 @@ function CharacterRenderer() {
     this.grouprenderer = new CharacterRendererGroups();
 }
 
-CharacterRenderer.prototype.draw = function(ctx, playerchar) {
-    var character = playerchar.animator.puppet.animchar;
+CharacterRenderer.prototype.draw = function(ctx, animationchar) {
+    var character = animationchar.animator.puppet.animchar;
     if (!character) return;
-    var mbr = playerchar.mbr; 
-    var pad = character.pad ? character.pad : 0;
-    var color = playerchar.color;
-    this.rendermanager.updateCharacter(mbr, character, pad, color);
-    this.grouprenderer.initializeGroups(character, this.rendermanager.groupnames);
-    this.grouprenderer.renderGroups(ctx, character, this.rendermanager.groups, color);
+    var color = animationchar.color;
+    this.rendermanager.updateCharacter(animationchar.mbr, character, character.pad || 0, color);
+    this.grouprenderer.renderGroups(ctx, character, this.rendermanager.groupnames, this.rendermanager.groups, color);
 }

@@ -9,11 +9,7 @@ function CharacterRendererGroupsGroup() {
     
 }
 
-CharacterRendererGroupsGroup.prototype.initializeGroupNames = function(groupnames) {
-    this.renderer.groupnames = groupnames;
-}
-    
-CharacterRendererGroupsGroup.prototype.renderGroup = function(ctx, groupdef, group, color, debugrects) {
+CharacterRendererGroupsGroup.prototype.renderGroup = function(ctx, groupdef, groupnames, group, color, debugrects) {
     
     var points = group.points;
     var rects = group.rects;
@@ -29,7 +25,7 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(ctx, groupdef, gro
 
     if (group.angle && (!groupdef || !groupdef.path == "join")) {
         this.polygon.setPoints(this.polygon.rotate(group.angle));
-        if (group.parts) this.renderer.rotateGroup(group, null);
+        if (group.parts) this.renderer.rotateGroup(groupnames, group, null);
     }
     if (!this.polygon.points.length) return;
 

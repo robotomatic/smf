@@ -7,17 +7,13 @@ function CharacterRendererGroups() {
     this.debugrects = new Array();
 }
 
-CharacterRendererGroups.prototype.initializeGroups = function(character, groupnames) {
+CharacterRendererGroups.prototype.renderGroups = function(ctx, character, groupnames, groups, color) {
     this.debugrects.length = 0;        
-    this.grouprenderer.initializeGroupNames(groupnames);
-}
-    
-CharacterRendererGroups.prototype.renderGroups = function(ctx, character, groups, color) {
     if (!groups.length) return;
     groups.sort(sortByZIndex);  
     for (var i = 0; i < groups.length; i++) {
         var group = groups[i];
-        this.grouprenderer.renderGroup(ctx, character.groups[group.name], group, color, this.debugrects);
+        this.grouprenderer.renderGroup(ctx, character.groups[group.name], groupnames, group, color, this.debugrects);
     }
     this.renderDebug(ctx);
 }

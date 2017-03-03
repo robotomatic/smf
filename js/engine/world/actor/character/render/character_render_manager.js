@@ -3,14 +3,14 @@
 function CharacterRenderManager() {
     this.groups = new Array();
     this.groupnames = {};
-    this.loaded = false;
 }
 
 CharacterRenderManager.prototype.updateCharacter = function(box, character, pad, color) {
-    this.character = character;
-    if (this.groups.length) this.resetCharacterParts(box, character, pad, color);
-    else this.updateCharacterParts(box, character, pad, color);
-    this.loaded = true;
+
+    this.groups.length = 0;
+    this.groupnames = {};
+
+    this.updateCharacterParts(box, character, pad, color);
     
     if (!character.groups) return;
     
@@ -23,12 +23,6 @@ CharacterRenderManager.prototype.updateCharacter = function(box, character, pad,
         if (groupdef.zindex || groupdef.zindex == 0) z = groupdef.zindex;
         this.groups[i].zindex  = z;
     }
-}
-
-CharacterRenderManager.prototype.resetCharacterParts = function(box, parts, pad, color) {
-    this.groups.length = 0;
-    this.groupnames = {};
-    this.updateCharacterParts(box, parts, pad, color);
 }
 
 CharacterRenderManager.prototype.updateCharacterParts = function(box, parts, pad, color) { 
@@ -78,24 +72,13 @@ CharacterRenderManager.prototype.updatePart = function(box, partname, part, addp
 }
 
 CharacterRenderManager.prototype.getGroup = function(groupname) {
-    if (this.groupnames[groupname]) return this.groupnames[groupname];
-    var group = { 
-        name : groupname, 
-        points : new Array(), 
-        rects : new Array(),
-        center : null,
-        angle : 0,
-        color : "",
-        zindex : 0,
-        clip : "",
-        path : "",
-        debug : false,
-        draw : true,
-        link : "",
-        outline : false,
-        linktype : "",
-        pointinfo : {}
-    };  
+
+    if (this.groupnames[groupname]) {
+        var g = this.groupnames[groupname];
+        return g;
+    }
+
+    var group = new CharacterRenderManagerGroup(groupname);
     
     this.groupnames[groupname] = group;
     this.groups[this.groups.length] = group;
@@ -110,7 +93,6 @@ CharacterRenderManager.prototype.addCharacterGroupPart = function(part, box, pad
     var part_x = round(box.x + (box.width * ((part.x - (pad / 2)) / 100)));
     var part_y = round(box.y + (box.height * ((part.y - (pad / 2)) / 100)));
     
-    // todo: can I cache this stuff?
     group.rects[group.rects.length] = geometryfactory.getRectangle(part_x, part_y, part_width, part_height);
     
     var current = group.points.length; 

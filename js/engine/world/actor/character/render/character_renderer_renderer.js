@@ -1,7 +1,6 @@
 "use strict";
 
 function CharacterRendererRenderer() {
-    this.groupnames = new Array();
     this.rotatepoly = new Polygon();
     this.rotateline = new Line();
 }
@@ -40,12 +39,12 @@ CharacterRendererRenderer.prototype.setColor = function(color, poly, ctx) {
     return color;
 }
 
-CharacterRendererRenderer.prototype.rotateGroup = function(group, parts) {
+CharacterRendererRenderer.prototype.rotateGroup = function(groupnames, group, parts) {
     if (!parts) parts = group.parts;
     var keys = parts.keys;
     for (var i = 0; i < keys.length; i++) {
         if (keys[i] == "keys" || keys[i] == "groups") continue;
-        var gg = this.groupnames[keys[i]];
+        var gg = groupnames[keys[i]];
         if (!gg) continue;
         this.rotatepoly.setPoints(gg.points);
         gg.points = this.rotatepoly.rotate(group.angle, group.center);
@@ -56,7 +55,7 @@ CharacterRendererRenderer.prototype.rotateGroup = function(group, parts) {
             gg.center = this.rotateline.end;
         }
         gg.rects[0] = this.rotatepoly.getMbr();
-        if (parts[keys[i]].parts) this.rotateGroup(group, parts[keys[i]].parts);
+        if (parts[keys[i]].parts) this.rotateGroup(groupnames, group, parts[keys[i]].parts);
     }
 }
 
