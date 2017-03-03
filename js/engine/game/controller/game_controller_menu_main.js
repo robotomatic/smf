@@ -71,7 +71,7 @@ GameControllerMenuMain.prototype.addCharacters = function() {
     if (this.numplayers === 0) this.numplayers = playertotal;
     var currentchar = 0;
     
-    this.numplayers = 1;
+    if (isMobile()) this.numplayers = 1;
     var mychar = "psycho";
     
     var rando = random(0, playertotal - 1);
@@ -82,8 +82,10 @@ GameControllerMenuMain.prototype.addCharacters = function() {
         if (currentchar < playertotal) character = chars[charnames[currentchar]];
         else character = chars[charnames[random(0, playertotal - 1)]];
         
-//        character = chars[charnames[rando]];
-        if (this.numplayers == 1) character = chars[mychar];
+        if (this.numplayers == 1) {
+//            character = chars[mychar];
+            character = chars[charnames[rando]];
+        }
         
         var playerx;
         var found = false;
