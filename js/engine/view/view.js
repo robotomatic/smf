@@ -101,6 +101,10 @@ View.prototype.createView = function() {
     this.view.ctx = this.view.canvas.getContext("2d");
     this.view.canvas.className = "absolute game-canvas";
     this.parent.appendChild(this.view.canvas);
+    
+    this.graphics["view"].canvas = this.view.canvas;
+    this.graphics["view"].ctx = this.view.ctx;
+    this.graphics["view"].canvas.className = this.view.canvas.className;
 }
 
 View.prototype.resize = function() {
