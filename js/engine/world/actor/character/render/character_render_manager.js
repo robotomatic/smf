@@ -6,14 +6,9 @@ function CharacterRenderManager() {
 }
 
 CharacterRenderManager.prototype.updateCharacter = function(box, character, pad, color) {
-
-    this.groups.length = 0;
-    this.groupnames = {};
-
+    if (this.groups.length) this.resetCharacterGroups();
     this.updateCharacterParts(box, character, pad, color);
-    
     if (!character.groups) return;
-    
     for (var i = 0; i < this.groups.length; i++) {
         var group = this.groups[i];
         var name = group.name;
@@ -22,6 +17,13 @@ CharacterRenderManager.prototype.updateCharacter = function(box, character, pad,
         var z = 100;
         if (groupdef.zindex || groupdef.zindex == 0) z = groupdef.zindex;
         this.groups[i].zindex  = z;
+    }
+}
+
+CharacterRenderManager.prototype.resetCharacterGroups = function() {
+    var t = this.groups.length;
+    for (var i = 0; i < t; i++) {
+        this.groups[i].reset();
     }
 }
 
@@ -72,16 +74,14 @@ CharacterRenderManager.prototype.updatePart = function(box, partname, part, addp
 }
 
 CharacterRenderManager.prototype.getGroup = function(groupname) {
-
     if (this.groupnames[groupname]) {
         var g = this.groupnames[groupname];
         return g;
     }
-
     var group = new CharacterRenderManagerGroup(groupname);
-    
     this.groupnames[groupname] = group;
     this.groups[this.groups.length] = group;
+    group.index = this.groups.length;
     return group;
 }
 
@@ -118,7 +118,7 @@ CharacterRenderManager.prototype.addCharacterGroupPart = function(part, box, pad
     }
     group.color = part.color ? part.color : color;
     if (part.zindex || part.zindex == 0) group.zindex = part.zindex;
-    else group.zindex = 1000 + this.groups.length;
+    else group.zindex = 1000 + group.index;
     if (part.outline) {
         group.outline = part.outline;
         if (part.parts) this.updateGroupOutline(part.parts, part.outline);

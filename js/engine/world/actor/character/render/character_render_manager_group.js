@@ -2,6 +2,7 @@
 
 function CharacterRenderManagerGroup(groupname) {
     this.name = groupname;
+    this.index = 0;
     this.parts = new Array();
     this.points = new Array();
     this.rects = new Array();

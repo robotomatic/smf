@@ -4,9 +4,7 @@ function CharacterRendererGroupsGroup() {
     this.renderer = new CharacterRendererRenderer();
     this.pathclip = new CharacterRendererGroupsGroupPathClip();
     this.pathlink = new CharacterRendererGroupsGroupPathLink();
-    
     this.polygon = new Polygon();
-    
 }
 
 CharacterRendererGroupsGroup.prototype.renderGroup = function(ctx, groupdef, groupnames, group, color, debugrects) {
