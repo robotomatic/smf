@@ -2,7 +2,7 @@
 
 function ViewCamera() {
     
-    this.speed = 3;
+    this.speed = 5;
     
     this.shake = {
         magnitude: 0,
