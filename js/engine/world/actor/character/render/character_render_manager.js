@@ -6,10 +6,23 @@ function CharacterRenderManager() {
     this.loaded = false;
 }
 
-CharacterRenderManager.prototype.updateCharacter = function(box, parts, pad, color) {
-    if (this.groups.length) this.resetCharacterParts(box, parts, pad, color);
-    else this.updateCharacterParts(box, parts, pad, color);
+CharacterRenderManager.prototype.updateCharacter = function(box, character, pad, color) {
+    this.character = character;
+    if (this.groups.length) this.resetCharacterParts(box, character, pad, color);
+    else this.updateCharacterParts(box, character, pad, color);
     this.loaded = true;
+    
+    if (!character.groups) return;
+    
+    for (var i = 0; i < this.groups.length; i++) {
+        var group = this.groups[i];
+        var name = group.name;
+        var groupdef = character.groups[name];
+        if (!groupdef || groupdef.draw == false) continue;
+        var z = 100;
+        if (groupdef.zindex || groupdef.zindex == 0) z = groupdef.zindex;
+        this.groups[i].zindex  = z;
+    }
 }
 
 CharacterRenderManager.prototype.resetCharacterParts = function(box, parts, pad, color) {
@@ -83,6 +96,7 @@ CharacterRenderManager.prototype.getGroup = function(groupname) {
         linktype : "",
         pointinfo : {}
     };  
+    
     this.groupnames[groupname] = group;
     this.groups[this.groups.length] = group;
     return group;
