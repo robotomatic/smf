@@ -289,12 +289,34 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
     }
     
     if (this.item.geometry.visible.front) {
-
         //
         // todo: this can eventually go -- item cache will draw fronts
         //
-        
-        this.renderItemParts3D(ctx, this.item.geometry.fronts, this.frontcolor, x, y, scale);
+        this.renderItemParts3D(ctx, this.item.geometry.fronts, this.frontcolor, x, y, scale, false);
+        var lc = this.sidecolor;
+        var lw = 1;
+        ctx.strokeStyle = lc;
+        ctx.lineWidth = lw;
+        ctx.beginPath();
+        if (this.item.geometry.visible.left) {
+            if (this.polygon.points.length > 2) {
+                this.line.start.x = this.polygon.points[3].x;
+                this.line.start.y = this.polygon.points[3].y;
+                this.line.end.x = this.polygon.points[0].x;
+                this.line.end.y = this.polygon.points[0].y;
+                this.line.path(ctx);
+            }
+        }
+        if (this.item.geometry.visible.right) {
+            if (this.polygon.points.length > 1) {
+                this.line.start.x = this.polygon.points[1].x;
+                this.line.start.y = this.polygon.points[1].y;
+                this.line.end.x = this.polygon.points[2].x;
+                this.line.end.y = this.polygon.points[2].y;
+                this.line.path(ctx);
+            }
+        }
+        ctx.stroke();
     }
     
     if (this.item.geometry.visible.left || this.item.geometry.visible.right) {
@@ -322,38 +344,38 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
     if (this.dotop) {
         if (this.item.geometry.visible.top) {
             this.renderItemParts3D(ctx, this.item.geometry.tops, this.topcolor, x, y, scale, false);
-            
             var lc = this.sidecolor;
             var lw = 1;
-            
             ctx.strokeStyle = lc;
             ctx.lineWidth = lw;
             ctx.beginPath();
-            
             if (this.item.geometry.visible.left) {
-                this.line.start.x = this.polygon.points[3].x;
-                this.line.start.y = this.polygon.points[3].y;
-                this.line.end.x = this.polygon.points[0].x;
-                this.line.end.y = this.polygon.points[0].y;
-                this.line.path(ctx);
+                if (this.polygon.points.length > 2) {
+                    this.line.start.x = this.polygon.points[3].x;
+                    this.line.start.y = this.polygon.points[3].y;
+                    this.line.end.x = this.polygon.points[0].x;
+                    this.line.end.y = this.polygon.points[0].y;
+                    this.line.path(ctx);
+                }
             }
-            
             if (this.item.geometry.visible.right) {
-                this.line.start.x = this.polygon.points[1].x;
-                this.line.start.y = this.polygon.points[1].y;
-                this.line.end.x = this.polygon.points[2].x;
-                this.line.end.y = this.polygon.points[2].y;
-                this.line.path(ctx);
+                if (this.polygon.points.length > 1) {
+                    this.line.start.x = this.polygon.points[1].x;
+                    this.line.start.y = this.polygon.points[1].y;
+                    this.line.end.x = this.polygon.points[2].x;
+                    this.line.end.y = this.polygon.points[2].y;
+                    this.line.path(ctx);
+                }
             }
-            
             if (this.item.geometry.visible.back) {
-                this.line.start.x = this.polygon.points[0].x;
-                this.line.start.y = this.polygon.points[0].y;
-                this.line.end.x = this.polygon.points[1].x;
-                this.line.end.y = this.polygon.points[1].y;
-                this.line.path(ctx);
+                if (this.polygon.points.length > 0) {
+                    this.line.start.x = this.polygon.points[0].x;
+                    this.line.start.y = this.polygon.points[0].y;
+                    this.line.end.x = this.polygon.points[1].x;
+                    this.line.end.y = this.polygon.points[1].y;
+                    this.line.path(ctx);
+                }
             }
-            
             ctx.stroke();
         }
     }
