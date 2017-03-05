@@ -280,14 +280,14 @@
                     "clothes" : {
                         "parts" : {
                             "clothes-torso" : {
-                                "color" : "#a8a8a8",
+                                "color" : "#8b7b7b",
                                 "width" : 60,
                                 "height" : 22,
                                 "x" : 20,
                                 "y" : 60
                             },
                             "clothes-pants" : {
-                                "color" : "#a8a8a8",
+                                "color" : "#8b7b7b",
                                 "width" : 50,
                                 "height" : 5,
                                 "x" : 25,
@@ -301,7 +301,7 @@
             },
             
             "arms" : {
-                "color" : "#a8a8a8",
+                "color" : "#8b7b7b",
                 "parts" : {
                     "left-arm" : {
                         "parts" : {
@@ -468,7 +468,7 @@
             },            
             
             "legs" : {
-                "color" : "#a8a8a8",
+                "color" : "#8b7b7b",
                 "parts" : {
                     "left-leg" : { 
                         "zindex" : 2000,
