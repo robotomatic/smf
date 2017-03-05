@@ -48,7 +48,7 @@ StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItem = function(m
     var renderer = stage.level.itemrenderer;
     item.smooth();
     item.translate(mbr, width, height);
-    item.item3D.createItem3D(renderer, mbr, stage.stagerenderer.flood.waterline);
+    item.item3D.createItem3D(renderer, mbr, stage.stagerenderer.flood);
     var showing = item.isVisible(window, mbr, 100);
     var iz = item.z;
     if (item.width == "100%") iz = item.z + item.depth;
@@ -112,5 +112,5 @@ StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItemCenter = func
     var iy = item.y + oy;
     var iz = item.z + (item.depth) + oz;
     var pd = distance3D(ix, iy, iz, mbrcp.x, mbrcp.y, mbrcp.z);
-    return pd;
+    return round(pd);
 }

@@ -29,7 +29,7 @@ function Item3D(item) {
     this.colorbottom = "blue";
 }
 
-Item3D.prototype.createItem3D = function(renderer, window, floodlevel = null) {
+Item3D.prototype.createItem3D = function(renderer, window, flood = null) {
     
     this.item.geometry.projected.points.length = 0;
     
@@ -62,19 +62,22 @@ Item3D.prototype.createItem3D = function(renderer, window, floodlevel = null) {
     } else {
         this.polygon.setPoints(box.getPoints());
     }
+
     
-    if (floodlevel) {
-        var tpt = this.polygon.points.length;
+    
+    if (flood) {
+        var tpt = this.item.polygon.points.length;
         for (var i = 0; i < tpt; i++) {
-            if (this.polygon.points[i].y > floodlevel) {
-                
-                
-                // floodlevel isn't translated?
-                
-                this.polygon.points[i].y = floodlevel;
+            if (this.item.y + this.item.polygon.points[i].y >= flood.y) {
+                var ddd = (this.item.y + this.item.polygon.points[i].y) - flood.waterline;
+                var ds = ddd * bs;
+                this.polygon.points[i].y -= ds;
             }
         }
     }
+    
+    
+    
     this.projectItem3D(depth, scale, x, y, window);
 }
 

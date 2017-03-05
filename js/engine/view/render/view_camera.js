@@ -19,9 +19,9 @@ function ViewCamera() {
         newy : 0,
         newz : 0,
         min : 1,
-        max : 3,
+        max : 2,
         amount : 0.05,
-        speed : 1,
+        speed : 0.5,
         enabled : true
     }
 

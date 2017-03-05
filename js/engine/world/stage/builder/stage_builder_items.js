@@ -30,7 +30,7 @@ StageBuilderItems.prototype.buildItem = function(stage, renderer, layer, item, i
     if (!item || item.draw === false) return;
     if (item.iteminfo && item.iteminfo.flood) {
         // todo: set flood info based on renderer theme
-        stage.stagerenderer.flood.init(item.y);
+        stage.stagerenderer.flood.init(item);
     }
     if (layer.blur && !item.blur) item.blur = layer.blur;
     if (layer.graphics) item.graphics = layer.graphics;
