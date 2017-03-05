@@ -3,14 +3,11 @@
 function CharacterRendererGroups() {
     this.groupdefs = new Array();
     this.grouprenderer = new CharacterRendererGroupsGroup();
-    this.debug = false;
     this.debugrects = new Array();
 }
 
-CharacterRendererGroups.prototype.renderGroups = function(ctx, character, groupnames, groups, color, debug = false) {
-    if (debug) {
-        color = "white";
-    }
+CharacterRendererGroups.prototype.renderGroups = function(ctx, character, groupnames, groups, color, debug) {
+    if (debug.character || debug.guts) color = "white";
     this.debugrects.length = 0;        
     if (!groups.length) return;
     groups.sort(sortByZIndex);  

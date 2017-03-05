@@ -15,7 +15,7 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(ctx, groupdef, gro
     if (points.length) this.polygon.setPoints(points);
 
     var rects = group.rects;
-    if (debug) {
+    if (debug.guts) {
         var rt = rects.length;
         for (var ri = 0; ri < rt; ri++) {
             var rr = rects[ri];
@@ -39,10 +39,12 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(ctx, groupdef, gro
 
     var gg = groupdef ? groupdef : group;
     if (gg.draw == false) return;
+    
+    var dodebug = debug.character || debug.guts;
 
     if (gg.link && gg.link != "skip") {
         if (!this.pathlink.linkpathStart.points.length) {
-            var cc = debug ? color : gg.color ? gg.color : color;
+            var cc = dodebug ? color : gg.color ? gg.color : color;
             this.pathlink.startLinkPath(this.polygon, cc, gg.linktype);
         } else if (gg.link && this.pathlink.linkpathStart.points.length) {
             this.pathlink.addLinkPath(this.polygon);
@@ -51,7 +53,7 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(ctx, groupdef, gro
         if (this.pathlink.linkpathStart.points.length && gg.link != "skip") {
             this.pathlink.endLinkPath(ctx, this.pathlink.linkpathType);
             
-            if (debug) {
+            if (debug.character) {
                 var p = this.pathlink.path;
                 ctx.beginPath();
                 p.drawOutline(ctx, this.debugoutlinecolor, 1);
@@ -59,7 +61,7 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(ctx, groupdef, gro
             
         }
 
-        ctx.fillStyle = debug ? color : this.renderer.setColor(gg.color ? gg.color : color, this.polygon, ctx);
+        ctx.fillStyle = dodebug ? color : this.renderer.setColor(gg.color ? gg.color : color, this.polygon, ctx);
         ctx.beginPath();
 
         if (gg.clip) {
@@ -72,7 +74,7 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(ctx, groupdef, gro
             }
         } else this.renderer.drawPolygon(gg.path, this.polygon, ctx);
         
-        if (debug) {
+        if (debug.character) {
             ctx.beginPath();
             this.polygon.drawOutline(ctx, this.debugoutlinecolor, 1);
         }

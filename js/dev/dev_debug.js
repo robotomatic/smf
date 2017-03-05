@@ -7,21 +7,24 @@ function initializeDevDebug() {
     document.getElementById("dev-overlay").onclick = function() {
         toggleOverlay();
     };
+    
     document.getElementById("dev-debug-player").onchange = function() {
         setDebugPlayer(this.checked);
     };
     document.getElementById("dev-debug-character").onchange = function() {
         setDebugCharacter(this.checked);
     };
-    document.getElementById("dev-debug-player-character").onchange = function() {
-        setDebugCharacter(this.checked);
+    document.getElementById("dev-debug-guts").onchange = function() {
+        setDebugGuts(this.checked);
     };
+    
     document.getElementById("dev-debug-level").onchange = function() {
         setDebugLevel(this.checked);
     };
     document.getElementById("dev-debug-render").onchange = function() {
         setDebugRender(this.checked);
     };
+    
     document.getElementById("dev-debug-collision").onchange = function() {
         setDebugCollision(this.checked);
     };
@@ -34,6 +37,7 @@ function updateDevDebug() {
     updateDevDebugOverlay();
     updateDevDebugPlayer();
     updateDevDebugCharacter();
+    updateDevDebugGuts();
     updateDevDebugLevel();
     updateDevDebugRender();
 }
@@ -90,7 +94,6 @@ function updateDevDebugPlayer() {
     
     var debug = gamecontroller.game.loop.game.stage.players.debug;
     document.getElementById("dev-debug-player").checked = debug;
-    document.getElementById("dev-debug-player-player").checked = debug;
 }
 
 function setDebugCharacter(debug) {
@@ -100,7 +103,7 @@ function setDebugCharacter(debug) {
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var t = gamecontroller.game.loop.game.stage.players.players.length;
-    for (var i = 0; i < t; i++) gamecontroller.game.loop.game.stage.players.players[i].character.debug = debug;
+    for (var i = 0; i < t; i++) gamecontroller.game.loop.game.stage.players.players[i].character.debug.character = debug;
     updateDevDebugCharacter();
 }
 
@@ -109,9 +112,28 @@ function updateDevDebugCharacter() {
     if (!__dev) return;
     
     if (!gamecontroller.game.loop.game.stage.players.players.length) return;
-    var debug = gamecontroller.game.loop.game.stage.players.players[0].character.debug;
+    var debug = gamecontroller.game.loop.game.stage.players.players[0].character.debug.character;
     document.getElementById("dev-debug-character").checked = debug;
-    document.getElementById("dev-debug-player-character").checked = debug;
+}
+
+function setDebugGuts(debug) {
+    
+    if (!__dev) return;
+    
+    if (!gamecontroller || !gamecontroller.game) return;
+    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
+    var t = gamecontroller.game.loop.game.stage.players.players.length;
+    for (var i = 0; i < t; i++) gamecontroller.game.loop.game.stage.players.players[i].character.debug.guts = debug;
+    updateDevDebugGuts();
+}
+
+function updateDevDebugGuts() {
+    
+    if (!__dev) return;
+    
+    if (!gamecontroller.game.loop.game.stage.players.players.length) return;
+    var debug = gamecontroller.game.loop.game.stage.players.players[0].character.debug.guts;
+    document.getElementById("dev-debug-guts").checked = debug;
 }
 
 function setDebugCollision(debug) {

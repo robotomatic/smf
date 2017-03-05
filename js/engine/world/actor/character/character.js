@@ -20,7 +20,10 @@ function Character() {
     this.direction = "";
     this.state = "";
     
-    this.debug = false;
+    this.debug = {
+        character : false,
+        guts : false
+    };
 }
 
 Character.prototype.loadJson = function(json) {
