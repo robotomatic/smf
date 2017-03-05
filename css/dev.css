@@ -13,16 +13,16 @@
 .dev-toolbar-tools {
     float: left;
     width: 0;
-    height: 1.8em;
+    height: 1.5em;
     overflow: hidden;
 }
 
 .dev-toolbar-tools-tool {
     font-size: .8em;
-    margin: .3em .5em;
+    margin: .3em;
     padding-right: 1em;
     border-right: 1px solid darkgray;
-    height: 1.8em;
+    height: 1.5em;
 }
 
 .dev-toolbar-title {
