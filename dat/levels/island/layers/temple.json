@@ -1,0 +1,27 @@
+[
+
+    {
+        "name" : "temple",
+        "comment" : "temple",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 300,
+        "items" : [
+            {
+                "x" : 3000,
+                "y" : 830,
+                "z" : 2300,
+                "itemtype" : "platform-bg-no-top",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 100
+                    }
+                ]
+            }
+        ]
+    }
+]
+            

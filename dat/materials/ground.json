@@ -21,7 +21,7 @@
         }
    },
    "ground-dark" : {
-       "name" : "ground",
+       "name" : "ground-dark",
        "step" : 25,
        "radius" : 10,
        "craziness" : 1,
@@ -34,8 +34,9 @@
             },
             "dark" : "#55544f",
             "projected" : {
-                "top" : "#92938b",
-                "side" : "#92938b",
+                "front" : "#bab9b5",
+                "top" : "#c2c3c0",
+                "side" : "#abacab",
                 "bottom" : "#92938b"
             }
         }

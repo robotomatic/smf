@@ -17,6 +17,10 @@
             "file" : "dat/levels/island/layers/ground.json"
         },
         
+        "temple" : {
+            "file" : "dat/levels/island/layers/temple.json"
+        },
+        
         "bridge" : {
             "file" : "dat/levels/island/layers/bridge.json"
         }
