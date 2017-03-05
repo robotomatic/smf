@@ -18,12 +18,12 @@ StageRendererRender.prototype.renderRenderItems = function(now, graphics, camera
         var renderitem = this.renderitems.all[i];
         if (!renderitem.showing) continue;
         var wd = round(renderitem.z - mbr.z);
-        if (renderitem.type == "item") this.renderItem(now, window, graphics, camera, renderitem.item, renderer, wd);
-        else if (renderitem.type == "player") this.renderPlayer(now, window, graphics, camera, renderitem.item, wd);
+        if (renderitem.type == "item") this.renderItem(now, window, graphics, camera, stage, renderitem.item, renderer, wd);
+        else if (renderitem.type == "player") this.renderPlayer(now, window, graphics, camera, stage, renderitem.item, wd);
     }
 }
 
-StageRendererRender.prototype.renderItem = function(now, window, graphics, camera, item, renderer, distance) {
+StageRendererRender.prototype.renderItem = function(now, window, graphics, camera, stage, item, renderer, distance) {
     if (item.width == "100%" || !camera.shouldBlur(distance)) {
         item.render(now, renderer, graphics.canvas.width, graphics.canvas.height, graphics.ctx);
         return;
@@ -41,7 +41,8 @@ StageRendererRender.prototype.renderItem = function(now, window, graphics, camer
     item.drawImage(graphics.ctx, scaledraw, 0);
 }
 
-StageRendererRender.prototype.renderPlayer = function(now, window, graphics, camera, player, distance) {
+StageRendererRender.prototype.renderPlayer = function(now, window, graphics, camera, stage, player, distance) {
+    player.playerdebugger.debug = stage.players.debug;
     var pw = graphics.canvas.width;
     var ph = graphics.canvas.height;
     var scalerender = 1;

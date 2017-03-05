@@ -23,7 +23,7 @@ function Player(id, name, color, x, y, z, width, height, speed, character, hp, l
 
     this.showing = false;
     
-    this.playerdebugger = new PlayerDebugger(this.player);
+    this.playerdebugger = new PlayerDebugger(this);
 }
 
 

@@ -10,5 +10,5 @@ CharacterRenderer.prototype.draw = function(ctx, animationchar) {
     if (!character) return;
     var color = animationchar.color;
     this.rendermanager.updateCharacter(animationchar.mbr, character, character.pad || 0, color);
-    this.grouprenderer.renderGroups(ctx, character, this.rendermanager.groupnames, this.rendermanager.groups, color);
+    this.grouprenderer.renderGroups(ctx, character, this.rendermanager.groupnames, this.rendermanager.groups, color, animationchar.debug);
 }

@@ -9,7 +9,7 @@ function StageBuilder() {
 
 StageBuilder.prototype.buildStage = function(now, stage) {
     this.itembuilder.buildStage(stage);
-    this.intersectbuilder.intersectItems(stage);
     this.collidebuilder.buildColliders(stage);
+    this.intersectbuilder.intersectItems(stage);
     this.hsrbuilder.removeHiddenSurfaces(stage);
 }

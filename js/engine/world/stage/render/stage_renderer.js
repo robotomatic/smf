@@ -12,7 +12,7 @@ function StageRenderer() {
     this.flood = new StageFlood();
     this.debug = {
         render : false,
-        overdraw : false
+        level : false
     };
 }
 

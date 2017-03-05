@@ -15,7 +15,6 @@ function StageRendererDebug(renderitems) {
 
 StageRendererDebug.prototype.renderDebug = function(now, graphics, camera, stage, mbr, window, debug) {
     if (debug.render) this.renderDebugItems(graphics, mbr, window);
-    if (debug.overdraw) this.renderDebugItemsOverlap(graphics);    
 }
 
 StageRendererDebug.prototype.renderDebugItems = function(graphics, mbr, window) {
@@ -27,9 +26,10 @@ StageRendererDebug.prototype.renderDebugItemsItem = function(graphics, item, mbr
     if (item.item.width == "100%") return;
     if (item.type == "player") return;
     
-    this.renderDebugItemsItemBox(graphics, item);
-    this.renderDebugItemsItemCenter(graphics, window, mbr);
-    this.renderDebugItemsItemText(graphics, item);
+//    this.renderDebugItemsItemBox(graphics, item);
+//    this.renderDebugItemsItemCenter(graphics, window, mbr);
+//    this.renderDebugItemsItemText(graphics, item);
+    
     this.renderDebugItemsItemGeometry(graphics, item);
 }
 
@@ -71,12 +71,11 @@ StageRendererDebug.prototype.renderDebugItemsItemText = function(graphics, item)
 StageRendererDebug.prototype.renderDebugItemsItemGeometry = function(graphics, item) {
     var geom = item.geometry;
     if (!geom) return;
+    if (!item.showing) return;
     this.renderDebugItemsItemGeometryGeometry(graphics, geom.sides, "white");
     this.renderDebugItemsItemGeometryGeometry(graphics, geom.bottoms, "white");
     this.renderDebugItemsItemGeometryGeometry(graphics, geom.tops, "white");
-    
-    graphics.ctx.beginPath();
-    geom.projected.drawOutline(graphics.ctx, "white", 1);
+    this.renderDebugItemsItemGeometryGeometry(graphics, geom.fronts, "white");
 }
 
 StageRendererDebug.prototype.renderDebugItemsItemGeometryGeometry = function(graphics, geometry, color) {
@@ -84,6 +83,6 @@ StageRendererDebug.prototype.renderDebugItemsItemGeometryGeometry = function(gra
     for (var i = 0; i < geometry.length; i++) {
         var geom = geometry[i];
         graphics.ctx.beginPath();
-        geom.drawOutline(graphics.ctx, color, .2);
+        geom.drawOutline(graphics.ctx, color, .5);
     }
 }

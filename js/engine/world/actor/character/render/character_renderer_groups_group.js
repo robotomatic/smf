@@ -5,15 +5,25 @@ function CharacterRendererGroupsGroup() {
     this.pathclip = new CharacterRendererGroupsGroupPathClip();
     this.pathlink = new CharacterRendererGroupsGroupPathLink();
     this.polygon = new Polygon();
+    this.debugoutlinecolor = "darkgray";
 }
 
-CharacterRendererGroupsGroup.prototype.renderGroup = function(ctx, groupdef, groupnames, group, color, debugrects) {
+CharacterRendererGroupsGroup.prototype.renderGroup = function(ctx, groupdef, groupnames, group, color, debugrects, debug) {
     
     var points = group.points;
-    var rects = group.rects;
     this.polygon.points.length = 0;
     if (points.length) this.polygon.setPoints(points);
 
+    var rects = group.rects;
+    if (debug) {
+        var rt = rects.length;
+        for (var ri = 0; ri < rt; ri++) {
+            var rr = rects[ri];
+            var nr = geometryfactory.getRectangle(rr.x, rr.y, rr.width, rr.height);
+            debugrects.push(nr);
+        }
+    }
+    
     if (rects && groupdef && groupdef.path) {
         if (groupdef.path == "smooth") this.polygon.filterPoints(rects);
         else if (groupdef.path == "round") this.polygon.filterPoints(rects); 
@@ -32,16 +42,24 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(ctx, groupdef, gro
 
     if (gg.link && gg.link != "skip") {
         if (!this.pathlink.linkpathStart.points.length) {
-            this.pathlink.startLinkPath(this.polygon, gg.color ? gg.color : color, gg.linktype);
+            var cc = debug ? color : gg.color ? gg.color : color;
+            this.pathlink.startLinkPath(this.polygon, cc, gg.linktype);
         } else if (gg.link && this.pathlink.linkpathStart.points.length) {
             this.pathlink.addLinkPath(this.polygon);
         }
     } else {
         if (this.pathlink.linkpathStart.points.length && gg.link != "skip") {
             this.pathlink.endLinkPath(ctx, this.pathlink.linkpathType);
+            
+            if (debug) {
+                var p = this.pathlink.path;
+                ctx.beginPath();
+                p.drawOutline(ctx, this.debugoutlinecolor, 1);
+            }
+            
         }
 
-        ctx.fillStyle = this.renderer.setColor(gg.color ? gg.color : color, this.polygon, ctx);;
+        ctx.fillStyle = debug ? color : this.renderer.setColor(gg.color ? gg.color : color, this.polygon, ctx);
         ctx.beginPath();
 
         if (gg.clip) {
@@ -53,7 +71,11 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(ctx, groupdef, gro
                 this.pathclip.endClipPath(gg, this.polygon, ctx, color);
             }
         } else this.renderer.drawPolygon(gg.path, this.polygon, ctx);
+        
+        if (debug) {
+            ctx.beginPath();
+            this.polygon.drawOutline(ctx, this.debugoutlinecolor, 1);
+        }
     } 
 
-    if (group.debug) debugrects.push(rects);
 }
