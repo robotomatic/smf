@@ -15,7 +15,7 @@ function Item3D(item) {
     this.top = new Polygon();
     this.dotop = false;
     
-    this.dopoly = true;
+    this.dopoly = false;
     
     this.frontcolor = "red";
     this.sidecolor = "red";
@@ -291,9 +291,13 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
     if (this.dopoly && this.item.geometry.visible.front) {
         this.polygon.setPoints(this.item.geometry.projected.points);
         this.polygon.translate(-x, -y, scale);
-        ctx.fillStyle = this.sidecolor;
+        ctx.fillStyle = this.topcolor;
+        ctx.strokeStyle = this.topcolor;
+        ctx.lineWidth = 1;
         ctx.beginPath();
-        this.polygon.draw(ctx);
+        this.polygon.path(ctx);
+        ctx.fill();
+        ctx.stroke();
     }
     
     if (this.item.geometry.visible.front) {
@@ -383,8 +387,22 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
                     this.line.end.y = this.polygon.points[1].y;
                     this.line.path(ctx);
                 }
-            }
+            } 
             ctx.stroke();
+            
+            if (this.dopoly && !this.item.geometry.visible.front) {
+                if (this.polygon.points.length >= 4) {
+                    this.line.start.x = this.polygon.points[2].x;
+                    this.line.start.y = this.polygon.points[2].y;
+                    this.line.end.x = this.polygon.points[3].x;
+                    this.line.end.y = this.polygon.points[3].y;
+                    ctx.strokeStyle = this.topcolor;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    this.line.draw(ctx);
+                }
+            }
+
         }
     }
 }

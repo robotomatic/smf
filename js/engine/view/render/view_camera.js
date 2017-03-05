@@ -117,6 +117,10 @@ ViewCamera.prototype.getCenterPoint = function(now, mbr) {
     this.getCenterPointDrift(now);
     this.getCenterPointShake(now);
     
+    this.center.x = round(this.center.x);
+    this.center.y = round(this.center.y);
+    this.center.z = round(this.center.z);
+    
     mbr.x = this.center.x - (mbr.width / 2);
     mbr.y = this.center.y - (mbr.height / 2);
     mbr.z = this.center.z;
