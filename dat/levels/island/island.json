@@ -8,10 +8,13 @@
             "file" : "dat/levels/island/layers/level.json"
         },
         
+        "sky" : {
+            "file" : "dat/levels/island/layers/sky.json"
+        },
+        
         "liquid" : {
             "file" : "dat/levels/island/layers/liquid.json"
         },
-        
         
         "ground" : {
             "file" : "dat/levels/island/layers/ground.json"
