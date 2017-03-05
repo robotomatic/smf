@@ -31,7 +31,6 @@ function Item3D(item) {
 
 Item3D.prototype.createItem3D = function(renderer, window, floodlevel = null) {
     
-    // todo: fix this shit
     this.item.geometry.projected.points.length = 0;
     
     if (this.item.geometry.fronts.length) this.item.geometry.fronts[0].points.length = 0;
@@ -67,7 +66,13 @@ Item3D.prototype.createItem3D = function(renderer, window, floodlevel = null) {
     if (floodlevel) {
         var tpt = this.polygon.points.length;
         for (var i = 0; i < tpt; i++) {
-            if (this.polygon.points[i].y > floodlevel) this.polygon.points[i].y = floodlevel;
+            if (this.polygon.points[i].y > floodlevel) {
+                
+                
+                // floodlevel isn't translated?
+                
+                this.polygon.points[i].y = floodlevel;
+            }
         }
     }
     this.projectItem3D(depth, scale, x, y, window);
@@ -299,7 +304,7 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
         ctx.lineWidth = lw;
         ctx.beginPath();
         if (this.item.geometry.visible.left) {
-            if (this.polygon.points.length > 2) {
+            if (this.polygon.points.length >= 4) {
                 this.line.start.x = this.polygon.points[3].x;
                 this.line.start.y = this.polygon.points[3].y;
                 this.line.end.x = this.polygon.points[0].x;
@@ -308,7 +313,7 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
             }
         }
         if (this.item.geometry.visible.right) {
-            if (this.polygon.points.length > 1) {
+            if (this.polygon.points.length >= 3) {
                 this.line.start.x = this.polygon.points[1].x;
                 this.line.start.y = this.polygon.points[1].y;
                 this.line.end.x = this.polygon.points[2].x;
@@ -350,7 +355,7 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
             ctx.lineWidth = lw;
             ctx.beginPath();
             if (this.item.geometry.visible.left) {
-                if (this.polygon.points.length > 2) {
+                if (this.polygon.points.length >= 4) {
                     this.line.start.x = this.polygon.points[3].x;
                     this.line.start.y = this.polygon.points[3].y;
                     this.line.end.x = this.polygon.points[0].x;
@@ -359,7 +364,7 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
                 }
             }
             if (this.item.geometry.visible.right) {
-                if (this.polygon.points.length > 1) {
+                if (this.polygon.points.length >= 3) {
                     this.line.start.x = this.polygon.points[1].x;
                     this.line.start.y = this.polygon.points[1].y;
                     this.line.end.x = this.polygon.points[2].x;
@@ -368,7 +373,7 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
                 }
             }
             if (this.item.geometry.visible.back) {
-                if (this.polygon.points.length > 0) {
+                if (this.polygon.points.length >= 2) {
                     this.line.start.x = this.polygon.points[0].x;
                     this.line.start.y = this.polygon.points[0].y;
                     this.line.end.x = this.polygon.points[1].x;

@@ -40,6 +40,7 @@ GameLoop.prototype.resize = function() {
 }
 
 GameLoop.prototype.start = function() {
+    this.game.init();
     this.running = true;
     this.run();
 }

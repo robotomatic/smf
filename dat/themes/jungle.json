@@ -261,7 +261,6 @@
             "platform" : {
                 "name" : "platform-1",
                 "itemtype" : "group",
-                "top" : false,
                 "material" : "ground",
                 "items" : [
                     {

@@ -63,8 +63,6 @@ function Layer() {
         action : null
     };        
 
-    this.flood = null;
-    
     this.colliders = new Array();
     
 }
@@ -99,23 +97,6 @@ Layer.prototype.loadJson = function(json) {
 
     return this;
 }
-
-Layer.prototype.buildItems = function(renderer) { 
-    var layerbuilder = new LayerBuilder();
-    layerbuilder.buildItems(this.items, renderer, this);
-    this.flood = layerbuilder.flood;
-}
-
-Layer.prototype.buildColliders = function() { 
-    if (this.collide === false || this.draw === false) return;
-    for (var i = 0; i < this.items.items.length; i++) {
-        var item = this.items.items[i];
-        if (item.collide === false) continue;
-        if (item.draw === false) continue;
-        this.colliders[this.colliders.length] = item;
-    }
-}
-
 
 
 Layer.prototype.update = function(now, delta, renderer) { 

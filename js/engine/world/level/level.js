@@ -23,8 +23,6 @@ function Level(width, height) {
     this.rect = new Rectangle(0, 0, 0, 0);
     this.text = new Text(0, 0, "");
     
-    this.flood = false;
-    
     this.colliders = new Array();
     
 }
@@ -80,37 +78,8 @@ Level.prototype.loadTheme = function(themename, theme, materials) {
         var item = theme.items[itemname];
         rt.items[itemname] = JSON.parse(JSON.stringify(item));
     }
-    
-    
-    this.buildItems();
-    this.buildColliders();
 }
 
-Level.prototype.buildItems = function() {
-    if (!this.layers) return;
-    var t = this.layerkeys.length;
-    for (var i = 0; i < t; i++) {
-        var layer = this.layers[this.layerkeys[i]];
-        layer.buildItems(this.itemrenderer);
-        if (layer.flood) this.flood = layer.flood;
-    }
-}
-
-Level.prototype.buildColliders = function() {
-    this.colliders.length = 0;
-    if (!this.layers) return;
-    var t = this.layerkeys.length;
-    for (var i = 0; i < t; i++) {
-        var layer = this.layers[this.layerkeys[i]];
-        this.buildLayerColliders(layer);
-    }
-}
-
-Level.prototype.buildLayerColliders = function(layer) {
-    if (layer.collider === false) return;
-    layer.buildColliders();
-    this.colliders = this.colliders.concat(layer.colliders);
-}
     
 Level.prototype.update = function(now, delta) {
     if (!this.layers) return;

@@ -163,14 +163,12 @@ Item.prototype.initialize = function() {
         this.keys = Object.keys(this.parts);
         this.getPolygon();
     }
-    if (!this.width || !this.height) {
-        this.getMbr();
-        if (this.mbr) {
-            this.width = this.mbr.width;
-            this.height = this.mbr.height;
-        }
+    this.getMbr();
+    if (this.mbr) {
+        this.width = this.mbr.width;
+        this.height = this.mbr.height;
     }
-    this.id = this.name + "_" + this.itemtype + "_" + this.x + "_" + this.y + "_" + this.z;
+    this.id = this.name + "_" + this.itemtype + "_" + this.x + "_" + this.y + "_" + this.z + "_" + this.width + "_" + this.height + "_" +  this.depth;
 }
 
 

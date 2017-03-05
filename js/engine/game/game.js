@@ -14,6 +14,10 @@ Game.prototype.setViews = function(views) {
     return this.views; 
 }
 
+Game.prototype.init = function(now) { 
+    this.stage.init();
+}
+
 Game.prototype.update = function(now, delta) { 
     this.stage.update(now, delta);
     if (!this.views) return;

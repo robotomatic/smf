@@ -43,7 +43,6 @@ GameControllerMenuMain.prototype.load = function() {
 
 GameControllerMenuMain.prototype.loadLevel = function() { 
     this.loop.loadLevel(this.level);
-    this.level.buildColliders();
 }
 
 GameControllerMenuMain.prototype.loadCharacters = function() { for (var charname in this.characters.characters) this.loadCharacter(charname); }

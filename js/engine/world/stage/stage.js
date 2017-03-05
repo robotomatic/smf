@@ -5,6 +5,7 @@ function Stage(level, players, npcs) {
     this.players = players;
     this.npcs = npcs;
     this.physics = new Physics();
+    this.stagebuilder = new StageBuilder();
     this.stagerenderer = new StageRenderer();
 }
 
@@ -33,6 +34,10 @@ Stage.prototype.setPhysics = function(physics) {
 }
 Stage.prototype.getPhysics = function() { return this.physics; }
 
+Stage.prototype.init = function(now) { 
+    this.stagebuilder.buildStage(now, this);
+}
+    
 Stage.prototype.update = function(now, delta) { 
     this.updateLevel(now, delta);
     this.updateNPCs(now, delta);

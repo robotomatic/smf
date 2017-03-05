@@ -6,16 +6,17 @@ function StageRendererRender(renderitems, itemcache) {
     this.doblur = true;
 }
 
-StageRendererRender.prototype.renderRender = function(now, graphics, camera, stage, mbr, window, flood) {
-    this.renderRenderItems(now, graphics, camera, stage, mbr, window, flood);
+StageRendererRender.prototype.renderRender = function(now, graphics, camera, stage, mbr, window) {
+    this.renderRenderItems(now, graphics, camera, stage, mbr, window);
 }
 
-StageRendererRender.prototype.renderRenderItems = function(now, graphics, camera, stage, mbr, window, flood) {
+StageRendererRender.prototype.renderRenderItems = function(now, graphics, camera, stage, mbr, window) {
     this.renderitems.all.sort(sortByDistance);
     var renderer = stage.level.itemrenderer;
     var t = this.renderitems.all.length;
     for (var i = 0; i < t; i++) {
         var renderitem = this.renderitems.all[i];
+        if (!renderitem.showing) continue;
         var wd = round(renderitem.z - mbr.z);
         if (renderitem.type == "item") this.renderItem(now, window, graphics, camera, renderitem.item, renderer, wd);
         else if (renderitem.type == "player") this.renderPlayer(now, window, graphics, camera, renderitem.item, wd);

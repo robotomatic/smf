@@ -2,35 +2,32 @@
 
 function StageFlood() {
     this.doflood = false;
-    this.flood = {
-        level : 0,
-        y : 0,
-        amount : 0.1,
-        max : 5,
-        min : -2,
-        down : true
-    }
-    this.ready = false;
+    this.level = 0;
+    this.y = 0;
+    this.amount = 1;
+    this.max = 5;
+    this.min = -2;
+    this.down = true;
+    this.waterline = 0;
 }
 
-
-
 StageFlood.prototype.init = function(level) {
-    this.flood.y = level;
-    if (this.flood.down) {
-        this.flood.level += this.flood.amount;
-        if (this.flood.level > this.flood.max) {
-            this.flood.down = false;
-        }
-    } else {
-        this.flood.level -= this.flood.amount;
-        if (this.flood.level < this.flood.min) {
-            this.flood.down = true;
-        }
-    }
-    this.ready = true;
+    this.y = level;
+    this.doflood = true;
 }
 
 StageFlood.prototype.getFlood = function() {
-    return this.ready ? this.flood.level + this.flood.y : null;
+    if (!this.doflood) return null;
+    if (this.down) {
+        this.level += this.amount;
+        if (this.level > this.max) {
+            this.down = false;
+        }
+    } else {
+        this.level -= this.amount;
+        if (this.level < this.min) {
+            this.down = true;
+        }
+    }
+    this.waterline = this.y + this.level;
 }
