@@ -4,32 +4,9 @@ function StageBuilderHSR() {
 }
 
 StageBuilderHSR.prototype.removeHiddenSurfaces = function(stage) { 
-    var items = this.getStageItems(stage);
-    for (var i = 0; i < items.length; i++) {
-        this.removeItemItemsHiddenSurfaces(items[i], items);
+    for (var i = 0; i < stage.items.length; i++) {
+        this.removeItemItemsHiddenSurfaces(stage.items[i], stage.items);
     }
-}
-
-StageBuilderHSR.prototype.getStageItems = function(stage) {
-    var itemsout = new Array();
-    var level = stage.level;
-    var t = level.layers.length;
-    for (var i = 0; i < t; i++) {
-        var layer = level.layers[i];
-        if (layer.draw === false) continue;
-        itemsout = this.getStageLayerItems(layer, itemsout);
-    }
-    return itemsout;
-}
-
-StageBuilderHSR.prototype.getStageLayerItems = function(layer, itemsout) {
-    var t = layer.items.items.length;
-    for (var i = 0; i < t; i++) {
-        var item = layer.items.items[i];
-        if (item.draw == false) continue;
-        itemsout.push(item);
-    }
-    return itemsout;
 }
 
 StageBuilderHSR.prototype.removeItemItemsHiddenSurfaces = function(item, items) { 

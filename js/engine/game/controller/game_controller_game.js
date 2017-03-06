@@ -69,7 +69,7 @@ GameControllerGame.prototype.loadLevel = function() {
     var numplayers = players ?  Object.keys(players).length : 1;
     
     
-    numplayers = 3;
+    numplayers = 1;
     for (var i = 0; i < numplayers; i++) {
 
         var charname = "";
@@ -162,7 +162,9 @@ GameControllerGame.prototype.start = function() {
 }
 
 GameControllerGame.prototype.startPlayers = function() {
-    for (var i = 0; i < this.players.players.length; i++) this.level.resetPlayer(this.players.players[i], 1);
+    for (var i = 0; i < this.players.players.length; i++) {
+        this.loop.game.stage.stagecollider.resetPlayer(this.players.players[i], 1);
+    }
 }
 
 GameControllerGame.prototype.stop = function() {
@@ -175,5 +177,5 @@ GameControllerGame.prototype.resize = function() {
 }
 
 GameControllerGame.prototype.playerDied = function(player) {
-    this.level.resetPlayer(player);
+    this.loop.game.stage.stagecollider.resetPlayer(player);
 }

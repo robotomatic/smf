@@ -22,9 +22,6 @@ function Level(width, height) {
     
     this.rect = new Rectangle(0, 0, 0, 0);
     this.text = new Text(0, 0, "");
-    
-    this.colliders = new Array();
-    
 }
 
 Level.prototype.loadJson = function(json) { 
@@ -91,76 +88,3 @@ Level.prototype.update = function(now, delta) {
 Level.prototype.reset = function(now) {
     this.itemrenderer.reset();
 }
-
-
-
-
-// todo: move collision code to level_collider or item_collider or something or both
-
-
-
-
-
-    
-    
-    
-    
-
-
-
-Level.prototype.collidePlayer = function(player) {
-    if (!this.layers) return;
-    player.resetCollisions();
-    var t = this.layerkeys.length;
-    for (var i = 0; i < t; i++) {
-        var l = this.layerkeys[i];
-        var layer = this.layers[l];
-        layer.collidePlayer(player, this.width, this.height);
-    }
-    
-    if (player.controller.x < 0) player.controller.x = 0;
-    if (player.controller.x + player.controller.width > this.width) player.controller.x = this.width - player.controller.width;
-    if (player.controller.y < 0) player.controller.y = 0;
-    if (player.controller.y + player.controller.height > this.height) {
-        player.info.die();
-    }
-
-    player.updateLevelCollisions();
-}
-
-
-
-
-
-
-
-
-Level.prototype.resetPlayer = function(player, timeout) {
-    
-    player.controller.stop();
-
-    var t = this.colliders.length;
-    
-    if (t == 0) return;
-    
-    var spawnitem = null;
-    while (spawnitem == null) {
-        var r = random(0, t - 1);
-        spawnitem = this.colliders[r];
-    }
-    
-    var box = spawnitem.getMbr();
-    var rpx = random(box.x + 10, box.x + box.width - 10);
-    var rpy = box.y - 20;
-    var rpz = random(10, spawnitem.depth - 10) + spawnitem.z;
-    player.respawn(rpx, rpy, rpz);
-    player.reset();
-}
-
-
-
-
-
-
-
-

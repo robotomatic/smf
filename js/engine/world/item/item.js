@@ -1,10 +1,12 @@
 "use strict";
 
-function Item() {
+function Item(json) {
     
     this.id = "";
 
     this.name = "";
+    
+    this.json = json;
     
     this.x = 0;
     this.y = 0;
@@ -15,7 +17,7 @@ function Item() {
     this.location = new Point(0, 0);
     
     
-    this.item3D = new Item3D(this);
+    this.item3D = new Item3D();
     this.projectedlocation = new Point(0, 0);
     this.projectedlocation_backup = new Point(0, 0);
     
@@ -115,10 +117,14 @@ function Item() {
     this.imagepad = 50;
     
     this.showing = false;
+    
+    if (json) this.loadJson(json);
 }
 
 Item.prototype.loadJson = function(json) {
 
+    this.json = json;
+    
     var name = json.name ? json.name : "default";
     this.name = name;
     
@@ -159,6 +165,8 @@ Item.prototype.loadJson = function(json) {
 
 
 Item.prototype.initialize = function() {
+    this.item3D.item = this;
+    this.polygon.points.length = 0;
     if (this.parts) {
         this.keys = Object.keys(this.parts);
         this.getPolygon();

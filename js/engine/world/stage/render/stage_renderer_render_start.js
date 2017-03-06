@@ -17,22 +17,9 @@ StageRendererStart.prototype.getRenderItems = function(mbr, window, graphics, ca
 }
 
 StageRendererStart.prototype.getRenderItemsStageItems = function(mbr, window, cp, graphics, stage) {
-    this.getRenderItemsStageLevelItems(mbr, window, cp, graphics, stage, stage.level);
-}
-
-StageRendererStart.prototype.getRenderItemsStageLevelItems = function(mbr, window, cp, graphics, stage, level) {
-    var t = level.layers.length;
+    var t = stage.items.length;
     for (var i = 0; i < t; i++) {
-        var layer = level.layers[i];
-        if (layer.draw === false) continue;
-        this.getRenderItemsStageLevelLayerItems(mbr, window, cp, graphics, stage, layer);
-    }
-}
-
-StageRendererStart.prototype.getRenderItemsStageLevelLayerItems = function(mbr, window, cp, graphics, stage, layer) {
-    var t = layer.items.items.length;
-    for (var i = 0; i < t; i++) {
-        var item = layer.items.items[i];
+        var item = stage.items[i];
         if (item.draw == false) continue;
         this.getRenderItemsStageLevelLayerItemsItem(mbr, window, cp, graphics, stage, item);
     }

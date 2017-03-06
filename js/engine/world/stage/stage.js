@@ -2,11 +2,13 @@
 
 function Stage(level, players, npcs) {
     this.level = level;
+    this.items = new Array();
     this.players = players;
     this.npcs = npcs;
     this.physics = new Physics();
     this.stagebuilder = new StageBuilder();
     this.stagerenderer = new StageRenderer();
+    this.stagecollider = new StageCollider();
 }
 
 Stage.prototype.setLevel = function(level) { 
@@ -42,6 +44,7 @@ Stage.prototype.update = function(now, delta) {
     this.updateLevel(now, delta);
     this.updateNPCs(now, delta);
     this.updatePlayers(now, delta);
+    this.stagecollider.collide(this);
 }
 
 Stage.prototype.updateLevel = function(now, delta) { this.level.update(now, delta); }
@@ -56,15 +59,7 @@ Stage.prototype.updatePlayers = function(now, delta) {
 Stage.prototype.updatePlayer = function(now, delta, player) {
     if (!player) return;
     player.update(now, delta, this.physics);
-    this.collide(player);
 }
-
-Stage.prototype.collide = function(player) {
-    this.collideWithPlayers(player);
-    this.collideWithLevel(player);
-}
-Stage.prototype.collideWithPlayers = function(player) { if (this.players) this.players.collidePlayer(player); } 
-Stage.prototype.collideWithLevel = function(player) { if (this.level) this.level.collidePlayer(player); }
 
 Stage.prototype.render = function(now, graphics, camera, mbr, window) { 
     this.stagerenderer.render(now, graphics, camera, this, mbr, window);

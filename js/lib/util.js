@@ -3,6 +3,10 @@
 var DATE_NOW = new Date();    
 
 
+function cloneObject(o) {
+    return JSON.parse(JSON.stringify(o));
+}
+
 function clearRect(ctx, x, y, width, height) { 
     ctx.clearRect(x, y, width, height); 
 }
