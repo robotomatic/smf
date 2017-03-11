@@ -56,17 +56,19 @@ StageBuilderChunk.prototype.chunkItemX = function(stage, item) {
         // todo
     }
     
-    var newparts = new Array();
-    for (var i = 0; i < item.parts.length; i++) {
-        var part = item.parts[i];
-        if (part.x > this.granularity.x) continue;
-        if (part.x + part.width > this.granularity.x) {
-            var d = part.x + part.width - this.granularity.x;
-            part.width -= d;
+    if (item.parts) {
+        var newparts = new Array();
+        for (var i = 0; i < item.parts.length; i++) {
+            var part = item.parts[i];
+            if (part.x > this.granularity.x) continue;
+            if (part.x + part.width > this.granularity.x) {
+                var d = part.x + part.width - this.granularity.x;
+                part.width -= d;
+            }
+            newparts.push(part);
         }
-        newparts.push(part);
+        item.parts = newparts;
     }
-    item.parts = newparts;
     item.initialize();
 }
 
