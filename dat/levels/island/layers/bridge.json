@@ -55,99 +55,256 @@
                 "x" : 1250,
                 "y" : 960,
                 "z" : 1400,
-                "depth" : 100,
+                "depth" : 10,
                 "itemtype" : "platform-top",
                 "bottom" : true,
+                "draw" : true,
                 "parts" : [
                     {
                         "x": 0,
                         "y": 0,
-                        "width": 100,
+                        "width": 10,
                         "height": 10
                     }
                 ]
             },
             {
-                "x" : 1350,
+                "x" : 1260,
                 "y" : 960,
                 "z" : 1400,
-                "depth" : 100,
+                "depth" : 10,
                 "itemtype" : "platform-top",
                 "bottom" : true,
                 "parts" : [
                     {
                         "x": 0,
                         "y": 0,
-                        "width": 100,
+                        "width": 50,
                         "height": 10
                     }
                 ]
             },
+            {
+                "x" : 1310,
+                "y" : 960,
+                "z" : 1400,
+                "depth" : 10,
+                "draw" : true,
+                "itemtype" : "platform-top",
+                "bottom" : true,
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 10,
+                        "height": 10
+                    }
+                ]
+            },
+            {
+                "x" : 1320,
+                "y" : 960,
+                "z" : 1400,
+                "depth" : 10,
+                "itemtype" : "platform-top",
+                "bottom" : true,
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 60,
+                        "height": 10
+                    }
+                ]
+            },
+            {
+                "x" : 1380,
+                "y" : 960,
+                "z" : 1400,
+                "depth" : 10,
+                "itemtype" : "platform-top",
+                "bottom" : true,
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 10,
+                        "height": 10
+                    }
+                ]
+            },
+            {
+                "x" : 1390,
+                "y" : 960,
+                "z" : 1400,
+                "depth" : 10,
+                "itemtype" : "platform-top",
+                "bottom" : true,
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 10
+                    }
+                ]
+            },
+            {
+                "x" : 1440,
+                "y" : 960,
+                "z" : 1400,
+                "draw" : true,
+                "depth" : 10,
+                "itemtype" : "platform-top",
+                "bottom" : true,
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 10,
+                        "height": 10
+                    }
+                ]
+            },
+            
+            
+            
+            
             {
                 "x" : 1250,
                 "y" : 960,
-                "z" : 1500,
-                "depth" : 100,
+                "z" : 1410,
+                "depth" : 280,
                 "itemtype" : "platform-top",
                 "bottom" : true,
                 "parts" : [
                     {
                         "x": 0,
                         "y": 0,
-                        "width": 100,
+                        "width": 200,
                         "height": 10
                     }
                 ]
             },
-            {
-                "x" : 1350,
-                "y" : 960,
-                "z" : 1500,
-                "depth" : 100,
-                "itemtype" : "platform-top",
-                "bottom" : true,
-                "parts" : [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "width": 100,
-                        "height": 10
-                    }
-                ]
-            },
+            
+            
+            
+            
             {
                 "x" : 1250,
                 "y" : 960,
-                "z" : 1600,
-                "depth" : 100,
+                "z" : 1690,
+                "depth" : 10,
                 "itemtype" : "platform-top",
                 "bottom" : true,
+                "draw" : true,
                 "parts" : [
                     {
                         "x": 0,
                         "y": 0,
-                        "width": 100,
+                        "width": 10,
                         "height": 10
                     }
                 ]
             },
             {
-                "x" : 1350,
+                "x" : 1260,
                 "y" : 960,
-                "z" : 1600,
-                "depth" : 100,
+                "z" : 1690,
+                "depth" : 10,
                 "itemtype" : "platform-top",
                 "bottom" : true,
                 "parts" : [
                     {
                         "x": 0,
                         "y": 0,
-                        "width": 100,
+                        "width": 50,
                         "height": 10
                     }
                 ]
             },
-
+            {
+                "x" : 1310,
+                "y" : 960,
+                "z" : 1690,
+                "depth" : 10,
+                "draw" : true,
+                "itemtype" : "platform-top",
+                "bottom" : true,
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 10,
+                        "height": 10
+                    }
+                ]
+            },
+            {
+                "x" : 1320,
+                "y" : 960,
+                "z" : 1690,
+                "depth" : 10,
+                "itemtype" : "platform-top",
+                "bottom" : true,
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 60,
+                        "height": 10
+                    }
+                ]
+            },
+            {
+                "x" : 1380,
+                "y" : 960,
+                "z" : 1690,
+                "depth" : 10,
+                "itemtype" : "platform-top",
+                "bottom" : true,
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 10,
+                        "height": 10
+                    }
+                ]
+            },
+            {
+                "x" : 1390,
+                "y" : 960,
+                "z" : 1690,
+                "depth" : 10,
+                "itemtype" : "platform-top",
+                "bottom" : true,
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 10
+                    }
+                ]
+            },
+            {
+                "x" : 1440,
+                "y" : 960,
+                "z" : 1690,
+                "draw" : true,
+                "depth" : 10,
+                "itemtype" : "platform-top",
+                "bottom" : true,
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 10,
+                        "height": 10
+                    }
+                ]
+            },
             
             
 
@@ -168,6 +325,7 @@
                     }
                 ]
             },
+            
             {
                 "x" : 1250,
                 "y" : 940,

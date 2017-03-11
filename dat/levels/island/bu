@@ -1,0 +1,20 @@
+{
+    "name" : "island",
+    "width" : 5000,
+    "height" : 1200,
+    "debug" : false,
+    "layers" : {
+        "level" : {
+            "file" : "dat/levels/island/layers/level.json"
+        },
+        
+        "liquid" : {
+            "file" : "dat/levels/island/layers/liquid.json"
+        },
+        "temp" : {
+            "file" : "dat/levels/island/layers/temp.json"
+        }
+        
+    }
+ }
+ 

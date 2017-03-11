@@ -9,12 +9,16 @@ function Item3D(item) {
     this.np1 = new Point(0, 0);
     this.np2 = new Point(0, 0);
     this.line = new Line(new Point(0, 0), new Point(0, 0));
+    this.polyline = new Polyline();
     this.polygon = new Polygon();
     this.projectedpolygon = new Polygon();
     this.polytop = new Polygon();
     this.top = new Polygon();
-    this.dotop = false;
+
+    this.left = false;
+    this.right = false;
     
+    this.dotop = false;
     this.dopoly = false;
     
     this.frontcolor = "red";
@@ -66,10 +70,25 @@ Item3D.prototype.createItem3D = function(renderer, window, flood = null) {
     
     
     if (flood) {
+        
+        var fw = flood.waterline;
+        
         var tpt = this.item.polygon.points.length;
         for (var i = 0; i < tpt; i++) {
-            if (this.item.y + this.item.polygon.points[i].y >= flood.y) {
-                var ddd = (this.item.y + this.item.polygon.points[i].y) - flood.waterline;
+            var ppp = this.item.polygon.points[i];
+            
+            //      
+            // TODO: Need to project waterline
+            //
+            /*
+            var wc = window.getCenter();
+            var h = (wc.y - y) * scale;
+            var depth = box.z;
+            var fw = projectPoint3DCoord(flood.waterline, depth, h);
+            */
+
+            if (this.item.y + ppp.y >= fw) {
+                var ddd = (this.item.y + ppp.y) - fw;
                 var ds = ddd * bs;
                 this.polygon.points[i].y -= ds;
             }
@@ -140,12 +159,23 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
         }
         view[0].setPoints(this.projectedpolygon.getPoints());
     }
-    
-    this.p1.x = round(this.polygon.points[t - 1].x);
-    this.p1.y = round(this.polygon.points[t - 1].y);
-    this.p2.x = round(this.polygon.points[0].x);
-    this.p2.y = round(this.polygon.points[0].y);
 
+    var px = (wc.x - x) * scale;
+    this.left = this.p1.x > px;
+    this.right = !this.left;
+    
+    if (this.left) {
+        this.p1.x = round(this.polygon.points[t - 1].x);
+        this.p1.y = round(this.polygon.points[t - 1].y);
+        this.p2.x = round(this.polygon.points[0].x);
+        this.p2.y = round(this.polygon.points[0].y);
+    } else {
+        this.p1.x = round(this.polygon.points[1].x);
+        this.p1.y = round(this.polygon.points[1].y);
+        this.p2.x = round(this.polygon.points[2].x);
+        this.p2.y = round(this.polygon.points[2].y);
+    }
+    
     if (shouldProject(this.p1, this.p2, scale, x, y, wc, this.cp)) {
         this.projectedpolygon.points.length = 0;
         this.projectedpolygon = project3D(this.p1, this.p2, depth, this.projectedpolygon, scale, x, y, wc, this.np1, this.np2);
@@ -154,7 +184,10 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
             var p = new Polygon();
             this.item.geometry.sides[0] = p;
         }
+        
         this.item.geometry.sides[0].setPoints(this.projectedpolygon.getPoints());
+    } else {
+        if (this.item.geometry.sides && this.item.geometry.sides.length) this.item.geometry.sides[0].points.length = 0;
     }
     
     var t = this.polygon.points.length;
@@ -200,10 +233,10 @@ Item3D.prototype.getItemProjectedGeometry = function() {
         if (this.item.geometry.sides[0].points[0].x < this.item.geometry.fronts[0].points[0].x) left = true;
         else right = true;
     }
-    var top = this.item.geometry.tops.length > 0 && this.item.top !== false && this.item.geometry.visible.top;
+    var top = this.item.geometry.tops.length > 0 && this.item.top !== false && this.item.geometry.visible.top.visible;
     var bottom = this.item.geometry.bottoms.length > 0 && this.item.bottom !== false;
     this.item.geometry.projected.points.length = 0;
-    if (left && this.item.geometry.visible.left) {
+    if (left && this.item.geometry.visible.left.visible) {
         this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[0]);
         if (top && this.item.geometry.tops.length && this.item.geometry.tops[0].points.length &&
             this.item.geometry.sides.length && this.item.geometry.sides[0].points.length == 4 &&
@@ -226,7 +259,7 @@ Item3D.prototype.getItemProjectedGeometry = function() {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
         }
-    } else if (right && this.item.geometry.visible.right) {
+    } else if (right && this.item.geometry.visible.right.visible) {
         this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
         if (top && this.item.geometry.tops.length && this.item.geometry.tops[0].points.length &&
             this.item.geometry.sides.length && this.item.geometry.sides[0].points.length == 4 &&
@@ -237,7 +270,7 @@ Item3D.prototype.getItemProjectedGeometry = function() {
             this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[2]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
         } else if (bottom && this.item.geometry.bottoms.length && this.item.geometry.bottoms[0].points.length && 
-            this.item.geometry.visible.front && this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
+            this.item.geometry.visible.front.visible && this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[1]);
@@ -251,23 +284,23 @@ Item3D.prototype.getItemProjectedGeometry = function() {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
         }
     } else {
-        if (top && this.item.geometry.visible.top && this.item.geometry.tops.length && this.item.geometry.tops[0].points.length && 
-            this.item.geometry.visible.front && this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
+        if (top && this.item.geometry.visible.top.visible && this.item.geometry.tops.length && this.item.geometry.tops[0].points.length && 
+            this.item.geometry.visible.front.visible && this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
-        } else if (bottom && this.item.geometry.visible.bottom && this.item.geometry.bottoms.length && this.item.geometry.bottoms[0].points.length &&
-            this.item.geometry.visible.front && this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
+        } else if (bottom && this.item.geometry.visible.bottom.visible && this.item.geometry.bottoms.length && this.item.geometry.bottoms[0].points.length &&
+            this.item.geometry.visible.front.visible && this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
             this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
-        } else if (this.item.geometry.visible.front && this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
+        } else if (this.item.geometry.visible.front.visible && this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
             this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
@@ -280,6 +313,7 @@ Item3D.prototype.getItemProjectedGeometry = function() {
 
 
 Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
+
     if (!renderer.shouldThemeProject(this.item)) return;
     if (this.item.draw == false) return;
 
@@ -288,7 +322,7 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
     var x = this.item.projectedlocation.x;
     var y = this.item.projectedlocation.y;
 
-    if (this.dopoly && this.item.geometry.visible.front) {
+    if (this.dopoly && this.item.geometry.visible.front.visible) {
         this.polygon.setPoints(this.item.geometry.projected.points);
         this.polygon.translate(-x, -y, scale);
         ctx.fillStyle = this.topcolor;
@@ -300,17 +334,17 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
         ctx.stroke();
     }
     
-    if (this.item.geometry.visible.front) {
+    if (this.item.geometry.visible.front.visible) {
         //
         // todo: this can eventually go -- item cache will draw fronts
         //
-        this.renderItemParts3D(ctx, this.item.geometry.fronts, this.frontcolor, x, y, scale, false);
+        this.renderItemParts3D(ctx, this.item.geometry.fronts, this.frontcolor, x, y, scale);
         var lc = this.sidecolor;
         var lw = 1;
         ctx.strokeStyle = lc;
         ctx.lineWidth = lw;
         ctx.beginPath();
-        if (this.item.geometry.visible.left) {
+        if (this.item.geometry.visible.left.visible) {
             if (this.polygon.points.length >= 4) {
                 this.line.start.x = this.polygon.points[3].x;
                 this.line.start.y = this.polygon.points[3].y;
@@ -319,7 +353,7 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
                 this.line.path(ctx);
             }
         }
-        if (this.item.geometry.visible.right) {
+        if (this.item.geometry.visible.right.visible) {
             if (this.polygon.points.length >= 3) {
                 this.line.start.x = this.polygon.points[1].x;
                 this.line.start.y = this.polygon.points[1].y;
@@ -331,16 +365,9 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
         ctx.stroke();
     }
     
-    if (this.item.geometry.visible.left || this.item.geometry.visible.right) {
+    if (this.item.geometry.visible.left.visible || this.item.geometry.visible.right.visible) {
         if (this.item.geometry.sides.length && this.item.geometry.sides[0].points.length) {
-            var sides = true;
-            if (this.item.geometry.sides[0] && this.item.geometry.sides[0].points[0] && 
-                this.item.geometry.fronts[0] && this.item.geometry.fronts[0].points[0] && 
-                this.item.geometry.sides[0].points[0].x < this.item.geometry.fronts[0].points[0].x) {
-                if (!this.item.geometry.visible.left) sides = false;
-            } else {
-                if (!this.item.geometry.visible.right) sides = false;
-            }
+            var sides = ((this.left && this.item.geometry.visible.left.visible) || (this.right && this.item.geometry.visible.right.visible));
             if (sides) {
                 this.renderItemParts3D(ctx, this.item.geometry.sides, this.sidecolor, x, y, scale);
             }
@@ -348,20 +375,30 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
     }
     
     if (this.item.bottom === true) {
-        if (this.item.geometry.visible.bottom) {
+        if (this.item.geometry.visible.bottom.visible) {
             this.renderItemParts3D(ctx, this.item.geometry.bottoms, this.bottomcolor, x, y, scale);
         }
     }
     
     if (this.dotop) {
-        if (this.item.geometry.visible.top) {
-            this.renderItemParts3D(ctx, this.item.geometry.tops, this.topcolor, x, y, scale, false);
+        if (this.item.geometry.visible.top.visible) {
+            
+            
+            var outline = true;
+            var dt = true;
+            var fade = false;
+            // todo: only draw outline on contiguous surfaces - tile of same type must exist on outline side
+            
+            if (fade) ctx.globalAlpha = .8;
+            
+            this.renderItemParts3D(ctx, this.item.geometry.tops, this.topcolor, x, y, scale, outline, dt);
             var lc = this.sidecolor;
             var lw = 1;
             ctx.strokeStyle = lc;
             ctx.lineWidth = lw;
             ctx.beginPath();
-            if (this.item.geometry.visible.left) {
+            
+            if (this.item.geometry.visible.left.visible) {
                 if (this.polygon.points.length >= 4) {
                     this.line.start.x = this.polygon.points[3].x;
                     this.line.start.y = this.polygon.points[3].y;
@@ -370,7 +407,8 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
                     this.line.path(ctx);
                 }
             }
-            if (this.item.geometry.visible.right) {
+            
+            if (this.item.geometry.visible.right.visible) {
                 if (this.polygon.points.length >= 3) {
                     this.line.start.x = this.polygon.points[1].x;
                     this.line.start.y = this.polygon.points[1].y;
@@ -379,7 +417,8 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
                     this.line.path(ctx);
                 }
             }
-            if (this.item.geometry.visible.back) {
+            
+            if (this.item.geometry.visible.back.visible) {
                 if (this.polygon.points.length >= 2) {
                     this.line.start.x = this.polygon.points[0].x;
                     this.line.start.y = this.polygon.points[0].y;
@@ -390,7 +429,7 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
             } 
             ctx.stroke();
             
-            if (this.dopoly && !this.item.geometry.visible.front) {
+            if (this.dopoly && !this.item.geometry.visible.front.visible) {
                 if (this.polygon.points.length >= 4) {
                     this.line.start.x = this.polygon.points[2].x;
                     this.line.start.y = this.polygon.points[2].y;
@@ -403,6 +442,7 @@ Item3D.prototype.renderItem3D = function(now, renderer, ctx, scale) {
                 }
             }
 
+            if (fade) ctx.globalAlpha = 1;
         }
     }
 }
@@ -439,11 +479,9 @@ Item3D.prototype.getColors = function(renderer) {
     this.frontcolor = themecolor.front ? themecolor.front : this.sidecolor;
 }
     
-Item3D.prototype.renderItemParts3D = function(ctx, parts, color, x, y, scale) {
+Item3D.prototype.renderItemParts3D = function(ctx, parts, color, x, y, scale, outline = true, fill = true) {
     ctx.beginPath();
     ctx.fillStyle = color;
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 1;
     var t = parts.length;
     for (var i = 0; i < t; i++) {
         var p = parts[i];
@@ -451,6 +489,10 @@ Item3D.prototype.renderItemParts3D = function(ctx, parts, color, x, y, scale) {
         this.polygon.translate(-x, -y, scale);
         this.polygon.path(ctx);
     }
-    ctx.fill();
-    ctx.stroke();
+    if (fill) ctx.fill();
+    if (outline) {
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+    }
 }

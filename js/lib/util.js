@@ -4,6 +4,9 @@ var DATE_NOW = new Date();
 
 
 function cloneObject(o) {
+    if (!o || o == undefined) {
+        return null;
+    }
     return JSON.parse(JSON.stringify(o));
 }
 

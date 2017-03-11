@@ -6,14 +6,24 @@ function StageBuilder() {
     this.themebuilder = new StageBuilderTheme();
     this.intersectbuilder = new StageBuilderIntersect();
     this.hsrbuilder = new StageBuilderHSR();
+    this.chunkbuilder = new StageBuilderChunk();
 }
 
 StageBuilder.prototype.buildStage = function(now, stage) {
+
     this.itembuilder.buildStage(stage);
     this.collidebuilder.buildColliders(stage);
+    
     stage.items = this.getStageItems(stage);
-//    this.intersectbuilder.intersectItems(stage);
+    
+    this.chunkbuilder.chunk(stage);
+
     this.themebuilder.buildItems(stage);
+
+    this.intersectbuilder.intersectItems(stage);
+    
+    stage.items.sort(sortByY);
+    
     this.hsrbuilder.removeHiddenSurfaces(stage);
 }
 

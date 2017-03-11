@@ -33,6 +33,15 @@ StageCollider.prototype.collideWithPlayers = function(stage, player) {
 
 StageCollider.prototype.collideWithItems = function(stage, player) { 
     player.resetCollisions();
+    
+    
+    
+    
+    // todo ---> lookup collisions instead of hunting. we're on a grid so let's use it!!!!
+    
+    
+    
+    
     var t = this.colliders.length;
     for (var i = 0; i < t; i++) {
         this.collideWithCollider(player, stage.level.width, stage.level.height);
@@ -52,8 +61,9 @@ StageCollider.prototype.collideWithCollider = function(player, width, height) {
     for (var i = 0; i < this.colliders.length; i++) {
         var item = this.colliders[i];
         // todo: check if renderer overrides draw
-        if (item.parts) this.collideItemParts(player, item, width, height);
-        else this.collideItem(player, item, width, height);
+//        if (item.parts) this.collideItemParts(player, item, width, height);
+//        else this.collideItem(player, item, width, height);
+        this.collideItem(player, item, width, height);
     }
 }
 

@@ -17,7 +17,7 @@ function Item(json) {
     this.location = new Point(0, 0);
     
     
-    this.item3D = new Item3D();
+    this.item3D = new Item3D(this);
     this.projectedlocation = new Point(0, 0);
     this.projectedlocation_backup = new Point(0, 0);
     
@@ -93,21 +93,7 @@ function Item(json) {
     this.np1 = new Point(0, 0);
     this.np2 = new Point(0, 0);
     
-    this.geometry = {
-        projected : new Polygon(),
-        fronts : new Array(),
-        tops : new Array(),
-        sides : new Array(),
-        bottoms : new Array(),
-        visible : {
-            top: true,
-            bottom: true,
-            left: true,
-            right : true,
-            front: true,
-            back : true
-        }
-    }
+    this.geometry = new ItemGeometry();
 
     this.projectedmbr = new Rectangle(0, 0, 0, 0);
 
@@ -160,12 +146,20 @@ Item.prototype.loadJson = function(json) {
     this.parts = json.parts;
 }
 
-
-
-
-
+Item.prototype.clone = function() {
+    // todo: need a better way to clone Items --> manual is bestest?
+    var newitem = new Item(cloneObject(this.json));
+    if (!newitem) return null;
+    newitem.x = this.x;
+    newitem.y = this.y;
+    newitem.z = this.z;
+    newitem.width = this.width;
+    newitem.height = this.height;
+    newitem.depth = this.depth;
+    return newitem;
+}
+    
 Item.prototype.initialize = function() {
-    this.item3D.item = this;
     this.polygon.points.length = 0;
     if (this.parts) {
         this.keys = Object.keys(this.parts);
@@ -176,16 +170,10 @@ Item.prototype.initialize = function() {
         this.width = this.mbr.width;
         this.height = this.mbr.height;
     }
+    this.geometry.initialize(this);
     this.id = this.name + "_" + this.itemtype + "_" + this.x + "_" + this.y + "_" + this.z + "_" + this.width + "_" + this.height + "_" +  this.depth;
 }
 
-
-
-
-
-
-    
-    
 Item.prototype.getMbr = function() {
     var ip = this.getLocation();
     this.mbr.x = ip.x;

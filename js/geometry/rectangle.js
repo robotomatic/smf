@@ -40,6 +40,15 @@ function Rectangle(x, y, width, height, angle) {
     this.tempLine = new Line(0, 0);
 }
 
+Rectangle.prototype.initialize = function(x, y, z, width, height, depth) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    this.width = width;
+    this.height = height;
+    this.depth = depth;
+}
+
 Rectangle.prototype.reset = function() {
     this.x = 0;
     this.y = 0;

@@ -23,7 +23,7 @@ StageBuilderColliders.prototype.buildLayerColliders = function(stage, layer) {
         newitem.depth = item.depth;
         newitem.collide = true;
         newitem.initialize();
-        stage.stagecollider.colliders[stage.stagecollider.colliders.length] = newitem;
+        stage.stagecollider.colliders.push(newitem);
     }
 }
 

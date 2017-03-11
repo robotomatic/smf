@@ -4,15 +4,17 @@ function StageFlood() {
     this.doflood = false;
     this.level = 0;
     this.y = 0;
-    this.amount = 0.5;
+    this.z = 0;
+    this.amount = 0.3;
     this.max = 0;
-    this.min = -40;
+    this.min = -30;
     this.down = true;
     this.waterline = 0;
 }
 
 StageFlood.prototype.init = function(item) {
     this.y = item.y;
+    this.z = item.z;
     this.doflood = true;
 }
 
