@@ -1,31 +1,52 @@
 "use strict";
 
+var dev_overlay = null;
+var dev_player = null;
+var dev_character = null;
+var dev_guts = null;
+var dev_level = null;
+var dev_render = null;
+var dev_hsr = null;
+var dev_collision = null;
+
+var gamepads = null;
+
 function initializeDevDebug() {
     
     if (!__dev) return;
+
+    gamepads = document.getElementById("gamepads");
     
-    document.getElementById("dev-overlay").onclick = function() {
+    dev_overlay = document.getElementById("dev-overlay");
+    dev_overlay.onclick = function() {
         toggleOverlay();
     };
-    
-    document.getElementById("dev-debug-player").onchange = function() {
+    dev_player = document.getElementById("dev-debug-player");
+    dev_player.onchange = function() {
         setDebugPlayer(this.checked);
     };
-    document.getElementById("dev-debug-character").onchange = function() {
+    dev_character = document.getElementById("dev-debug-character");
+    dev_character.onchange = function() {
         setDebugCharacter(this.checked);
     };
-    document.getElementById("dev-debug-guts").onchange = function() {
+    dev_guts = document.getElementById("dev-debug-guts");
+    dev_guts.onchange = function() {
         setDebugGuts(this.checked);
     };
-    
-    document.getElementById("dev-debug-level").onchange = function() {
+    dev_level = document.getElementById("dev-debug-level");
+    dev_level.onchange = function() {
         setDebugLevel(this.checked);
     };
-    document.getElementById("dev-debug-render").onchange = function() {
+    dev_render = document.getElementById("dev-debug-render");
+    dev_render.onchange = function() {
         setDebugRender(this.checked);
     };
-    
-    document.getElementById("dev-debug-collision").onchange = function() {
+    dev_hsr = document.getElementById("dev-debug-hsr");
+    dev_hsr.onchange = function() {
+        setDebugHSR(this.checked);
+    };
+    dev_collision = document.getElementById("dev-debug-collision");
+    dev_collision.onchange = function() {
         setDebugCollision(this.checked);
     };
 }
@@ -40,13 +61,14 @@ function updateDevDebug() {
     updateDevDebugGuts();
     updateDevDebugLevel();
     updateDevDebugRender();
+    updateDevDebugHSR();
 }
 
 function toggleOverlay() {
     
     if (!__dev) return;
     
-    var gp = document.getElementById("gamepads");
+    var gp = gamepads;
     if (!gp) return;
     var hide = gp.className.indexOf("hidden-all") > -1;
     if (hide) {
@@ -72,10 +94,10 @@ function updateDevDebugOverlay() {
     
     if (!__dev) return;
     
-    var gp = document.getElementById("gamepads");
+    var gp = gamepads;
     if (!gp) return;
     var hide = gp.className.indexOf("hidden-all") > -1;
-    document.getElementById("dev-overlay").checked = hide;
+    dev_overlay.checked = hide;
 }
 
 function setDebugPlayer(debug) {
@@ -93,7 +115,7 @@ function updateDevDebugPlayer() {
     if (!__dev) return;
     
     var debug = gamecontroller.game.loop.game.stage.players.debug;
-    document.getElementById("dev-debug-player").checked = debug;
+    dev_player.checked = debug;
 }
 
 function setDebugCharacter(debug) {
@@ -113,7 +135,7 @@ function updateDevDebugCharacter() {
     
     if (!gamecontroller.game.loop.game.stage.players.players.length) return;
     var debug = gamecontroller.game.loop.game.stage.players.players[0].character.debug.character;
-    document.getElementById("dev-debug-character").checked = debug;
+    dev_character.checked = debug;
 }
 
 function setDebugGuts(debug) {
@@ -133,7 +155,7 @@ function updateDevDebugGuts() {
     
     if (!gamecontroller.game.loop.game.stage.players.players.length) return;
     var debug = gamecontroller.game.loop.game.stage.players.players[0].character.debug.guts;
-    document.getElementById("dev-debug-guts").checked = debug;
+    dev_guts.checked = debug;
 }
 
 function setDebugCollision(debug) {
@@ -161,7 +183,7 @@ function updateDevDebugLevel() {
     if (!__dev) return;
     
     var debug = gamecontroller.game.loop.game.stage.stagerenderer.debug.level;
-    document.getElementById("dev-debug-level").checked = debug;
+    dev_level.checked = debug;
 }
 
 function setDebugRender(debug) {
@@ -179,5 +201,23 @@ function updateDevDebugRender() {
     if (!__dev) return;
     
     var debug = gamecontroller.game.loop.game.stage.stagerenderer.debug.render;
-    document.getElementById("dev-debug-render").checked = debug;
+    dev_render.checked = debug;
+}
+
+function setDebugHSR(debug) {
+    
+    if (!__dev) return;
+    
+    if (!gamecontroller || !gamecontroller.game) return;
+    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
+    gamecontroller.game.loop.game.stage.stagerenderer.debug.hsr = debug;
+    updateDevDebugHSR();
+}
+
+function updateDevDebugHSR() {
+    
+    if (!__dev) return;
+    
+    var debug = gamecontroller.game.loop.game.stage.stagerenderer.debug.hsr;
+    dev_hsr.checked = debug;
 }

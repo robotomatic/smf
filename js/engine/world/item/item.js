@@ -412,13 +412,13 @@ Item.prototype.translate = function(window, width, height) {
 
 
 
-Item.prototype.render = function(now, renderer, width, height, ctx, scale = 1) {
+Item.prototype.render = function(now, renderer, width, height, ctx, scale = 1, debug) {
     if (!ctx) {
         this.renderStart(now, width, height, scale);
-        this.renderRender(now, renderer, this.ctx, scale);
+        this.renderRender(now, renderer, this.ctx, scale, debug);
         this.renderEnd(now);
     } else {
-        this.renderRender(now, renderer, ctx);
+        this.renderRender(now, renderer, ctx, 1, debug);
     }
 }
 
@@ -461,8 +461,8 @@ Item.prototype.renderStart = function(now, width, height, scale = 1) {
     this.canvas.height = iheight + doublepad;
 }
 
-Item.prototype.renderRender = function(now, renderer, ctx, scale = 1) {
-    this.item3D.renderItem3D(now, renderer, ctx, scale);
+Item.prototype.renderRender = function(now, renderer, ctx, scale = 1, debug) {
+    this.item3D.renderItem3D(now, renderer, ctx, scale, debug);
 }
 
 Item.prototype.renderEnd = function(when) {

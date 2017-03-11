@@ -161,9 +161,9 @@ Player.prototype.translate = function(window, width, height) {
 
 
 
-Player.prototype.render = function(now, width, height, ctx = null, scale = 1) {
+Player.prototype.render = function(now, width, height, ctx = null, scale = 1, debug = null) {
     if (!ctx) this.renderStart(now, width, height, scale);
-    this.renderRender(now, ctx, scale);
+    this.renderRender(now, ctx, scale, debug);
     if (!ctx) this.renderEnd(now);
 }
 
@@ -184,7 +184,7 @@ Player.prototype.renderStart = function(now, width, height, scale = 1) {
     this.canvas.height = bh + doublepad;
 }
 
-Player.prototype.renderRender = function(now, ctx = null, scale = 1) {
+Player.prototype.renderRender = function(now, ctx = null, scale = 1, debug = null) {
     var c = this.ctx;
     var ip = this.imagepad;
     var px = 0;

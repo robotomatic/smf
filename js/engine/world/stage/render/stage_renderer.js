@@ -12,7 +12,8 @@ function StageRenderer() {
     this.flood = new StageFlood();
     this.debug = {
         render : false,
-        level : false
+        level : false,
+        hsr : false
     };
 }
 
@@ -23,8 +24,8 @@ StageRenderer.prototype.reset = function(now, graphics) {
 StageRenderer.prototype.render = function(now, graphics, camera, stage, mbr, window) {
     this.clearGraphics(graphics);
     this.flood.getFlood();
-    this.stagerenderer_start.renderStart(mbr, window, graphics, camera, stage);
-    this.stagerenderer_render.renderRender(now, graphics, camera, stage, mbr, window);
+    this.stagerenderer_start.renderStart(mbr, window, graphics, camera, stage, this.debug);
+    this.stagerenderer_render.renderRender(now, graphics, camera, stage, mbr, window, this.debug);
     this.stagerenderer_debug.renderDebug(now, graphics, camera, stage, mbr, window, this.debug);
     this.stagerenderer_end.renderEnd(graphics, mbr);
 }

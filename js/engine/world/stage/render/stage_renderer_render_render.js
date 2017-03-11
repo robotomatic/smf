@@ -6,11 +6,11 @@ function StageRendererRender(renderitems, itemcache) {
     this.doblur = true;
 }
 
-StageRendererRender.prototype.renderRender = function(now, graphics, camera, stage, mbr, window) {
-    this.renderRenderItems(now, graphics, camera, stage, mbr, window);
+StageRendererRender.prototype.renderRender = function(now, graphics, camera, stage, mbr, window, debug) {
+    this.renderRenderItems(now, graphics, camera, stage, mbr, window, debug);
 }
 
-StageRendererRender.prototype.renderRenderItems = function(now, graphics, camera, stage, mbr, window) {
+StageRendererRender.prototype.renderRenderItems = function(now, graphics, camera, stage, mbr, window, debug) {
     this.renderitems.all.sort(sortByDistance);
     var renderer = stage.level.itemrenderer;
     var t = this.renderitems.all.length;
@@ -18,14 +18,14 @@ StageRendererRender.prototype.renderRenderItems = function(now, graphics, camera
         var renderitem = this.renderitems.all[i];
         if (!renderitem.showing) continue;
         var wd = round(renderitem.z - mbr.z);
-        if (renderitem.type == "item") this.renderItem(now, window, graphics, camera, stage, renderitem.item, renderer, wd);
-        else if (renderitem.type == "player") this.renderPlayer(now, window, graphics, camera, stage, renderitem.item, wd);
+        if (renderitem.type == "item") this.renderItem(now, window, graphics, camera, stage, renderitem.item, renderer, wd, debug);
+        else if (renderitem.type == "player") this.renderPlayer(now, window, graphics, camera, stage, renderitem.item, wd, debug);
     }
 }
 
-StageRendererRender.prototype.renderItem = function(now, window, graphics, camera, stage, item, renderer, distance) {
+StageRendererRender.prototype.renderItem = function(now, window, graphics, camera, stage, item, renderer, distance, debug) {
     if (item.width == "100%" || !camera.shouldBlur(distance)) {
-        item.render(now, renderer, graphics.canvas.width, graphics.canvas.height, graphics.ctx);
+        item.render(now, renderer, graphics.canvas.width, graphics.canvas.height, graphics.ctx, 1, debug);
         return;
     }
     var scalerender = 1;
@@ -33,7 +33,7 @@ StageRendererRender.prototype.renderItem = function(now, window, graphics, camer
         scalerender = camera.getBlurAmount(distance);;
     }
     var scaledraw = 1 / scalerender;
-    item.render(now, renderer, graphics.canvas.width, graphics.canvas.height, null, scalerender);
+    item.render(now, renderer, graphics.canvas.width, graphics.canvas.height, null, scalerender, debug);
     if (this.doblur && camera.blur.shift) {
         var shift = camera.getBlurShiftAmount(distance);
         blurCanvas(item.canvas, item.ctx, shift, 1);
@@ -41,7 +41,7 @@ StageRendererRender.prototype.renderItem = function(now, window, graphics, camer
     item.drawImage(graphics.ctx, scaledraw, 0);
 }
 
-StageRendererRender.prototype.renderPlayer = function(now, window, graphics, camera, stage, player, distance) {
+StageRendererRender.prototype.renderPlayer = function(now, window, graphics, camera, stage, player, distance, debug) {
     player.playerdebugger.debug = stage.players.debug;
     var pw = graphics.canvas.width;
     var ph = graphics.canvas.height;
@@ -53,13 +53,13 @@ StageRendererRender.prototype.renderPlayer = function(now, window, graphics, cam
             scalerender = camera.getBlurAmount(distance);
         }
         scaledraw = 1 / scalerender;
-        player.render(now, pw, ph, null, scalerender);
+        player.render(now, pw, ph, null, scalerender, debug);
         if (this.doblur && camera.blur.shift) {
             var shift = camera.getBlurShiftAmount(distance);
             blurCanvas(player.canvas, player.ctx, shift, 1);
         }
         player.drawImage(graphics.ctx, scaledraw, 0);
     } else {
-        player.render(now, pw, ph, graphics.ctx, scalerender);
+        player.render(now, pw, ph, graphics.ctx, scalerender, debug);
     }
 }

@@ -5,27 +5,27 @@ function StageRendererStart(renderitems) {
     this.index = 0;
 }
 
-StageRendererStart.prototype.renderStart = function(mbr, window, graphics, camera, stage) {
+StageRendererStart.prototype.renderStart = function(mbr, window, graphics, camera, stage, debug) {
     this.index = 0;
-    this.getRenderItems(mbr, window, graphics, camera, stage);
+    this.getRenderItems(mbr, window, graphics, camera, stage, debug);
 }
 
-StageRendererStart.prototype.getRenderItems = function(mbr, window, graphics, camera, stage) {
+StageRendererStart.prototype.getRenderItems = function(mbr, window, graphics, camera, stage, debug) {
     var cp = window.getCenter();
-    this.getRenderItemsStageItems(mbr, window, cp, graphics, stage);
-    this.getRenderItemsStagePlayers(mbr, window, cp, graphics, stage);
+    this.getRenderItemsStageItems(mbr, window, cp, graphics, stage, debug);
+    this.getRenderItemsStagePlayers(mbr, window, cp, graphics, stage, debug);
 }
 
-StageRendererStart.prototype.getRenderItemsStageItems = function(mbr, window, cp, graphics, stage) {
+StageRendererStart.prototype.getRenderItemsStageItems = function(mbr, window, cp, graphics, stage, debug) {
     var t = stage.items.length;
     for (var i = 0; i < t; i++) {
         var item = stage.items[i];
         if (item.draw == false) continue;
-        this.getRenderItemsStageLevelLayerItemsItem(mbr, window, cp, graphics, stage, item);
+        this.getRenderItemsStageLevelLayerItemsItem(mbr, window, cp, graphics, stage, item, debug);
     }
 }
 
-StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItem = function(mbr, window, cp, graphics, stage, item) {
+StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItem = function(mbr, window, cp, graphics, stage, item, debug) {
     var x = mbr.x;
     var y = mbr.y;
     var z = mbr.z;
@@ -58,17 +58,17 @@ StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItem = function(m
     this.renderitems.all[this.index++] = newitem;
 }
 
-StageRendererStart.prototype.getRenderItemsStagePlayers = function(mbr, window, cp, graphics, stage) {
+StageRendererStart.prototype.getRenderItemsStagePlayers = function(mbr, window, cp, graphics, stage, debug) {
     var players = stage.players;
     if (!players || !players.players) return;
     var t = players.players.length;
     for (var i = 0; i < t; i++) {
         var player = players.players[i];
-        this.getRenderItemsStagePlayersPlayer(mbr, window, cp, graphics, player);
+        this.getRenderItemsStagePlayersPlayer(mbr, window, cp, graphics, player, debug);
     }
 }
 
-StageRendererStart.prototype.getRenderItemsStagePlayersPlayer = function(mbr, window, cp, graphics, player) {
+StageRendererStart.prototype.getRenderItemsStagePlayersPlayer = function(mbr, window, cp, graphics, player, debug) {
     player.smooth();
     player.translate(mbr, mbr.width, mbr.height);
     var playermbr = player.getMbr();
