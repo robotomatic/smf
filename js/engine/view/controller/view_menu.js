@@ -18,6 +18,14 @@ function MenuView(id, width, height, scale) {
     this.view.renderer.camera.drift.enabled = false;
 }
 
+MenuView.prototype.loose = function() {
+}
+
+MenuView.prototype.tight = function() {
+}
+
+
+
 MenuView.prototype.view;
 
 MenuView.prototype.resizeText = function() { this.view.resizeText(); }

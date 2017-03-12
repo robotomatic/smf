@@ -121,6 +121,26 @@
     margin: 0 1em 0 1em;
 }
 
+.dialog-input-button {
+    margin: 0 1em 0 1em;
+    width: 4em;
+    text-align: center;
+    background-color: rgba(32, 32, 33, 0.35);
+    border: 1px solid #7b7b7b;
+    color: #b1b1b1;
+    padding: .1em;
+    cursor: pointer;
+}
+
+.dialog-input-button:focus {
+    outline: none;
+    border: 1px solid #b7b7b7;
+}
+
+.dialog-input-radio {
+    margin: 0 .5em 0 .5em;
+}
+
 .dialog-input-toggle {
     font-size: .8em;
     padding: .5em;

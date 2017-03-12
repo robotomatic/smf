@@ -14,18 +14,40 @@ function PartyView(id, width, height, scale) {
     this.offset = {
         x : 0,
         y : 300,
-        z : 500
-    }
+        z : 500,
+        name : "loose",
+        tight : {
+            x : 0,
+            y : -50,
+            z : 100
+        },
+        loose : {
+            x : 0,
+            y : 300,
+            z : 500
+        }
+    };
 
-//    this.offset = {
-//        x : 0,
-//        y : -50,
-//        z : 100
-//    }
-//
     this.view.renderer.camera.blur.blur = false;
     this.view.renderer.camera.blur.shift = false;
     this.view.renderer.camera.drift.enabled = true;
+}
+
+
+PartyView.prototype.setCameraLoose = function() {
+    this.offset.x = this.offset.loose.x;
+    this.offset.y = this.offset.loose.y;
+    this.offset.z = this.offset.loose.z;
+    this.offset.name = "loose";
+    updateDevViewCameraOffset(this);
+}
+
+PartyView.prototype.setCameraTight = function() {
+    this.offset.x = this.offset.tight.x;
+    this.offset.y = this.offset.tight.y;
+    this.offset.z = this.offset.tight.z;
+    this.offset.name = "tight";
+    updateDevViewCameraOffset(this);
 }
 
 PartyView.prototype.view;

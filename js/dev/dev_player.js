@@ -4,11 +4,16 @@ var devplayercanvas = null;
 var devplayerctx = null;
 var devplayerimg = new Image(null, 0, 0, 0, 0);
 
+var dev_player_canvas = null;
+
 function initializeDevPlayer() {
     
     if (!__dev) return;
     
-    document.getElementById("dev-player-canvas").resize = function() {
+    dev_player_canvas = document.getElementById("dev-player-canvas");
+    if (!dev_player_canvas) return;
+    
+    dev_player_canvas.resize = function() {
         resizeDevPlayerCanvas();
     };
 }
@@ -31,10 +36,12 @@ function resizeDevPlayerCanvas() {
     
     return;
     
-    if (!devplayercanvas) devplayercanvas = document.getElementById("dev-player-canvas");
+    if (!devplayercanvas) devplayercanvas = dev_player_canvas;
     if (!devplayercanvas) return;
+    
     if (!devplayerctx) devplayerctx = devplayercanvas.getContext("2d");
     if (!devplayerimg) return;
+    
     devplayercanvas.width = devplayercanvas.offsetWidth;
     devplayercanvas.height = devplayercanvas.offsetHeight;
     var w = devplayercanvas.width;

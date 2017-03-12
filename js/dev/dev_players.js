@@ -2,11 +2,15 @@
 
 var devplayers;
 
+var dev_template = null;
+
+
 function initializeDevPlayers() {
     
     if (!__dev) return;
     
     devplayers = new Array();
+    dev_template = document.getElementById("dev-dialog-players-players-player-template");
 }
 
 function updateDevPlayers(players) {
@@ -36,7 +40,7 @@ function devPlayersAddPlayer(player) {
     
     var name = player.name;
     
-    var template = document.getElementById("dev-dialog-players-players-player-template");
+    var template = dev_template;
     if (!template) return;
     
     var item = template.cloneNode(true);

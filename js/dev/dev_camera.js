@@ -1,55 +1,96 @@
 "use strict";
 
+var dev_camera_offset_x_amount = null;
+var dev_camera_offset_x_range = null;
+var dev_camera_offset_y_amount = null;
+var dev_camera_offset_y_range = null;
+var dev_camera_offset_z_amount = null;
+var dev_camera_offset_loose = null;
+var dev_camera_offset_tight = null;
+var dev_camera_offset_z_range = null;
+var dev_camera_dof_blur_blur = null;
+var dev_camera_dof_blur_shift = null;
+var dev_camera_follow_speed = null;
+var dev_camera_drift = null;
+var dev_camera_drift_min = null;
+var dev_camera_drift_max = null;
+var dev_camera_drift_speed = null;
+var dev_camera_fov_amount = null;
+var dev_camera_fov_range = null;
+
 function initializeDevCamera() {
     
     if (!__dev) return;
     
-    document.getElementById("dev-camera-offset-x-amount").onchange = function() {
+    dev_camera_offset_x_amount = document.getElementById("dev-camera-offset-x-amount");
+    dev_camera_offset_x_amount.onchange = function() {
         setDevCameraOffsetX(this.value);
     };
-    document.getElementById("dev-camera-offset-x-amount-range").onchange = function() {
+    dev_camera_offset_x_range = document.getElementById("dev-camera-offset-x-amount-range");
+    dev_camera_offset_x_range.onchange = function() {
         setDevCameraOffsetX(this.value);
     };
-    document.getElementById("dev-camera-offset-y-amount").onchange = function() {
+    dev_camera_offset_y_amount = document.getElementById("dev-camera-offset-y-amount");
+    dev_camera_offset_y_amount.onchange = function() {
         setDevCameraOffsetY(this.value);
     };
-    document.getElementById("dev-camera-offset-y-amount-range").onchange = function() {
+    dev_camera_offset_y_range = document.getElementById("dev-camera-offset-y-amount-range");
+    dev_camera_offset_y_range.onchange = function() {
         setDevCameraOffsetY(this.value);
     };
-    document.getElementById("dev-camera-offset-z-amount").onchange = function() {
+    dev_camera_offset_z_amount = document.getElementById("dev-camera-offset-z-amount");
+    dev_camera_offset_z_amount.onchange = function() {
         setDevCameraOffsetZ(this.value);
     };
-    document.getElementById("dev-camera-offset-z-amount-range").onchange = function() {
+    dev_camera_offset_z_range = document.getElementById("dev-camera-offset-z-amount-range");
+    dev_camera_offset_z_range.onchange = function() {
         setDevCameraOffsetZ(this.value);
+    };
+    dev_camera_offset_loose = document.getElementById("dev-camera-offset-loose");
+    dev_camera_offset_loose.onclick = function() {
+        setDevCameraOffsetLoose();
+    };
+    dev_camera_offset_tight = document.getElementById("dev-camera-offset-tight");
+    dev_camera_offset_tight.onclick = function() {
+        setDevCameraOffsetTight();
     };
 
-    document.getElementById("dev-camera-dof-blur-blur").onchange = function() {
+    dev_camera_dof_blur_blur = document.getElementById("dev-camera-dof-blur-blur");
+    dev_camera_dof_blur_blur.onchange = function() {
         setDevCameraDepthOfFieldBlurBlur(this.checked);
     };
-    document.getElementById("dev-camera-dof-blur-shift").onchange = function() {
+    dev_camera_dof_blur_shift = document.getElementById("dev-camera-dof-blur-shift");
+    dev_camera_dof_blur_shift.onchange = function() {
         setDevCameraDepthOfFieldBlurShift(this.checked);
     };
     
-    document.getElementById("dev-camera-follow-speed").onchange = function() {
+    dev_camera_follow_speed = document.getElementById("dev-camera-follow-speed");
+    dev_camera_follow_speed.onchange = function() {
         setDevCameraFollowSpeed(this.value);
     };
-    document.getElementById("dev-camera-drift").onchange = function() {
+    dev_camera_drift = document.getElementById("dev-camera-drift");
+    dev_camera_drift.onchange = function() {
         setDevCameraDrift(this.checked);
     };
-    document.getElementById("dev-camera-drift-min").onchange = function() {
+    dev_camera_drift_min = document.getElementById("dev-camera-drift-min");
+    dev_camera_drift_min.onchange = function() {
         setDevCameraDriftMin(this.value);
     };
-    document.getElementById("dev-camera-drift-max").onchange = function() {
+    dev_camera_drift_max = document.getElementById("dev-camera-drift-max");
+    dev_camera_drift_max.onchange = function() {
         setDevCameraDriftMax(this.value);
     };
-    document.getElementById("dev-camera-drift-speed").onchange = function() {
+    dev_camera_drift_speed = document.getElementById("dev-camera-drift-speed");
+    dev_camera_drift_speed.onchange = function() {
         setDevCameraDriftSpeed(this.value);
     };
     
-    document.getElementById("dev-fov-amount").onchange = function() {
+    dev_camera_fov_amount = document.getElementById("dev-fov-amount");
+    dev_camera_fov_amount.onchange = function() {
         setDevCameraFOV(this.value);
     };
-    document.getElementById("dev-fov-amount-range").onchange = function() {
+    dev_camera_fov_range = document.getElementById("dev-fov-amount-range");
+    dev_camera_fov_range.onchange = function() {
         setDevCameraFOV(this.value);
     };
 }
@@ -114,22 +155,42 @@ function updateDevViewCameraOffset(vv) {
     
     if (!vv.offset) return;
     var x = vv.offset.x;
-    var xx = document.getElementById("dev-camera-offset-x-amount");
+    var xx = dev_camera_offset_x_amount;
     xx.value = (x == undefined) ? 0 : x;
-    var xxx = document.getElementById("dev-camera-offset-x-amount-range");
+    var xxx = dev_camera_offset_x_range;
     xxx.value = x;
     
     var y = vv.offset.y;
-    var yy = document.getElementById("dev-camera-offset-y-amount");
+    var yy = dev_camera_offset_y_amount;
     yy.value = (y == undefined) ? 0 : y;
-    var yyy = document.getElementById("dev-camera-offset-y-amount-range");
+    var yyy = dev_camera_offset_y_range;
     yyy.value = y;
     
     var z = vv.offset.z;
-    var zz = document.getElementById("dev-camera-offset-z-amount");
+    var zz = dev_camera_offset_z_amount;
     zz.value = (z == undefined) ? 0 : z;
-    var zzz = document.getElementById("dev-camera-offset-z-amount-range");
+    var zzz = dev_camera_offset_z_range;
     zzz.value = z;
+}
+
+function setDevCameraOffsetLoose() {
+    
+    if (!__dev) return;
+    
+    if (!gamecontroller || !gamecontroller.game) return;
+    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
+    var vv = gamecontroller.game.loop.game.views[0];
+    vv.setCameraLoose();
+}
+
+function setDevCameraOffsetTight() {
+    
+    if (!__dev) return;
+    
+    if (!gamecontroller || !gamecontroller.game) return;
+    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
+    var vv = gamecontroller.game.loop.game.views[0];
+    vv.setCameraTight();
 }
 
 
@@ -151,7 +212,7 @@ function updateDevViewCameraFollowSpeed(vv) {
     if (!__dev) return;
     
     var speed = vv.view.renderer.camera.speed;
-    document.getElementById("dev-camera-follow-speed").value = speed;
+    dev_camera_follow_speed.value = speed;
 }
 
 
@@ -182,7 +243,7 @@ function updateDevViewCameraDepthOfFieldBlurBlur(vv) {
     if (!__dev) return;
     
     var blur = vv.view.renderer.camera.blur.blur;
-    var vb = document.getElementById("dev-camera-dof-blur-blur");
+    var vb = dev_camera_dof_blur_blur;
     vb.checked = blur;
 }
 
@@ -202,7 +263,7 @@ function updateDevViewCameraDepthOfFieldBlurShift(vv) {
     if (!__dev) return;
     
     var shift = vv.view.renderer.camera.blur.shift;
-    var vb = document.getElementById("dev-camera-dof-blur-shift");
+    var vb = dev_camera_dof_blur_shift;
     vb.checked = shift;
 }
 
@@ -257,16 +318,16 @@ function updateDevViewCameraDrift(vv) {
     if (!__dev) return;
     
     var drift = vv.view.renderer.camera.drift.enabled;
-    var vd = document.getElementById("dev-camera-drift");
+    var vd = dev_camera_drift;
     vd.checked = drift;
     var min = vv.view.renderer.camera.drift.min;
-    var vdmin = document.getElementById("dev-camera-drift-min");
+    var vdmin = dev_camera_drift_min;
     vdmin.value = min;
     var max = vv.view.renderer.camera.drift.max;
-    var vdmax = document.getElementById("dev-camera-drift-max");
+    var vdmax = dev_camera_drift_max;
     vdmax.value = max;
     var speed = vv.view.renderer.camera.drift.speed;
-    var vds = document.getElementById("dev-camera-drift-speed");
+    var vds = dev_camera_drift_speed;
     vds.value = speed;
 }
 
@@ -289,8 +350,8 @@ function updateDevViewCameraFOV() {
     if (!__dev) return;
     
     var z = getFOV();
-    var zz = document.getElementById("dev-fov-amount");
+    var zz = dev_camera_fov_amount;
     zz.value = z;
-    var zzz = document.getElementById("dev-fov-amount-range");
+    var zzz = dev_camera_fov_range;
     zzz.value = z;
 }

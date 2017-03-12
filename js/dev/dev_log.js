@@ -1,8 +1,10 @@
 "use strict";
 
+var dev_log = null;
+
 function logDev(message) {
-    if (!devlog) devlog = document.getElementById("dev-log");
-    if (!devlog) return;
+    if (!dev_log) dev_log = document.getElementById("dev-log");
+    if (!dev_log) return;
     if (!message) message = "--------------------------------";
-    devlog.innerHTML += message + "<br />";
+    dev_log.innerHTML += message + "<br />";
 }
