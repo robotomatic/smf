@@ -216,86 +216,34 @@ StageBuilderHSR.prototype.removeItemsItemHiddenSurfacesFront = function(item, it
     item.geometry.visible.front.visible = false;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 StageBuilderHSR.prototype.removeItemsItemHiddenSurfacesBack = function(item, itemc) {
     
-    item.geometry.visible.back.visible = false;
-    return;
-    
-    if (!item.geometry.visible.front.visible) return;
+    if (!item.geometry.visible.back.visible) return;
     
     if (itemc.z + itemc.depth < item.z + item.depth) return;
     if (itemc.z > item.z + item.depth) return;
     
-    if (itemc.x + itemc.width <= item.geometry.visible.front.coverage.x) return;
-    if (itemc.x >= item.geometry.visible.front.coverage.x + item.geometry.visible.front.coverage.width) return;
-    if (itemc.y + itemc.height <= item.geometry.visible.front.coverage.y) return;
-    if (itemc.y >= item.geometry.visible.front.coverage.y + item.geometry.visible.front.coverage.height) return;
+    if (itemc.x + itemc.width <= item.geometry.visible.back.coverage.x) return;
+    if (itemc.x >= item.geometry.visible.back.coverage.x + item.geometry.visible.back.coverage.width) return;
+    if (itemc.y + itemc.height <= item.geometry.visible.back.coverage.y) return;
+    if (itemc.y >= item.geometry.visible.back.coverage.y + item.geometry.visible.back.coverage.height) return;
 
-    if (itemc.x <= item.geometry.visible.front.coverage.x && itemc.width >= item.geometry.visible.front.coverage.width) {
-            item.geometry.visible.front.coverage.width = 0;
-    } else {
-        var dx = itemc.x + itemc.width - item.geometry.visible.front.coverage.x + item.geometry.visible.front.coverage.width;
-        if (itemc.x < item.geometry.visible.front.coverage.x) {
-            item.geometry.visible.front.coverage.x = itemc.x + itemc.width - dx;
-            item.geometry.visible.front.coverage.width = dx;
-        } else {
-            item.geometry.visible.front.coverage.width -= dx;
-        }
+    if (itemc.x <= item.geometry.visible.back.coverage.x && itemc.width >= item.geometry.visible.back.coverage.width) {
+            item.geometry.visible.back.coverage.width = 0;
     }
     
-    if (itemc.y <= item.geometry.visible.front.coverage.y && itemc.height >= item.geometry.visible.front.coverage.height) {
-        item.geometry.visible.front.coverage.height = 0;
-    } else {
-        var dy = (itemc.y + itemc.height) - (item.geometry.visible.front.coverage.y + item.geometry.visible.front.coverage.height);
-        if (itemc.y < item.geometry.visible.front.coverage.y) {
-            item.geometry.visible.front.coverage.y = itemc.y + itemc.height - dy;
-            item.geometry.visible.front.coverage.height = dy;
-        } else {
-            item.geometry.visible.front.coverage.height -= dy;
-        }
+    if (itemc.y <= item.geometry.visible.back.coverage.y && itemc.height >= item.geometry.visible.back.coverage.height) {
+        item.geometry.visible.back.coverage.height = 0;
     }
     
-    if (item.geometry.visible.front.coverage.width > 0 || item.geometry.visible.front.coverage.height> 0) return;
-    item.geometry.visible.front.visible = false;
+    if (item.geometry.visible.back.coverage.width > 0 || item.geometry.visible.back.coverage.height> 0) return;
+    item.geometry.visible.back.visible = false;
 }
 
 
 
 StageBuilderHSR.prototype.removeItemsItemHiddenSurfacesTop = function(item, itemc) {
-    
-    return;
-    
+
     if (itemc.y <= item.y) {
         if (itemc.y + itemc.height >= item.y) {
             if (itemc.z + itemc.depth <= item.z) return;
@@ -317,9 +265,7 @@ StageBuilderHSR.prototype.removeItemsItemHiddenSurfacesTop = function(item, item
 
 StageBuilderHSR.prototype.removeItemsItemHiddenSurfacesBottom = function(item, itemc) {
     
-    item.geometry.visible.bottom.visible = false;
-    return;
-    
+
     if (itemc.y <= item.y + item.height) {
         if (itemc.y + itemc.height >= item.y + item.height) {
             if (itemc.z + itemc.depth <= item.z) return;

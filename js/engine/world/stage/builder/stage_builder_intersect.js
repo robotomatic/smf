@@ -55,6 +55,7 @@ StageBuilderIntersect.prototype.intersectItemItemFrontBack = function(stage, ite
 }
 
 StageBuilderIntersect.prototype.intersectItemItemTopBottom = function(stage, item, itemc) { 
+// todo!        
 //    this.intersectItemsItemItemTop(stage, item, itemc);
 //    this.intersectItemsItemItemBottom(stage, item, itemc);
 }
@@ -110,6 +111,9 @@ StageBuilderIntersect.prototype.intersectItemsItemItemLeft = function(stage, ite
             if ((itemc.y > item.y && itemc.height < item.height) || ((itemc.y + itemc.height) - (item.y + item.height) <= 0)) {
                 if ((itemc.z > item.z && itemc.depth < item.depth) || ((itemc.z + itemc.depth) - (item.z + item.depth) <= 0)) {
                     var clip = "left";
+                    
+                    // todo: front / back
+                    
                     if (item.y + item.height > itemc.y + itemc.height) {
                         this.intersectClip(this.intersectClipBottom, stage, item, itemc, clip, "bottom");
                         return;
@@ -134,6 +138,9 @@ StageBuilderIntersect.prototype.intersectItemsItemItemRight = function(stage, it
             if ((itemc.y > item.y && itemc.height < item.height) || ((itemc.y + itemc.height) - (item.y + item.height) <= 0)) {
                 if ((itemc.z > item.z && itemc.depth < item.depth) || ((itemc.z + itemc.depth) - (item.z + item.depth) <= 0)) {
                     var clip = "right";
+                    
+                    // todo: front / back
+                    
                     if (item.y < itemc.y) {
                         this.intersectClip(this.intersectClipTop, stage, item, itemc, clip, "top");
                         return;
