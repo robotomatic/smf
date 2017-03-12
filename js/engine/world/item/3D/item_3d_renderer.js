@@ -158,7 +158,9 @@ Item3DRenderer.prototype.renderItem3D = function(now, renderer, ctx, scale, debu
 
 Item3DRenderer.prototype.getColors = function(renderer, debug) {
 
-    if (debug && debug.level){
+    var dodebug = debug && debug.level;
+    
+    if (dodebug){
         this.colors.front = "white";
         this.colors.side = "#d3d3d3";
         this.colors.top = "#dbdbdb";
@@ -171,8 +173,8 @@ Item3DRenderer.prototype.getColors = function(renderer, debug) {
     this.dotop = this.item3d.item.top === false ? false : true;
     if (theme.top === false) this.dotop = false;
     
-    this.fadetop = debug ? debug.hsr : false;
-    if (debug && debug.level) return;
+    this.fadetop = (debug) ? debug.hsr : false;
+    if (dodebug) return;
     
     var themecolor = "red";
     var mat = theme.material;

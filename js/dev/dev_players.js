@@ -53,6 +53,12 @@ function devPlayersAddPlayer(player) {
     var pname = item.children.item(1);
     pname.id = "dev-dialog-players-players-player-name-" + id;
     pname.innerHTML = name;
+    pname.onclick = function(e) {
+        showDevPlayer(player);
+        e.stopPropagation();
+        e.preventDefault();
+        return false;
+    }
     
     var pcam = item.children.item(2);
     pcam.id = "dev-dialog-players-players-player-camera-" + id;

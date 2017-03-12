@@ -28,8 +28,13 @@ function initializeDev(game) {
 
     var tools = document.getElementsByClassName("dev-toolbar-tools-tool");
     for (var i = 0; i < tools.length; i++) {
-        tools[i].onclick = function() {
-            toggleDevDialog(this.id);
+        tools[i].onclick = function(e) {
+            var typ = this.id.replace("dev-tools-", "");
+            var nid = "dev-dialog-" + typ;
+            toggleDevDialog(nid);
+            e.stopPropagation()
+            e.preventDefault();
+            return false;
         };
     }
     
@@ -66,14 +71,13 @@ function toggleDev() {
     }
 }
 
-function toggleDevDialog(did) {
+function toggleDevDialog(nid) {
     
     if (!__dev) return;
     
-    var typ = did.replace("dev-tools-", "");
-    var nid = "dev-dialog-" + typ;
     var d = document.getElementById(nid);
     if (!d) return;
+    
     var p = document.getElementById("main-content");
     var rect = p.getBoundingClientRect();
     var w = rect.width;
@@ -86,11 +90,26 @@ function toggleDevDialog(did) {
     d.style.left = l + "px";
     d.className = d.className.replace("hidden", "");
     
-    var did = dialogs[nid];
-    if (!did) {
-        did = new Dialog(nid, d);
-        dialogs[nid] = did;    
+    var ddd = dialogs[nid];
+    if (!ddd) {
+        ddd = new Dialog(nid, d);
+        dialogs[nid] = ddd;    
     } else dialogs[nid].reset();
+    
+    dialogs[nid].bringToTop();
+}
+
+function handleDevFocus(elem) {
+    elem.focused = false;
+    elem.hasFocus = function() {
+        return this.focused;
+    };
+    elem.onfocus=function() {
+        this.focused=true;
+    };
+    elem.onblur=function() {
+        this.focused=false;
+    };        
 }
 
 

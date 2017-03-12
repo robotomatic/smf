@@ -11,9 +11,20 @@ function StageRenderer() {
     this.stagerenderer_end = new StageRendererEnd(this.renderitems);
     this.flood = new StageFlood();
     this.debug = {
-        render : false,
-        level : false,
-        hsr : false
+        level : {
+            render : false,
+            level : false,
+            hsr : false,
+        },
+        player : {
+            player : false,
+            character : false,
+            guts : false
+        },
+        collision : {
+            level : false,
+            players : false
+        }
     };
 }
 

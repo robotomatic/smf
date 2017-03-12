@@ -2,13 +2,12 @@
 
 function PlayerDebugger(player) {
     this.player = player;
-    this.debug = false;
     this.rect = new Rectangle(0, 0, 0, 0);
 }
 
-PlayerDebugger.prototype.drawDebug = function(now, ctx) {
+PlayerDebugger.prototype.drawDebug = function(now, ctx, debug) {
     
-    if (!this.debug) return;
+    if (!debug.player) return;
 
     var x = this.player.projectedlocation.x;
     var y = this.player.projectedlocation.y;

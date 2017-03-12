@@ -23,6 +23,17 @@ function Player(id, name, color, x, y, z, width, height, speed, character, hp, l
 
     this.showing = false;
     
+    this.debug = {
+        player : false,
+        character : false,
+        guts : false
+    };
+    this.debugtemp = {
+        player : false,
+        character : false,
+        guts : false
+    };
+    
     this.playerdebugger = new PlayerDebugger(this);
 }
 
@@ -117,6 +128,7 @@ Player.prototype.update = function(now, delta, physics) {
     if (state == "idle") this.controller.idle(now);
     this.character.update(now, dir, state);
     this.collider.updateCollisionBox(this);
+    updateDevPlayer(this);
 }
 
 
@@ -161,9 +173,20 @@ Player.prototype.translate = function(window, width, height) {
 
 
 
-Player.prototype.render = function(now, width, height, ctx = null, scale = 1, debug = null) {
+Player.prototype.render = function(now, width, height, ctx = null, scale = 1, debug) {
+    
+    this.debugtemp.player = false;
+    this.debugtemp.character = false;
+    this.debugtemp.guts = false;
+    if (debug) {
+        this.debugtemp.player = this.debug.player ? true : debug.player;
+        this.debugtemp.character = this.debug.character ? true : debug.character;
+        this.debugtemp.guts = this.debug.guts ? true : debug.guts;
+    }
+    
+    debug = debug ? debug : this.debug;
     if (!ctx) this.renderStart(now, width, height, scale);
-    this.renderRender(now, ctx, scale, debug);
+    this.renderRender(now, ctx, scale, this.debugtemp);
     if (!ctx) this.renderEnd(now);
 }
 
@@ -184,7 +207,7 @@ Player.prototype.renderStart = function(now, width, height, scale = 1) {
     this.canvas.height = bh + doublepad;
 }
 
-Player.prototype.renderRender = function(now, ctx = null, scale = 1, debug = null) {
+Player.prototype.renderRender = function(now, ctx = null, scale = 1, debug) {
     var c = this.ctx;
     var ip = this.imagepad;
     var px = 0;
@@ -195,8 +218,8 @@ Player.prototype.renderRender = function(now, ctx = null, scale = 1, debug = nul
         px = this.box.x;
         py = this.box.y;
     }
-    this.character.draw(now, c, this, px, py, scale, ip);
-    this.playerdebugger.drawDebug(now, c);
+    this.character.draw(now, c, this, px, py, scale, ip, debug);
+    if (debug) this.playerdebugger.drawDebug(now, c, debug);
 }
 
 Player.prototype.renderEnd = function(when) {

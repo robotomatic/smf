@@ -48,6 +48,10 @@ body {
     resize: both;
 }
 
+.pointer-cursor {
+    cursor: pointer;
+}
+    
 .pointer-resize {
     cursor: nw-resize;
 }

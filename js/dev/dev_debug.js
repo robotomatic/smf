@@ -23,15 +23,15 @@ function initializeDevDebug() {
     };
     dev_player = document.getElementById("dev-debug-player");
     dev_player.onchange = function() {
-        setDebugPlayer(this.checked);
+        setDebugPlayers(this.checked);
     };
     dev_character = document.getElementById("dev-debug-character");
     dev_character.onchange = function() {
-        setDebugCharacter(this.checked);
+        setDebugCharacters(this.checked);
     };
     dev_guts = document.getElementById("dev-debug-guts");
     dev_guts.onchange = function() {
-        setDebugGuts(this.checked);
+        setDebugGutss(this.checked);
     };
     dev_level = document.getElementById("dev-debug-level");
     dev_level.onchange = function() {
@@ -56,9 +56,9 @@ function updateDevDebug() {
     if (!__dev) return;
     
     updateDevDebugOverlay();
-    updateDevDebugPlayer();
-    updateDevDebugCharacter();
-    updateDevDebugGuts();
+    updateDevDebugPlayers();
+    updateDevDebugCharacters();
+    updateDevDebugGutss();
     updateDevDebugLevel();
     updateDevDebugRender();
     updateDevDebugHSR();
@@ -100,61 +100,59 @@ function updateDevDebugOverlay() {
     dev_overlay.checked = hide;
 }
 
-function setDebugPlayer(debug) {
+function setDebugPlayers(debug) {
     
     if (!__dev) return;
     
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    gamecontroller.game.loop.game.stage.players.debug = debug;
-    updateDevDebugPlayer();
+    var t = gamecontroller.game.loop.game.stage.players.players.length;
+    gamecontroller.game.loop.game.stage.stagerenderer.debug.player.player = debug;
+    updateDevDebugPlayers();
 }
 
-function updateDevDebugPlayer() {
+function updateDevDebugPlayers() {
     
     if (!__dev) return;
     
-    var debug = gamecontroller.game.loop.game.stage.players.debug;
+    var debug = gamecontroller.game.loop.game.stage.stagerenderer.debug.player.player;
     dev_player.checked = debug;
 }
 
-function setDebugCharacter(debug) {
+function setDebugCharacters(debug) {
     
     if (!__dev) return;
     
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var t = gamecontroller.game.loop.game.stage.players.players.length;
-    for (var i = 0; i < t; i++) gamecontroller.game.loop.game.stage.players.players[i].character.debug.character = debug;
-    updateDevDebugCharacter();
+    gamecontroller.game.loop.game.stage.stagerenderer.debug.player.character = debug;
+    updateDevDebugCharacters();
 }
 
-function updateDevDebugCharacter() {
+function updateDevDebugCharacters() {
     
     if (!__dev) return;
     
-    if (!gamecontroller.game.loop.game.stage.players.players.length) return;
-    var debug = gamecontroller.game.loop.game.stage.players.players[0].character.debug.character;
+    var debug = gamecontroller.game.loop.game.stage.stagerenderer.debug.player.character;
     dev_character.checked = debug;
 }
 
-function setDebugGuts(debug) {
+function setDebugGutss(debug) {
     
     if (!__dev) return;
     
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var t = gamecontroller.game.loop.game.stage.players.players.length;
-    for (var i = 0; i < t; i++) gamecontroller.game.loop.game.stage.players.players[i].character.debug.guts = debug;
-    updateDevDebugGuts();
+    gamecontroller.game.loop.game.stage.stagerenderer.debug.player.guts = debug;
+    updateDevDebugGutss();
 }
 
-function updateDevDebugGuts() {
+function updateDevDebugGutss() {
     
     if (!__dev) return;
     
     if (!gamecontroller.game.loop.game.stage.players.players.length) return;
-    var debug = gamecontroller.game.loop.game.stage.players.players[0].character.debug.guts;
+    var debug = gamecontroller.game.loop.game.stage.stagerenderer.debug.player.guts;
     dev_guts.checked = debug;
 }
 
@@ -174,7 +172,7 @@ function setDebugLevel(debug) {
     
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    gamecontroller.game.loop.game.stage.stagerenderer.debug.level = debug;
+    gamecontroller.game.loop.game.stage.stagerenderer.debug.level.level = debug;
     updateDevDebugLevel();
 }
 
@@ -182,7 +180,7 @@ function updateDevDebugLevel() {
     
     if (!__dev) return;
     
-    var debug = gamecontroller.game.loop.game.stage.stagerenderer.debug.level;
+    var debug = gamecontroller.game.loop.game.stage.stagerenderer.debug.level.level;
     dev_level.checked = debug;
 }
 
@@ -192,7 +190,7 @@ function setDebugRender(debug) {
     
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    gamecontroller.game.loop.game.stage.stagerenderer.debug.render = debug;
+    gamecontroller.game.loop.game.stage.stagerenderer.debug.level.render = debug;
     updateDevDebugRender();
 }
 
@@ -200,7 +198,7 @@ function updateDevDebugRender() {
     
     if (!__dev) return;
     
-    var debug = gamecontroller.game.loop.game.stage.stagerenderer.debug.render;
+    var debug = gamecontroller.game.loop.game.stage.stagerenderer.debug.level.render;
     dev_render.checked = debug;
 }
 
@@ -210,7 +208,7 @@ function setDebugHSR(debug) {
     
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    gamecontroller.game.loop.game.stage.stagerenderer.debug.hsr = debug;
+    gamecontroller.game.loop.game.stage.stagerenderer.debug.level.hsr = debug;
     updateDevDebugHSR();
 }
 
@@ -218,6 +216,6 @@ function updateDevDebugHSR() {
     
     if (!__dev) return;
     
-    var debug = gamecontroller.game.loop.game.stage.stagerenderer.debug.hsr;
+    var debug = gamecontroller.game.loop.game.stage.stagerenderer.debug.level.hsr;
     dev_hsr.checked = debug;
 }

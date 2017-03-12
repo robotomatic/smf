@@ -151,3 +151,30 @@ function goFullScreen() {
         }  
     }  
 }
+
+
+
+
+function findChildById(element, childid) {
+    var child = null;
+    var children = getAllDescendants(element);
+    for (var i = 0; i < children.length; i++) {
+        if (children[i].id == childid) {
+            child = children[i];
+            break;
+        }
+    }
+    return child;
+}
+
+function getAllDescendants(element, children) {
+    children = children ? children : [];
+    var childnodes = element.childNodes;
+    for (var i = 0; i < childnodes.length; i++) {
+        if (childnodes[i].nodeType == 1) {
+            children.push(childnodes[i]);
+            children = getAllDescendants(childnodes[i], children);
+        }
+    }
+    return children;
+}

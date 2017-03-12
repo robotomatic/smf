@@ -104,6 +104,17 @@ function Item(json) {
     
     this.showing = false;
     
+    this.debug = {
+        level : false,
+        render : false,
+        hsr : false
+    }
+    this.debugtemp = {
+        level : false,
+        render : false,
+        hsr : false
+    }
+    
     if (json) this.loadJson(json);
 }
 
@@ -413,12 +424,22 @@ Item.prototype.translate = function(window, width, height) {
 
 
 Item.prototype.render = function(now, renderer, width, height, ctx, scale = 1, debug) {
+
+    this.debugtemp.level = false;
+    this.debugtemp.render = false;
+    this.debugtemp.hsr = false;
+    if (debug) {
+        this.debugtemp.level = this.debug.level ? true : debug.level;
+        this.debugtemp.render = this.debug.render ? true : debug.render;
+        this.debugtemp.hsr = this.debug.hsr ? true : debug.hsr;
+    }
+    
     if (!ctx) {
         this.renderStart(now, width, height, scale);
-        this.renderRender(now, renderer, this.ctx, scale, debug);
+        this.renderRender(now, renderer, this.ctx, scale, this.debugtemp);
         this.renderEnd(now);
     } else {
-        this.renderRender(now, renderer, ctx, 1, debug);
+        this.renderRender(now, renderer, ctx, 1, this.debugtemp);
     }
 }
 

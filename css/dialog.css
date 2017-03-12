@@ -102,6 +102,11 @@
     width: 4.5em;
 }
 
+.dialog-label-shortest {
+    width: 1.5em;
+    margin-right: .5em;
+}
+
 
 .dialog-input-label {
     margin: 0;
@@ -111,6 +116,12 @@
 
 .dialog-input {
     width: 4em;
+}
+
+.dialog-input-short {
+    width: 4em;
+    margin-right: .5em;
+    margin-top: -.25em;
 }
 
 .dialog-input-small {

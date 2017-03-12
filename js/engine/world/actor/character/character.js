@@ -19,11 +19,6 @@ function Character() {
     
     this.direction = "";
     this.state = "";
-    
-    this.debug = {
-        character : false,
-        guts : false
-    };
 }
 
 Character.prototype.loadJson = function(json) {
@@ -60,7 +55,7 @@ Character.prototype.translate = function(dx, dy, leftright, updown)  {
     if (this.emitter) this.emitter.translate(dx, dy, leftright, updown);
 }
 
-Character.prototype.draw = function(now, ctx, player, px, py, scale, pad)  { 
+Character.prototype.draw = function(now, ctx, player, px, py, scale, pad, debug)  { 
     this.animator.animate(now, this);
     if (this.emitter) {
         if (!this.emitter.alive) this.emitter.alive = true;
@@ -71,5 +66,5 @@ Character.prototype.draw = function(now, ctx, player, px, py, scale, pad)  {
     this.mbr.z = 0;
     this.mbr.width = player.box.width * scale;
     this.mbr.height = player.box.height * scale;
-    this.renderer.draw(ctx, this);
+    this.renderer.draw(ctx, this, debug);
 }

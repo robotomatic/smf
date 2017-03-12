@@ -14,7 +14,7 @@ function StageRendererDebug(renderitems) {
 }
 
 StageRendererDebug.prototype.renderDebug = function(now, graphics, camera, stage, mbr, window, debug) {
-    if (debug.render) this.renderDebugItems(graphics, mbr, window);
+    if (debug.level.render) this.renderDebugItems(graphics, mbr, window);
 }
 
 StageRendererDebug.prototype.renderDebugItems = function(graphics, mbr, window) {

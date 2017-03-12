@@ -1,74 +1,263 @@
 "use strict";
 
-var devplayercanvas = null;
-var devplayerctx = null;
-var devplayerimg = new Image(null, 0, 0, 0, 0);
-
-var dev_player_canvas = null;
+var devplayer;
+var dev_player_template = null;
 
 function initializeDevPlayer() {
-    
     if (!__dev) return;
+    devplayer = new Array();
+    dev_player_template = document.getElementById("dev-dialog-player");
+}
+
+function showDevPlayer(player) {
+    if (!__dev) return;
+    var pid = "dev-dialog-players-player-" + player.id;
+    var pd = devplayer[pid];
+    if (!devplayer[pid]) {
+        pd = createDevPlayerDialog(player, pid);
+        devplayer[pid] = pd;
+    }
+    pd.visible = true;
+    updateDevPlayer(player);
+    toggleDevDialog(pid);
+}
+
+function createDevPlayerDialog(player, pid) {
+    if (!__dev) return;
+
+    var id = player.id;
     
-    dev_player_canvas = document.getElementById("dev-player-canvas");
-    if (!dev_player_canvas) return;
+    var pd = dev_player_template.cloneNode(true);
+    pd.id = pid;
+
+    var close = findChildById(pd, "dev-dialog-player-close");
+    if (close) {
+        close.onclick = function() {
+            devplayer[pid].visible = false;
+        }
+    }
     
-    dev_player_canvas.resize = function() {
-        resizeDevPlayerCanvas();
+    var title = findChildById(pd, "dev-dialog-player-title");
+    if (title) {
+        title.innerHTML = player.name;
+        title.id = "dev-dialog-player-title-" + id;
+    }
+
+    var debugplayerx = findChildById(pd, "dev-player-position-x");
+    if (debugplayerx) {
+        debugplayerx.id = "dev-player-position-x-" + id;
+        debugplayerx.onchange = function() {
+            setDevPlayerX(player, this.value);
+        }
+        handleDevFocus(debugplayerx);
+    }
+    var debugplayery = findChildById(pd, "dev-player-position-y");
+    if (debugplayery) {
+        debugplayery.id = "dev-player-position-y-" + id;
+        debugplayery.onchange = function() {
+            setDevPlayerY(player, this.value);
+        }
+        handleDevFocus(debugplayery);
+    }
+    var debugplayerz = findChildById(pd, "dev-player-position-z");
+    if (debugplayerz) {
+        debugplayerz.id = "dev-player-position-z-" + id;
+        debugplayerz.onchange = function() {
+            setDevPlayerZ(player, this.value);
+        }
+        handleDevFocus(debugplayerz);
+    }
+
+    var debugplayerw = findChildById(pd, "dev-player-size-width");
+    if (debugplayerw) {
+        debugplayerw.id = "dev-player-size-width-" + id;
+        debugplayerw.onchange = function() {
+            setDevPlayerWidth(player, this.value);
+        }
+        handleDevFocus(debugplayerw);
+    }
+    var debugplayerh = findChildById(pd, "dev-player-size-height");
+    if (debugplayerh) {
+        debugplayerh.id = "dev-player-size-height-" + id;
+        debugplayerh.onchange = function() {
+            setDevPlayerHeight(player, this.value);
+        }
+        handleDevFocus(debugplayerh);
+    }
+    var debugplayerd = findChildById(pd, "dev-player-size-depth");
+    if (debugplayerd) {
+        debugplayerd.id = "dev-player-size-depth-" + id;
+        debugplayerd.onchange = function() {
+            setDevPlayerDepth(player, this.value);
+        }
+        handleDevFocus(debugplayerd);
+    }
+
+    var debugplayer = findChildById(pd, "dev-debug-player-player");
+    if (debugplayer) {
+        debugplayer.id = "dev-debug-player-player-" + id;
+        debugplayer.onclick = function() {
+            setDevPlayerDebugPlayer(player, this.checked);
+        }
+    }
+
+    var debugcharacter = findChildById(pd, "dev-debug-player-character");
+    if (debugcharacter) {
+        debugcharacter.id = "dev-debug-player-character-" + id;
+        debugcharacter.onclick = function() {
+            setDevPlayerDebugCharacter(player, this.checked);
+        }
+    }
+
+    var debugguts = findChildById(pd, "dev-debug-player-guts");
+    if (debugguts) {
+        debugguts.id = "dev-debug-player-guts-" + id;
+        debugguts.onclick = function() {
+            setDevPlayerDebugGuts(player, this.checked);
+        }
+    }
+
+    document.getElementById("main-content").appendChild(pd);
+    
+    return {
+        dialog : pd,
+        visible : false,
+        posx : debugplayerx,
+        posy : debugplayery,
+        posz : debugplayerz,
+        sizew : debugplayerw,
+        sizeh : debugplayerh,
+        sized : debugplayerd,
+        debugplayer : debugplayer,
+        debugcharacter : debugcharacter,
+        debugguts : debugguts
     };
 }
 
-function updateDevPlayer(img) {
-    
+function updateDevPlayer(player) {
     if (!__dev) return;
-    
-    return;
-    
-    devplayerimg.data = img.data;
-    devplayerimg.width = img.width;
-    devplayerimg.height = img.height;
-    resizeDevPlayerCanvas();
+    var pid = "dev-dialog-players-player-" + player.id;
+    var pd = devplayer[pid];
+    if (!pd || !pd.visible) return;
+    updateDevPlayerPosition(pd, player);
+    updateDevPlayerSize(pd, player);
+    updateDevPlayerDebug(pd, player);
 }
 
-function resizeDevPlayerCanvas() {
+
+function updateDevPlayerPosition(pd, player) {
+    if (!__dev) return;
+    if (pd.posx && !pd.posx.hasFocus()) {
+        pd.posx.value = player.controller.x;    
+    }
+    if (pd.posy && !pd.posy.hasFocus()) {
+        pd.posy.value = player.controller.y;    
+    }
+    if (pd.posz && !pd.posz.hasFocus()) {
+        pd.posz.value = player.controller.z;    
+    }
+}
+
+function setDevPlayerX(player, x) {
+    if (!__dev) return;
+    x = Number(x);
+    player.controller.x = x;
+    player.controller.lastX = x;
+}
+
+function setDevPlayerY(player, y) {
+    if (!__dev) return;
+    y = Number(y);
+    player.controller.y = y;
+    player.controller.lastY = y;
+}
+
+function setDevPlayerZ(player, z) {
+    if (!__dev) return;
+    z = Number(z);
+    player.controller.z = z;
+    player.controller.lastZ = z;
+}
+
+
+
+
+
+function updateDevPlayerSize(pd, player) {
+    if (!__dev) return;
+    if (pd.sizew && !pd.sizew.hasFocus()) {
+        pd.sizew.value = player.controller.width;    
+    }
+    if (pd.sizeh && !pd.sizeh.hasFocus()) {
+        pd.sizeh.value = player.controller.height;    
+    }
+    if (pd.sized && !pd.sized.hasFocus()) {
+        pd.sized.value = player.controller.depth;    
+    }
+}
+
+function setDevPlayerWidth(player, w) {
+    if (!__dev) return;
+    w = Number(w);
+    player.controller.width = w;
+}
+
+function setDevPlayerHeight(player, h) {
+    if (!__dev) return;
+    h = Number(h);
+    player.controller.height = h;
+}
+
+function setDevPlayerDepth(player, d) {
+    if (!__dev) return;
+    d = Number(d);
+    player.controller.depth = d;
+}
+
+
+
+
+
+
+function updateDevPlayerIndex(index) {
     
     if (!__dev) return;
-    
-    return;
-    
-    if (!devplayercanvas) devplayercanvas = dev_player_canvas;
-    if (!devplayercanvas) return;
-    
-    if (!devplayerctx) devplayerctx = devplayercanvas.getContext("2d");
-    if (!devplayerimg) return;
-    
-    devplayercanvas.width = devplayercanvas.offsetWidth;
-    devplayercanvas.height = devplayercanvas.offsetHeight;
-    var w = devplayercanvas.width;
-    var h = devplayercanvas.height;
-    clearRect(devplayerctx, 0, 0, w, h);
-    var nw = devplayerimg.width;
-    var nh = devplayerimg.height;
-    if (nw > nh) {
-        var r = nh / nw;
-        nw = w;
-        nh = nw * r; 
-    } else {
-        var r = nw / nh;
-        nh = h;
-        nw = nh * r; 
+
+}
+
+
+
+
+
+
+
+
+
+
+function updateDevPlayerDebug(pd, player) {
+    if (!__dev) return;
+    if (pd.debugplayer) {
+        pd.debugplayer.checked = player.debug.player;    
     }
-    if (nh > h) {
-        var d = h / nh;
-        nw *= d;
-        nh = h;
+    if (pd.debugcharacter) {
+        pd.debugcharacter.checked = player.debug.character;    
     }
-    if (nw > w) {
-        var d = w / nw;
-        nh *= d;
-        nw = w;
+    if (pd.debugguts) {
+        pd.debugguts.checked = player.debug.guts;    
     }
-    var nx = (w - nw) / 2;
-    var ny = (h - nh) / 2;
-    devplayerimg.draw(devplayerctx, nx, ny, nw, nh);
+}
+
+function setDevPlayerDebugPlayer(player, debug) {
+    if (!__dev) return;
+    player.debug.player = debug;
+}
+
+function setDevPlayerDebugCharacter(player, debug) {
+    if (!__dev) return;
+    player.debug.character = debug;
+}
+
+function setDevPlayerDebugGuts(player, debug) {
+    if (!__dev) return;
+    player.debug.guts = debug;
 }

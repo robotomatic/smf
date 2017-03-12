@@ -10,7 +10,6 @@ function Players(players) {
         width : 20,
         height : 5
     };
-    this.debug = false;
     this.mbr = new Rectangle(0, 0, 0, 0);
 }
 

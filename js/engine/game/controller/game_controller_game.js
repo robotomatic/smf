@@ -69,12 +69,15 @@ GameControllerGame.prototype.loadLevel = function() {
     var numplayers = players ?  Object.keys(players).length : 1;
     
     
-    numplayers = 1;
+    numplayers = 10;
     for (var i = 0; i < numplayers; i++) {
 
         var charname = "";
         if (i == 0) charname = charnames[1];
-        else charname = charnames[0];
+        else {
+            var rando = random(0, charnames.length - 1);
+            charname = charnames[rando];
+        }
         
 //                var charname = charnames[i + 1];
 
@@ -107,10 +110,9 @@ GameControllerGame.prototype.loadLevel = function() {
         var height = character.height;
         
         if (i > 0) {
-            width *= 2;
-            height *= 2;
+//            width *= 2;
+//            height *= 2;
         }
-        
         
         var speed = 3;
         var hp = 1000;

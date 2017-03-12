@@ -44,7 +44,7 @@ GameController.prototype.loadDev = function(callback) {
     if (!__dev) return;
     if (this.devtools) return;
     var controller = this;
-    this.gameloader.loadDev("html/dev/ui-dev.html", function() {
+    this.gameloader.loadDev("html/dev.html", function() {
         controller.devtools = controller.gameloader.dev;
         if (callback) callback();
     });

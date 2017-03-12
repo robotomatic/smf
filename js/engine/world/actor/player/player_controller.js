@@ -201,7 +201,7 @@ PlayerController.prototype.lookLeft = function(look) {
 };
 
 PlayerController.prototype.isLookingLeft = function(now) { 
-    if (!this.lastMoveLeft) return false;
+//    if (!this.lastMoveLeft) return false;
     if (this.look_left) return true;
     if (this.move_left) return true;
     if (this.isFalling && !this.grounded && this.lastDirection == "left") {
@@ -236,7 +236,7 @@ PlayerController.prototype.lookRight = function(look) {
 };
 
 PlayerController.prototype.isLookingRight = function(now) { 
-    if (!this.lastMoveRight) return false;
+//    if (!this.lastMoveRight) return false;
     if (this.look_right) return true;
     if (this.move_right) return true;
     if (this.isFalling && !this.grounded && this.lastDirection == "right") {
