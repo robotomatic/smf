@@ -14,8 +14,8 @@ function PlayerCollider(player) {
 PlayerCollider.prototype.reset = function() {
     this.levelcollisions.length = 0;
     this.collisionbox.reset();
-    this.lastbox.reset();
-    this.movebox.reset();
+//    this.lastbox.reset();
+//    this.movebox.reset();
 }
 
 PlayerCollider.prototype.respawn = function() {
@@ -24,7 +24,8 @@ PlayerCollider.prototype.respawn = function() {
 
 PlayerCollider.prototype.collideWith = function(collider, result) {
     if (collider == null) return result;
-    result = collide(this.movebox, collider, result);
+    result = collide(this.collisionbox, collider, result);
+//    result = collide(this.movebox, collider, result);
     if (result.collided()) result = this.handleCollide(collider, result);
     this.result = result;
     return result;
@@ -197,46 +198,55 @@ PlayerCollider.prototype.handleCollideLiquid = function(collider, result) {
 
 PlayerCollider.prototype.updateCollisionBox = function() {
     
+    
     var player = this.player;
     
     var ppx = player.controller.x;
     var ppy = player.controller.y;
     var ppz = player.controller.z;
     
-    this.lastbox.x = this.collisionbox.x;
-    this.lastbox.y = this.collisionbox.y;
-    this.lastbox.z = this.collisionbox.z;
-    this.lastbox.width = this.collisionbox.width;
-    this.lastbox.height = this.collisionbox.height;
+//    this.lastbox.x = this.collisionbox.x;
+//    this.lastbox.y = this.collisionbox.y;
+//    this.lastbox.z = this.collisionbox.z;
+//    this.lastbox.width = this.collisionbox.width;
+//    this.lastbox.height = this.collisionbox.height;
 
     this.collisionbox.x = ppx;
     this.collisionbox.y = ppy;
     this.collisionbox.z = ppz;
     this.collisionbox.width = player.controller.width;
     this.collisionbox.height = player.controller.height;
-
     this.collisionbox.velX = player.controller.velX;
     this.collisionbox.velY = player.controller.velY;
     this.collisionbox.velZ = player.controller.velZ;
     
-    if (!this.lastbox.x) this.lastbox.x = this.collisionbox.x;
-    if (!this.lastbox.y) this.lastbox.y = this.collisionbox.y;
-    if (!this.lastbox.z) this.lastbox.z = this.collisionbox.z;
-    if (!this.lastbox.width) this.lastbox.width = this.collisionbox.width;
-    if (!this.lastbox.height) this.lastbox.height = this.collisionbox.height;
+//    if (!this.lastbox.x) this.lastbox.x = this.collisionbox.x;
+//    if (!this.lastbox.y) this.lastbox.y = this.collisionbox.y;
+//    if (!this.lastbox.z) this.lastbox.z = this.collisionbox.z;
+//    if (!this.lastbox.width) this.lastbox.width = this.collisionbox.width;
+//    if (!this.lastbox.height) this.lastbox.height = this.collisionbox.height;
+//    
+//    var x1 = min(this.lastbox.x, this.collisionbox.x);
+//    var y1 = min(this.lastbox.y, this.collisionbox.y);
+//    var z1 = min(this.lastbox.z, this.collisionbox.z);
+//    var x2 = max(this.lastbox.x, this.collisionbox.x);
+//    var y2 = max(this.lastbox.y, this.collisionbox.y);
+//    var z2 = max(this.lastbox.z, this.collisionbox.z);
+//    
+//    this.movebox.x = x1;
+//    this.movebox.y = y1;
+//    this.movebox.z = z1;
+//    this.movebox.width = round(x2 - x1 + player.controller.width);
+//    this.movebox.height = round(y2 - y1 + player.controller.height);
+//    this.movebox.velX = player.controller.velX;
+//    this.movebox.velY = player.controller.velY;
+//    this.movebox.velZ = player.controller.velZ;
     
-    var x1 = min(this.lastbox.x, this.collisionbox.x);
-    var y1 = min(this.lastbox.y, this.collisionbox.y);
-    var z1 = min(this.lastbox.z, this.collisionbox.z);
-    var x2 = max(this.lastbox.x, this.collisionbox.x);
-    var y2 = max(this.lastbox.y, this.collisionbox.y);
-    var z2 = max(this.lastbox.z, this.collisionbox.z);
-    
-    this.movebox.x = x1;
-    this.movebox.y = y1;
-    this.movebox.z = z1;
-    this.movebox.width = round(x2 - x1 + player.controller.width);
-    this.movebox.height = round(y2 - y1 + player.controller.height);
+    this.movebox.x = ppx;
+    this.movebox.y = ppy;
+    this.movebox.z = ppz;
+    this.movebox.width = player.controller.width;
+    this.movebox.height = player.controller.height;
     this.movebox.velX = player.controller.velX;
     this.movebox.velY = player.controller.velY;
     this.movebox.velZ = player.controller.velZ;
