@@ -68,7 +68,7 @@ StageBuilderTheme.prototype.buildItemItem = function(renderer, theme, item, item
     }
     newitem.depth = itemitem.depth == "100%" ? item.depth : itemitem.depth ? itemitem.depth : item.depth;
 
-    if (itemitem.extrude) {
+    if (itemitem.extrude && false) {
         newitem.x -= itemitem.extrude;
         if (newitem.parts) {
             var keys = Object.keys(newitem.parts);

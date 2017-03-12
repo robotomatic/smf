@@ -272,6 +272,7 @@
                         "height": 10,
                         "depth" : "100%",
                         "bottom" : false,
+                        "extrude" : 5,
                         "join" : "subtract",
                         "itemtype" :  "grass-top",
                         "iteminfo" : {
