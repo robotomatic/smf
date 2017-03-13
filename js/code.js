@@ -37,10 +37,10 @@ function runAnimationFrameDev(when) {
         window.requestAnimFrame(runAnimationFrame);
     } catch (x) {
         StackTrace.fromError(x).then(function(stackframes) {
-            var stringifiedStack = stackframes.map(function(sf) {
+            var error = stackframes.map(function(sf) {
                 return sf.toString();
             }).join('\n');
-            logDevError(stringifiedStack);
+            logDevError(error);
         });
     }
 }
