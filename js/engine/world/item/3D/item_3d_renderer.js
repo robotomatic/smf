@@ -159,7 +159,7 @@ Item3DRenderer.prototype.renderItem3D = function(now, renderer, ctx, scale, debu
         ctx.globalAlpha = 1;        
         var linecolor = "red";
         if (!this.item3d.item.geometry.visible.front.visible) {
-            this.renderItemParts3D(ctx, this.item3d.item.geometry.front, linecolor, x, y, scale, debug, true, false);
+            this.renderItemParts3D(ctx, this.item3d.item.geometry.fronts, linecolor, x, y, scale, debug, true, false);
         }
         if (!this.item3d.item.geometry.visible.top.visible) {
             this.renderItemParts3D(ctx, this.item3d.item.geometry.tops, linecolor, x, y, scale, debug, true, false);
