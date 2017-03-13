@@ -1,6 +1,20 @@
 "use strict";
 
 function StageBuilder() {
+    
+    
+    this.chunksize = {
+        x : 300,
+        y : 300,
+        z : 300
+    }
+    
+    this.indexsize = {
+        width: 100,
+        height: 100,
+        depth : 100
+    }
+    
     this.itembuilder = new StageBuilderItems();
     this.collidebuilder = new StageBuilderColliders();
     this.themebuilder = new StageBuilderTheme();
@@ -10,34 +24,10 @@ function StageBuilder() {
 }
 
 StageBuilder.prototype.buildStage = function(now, stage) {
-    this.itembuilder.buildStage(stage);
-    this.collidebuilder.buildColliders(stage, this.chunkbuilder.granularity);
-    stage.items = this.getStageItems(stage);
-    this.themebuilder.buildItems(stage);
-    this.chunkbuilder.chunk(stage);
-    this.intersectbuilder.intersectItems(stage);
-    stage.items.sort(sortByY);
-    this.hsrbuilder.removeHiddenSurfaces(stage);
-}
-
-StageBuilder.prototype.getStageItems = function(stage) {
-    var itemsout = new Array();
-    var level = stage.level;
-    var t = level.layers.length;
-    for (var i = 0; i < t; i++) {
-        var layer = level.layers[i];
-        if (layer.draw === false) continue;
-        itemsout = this.getStageLayerItems(layer, itemsout);
-    }
-    return itemsout;
-}
-
-StageBuilder.prototype.getStageLayerItems = function(layer, itemsout) {
-    var t = layer.items.items.length;
-    for (var i = 0; i < t; i++) {
-        var item = layer.items.items[i];
-        if (item.draw == false) continue;
-        itemsout.push(item);
-    }
-    return itemsout;
+    stage.items = this.itembuilder.buildStage(stage);
+    stage.stagecollider.colliders = this.collidebuilder.buildColliders(stage.items, this.indexsize);
+    stage.items = this.themebuilder.buildTheme(stage.items, stage.level.itemrenderer);
+    stage.items = this.chunkbuilder.chunk(stage.items, this.chunksize);
+    stage.items = this.intersectbuilder.intersectItems(stage.items);
+    stage.items = this.hsrbuilder.removeHiddenSurfaces(stage.items);
 }

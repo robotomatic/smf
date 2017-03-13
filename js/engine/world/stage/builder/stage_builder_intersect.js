@@ -3,72 +3,80 @@
 function StageBuilderIntersect() {
 }
 
-StageBuilderIntersect.prototype.intersectItems = function(stage) { 
-    for (var i = 0; i < stage.items.length; i++) {
-        var item = stage.items[i];
+StageBuilderIntersect.prototype.intersectItems = function(items) { 
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
         if (item.draw === false) continue;
         if (item.width == "100%" || item.height == "100%" || item.depth == "100%") continue;
-        this.intersectItemItems(stage, item, stage.items);
+        var newitems = this.intersectItemItems(item, items, newitems);
+        if (newitems) items = items.concat(newitems);
     }
+    return items;
 }
 
-StageBuilderIntersect.prototype.intersectItemItems = function(stage, item, items) { 
+StageBuilderIntersect.prototype.intersectItemItems = function(item, items, newitems) { 
+    var newitems = new Array();
     for (var i = 0; i < items.length; i++) {
         var itemc = items[i];
         if (itemc.draw === false) continue;
         if (itemc == item) continue;
-        this.intersectItemItem(stage, item, itemc, "intersectItemItemLeftRight");
+        newitems = this.intersectItemItem(item, itemc, newitems, "intersectItemItemLeftRight");
     }
     for (var i = 0; i < items.length; i++) {
         var itemc = items[i];
         if (itemc.draw === false) continue;
         if (itemc == item) continue;
-        this.intersectItemItem(stage, item, itemc, "intersectItemItemFrontBack");
+        newitems = this.intersectItemItem(item, itemc, newitems, "intersectItemItemFrontBack");
     }
     for (var i = 0; i < items.length; i++) {
         var itemc = items[i];
         if (itemc.draw === false) continue;
         if (itemc == item) continue;
-        this.intersectItemItem(stage, item, itemc, "intersectItemItemTopBottom");
+        newitems = this.intersectItemItem(item, itemc, newitems, "intersectItemItemTopBottom");
     }
+    return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemItem = function(stage, item, itemc, f) { 
-    if (itemc.width == "100%" || itemc.height == "100%" || itemc.depth == "100%") return;
-    if (itemc.y + itemc.height < item.y) return;
-    if (itemc.y > item.y + item.height) return;
-    if (itemc.z + itemc.depth < item.z) return;
-    if (itemc.z > item.z + item.depth) return;
-    if (itemc.x + itemc.width < item.x) return;
-    if (itemc.x > item.x + item.width) return;
-    this[f](stage, item, itemc);
+StageBuilderIntersect.prototype.intersectItemItem = function(item, itemc, newitems, f) { 
+    if (itemc.width == "100%" || itemc.height == "100%" || itemc.depth == "100%") return newitems;
+    if (itemc.y + itemc.height < item.y) return newitems;
+    if (itemc.y > item.y + item.height) return newitems;
+    if (itemc.z + itemc.depth < item.z) return newitems;
+    if (itemc.z > item.z + item.depth) return newitems;
+    if (itemc.x + itemc.width < item.x) return newitems;
+    if (itemc.x > item.x + item.width) return newitems;
+    newitems = this[f](item, itemc, newitems);
+    return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemItemLeftRight = function(stage, item, itemc) { 
-    this.intersectItemsItemItemRight(stage, item, itemc);
-    this.intersectItemsItemItemLeft(stage, item, itemc);
+StageBuilderIntersect.prototype.intersectItemItemLeftRight = function(item, itemc, newitems) { 
+    this.intersectItemsItemItemRight(item, itemc, newitems);
+    this.intersectItemsItemItemLeft(item, itemc, newitems);
+    return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemItemFrontBack = function(stage, item, itemc) { 
-    this.intersectItemsItemItemFront(stage, item, itemc);
-    this.intersectItemsItemItemBack(stage, item, itemc);
+StageBuilderIntersect.prototype.intersectItemItemFrontBack = function(item, itemc, newitems) { 
+    this.intersectItemsItemItemFront(item, itemc, newitems);
+    this.intersectItemsItemItemBack(item, itemc, newitems);
+    return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemItemTopBottom = function(stage, item, itemc) { 
+StageBuilderIntersect.prototype.intersectItemItemTopBottom = function(item, itemc, newitems) { 
 // todo!        
-//    this.intersectItemsItemItemTop(stage, item, itemc);
-//    this.intersectItemsItemItemBottom(stage, item, itemc);
+//    this.intersectItemsItemItemTop(item, itemc, newitems);
+//    this.intersectItemsItemItemBottom(item, itemc, newitems);
+    return newitems;
 }
 
 
-StageBuilderIntersect.prototype.intersectItemsItemItemTop = function(stage, item, itemc) {
+StageBuilderIntersect.prototype.intersectItemsItemItemTop = function(item, itemc, newitems) {
 //    if (itemc.y <= item.y) {
 //        if (itemc.y + itemc.height >= item.y) {
 //            
-//            if (itemc.z + itemc.depth <= item.z) return;
-//            if (itemc.z >= item.z + item.depth) return;
-//            if (itemc.x + itemc.width <= item.x) return;
-//            if (itemc.x >= item.x + item.width) return;
+//            if (itemc.z + itemc.depth <= item.z) return newitems;
+//            if (itemc.z >= item.z + item.depth) return newitems;
+//            if (itemc.x + itemc.width <= item.x) return newitems;
+//            if (itemc.x >= item.x + item.width) return newitems;
 //
 //            if ((itemc.x > item.x && itemc.width < item.width) || ((itemc.x + itemc.width) - (item.x + item.width) < 0)) {
 //                // partial coverage on x axis
@@ -79,16 +87,17 @@ StageBuilderIntersect.prototype.intersectItemsItemItemTop = function(stage, item
 //            }
 //        }
 //    }
+    return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemsItemItemBottom = function(stage, item, itemc) {
+StageBuilderIntersect.prototype.intersectItemsItemItemBottom = function(item, itemc, newitems) {
 //    if (itemc.y <= item.y + item.height) {
 //        if (itemc.y + itemc.height >= item.y + item.height) {
 //            
-//            if (itemc.z + itemc.depth <= item.z) return;
-//            if (itemc.z >= item.z + item.depth) return;
-//            if (itemc.x + itemc.width <= item.x) return;
-//            if (itemc.x >= item.x + item.width) return;
+//            if (itemc.z + itemc.depth <= item.z) return newitems;
+//            if (itemc.z >= item.z + item.depth) return newitems;
+//            if (itemc.x + itemc.width <= item.x) return newitems;
+//            if (itemc.x >= item.x + item.width) return newitems;
 //            
 //            if ((itemc.x > item.x && itemc.width < item.width) || ((itemc.x + itemc.width) - (item.x + item.width) < 0)) {
 //                // partial coverage on x axis
@@ -99,15 +108,16 @@ StageBuilderIntersect.prototype.intersectItemsItemItemBottom = function(stage, i
 //            }
 //        }
 //    }
+    return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemsItemItemLeft = function(stage, item, itemc) {
+StageBuilderIntersect.prototype.intersectItemsItemItemLeft = function(item, itemc, newitems) {
     if (itemc.x <= item.x) {
         if (itemc.x + itemc.width >= item.x) {
-            if (itemc.y + itemc.height <= item.y) return;
-            if (itemc.y >= item.y + item.height) return;
-            if (itemc.z + itemc.depth <= item.z) return;
-            if (itemc.z >= item.z + item.depth) return;
+            if (itemc.y + itemc.height <= item.y) return newitems;
+            if (itemc.y >= item.y + item.height) return newitems;
+            if (itemc.z + itemc.depth <= item.z) return newitems;
+            if (itemc.z >= item.z + item.depth) return newitems;
             if ((itemc.y > item.y && itemc.height < item.height) || ((itemc.y + itemc.height) - (item.y + item.height) <= 0)) {
                 if ((itemc.z > item.z && itemc.depth < item.depth) || ((itemc.z + itemc.depth) - (item.z + item.depth) <= 0)) {
                     var clip = "left";
@@ -115,26 +125,27 @@ StageBuilderIntersect.prototype.intersectItemsItemItemLeft = function(stage, ite
                     // todo: front / back
                     
                     if (item.y + item.height > itemc.y + itemc.height) {
-                        this.intersectClip(this.intersectClipBottom, stage, item, itemc, clip, "bottom");
-                        return;
+                        newitems = this.intersectClip(this.intersectClipBottom, item, itemc, newitems, clip, "bottom");
+                        return newitems;
                     }
                     if (item.y < itemc.y) {
-                        this.intersectClip(this.intersectClipTop, stage, item, itemc, clip, "top");
-                        return;
+                        newitems = this.intersectClip(this.intersectClipTop, item, itemc, newitems, clip, "top");
+                        return newitems;
                     }
                 }
             }
         }
     }
+    return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemsItemItemRight = function(stage, item, itemc) {
+StageBuilderIntersect.prototype.intersectItemsItemItemRight = function(item, itemc, newitems) {
     if (itemc.x <= item.x + item.width) {
         if (itemc.x + itemc.width >= item.x + item.width) {
-            if (itemc.y + itemc.height <= item.y) return;
-            if (itemc.y >= item.y + item.height) return;
-            if (itemc.z + itemc.depth <= item.z) return;
-            if (itemc.z >= item.z + item.depth) return;
+            if (itemc.y + itemc.height <= item.y) return newitems;
+            if (itemc.y >= item.y + item.height) return newitems;
+            if (itemc.z + itemc.depth <= item.z) return newitems;
+            if (itemc.z >= item.z + item.depth) return newitems;
             if ((itemc.y > item.y && itemc.height < item.height) || ((itemc.y + itemc.height) - (item.y + item.height) <= 0)) {
                 if ((itemc.z > item.z && itemc.depth < item.depth) || ((itemc.z + itemc.depth) - (item.z + item.depth) <= 0)) {
                     var clip = "right";
@@ -142,81 +153,84 @@ StageBuilderIntersect.prototype.intersectItemsItemItemRight = function(stage, it
                     // todo: front / back
                     
                     if (item.y < itemc.y) {
-                        this.intersectClip(this.intersectClipTop, stage, item, itemc, clip, "top");
-                        return;
+                        newitems = this.intersectClip(this.intersectClipTop, item, itemc, newitems, clip, "top");
+                        return newitems;
                     }
                     if (item.y + item.height > itemc.y + itemc.height) {
-                        this.intersectClip(this.intersectClipBottom, stage, item, itemc, clip, "bottom");
-                        return;
+                        newitems = this.intersectClip(this.intersectClipBottom, item, itemc, newitems, clip, "bottom");
+                        return newitems;
                     }
                 }
             }
         }
     }
+    return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemsItemItemFront = function(stage, item, itemc) {
+StageBuilderIntersect.prototype.intersectItemsItemItemFront = function(item, itemc, newitems) {
     if (itemc.z <= item.z) {
         if (itemc.z + itemc.depth >= item.z) {
-            if (itemc.y + itemc.height <= item.y) return;
-            if (itemc.y >= item.y + item.height) return;
-            if (itemc.x + itemc.width <= item.x) return;
-            if (itemc.x >= item.x + item.width) return;
+            if (itemc.y + itemc.height <= item.y) return newitems;
+            if (itemc.y >= item.y + item.height) return newitems;
+            if (itemc.x + itemc.width <= item.x) return newitems;
+            if (itemc.x >= item.x + item.width) return newitems;
             if ((itemc.x > item.x && itemc.width < item.width) || ((itemc.x + itemc.width) - (item.x + item.width) <= 0)) {
                 if ((itemc.y > item.y && itemc.height < item.height) || ((itemc.y + itemc.height) - (item.y + item.height) < 0)) {
                     var clip = "front";
                     if (item.x + item.width > itemc.x + itemc.width) {
-                        this.intersectClip(this.intersectClipRight, stage, item, itemc, clip, "right");
-                        return;
+                        newitems = this.intersectClip(this.intersectClipRight, item, itemc, newitems, clip, "right");
+                        return newitems;
                     }
                     if (item.x < itemc.x) {
-                        this.intersectClip(this.intersectClipLeft, stage, item, itemc, clip, "left");
-                        return;
+                        newitems = this.intersectClip(this.intersectClipLeft, item, itemc, newitems, clip, "left");
+                        return newitems;
                     }
                     if (item.y < itemc.y) {
-                        this.intersectClip(this.intersectClipTop, stage, item, itemc, clip, "top");
-                        return;
+                        newitems = this.intersectClip(this.intersectClipTop, item, itemc, newitems, clip, "top");
+                        return newitems;
                     }
                     if (item.y + item.height > itemc.y + itemc.height) {
-                        this.intersectClip(this.intersectClipBottom, stage, item, itemc, clip, "bottom");
-                        return;
+                        newitems = this.intersectClip(this.intersectClipBottom, item, itemc, newitems, clip, "bottom");
+                        return newitems;
                     }
                 }
             }
         }
     }
+    return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemsItemItemBack = function(stage, item, itemc) {
+StageBuilderIntersect.prototype.intersectItemsItemItemBack = function(item, itemc, newitems) {
     if (itemc.z <= item.z + item.depth) {
         if (itemc.z + itemc.depth >= item.z + item.depth) {
-            if (itemc.y + itemc.height <= item.y) return;
-            if (itemc.y >= item.y + item.height) return;
-            if (itemc.x + itemc.width <= item.x) return;
-            if (itemc.x >= item.x + item.width) return;
+            if (itemc.y + itemc.height <= item.y) return newitems;
+            if (itemc.y >= item.y + item.height) return newitems;
+            if (itemc.x + itemc.width <= item.x) return newitems;
+            if (itemc.x >= item.x + item.width) return newitems;
             if ((itemc.x > item.x && itemc.width < item.width) || ((itemc.x + itemc.width) - (item.x + item.width) <= 0)) {
                 if ((itemc.y > item.y && itemc.height < item.height) || ((itemc.y + itemc.height) - (item.y + item.height) < 0)) {
                     var clip = "back";
                     if (item.x + item.width > itemc.x + itemc.width) {
-                        this.intersectClip(this.intersectClipRight, stage, item, itemc, clip, "right");
-                        return;
+                        newitems = this.intersectClip(this.intersectClipRight, item, itemc, newitems, clip, "right");
+                        return newitems;
                     }
                     if (item.x < itemc.x) {
-                        this.intersectClip(this.intersectClipLeft, stage, item, itemc, clip, "left");
-                        return;
+                        newitems = this.intersectClip(this.intersectClipLeft, item, itemc, newitems, clip, "left");
+                        return newitems;
                     }
                     if (item.y < itemc.y) {
-                        this.intersectClip(this.intersectClipTop, stage, item, itemc, clip, "top");
-                        return;
+                        newitems = this.intersectClip(this.intersectClipTop, item, itemc, newitems, clip, "top");
+                        return newitems;
                     }
                     if (item.y + item.height > itemc.y + itemc.height) {
-                        this.intersectClip(this.intersectClipBottom, stage, item, itemc, clip, "bottom");
-                        return;
+                        newitems = this.intersectClip(this.intersectClipBottom, item, itemc, newitems, clip, "bottom");
+                        return newitems;
                     }
                 }
             }
         }
     }
+    return newitems;
 }
 
 
@@ -227,14 +241,15 @@ StageBuilderIntersect.prototype.intersectItemsItemItemBack = function(stage, ite
 
 
 
-StageBuilderIntersect.prototype.intersectClip = function(f, stage, item, itemc, clip, dir) {
+StageBuilderIntersect.prototype.intersectClip = function(f, item, itemc, newitems, clip, dir) {
     var newitem = item.clone();
-    if (!newitem ) return;
+    if (!newitem ) return newitems;
     f(item, itemc, newitem);
     item.initialize();
     newitem.initialize();
-    stage.items.push(newitem);
+    newitems.push(newitem);
 //    console.log(item.id + " === " + itemc.id + " ==> " + clip + " - " + dir);
+    return newitems;
 }
 
 
@@ -278,12 +293,6 @@ StageBuilderIntersect.prototype.intersectClipLeft = function(item, itemc, newite
         if (pw > dx) p.width = dx;
     }
 }
-
-
-
-
-
-
 
 StageBuilderIntersect.prototype.intersectClipTop = function(item, itemc, newitem) {
     var dh = itemc.y - item.y;

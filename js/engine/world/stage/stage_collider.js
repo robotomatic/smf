@@ -2,22 +2,8 @@
 
 function StageCollider() {
     
-    this.collideindex = new Array();
-
-    this.minx = 0;
-    this.maxx = 0;
-    this.miny = 0;
-    this.maxy = 0;
-    this.minz = 0;
-    this.maxz = 0;
-    
-    this.chunksize = {
-        width : 0,
-        height : 0,
-        depth : 0
-    }
-    
     this.colliders = new Array();
+    
     this.collider = new Collider();
     this.box = {
         x : null,
@@ -31,67 +17,52 @@ function StageCollider() {
         damage : null,
         action : null
     };    
-    
-    this.index = {
-        x : 0,
-        y : 0,
-        z : 0
-    };
-    
-}
 
-StageCollider.prototype.setGranularity = function(g) {
-    this.chunksize.width = g.x;
-    this.chunksize.height = g.y;
-    this.chunksize.depth = g.z;
+//    this.collisionindex = null;
+//    this.index = {
+//        x : 0,
+//        y : 0,
+//        z : 0
+//    };
+    
 }
 
 StageCollider.prototype.addCollider = function(c) {
     this.colliders.push(c);
-    this.addColliderIndex(c);
+//    this.addColliderIndex(c);
 }
 
-StageCollider.prototype.checkBounds = function(c) {
-    if (c.width == "100%" || c.height == "100%" || c.depth == "100%") return;
-    if (!this.minx || c.x < this.minx) this.minx = c.x;
-    if (!this.maxx || c.x > this.maxx) this.maxx = c.x;
-    if (!this.miny || c.y < this.miny) this.miny = c.y;
-    if (!this.maxy || c.y > this.maxy) this.maxy = c.y;
-    if (!this.minz || c.z < this.minz) this.minz = c.z;
-    if (!this.maxz || c.z > this.maxz) this.maxz = c.z;
-}
 
 
 StageCollider.prototype.addColliderIndex = function(c) {
-    var index = this.getColliderIndex(c);
-    
+//    var index = this.getColliderIndex(c);
 }
 
 
 StageCollider.prototype.getColliderIndex = function(c) {
-    return this.getColliderIndexAtPoint(c.x, c.y, c.z);
+//    return this.getColliderIndexAtPoint(c.x, c.y, c.z);
 }
 
 StageCollider.prototype.getPlayerColliderIndex = function(p) {
-    return this.getColliderIndexAtPoint(p.controller.x, p.controller.y, p.controller.z);
+//    return this.getColliderIndexAtPoint(p.controller.x, p.controller.y, p.controller.z);
 }
 
 
-
 StageCollider.prototype.getColliderIndexAtPoint = function(x, y, z) {
-    
-    var ix = x - this.minx;
-    var index_x = floor(ix / this.chunksize.width);
-    
-    var iy = y - this.miny;
-    var index_y = floor(iy / this.chunksize.height);
-    
-    var iz = z - this.minz;
-    var index_z = floor(iz / this.chunksize.depth);
-
-    this.index.x = index_x;
-    this.index.y = index_y;
-    this.index.z = index_z;
+//    var ix = x - this.index.bounds.minx;
+//    var index_x = floor(ix / this.index.size.width);
+//    
+//    var iy = y - this.miny;
+//    var index_y = floor(iy / this.index.size.height);
+//    
+//    var iz = z - this.minz;
+//    var index_z = floor(iz / this.index.size.depth);
+//
+//    this.index.out.x = index_x;
+//    this.index.out.y = index_y;
+//    this.index.out.z = index_z;
+//    
+//    return this.index.out;
 }
 
 
@@ -113,8 +84,7 @@ StageCollider.prototype.collide = function(stage) {
     for (var i = 0; i < t; i++) {
         var p = stage.players.players[i];
         
-        this.getPlayerColliderIndex(p);
-        updateDevPlayerIndex(this.index);
+        updateDevPlayerIndex(this.getPlayerColliderIndex(p));
         
         this.collideWithPlayers(stage, p);
         this.collideWithItems(stage, p);

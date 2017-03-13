@@ -5,30 +5,44 @@ function StageBuilderItems() {
 }
 
 StageBuilderItems.prototype.buildStage = function(stage) {
-    this.buildStageLevel(stage, stage.level);
+    return this.buildStageLevel(stage, stage.level);
 }
 
 StageBuilderItems.prototype.buildStageLevel = function(stage, level) {
-    if (!level.layers) return;
-    for (var i = 0; i < level.layers.length; i++) this.buildStageLevelLayer(stage, level, level.layers[i]);
+    var out = new Array();
+    if (!level.layers) return out;
+    for (var i = 0; i < level.layers.length; i++) {
+        var layer = level.layers[i];
+        if (layer.draw === false) continue;
+        var newitems = this.buildStageLevelLayer(stage, level, level.layers[i]);
+        out = out.concat(newitems);
+    }
+    return out;
 }
 
 StageBuilderItems.prototype.buildStageLevelLayer = function(stage, level, layer) {
-    if (layer.draw === false) return;
-    var items = layer.items;
-    if (!items.items.length) return;
     var newitems = new Array();
+    if (layer.draw === false) return newitems;
+    var items = layer.items;
+    if (!items.items.length) return newitems;
     for (var i = 0; i < items.items.length; i++) {
-        this.buildStageLevelLayerItem(stage, level.itemrenderer, layer, items.items[i], i, newitems);
+        var item = items.items[i];
+        if (item.draw == false) continue;
+        var newitem = this.buildStageLevelLayerItem(stage, level.itemrenderer, layer, item);
+        if (newitem) newitems.push(newitem);
     }
+    return newitems;
 }
 
-StageBuilderItems.prototype.buildStageLevelLayerItem = function(stage, renderer, layer, item, index, newitems) { 
-    if (!item || item.draw === false) return;
+StageBuilderItems.prototype.buildStageLevelLayerItem = function(stage, renderer, layer, item) { 
+    if (!item || item.draw === false) return null;
     if (item.iteminfo && item.iteminfo.flood) {
+        //
         // todo: set flood info based on renderer theme
+        //
         stage.stagerenderer.flood.init(item);
     }
+    if (layer.collide === false) item.collide = false;
     if (layer.blur && !item.blur) item.blur = layer.blur;
     if (layer.graphics) item.graphics = layer.graphics;
     if (layer.top === false) item.top = layer.top;
@@ -39,4 +53,5 @@ StageBuilderItems.prototype.buildStageLevelLayerItem = function(stage, renderer,
     item.cache = (layer.cache !== undefined) ? layer.cache : true;
     if (theme.draw !== undefined) item.draw = theme.draw;
     item.initialize();
+    return item;
 }

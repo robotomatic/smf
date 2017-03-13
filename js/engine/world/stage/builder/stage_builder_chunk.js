@@ -2,67 +2,66 @@
 
 function StageBuilderChunk() {
     this.dochunk = true;
-    this.granularity = {
-        x : 300,
-        y : 300,
-        z : 300
-    }
 }
 
-StageBuilderChunk.prototype.chunk = function(stage) { 
-    if (!this.dochunk) return;
-    for (var i = 0; i < stage.items.length; i++) {
-        var item = stage.items[i];
+StageBuilderChunk.prototype.chunk = function(items, chunksize) { 
+    if (!this.dochunk) return items;
+    var newitems = new Array();
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
         if (item.draw === false) continue;
         if (item.width == "100%" || item.height == "100%" || item.depth == "100%") continue;
-        this.chunkItem(stage, item);
+        newitems = this.chunkItem(item, chunksize, newitems);
     }
+    items = items.concat(newitems);
+    return items;
 }
 
-StageBuilderChunk.prototype.chunkItem = function(stage, item) { 
-    if (item.width > this.granularity.x) this.chunkItemX(stage, item);
-    if (item.height > this.granularity.y) this.chunkItemY(stage, item);
-    if (item.depth > this.granularity.z) this.chunkItemZ(stage, item);
+StageBuilderChunk.prototype.chunkItem = function(item, chunksize, newitems) { 
+    if (item.width > chunksize.width) newitems = this.chunkItemX(item, chunksize, newitems);
+    if (item.height > chunksize.height) newitems = this.chunkItemY(item, chunksize, newitems);
+    if (item.depth > chunksize.depth) newitems = this.chunkItemZ(item, chunksize, newitems);
+    return newitems;
 }
 
-StageBuilderChunk.prototype.chunkItemX = function(stage, item) { 
+StageBuilderChunk.prototype.chunkItemX = function(item, chunksize, newitems) { 
 
-    var newt = item.width / this.granularity.x;
+    var newt = item.width / chunksize.width;
     for (var i = 1; i < newt; i++) {
         var newitem = item.clone();
         
         if (!newitem || !newitem.parts) continue;
         
-        newitem.x = item.x + this.granularity.x * i;
+        newitem.x = item.x + chunksize.width * i;
         
         var newparts = new Array();
         for (var ii = 0; ii < newitem.parts.length; ii++) {
             var part = newitem.parts[ii];
-            if (part.x > this.granularity.x * (i + 1)) continue;
-            if (part.x + part.width < this.granularity.x) continue;
-            if (part.x + part.width > this.granularity.x) {
-                var d = part.x + part.width - this.granularity.x;
+            if (part.x > chunksize.width * (i + 1)) continue;
+            if (part.x + part.width < chunksize.width) continue;
+            if (part.x + part.width > chunksize.width) {
+                var d = part.x + part.width - chunksize.width;
                 part.width -= d;
             }
             newparts.push(part);
         }
         newitem.parts = newparts;
         newitem.initialize();
-        stage.items.push(newitem);
+        newitems.push(newitem);
     }
     
     if (isDecimal(newt)) {
-        console.log("Deccca -- X");
         // todo
+        console.log("Chunk Overflow -- X");
     }
     
     if (item.parts) {
         var newparts = new Array();
         for (var i = 0; i < item.parts.length; i++) {
             var part = item.parts[i];
-            if (part.x > this.granularity.x) continue;
-            if (part.x + part.width > this.granularity.x) {
-                var d = part.x + part.width - this.granularity.x;
+            if (part.x > chunksize.width) continue;
+            if (part.x + part.width > chunksize.width) {
+                var d = part.x + part.width - chunksize.width;
                 part.width -= d;
             }
             newparts.push(part);
@@ -70,68 +69,71 @@ StageBuilderChunk.prototype.chunkItemX = function(stage, item) {
         item.parts = newparts;
     }
     item.initialize();
+    return newitems;
 }
 
-StageBuilderChunk.prototype.chunkItemY = function(stage, item) { 
+StageBuilderChunk.prototype.chunkItemY = function(item, chunksize, newitems) { 
 
-    var newt = item.height / this.granularity.y;
+    var newt = item.height / chunksize.height;
     for (var i = 1; i < newt; i++) {
         var newitem = item.clone();
         
         if (!newitem || !newitem.parts) continue;
         
-        newitem.y = item.y + this.granularity.y * i;
+        newitem.y = item.y + chunksize.height * i;
         
         var newparts = new Array();
         for (var ii = 0; ii < newitem.parts.length; ii++) {
             var part = newitem.parts[ii];
-            if (part.y > this.granularity.y * (i + 1)) continue;
-            if (part.y + part.height < this.granularity.y) continue;
-            if (part.y + part.height > this.granularity.y) {
-                var d = part.y + part.height - this.granularity.y;
+            if (part.y > chunksize.height * (i + 1)) continue;
+            if (part.y + part.height < chunksize.height) continue;
+            if (part.y + part.height > chunksize.height) {
+                var d = part.y + part.height - chunksize.height;
                 part.height -= d;
             }
             newparts.push(part);
         }
         newitem.parts = newparts;
         newitem.initialize();
-        stage.items.push(newitem);
+        newitems.push(newitem);
     }
     
     if (isDecimal(newt)) {
-        console.log("Deccca -- X");
         // todo
+        console.log("Chunk Overflow -- Y");
     }
     
     var newparts = new Array();
     for (var i = 0; i < item.parts.length; i++) {
         var part = item.parts[i];
-        if (part.y > this.granularity.y) continue;
-        if (part.y + part.height > this.granularity.y) {
-            var d = part.y + part.height - this.granularity.y;
+        if (part.y > chunksize.height) continue;
+        if (part.y + part.height > chunksize.height) {
+            var d = part.y + part.height - chunksize.height;
             part.height -= d;
         }
         newparts.push(part);
     }
     item.parts = newparts;
     item.initialize();
+    return newitems;
 }
 
-StageBuilderChunk.prototype.chunkItemZ = function(stage, item) { 
-    var newt = item.depth / this.granularity.z;
-    item.depth = this.granularity.z;
+StageBuilderChunk.prototype.chunkItemZ = function(item, chunksize, newitems) { 
+    var newt = item.depth / chunksize.depth;
+    item.depth = chunksize.depth;
     for (var i = 1; i < newt; i++) {
         var newitem = item.clone();
         
         if (!newitem) continue;
         
-        newitem.z = item.z + this.granularity.z * i;
+        newitem.z = item.z + chunksize.depth * i;
         newitem.initialize();
-        stage.items.push(newitem);
+        newitems.push(newitem);
     }
     item.initialize();
     if (isDecimal(newt)) {
-        console.log("Deccca -- Z");
         // todo
+        console.log("Chunk Overflow -- Z");
     }
+    return newitems;
 }

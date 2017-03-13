@@ -4,29 +4,31 @@ function StageBuilderTheme() {
     this.addparts = true;
 }
 
-StageBuilderTheme.prototype.buildItems = function(stage) { 
-    if (!this.addparts) return;
-    if (!stage.items.length) return;
+StageBuilderTheme.prototype.buildTheme = function(items, itemrenderer) { 
+    if (!this.addparts) return items;
+    if (!items.length) return items;
     var newitems = new Array();
-    for (var i = 0; i < stage.items.length; i++) {
-        this.buildItemItems(stage, stage.level.itemrenderer, stage.items[i], newitems);
+    for (var i = 0; i < items.length; i++) {
+        newitems = this.buildThemeItems(itemrenderer, items[i], newitems);
     }
     for (var ii = 0; ii < newitems.length; ii++) {
-        stage.items.push(newitems[ii]);
+        items.push(newitems[ii]);
     }
+    return items;
 }
 
-StageBuilderTheme.prototype.buildItemItems = function(stage, renderer, item, newitems) {
+StageBuilderTheme.prototype.buildThemeItems = function(renderer, item, newitems) {
     var theme = renderer.getItemTheme(item);
-    if (!theme) return;
+    if (!theme) return newitems;
     if (theme.items) {
         for (var i = 0; i < theme.items.length; i++) {
-            this.buildItemItem(renderer, theme, item, theme.items[i], newitems);
+            newitems = this.buildThemeItemsItem(renderer, theme, item, theme.items[i], newitems);
         }
     }
+    return newitems;
 }
 
-StageBuilderTheme.prototype.buildItemItem = function(renderer, theme, item, itemitem, newitems) { 
+StageBuilderTheme.prototype.buildThemeItemsItem = function(renderer, theme, item, itemitem, newitems) { 
 
     var newitem = new Item();
     var name = item.name + "-" + itemitem.name;
@@ -110,7 +112,8 @@ StageBuilderTheme.prototype.buildItemItem = function(renderer, theme, item, item
     
     if (itemitem.items) {
         for (var titem in itemitem.items) {
-            this.buildItemItem(renderer, theme, itemitem, titem, newitems);
+            newitems = this.buildThemItemsItem(renderer, theme, itemitem, titem, newitems);
         }
     }
+    return newitems;
 }
