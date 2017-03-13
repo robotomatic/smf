@@ -9,7 +9,6 @@ function Item3DRenderer(item3d) {
         bottom : "blue"
     }
     this.dotop = false;
-    this.fadetop = false;
     this.fadepercent = 0.6;
 }
 
@@ -22,6 +21,10 @@ Item3DRenderer.prototype.renderItem3D = function(now, renderer, ctx, scale, debu
     if (!renderer.shouldThemeProject(this.item3d.item)) return;
     if (this.item3d.item.draw == false) return;
 
+    if (debug.hsr) {
+        ctx.globalAlpha = this.fadepercent;
+    }
+    
     this.getColors(renderer, debug);
     
     var x = this.item3d.item.projectedlocation.x;
@@ -38,7 +41,7 @@ Item3DRenderer.prototype.renderItem3D = function(now, renderer, ctx, scale, debu
         ctx.fill();
         ctx.stroke();
     }
-    
+
     if (this.item3d.item.geometry.visible.front.visible) {
         //
         // todo: this can eventually go -- item cache will draw fronts
@@ -95,8 +98,6 @@ Item3DRenderer.prototype.renderItem3D = function(now, renderer, ctx, scale, debu
             var dt = true;
             // todo: only draw outline on contiguous surfaces - tile of same type must exist on outline side
             
-            if (this.fadetop) ctx.globalAlpha = this.fadepercent;
-            
             this.renderItemParts3D(ctx, this.item3d.item.geometry.tops, this.colors.top, x, y, scale, debug, outline, dt);
             
             if (!debug.level) {
@@ -150,10 +151,27 @@ Item3DRenderer.prototype.renderItem3D = function(now, renderer, ctx, scale, debu
                     }
                 }
             }
-
-            if (this.fadetop) ctx.globalAlpha = 1;
         }
     }
+    
+    
+    if (debug.hsr) {
+        ctx.globalAlpha = 1;        
+        var linecolor = "red";
+        if (!this.item3d.item.geometry.visible.front.visible) {
+            this.renderItemParts3D(ctx, this.item3d.item.geometry.foo, linecolor, x, y, scale, debug, true, false);
+        }
+        if (!this.item3d.item.geometry.visible.top.visible) {
+            this.renderItemParts3D(ctx, this.item3d.item.geometry.tops, linecolor, x, y, scale, debug, true, false);
+        }
+        if (!this.item3d.item.geometry.visible.left.visible && this.item3d.left) {
+            this.renderItemParts3D(ctx, this.item3d.item.geometry.sides, linecolor, x, y, scale, debug, true, false);
+        }
+        if (!this.item3d.item.geometry.visible.right.visible && this.item3d.right) {
+            this.renderItemParts3D(ctx, this.item3d.item.geometry.sides, linecolor, x, y, scale, debug, true, false);
+        }
+    }
+    
 }
 
 Item3DRenderer.prototype.getColors = function(renderer, debug) {
@@ -173,7 +191,6 @@ Item3DRenderer.prototype.getColors = function(renderer, debug) {
     this.dotop = this.item3d.item.top === false ? false : true;
     if (theme.top === false) this.dotop = false;
     
-    this.fadetop = (debug) ? debug.hsr : false;
     if (dodebug) return;
     
     var themecolor = "red";
