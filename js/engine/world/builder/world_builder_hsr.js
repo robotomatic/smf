@@ -1,9 +1,9 @@
 "use strict";
 
-function StageBuilderHSR() {
+function WorldBuilderHSR() {
 }
 
-StageBuilderHSR.prototype.removeHiddenSurfaces = function(items) { 
+WorldBuilderHSR.prototype.removeHiddenSurfaces = function(items) { 
     items.sort(sortByY);
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
@@ -14,7 +14,7 @@ StageBuilderHSR.prototype.removeHiddenSurfaces = function(items) {
     return items;
 }
 
-StageBuilderHSR.prototype.removeItemItemsHiddenSurfaces = function(item, items) { 
+WorldBuilderHSR.prototype.removeItemItemsHiddenSurfaces = function(item, items) { 
     for (var i = 0; i < items.length; i++) {
         var itemc = items[i];
         if (itemc.draw === false) continue;
@@ -25,7 +25,7 @@ StageBuilderHSR.prototype.removeItemItemsHiddenSurfaces = function(item, items) 
     return item;
 }
 
-StageBuilderHSR.prototype.removeItemsItemItemHiddenSurfaces = function(item, itemc) { 
+WorldBuilderHSR.prototype.removeItemsItemItemHiddenSurfaces = function(item, itemc) { 
     if (itemc.y + itemc.height < item.y) return item;
     if (itemc.y > item.y + item.height) return item;
     if (itemc.z + itemc.depth < item.z) return item;
@@ -45,7 +45,7 @@ StageBuilderHSR.prototype.removeItemsItemItemHiddenSurfaces = function(item, ite
 
 
 
-StageBuilderHSR.prototype.removeItemsItemHiddenSurfacesLeft = function(item, itemc) {
+WorldBuilderHSR.prototype.removeItemsItemHiddenSurfacesLeft = function(item, itemc) {
     
     if (!item.geometry.visible.left.visible) return item;
     
@@ -101,7 +101,7 @@ StageBuilderHSR.prototype.removeItemsItemHiddenSurfacesLeft = function(item, ite
 
 
 
-StageBuilderHSR.prototype.removeItemsItemHiddenSurfacesRight = function(item, itemc) {
+WorldBuilderHSR.prototype.removeItemsItemHiddenSurfacesRight = function(item, itemc) {
 
     if (!item.geometry.visible.right.visible) return item;
     
@@ -155,7 +155,7 @@ StageBuilderHSR.prototype.removeItemsItemHiddenSurfacesRight = function(item, it
 
 
 
-StageBuilderHSR.prototype.removeItemsItemHiddenSurfacesFront = function(item, itemc) {
+WorldBuilderHSR.prototype.removeItemsItemHiddenSurfacesFront = function(item, itemc) {
     
     if (!item.geometry.visible.front.visible) return item;
     
@@ -207,7 +207,7 @@ StageBuilderHSR.prototype.removeItemsItemHiddenSurfacesFront = function(item, it
     return item;
 }
 
-StageBuilderHSR.prototype.removeItemsItemHiddenSurfacesBack = function(item, itemc) {
+WorldBuilderHSR.prototype.removeItemsItemHiddenSurfacesBack = function(item, itemc) {
     
     if (!item.geometry.visible.back.visible) return item;
     
@@ -234,7 +234,7 @@ StageBuilderHSR.prototype.removeItemsItemHiddenSurfacesBack = function(item, ite
 
 
 
-StageBuilderHSR.prototype.removeItemsItemHiddenSurfacesTop = function(item, itemc) {
+WorldBuilderHSR.prototype.removeItemsItemHiddenSurfacesTop = function(item, itemc) {
     if (itemc.y <= item.y) {
         if (itemc.y + itemc.height >= item.y) {
             if (itemc.z + itemc.depth <= item.z) return item;
@@ -255,7 +255,7 @@ StageBuilderHSR.prototype.removeItemsItemHiddenSurfacesTop = function(item, item
     return item;
 }
 
-StageBuilderHSR.prototype.removeItemsItemHiddenSurfacesBottom = function(item, itemc) {
+WorldBuilderHSR.prototype.removeItemsItemHiddenSurfacesBottom = function(item, itemc) {
     if (itemc.y <= item.y + item.height) {
         if (itemc.y + itemc.height >= item.y + item.height) {
             if (itemc.z + itemc.depth <= item.z) return item;

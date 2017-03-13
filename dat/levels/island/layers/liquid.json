@@ -15,7 +15,7 @@
                 "name" : "waves-0",
                 "itemtype" : "wave-body-body",
                 "iteminfo" : {
-                    "flood" : true
+                    "waterline" : true
                 }
            }
         ]

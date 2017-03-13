@@ -1,9 +1,9 @@
 "use strict";
 
-function StageBuilderIntersect() {
+function WorldBuilderIntersect() {
 }
 
-StageBuilderIntersect.prototype.intersectItems = function(items) { 
+WorldBuilderIntersect.prototype.intersectItems = function(items) { 
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
         if (item.draw === false) continue;
@@ -14,7 +14,7 @@ StageBuilderIntersect.prototype.intersectItems = function(items) {
     return items;
 }
 
-StageBuilderIntersect.prototype.intersectItemItems = function(item, items, newitems) { 
+WorldBuilderIntersect.prototype.intersectItemItems = function(item, items, newitems) { 
     var newitems = new Array();
     for (var i = 0; i < items.length; i++) {
         var itemc = items[i];
@@ -37,7 +37,7 @@ StageBuilderIntersect.prototype.intersectItemItems = function(item, items, newit
     return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemItem = function(item, itemc, newitems, f) { 
+WorldBuilderIntersect.prototype.intersectItemItem = function(item, itemc, newitems, f) { 
     if (itemc.width == "100%" || itemc.height == "100%" || itemc.depth == "100%") return newitems;
     if (itemc.y + itemc.height < item.y) return newitems;
     if (itemc.y > item.y + item.height) return newitems;
@@ -49,19 +49,19 @@ StageBuilderIntersect.prototype.intersectItemItem = function(item, itemc, newite
     return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemItemLeftRight = function(item, itemc, newitems) { 
+WorldBuilderIntersect.prototype.intersectItemItemLeftRight = function(item, itemc, newitems) { 
     this.intersectItemsItemItemRight(item, itemc, newitems);
     this.intersectItemsItemItemLeft(item, itemc, newitems);
     return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemItemFrontBack = function(item, itemc, newitems) { 
+WorldBuilderIntersect.prototype.intersectItemItemFrontBack = function(item, itemc, newitems) { 
     this.intersectItemsItemItemFront(item, itemc, newitems);
     this.intersectItemsItemItemBack(item, itemc, newitems);
     return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemItemTopBottom = function(item, itemc, newitems) { 
+WorldBuilderIntersect.prototype.intersectItemItemTopBottom = function(item, itemc, newitems) { 
 // todo!        
 //    this.intersectItemsItemItemTop(item, itemc, newitems);
 //    this.intersectItemsItemItemBottom(item, itemc, newitems);
@@ -69,7 +69,7 @@ StageBuilderIntersect.prototype.intersectItemItemTopBottom = function(item, item
 }
 
 
-StageBuilderIntersect.prototype.intersectItemsItemItemTop = function(item, itemc, newitems) {
+WorldBuilderIntersect.prototype.intersectItemsItemItemTop = function(item, itemc, newitems) {
 //    if (itemc.y <= item.y) {
 //        if (itemc.y + itemc.height >= item.y) {
 //            
@@ -90,7 +90,7 @@ StageBuilderIntersect.prototype.intersectItemsItemItemTop = function(item, itemc
     return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemsItemItemBottom = function(item, itemc, newitems) {
+WorldBuilderIntersect.prototype.intersectItemsItemItemBottom = function(item, itemc, newitems) {
 //    if (itemc.y <= item.y + item.height) {
 //        if (itemc.y + itemc.height >= item.y + item.height) {
 //            
@@ -111,7 +111,7 @@ StageBuilderIntersect.prototype.intersectItemsItemItemBottom = function(item, it
     return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemsItemItemLeft = function(item, itemc, newitems) {
+WorldBuilderIntersect.prototype.intersectItemsItemItemLeft = function(item, itemc, newitems) {
     if (itemc.x <= item.x) {
         if (itemc.x + itemc.width >= item.x) {
             if (itemc.y + itemc.height <= item.y) return newitems;
@@ -139,7 +139,7 @@ StageBuilderIntersect.prototype.intersectItemsItemItemLeft = function(item, item
     return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemsItemItemRight = function(item, itemc, newitems) {
+WorldBuilderIntersect.prototype.intersectItemsItemItemRight = function(item, itemc, newitems) {
     if (itemc.x <= item.x + item.width) {
         if (itemc.x + itemc.width >= item.x + item.width) {
             if (itemc.y + itemc.height <= item.y) return newitems;
@@ -167,7 +167,7 @@ StageBuilderIntersect.prototype.intersectItemsItemItemRight = function(item, ite
     return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemsItemItemFront = function(item, itemc, newitems) {
+WorldBuilderIntersect.prototype.intersectItemsItemItemFront = function(item, itemc, newitems) {
     if (itemc.z <= item.z) {
         if (itemc.z + itemc.depth >= item.z) {
             if (itemc.y + itemc.height <= item.y) return newitems;
@@ -200,7 +200,7 @@ StageBuilderIntersect.prototype.intersectItemsItemItemFront = function(item, ite
     return newitems;
 }
 
-StageBuilderIntersect.prototype.intersectItemsItemItemBack = function(item, itemc, newitems) {
+WorldBuilderIntersect.prototype.intersectItemsItemItemBack = function(item, itemc, newitems) {
     if (itemc.z <= item.z + item.depth) {
         if (itemc.z + itemc.depth >= item.z + item.depth) {
             if (itemc.y + itemc.height <= item.y) return newitems;
@@ -241,7 +241,7 @@ StageBuilderIntersect.prototype.intersectItemsItemItemBack = function(item, item
 
 
 
-StageBuilderIntersect.prototype.intersectClip = function(f, item, itemc, newitems, clip, dir) {
+WorldBuilderIntersect.prototype.intersectClip = function(f, item, itemc, newitems, clip, dir) {
     var newitem = item.clone();
     if (!newitem ) return newitems;
     f(item, itemc, newitem);
@@ -260,7 +260,7 @@ StageBuilderIntersect.prototype.intersectClip = function(f, item, itemc, newitem
 
 
 
-StageBuilderIntersect.prototype.intersectClipRight = function(item, itemc, newitem) {
+WorldBuilderIntersect.prototype.intersectClipRight = function(item, itemc, newitem) {
     var dw = (item.x + item.width) - (itemc.x + itemc.width);
     var dx = item.x + item.width - itemc.x;
     item.x = itemc.x + itemc.width;
@@ -277,7 +277,7 @@ StageBuilderIntersect.prototype.intersectClipRight = function(item, itemc, newit
     }
 }
 
-StageBuilderIntersect.prototype.intersectClipLeft = function(item, itemc, newitem) {
+WorldBuilderIntersect.prototype.intersectClipLeft = function(item, itemc, newitem) {
     var dw = itemc.x - item.x;
     var dx = item.x + item.width - itemc.x;
     var t = item.parts.length;
@@ -294,7 +294,7 @@ StageBuilderIntersect.prototype.intersectClipLeft = function(item, itemc, newite
     }
 }
 
-StageBuilderIntersect.prototype.intersectClipTop = function(item, itemc, newitem) {
+WorldBuilderIntersect.prototype.intersectClipTop = function(item, itemc, newitem) {
     var dh = itemc.y - item.y;
     var dy = item.y + item.height - itemc.y;
     var t = item.parts.length;
@@ -311,7 +311,7 @@ StageBuilderIntersect.prototype.intersectClipTop = function(item, itemc, newitem
     }
 }
 
-StageBuilderIntersect.prototype.intersectClipBottom = function(item, itemc, newitem) {
+WorldBuilderIntersect.prototype.intersectClipBottom = function(item, itemc, newitem) {
     var dh = itemc.y - item.y + itemc.height;
     var dy = (item.y + item.height) - (itemc.y + itemc.height);
     var t = item.parts.length;

@@ -1,6 +1,6 @@
 "use strict";
 
-function StageColliderIndex() {
+function WorldColliderIndex() {
 
     this.bounds = {
         min : {
@@ -22,7 +22,7 @@ function StageColliderIndex() {
     }
 }
 
-StageColliderIndex.prototype.checkBounds = function(c) {
+WorldColliderIndex.prototype.checkBounds = function(c) {
     if (c.width == "100%" || c.height == "100%" || c.depth == "100%") return;
     if (!this.bounds.minx || c.x < this.bounds.minx) this.bounds.minx = c.x;
     if (!this.bounds.maxx || c.x > this.bounds.maxx) this.bounds.maxx = c.x;

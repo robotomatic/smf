@@ -1,6 +1,6 @@
 "use strict";
 
-function StageRendererDebug(renderitems) {
+function WorldRendererDebug(renderitems) {
     this.renderitems = renderitems;
     this.line = new Line(new Point(0, 0), new Point(0, 0));
     
@@ -13,15 +13,15 @@ function StageRendererDebug(renderitems) {
     this.polygon = new Polygon();
 }
 
-StageRendererDebug.prototype.renderDebug = function(now, graphics, camera, stage, mbr, window, debug) {
+WorldRendererDebug.prototype.renderDebug = function(now, graphics, camera, world, mbr, window, debug) {
     if (debug.level.render) this.renderDebugItems(graphics, mbr, window);
 }
 
-StageRendererDebug.prototype.renderDebugItems = function(graphics, mbr, window) {
+WorldRendererDebug.prototype.renderDebugItems = function(graphics, mbr, window) {
     for (var i = 0; i < this.renderitems.all.length; i++) this.renderDebugItemsItem(graphics, this.renderitems.all[i], mbr, window);
 }
 
-StageRendererDebug.prototype.renderDebugItemsItem = function(graphics, item, mbr, window) {
+WorldRendererDebug.prototype.renderDebugItemsItem = function(graphics, item, mbr, window) {
     
     if (item.item.width == "100%") return;
     if (item.type == "player") return;
@@ -33,7 +33,7 @@ StageRendererDebug.prototype.renderDebugItemsItem = function(graphics, item, mbr
     this.renderDebugItemsItemGeometry(graphics, item);
 }
 
-StageRendererDebug.prototype.renderDebugItemsItemCenter = function(graphics, window, mbr) {
+WorldRendererDebug.prototype.renderDebugItemsItemCenter = function(graphics, window, mbr) {
 //    var mbrxw = ((mbr.x + (mbr.width / 2)) - mbr.x) * mbr.scale;
 //    var mbryh = ((mbr.y + (mbr.height / 2)) - mbr.y) * mbr.scale;
     
@@ -49,13 +49,13 @@ StageRendererDebug.prototype.renderDebugItemsItemCenter = function(graphics, win
 }
 
 
-StageRendererDebug.prototype.renderDebugItemsItemBox = function(graphics, item) {
+WorldRendererDebug.prototype.renderDebugItemsItemBox = function(graphics, item) {
     var box = item.box;
     if (!box) return;
     box.drawOutline(graphics.ctx, "white", 1);
 }
 
-StageRendererDebug.prototype.renderDebugItemsItemText = function(graphics, item) {
+WorldRendererDebug.prototype.renderDebugItemsItemText = function(graphics, item) {
     var message = "D: " + round(item.distance);
     var tx = item.box.x + 5;
     
@@ -68,7 +68,7 @@ StageRendererDebug.prototype.renderDebugItemsItemText = function(graphics, item)
     t.draw(graphics.ctx, 9);
 }
 
-StageRendererDebug.prototype.renderDebugItemsItemGeometry = function(graphics, item) {
+WorldRendererDebug.prototype.renderDebugItemsItemGeometry = function(graphics, item) {
     var geom = item.geometry;
     if (!geom) return;
     if (!item.showing) return;
@@ -78,7 +78,7 @@ StageRendererDebug.prototype.renderDebugItemsItemGeometry = function(graphics, i
     this.renderDebugItemsItemGeometryGeometry(graphics, geom.fronts, "white");
 }
 
-StageRendererDebug.prototype.renderDebugItemsItemGeometryGeometry = function(graphics, geometry, color) {
+WorldRendererDebug.prototype.renderDebugItemsItemGeometryGeometry = function(graphics, geometry, color) {
     if (!geometry || !geometry.length) return;
     for (var i = 0; i < geometry.length; i++) {
         var geom = geometry[i];

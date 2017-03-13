@@ -1,26 +1,26 @@
 "use strict";
 
-function StageBuilderItems() {
-    this.flood = null;
+function WorldBuilderItems() {
+    this.waterline = null;
 }
 
-StageBuilderItems.prototype.buildStage = function(stage) {
-    return this.buildStageLevel(stage, stage.level);
+WorldBuilderItems.prototype.buildWorld = function(world) {
+    return this.buildWorldLevel(world, world.level);
 }
 
-StageBuilderItems.prototype.buildStageLevel = function(stage, level) {
+WorldBuilderItems.prototype.buildWorldLevel = function(world, level) {
     var out = new Array();
     if (!level.layers) return out;
     for (var i = 0; i < level.layers.length; i++) {
         var layer = level.layers[i];
         if (layer.draw === false) continue;
-        var newitems = this.buildStageLevelLayer(stage, level, level.layers[i]);
+        var newitems = this.buildWorldLevelLayer(world, level, level.layers[i]);
         out = out.concat(newitems);
     }
     return out;
 }
 
-StageBuilderItems.prototype.buildStageLevelLayer = function(stage, level, layer) {
+WorldBuilderItems.prototype.buildWorldLevelLayer = function(world, level, layer) {
     var newitems = new Array();
     if (layer.draw === false) return newitems;
     var items = layer.items;
@@ -28,19 +28,19 @@ StageBuilderItems.prototype.buildStageLevelLayer = function(stage, level, layer)
     for (var i = 0; i < items.items.length; i++) {
         var item = items.items[i];
         if (item.draw == false) continue;
-        var newitem = this.buildStageLevelLayerItem(stage, level.itemrenderer, layer, item);
+        var newitem = this.buildWorldLevelLayerItem(world, level.itemrenderer, layer, item);
         if (newitem) newitems.push(newitem);
     }
     return newitems;
 }
 
-StageBuilderItems.prototype.buildStageLevelLayerItem = function(stage, renderer, layer, item) { 
+WorldBuilderItems.prototype.buildWorldLevelLayerItem = function(world, renderer, layer, item) { 
     if (!item || item.draw === false) return null;
-    if (item.iteminfo && item.iteminfo.flood) {
+    if (item.iteminfo && item.iteminfo.waterline) {
         //
-        // todo: set flood info based on renderer theme
+        // todo: set waterline info based on renderer theme
         //
-        stage.stagerenderer.flood.init(item);
+        world.worldrenderer.waterline.init(item);
     }
     if (layer.collide === false) item.collide = false;
     if (layer.blur && !item.blur) item.blur = layer.blur;

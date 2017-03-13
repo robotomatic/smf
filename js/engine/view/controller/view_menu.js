@@ -50,13 +50,13 @@ MenuView.prototype.render = function(now, game) {
 }
 
 MenuView.prototype.renderStatic = function(now, game) { 
-    var stage = game.stage;
+    var world = game.world;
     if (!this.ready) {
-        stage.players.sortByHeight();
+        world.players.sortByHeight();
         this.ready = true;
     }
-    this.view.renderer.mbr.width = stage.level.width;
-    this.view.renderer.mbr.height = stage.level.height - 50;
+    this.view.renderer.mbr.width = world.level.width;
+    this.view.renderer.mbr.height = world.level.height - 50;
     this.view.renderer.mbr.x = 0;
     var canvas = this.view.graphics.view.canvas;
     var scale = this.view.renderer.mbr.width / canvas.width;
@@ -64,13 +64,13 @@ MenuView.prototype.renderStatic = function(now, game) {
     var vd = vh - this.view.renderer.mbr.height;
     var vy = vd / 2;
     this.view.renderer.mbr.y = -vy;
-    this.view.render(now, stage);
+    this.view.render(now, world);
 }
 
 MenuView.prototype.renderFollow = function(now, game) { 
 
-    var stage = game.stage;
-    this.view.renderer.mbr = stage.players.getMbr(this.view.renderer.mbr);
+    var world = game.world;
+    this.view.renderer.mbr = world.players.getMbr(this.view.renderer.mbr);
 
     var offx = this.offset.x;
     this.view.renderer.mbr.x -= offx;
@@ -84,24 +84,24 @@ MenuView.prototype.renderFollow = function(now, game) {
     this.view.renderer.mbr.z -= offz;
     this.view.renderer.mbr.depth += offz;
     
-    this.view.render(now, stage);
+    this.view.render(now, world);
 }
 
 
 
 MenuView.prototype.update = function(now, delta, game) {
-    var stage = game.stage;
-    this.view.update(now, delta, stage);
-    if (!stage.players || !stage.players.players.length) return;
-    var t = stage.players.players.length;
+    var world = game.world;
+    this.view.update(now, delta, world);
+    if (!world.players || !world.players.players.length) return;
+    var t = world.players.players.length;
     this.follow = t == 1;
     for (var i = 0; i < t; i++) {
-        var npc = stage.npcs.npcs[i];
-        this.updateNPC(stage, npc);
+        var npc = world.npcs.npcs[i];
+        this.updateNPC(world, npc);
     }
 }
 
-MenuView.prototype.updateNPC = function(stage, npc) {
+MenuView.prototype.updateNPC = function(world, npc) {
     var player = npc.player;
     var viewpad = 100;
     var hviewpad = viewpad / 2;
@@ -109,16 +109,16 @@ MenuView.prototype.updateNPC = function(stage, npc) {
     if (player.controller.x <= viewpad) {
         player.controller.x = viewpad;
         if (player.controller.move_left) player.controller.left(false);
-    } else if (player.controller.x >= stage.level.width - (player.controller.width + viewpad)) {
-        player.controller.x = stage.level.width - (player.controller.width + viewpad);
+    } else if (player.controller.x >= world.level.width - (player.controller.width + viewpad)) {
+        player.controller.x = world.level.width - (player.controller.width + viewpad);
         if (player.controller.move_right) player.controller.right(false);        
     }
 
     if (player.controller.z <= -hviewpad) {
         player.controller.z = -hviewpad;
         if (player.controller.move_in) player.controller.in(false);
-    } else if (player.controller.z >= stage.level.layers[0].depth - viewpad) {
-        player.controller.z = stage.level.layers[0].depth - viewpad;
+    } else if (player.controller.z >= world.level.layers[0].depth - viewpad) {
+        player.controller.z = world.level.layers[0].depth - viewpad;
         if (player.controller.move_out) player.controller.out(false);
     }
     
@@ -129,7 +129,7 @@ MenuView.prototype.updateNPC = function(stage, npc) {
                 npc.doActionTimeout("left", true, false, random(1000, 3000));
             }
         } else if (dir == 1) {
-            if (player.controller.x < stage.level.width - (player.controller.width + viewpad))  {
+            if (player.controller.x < world.level.width - (player.controller.width + viewpad))  {
                 npc.doActionTimeout("right", true, false, random(1000, 3000));
             }
 //        } else if (dir == 2) {
@@ -137,7 +137,7 @@ MenuView.prototype.updateNPC = function(stage, npc) {
 //                npc.doActionTimeout("in", true, false, random(1000, 3000));
 //            }
 //        } else if (dir == 3) {
-//            if (player.controller.z < stage.level.layers[0].depth - viewpad)  {
+//            if (player.controller.z < world.level.layers[0].depth - viewpad)  {
 //                npc.doActionTimeout("out", true, false, random(1000, 3000));
 //            }
         } else {
@@ -145,10 +145,10 @@ MenuView.prototype.updateNPC = function(stage, npc) {
                 var pw = player.controller.x + (player.controller.width / 2);
                 var safe = true;
                 var paused = true;
-                for (var ii = 0; ii < stage.players.players.length; ii++) {
-                    if (stage.players.players[ii] == player) continue;
-                    if (stage.players.players[ii].controller.paused) {
-                        var npcw = stage.players.players[ii].controller.x + (stage.players.players[ii].controller.width / 2)
+                for (var ii = 0; ii < world.players.players.length; ii++) {
+                    if (world.players.players[ii] == player) continue;
+                    if (world.players.players[ii].controller.paused) {
+                        var npcw = world.players.players[ii].controller.x + (world.players.players[ii].controller.width / 2)
                         var d = abs(pw - npcw);
                         if (d < 30) {
                             safe = false;
@@ -172,7 +172,7 @@ MenuView.prototype.updateNPC = function(stage, npc) {
                             npc.doActionTimeout("left", true, false, random(1000, 2000));
                         }
                     } else if (dir2 == 1) {
-                        if (player.controller.x < stage.level.width - (player.controller.width + viewpad))  {
+                        if (player.controller.x < world.level.width - (player.controller.width + viewpad))  {
                             npc.doActionTimeout("right", true, false, random(1000, 2000));
                         }
                     }

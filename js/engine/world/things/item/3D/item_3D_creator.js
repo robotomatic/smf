@@ -13,7 +13,7 @@ function Item3DCreator(item3d) {
     this.projectedpolygon = new Polygon();
 }
 
-Item3DCreator.prototype.createItem3D = function(renderer, window, flood = null) {
+Item3DCreator.prototype.createItem3D = function(renderer, window, waterline = null) {
     
     this.item3d.item.geometry.projected.points.length = 0;
     
@@ -49,9 +49,9 @@ Item3DCreator.prototype.createItem3D = function(renderer, window, flood = null) 
 
     
     
-    if (flood) {
+    if (waterline) {
         
-        var fw = flood.waterline;
+        var fw = waterline.waterline;
         
         var tpt = this.item3d.item.polygon.points.length;
         for (var i = 0; i < tpt; i++) {
@@ -64,7 +64,7 @@ Item3DCreator.prototype.createItem3D = function(renderer, window, flood = null) 
             var wc = window.getCenter();
             var h = (wc.y - y) * scale;
             var depth = box.z;
-            var fw = projectPoint3DCoord(flood.waterline, depth, h);
+            var fw = projectPoint3DCoord(waterline.waterline, depth, h);
             */
 
             if (this.item3d.item.y + ppp.y >= fw) {

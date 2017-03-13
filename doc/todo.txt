@@ -376,7 +376,7 @@ debug dialogs
 
 
 
-- wave (actually, all) physics should be loaded from level instead of theme (or hard coded...i'm looking at YOU stage.js)
+- wave (actually, all) physics should be loaded from level instead of theme (or hard coded...i'm looking at YOU world.js)
 
 
 

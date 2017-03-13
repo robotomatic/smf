@@ -1,10 +1,10 @@
 "use strict";
 
-function StageBuilderTheme() {
+function WorldBuilderTheme() {
     this.addparts = true;
 }
 
-StageBuilderTheme.prototype.buildTheme = function(items, itemrenderer) { 
+WorldBuilderTheme.prototype.buildTheme = function(items, itemrenderer) { 
     if (!this.addparts) return items;
     if (!items.length) return items;
     var newitems = new Array();
@@ -17,7 +17,7 @@ StageBuilderTheme.prototype.buildTheme = function(items, itemrenderer) {
     return items;
 }
 
-StageBuilderTheme.prototype.buildThemeItems = function(renderer, item, newitems) {
+WorldBuilderTheme.prototype.buildThemeItems = function(renderer, item, newitems) {
     var theme = renderer.getItemTheme(item);
     if (!theme) return newitems;
     if (theme.items) {
@@ -28,7 +28,7 @@ StageBuilderTheme.prototype.buildThemeItems = function(renderer, item, newitems)
     return newitems;
 }
 
-StageBuilderTheme.prototype.buildThemeItemsItem = function(renderer, theme, item, itemitem, newitems) { 
+WorldBuilderTheme.prototype.buildThemeItemsItem = function(renderer, theme, item, itemitem, newitems) { 
 
     var newitem = new Item();
     var name = item.name + "-" + itemitem.name;

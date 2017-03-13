@@ -1,10 +1,10 @@
 "use strict";
 
-function StageBuilderChunk() {
+function WorldBuilderChunk() {
     this.dochunk = true;
 }
 
-StageBuilderChunk.prototype.chunk = function(items, chunksize) { 
+WorldBuilderChunk.prototype.chunk = function(items, chunksize) { 
     if (!this.dochunk) return items;
     var newitems = new Array();
     for (var i = 0; i < items.length; i++) {
@@ -17,14 +17,14 @@ StageBuilderChunk.prototype.chunk = function(items, chunksize) {
     return items;
 }
 
-StageBuilderChunk.prototype.chunkItem = function(item, chunksize, newitems) { 
+WorldBuilderChunk.prototype.chunkItem = function(item, chunksize, newitems) { 
     if (item.width > chunksize.width) newitems = this.chunkItemX(item, chunksize, newitems);
     if (item.height > chunksize.height) newitems = this.chunkItemY(item, chunksize, newitems);
     if (item.depth > chunksize.depth) newitems = this.chunkItemZ(item, chunksize, newitems);
     return newitems;
 }
 
-StageBuilderChunk.prototype.chunkItemX = function(item, chunksize, newitems) { 
+WorldBuilderChunk.prototype.chunkItemX = function(item, chunksize, newitems) { 
 
     var newt = item.width / chunksize.width;
     for (var i = 1; i < newt; i++) {
@@ -72,7 +72,7 @@ StageBuilderChunk.prototype.chunkItemX = function(item, chunksize, newitems) {
     return newitems;
 }
 
-StageBuilderChunk.prototype.chunkItemY = function(item, chunksize, newitems) { 
+WorldBuilderChunk.prototype.chunkItemY = function(item, chunksize, newitems) { 
 
     var newt = item.height / chunksize.height;
     for (var i = 1; i < newt; i++) {
@@ -118,7 +118,7 @@ StageBuilderChunk.prototype.chunkItemY = function(item, chunksize, newitems) {
     return newitems;
 }
 
-StageBuilderChunk.prototype.chunkItemZ = function(item, chunksize, newitems) { 
+WorldBuilderChunk.prototype.chunkItemZ = function(item, chunksize, newitems) { 
     var newt = item.depth / chunksize.depth;
     item.depth = chunksize.depth;
     for (var i = 1; i < newt; i++) {

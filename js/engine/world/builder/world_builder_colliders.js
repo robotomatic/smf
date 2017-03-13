@@ -1,15 +1,15 @@
 "use strict";
 
-function StageBuilderColliders() {
-    this.collisionindex = new StageColliderIndex();
+function WorldBuilderColliders() {
+    this.collisionindex = new WorldColliderIndex();
 }
 
-StageBuilderColliders.prototype.buildColliders = function(items, indexsize) {
+WorldBuilderColliders.prototype.buildColliders = function(items, indexsize) {
     this.setBounds(items, indexsize);
     return this.buildCollidersColliders(items)
 }
 
-StageBuilderColliders.prototype.setBounds = function(items, indexsize) {
+WorldBuilderColliders.prototype.setBounds = function(items, indexsize) {
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
         if (item.collide === false) continue;
@@ -17,7 +17,7 @@ StageBuilderColliders.prototype.setBounds = function(items, indexsize) {
     }
 }
 
-StageBuilderColliders.prototype.buildCollidersColliders = function(items) {
+WorldBuilderColliders.prototype.buildCollidersColliders = function(items) {
     var newitems = new Array();
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
@@ -28,7 +28,7 @@ StageBuilderColliders.prototype.buildCollidersColliders = function(items) {
     return newitems;
 }
 
-StageBuilderColliders.prototype.buildCollidersCollidersItem = function(item) {
+WorldBuilderColliders.prototype.buildCollidersCollidersItem = function(item) {
     var newitem = new Item(cloneObject(item.json));
     newitem.depth = item.depth;
     newitem.collide = true;

@@ -165,7 +165,7 @@ GameControllerGame.prototype.start = function() {
 
 GameControllerGame.prototype.startPlayers = function() {
     for (var i = 0; i < this.players.players.length; i++) {
-        this.loop.game.stage.stagecollider.resetPlayer(this.players.players[i], 1);
+        this.loop.game.world.worldcollider.resetPlayer(this.players.players[i], 1);
     }
 }
 
@@ -179,5 +179,5 @@ GameControllerGame.prototype.resize = function() {
 }
 
 GameControllerGame.prototype.playerDied = function(player) {
-    this.loop.game.stage.stagecollider.resetPlayer(player);
+    this.loop.game.world.worldcollider.resetPlayer(player);
 }

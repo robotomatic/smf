@@ -1,6 +1,6 @@
 "use strict";
 
-function StageCollider() {
+function WorldCollider() {
     
     this.colliders = new Array();
     
@@ -27,28 +27,28 @@ function StageCollider() {
     
 }
 
-StageCollider.prototype.addCollider = function(c) {
+WorldCollider.prototype.addCollider = function(c) {
     this.colliders.push(c);
 //    this.addColliderIndex(c);
 }
 
 
 
-StageCollider.prototype.addColliderIndex = function(c) {
+WorldCollider.prototype.addColliderIndex = function(c) {
 //    var index = this.getColliderIndex(c);
 }
 
 
-StageCollider.prototype.getColliderIndex = function(c) {
+WorldCollider.prototype.getColliderIndex = function(c) {
 //    return this.getColliderIndexAtPoint(c.x, c.y, c.z);
 }
 
-StageCollider.prototype.getPlayerColliderIndex = function(p) {
+WorldCollider.prototype.getPlayerColliderIndex = function(p) {
 //    return this.getColliderIndexAtPoint(p.controller.x, p.controller.y, p.controller.z);
 }
 
 
-StageCollider.prototype.getColliderIndexAtPoint = function(x, y, z) {
+WorldCollider.prototype.getColliderIndexAtPoint = function(x, y, z) {
 //    var ix = x - this.index.bounds.minx;
 //    var index_x = floor(ix / this.index.size.width);
 //    
@@ -67,7 +67,7 @@ StageCollider.prototype.getColliderIndexAtPoint = function(x, y, z) {
 
 
 
-StageCollider.prototype.logIndex = function() {
+WorldCollider.prototype.logIndex = function() {
 }
 
 
@@ -78,24 +78,24 @@ StageCollider.prototype.logIndex = function() {
 
 
 
-StageCollider.prototype.collide = function(stage) {
-    if (!stage.players) return; 
-    var t = stage.players.players.length;
+WorldCollider.prototype.collide = function(world) {
+    if (!world.players) return; 
+    var t = world.players.players.length;
     for (var i = 0; i < t; i++) {
-        var p = stage.players.players[i];
+        var p = world.players.players[i];
         
         updateDevPlayerIndex(this.getPlayerColliderIndex(p));
         
-        this.collideWithPlayers(stage, p);
-        this.collideWithItems(stage, p);
+        this.collideWithPlayers(world, p);
+        this.collideWithItems(world, p);
     }
 }
 
-StageCollider.prototype.collideWithPlayers = function(stage, player) { 
-//    stage.players.collidePlayer(player); 
+WorldCollider.prototype.collideWithPlayers = function(world, player) { 
+//    world.players.collidePlayer(player); 
 } 
 
-StageCollider.prototype.collideWithItems = function(stage, player) { 
+WorldCollider.prototype.collideWithItems = function(world, player) { 
     player.resetCollisions();
     
     
@@ -111,18 +111,18 @@ StageCollider.prototype.collideWithItems = function(stage, player) {
     
     
     
-    this.collideWithCollider(player, stage.level.width, stage.level.height);
+    this.collideWithCollider(player, world.level.width, world.level.height);
 
     if (player.controller.x < 0) player.controller.x = 0;
-    if (player.controller.x + player.controller.width > stage.level.width) player.controller.x = stage.level.width - player.controller.width;
+    if (player.controller.x + player.controller.width > world.level.width) player.controller.x = world.level.width - player.controller.width;
     if (player.controller.y < 0) player.controller.y = 0;
-    if (player.controller.y + player.controller.height > stage.level.height) {
+    if (player.controller.y + player.controller.height > world.level.height) {
         player.info.die();
     }
     player.updateLevelCollisions();
 }
 
-StageCollider.prototype.collideWithCollider = function(player, width, height) {
+WorldCollider.prototype.collideWithCollider = function(player, width, height) {
     if (!player) return;
     if (!this.colliders) return;
     for (var i = 0; i < this.colliders.length; i++) {
@@ -134,11 +134,11 @@ StageCollider.prototype.collideWithCollider = function(player, width, height) {
     }
 }
 
-StageCollider.prototype.collideItem = function(player, item, width, height) {
+WorldCollider.prototype.collideItem = function(player, item, width, height) {
     return this.collideItemPart(player, item, item, width, height);
 }
 
-StageCollider.prototype.collideItemParts = function(player, item, width, height) {
+WorldCollider.prototype.collideItemParts = function(player, item, width, height) {
     var out = false;
     for (var i = 0 ; i < item.parts.length; i++) {
         // todo: can collide rough here, but need item mbr
@@ -148,7 +148,7 @@ StageCollider.prototype.collideItemParts = function(player, item, width, height)
     return out;
 }
     
-StageCollider.prototype.collideItemPart = function(player, item, part, width, height) {
+WorldCollider.prototype.collideItemPart = function(player, item, part, width, height) {
     if (part.collide === false) return false;
     var ip = item.getLocation();
     var ix = ip.x;
@@ -181,7 +181,7 @@ StageCollider.prototype.collideItemPart = function(player, item, part, width, he
 
 
 
-StageCollider.prototype.resetPlayer = function(player, timeout) {
+WorldCollider.prototype.resetPlayer = function(player, timeout) {
     player.controller.stop();
     var t = this.colliders.length;
     if (t == 0) return;

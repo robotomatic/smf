@@ -1,45 +1,45 @@
 "use strict";
 
-function StageRendererStart(renderitems) {
+function WorldRendererStart(renderitems) {
     this.renderitems = renderitems;
     this.index = 0;
 }
 
-StageRendererStart.prototype.renderStart = function(mbr, window, graphics, camera, stage, debug) {
+WorldRendererStart.prototype.renderStart = function(mbr, window, graphics, camera, world, debug) {
     this.index = 0;
-    this.getRenderItems(mbr, window, graphics, camera, stage, debug);
+    this.getRenderItems(mbr, window, graphics, camera, world, debug);
 }
 
-StageRendererStart.prototype.getRenderItems = function(mbr, window, graphics, camera, stage, debug) {
+WorldRendererStart.prototype.getRenderItems = function(mbr, window, graphics, camera, world, debug) {
     var cp = window.getCenter();
-    this.getRenderItemsStageItems(mbr, window, cp, graphics, stage, debug);
-    this.getRenderItemsStagePlayers(mbr, window, cp, graphics, stage, debug);
+    this.getRenderItemsWorldItems(mbr, window, cp, graphics, world, debug);
+    this.getRenderItemsWorldPlayers(mbr, window, cp, graphics, world, debug);
 }
 
-StageRendererStart.prototype.getRenderItemsStageItems = function(mbr, window, cp, graphics, stage, debug) {
-    var t = stage.items.length;
+WorldRendererStart.prototype.getRenderItemsWorldItems = function(mbr, window, cp, graphics, world, debug) {
+    var t = world.items.length;
     for (var i = 0; i < t; i++) {
-        var item = stage.items[i];
+        var item = world.items[i];
         if (item.draw == false) continue;
-        this.getRenderItemsStageLevelLayerItemsItem(mbr, window, cp, graphics, stage, item, debug);
+        this.getRenderItemsWorldLevelLayerItemsItem(mbr, window, cp, graphics, world, item, debug);
     }
 }
 
-StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItem = function(mbr, window, cp, graphics, stage, item, debug) {
+WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(mbr, window, cp, graphics, world, item, debug) {
     var x = mbr.x;
     var y = mbr.y;
     var z = mbr.z;
     var scale = mbr.scale;
     var width = graphics.canvas.width;
     var height = graphics.canvas.height;
-    var renderer = stage.level.itemrenderer;
+    var renderer = world.level.itemrenderer;
     item.smooth();
     item.translate(mbr, width, height);
-    item.item3D.createItem3D(renderer, mbr, stage.stagerenderer.flood);
+    item.item3D.createItem3D(renderer, mbr, world.worldrenderer.waterline);
     var showing = item.isVisible(window, mbr, 100);
     var iz = item.z;
     if (item.width == "100%") iz = item.z + item.depth;
-    var d = this.getRenderItemsStageLevelLayerItemsItemCenter(mbr, cp, item, 0, 0, 0);
+    var d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, item, 0, 0, 0);
     if (isNaN(d)) d = 0;
     var itemmbr = item.getMbr();
     var id = item.id;
@@ -58,22 +58,22 @@ StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItem = function(m
     this.renderitems.all[this.index++] = newitem;
 }
 
-StageRendererStart.prototype.getRenderItemsStagePlayers = function(mbr, window, cp, graphics, stage, debug) {
-    var players = stage.players;
+WorldRendererStart.prototype.getRenderItemsWorldPlayers = function(mbr, window, cp, graphics, world, debug) {
+    var players = world.players;
     if (!players || !players.players) return;
     var t = players.players.length;
     for (var i = 0; i < t; i++) {
         var player = players.players[i];
-        this.getRenderItemsStagePlayersPlayer(mbr, window, cp, graphics, player, debug);
+        this.getRenderItemsWorldPlayersPlayer(mbr, window, cp, graphics, player, debug);
     }
 }
 
-StageRendererStart.prototype.getRenderItemsStagePlayersPlayer = function(mbr, window, cp, graphics, player, debug) {
+WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(mbr, window, cp, graphics, player, debug) {
     player.smooth();
     player.translate(mbr, mbr.width, mbr.height);
     var playermbr = player.getMbr();
     var showing = player.isVisible(window, mbr, 50);
-    var d = this.getRenderItemsStageLevelLayerItemsItemCenter(mbr, cp, player.controller, 0, 0, -10);
+    var d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, player.controller, 0, 0, -10);
     if (!showing || isNaN(d)) d = 0;
     var id = player.name + "-" + player.id;
     var newitem = {
@@ -90,7 +90,7 @@ StageRendererStart.prototype.getRenderItemsStagePlayersPlayer = function(mbr, wi
     this.renderitems.all[this.index++] = newitem;
 }
 
-StageRendererStart.prototype.getRenderItemsStageLevelLayerItemsItemCenter = function(mbr, cp, item, ox, oy, oz) {
+WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItemCenter = function(mbr, cp, item, ox, oy, oz) {
     if (item.width == "100%") {
         return item.z + item.depth;
     }

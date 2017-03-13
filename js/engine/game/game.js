@@ -2,12 +2,12 @@
 
 function Game(views) {
     this.views = views ? views : new Array();
-    this.stage = new Stage();
+    this.world = new World();
 }
 
-Game.prototype.setLevel = function(level) { this.stage.setLevel(level); }
-Game.prototype.setPlayers = function(players) { this.stage.setPlayers(players); }
-Game.prototype.setNPCs = function(npcs) { this.stage.setNPCs(npcs); }
+Game.prototype.setLevel = function(level) { this.world.setLevel(level); }
+Game.prototype.setPlayers = function(players) { this.world.setPlayers(players); }
+Game.prototype.setNPCs = function(npcs) { this.world.setNPCs(npcs); }
 
 Game.prototype.setViews = function(views) { 
     this.views = views;
@@ -15,11 +15,11 @@ Game.prototype.setViews = function(views) {
 }
 
 Game.prototype.init = function(now) { 
-    this.stage.init();
+    this.world.init();
 }
 
 Game.prototype.update = function(now, delta) { 
-    this.stage.update(now, delta);
+    this.world.update(now, delta);
     if (!this.views) return;
     var t = this.views.length;
     for (var i = 0; i < t; i++) {
@@ -44,7 +44,7 @@ Game.prototype.fps = function(type, fps, avg) {
 }
 
 Game.prototype.reset = function(now) {
-    this.stage.reset(now);
+    this.world.reset(now);
 }
 
 Game.prototype.setMessage = function(message) { 
@@ -56,5 +56,5 @@ Game.prototype.setMessage = function(message) {
 }
 
 Game.prototype.doAction = function(action, args, key, val, callback) { 
-    this.stage.doAction(action, args, key, val, callback); 
+    this.world.doAction(action, args, key, val, callback); 
 }

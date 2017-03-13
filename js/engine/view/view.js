@@ -207,17 +207,17 @@ View.prototype.hide = function() {
     fadeOut(this.canvas_render);
 }
 
-View.prototype.initialize = function(stage) {
-    if (stage.level.itemrenderer) {
-        if (stage.level.itemrenderer.theme && stage.level.itemrenderer.theme.background) {
-            this.parent.style.background = stage.level.itemrenderer.theme.background.color;
-            this.view.canvas.style.background = stage.level.itemrenderer.theme.background.canvas.color;
+View.prototype.initialize = function(world) {
+    if (world.level.itemrenderer) {
+        if (world.level.itemrenderer.theme && world.level.itemrenderer.theme.background) {
+            this.parent.style.background = world.level.itemrenderer.theme.background.color;
+            this.view.canvas.style.background = world.level.itemrenderer.theme.background.canvas.color;
         }
     }
     this.ready = true;
 }
 
-View.prototype.update = function(now, delta, stage) {
+View.prototype.update = function(now, delta, world) {
     this.updateUI();
     return true;
 }
@@ -227,9 +227,9 @@ View.prototype.setMessage = function(message) { }
 View.prototype.updateUI = function() {
 }
 
-View.prototype.render = function(now, stage) {
-    if (!this.ready) this.initialize(stage);
-    this.renderer.render(now, stage, this.view, this.graphics);
+View.prototype.render = function(now, world) {
+    if (!this.ready) this.initialize(world);
+    this.renderer.render(now, world, this.view, this.graphics);
     this.renderFPS();
 }
 

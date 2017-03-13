@@ -21,7 +21,7 @@ ItemCache.prototype.reset = function() {
 //    this.cache.length = 0;
 }
 
-ItemCache.prototype.renderItem = function(now, ctx, item, renderer, mbr, window, width, height, quality, floodlevel) {
+ItemCache.prototype.renderItem = function(now, ctx, item, renderer, mbr, window, width, height, quality, waterline) {
     item.renderStart(now, width, height);
     item.renderRender(now, ctx, renderer, mbr, window, width, height);
     item.renderEnd(now, ctx);
@@ -30,7 +30,7 @@ ItemCache.prototype.renderItem = function(now, ctx, item, renderer, mbr, window,
 
 
 
-//ItemCache.prototype.foo = function(now, ctx, item, renderer, mbr, window, width, height, quality, floodlevel) {
+//ItemCache.prototype.foo = function(now, ctx, item, renderer, mbr, window, width, height, quality, waterline) {
 //    
 //    var x = mbr.x;
 //    var y = mbr.y;
@@ -57,7 +57,7 @@ ItemCache.prototype.renderItem = function(now, ctx, item, renderer, mbr, window,
 ////    
 ////    var gctx = this.temp.ctx;
 //
-//    this.renderItemItem(now, gctx, item, renderer, mbr, px, py, pz, pw, ph, scale, quality, floodlevel);
+//    this.renderItemItem(now, gctx, item, renderer, mbr, px, py, pz, pw, ph, scale, quality, waterline);
 //    this.debugItem(now, gctx, item, renderer, mbr, px, py, pz, pw, ph, scale);
 //    
 ////    item.image.x = 0;
@@ -69,7 +69,7 @@ ItemCache.prototype.renderItem = function(now, ctx, item, renderer, mbr, window,
 ////    item.image.draw(ctx, mbr.x, mbr.y, mbr.width, mbr.height);
 //}
 //
-//ItemCache.prototype.renderItemItem = function(now, ctx, item, renderer, window, ox, oy, oz, width, height, scale, quality, floodlevel) {
+//ItemCache.prototype.renderItemItem = function(now, ctx, item, renderer, window, ox, oy, oz, width, height, scale, quality, waterline) {
 //
 //    quality = 2;
 //    
@@ -156,7 +156,7 @@ ItemCache.prototype.renderItem = function(now, ctx, item, renderer, mbr, window,
 //        dw = w + spad;
 //        dh = h + spad;
 //        
-//        this.image.clipY(floodlevel ? floodlevel : 0);
+//        this.image.clipY(waterline ? waterline : 0);
 //        
 //        this.image.draw(ctx, dx, dy, dw, dh);
 //    } else {

@@ -1,7 +1,7 @@
 "use strict";
 
-function StageFlood() {
-    this.doflood = false;
+function Waterline() {
+    this.dowaterline = false;
     this.level = 0;
     this.y = 0;
     this.z = 0;
@@ -12,14 +12,14 @@ function StageFlood() {
     this.waterline = 0;
 }
 
-StageFlood.prototype.init = function(item) {
+Waterline.prototype.init = function(item) {
     this.y = item.y;
     this.z = item.z;
-    this.doflood = true;
+    this.dowaterline = true;
 }
 
-StageFlood.prototype.getFlood = function() {
-    if (!this.doflood) return null;
+Waterline.prototype.getFlood = function() {
+    if (!this.dowaterline) return null;
     if (this.down) {
         this.level += this.amount;
         if (this.level > this.max) {

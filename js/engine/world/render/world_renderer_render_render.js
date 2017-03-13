@@ -1,29 +1,29 @@
 "use strict";
 
-function StageRendererRender(renderitems, itemcache) {
+function WorldRendererRender(renderitems, itemcache) {
     this.renderitems = renderitems;
     this.np = new Point(0, 0);
     this.doblur = true;
 }
 
-StageRendererRender.prototype.renderRender = function(now, graphics, camera, stage, mbr, window, debug) {
-    this.renderRenderItems(now, graphics, camera, stage, mbr, window, debug);
+WorldRendererRender.prototype.renderRender = function(now, graphics, camera, world, mbr, window, debug) {
+    this.renderRenderItems(now, graphics, camera, world, mbr, window, debug);
 }
 
-StageRendererRender.prototype.renderRenderItems = function(now, graphics, camera, stage, mbr, window, debug) {
+WorldRendererRender.prototype.renderRenderItems = function(now, graphics, camera, world, mbr, window, debug) {
     this.renderitems.all.sort(sortByDistance);
-    var renderer = stage.level.itemrenderer;
+    var renderer = world.level.itemrenderer;
     var t = this.renderitems.all.length;
     for (var i = 0; i < t; i++) {
         var renderitem = this.renderitems.all[i];
         if (!renderitem.showing) continue;
         var wd = round(renderitem.z - mbr.z);
-        if (renderitem.type == "item") this.renderItem(now, window, graphics, camera, stage, renderitem.item, renderer, wd, debug);
-        else if (renderitem.type == "player") this.renderPlayer(now, window, graphics, camera, stage, renderitem.item, wd, debug);
+        if (renderitem.type == "item") this.renderItem(now, window, graphics, camera, world, renderitem.item, renderer, wd, debug);
+        else if (renderitem.type == "player") this.renderPlayer(now, window, graphics, camera, world, renderitem.item, wd, debug);
     }
 }
 
-StageRendererRender.prototype.renderItem = function(now, window, graphics, camera, stage, item, renderer, distance, debug) {
+WorldRendererRender.prototype.renderItem = function(now, window, graphics, camera, world, item, renderer, distance, debug) {
     if (item.width == "100%" || !camera.shouldBlur(distance)) {
         item.render(now, renderer, graphics.canvas.width, graphics.canvas.height, graphics.ctx, 1, debug.level);
         return;
@@ -41,7 +41,7 @@ StageRendererRender.prototype.renderItem = function(now, window, graphics, camer
     item.drawImage(graphics.ctx, scaledraw, 0);
 }
 
-StageRendererRender.prototype.renderPlayer = function(now, window, graphics, camera, stage, player, distance, debug) {
+WorldRendererRender.prototype.renderPlayer = function(now, window, graphics, camera, world, player, distance, debug) {
     var pw = graphics.canvas.width;
     var ph = graphics.canvas.height;
     var scalerender = 1;

@@ -66,18 +66,18 @@ PartyView.prototype.resizeUI = function() {
     this.view.resizeUI(); 
 }
 
-PartyView.prototype.initialize = function(stage) {
-    this.view.initialize(stage);
+PartyView.prototype.initialize = function(world) {
+    this.view.initialize(world);
 }
 
 PartyView.prototype.update = function(now, delta, game) {
-    this.view.update(now, delta, game.stage);
+    this.view.update(now, delta, game.world);
 }
 
 PartyView.prototype.render = function(now, game) { 
 
-    var stage = game.stage;
-    this.view.renderer.mbr = stage.players.getMbr(this.view.renderer.mbr);
+    var world = game.world;
+    this.view.renderer.mbr = world.players.getMbr(this.view.renderer.mbr);
 
     var offx = this.offset.x;
     this.view.renderer.mbr.x -= offx;
@@ -91,7 +91,7 @@ PartyView.prototype.render = function(now, game) {
     this.view.renderer.mbr.z -= offz;
     this.view.renderer.mbr.depth += offz;
     
-    this.view.render(now, stage);
+    this.view.render(now, world);
 }
 
 PartyView.prototype.setMessage = function(message) { }

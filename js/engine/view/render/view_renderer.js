@@ -7,10 +7,10 @@ function ViewRenderer() {
     this.camera = new ViewCamera();
 }
 
-ViewRenderer.prototype.update = function(now, stage, view) {
+ViewRenderer.prototype.update = function(now, world, view) {
 }
 
-ViewRenderer.prototype.render = function(now, stage, view, graphics) {
+ViewRenderer.prototype.render = function(now, world, view, graphics) {
     this.mbr = this.camera.getView(now, this.mbr, view.canvas.width, view.canvas.height);
     this.window.x = 0;
     this.window.y = 0;
@@ -19,5 +19,5 @@ ViewRenderer.prototype.render = function(now, stage, view, graphics) {
     this.window.height = view.canvas.height;
     this.window.depth = 1;
     this.window.scale = this.mbr.scale;
-    stage.render(now, graphics["view"], this.camera, this.mbr, this.window);
+    world.render(now, graphics["view"], this.camera, this.mbr, this.window);
 }
