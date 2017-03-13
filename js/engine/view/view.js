@@ -207,14 +207,20 @@ View.prototype.hide = function() {
     fadeOut(this.canvas_render);
 }
 
-View.prototype.initialize = function(world) {
-    if (world.level.itemrenderer) {
-        if (world.level.itemrenderer.theme && world.level.itemrenderer.theme.background) {
-            this.parent.style.background = world.level.itemrenderer.theme.background.color;
-            this.view.canvas.style.background = world.level.itemrenderer.theme.background.canvas.color;
+View.prototype.setBackground = function(world) {
+    if (world.worldrenderer.debug.level.level || world.worldrenderer.debug.level.render || world.worldrenderer.debug.level.hsr) {
+        this.parent.style.background = "white";
+        this.view.canvas.style.background = "white";
+        this.ready = false;
+    } else if (world.worldrenderer.itemrenderer) {
+        if (!this.ready) {
+            if (world.worldrenderer.itemrenderer.theme && world.worldrenderer.itemrenderer.theme.background) {
+                this.parent.style.background = world.worldrenderer.itemrenderer.theme.background.color;
+                this.view.canvas.style.background = world.worldrenderer.itemrenderer.theme.background.canvas.color;
+            }
+            this.ready = true;
         }
     }
-    this.ready = true;
 }
 
 View.prototype.update = function(now, delta, world) {
@@ -228,7 +234,7 @@ View.prototype.updateUI = function() {
 }
 
 View.prototype.render = function(now, world) {
-    if (!this.ready) this.initialize(world);
+    this.setBackground(world);
     this.renderer.render(now, world, this.view, this.graphics);
     this.renderFPS();
 }

@@ -51,11 +51,9 @@ GameControllerGame.prototype.loadLevel = function() {
         var themkeys = Object.keys(themes);
         for (var i = 0; i < themkeys.length; i++) {
             var themename = themes[themkeys[i]];
-            this.level.loadTheme(themename, this.gameloader.themes.themes[themename], this.gameloader.materials);
+            this.loop.loadTheme(themename, this.gameloader.themes.themes[themename], this.gameloader.materials);
         }
     }
-
-    
     
     this.loop.loadLevel(this.level);
     

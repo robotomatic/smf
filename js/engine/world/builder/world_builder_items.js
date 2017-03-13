@@ -28,13 +28,13 @@ WorldBuilderItems.prototype.buildWorldLevelLayer = function(world, level, layer)
     for (var i = 0; i < items.items.length; i++) {
         var item = items.items[i];
         if (item.draw == false) continue;
-        var newitem = this.buildWorldLevelLayerItem(world, level.itemrenderer, layer, item);
+        var newitem = this.buildWorldLevelLayerItem(world, layer, item);
         if (newitem) newitems.push(newitem);
     }
     return newitems;
 }
 
-WorldBuilderItems.prototype.buildWorldLevelLayerItem = function(world, renderer, layer, item) { 
+WorldBuilderItems.prototype.buildWorldLevelLayerItem = function(world, layer, item) { 
     if (!item || item.draw === false) return null;
     if (item.iteminfo && item.iteminfo.waterline) {
         //
@@ -46,7 +46,7 @@ WorldBuilderItems.prototype.buildWorldLevelLayerItem = function(world, renderer,
     if (layer.blur && !item.blur) item.blur = layer.blur;
     if (layer.graphics) item.graphics = layer.graphics;
     if (layer.top === false) item.top = layer.top;
-    var theme = renderer.getItemTheme(item);
+    var theme = world.worldrenderer.itemrenderer.getItemTheme(item);
     if (!theme) return;
     item.depth = (theme.depth !== undefined) ? theme.depth : (item.depth !== undefined) ? item.depth : layer.depth;
     if (isNaN(item.depth)) item.depth = 1;

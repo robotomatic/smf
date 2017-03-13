@@ -6,6 +6,7 @@ function Game(views) {
 }
 
 Game.prototype.setLevel = function(level) { this.world.setLevel(level); }
+Game.prototype.setTheme = function(themename, theme, materials) { this.world.setTheme(themename, theme, materials); }
 Game.prototype.setPlayers = function(players) { this.world.setPlayers(players); }
 Game.prototype.setNPCs = function(npcs) { this.world.setNPCs(npcs); }
 

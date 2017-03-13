@@ -32,10 +32,9 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
     var scale = mbr.scale;
     var width = graphics.canvas.width;
     var height = graphics.canvas.height;
-    var renderer = world.level.itemrenderer;
     item.smooth();
     item.translate(mbr, width, height);
-    item.item3D.createItem3D(renderer, mbr, world.worldrenderer.waterline);
+    item.item3D.createItem3D(world.worldrenderer.itemrenderer, mbr, world.worldrenderer.waterline);
     var showing = item.isVisible(window, mbr, 100);
     var iz = item.z;
     if (item.width == "100%") iz = item.z + item.depth;

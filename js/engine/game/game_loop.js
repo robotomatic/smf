@@ -23,6 +23,7 @@ function GameLoop(input) {
     this.gameperformance = new GamePerformance(this.game, this.step);
 }
 GameLoop.prototype.loadLevel = function(level) { this.game.setLevel(level); }
+GameLoop.prototype.loadTheme = function(themename, theme, materials) { this.game.setTheme(themename, theme, materials); }
 GameLoop.prototype.loadPlayers = function(players) { this.game.setPlayers(players); }
 GameLoop.prototype.loadNPCs = function(npcs) { this.game.setNPCs(npcs); }
 GameLoop.prototype.loadViews = function(views) { this.game.setViews(views); }

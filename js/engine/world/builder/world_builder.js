@@ -26,7 +26,7 @@ function WorldBuilder() {
 WorldBuilder.prototype.buildWorld = function(now, world) {
     world.items = this.itembuilder.buildWorld(world);
     world.worldcollider.colliders = this.collidebuilder.buildColliders(world.items, this.indexsize);
-    world.items = this.themebuilder.buildTheme(world.items, world.level.itemrenderer);
+    world.items = this.themebuilder.buildTheme(world.items, world.worldrenderer.itemrenderer);
     world.items = this.chunkbuilder.chunk(world.items, this.chunksize);
     world.items = this.intersectbuilder.intersectItems(world.items);
     world.items = this.hsrbuilder.removeHiddenSurfaces(world.items);

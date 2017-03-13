@@ -16,8 +16,9 @@ function Item(json) {
     this.lastZ = 0;
     this.location = new Point(0, 0);
     
-    
     this.item3D = new Item3D(this);
+    this.item3Drenderer = new ItemRenderer3D(this.item3D);
+    
     this.projectedlocation = new Point(0, 0);
     this.projectedlocation_backup = new Point(0, 0);
     
@@ -483,7 +484,7 @@ Item.prototype.renderStart = function(now, width, height, scale = 1) {
 }
 
 Item.prototype.renderRender = function(now, renderer, ctx, scale = 1, debug) {
-    this.item3D.renderItem3D(now, renderer, ctx, scale, debug);
+    this.item3Drenderer.renderItem3D(now, renderer, ctx, scale, debug);
 }
 
 Item.prototype.renderEnd = function(when) {

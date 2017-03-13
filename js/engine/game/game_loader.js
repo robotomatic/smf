@@ -53,39 +53,6 @@ GameLoader.prototype.loadMenu = function(levelfile, charfile, animfile, callback
     this.loadAnimationsFile(animfile, testComplete);
 }
 
-GameLoader.prototype.loadMenuPlayerChooser = function(levelfile, charfile, animfile, uifile, callback) {
-    this.reset();
-    this.callback = callback;
-    var loader = this;
-    var testComplete = function() {
-        if (loader.level && loader.characters && loader.characters.loaded && loader.animations && loader.animations.loaded && loader.ui) {
-            if (loader.callback) loader.callback();
-            loader.callback = null;
-            return false;
-        }
-    }
-    this.loadLevelFile(levelfile, testComplete);
-    this.loadCharactersFile(charfile, testComplete);
-    this.loadAnimationsFile(animfile, testComplete);
-    this.loadUIFile(uifile, testComplete);
-}
-
-GameLoader.prototype.loadMenuLevelChooser = function(levelsfile, themesfile, materialsfile, uifile, callback) {
-    this.reset();
-    this.callback = callback;
-    var loader = this;
-    var testComplete = function() {
-        if (loader.levels && loader.themes && loader.themes.loaded && loader.materials && loader.materials.loaded && loader.ui) {
-            if (loader.callback) loader.callback();
-            return false;
-        }
-    }
-    this.loadLevelsFile(levelsfile, testComplete);
-    this.loadThemesFile(themesfile, testComplete);
-    this.loadMaterialsFile(materialsfile, testComplete);
-    this.loadUIFile(uifile, testComplete);
-}
-
 GameLoader.prototype.loadGameParty = function(levelsfile, themesfile, materialsfile, charfile, animfile, callback) {
     this.reset();
     this.callback = callback;

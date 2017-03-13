@@ -1,6 +1,6 @@
 "use strict";
 
-function Item3DRenderer(item3d) {
+function ItemRenderer3D(item3d) {
     this.item3d = item3d;
     this.colors = {
         front : "red",
@@ -12,7 +12,7 @@ function Item3DRenderer(item3d) {
     this.fadepercent = 0.6;
 }
 
-Item3DRenderer.prototype.renderItem3D = function(now, renderer, ctx, scale, debug) {
+ItemRenderer3D.prototype.renderItem3D = function(now, renderer, ctx, scale, debug) {
 
     if (this.item3d.item.width == "100%") {
         if (debug.level || debug.render || debug.hsr) return;
@@ -174,7 +174,7 @@ Item3DRenderer.prototype.renderItem3D = function(now, renderer, ctx, scale, debu
     
 }
 
-Item3DRenderer.prototype.getColors = function(renderer, debug) {
+ItemRenderer3D.prototype.getColors = function(renderer, debug) {
 
     var dodebug = debug && debug.level;
     
@@ -213,7 +213,7 @@ Item3DRenderer.prototype.getColors = function(renderer, debug) {
     this.colors.front = themecolor.front ? themecolor.front : this.colors.side;
 }
     
-Item3DRenderer.prototype.renderItemParts3D = function(ctx, parts, color, x, y, scale, debug, outline = true, fill = true) {
+ItemRenderer3D.prototype.renderItemParts3D = function(ctx, parts, color, x, y, scale, debug, outline = true, fill = true) {
     ctx.beginPath();
     ctx.fillStyle = color;
     var t = parts.length;
