@@ -61,6 +61,16 @@ GamePerformance.prototype.tick = function(when) {
 
 
 
+GamePerformance.prototype.loopStart = function(when) {
+}
+
+GamePerformance.prototype.loopEnd = function(when) {
+    this.getFPS(timestamp());
+    this.game.fps("FPS", this.fps, this.avg);
+}
+
+
+
 
 GamePerformance.prototype.updateStart = function(when) {
 //    this.nu += 1;
@@ -91,8 +101,6 @@ GamePerformance.prototype.renderStart = function(when) {
 }
 
 GamePerformance.prototype.renderEnd = function(when) {
-    this.getFPS(timestamp());
-    this.game.fps("FPS", this.fps, this.avg);
 }
 
 

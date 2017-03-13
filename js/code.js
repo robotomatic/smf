@@ -9,6 +9,7 @@ window.requestAnimFrame = (function(){
           };
 })();
 
+var __dev = false;
 var controller;
 window.addEventListener('resize', debounce(function() { if (controller) controller.resize(); }, 250) );
 document.addEventListener('DOMContentLoaded', function() { game(); }, false);
@@ -23,7 +24,18 @@ function game() {
 }
 
 function runAnimationFrame(when) {
-    controller.run(when);
-    controller.render(timestamp());
-    window.requestAnimFrame(runAnimationFrame);
+    if (__dev) runAnimationFrameDev(when);
+    else {
+        controller.run(when);
+        window.requestAnimFrame(runAnimationFrame);
+    }
+}
+
+function runAnimationFrameDev(when) {
+    try {
+        controller.run(when);
+        window.requestAnimFrame(runAnimationFrame);
+    } catch (x) {
+        logDevError(x);
+    }
 }

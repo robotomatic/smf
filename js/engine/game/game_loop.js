@@ -51,10 +51,12 @@ GameLoop.prototype.stop = function() {
 GameLoop.prototype.run = function(now) {
     if (!this.running) return;
     if (!now) return;
-    this.gameperformance.tick(now);
+    this.gameperformance.loopStart(now);
     geometryfactory.reset();
     if (this.steprender) this.runStep(now);
     else this.runUpdate(now);
+    this.render(timestamp());
+    this.gameperformance.loopEnd(now);
 }
 
 GameLoop.prototype.runStep = function(now) {

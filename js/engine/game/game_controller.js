@@ -1,8 +1,5 @@
 "use strict";
 
-var __dev = true;
-
-
 function GameController() {
     this.input = new Input();
     this.maincontent = document.getElementById("main-content");
@@ -175,11 +172,11 @@ GameController.prototype.run = function(now) {
     else { for (var i = 0; i < this.game.length; i++) this.game[i].loop.run(now); }
 }
 
-GameController.prototype.render = function(now) {
-    if (!this.game) return;
-    if (!Array.isArray(this.game)) { if (this.game.loop) this.game.loop.render(now); }
-    else { for (var i = 0; i < this.game.length; i++) this.game[i].loop.render(now); }
-}
+//GameController.prototype.render = function(now) {
+//    if (!this.game) return;
+//    if (!Array.isArray(this.game)) { if (this.game.loop) this.game.loop.render(now); }
+//    else { for (var i = 0; i < this.game.length; i++) this.game[i].loop.render(now); }
+//}
 
 GameController.prototype.stop = function() {
     if (!this.game) return;
