@@ -16,8 +16,8 @@ function logDevError(error) {
     if (!error) {
         message = "--------------------------------";
     } else {
-        var err = new Error();
-        message = err.stack;
+        message = error;
     }
     dev_log.innerHTML += message + "<br />";
+    console.log(message);
 }
