@@ -152,15 +152,19 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
     this.right = !this.left;
     
     if (this.left) {
-        this.p1.x = round(this.polygon.points[t - 1].x);
-        this.p1.y = round(this.polygon.points[t - 1].y);
-        this.p2.x = round(this.polygon.points[0].x);
-        this.p2.y = round(this.polygon.points[0].y);
+        if (this.polygon.points.length) {
+            this.p1.x = round(this.polygon.points[t - 1].x);
+            this.p1.y = round(this.polygon.points[t - 1].y);
+            this.p2.x = round(this.polygon.points[0].x);
+            this.p2.y = round(this.polygon.points[0].y);
+        }
     } else {
-        this.p1.x = round(this.polygon.points[1].x);
-        this.p1.y = round(this.polygon.points[1].y);
-        this.p2.x = round(this.polygon.points[2].x);
-        this.p2.y = round(this.polygon.points[2].y);
+        if (this.polygon.points.length > 2) {
+            this.p1.x = round(this.polygon.points[1].x);
+            this.p1.y = round(this.polygon.points[1].y);
+            this.p2.x = round(this.polygon.points[2].x);
+            this.p2.y = round(this.polygon.points[2].y);
+        }
     }
     
     if (shouldProject(this.p1, this.p2, scale, x, y, wc, this.cp)) {
