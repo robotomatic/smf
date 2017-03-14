@@ -62,8 +62,18 @@
 /*    height: 5em;*/
 }
 
+.dialog-scroll {
+    height: 10em;
+    overflow: auto;
+}
+
+
 .dialog-wrap.resize-resize {
     height: 5em;
+}
+
+.dialog-wrap.resize-resize-large {
+    height: 10em;
 }
 
 .dialog-row {
@@ -72,6 +82,10 @@
     height: auto;
     padding-bottom: 1em;
     margin-bottom: 0;
+}
+
+.dialog-row-pad {
+    width: 95%;
 }
 
 .dialog-row-border {

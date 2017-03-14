@@ -1,6 +1,7 @@
 <div id="dev" class="dialog shadow hidden">
     <div id="dev-toolbar-title" class="dialog-toolbar">
         <div id="dev-toolbar-tools" class="dev-toolbar-tools">
+            <a class="float-left dev-toolbar-tools-tool pad-left-small" id="dev-tools-world">World</a>
             <a class="float-left dev-toolbar-tools-tool pad-left-small" id="dev-tools-players">Players</a>
             <a class="float-left dev-toolbar-tools-tool" id="dev-tools-debug">Debug</a>
             <a class="float-left dev-toolbar-tools-tool" id="dev-tools-size">Size</a>
@@ -174,7 +175,7 @@
         <a class="float-left dialog-title-close circle">x</a>
         <a class="float-right dialog-title-title">Log</a>
     </div>
-    <div class="dialog-wrap  dialog-wrap resize resize-resize">
+    <div class="dialog-wrap resize resize-resize">
         <div class="dev-body">
             <p id="dev-log"></p>
         </div>
@@ -186,40 +187,36 @@
 
 
 <div id="dev-dialog-players" class="dialog shadow hidden dialog-resize">
+    
     <div class="dialog-title dialog-drag">
         <a class="float-left dialog-title-close circle">x</a>
         <a class="float-right dialog-title-title">Players</a>
     </div>
-    <div class="dialog-wrap" id="dev-dialog-players-players">
+    
+    <div class="dialog-wrap resize-vertical resize-resize resize-resize-large">
         
-        <div id="dev-dialog-players-players-player-template" class="dialog-row dialog-row-border" style="display: none;">
-            
-            
-            <label class="text-left float-left" id="dev-dialog-players-players-player-template-id"></label>
-            <a class="text-left float-left pointer-cursor" id="dev-dialog-players-players-player-template-name"></a>
-            
-            <div class="dialog-check float-right" id="dev-dialog-players-players-player-template-camera">
-                
-                
-<!--                todo: remove player-->
-                
-                <label class="text-left float-left">
-                    <input type="checkbox" class="dialog-toggle float-left dev-toggle-player-camera" id="dev-dialog-players-players-player-template-camera-camera" value="Auto" CHECKED> Camera
-                </label>
+        <div class="dev-body" id="dev-dialog-players-players">
+        
+            <div id="dev-dialog-players-players-player-template" class="dialog-row dialog-row-pad dialog-row-border" style="display: none;">
+                <label class="text-left float-left" id="dev-dialog-players-players-player-template-id"></label>
+                <a class="text-left float-left pointer-cursor" id="dev-dialog-players-players-player-template-name"></a>
+                <div class="dialog-check float-right" id="dev-dialog-players-players-player-template-camera">
+                    <label class="text-left float-left">
+                        <input type="checkbox" class="dialog-toggle float-left dev-toggle-player-camera" id="dev-dialog-players-players-player-template-camera-camera" value="Auto" CHECKED> Camera
+                    </label>
+                </div>
             </div>
             
-<!--            todo: add player-->
-            
         </div>
-        
     </div>
+    
 </div>
 
 
 
 
 
-<div id="dev-dialog-player" class="dialog shadow hidden dialog-resize">
+<div id="dev-dialog-player" class="dialog shadow hidden">
     <div class="dialog-title dialog-drag">
         <a id="dev-dialog-player-close" class="float-left dialog-title-close circle">x</a>
         <a id="dev-dialog-player-title" class="float-right dialog-title-title">Player</a>
@@ -255,6 +252,21 @@
                 <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-debug-player-character" value="Character"> Character</label>
             </div>
         </div>
+        
+    </div>
+</div>
+
+
+
+
+
+<div id="dev-dialog-world" class="dialog shadow hidden">
+    <div class="dialog-title dialog-drag">
+        <a id="dev-dialog-player-close" class="float-left dialog-title-close circle">x</a>
+        <a id="dev-dialog-player-title" class="float-right dialog-title-title">World</a>
+    </div>
+    <div class="dialog-wrap">
+
         
     </div>
 </div>

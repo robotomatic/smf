@@ -77,15 +77,35 @@ function toggleDevDialog(nid) {
     
     var d = document.getElementById(nid);
     if (!d) return;
+
+    var keys = Object.keys(dialogs);
+    for (var i = 0; i < keys.length; i++) {
+        var k = keys[i];
+        if (k == nid) continue;
+        var ddd = dialogs[k];
+        if (!ddd.moved) {
+            var p = ddd.dialog.className.indexOf("hidden");
+            if (p < 0) ddd.dialog.className += " hidden";
+        }
+    }
+    
+    var dr = d.getBoundingClientRect();
     
     var p = document.getElementById("main-content");
+    
     var rect = p.getBoundingClientRect();
     var w = rect.width;
     var h = rect.height;
-    var dw = d.offsetWidth + 10;
-    var dh = d.offsetHeight + 10;
-    var l = random(10, w - dw);
-    var t = random(10, h - dh);
+    
+//    var dw = d.offsetWidth + 10;
+//    var dh = d.offsetHeight + 10;
+//    
+//    var l = random(10, w - dw);
+//    var t = random(10, h - dh);
+    
+    var t = 50;
+    var l = w - dr.width - 15;
+    
     d.style.top = t + "px";
     d.style.left = l + "px";
     d.className = d.className.replace("hidden", "");
@@ -94,7 +114,9 @@ function toggleDevDialog(nid) {
     if (!ddd) {
         ddd = new Dialog(nid, d);
         dialogs[nid] = ddd;    
-    } else dialogs[nid].reset();
+    } else {
+        dialogs[nid].reset();
+    }
     
     dialogs[nid].bringToTop();
 }

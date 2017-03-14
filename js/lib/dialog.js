@@ -40,6 +40,7 @@ function Dialog(id, d) {
     this.drag = false;
     this.top = d.style.top;
     this.left = d.style.left;
+    this.moved = false;
     this.dx = 0;
     this.dy = 0;
     this.mx = 0;
@@ -50,6 +51,7 @@ function Dialog(id, d) {
         c.dx = 0;
         c.dy = 0;
         c.drag = false;
+        c.moved = false;
     }
     
     if (d.className.indexOf("dialog-resize") > -1) {
@@ -73,7 +75,7 @@ function Dialog(id, d) {
     if (close.length) {
         var cc = close[0];
         cc.addEventListener('click', function(e) {
-            d.className += " hidden";
+            if (!d.className.indexOf("hidden") > -1) d.className += " hidden";
         });
     }
 }
@@ -104,4 +106,5 @@ Dialog.prototype.dragMove = function(e) {
 
 Dialog.prototype.dragEnd = function(e) {
     this.drag = false;
+    this.moved = true;
 }

@@ -48,6 +48,14 @@ body {
     resize: both;
 }
 
+.resize-horizontal {
+    resize: horizontal;
+}
+
+.resize-vertical {
+    resize: vertical;
+}
+
 .pointer-cursor {
     cursor: pointer;
 }
