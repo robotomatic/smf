@@ -428,7 +428,7 @@ Polygon.prototype.createPolygon = function(items) {
         }
     }
     
-    if (current.ramp && current.ramp == "left") {
+    if (current && current.ramp && current.ramp == "left") {
         var prev = items[t - 2];
 
         var pp = this.points[this.points.length - 1];
