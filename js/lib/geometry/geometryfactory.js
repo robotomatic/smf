@@ -4,35 +4,43 @@ function GeometryFactory() {
 
     this.points = new Array();
     this.pointnum = -1;
-    this.pointtot = 20000;
+    this.pointtot = 25000;
+    this.pointmax = 0;
     
     this.lines = new Array();
     this.linenum = -1;
     this.linetot = 10000;
+    this.linemax = 0;
     
     this.circles = new Array();
     this.circlenum = -1;
     this.circletot = 10000;
+    this.circlemax = 0;
     
     this.triangles = new Array();
     this.trianglenum = -1;
     this.triangletot = 10000;
+    this.trianglemax = 0;
     
     this.rects = new Array();
     this.rectnum = -1;
     this.recttot = 10000;
+    this.rectmax = 0;
     
     this.polylines = new Array();
     this.polylinenum = -1;
     this.polylinetot = 10000;
+    this.polylinemax = 0;
     
     this.polys = new Array();
     this.polynum = -1;
     this.polytot = 10000;
+    this.polymax = 0;
     
     this.texts = new Array();
     this.textenum = -1;
     this.texttot = 10000;
+    this.textmax = 0;
 }
 
 GeometryFactory.prototype.init = function() {
@@ -55,18 +63,42 @@ GeometryFactory.prototype.init = function() {
 }
 
 GeometryFactory.prototype.reset = function() {
+    if (this.pointmax > this.pointtot) console.log("Point Max:" + this.pointmax);
     this.pointnum = -1;
+    this.pointmax = -1;
+    
+    if (this.linemax > this.linetot) console.log("Line Max: " + this.linemax);
     this.linenum = -1;
+    this.linemax = -1;
+    
+    if (this.circlemax > this.circletot) console.log("Circle Max:" + this.circlemax);
     this.circlenum = -1;
+    this.circlemax = -1;
+    
+    if (this.trianglemax > this.triangletot) console.log("Triangle Max:" + this.trianglemax);
     this.trianglenum = -1;
+    this.trianglemax = -1;
+    
+    if (this.rectmax > this.recttot) console.log("Rectangle Max:" + this.rectmax);
     this.rectnum = -1;
+    this.rectmax = -1;
+    
+    if (this.polylinemax > this.polylinetot) console.log("POlyline Max:" + this.polylinemax);
     this.polylinenum = -1;
+    this.polylinemax = -1;
+    
+    if (this.polymax > this.polytot) console.log("POlygone Max:" + this.polymax);
     this.polynum = -1;
+    this.polymax = -1;
+    
+    if (this.textmax > this.texttot) console.log("Text Max:" + this.textmax);
     this.textnum = -1;
+    this.textmax = -1;
 }
 
 GeometryFactory.prototype.getPoint = function(x, y, info = null) {
     this.pointnum++;
+    this.pointmax++;
     if (this.pointnum >= this.pointtot) {
         console.log("Point == " + this.pointnum)
         this.pointnum = 0;
@@ -79,6 +111,7 @@ GeometryFactory.prototype.getPoint = function(x, y, info = null) {
 
 GeometryFactory.prototype.getLine = function(p1, p2) {
     this.linenum++;
+    this.linemax++;
     if (this.linenum >= this.linetot) {
         console.log("Line == " + this.linenum)
         this.linenum = 0;
@@ -92,6 +125,7 @@ GeometryFactory.prototype.getLine = function(p1, p2) {
 
 GeometryFactory.prototype.getCircle = function(x, y, radius) {
     this.circlenum++;
+    this.circlemax++;
     if (this.circlenum >= this.circletot) {
         console.log("Circle == " + this.circlenum)
         this.circlenum = 0;
@@ -104,6 +138,7 @@ GeometryFactory.prototype.getCircle = function(x, y, radius) {
 
 GeometryFactory.prototype.getTriangle = function(x, y, width, height, info) {
     this.trianglenum++;
+    this.trianglemax++;
     if (this.trianglenum >= this.triangletot) {
         console.log("Triangle == " + this.trianglenum)
         this.trianglenum = 0;
@@ -118,6 +153,7 @@ GeometryFactory.prototype.getTriangle = function(x, y, width, height, info) {
 
 GeometryFactory.prototype.getRectangle = function(x, y, width, height, angle) {
     this.rectnum++;
+    this.rectmax++;
     if (this.rectnum >= this.recttot) {
         console.log("Rect == " + this.rectnum)
         this.rectnum = 0;
@@ -132,6 +168,7 @@ GeometryFactory.prototype.getRectangle = function(x, y, width, height, angle) {
 
 GeometryFactory.prototype.getPolyline = function() {
     this.polylinenum++;
+    this.polylinemax++;
     if (this.polylinenum >= this.polylinetot) {
         console.log("Polyline == " + this.polylinenum)
         this.polylinenum = 0;
@@ -142,6 +179,7 @@ GeometryFactory.prototype.getPolyline = function() {
 
 GeometryFactory.prototype.getPolygon = function(points) {
     this.polynum++;
+    this.polymax++;
     if (this.polynum >= this.polytot) {
         console.log("Poly == " + this.polynum)
         this.polynum = 0;
@@ -153,6 +191,7 @@ GeometryFactory.prototype.getPolygon = function(points) {
 
 GeometryFactory.prototype.getText = function(x, y, text) {
     this.textnum++;
+    this.textmax++;
     if (this.textnum >= this.texttot) {
         console.log("Text == " + this.textnum)
         this.textnum = 0;
