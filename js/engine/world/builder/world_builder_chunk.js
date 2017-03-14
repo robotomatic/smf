@@ -1,23 +1,34 @@
 "use strict";
 
 function WorldBuilderChunk() {
-    this.dochunk = true;
+    this.dochunk = false;
+    this.chunksize = {
+        width: 100,
+        height: 100,
+        depth : 100
+    }
 }
 
-WorldBuilderChunk.prototype.chunk = function(items, chunksize) { 
+WorldBuilderChunk.prototype.chunk = function(world) { 
+
+    var items = world.items;
+    
+    // todo: no workee!!!
+    
     if (!this.dochunk) return items;
-    var newitems = new Array();
+    var chunksize = this.chunksize;
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
         if (item.draw === false) continue;
         if (item.width == "100%" || item.height == "100%" || item.depth == "100%") continue;
-        newitems = this.chunkItem(item, chunksize, newitems);
+        var newitems = this.chunkItem(item, chunksize);
+        if (newitems) items = items.concat(newitems);
     }
-    items = items.concat(newitems);
-    return items;
+    world.items = items;
 }
 
-WorldBuilderChunk.prototype.chunkItem = function(item, chunksize, newitems) { 
+WorldBuilderChunk.prototype.chunkItem = function(item, chunksize) { 
+    var newitems = new Array();
     if (item.width > chunksize.width) newitems = this.chunkItemX(item, chunksize, newitems);
     if (item.height > chunksize.height) newitems = this.chunkItemY(item, chunksize, newitems);
     if (item.depth > chunksize.depth) newitems = this.chunkItemZ(item, chunksize, newitems);

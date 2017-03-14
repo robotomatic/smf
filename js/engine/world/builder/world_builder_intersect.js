@@ -3,18 +3,21 @@
 function WorldBuilderIntersect() {
 }
 
-WorldBuilderIntersect.prototype.intersectItems = function(items) { 
+WorldBuilderIntersect.prototype.intersectItems = function(world) { 
+    var items = world.items;
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
         if (item.draw === false) continue;
         if (item.width == "100%" || item.height == "100%" || item.depth == "100%") continue;
-        var newitems = this.intersectItemItems(item, items, newitems);
-        if (newitems) items = items.concat(newitems);
+        var newitems = this.intersectItemItems(item, items);
+        if (newitems) {
+            items = items.concat(newitems);
+        }
     }
-    return items;
+    world.items = items;
 }
 
-WorldBuilderIntersect.prototype.intersectItemItems = function(item, items, newitems) { 
+WorldBuilderIntersect.prototype.intersectItemItems = function(item, items) { 
     var newitems = new Array();
     for (var i = 0; i < items.length; i++) {
         var itemc = items[i];

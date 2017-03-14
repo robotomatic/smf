@@ -5,19 +5,14 @@ function WorldBuilderItems() {
 }
 
 WorldBuilderItems.prototype.buildWorld = function(world) {
-    return this.buildWorldLevel(world, world.level);
-}
-
-WorldBuilderItems.prototype.buildWorldLevel = function(world, level) {
-    var out = new Array();
-    if (!level.layers) return out;
+    var level = world.level;
+    if (!level.layers) return;
     for (var i = 0; i < level.layers.length; i++) {
         var layer = level.layers[i];
         if (layer.draw === false) continue;
         var newitems = this.buildWorldLevelLayer(world, level, level.layers[i]);
-        out = out.concat(newitems);
+        if (newitems) world.items = world.items.concat(newitems);
     }
-    return out;
 }
 
 WorldBuilderItems.prototype.buildWorldLevelLayer = function(world, level, layer) {
@@ -47,11 +42,12 @@ WorldBuilderItems.prototype.buildWorldLevelLayerItem = function(world, layer, it
     if (layer.graphics) item.graphics = layer.graphics;
     if (layer.top === false) item.top = layer.top;
     var theme = world.worldrenderer.itemrenderer.getItemTheme(item);
-    if (!theme) return;
-    item.depth = (theme.depth !== undefined) ? theme.depth : (item.depth !== undefined) ? item.depth : layer.depth;
-    if (isNaN(item.depth)) item.depth = 1;
-    item.cache = (layer.cache !== undefined) ? layer.cache : true;
-    if (theme.draw !== undefined) item.draw = theme.draw;
+    if (theme) {
+        item.depth = (theme.depth !== undefined) ? theme.depth : (item.depth !== undefined) ? item.depth : layer.depth;
+        if (isNaN(item.depth)) item.depth = 1;
+        item.cache = (layer.cache !== undefined) ? layer.cache : true;
+        if (theme.draw !== undefined) item.draw = theme.draw;
+    }
     item.initialize();
     return item;
 }

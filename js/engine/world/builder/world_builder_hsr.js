@@ -3,7 +3,8 @@
 function WorldBuilderHSR() {
 }
 
-WorldBuilderHSR.prototype.removeHiddenSurfaces = function(items) { 
+WorldBuilderHSR.prototype.removeHiddenSurfaces = function(world) { 
+    var items = world.items;
     items.sort(sortByY);
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
@@ -11,7 +12,7 @@ WorldBuilderHSR.prototype.removeHiddenSurfaces = function(items) {
         if (item.width == "100%" || item.height == "100%" || item.depth == "100%") continue;
         item = this.removeItemItemsHiddenSurfaces(item, items);
     }
-    return items;
+    world.items = items;
 }
 
 WorldBuilderHSR.prototype.removeItemItemsHiddenSurfaces = function(item, items) { 

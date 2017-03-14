@@ -4,9 +4,11 @@ function WorldBuilderTheme() {
     this.addparts = true;
 }
 
-WorldBuilderTheme.prototype.buildTheme = function(items, itemrenderer) { 
+WorldBuilderTheme.prototype.buildTheme = function(world) { 
+    var items = world.items;
     if (!this.addparts) return items;
     if (!items.length) return items;
+    var itemrenderer = world.worldrenderer.itemrenderer;
     var newitems = new Array();
     for (var i = 0; i < items.length; i++) {
         newitems = this.buildThemeItems(itemrenderer, items[i], newitems);
@@ -14,7 +16,7 @@ WorldBuilderTheme.prototype.buildTheme = function(items, itemrenderer) {
     for (var ii = 0; ii < newitems.length; ii++) {
         items.push(newitems[ii]);
     }
-    return items;
+    world.items = items;
 }
 
 WorldBuilderTheme.prototype.buildThemeItems = function(renderer, item, newitems) {
