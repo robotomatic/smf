@@ -38,9 +38,6 @@
             }
         }
    },
-    
-    
-    
    "wood-horizontal" : {
        "name" : "wood",
         "direction" : "horizontal",

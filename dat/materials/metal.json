@@ -1,0 +1,41 @@
+{
+   "metal" : {
+       "name" : "metal",
+        "renderer" : "metal",
+        "color" : {
+            "color" : "#a89693",
+            "projected" : {
+                "front" : "#a7a3a2",
+                "top" : "#b9aba8",
+                "side" : "#a89693",
+                "bottom" : "#89817f"
+            }
+       }
+   },
+   "metal-trim" : {
+       "name" : "metal-trim",
+        "renderer" : "metal",
+        "color" : {
+            "color" : "#807776",
+            "projected" : {
+                "front" : "#807776",
+                "top" : "#9b9493",
+                "side" : "#938786",
+                "bottom" : "#6a605f"
+            }
+       }
+   },
+   "steel" : {
+       "name" : "steel",
+        "renderer" : "steel",
+        "color" : {
+            "color" : "#a5b0b9",
+            "projected" : {
+                "front" : "#a5b0b9",
+                "top" : "#afbac3",
+                "side" : "#9ea9b2",
+                "bottom" : "#8f979f"
+            }
+       }
+   }
+}

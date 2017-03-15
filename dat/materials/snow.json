@@ -1,0 +1,15 @@
+{
+   "snow" : {
+       "name" : "snow",
+        "renderer" : "snow",
+        "color" : {
+            "color" : "#f7f7f7",
+            "projected" : {
+                "front" : "#f7f7f7",
+                "top" : "#ffffff",
+                "side" : "#eaeaea",
+                "bottom" : "#ebebeb"
+            }
+       }
+   }
+}

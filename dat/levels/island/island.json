@@ -12,8 +12,8 @@
             "file" : "dat/levels/island/layers/sky.json"
         },
         
-        "liquid" : {
-            "file" : "dat/levels/island/layers/liquid.json"
+        "temple" : {
+            "file" : "dat/levels/island/layers/temple.json"
         },
         
         "temple ground" : {
@@ -24,8 +24,8 @@
             "file" : "dat/levels/island/layers/temple_ground_island.json"
         },
         
-        "temple" : {
-            "file" : "dat/levels/island/layers/temple.json"
+        "liquid" : {
+            "file" : "dat/levels/island/layers/liquid.json"
         }
     }
  }

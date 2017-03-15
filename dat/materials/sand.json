@@ -1,0 +1,15 @@
+{
+   "sand" : {
+       "name" : "sand",
+        "renderer" : "sand",
+        "color" : {
+            "color" : "#d8d395",
+            "projected" : {
+                "front" : "#d8d395",
+                "top" : "#e0dba0",
+                "side" : "#cec989",
+                "bottom" : "#cec98b"
+            }
+       }
+   }
+}

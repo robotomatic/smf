@@ -1,59 +1,15 @@
 {
-   "grass-top-back" : {
-        "name" : "grass-top-back",
-        "renderer" : {
-            "name" : "grass",
-            "color" : {
-                "light" : {
-                    "gradient" : {
-                        "start" : "#c8d8ac",
-                        "stop" : "#a0c954"
-                    }
-                }
-            }
-        }
-   },
-   "grass-top-front" : {
-        "name" : "grass-top-front",
-        "renderer" : {
-            "name" : "grass",
-            "color" : {
-                "light" : {
-                    "gradient" : {
-                        "start" : "#adc158",
-                        "stop" : "#87af3c"
-                    }
-                }
-            }
-        }
-   },
-   "grass-dark" : {
-        "name" : "grass-dark",
-        "renderer" : {
-            "name" : "grass",
-            "color" : {
-                "light" : {
-                    "gradient" : {
-                        "start" : "#a4be75",
-                        "stop" : "#84a545"
-                    }
-                }
-            }
-        }
-   },
-
    "grass" : {
        "name" : "grass",
-        "renderer" : {
-            "name" : "grass",
-            "color" : {
-                "light" : {
-                    "gradient" : {
-                        "start" : "#b6d380",
-                        "stop" : "#a0c954"
-                    } 
-                }
+        "renderer" : "grass",
+        "color" : {
+            "color" : "#93b552",
+            "projected" : {
+                "front" : "#93b552",
+                "top" : "#a1c65b",
+                "side" : "#87af3a",
+                "bottom" : "#809f47"
             }
-        }
+       }
    }
 }

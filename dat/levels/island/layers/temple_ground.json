@@ -14,7 +14,7 @@
                 "y" : 960,
                 "z" : 1700,
                 "depth" : 1200,
-                "itemtype" : "platform",
+                "itemtype" : "ground-raised",
                 "parts" : [
                     {
                         "x": 0,
@@ -31,7 +31,7 @@
                 "y" : 960,
                 "z" : 2300,
                 "depth" : 600,
-                "itemtype" : "platform",
+                "itemtype" : "ground-raised",
                 "parts" : [
                     {
                         "x": 0,
@@ -46,7 +46,7 @@
                 "y" : 990,
                 "z" : 2000,
                 "depth" : 300,
-                "itemtype" : "platform",
+                "itemtype" : "ground-raised",
                 "parts" : [
                     {
                         "x": 0,
@@ -61,7 +61,7 @@
                 "y" : 1020,
                 "z" : 1700,
                 "depth" : 300,
-                "itemtype" : "platform",
+                "itemtype" : "ground-raised",
                 "parts" : [
                     {
                         "x": 0,
@@ -76,7 +76,7 @@
                 "y" : 1040,
                 "z" : 1400,
                 "depth" : 1800,
-                "itemtype" : "platform",
+                "itemtype" : "ground-raised",
                 "parts" : [
                     {
                         "x": 0,

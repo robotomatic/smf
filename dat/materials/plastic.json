@@ -1,0 +1,28 @@
+{
+   "plastic" : {
+       "name" : "plastic",
+        "renderer" : "plastic",
+        "color" : {
+            "color" : "#c1e3de",
+            "projected" : {
+                "front" : "#c1e3de",
+                "top" : "#d3f0ec",
+                "side" : "#b2d8d2",
+                "bottom" : "#c0d0cd"
+            }
+       }
+   },
+    "plastic-trim" : {
+       "name" : "plastic-trim",
+        "renderer" : "plastic",
+        "color" : {
+            "color" : "#5dafa2",
+            "projected" : {
+                "front" : "#ddfa9c",
+                "top" : "#94e0d4",
+                "side" : "#ddfa9c",
+                "bottom" : "#5dafa2"
+            }
+       }
+   }
+}

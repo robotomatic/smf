@@ -1,0 +1,39 @@
+{
+   "water" : {
+       "name" : "water",
+        "renderer" : "liquid",
+        "color" : {
+            "color" : "#6094a2",
+            "projected" : {
+                "top" : "#6094a2",
+                "top" : "#5db7d0",
+                "side" : "#6094a2",
+                "bottom" : "#6094a2"
+            }
+        }
+   },
+   "lava" : {
+       "name" : "lava",
+        "renderer" : "liquid",
+        "color" : {
+            "color" : "#b73636",
+            "projected" : {
+                "top" : "#b73636",
+                "side" : "#b73636",
+                "bottom" : "#b73636"
+            }
+        }
+   },
+   "goo" : {
+       "name" : "goo",
+        "renderer" : "liquid",
+        "color" : {
+            "color" : "#bcea65",
+            "projected" : {
+                "top" : "#bcea65",
+                "side" : "#bcea65",
+                "bottom" : "#bcea65"
+            }
+        }
+   }
+}

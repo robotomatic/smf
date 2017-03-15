@@ -20,388 +20,103 @@
             },
 
             
-            "stars" : {
-                "name" : "stars",
-                "draw" : false,
-                "renderer" : {
-                    "name" : "stars",
-                    "total" : 400
-                }
-            },
-
             "clouds" : {
                 "name" : "clouds",
-                "renderer" : {
-                    "name" : "clouds",
-                    "color" : "white",
-                    "maxwidth" : 1200,
-                    "maxheight" : 800,
-                    "offsety" : 300,
-                    "maxspeed" : 15,
-                    "total" : 15
-                }
+                "material" : "clouds"
             },
             
-            
-            "flag" : {
-                "name" : "flag",
-                "renderer" : {
-                    "name" : "flag",
-                    "color" : "white",
-                    "amplitude" : 1.2,
-                    "offset" : 0.5
-                }
-            },
-            
-            
-            "wave" : {
+            "liquid" : {
                 "name" : "snow",
-                "renderer" : {
-                    "name" : "wave",
-                    "wavelength" : 10,
-                    "amplitude" : 4,
-                    "offset" : 0,
-                     "color" : {
-                        "gradient" : {
-                            "top" : 1000,
-                            "height" : 300,
-                            "start" : "#f5f5f5",
-                            "stop" : "#b7c7d6"
-                        }
-                     }
-                }
-            },
-            "wave-body" : {
-                "name" : "goo-body",
-                 "color" : {
-                    "gradient" : {
-                        "top" : 1000,
-                        "height" : 300,
-                        "start" : "#f5f5f5",
-                        "stop" : "#b7c7d6"
-                    }
-                 }
+                "material" : "snow"
             },
             
-            
-
-            
-            "bg-block-3" : {
-                "name" : "bg-block-3",
-                "color" : {
-                    "gradient" : {
-                        "top" : 500,
-                        "height" : 300,
-                        "start" : "#c4dddd",
-                        "stop" : "#dee7ea"
-                    }
-                }
-            },
-            "bg-block-2" : {
-                "name" : "bg-block-2",
-                "color" : {
-                    "gradient" : {
-                        "top" : 500,
-                        "height" : 400,
-                        "start" : "#b2b7ea",
-                        "stop" : "#dee7ea"
-                    }
-                }
-            },
-            "bg-platform-support-wide" : {
-                "name" : "bg-block-2",
-                "color" : {
-                    "gradient" : {
-                        "top" : 500,
-                        "height" : 400,
-                        "start" : "#b2b7ea",
-                        "stop" : "#dee7ea"
-                    }
-                }
-            },
-            "bg-block-1" : {
-                "name" : "bg-block-1",
-                "color" : {
-                    "gradient" : {
-                        "top" : 500,
-                        "height" : 500,
-                        "start" : "#59bad8",
-                        "stop" : "#dee7ea"
-                    }
-                }
+            "snow" : {
+                "name" : "snow",
+                "material" : "snow"
             },
             
-            
-            
-            
-            
-            
-            
-            
-            
-
-            "platform" : {
-                "name" : "platform-1",
-                "itemtype" : "group",
-                "material" : {
-                    "name" : "stone",
-                    "radius" : 5,
-                    "craziness" : 3,
-                    "stones" : {
-                        "size" : 20,
-                        "min" : 5,
-                        "max" : 20
-                    },
-                    "color" : {
-                        "light" : {
-                            "gradient" : {
-                                "start" : "#d0cdc6",
-                                "stop" : "#a7a7a7"
-                            }
-                        },
-                        "dark" : "#d9d9d9",
-                        "projected" : {
-                            "top" : "#c7d3ed",
-                            "side" : "#b7c0d3",
-                            "bottom" : "#97a0b9"
-                        }
-                    }
-                },
-                "top" : {
-                    "color" : {
-                        "light" : "#d4dae2",
-                        "dark" : "#becad1",
-                        "projected" : {
-                            "top" : "#dee8e7",
-                            "side" : "#9cbacb",
-                            "bottom" : "#9bbebe"
-                        }
-                    }
-                }
+            "wood" : {
+                "name" : "wood",
+                "material" : "wood-horizontal"
             },
 
-            
-            
-            "platform-bg" : {
-                "name" : "platform-bg-1",
-                "itemtype" : "group",
-                "material" : {
-                    "name" : "stone",
-                    "radius" : 5,
-                    "craziness" : 3,
-                    "stones" : {
-                        "size" : 25,
-                        "min" : 5,
-                        "max" : 20
-                    },
-                    "color" : {
-                        "light" : {
-                            "gradient" : {
-                                "start" : "#959897",
-                                "stop" : "#57605f"
-                            }
-                        },
-                        "dark" : "#959897",
-                        "projected" : {
-                            "top" : "#a4bab8",
-                            "side" : "#90adad",
-                            "bottom" : "#90adad"
-                        }
-                    }
-                }
-            },
-            
-            
-            
-            
-            
-            "platform-support" : {
-                "name" : "platform-support-1",
-                "color" : {
-                    "gradient" : {
-                        "start" : "#959897",
-                        "stop" : "#57605f"
-                    }
-                }
-            },
-            
-            "platform-support-wide" : {
-                "name" : "platform-support-wide-1",
-                "color" : {
-                    "gradient" : {
-                        "start" : "#959897",
-                        "stop" : "#57605f"
-                    }
-                }
-            },
-            
-            
-
-            
-            
-            "raised-platform" : {
-                "name" : "raised-platform-1",
-                "itemtype" : "group",
-                "material" : {
-                    "name" : "stone",
-                    "radius" : 5,
-                    "craziness" : 3,
-                    "stones" : {
-                        "size" : 20,
-                        "min" : 5,
-                        "max" : 20
-                    },
-                    "color" : {
-                        "light" : {
-                            "gradient" : {
-                                "start" : "#ced0cf",
-                                "stop" : "#a5afad"
-                            }
-                        },
-                        "dark" : "#d9d9d9",
-                        "projected" : {
-                            "top" : "#c7d3ed",
-                            "side" : "#b7c0d3",
-                            "bottom" : "#97a0b9"
-                        }
-                    }
-                },
-                "top" : {
-                    "color" : {
-                        "light" : "#e3e9ed",
-                        "dark" : "#bcddd6",
-                        "projected" : {
-                            "top" : "#dee8e7",
-                            "side" : "#9cbacb",
-                            "bottom" : "#9bbebe"
-                        }
-                    }
-                }
-            },
-            
-            
-            
-            
-            
-            "ledge-1" : {
-                "name" : "ledge-1",
-                "color" : {
-                    "color" : "#a3d5d9",
-                    "projected" : {
-                        "top" : "#c6dcde",
-                        "side" : "#a3d5d9",
-                        "bottom" : "#88b7ba"
-                    }
-                }
-            },
-            
-            "fg-moving-block-1" : {
-                "name" : "moving-block",
-                "color" : {
-                    "color" : "#a3d5d9",
-                    "projected" : {
-                        "top" : "#c6dcde",
-                        "side" : "#a3d5d9",
-                        "bottom" : "#88b7ba"
-                    }
-                }
-            },
-            
-            
-            
-            
-            
-            "fg-block-1" : {
-               "name" : "boxes",
-               "color" : {
-                   "projected" : {
-                       "top" : "#4560ac",
-                       "side" : "#031852",
-                       "bottom" : "#081539"
-                   }
-               },
-               "parts" : {
-                    "back" : {
-                        "color" : "#031852",
-                        "width" : 100,
-                        "height" : 100,
+            "ground" : {
+                "name" : "ground",
+                "material" : "wood-horizontal",
+                "items" : [
+                    {
+                        "name" : "ground-snow",
+                        "itemtype" :  "snow",
                         "x" : 0,
                         "y" : 0,
-                        "parts" : {
-                            "face" : {
-                                "color" : "#0499b4",
-                                "parts" : {
-                                    "side"  : { 
-                                        "width" : 80,
-                                        "height" : 80,
-                                        "x" : 10,
-                                        "y" : 10
-                                    }
-                                }
-                            },
-                            "center" : {
-                                "color" : "rgb(255, 255, 0)",
-                                "parts" : {
-                                    "side"  : { 
-                                        "width" : 40,
-                                        "height" : 40,
-                                        "x" : 30,
-                                        "y" : 30,
-                                        "actions" : [
-                                            {
-                                                "color" : "rgb(146, 177, 46)",
-                                                "steps" : 50
-                                            },
-                                            {
-                                                "color" : "rgb(252, 248, 248)",
-                                                "steps" : 50
-                                            }
-                                        ]
-                                    }
-                                }
-                            }
-                        }
+                        "z" : 0,
+                        "width": "100%",
+                        "height": 5,
+                        "depth" : "100%",
+                        "join" : "subtract"
                     }
-                }
+                ]
+            },
+
+            "ground-raised" : {
+                "name" : "ground-raised",
+                "material" : "wood-horizontal",
+                "items" : [
+                    {
+                        "name" : "ground-raised-snow",
+                        "itemtype" :  "snow",
+                        "x" : 0,
+                        "y" : 0,
+                        "z" : 0,
+                        "width": "100%",
+                        "height": 5,
+                        "depth" : "100%",
+                        "join" : "subtract"
+                    }
+                ]
             },
             
-            
-            "prop-1" : {
-                "name" : "prop-1",
-                "depth" : 0,
-                "material" : {
-                    "name" : "rock",
-                    "radius" : 4,
-                    "angle" : {
-                        "random" : {
-                            "low" : -2,
-                            "high" : 2
-                        }
-                    },
-                    "color" : {
-                        "light" : {
-                            "gradient" : {
-                                "start" : "#fdfdfd",
-                                "stop" : "#c7c7c6"
-                            }
-                        },
-                        "dark" : "#9a9a9a"
+            "platform" : {
+                "name" : "platform",
+                "material" : "wood-vertical",
+                "items" : [
+                    {
+                        "name" : "platform-snow",
+                        "itemtype" :  "snow",
+                        "x" : 0,
+                        "y" : 0,
+                        "z" : 0,
+                        "width": "100%",
+                        "height": 5,
+                        "depth" : "100%",
+                        "join" : "subtract"
                     }
-                }
+                ]
+            },
+            
+            "platform-raised" : {
+                "name" : "platform-raised",
+                "material" : "wood-horizontal",
+                "items" : [
+                    {
+                        "name" : "platform-snow",
+                        "itemtype" :  "snow",
+                        "x" : 0,
+                        "y" : 0,
+                        "z" : 0,
+                        "width": "100%",
+                        "height": 5,
+                        "depth" : "100%",
+                        "join" : "subtract"
+                    }
+                ]
+            },
+            
+            "platform-support" : {
+                "name" : "platform-support",
+                "material" : "wood-vertical",
+                "top" : false
             }
-            
-            
-            
-
-            
-            
-            
-            
-
-            
-            
-            
-            
         }
-    }    
+    }
 }

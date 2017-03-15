@@ -1,21 +1,15 @@
 {
-    "rock" : {
+   "rock" : {
        "name" : "rock",
-       "radius" : 4,
-        "angle" : {
-            "random" : {
-                "low" : -2,
-                "high" : 2
-            }
-        },
+        "renderer" : "rock",
         "color" : {
-            "light" : {
-                "gradient" : {
-                    "start" : "#fdfdfd",
-                    "stop" : "#c7c7c6"
-                }
-            },
-            "dark" : "#b9b7b7"
-        }
-    }
+            "color" : "#c6c6c6",
+            "projected" : {
+                "front" : "#c6c6c6",
+                "top" : "#cccccc",
+                "side" : "#bebebe",
+                "bottom" : "#a3a3a3"
+            }
+       }
+   }
 }

@@ -1,0 +1,22 @@
+{
+   "stars" : {
+       "name" : "stars",
+        "renderer" : "stars",
+        "color" : "#ffffff"
+   },
+   "clouds" : {
+       "name" : "clouds",
+        "renderer" : "clouds",
+        "color" : "#ffffff"
+   },
+   "fog" : {
+       "name" : "fog",
+        "renderer" : "clouds",
+        "color" : "#716e6e"
+   },
+   "mist" : {
+       "name" : "mist",
+        "renderer" : "clouds",
+        "color" : "#defaa0"
+   }
+}

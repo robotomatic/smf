@@ -6,36 +6,5 @@
             "0" : "default",
             "1" : "jungle"
         }
-    },
-    "level1" : {
-        "name" : "Lava Island",
-        "file" : "dat/levels/island/island.json",
-        "themes" : {
-            "0" : "default",
-            "1" : "lava"
-        }
-    },
-    "level2" : {
-        "name" : "Space Island",
-        "file" : "dat/levels/island/island.json",
-        "themes" : {
-            "0" : "default",
-            "1" : "space"
-        }
-    },
-    "level3" : {
-        "name" : "Snow Island",
-        "file" : "dat/levels/island/island.json",
-        "themes" : {
-            "0" : "default",
-            "1" : "snow"
-        }
-    },
-    "level4" : {
-        "name" : "Default Island",
-        "file" : "dat/levels/island/island.json",
-        "themes" : {
-            "0" : "default"
-        }
     }
 }

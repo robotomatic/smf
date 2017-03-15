@@ -21,372 +21,65 @@
             
             "stars" : {
                 "name" : "stars",
-                "renderer" : {
-                    "name" : "stars",
-                    "total" : 300
-                }
+                "material" : "stars",
+                "total" : 300
             },
             
             "clouds" : {
                 "name" : "clouds",
-                "draw" : false
-            },
-
-            
-            
-            "flag" : {
-                "name" : "flag",
-                "renderer" : {
-                    "name" : "flag",
-                    "color" : "green",
-                    "amplitude" : 2,
-                    "offset" : 0.1
-                }
+                "material" : "mist"
             },
             
-            
-            "wave" : {
+            "liquid" : {
                 "name" : "goo",
-                "renderer" : {
-                    "name" : "wave",
-                    "wavelength" : 10,
-                    "amplitude" : 4,
-                    "offset" : 0.004,
-                    "color" : {
-                        "gradient" : {
-                            "top" : 1000,
-                            "height" : 300,
-                            "start" : "#bcea65",
-                            "stop" : "#69b54c"
-                        }
-                    }
-                }
-            },
-            "wave-body" : {
-                "name" : "goo-body",
-                "color" : {
-                    "gradient" : {
-                        "top" : 1000,
-                        "height" : 300,
-                        "start" : "#bcea65",
-                        "stop" : "#69b54c"
-                    }
-                }
-            },
-            
-            
-            
-            
-            
-           "fg-ground" : {
-                "name" : "rocks",
-                "color" : {
-                    "gradient" : {
-                        "start" : "#533a3a",
-                        "stop" : "#261b1b"
-                    }
-                }
-            },
-            
-            
-            
-            
-            
-            
-            "bg-block-3" : {
-                "name" : "bg-block-3",
-                "draw" : false
+                "material" : "goo"
             },
 
-            "bg-block-2" : {
-                "name" : "bg-block-2",
-                "draw" : false
-            },
-            "bg-platform-support-wide" : {
-                "name" : "bg-block-2",
-                "draw" : false
+            "ground" : {
+                "name" : "ground",
+                "material" : "steel"
             },
 
-            "bg-block-1" : {
-                "name" : "bg-block-1",
-                "material" : {
-                    "name" : "plastic",
-                    "cel" : {
-                        "width" : 20,
-                        "height" : 25,
-                        "lineweight" : 0.2,
-                        "alternate" : {
-                            "chance" : 10,
-                            "color" : "#ccede7"
-                        }
-                    },
-                    "color" : {
-                        "light" : {
-                            "gradient" : {
-                                "start" : "#b1d3cc",
-                                "stop" : "#839f99"
-                            }
-                        },
-                        "hilight" : "#c7d8d4",
-                        "shadow" : "#7bb9af"
+            "trim" : {
+                "name" : "trim",
+                "material" : "plastic-trim"
+            },
+
+            "ground-raised" : {
+                "name" : "ground-raised",
+                "material" : "plastic",
+                "items" : [
+                    {
+                        "name" : "ground-raised-steel",
+                        "itemtype" :  "trim",
+                        "x" : 0,
+                        "y" : 0,
+                        "z" : 0,
+                        "width": "100%",
+                        "height": 5,
+                        "depth" : "100%",
+                        "extrude" : 2,
+                        "join" : "subtract"
                     }
-                }
+                ]
             },
-
-            
-            
-            
             
 
             "platform" : {
-                "name" : "platform-1",
-                "itemtype" : "group",
-                "material" : {
-                    "name" : "plastic",
-                    "cel" : {
-                        "width" : 40,
-                        "height" : 60,
-                        "lineweight" : 1,
-                        "alternate" : {
-                            "chance" : 10,
-                            "color" : "#ade0d6"
-                        }
-                    },
-                    "color" : {
-                        "light" : {
-                            "gradient" : {
-                                "start" : "#78d3c1",
-                                "stop" : "#4dad9a"
-                            }
-                        },
-                        "hilight" : "#ade0d6",
-                        "shadow" : "#82a8a1",
-                        "projected" : {
-                            "top" : "#4dad9a",
-                            "side" : "#7c7b79",
-                            "bottom" : "#7c7b79"
-                        }
-                    }
-                },
-                "top" : {
-                    "color" : {
-                        "light" : "#a0a5a4",
-                        "dark" : "#8f9191",
-                        "projected" : {
-                            "top" : "#bac1c0",
-                            "side" : "#8f9191",
-                            "bottom" : "#8f9191"
-                        }
-                    }
-                }
-            },
-
-            
-            
-            "platform-bg" : {
-                "name" : "platform-bg-1",
-                "itemtype" : "group",
-                "material" : {
-                    "name" : "plastic",
-                    "cel" : {
-                        "width" : 60,
-                        "height" : 80,
-                        "lineweight" : 2,
-                        "alternate" : {
-                            "chance" : 5,
-                            "color" : "#2d8d7a"
-                        }
-                    },
-                    "color" : {
-                        "light" : {
-                            "gradient" : {
-                                "start" : "#68a398",
-                                "stop" : "#2a7264"
-                            }
-                        },
-                        "hilight" : "#2d8d7a",
-                        "shadow" : "#2a7264",
-                        "projected" : {
-                            "top" : "#7c7b79",
-                            "side" : "#7c7b79",
-                            "bottom" : "#7c7b79"
-                        }
-                    }
-                }
+                "name" : "platform",
+                "material" : "steel"
             },
             
-            
-            
-            
-
-            
+            "platform-raised" : {
+                "name" : "platform-raised",
+                "material" : "steel"
+            },
             
             "platform-support" : {
-                "name" : "platform-support-1",
-                "color" : "#5a574b"
-            },
-            
-            "platform-support-wide" : {
-                "name" : "platform-support-wide-1",
-                "color" : "#5a574b"
-            },
-
-            "raised-platform" : {
-                "name" : "raised-platform-1",
-                "itemtype" : "group",
-                "material" : {
-                    "name" : "plastic",
-                    "cel" : {
-                        "width" : 40,
-                        "height" : 60,
-                        "lineweight" : 1,
-                        "alternate" : {
-                            "chance" : 10,
-                            "color" : "#ade0d6"
-                        }
-                    },
-                    "color" : {
-                        "light" : {
-                            "gradient" : {
-                                "start" : "#78d3c1",
-                                "stop" : "#4dad9a"
-                            }
-                        },
-                        "hilight" : "#ade0d6",
-                        "shadow" : "#82a8a1",
-                        "projected" : {
-                            "top" : "#4dad9a",
-                            "side" : "#94ada8",
-                            "bottom" : "#94ada8"
-                        }
-                    }
-                },
-                "top" : {
-                    "color" : {
-                        "light" : "#a0a5a4",
-                        "dark" : "#8f9191",
-                        "projected" : {
-                            "top" : "#bac1c0",
-                            "side" : "#8f9191",
-                            "bottom" : "#8f9191"
-                        }
-                    }
-                }
-            },
-            
-            
-            
-            
-            
-            
-            
-            "ledge-1" : {
-                "name" : "ledge-1",
-                "color" : {
-                    "color" : "#a3d5d9",
-                    "projected" : {
-                        "top" : "#c6dcde",
-                        "side" : "#a3d5d9",
-                        "bottom" : "#88b7ba"
-                    }
-                }
-            },
-            
-            "fg-moving-block-1" : {
-                "name" : "moving-block",
-                "color" : {
-                    "color" : "#a3d5d9",
-                    "projected" : {
-                        "top" : "#c6dcde",
-                        "side" : "#a3d5d9",
-                        "bottom" : "#88b7ba"
-                    }
-                }
-            },
-            
-
-            "fg-block-1" : {
-                "name" : "boxes",
-                "color" : {
-                    "projected" : {
-                        "top" : "#4560ac",
-                        "side" : "#031852",
-                        "bottom" : "#081539"
-                    }
-                },
-                "parts" : {
-                    "back" : {
-                        "color" : "#031852",
-                        "width" : 100,
-                        "height" : 100,
-                        "x" : 0,
-                        "y" : 0,
-                        "parts" : {
-                            "face" : {
-                                "color" : "#0499b4",
-                                "parts" : {
-                                    "side"  : { 
-                                        "width" : 80,
-                                        "height" : 80,
-                                        "x" : 10,
-                                        "y" : 10
-                                    }
-                                }
-                            },
-                            "center" : {
-                                "color" : "rgb(255, 255, 0)",
-                                "parts" : {
-                                    "side"  : { 
-                                        "width" : 40,
-                                        "height" : 40,
-                                        "x" : 30,
-                                        "y" : 30,
-                                        "actions" : [
-                                            {
-                                                "color" : "rgb(146, 177, 46)",
-                                                "steps" : 50
-                                            },
-                                            {
-                                                "color" : "rgb(252, 248, 248)",
-                                                "steps" : 50
-                                            }
-                                        ]
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            
-            
-            "prop-1" : {
-                "name" : "prop-1",
-               "color" : {
-                   "projected" : {
-                       "top" : "#9dd1e0",
-                       "side" : "#7fafbe",
-                       "bottom" : "#619daf"
-                   }
-               },
-                "parts" : {
-                    "face" : {
-                        "color" : "#7cc0d4",
-                        "width" : 100,
-                        "height" : 100,
-                        "x" : 0,
-                        "y" : 0
-                    },
-                    "square" : {
-                        "color" : "#598896",
-                        "width" : 50,
-                        "height" : 50,
-                        "x" : 25,
-                        "y" : 25
-                    }
-                }
+                "name" : "platform-support",
+                "material" : "steel",
+                "top" : false
             }
-            
         }
-    }    
+    }
 }

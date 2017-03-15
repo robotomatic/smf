@@ -11,7 +11,7 @@
                 "x" : 2700,
                 "y" : 1060,
                 "z" : 1100,
-                "itemtype" : "platform",
+                "itemtype" : "ground",
                 "parts" : [
                     {
                         "x": 0,
