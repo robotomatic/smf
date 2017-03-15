@@ -57,12 +57,18 @@ Item3D.prototype.createItem3D = function(renderer, window, waterline = null) {
     }
 
     if (waterline) {
-        
         var fw = waterline.waterline;
+
+//        if (this.item.y > fw) {
+//            return;
+//        }
         
         var tpt = this.item.polygon.points.length;
         for (var i = 0; i < tpt; i++) {
             var ppp = this.item.polygon.points[i];
+            if (!ppp) continue;
+            var tpp = this.polygon.points[i];
+            if (!tpp) continue;
             
             //      
             // TODO: Need to project waterline
@@ -77,7 +83,8 @@ Item3D.prototype.createItem3D = function(renderer, window, waterline = null) {
             if (this.item.y + ppp.y >= fw) {
                 var ddd = (this.item.y + ppp.y) - fw;
                 var ds = ddd * bs;
-                this.polygon.points[i].y -= ds;
+                tpp.y -= ds;
+                if (tpp.y < 0) tpp.y = 0;
             }
         }
     }

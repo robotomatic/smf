@@ -6,8 +6,8 @@ function Waterline() {
     this.y = 0;
     this.z = 0;
     this.amount = 0.3;
-    this.max = 0;
-    this.min = -30;
+    this.max = 20;
+    this.min = -20;
     this.down = true;
     this.waterline = 0;
 }
