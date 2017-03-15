@@ -1,33 +1,27 @@
 "use strict";
 
 function Waterline() {
-    this.dowaterline = false;
+    this.flow = false;
     this.level = 0;
     this.y = 0;
     this.z = 0;
-    this.amount = 0.3;
-    this.max = 5;
-    this.min = -5;
+    this.amount = 0;
+    this.miny = 0;
+    this.maxy = 0;
     this.down = true;
     this.waterline = 0;
 }
 
-Waterline.prototype.init = function(item) {
-    this.y = item.y;
-    this.z = item.z;
-    this.dowaterline = true;
-}
-
 Waterline.prototype.getFlood = function() {
-    if (!this.dowaterline) return null;
+    if (!this.flow) return null;
     if (this.down) {
         this.level += this.amount;
-        if (this.level > this.max) {
+        if (this.level > this.maxy) {
             this.down = false;
         }
     } else {
         this.level -= this.amount;
-        if (this.level < this.min) {
+        if (this.level < this.miny) {
             this.down = true;
         }
     }

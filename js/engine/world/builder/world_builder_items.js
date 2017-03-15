@@ -31,12 +31,6 @@ WorldBuilderItems.prototype.buildWorldLevelLayer = function(world, level, layer)
 
 WorldBuilderItems.prototype.buildWorldLevelLayerItem = function(world, layer, item) { 
     if (!item || item.draw === false) return null;
-    if (item.iteminfo && item.iteminfo.waterline) {
-        //
-        // todo: set waterline info based on renderer theme
-        //
-        world.worldrenderer.waterline.init(item);
-    }
     if (layer.collide === false) item.collide = false;
     if (layer.blur && !item.blur) item.blur = layer.blur;
     if (layer.graphics) item.graphics = layer.graphics;

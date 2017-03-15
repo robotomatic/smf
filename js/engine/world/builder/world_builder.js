@@ -8,6 +8,7 @@ function WorldBuilder() {
     this.hsrbuilder = new WorldBuilderHSR();
     this.chunkbuilder = new WorldBuilderChunk();
     this.surfacebuilder = new WorldBuilderSurfaces();
+    this.environmentbuilder = new WorldBuilderEnvironment();
 }
 
 WorldBuilder.prototype.buildWorld = function(now, world) {
@@ -33,6 +34,9 @@ WorldBuilder.prototype.buildWorld = function(now, world) {
     
     this.surfacebuilder.buildSurfaces(world);
     benchmark("build world - surfaces");
+
+    this.environmentbuilder.buildEnvironment(world);
+    benchmark("build world - environment");
 
     //
     // TODO: Build render stack here too?

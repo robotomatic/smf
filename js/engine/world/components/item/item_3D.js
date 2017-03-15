@@ -54,7 +54,7 @@ Item3D.prototype.createItem3D = function(item, renderer, window, waterline = nul
         this.polygon.setPoints(box.getPoints());
     }
 
-    if (waterline) {
+    if (waterline && waterline.flow) {
         var fw = waterline.waterline;
 
 //        if (item.y > fw) {

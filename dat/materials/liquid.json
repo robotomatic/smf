@@ -1,7 +1,18 @@
 {
-   "water" : {
-       "name" : "water",
+    "water" : {
+        "name" : "water",
         "renderer" : "liquid",
+        "damage" : {
+            "hp" : 10,
+            "rate" : 100,
+            "effect" : "drown"
+        },
+        "waterline" : {
+            "flow" : true,
+            "amount" : 0.3,
+            "miny" : -10,
+            "maxy" : 10
+        },
         "color" : {
             "color" : "#6094a2",
             "projected" : {
@@ -11,10 +22,21 @@
                 "bottom" : "#6094a2"
             }
         }
-   },
-   "lava" : {
-       "name" : "lava",
+    },
+    "lava" : {
+        "name" : "lava",
         "renderer" : "liquid",
+        "damage" : {
+            "hp" : 100,
+            "rate" : 1,
+            "effect" : "burn"
+        },
+        "waterline" : {
+            "flow" : true,
+            "amount" : 1,
+            "miny" : -10,
+            "maxy" : 10
+        },
         "color" : {
             "color" : "#b73636",
             "projected" : {
@@ -23,10 +45,21 @@
                 "bottom" : "#b73636"
             }
         }
-   },
-   "goo" : {
-       "name" : "goo",
+    },
+    "goo" : {
+        "name" : "goo",
         "renderer" : "liquid",
+        "damage" : {
+            "hp" : 100,
+            "rate" : 10,
+            "effect" : "radiation"
+        },
+        "waterline" : {
+            "flow" : true,
+            "amount" : 0.1,
+            "miny" : -10,
+            "maxy" : 10
+        },
         "color" : {
             "color" : "#bcea65",
             "projected" : {
@@ -35,5 +68,23 @@
                 "bottom" : "#bcea65"
             }
         }
+   },
+   "snow" : {
+       "name" : "snow",
+        "renderer" : "snow",
+        "damage" : {
+            "hp" : 10,
+            "rate" : 10,
+            "effect" : "freeze"
+        },
+        "color" : {
+            "color" : "#f7f7f7",
+            "projected" : {
+                "front" : "#f7f7f7",
+                "top" : "#ffffff",
+                "side" : "#eaeaea",
+                "bottom" : "#ebebeb"
+            }
+       }
    }
 }

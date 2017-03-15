@@ -20,9 +20,6 @@
     "plastic" : {
         "file" : "dat/materials/plastic.json"
     },
-    "snow" : {
-        "file" : "dat/materials/snow.json"
-    },
     "liquid" : {
         "file" : "dat/materials/liquid.json"
     }
