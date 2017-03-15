@@ -14,7 +14,7 @@ function WorldRenderer() {
     this.debug = {
         level : {
             render : false,
-            level : true,
+            level : false,
             hsr : false,
         },
         player : {
