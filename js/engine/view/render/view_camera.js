@@ -187,6 +187,10 @@ ViewCamera.prototype.scaleMbr = function(mbr, width, height) {
 
 
 
+ViewCamera.prototype.reset = function() {
+    this.lastview = null;
+}
+    
 ViewCamera.prototype.getCameraBox = function(mbr) {
 
     if (!this.lastview) {

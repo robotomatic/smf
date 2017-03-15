@@ -124,6 +124,7 @@ function setDevCameraOffsetX(x) {
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
     vv.offset.x = Number(x);
+    vv.view.renderer.camera.reset();
     updateDevViewCameraOffset(vv);
 }
 
@@ -135,6 +136,7 @@ function setDevCameraOffsetY(y) {
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
     vv.offset.y = Number(y);
+    vv.view.renderer.camera.reset();
     updateDevViewCameraOffset(vv);
 }
 
@@ -146,6 +148,7 @@ function setDevCameraOffsetZ(z) {
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
     vv.offset.z = Number(z);
+    vv.view.renderer.camera.reset();
     updateDevViewCameraOffset(vv);
 }
 
@@ -180,6 +183,7 @@ function setDevCameraOffsetLoose() {
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
+    vv.view.renderer.camera.reset();
     vv.setCameraLoose();
 }
 
@@ -190,6 +194,7 @@ function setDevCameraOffsetTight() {
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
+    vv.view.renderer.camera.reset();
     vv.setCameraTight();
 }
 
