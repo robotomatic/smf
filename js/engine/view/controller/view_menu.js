@@ -21,10 +21,11 @@ function MenuView(id, width, height, scale) {
 MenuView.prototype.loose = function() {
 }
 
-MenuView.prototype.tight = function() {
+MenuView.prototype.comfy = function() {
 }
 
-
+MenuView.prototype.tight = function() {
+}
 
 MenuView.prototype.view;
 

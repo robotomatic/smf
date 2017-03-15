@@ -21,6 +21,11 @@ function PartyView(id, width, height, scale) {
             y : -50,
             z : 100
         },
+        comfy : {
+            x : 0,
+            y : 100,
+            z : 200
+        },
         loose : {
             x : 0,
             y : 300,
@@ -39,6 +44,14 @@ PartyView.prototype.setCameraLoose = function() {
     this.offset.y = this.offset.loose.y;
     this.offset.z = this.offset.loose.z;
     this.offset.name = "loose";
+    updateDevViewCameraOffset(this);
+}
+
+PartyView.prototype.setCameraComfy = function() {
+    this.offset.x = this.offset.comfy.x;
+    this.offset.y = this.offset.comfy.y;
+    this.offset.z = this.offset.comfy.z;
+    this.offset.name = "Comfy";
     updateDevViewCameraOffset(this);
 }
 
