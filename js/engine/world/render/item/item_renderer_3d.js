@@ -179,7 +179,7 @@ ItemRenderer3D.prototype.getColors = function(renderer, debug) {
     var dodebug = debug && debug.level;
     
     if (dodebug){
-        this.colors.front = "white";
+        this.colors.front = "#ededed";
         this.colors.side = "#d3d3d3";
         this.colors.top = "#dbdbdb";
         this.colors.bottom = "#c7c7c7";
