@@ -38,11 +38,13 @@ GameLoader.prototype.loadDev = function(file, callback) {
 }
 
 GameLoader.prototype.loadMenu = function(levelfile, charfile, animfile, callback) {
+    benchmark("menu load - start", "load");
     this.reset();
     this.callback = callback;
     var loader = this;
     var testComplete = function() {
         if (loader.level && loader.characters && loader.characters.loaded && loader.animations && loader.animations.loaded) {
+            benchmark("menu load - end", "load");
             if (loader.callback) loader.callback();
             loader.callback = null;
             return false;
@@ -54,11 +56,13 @@ GameLoader.prototype.loadMenu = function(levelfile, charfile, animfile, callback
 }
 
 GameLoader.prototype.loadGameParty = function(levelsfile, themesfile, materialsfile, charfile, animfile, callback) {
+    benchmark("game load - start", "load");
     this.reset();
     this.callback = callback;
     var loader = this;
     var testComplete = function() {
         if (loader.levels && loader.themes && loader.themes.loaded && loader.materials && loader.materials.loaded && loader.characters && loader.characters.loaded && loader.animations && loader.animations.loaded) {
+            benchmark("game load - end", "load");
             if (loader.callback) loader.callback();
             return false;
         }
@@ -93,6 +97,7 @@ GameLoader.prototype.loadLevelsFile = function(file, callback) {
 
 GameLoader.prototype.loadLevels = function(data, callback) {
     this.levels = new Levels().loadJson(data);
+    benchmark("levels loaded");
     if (callback) callback();
 }
 
@@ -152,7 +157,10 @@ GameLoader.prototype.loadLevel = function(data, callback) {
 
 GameLoader.prototype.loadLayer = function(data, total, callback) {
     var t = data.length;
-    for (var i = 0; i < t; i ++) this.level.layers.push(new Layer().loadJson(data[i]));    
+    for (var i = 0; i < t; i ++) {
+        var layer = new Layer().loadJson(data[i]);
+        this.level.layers.push(layer);    
+    }
     if (++this.level.loadedfiles == total) {
         this.level.layersLoaded();
         if (callback) callback();        
@@ -225,6 +233,7 @@ GameLoader.prototype.loadTheme = function(data, total, callback) {
     var tkeys = Object.keys(this.themes.themes);
     if (tkeys.length == total) {
         this.themes.loaded = true;
+        benchmark("themes loaded");
         if (callback) callback();        
     }
 }
@@ -273,6 +282,7 @@ GameLoader.prototype.loadMaterial = function(data, total, callback) {
     }
     this.materials.loaded++;
     if (this.materials.loaded == total) {
+        benchmark("materials loaded");
         this.materials.loaded = true;
         if (callback) callback();        
     }
@@ -326,6 +336,7 @@ GameLoader.prototype.loadCharacter = function(data, index, total, callback) {
     var tkeys = Object.keys(this.characters.characters);
     if (tkeys.length == total) {
         this.characters.characters = sortObject(this.characters.characters, sortById);
+        benchmark("characters loaded");
         this.characters.loaded = true;
         if (callback) callback();        
     }
@@ -368,10 +379,13 @@ GameLoader.prototype.loadAnimation = function(data, total, callback) {
     var keys = Object.keys(data);
     var name = keys[0];
     this.animations.animations[name] = {};
-    for (var a in data[name]) this.animations.animations[name][a] = new CharacterAnimation().loadJson(data[name][a]);
+    for (var a in data[name]) {
+        this.animations.animations[name][a] = new CharacterAnimation().loadJson(data[name][a]);
+    }
     var tkeys = Object.keys(this.animations.animations);
     if (tkeys.length == total) {
         this.animations.loaded = true;
+        benchmark("animations loaded");
         if (callback) callback();        
     }
 }

@@ -39,5 +39,6 @@ function GameQuality(game, quality) {
     
     logDev(game.device + ": " + game.width + "x" + game.height + " @ " + game.scale + "x");
     logDev("quality: level = " + game.levelquality + ", player = " + game.playerquality);
+    logDev("");
     setFOV(game.fov);
 }

@@ -44,12 +44,14 @@ GameController.prototype.loadDev = function(callback) {
     this.gameloader.loadDev("html/dev.html", function() {
         controller.devtools = controller.gameloader.dev;
         if (callback) callback();
+        benchmark("load dev tools");
     });
 }
 
 GameController.prototype.loadGameSettings = function() {
     this.gamesettings = new GameSettings();
     this.gamesettings.load();
+    benchmark("load settings");
 }
 
 GameController.prototype.saveGameSettings = function() {
@@ -67,12 +69,14 @@ GameController.prototype.loadView = function() {
         var hash = window.location.hash.replace(/#/g,'');
         loadAJAX("html/"+hash+".html", function(data) {
             controller.showView(hash, data);
+            benchmark("load view");
         });
     } else {
         if (!controller.ignorefade) this.fadeOut(controller.element);
         controller.ignorefade = false;
         loadAJAX("html/menu.html", function(data) {
             controller.showMenu(data);
+            benchmark("load menu");
         });
     }
 }
@@ -136,6 +140,7 @@ GameController.prototype.swapUI = function(data, callback) {
         controller.maincontent.innerHTML = "";
         controller.maincontent.innerHTML = main[0].innerHTML;
         if (controller.devtools) controller.maincontent.innerHTML += controller.devtools;
+        if (__dev) dev_log = null;
     }
     this.resize();
     if (callback) callback();
@@ -149,6 +154,7 @@ GameController.prototype.start = function() {
     }
     this.fadeIn();
     this.ignorefade = false;
+    benchmark("start game");
 }
 
 

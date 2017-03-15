@@ -185,7 +185,7 @@ GamepadInput.prototype.updatePlayers = function() {
 }
                      
 GamepadInput.prototype.log = function(action, index, id, player) { 
-    console.log("Controller " + action + ": index = " + index + ", id = " + id + ", player = " + ((player) ? player.name : "???"));
+    logDev("Controller " + action + ": index = " + index + ", id = " + id + ", player = " + ((player) ? player.name : "???"));
 }
 
                      

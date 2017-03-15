@@ -9,18 +9,18 @@ window.requestAnimFrame = (function(){
           };
 })();
 
-var __dev = true;
 var controller;
 window.addEventListener('resize', debounce(function() { if (controller) controller.resize(); }, 250) );
 document.addEventListener('DOMContentLoaded', function() { game(); }, false);
 
 function game() {
     log("game", "new");
+    benchmark("new game - start", "game");
     controller = new GameController();
     controller.loadView();
     controller.resize();
+    benchmark("new game - end", "game");
     runAnimationFrame(timestamp());
-
 }
 
 function runAnimationFrame(when) {
@@ -40,7 +40,7 @@ function runAnimationFrameDev(when) {
             var error = stackframes.map(function(sf) {
                 return sf.toString();
             }).join('\n');
-            logDevError(error);
+            logDev(error);
         });
     }
 }

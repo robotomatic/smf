@@ -46,6 +46,7 @@ Game.prototype.fps = function(type, fps, avg) {
 
 Game.prototype.reset = function(now) {
     this.world.reset(now);
+    benchmark("world reset");
 }
 
 Game.prototype.setMessage = function(message) { 

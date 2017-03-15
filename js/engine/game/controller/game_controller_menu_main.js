@@ -35,10 +35,12 @@ GameControllerMenuMain.prototype.loadSettings = function() {}
 GameControllerMenuMain.prototype.getSettings = function() {}
 
 GameControllerMenuMain.prototype.load = function() {
+    benchmark("build menu - start", "menu");
     this.loadLevel();
     this.loadCharacters();
     this.loadView();
     this.addCharacters();
+    benchmark("build menu - end", "menu");
 }
 
 GameControllerMenuMain.prototype.loadLevel = function() { 

@@ -37,13 +37,15 @@ GameControllerGame.prototype.load = function() {
         level = this.gameloader.levels[k[0]];
         this.levelname = k[0];
     }
+    benchmark("load level - start", "level");
     this.gameloader.loadLevelFile(level.file, function() {
+        benchmark("load level - end", "level");
         controller.loadLevel();
-    })
+    });
 }
 
 GameControllerGame.prototype.loadLevel = function() {
-
+    
     this.level = this.gameloader.level;
     
     var themes = this.gameloader.levels[this.levelname].themes;
@@ -67,7 +69,7 @@ GameControllerGame.prototype.loadLevel = function() {
     var numplayers = players ?  Object.keys(players).length : 1;
     
     
-    numplayers = 10;
+    numplayers = 1;
     for (var i = 0; i < numplayers; i++) {
 
         var charname = "";

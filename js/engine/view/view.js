@@ -115,7 +115,6 @@ View.prototype.resize = function() {
     
     if (!rwidth || !rheight) return;
     
-    logDev();
     logDev("window: " + rwidth + " x " + rheight);
 
     var cwidth = this.width;
@@ -149,7 +148,7 @@ View.prototype.resize = function() {
     
     this.sizeViewGraphics(cleft, ctop, cwidth, cheight);
     
-    logDev();
+    logDev("");
 }
 
 View.prototype.sizeViewGraphics = function(left, top, width, height) { 

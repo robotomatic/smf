@@ -1,42 +1,46 @@
 "use strict";
 
 function WorldBuilderChunk() {
-    this.dochunk = false;
+    
+    //
+    // todizzle: 
+    // - height no workee?
+    // - overflow 
+    // - offset (extrude)
+    //
+    
+    this.dochunk = true;
     this.chunksize = {
-        width: 100,
+        width: 0,
         height: 100,
-        depth : 100
+        depth : 0
     }
 }
 
 WorldBuilderChunk.prototype.chunk = function(world) { 
-
     var items = world.items;
-    
-    // todo: no workee!!!
-    
     if (!this.dochunk) return items;
     var chunksize = this.chunksize;
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
         if (item.draw === false) continue;
         if (item.width == "100%" || item.height == "100%" || item.depth == "100%") continue;
-        var newitems = this.chunkItem(item, chunksize);
-        if (newitems) items = items.concat(newitems);
+        items = this.chunkItem(items, item, chunksize);
     }
     world.items = items;
 }
 
-WorldBuilderChunk.prototype.chunkItem = function(item, chunksize) { 
-    var newitems = new Array();
-    if (item.width > chunksize.width) newitems = this.chunkItemX(item, chunksize, newitems);
-    if (item.height > chunksize.height) newitems = this.chunkItemY(item, chunksize, newitems);
-    if (item.depth > chunksize.depth) newitems = this.chunkItemZ(item, chunksize, newitems);
-    return newitems;
+WorldBuilderChunk.prototype.chunkItem = function(items, item, chunksize) { 
+    if (chunksize.width && item.width > chunksize.width) items = this.chunkItemX(items, item, chunksize);
+    if (chunksize.height && item.height > chunksize.height) items = this.chunkItemY(items, item, chunksize);
+    if (chunksize.depth && item.depth > chunksize.depth) items = this.chunkItemZ(items, item, chunksize);
+    return items;
 }
 
-WorldBuilderChunk.prototype.chunkItemX = function(item, chunksize, newitems) { 
-
+WorldBuilderChunk.prototype.chunkItemX = function(items, item, chunksize) { 
+    
+    if (item.width <= chunksize.width) return items;
+    
     var newt = item.width / chunksize.width;
     for (var i = 1; i < newt; i++) {
         var newitem = item.clone();
@@ -50,20 +54,23 @@ WorldBuilderChunk.prototype.chunkItemX = function(item, chunksize, newitems) {
             var part = newitem.parts[ii];
             if (part.x > chunksize.width * (i + 1)) continue;
             if (part.x + part.width < chunksize.width) continue;
-            if (part.x + part.width > chunksize.width) {
+            if (part.width > chunksize.width) {
                 var d = part.x + part.width - chunksize.width;
                 part.width -= d;
+                part.x = chunksize.width * ii;
             }
             newparts.push(part);
         }
-        newitem.parts = newparts;
-        newitem.initialize();
-        newitems.push(newitem);
+        if (newparts.length) {
+            newitem.parts = newparts;
+            newitem.initialize();
+        }
+        items.push(newitem);
     }
     
     if (isDecimal(newt)) {
         // todo
-        console.log("Chunk Overflow -- X");
+        console.log("Chunk Overflow -- X : " + newt);
     }
     
     if (item.parts) {
@@ -74,77 +81,97 @@ WorldBuilderChunk.prototype.chunkItemX = function(item, chunksize, newitems) {
             if (part.x + part.width > chunksize.width) {
                 var d = part.x + part.width - chunksize.width;
                 part.width -= d;
+                newparts.push(part);
+            } else {
+                newparts.push(part);
             }
-            newparts.push(part);
         }
         item.parts = newparts;
     }
     item.initialize();
-    return newitems;
+    
+    return items;
 }
 
-WorldBuilderChunk.prototype.chunkItemY = function(item, chunksize, newitems) { 
+WorldBuilderChunk.prototype.chunkItemY = function(items, item, chunksize) { 
 
+    if (item.height <= chunksize.height) return items;
+    
     var newt = item.height / chunksize.height;
-    for (var i = 1; i < newt; i++) {
-        var newitem = item.clone();
-        
-        if (!newitem || !newitem.parts) continue;
-        
-        newitem.y = item.y + chunksize.height * i;
-        
-        var newparts = new Array();
-        for (var ii = 0; ii < newitem.parts.length; ii++) {
-            var part = newitem.parts[ii];
-            if (part.y > chunksize.height * (i + 1)) continue;
-            if (part.y + part.height < chunksize.height) continue;
-            if (part.y + part.height > chunksize.height) {
-                var d = part.y + part.height - chunksize.height;
-                part.height -= d;
-            }
-            newparts.push(part);
-        }
-        newitem.parts = newparts;
-        newitem.initialize();
-        newitems.push(newitem);
-    }
+//    for (var i = 1; i < newt; i++) {
+//        var newitem = item.clone();
+//        
+//        if (!newitem || !newitem.parts) continue;
+//        
+//        newitem.y = item.y + chunksize.height * i;
+//        
+//        var newparts = new Array();
+//        for (var ii = 0; ii < newitem.parts.length; ii++) {
+//            var part = newitem.parts[ii];
+//            if (part.y > chunksize.height * (i + 1)) continue;
+//            if (part.y + part.height < chunksize.height) continue;
+//            if (part.height > chunksize.height) {
+//                var d = part.y + part.height - chunksize.height;
+//                part.height -= d;
+//                part.y = chunksize.height * ii;
+//            }
+//            newparts.push(part);
+//        }
+//        if (newparts.length) {
+//            newitem.parts = newparts;
+//            newitem.initialize();
+//        }
+//        items.push(newitem);
+//    }
     
     if (isDecimal(newt)) {
         // todo
-        console.log("Chunk Overflow -- Y");
+        console.log("Chunk Overflow -- Y : " + newt);
     }
     
-    var newparts = new Array();
-    for (var i = 0; i < item.parts.length; i++) {
-        var part = item.parts[i];
-        if (part.y > chunksize.height) continue;
-        if (part.y + part.height > chunksize.height) {
-            var d = part.y + part.height - chunksize.height;
-            part.height -= d;
+    if (item.parts) {
+        var newparts = new Array();
+        for (var i = 0; i < item.parts.length; i++) {
+            var part = item.parts[i];
+            if (part.y > chunksize.height) continue;
+            if (part.y + part.height > (chunksize.height * (i + 1))) {
+                var d = part.y + part.height - chunksize.height;
+                part.height -= d;
+                newparts.push(part);
+            } else {
+                newparts.push(part);
+            }
         }
-        newparts.push(part);
+        item.parts = newparts;
     }
-    item.parts = newparts;
     item.initialize();
-    return newitems;
+    
+    return items;
 }
 
-WorldBuilderChunk.prototype.chunkItemZ = function(item, chunksize, newitems) { 
+WorldBuilderChunk.prototype.chunkItemZ = function(items, item, chunksize) { 
+    
+    if (item.depth <= chunksize.depth) return items;
+    
     var newt = item.depth / chunksize.depth;
-    item.depth = chunksize.depth;
     for (var i = 1; i < newt; i++) {
         var newitem = item.clone();
         
         if (!newitem) continue;
-        
+
         newitem.z = item.z + chunksize.depth * i;
+        newitem.depth = chunksize.depth;
         newitem.initialize();
-        newitems.push(newitem);
+        items.push(newitem);
     }
-    item.initialize();
+    
     if (isDecimal(newt)) {
         // todo
-        console.log("Chunk Overflow -- Z");
+        console.log("Chunk Overflow -- Z : " + newt);
     }
-    return newitems;
+    
+    item.depth = chunksize.depth;
+    item.initialize();
+    
+    return items;
 }
