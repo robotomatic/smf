@@ -5,9 +5,9 @@
         "color" : {
             "color" : "#93b552",
             "projected" : {
-                "front" : "#93b552",
-                "top" : "#a1c65b",
-                "side" : "#87af3a",
+                "front" : "#a4c36a",
+                "top" : "#a6d057",
+                "side" : "#97b956",
                 "bottom" : "#809f47"
             }
        }
