@@ -77,6 +77,8 @@ function Item(json) {
     this.parts = null;
     this.keys = null;
     
+    this.dotheme = true;
+    
     this.mbr = new Rectangle();
     
     this.box = new Rectangle(0, 0, 0, 0);
@@ -168,6 +170,9 @@ Item.prototype.clone = function() {
     newitem.width = this.width;
     newitem.height = this.height;
     newitem.depth = this.depth;
+    
+    newitem.geometry = this.geometry.copy(newitem.geometry);
+    
     return newitem;
 }
     

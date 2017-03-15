@@ -34,6 +34,17 @@ function ItemGeometry() {
     };
 }
 
+ItemGeometry.prototype.copy = function(geometry) {
+    geometry.visible.top.visible = this.visible.top.visible;
+    geometry.visible.bottom.visible = this.visible.bottom.visible;
+    geometry.visible.left.visible = this.visible.left.visible;
+    geometry.visible.right.visible = this.visible.right.visible;
+    geometry.visible.back.visible = this.visible.back.visible;
+    geometry.visible.front.visible = this.visible.front.visible;
+    return geometry;
+}
+
+
 ItemGeometry.prototype.initialize = function(item) {
     this.visible.top.coverage.initialize(item.x, item.y, item.z, item.width, item.height, item.depth);
     this.visible.bottom.coverage.initialize(item.x, item.y, item.z, item.width, item.height, item.depth);

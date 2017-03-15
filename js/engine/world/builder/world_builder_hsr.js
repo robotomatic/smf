@@ -209,23 +209,50 @@ WorldBuilderHSR.prototype.removeItemsItemHiddenSurfacesFront = function(item, it
 }
 
 WorldBuilderHSR.prototype.removeItemsItemHiddenSurfacesBack = function(item, itemc) {
-    
+
     if (!item.geometry.visible.back.visible) return item;
     
     if (itemc.z + itemc.depth < item.z + item.depth) return item;
     if (itemc.z > item.z + item.depth) return item;
     
-    if (itemc.x + itemc.width <= item.geometry.visible.back.coverage.x) return item;
-    if (itemc.x >= item.geometry.visible.back.coverage.x + item.geometry.visible.back.coverage.width) return item;
-    if (itemc.y + itemc.height <= item.geometry.visible.back.coverage.y) return item;
-    if (itemc.y >= item.geometry.visible.back.coverage.y + item.geometry.visible.back.coverage.height) return item;
+    if (item.geometry.visible.back.coverage.width > 0) {
+        if (itemc.x + itemc.width <= item.geometry.visible.back.coverage.x) return item;
+        if (itemc.x >= item.geometry.visible.back.coverage.x + item.geometry.visible.back.coverage.width) return item;
+    }
 
+    if (item.geometry.visible.back.coverage.height > 0) {
+        if (itemc.y + itemc.height <= item.geometry.visible.back.coverage.y) return item;
+        if (itemc.y >= item.geometry.visible.back.coverage.y + item.geometry.visible.back.coverage.height) return item;
+    }
+    
     if (itemc.x <= item.geometry.visible.back.coverage.x && itemc.width >= item.geometry.visible.back.coverage.width) {
             item.geometry.visible.back.coverage.width = 0;
+    } else {
+        var dx = (itemc.x + itemc.width) - (item.geometry.visible.back.coverage.x + item.geometry.visible.back.coverage.width);
+        if (itemc.x < item.geometry.visible.back.coverage.x) {
+            item.geometry.visible.back.coverage.x = itemc.x + itemc.width - dx;
+            item.geometry.visible.back.coverage.width = dx;
+        } else {
+            item.geometry.visible.back.coverage.width -= dx;
+        }
     }
     
     if (itemc.y <= item.geometry.visible.back.coverage.y && itemc.height >= item.geometry.visible.back.coverage.height) {
         item.geometry.visible.back.coverage.height = 0;
+    } else {
+        if (itemc.y == item.geometry.visible.back.coverage.y) {
+            item.geometry.visible.back.coverage.y += itemc.height;
+            item.geometry.visible.back.coverage.height -= itemc.height;    
+        } else if (itemc.y < item.geometry.visible.back.coverage.y) {
+            var dy = itemc.y - item.geometry.visible.back.coverage.y;
+            var dh = item.geometry.visible.back.coverage.height - itemc.height - dy;
+            item.geometry.visible.back.coverage.y += (item.geometry.visible.back.coverage.height+ dh);
+            item.geometry.visible.back.coverage.height = dh;
+        } else {
+            var dy = (item.geometry.visible.back.coverage.y + item.geometry.visible.back.coverage.height) - itemc.y;
+            item.geometry.visible.back.coverage.y = itemc.y;
+            item.geometry.visible.back.coverage.height -= dy;
+        }
     }
     
     if (item.geometry.visible.back.coverage.width > 0 || item.geometry.visible.back.coverage.height> 0) return item;

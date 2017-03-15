@@ -306,6 +306,7 @@ WorldBuilderIntersect.prototype.intersectClipTop = function(item, itemc, newitem
         var ph = p.height;
         if (ph > dh) p.height = dh;
     }
+    newitem.dotheme = false;
     newitem.y = itemc.y;
     for (var i = 0; i < t; i++) {
         var p = newitem.parts[i];
@@ -324,6 +325,7 @@ WorldBuilderIntersect.prototype.intersectClipBottom = function(item, itemc, newi
         var ph = p.height;
         if (ph > dy) p.height = dy;
     }
+    newitem.dotheme = false;
     for (var i = 0; i < t; i++) {
         var p = newitem.parts[i];
         var ph = p.height;

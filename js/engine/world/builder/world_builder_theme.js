@@ -11,7 +11,9 @@ WorldBuilderTheme.prototype.buildTheme = function(world) {
     var itemrenderer = world.worldrenderer.itemrenderer;
     var newitems = new Array();
     for (var i = 0; i < items.length; i++) {
-        newitems = this.buildThemeItems(itemrenderer, items[i], newitems);
+        var item = items[i];
+        if (!item.dotheme) continue;
+        newitems = this.buildThemeItems(itemrenderer, item, newitems);
     }
     for (var ii = 0; ii < newitems.length; ii++) {
         items.push(newitems[ii]);
