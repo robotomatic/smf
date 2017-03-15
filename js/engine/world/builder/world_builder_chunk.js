@@ -1,18 +1,10 @@
 "use strict";
 
 function WorldBuilderChunk() {
-    
-    //
-    // todizzle: 
-    // - height no workee?
-    // - overflow 
-    // - offset (extrude)
-    //
-    
     this.dochunk = true;
     this.chunksize = {
         width: 300,
-        height: 0,
+        height: 100,
         depth : 300
     }
 }
@@ -52,14 +44,10 @@ WorldBuilderChunk.prototype.chunkItemX = function(items, item, chunksize) {
     var leftover = newt - ttt;
     for (var i = 1; i < ttt; i++) {
         var newitem = item.clone();
-        
-        if (!newitem || !newitem.parts) continue;
-        
         newitem.x = item.x + chunksize.width * i;
-        
         var newparts = new Array();
-        for (var ii = 0; ii < newitem.parts.length; ii++) {
-            var part = newitem.parts[ii];
+        for (var ii = 0; ii < item.parts.length; ii++) {
+            var part = cloneObject(item.parts[ii]);
             if (part.x > chunksize.width * (i + 1)) continue;
             if (part.x + part.width < chunksize.width) continue;
             if (part.width > chunksize.width) {
@@ -114,16 +102,12 @@ WorldBuilderChunk.prototype.chunkItemY = function(items, item, chunksize) {
     var leftover = newt - ttt;
     for (var i = 1; i < ttt; i++) {
         var newitem = item.clone();
-        
-        if (!newitem || !newitem.parts) continue;
-        
         newitem.dotheme = false;
-        
         newitem.y = item.y + (chunksize.height * i);
         
         var newparts = new Array();
-        for (var ii = 0; ii < newitem.parts.length; ii++) {
-            var part = newitem.parts[ii];
+        for (var ii = 0; ii < item.parts.length; ii++) {
+            var part = cloneObject(item.parts[ii]);
             if (part.y > chunksize.height * (i + 1)) continue;
             if (part.y + part.height < chunksize.height) continue;
             if (part.height > chunksize.height) {

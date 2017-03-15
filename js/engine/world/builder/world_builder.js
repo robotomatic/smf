@@ -16,14 +16,14 @@ WorldBuilder.prototype.buildWorld = function(now, world) {
     this.itembuilder.buildWorld(world);
     benchmark("build world - items");
     
-    this.collidebuilder.buildColliders(world);
-    benchmark("build world - colliders");
-    
-    this.chunkbuilder.chunk(world);
-    benchmark("build world - chunks");
-
     this.themebuilder.buildTheme(world);
     benchmark("build world - theme");
+    
+    this.collidebuilder.buildColliders(world);
+    benchmark("build world - colliders");
+
+    this.chunkbuilder.chunk(world);
+    benchmark("build world - chunks");
     
     this.intersectbuilder.intersectItems(world);
     benchmark("build world - intersect");
@@ -33,6 +33,10 @@ WorldBuilder.prototype.buildWorld = function(now, world) {
     
     this.surfacebuilder.buildSurfaces(world);
     benchmark("build world - surfaces");
+
+    //
+    // TODO: Build render stack here too?
+    //
     
     benchmark("build world - end", "build");
 }

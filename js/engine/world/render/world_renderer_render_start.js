@@ -6,6 +6,13 @@ function WorldRendererStart(renderitems) {
 }
 
 WorldRendererStart.prototype.renderStart = function(mbr, window, graphics, camera, world, debug) {
+    
+    
+    //
+    // todo: look at filling the array once and updating items instead of re-adding them?
+    //
+    
+    
     this.index = 0;
     this.getRenderItems(mbr, window, graphics, camera, world, debug);
 }
@@ -34,7 +41,7 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
     var height = graphics.canvas.height;
     item.smooth();
     item.translate(mbr, width, height);
-    item.item3D.createItem3D(world.worldrenderer.itemrenderer, mbr, world.worldrenderer.waterline);
+    item.item3D.createItem3D(item, world.worldrenderer.itemrenderer, mbr, world.worldrenderer.waterline);
     var showing = item.isVisible(window, mbr, 100);
     if (item.y > world.worldrenderer.waterline) showing = false;
     var iz = item.z;

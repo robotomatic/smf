@@ -16,8 +16,8 @@ function Item(json) {
     this.lastZ = 0;
     this.location = new Point(0, 0);
     
-    this.item3D = new Item3D(this);
-    this.item3Drenderer = new ItemRenderer3D(this.item3D);
+    this.item3D = new Item3D();
+    this.item3Drenderer = new ItemRenderer3D();
     
     this.projectedlocation = new Point(0, 0);
     this.projectedlocation_backup = new Point(0, 0);
@@ -162,16 +162,17 @@ Item.prototype.loadJson = function(json) {
 
 Item.prototype.clone = function() {
     // todo: need a better way to clone Items --> manual is bestest?
-    var newitem = new Item(cloneObject(this.json));
+    var newitem = new Item(cloneObject(this));
     if (!newitem) return null;
-    newitem.x = this.x;
-    newitem.y = this.y;
-    newitem.z = this.z;
-    newitem.width = this.width;
-    newitem.height = this.height;
-    newitem.depth = this.depth;
-    
-    newitem.geometry = this.geometry.copy(newitem.geometry);
+//    newitem.x = this.x;
+//    newitem.y = this.y;
+//    newitem.z = this.z;
+//    newitem.width = this.width;
+//    newitem.height = this.height;
+//    newitem.depth = this.depth;
+//    
+//    newitem.parts = new Array(cloneObject(this.parts));
+//    newitem.geometry = this.geometry.copy(newitem.geometry);
     
     return newitem;
 }
@@ -489,7 +490,7 @@ Item.prototype.renderStart = function(now, width, height, scale = 1) {
 }
 
 Item.prototype.renderRender = function(now, renderer, ctx, scale = 1, debug) {
-    this.item3Drenderer.renderItem3D(now, renderer, ctx, scale, debug);
+    this.item3Drenderer.renderItem3D(now, renderer, this, ctx, scale, debug);
 }
 
 Item.prototype.renderEnd = function(when) {

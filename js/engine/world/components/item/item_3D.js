@@ -1,8 +1,6 @@
 "use strict";
 
-function Item3D(item) {
-    
-    this.item = item;
+function Item3D() {
     
     this.line = new Line(new Point(0, 0), new Point(0, 0));
     this.polygon = new Polygon();
@@ -22,34 +20,34 @@ function Item3D(item) {
     this.projectedpolygon = new Polygon();
 }
 
-Item3D.prototype.createItem3D = function(renderer, window, waterline = null) {
+Item3D.prototype.createItem3D = function(item, renderer, window, waterline = null) {
     
-    this.item.geometry.projected.points.length = 0;
+    item.geometry.projected.points.length = 0;
     
-    if (this.item.geometry.fronts.length) this.item.geometry.fronts[0].points.length = 0;
-    if (this.item.geometry.tops.length) this.item.geometry.tops[0].points.length = 0;
-    if (this.item.geometry.sides.length) this.item.geometry.sides[0].points.length = 0;
-    if (this.item.geometry.bottoms.length) this.item.geometry.bottoms[0].points.length = 0;
+    if (item.geometry.fronts.length) item.geometry.fronts[0].points.length = 0;
+    if (item.geometry.tops.length) item.geometry.tops[0].points.length = 0;
+    if (item.geometry.sides.length) item.geometry.sides[0].points.length = 0;
+    if (item.geometry.bottoms.length) item.geometry.bottoms[0].points.length = 0;
     
-    if (!renderer.shouldThemeProject(this.item)) return;
+    if (!renderer.shouldThemeProject(item)) return;
     
-    if (this.item.draw == false) return;
-    if (this.item.scalefactor < 0) return;
+    if (item.draw == false) return;
+    if (item.scalefactor < 0) return;
     
     var x = window.x;
     var y = window.y;
     var scale = window.scale || 0;
     
-    var top = this.item.top;
-    var box = this.item.box;
+    var top = item.top;
+    var box = item.box;
     var bx = box.x;
     var by = box.y;
     var depth = box.depth;
-    var bs = this.item.scalefactor;
+    var bs = item.scalefactor;
     
     this.polygon.points.length = 0;
-    if (this.item.parts) {
-        var ip = this.item.getPolygon();
+    if (item.parts) {
+        var ip = item.getPolygon();
         this.polygon.setPoints(ip.getPoints());
         this.polygon.translate(bx, by, scale * bs);
     } else {
@@ -59,13 +57,13 @@ Item3D.prototype.createItem3D = function(renderer, window, waterline = null) {
     if (waterline) {
         var fw = waterline.waterline;
 
-//        if (this.item.y > fw) {
+//        if (item.y > fw) {
 //            return;
 //        }
         
-        var tpt = this.item.polygon.points.length;
+        var tpt = item.polygon.points.length;
         for (var i = 0; i < tpt; i++) {
-            var ppp = this.item.polygon.points[i];
+            var ppp = item.polygon.points[i];
             if (!ppp) continue;
             var tpp = this.polygon.points[i];
             if (!tpp) continue;
@@ -80,26 +78,24 @@ Item3D.prototype.createItem3D = function(renderer, window, waterline = null) {
             var fw = projectPoint3DCoord(waterline.waterline, depth, h);
             */
 
-            if (this.item.y + ppp.y >= fw) {
-                var ddd = (this.item.y + ppp.y) - fw;
+            if (item.y + ppp.y >= fw) {
+                var ddd = (item.y + ppp.y) - fw;
                 var ds = ddd * bs;
                 tpp.y -= ds;
                 if (tpp.y < 0) tpp.y = 0;
             }
         }
     }
-    
-    
-    
-    this.projectItem3D(depth, scale, x, y, window);
+
+    this.projectItem3D(item, depth, scale, x, y, window);
 }
 
-Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
+Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window) {
 
     if (!this.polygon || !this.polygon.points) return;
     
-    if (!this.item.geometry.fronts[0]) this.item.geometry.fronts[0] = new Polygon(this.polygon.getPoints());
-    else this.item.geometry.fronts[0].setPoints(this.polygon.getPoints())
+    if (!item.geometry.fronts[0]) item.geometry.fronts[0] = new Polygon(this.polygon.getPoints());
+    else item.geometry.fronts[0].setPoints(this.polygon.getPoints())
 
     var wc = window.getCenter();
     var t = this.polygon.points.length;
@@ -130,10 +126,10 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
         
         var view = null;
         if (horiz) {
-            if (side) view = this.item.geometry.sides;
-            else view = this.item.geometry.bottoms;
+            if (side) view = item.geometry.sides;
+            else view = item.geometry.bottoms;
         } else {
-            if (vert) view = this.item.geometry.sides;
+            if (vert) view = item.geometry.sides;
             else {
                 var ramptopleft = this.p1.x < this.p2.x && this.p1.y > this.p2.y;
                 var ramptopright = this.p1.x < this.p2.x && this.p1.y < this.p2.y;
@@ -141,9 +137,9 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
                 var rampbottomleft = this.p1.x > this.p2.x && this.p1.y > this.p2.y;
                 var rampbottomright = this.p1.x > this.p2.x && this.p1.y < this.p2.y;
                 var rampbottom = rampbottomleft || rampbottomright;
-                if (ramptop) view = this.item.geometry.tops;
-                else if (rampbottom) view = this.item.geometry.bottoms;
-                else view = this.item.geometry.sides;
+                if (ramptop) view = item.geometry.tops;
+                else if (rampbottom) view = item.geometry.bottoms;
+                else view = item.geometry.sides;
             }
         }
         
@@ -178,14 +174,14 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
         this.projectedpolygon.points.length = 0;
         this.projectedpolygon = project3D(this.p1, this.p2, depth, this.projectedpolygon, scale, x, y, wc, this.np1, this.np2);
         
-        if (!this.item.geometry.sides[0]) {
+        if (!item.geometry.sides[0]) {
             var p = new Polygon();
-            this.item.geometry.sides[0] = p;
+            item.geometry.sides[0] = p;
         }
         
-        this.item.geometry.sides[0].setPoints(this.projectedpolygon.getPoints());
+        item.geometry.sides[0].setPoints(this.projectedpolygon.getPoints());
     } else {
-        if (this.item.geometry.sides && this.item.geometry.sides.length) this.item.geometry.sides[0].points.length = 0;
+        if (item.geometry.sides && item.geometry.sides.length) item.geometry.sides[0].points.length = 0;
     }
     
     var t = this.polygon.points.length;
@@ -199,19 +195,19 @@ Item3D.prototype.projectItem3D = function(depth, scale, x, y, window) {
         this.projectedpolygon.points.length = 0;
         this.projectedpolygon = project3D(this.p1, this.p2, depth, this.projectedpolygon, scale, x, y, wc, this.np1, this.np2);
         
-        if (this.item.width == "100%") {
+        if (item.width == "100%") {
             this.projectedpolygon.points[0].x = this.p1.x;
             this.projectedpolygon.points[1].x = this.p2.x;
         }
         
-        if (!this.item.geometry.tops[0]) {
+        if (!item.geometry.tops[0]) {
             var p = new Polygon();
-            this.item.geometry.tops[0] = p;
+            item.geometry.tops[0] = p;
         }
-        this.item.geometry.tops[0].setPoints(this.projectedpolygon.getPoints());
+        item.geometry.tops[0].setPoints(this.projectedpolygon.getPoints());
     }
     
-    if (this.item.bottom !== true) this.item.geometry.bottoms.length = 0;
+    if (item.bottom !== true) item.geometry.bottoms.length = 0;
     
     this.getItemProjectedGeometry();
 }
@@ -225,83 +221,83 @@ Item3D.prototype.getItemProjectedGeometry = function() {
     var sides = false;
     var left = false;
     var right = false;
-    if (this.item.geometry.sides.length && this.item.geometry.sides[0].points.length) {
+    if (item.geometry.sides.length && item.geometry.sides[0].points.length) {
         sides = true;
-        if (this.item.geometry.sides[0].points[0].x < this.item.geometry.fronts[0].points[0].x) left = true;
+        if (item.geometry.sides[0].points[0].x < item.geometry.fronts[0].points[0].x) left = true;
         else right = true;
     }
-    var top = this.item.geometry.tops.length > 0 && this.item.top !== false && this.item.geometry.visible.top.visible;
-    var bottom = this.item.geometry.bottoms.length > 0 && this.item.bottom !== false;
-    this.item.geometry.projected.points.length = 0;
-    if (left && this.item.geometry.visible.left.visible) {
-        this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[0]);
-        if (top && this.item.geometry.tops.length && this.item.geometry.tops[0].points.length &&
-            this.item.geometry.sides.length && this.item.geometry.sides[0].points.length == 4 &&
-            this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length >= 3) {
-            this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[0]);
-            this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
-            this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[3]);
-        } else if (bottom && this.item.geometry.bottoms.length && this.item.geometry.bottoms[0].points.length) {
-            this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[0]);
-            this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[1]);
-        } else if (this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
-            this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
+    var top = item.geometry.tops.length > 0 && item.top !== false && item.geometry.visible.top.visible;
+    var bottom = item.geometry.bottoms.length > 0 && item.bottom !== false;
+    item.geometry.projected.points.length = 0;
+    if (left && item.geometry.visible.left.visible) {
+        item.geometry.projected.addPoint(item.geometry.sides[0].points[0]);
+        if (top && item.geometry.tops.length && item.geometry.tops[0].points.length &&
+            item.geometry.sides.length && item.geometry.sides[0].points.length == 4 &&
+            item.geometry.fronts.length && item.geometry.fronts[0].points.length >= 3) {
+            item.geometry.projected.addPoint(item.geometry.tops[0].points[0]);
+            item.geometry.projected.addPoint(item.geometry.tops[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[2]);
+            item.geometry.projected.addPoint(item.geometry.sides[0].points[3]);
+        } else if (bottom && item.geometry.bottoms.length && item.geometry.bottoms[0].points.length) {
+            item.geometry.projected.addPoint(item.geometry.sides[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[0]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.bottoms[0].points[0]);
+            item.geometry.projected.addPoint(item.geometry.bottoms[0].points[1]);
+        } else if (item.geometry.fronts.length && item.geometry.fronts[0].points.length == 4) {
+            item.geometry.projected.addPoint(item.geometry.sides[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[0]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[2]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[3]);
         }
-    } else if (right && this.item.geometry.visible.right.visible) {
-        this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
-        if (top && this.item.geometry.tops.length && this.item.geometry.tops[0].points.length &&
-            this.item.geometry.sides.length && this.item.geometry.sides[0].points.length == 4 &&
-            this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length && this.item.geometry.fronts[0].points.length == 4) {
-            this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[0]);
-            this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[2]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
-        } else if (bottom && this.item.geometry.bottoms.length && this.item.geometry.bottoms[0].points.length && 
-            this.item.geometry.visible.front.visible && this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[0]);
-            this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[2]);
-        } else if (this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[0]);
-            this.item.geometry.projected.addPoint(this.item.geometry.sides[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
+    } else if (right && item.geometry.visible.right.visible) {
+        item.geometry.projected.addPoint(item.geometry.fronts[0].points[0]);
+        if (top && item.geometry.tops.length && item.geometry.tops[0].points.length &&
+            item.geometry.sides.length && item.geometry.sides[0].points.length == 4 &&
+            item.geometry.fronts.length && item.geometry.fronts[0].points.length && item.geometry.fronts[0].points.length == 4) {
+            item.geometry.projected.addPoint(item.geometry.tops[0].points[0]);
+            item.geometry.projected.addPoint(item.geometry.tops[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.sides[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.sides[0].points[2]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[3]);
+        } else if (bottom && item.geometry.bottoms.length && item.geometry.bottoms[0].points.length && 
+            item.geometry.visible.front.visible && item.geometry.fronts.length && item.geometry.fronts[0].points.length == 4) {
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.sides[0].points[0]);
+            item.geometry.projected.addPoint(item.geometry.sides[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.bottoms[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.bottoms[0].points[2]);
+        } else if (item.geometry.fronts.length && item.geometry.fronts[0].points.length == 4) {
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.sides[0].points[0]);
+            item.geometry.projected.addPoint(item.geometry.sides[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[2]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[3]);
         }
     } else {
-        if (top && this.item.geometry.visible.top.visible && this.item.geometry.tops.length && this.item.geometry.tops[0].points.length && 
-            this.item.geometry.visible.front.visible && this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
-            this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[0]);
-            this.item.geometry.projected.addPoint(this.item.geometry.tops[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
-        } else if (bottom && this.item.geometry.visible.bottom.visible && this.item.geometry.bottoms.length && this.item.geometry.bottoms[0].points.length &&
-            this.item.geometry.visible.front.visible && this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
-            this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[0]);
-            this.item.geometry.projected.addPoint(this.item.geometry.bottoms[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
-        } else if (this.item.geometry.visible.front.visible && this.item.geometry.fronts.length && this.item.geometry.fronts[0].points.length == 4) {
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[0]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[1]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[2]);
-            this.item.geometry.projected.addPoint(this.item.geometry.fronts[0].points[3]);
+        if (top && item.geometry.visible.top.visible && item.geometry.tops.length && item.geometry.tops[0].points.length && 
+            item.geometry.visible.front.visible && item.geometry.fronts.length && item.geometry.fronts[0].points.length == 4) {
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[0]);
+            item.geometry.projected.addPoint(item.geometry.tops[0].points[0]);
+            item.geometry.projected.addPoint(item.geometry.tops[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[2]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[3]);
+        } else if (bottom && item.geometry.visible.bottom.visible && item.geometry.bottoms.length && item.geometry.bottoms[0].points.length &&
+            item.geometry.visible.front.visible && item.geometry.fronts.length && item.geometry.fronts[0].points.length == 4) {
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[0]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[2]);
+            item.geometry.projected.addPoint(item.geometry.bottoms[0].points[0]);
+            item.geometry.projected.addPoint(item.geometry.bottoms[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[3]);
+        } else if (item.geometry.visible.front.visible && item.geometry.fronts.length && item.geometry.fronts[0].points.length == 4) {
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[0]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[1]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[2]);
+            item.geometry.projected.addPoint(item.geometry.fronts[0].points[3]);
         }
     }
 }

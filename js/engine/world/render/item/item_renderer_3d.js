@@ -1,7 +1,7 @@
 "use strict";
 
-function ItemRenderer3D(item3d) {
-    this.item3d = item3d;
+function ItemRenderer3D() {
+    this.polygon = new Polygon();
     this.colors = {
         front : "red",
         side : "red",
@@ -12,41 +12,41 @@ function ItemRenderer3D(item3d) {
     this.fadepercent = 0.6;
 }
 
-ItemRenderer3D.prototype.renderItem3D = function(now, renderer, ctx, scale, debug) {
+ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, ctx, scale, debug) {
 
-    if (this.item3d.item.width == "100%") {
+    if (item.width == "100%") {
         if (debug.level || debug.render || debug.hsr) return;
     }
     
-    if (!renderer.shouldThemeProject(this.item3d.item)) return;
-    if (this.item3d.item.draw == false) return;
+    if (!renderer.shouldThemeProject(item)) return;
+    if (item.draw == false) return;
 
     if (debug.hsr) {
         ctx.globalAlpha = this.fadepercent;
     }
     
-    this.getColors(renderer, debug);
+    this.getColors(renderer, item, debug);
     
-    var x = this.item3d.item.projectedlocation.x;
-    var y = this.item3d.item.projectedlocation.y;
+    var x = item.projectedlocation.x;
+    var y = item.projectedlocation.y;
 
-    if (this.item3d.dopoly && this.item3d.item.geometry.visible.front.visible) {
-        this.item3d.polygon.setPoints(this.item3d.item.geometry.projected.points);
-        this.item3d.polygon.translate(-x, -y, scale);
+    if (item.item3D.dopoly && item.geometry.visible.front.visible) {
+        this.polygon.setPoints(item.geometry.projected.points);
+        this.polygon.translate(-x, -y, scale);
         ctx.fillStyle = this.colors.top;
         ctx.strokeStyle = this.colors.top;
         ctx.lineWidth = 1;
         ctx.beginPath();
-        this.item3d.polygon.path(ctx);
+        this.polygon.path(ctx);
         ctx.fill();
         ctx.stroke();
     }
 
-    if (this.item3d.item.geometry.visible.front.visible) {
+    if (item.geometry.visible.front.visible) {
         //
         // todo: this can eventually go -- item cache will draw fronts
         //
-        this.renderItemParts3D(ctx, this.item3d.item.geometry.fronts, this.colors.front, x, y, scale, debug);
+        this.renderItemParts3D(ctx, item, item.geometry.fronts, this.colors.front, x, y, scale, debug);
         
         if (!debug.level) {
             var lc = this.colors.side;
@@ -54,51 +54,53 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, ctx, scale, debu
             ctx.strokeStyle = lc;
             ctx.lineWidth = lw;
             ctx.beginPath();
-            if (this.item3d.item.geometry.visible.left.visible) {
-                if (this.item3d.polygon.points.length >= 4) {
-                    this.item3d.line.start.x = this.item3d.polygon.points[3].x;
-                    this.item3d.line.start.y = this.item3d.polygon.points[3].y;
-                    this.item3d.line.end.x = this.item3d.polygon.points[0].x;
-                    this.item3d.line.end.y = this.item3d.polygon.points[0].y;
-                    this.item3d.line.path(ctx);
+            if (item.geometry.visible.left.visible) {
+                if (item.item3D.polygon.points.length >= 4) {
+                    item.item3D.line.start.x = item.item3D.polygon.points[3].x;
+                    item.item3D.line.start.y = item.item3D.polygon.points[3].y;
+                    item.item3D.line.end.x = item.item3D.polygon.points[0].x;
+                    item.item3D.line.end.y = item.item3D.polygon.points[0].y;
+                    item.item3D.line.path(ctx);
                 }
             }
-            if (this.item3d.item.geometry.visible.right.visible) {
-                if (this.item3d.polygon.points.length >= 3) {
-                    this.item3d.line.start.x = this.item3d.polygon.points[1].x;
-                    this.item3d.line.start.y = this.item3d.polygon.points[1].y;
-                    this.item3d.line.end.x = this.item3d.polygon.points[2].x;
-                    this.item3d.line.end.y = this.item3d.polygon.points[2].y;
-                    this.item3d.line.path(ctx);
+            if (item.geometry.visible.right.visible) {
+                if (item.item3D.polygon.points.length >= 3) {
+                    item.item3D.line.start.x = item.item3D.polygon.points[1].x;
+                    item.item3D.line.start.y = item.item3D.polygon.points[1].y;
+                    item.item3D.line.end.x = item.item3D.polygon.points[2].x;
+                    item.item3D.line.end.y = item.item3D.polygon.points[2].y;
+                    item.item3D.line.path(ctx);
                 }
             }
             ctx.stroke();
         }
     }
     
-    if (this.item3d.item.geometry.visible.left.visible || this.item3d.item.geometry.visible.right.visible) {
-        if (this.item3d.item.geometry.sides.length && this.item3d.item.geometry.sides[0].points.length) {
-            var sides = ((this.item3d.left && this.item3d.item.geometry.visible.left.visible) || (this.item3d.right && this.item3d.item.geometry.visible.right.visible));
+    if (item.geometry.visible.left.visible || item.geometry.visible.right.visible) {
+        if (item.geometry.sides.length && item.geometry.sides[0].points.length) {
+            var left = item.item3D.left && item.geometry.visible.left.visible;
+            var right = item.item3D.right && item.geometry.visible.right.visible;
+            var sides = left || right;
             if (sides) {
-                this.renderItemParts3D(ctx, this.item3d.item.geometry.sides, this.colors.side, x, y, scale, debug);
+                this.renderItemParts3D(ctx, item, item.geometry.sides, this.colors.side, x, y, scale, debug);
             }
         }
     }
     
-    if (this.item3d.item.bottom === true) {
-        if (this.item3d.item.geometry.visible.bottom.visible) {
-            this.renderItemParts3D(ctx, this.item3d.item.geometry.bottoms, this.colors.bottom, x, y, scale, debug);
+    if (item.bottom === true) {
+        if (item.geometry.visible.bottom.visible) {
+            this.renderItemParts3D(ctx, item, item.geometry.bottoms, this.colors.bottom, x, y, scale, debug);
         }
     }
     
     if (this.dotop) {
-        if (this.item3d.item.geometry.visible.top.visible) {
+        if (item.geometry.visible.top.visible) {
             
             var outline = true;
             var dt = true;
             // todo: only draw outline on contiguous surfaces - tile of same type must exist on outline side
             
-            this.renderItemParts3D(ctx, this.item3d.item.geometry.tops, this.colors.top, x, y, scale, debug, outline, dt);
+            this.renderItemParts3D(ctx, item, item.geometry.tops, this.colors.top, x, y, scale, debug, outline, dt);
             
             if (!debug.level) {
                 var lc = this.colors.side;
@@ -107,47 +109,47 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, ctx, scale, debu
                 ctx.lineWidth = lw;
                 ctx.beginPath();
 
-                if (this.item3d.item.geometry.visible.left.visible) {
-                    if (this.item3d.polygon.points.length >= 4) {
-                        this.item3d.line.start.x = this.item3d.polygon.points[3].x;
-                        this.item3d.line.start.y = this.item3d.polygon.points[3].y;
-                        this.item3d.line.end.x = this.item3d.polygon.points[0].x;
-                        this.item3d.line.end.y = this.item3d.polygon.points[0].y;
-                        this.item3d.line.path(ctx);
+                if (item.geometry.visible.left.visible) {
+                    if (item.item3D.polygon.points.length >= 4) {
+                        item.item3D.line.start.x = item.item3D.polygon.points[3].x;
+                        item.item3D.line.start.y = item.item3D.polygon.points[3].y;
+                        item.item3D.line.end.x = item.item3D.polygon.points[0].x;
+                        item.item3D.line.end.y = item.item3D.polygon.points[0].y;
+                        item.item3D.line.path(ctx);
                     }
                 }
 
-                if (this.item3d.item.geometry.visible.right.visible) {
-                    if (this.item3d.polygon.points.length >= 3) {
-                        this.item3d.line.start.x = this.item3d.polygon.points[1].x;
-                        this.item3d.line.start.y = this.item3d.polygon.points[1].y;
-                        this.item3d.line.end.x = this.item3d.polygon.points[2].x;
-                        this.item3d.line.end.y = this.item3d.polygon.points[2].y;
-                        this.item3d.line.path(ctx);
+                if (item.geometry.visible.right.visible) {
+                    if (item.item3D.polygon.points.length >= 3) {
+                        item.item3D.line.start.x = item.item3D.polygon.points[1].x;
+                        item.item3D.line.start.y = item.item3D.polygon.points[1].y;
+                        item.item3D.line.end.x = item.item3D.polygon.points[2].x;
+                        item.item3D.line.end.y = item.item3D.polygon.points[2].y;
+                        item.item3D.line.path(ctx);
                     }
                 }
 
-                if (this.item3d.item.geometry.visible.back.visible) {
-                    if (this.item3d.polygon.points.length >= 2) {
-                        this.item3d.line.start.x = this.item3d.polygon.points[0].x;
-                        this.item3d.line.start.y = this.item3d.polygon.points[0].y;
-                        this.item3d.line.end.x = this.item3d.polygon.points[1].x;
-                        this.item3d.line.end.y = this.item3d.polygon.points[1].y;
-                        this.item3d.line.path(ctx);
+                if (item.geometry.visible.back.visible) {
+                    if (item.item3D.polygon.points.length >= 2) {
+                        item.item3D.line.start.x = item.item3D.polygon.points[0].x;
+                        item.item3D.line.start.y = item.item3D.polygon.points[0].y;
+                        item.item3D.line.end.x = item.item3D.polygon.points[1].x;
+                        item.item3D.line.end.y = item.item3D.polygon.points[1].y;
+                        item.item3D.line.path(ctx);
                     }
                 } 
                 ctx.stroke();
 
-                if (this.item3d.dopoly && !this.item3d.item.geometry.visible.front.visible) {
-                    if (this.item3d.polygon.points.length >= 4) {
-                        this.item3d.line.start.x = this.item3d.polygon.points[2].x;
-                        this.item3d.line.start.y = this.item3d.polygon.points[2].y;
-                        this.item3d.line.end.x = this.item3d.polygon.points[3].x;
-                        this.item3d.line.end.y = this.item3d.polygon.points[3].y;
+                if (item.item3D.dopoly && !item.geometry.visible.front.visible) {
+                    if (item.item3D.polygon.points.length >= 4) {
+                        item.item3D.line.start.x = item.item3D.polygon.points[2].x;
+                        item.item3D.line.start.y = item.item3D.polygon.points[2].y;
+                        item.item3D.line.end.x = item.item3D.polygon.points[3].x;
+                        item.item3D.line.end.y = item.item3D.polygon.points[3].y;
                         ctx.strokeStyle = this.colors.top;
                         ctx.lineWidth = 1;
                         ctx.beginPath();
-                        this.item3d.line.draw(ctx);
+                        item.item3D.line.draw(ctx);
                     }
                 }
             }
@@ -158,23 +160,23 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, ctx, scale, debu
     if (debug.hsr) {
         ctx.globalAlpha = 1;        
         var linecolor = "red";
-        if (!this.item3d.item.geometry.visible.front.visible) {
-            this.renderItemParts3D(ctx, this.item3d.item.geometry.fronts, linecolor, x, y, scale, debug, true, false);
+        if (!item.geometry.visible.front.visible) {
+            this.renderItemParts3D(ctx, item, item.geometry.fronts, linecolor, x, y, scale, debug, true, false);
         }
-        if (!this.item3d.item.geometry.visible.top.visible) {
-            this.renderItemParts3D(ctx, this.item3d.item.geometry.tops, linecolor, x, y, scale, debug, true, false);
+        if (!item.geometry.visible.top.visible) {
+            this.renderItemParts3D(ctx, item, item.geometry.tops, linecolor, x, y, scale, debug, true, false);
         }
-        if (!this.item3d.item.geometry.visible.left.visible && this.item3d.left) {
-            this.renderItemParts3D(ctx, this.item3d.item.geometry.sides, linecolor, x, y, scale, debug, true, false);
+        if (!item.geometry.visible.left.visible && item.item3D.left) {
+            this.renderItemParts3D(ctx, item, item.geometry.sides, linecolor, x, y, scale, debug, true, false);
         }
-        if (!this.item3d.item.geometry.visible.right.visible && this.item3d.right) {
-            this.renderItemParts3D(ctx, this.item3d.item.geometry.sides, linecolor, x, y, scale, debug, true, false);
+        if (!item.geometry.visible.right.visible && item.item3D.right) {
+            this.renderItemParts3D(ctx, item, item.geometry.sides, linecolor, x, y, scale, debug, true, false);
         }
     }
     
 }
 
-ItemRenderer3D.prototype.getColors = function(renderer, debug) {
+ItemRenderer3D.prototype.getColors = function(renderer, item, debug) {
 
     var dodebug = debug && debug.level;
     
@@ -185,10 +187,10 @@ ItemRenderer3D.prototype.getColors = function(renderer, debug) {
         this.colors.bottom = "#c7c7c7";
     }
 
-    var theme = (renderer && renderer.theme) ? renderer.theme.items[this.item3d.item.itemtype] : null;
+    var theme = (renderer && renderer.theme) ? renderer.theme.items[item.itemtype] : null;
     if (!theme) return;
     
-    this.dotop = this.item3d.item.top === false ? false : true;
+    this.dotop = item.top === false ? false : true;
     if (theme.top === false) this.dotop = false;
     
     if (dodebug) return;
@@ -213,15 +215,15 @@ ItemRenderer3D.prototype.getColors = function(renderer, debug) {
     this.colors.front = themecolor.front ? themecolor.front : this.colors.side;
 }
     
-ItemRenderer3D.prototype.renderItemParts3D = function(ctx, parts, color, x, y, scale, debug, outline = true, fill = true) {
+ItemRenderer3D.prototype.renderItemParts3D = function(ctx, item, parts, color, x, y, scale, debug, outline = true, fill = true) {
     ctx.beginPath();
     ctx.fillStyle = color;
     var t = parts.length;
     for (var i = 0; i < t; i++) {
         var p = parts[i];
-        this.item3d.polygon.setPoints(p.points);
-        this.item3d.polygon.translate(-x, -y, scale);
-        this.item3d.polygon.path(ctx);
+        item.item3D.polygon.setPoints(p.points);
+        item.item3D.polygon.translate(-x, -y, scale);
+        item.item3D.polygon.path(ctx);
     }
     if (fill) ctx.fill();
     if (outline || debug.level) {
