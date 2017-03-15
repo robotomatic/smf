@@ -41,6 +41,7 @@ function runAnimationFrameDev(when) {
                 return sf.toString();
             }).join('\n');
             logDev(error);
+            throw(x);
         });
     }
 }
