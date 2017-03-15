@@ -1,27 +1,27 @@
 [
 
     {
-        "name" : "temple",
-        "comment" : "temple",
+        "name" : "temple-ground-island",
+        "comment" : "temple ground island",
         "collide" : true,
         "cache" : true,
-        "depth" : 600,
+        "depth" : 2400,
         "items" : [
             {
                 "x" : 2700,
-                "y" : 800,
-                "z" : 2000,
-                "itemtype" : "platform-bg-no-top",
+                "y" : 1060,
+                "z" : 1100,
+                "itemtype" : "platform",
                 "parts" : [
                     {
                         "x": 0,
                         "y": 0,
-                        "width": 600,
-                        "height": 160
+                        "width": 1800,
+                        "height": 60
                     }
                 ]
             }
         ]
     }
 ]
-            
+    

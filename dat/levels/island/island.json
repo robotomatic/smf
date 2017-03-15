@@ -16,12 +16,12 @@
             "file" : "dat/levels/island/layers/liquid.json"
         },
         
-        "ground" : {
-            "file" : "dat/levels/island/layers/ground.json"
+        "temple ground" : {
+            "file" : "dat/levels/island/layers/temple_ground.json"
         },
         
-        "bridge" : {
-            "file" : "dat/levels/island/layers/bridge.json"
+        "temple ground island" : {
+            "file" : "dat/levels/island/layers/temple_ground_island.json"
         },
         
         "temple" : {
