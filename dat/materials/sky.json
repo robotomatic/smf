@@ -9,14 +9,30 @@
         "renderer" : "clouds",
         "color" : "#ffffff"
    },
-   "fog" : {
-       "name" : "fog",
-        "renderer" : "clouds",
-        "color" : "#716e6e"
-   },
    "mist" : {
        "name" : "mist",
         "renderer" : "clouds",
         "color" : "#defaa0"
+   },
+   "fog" : {
+       "name" : "fog",
+       "renderer" : "fog",
+       "damage" : {
+           "hp" : 10,
+           "rate" : 1,
+           "effect" : "suffocate"
+       },
+       "properties" : {
+           "density" : 0
+       },
+       "color" : {
+           "color" : "#f7f7f7",
+           "projected" : {
+               "front" : "#f7f7f7",
+               "top" : "#ffffff",
+               "side" : "#eaeaea",
+               "bottom" : "#ebebeb"
+            }
+       }
    }
 }

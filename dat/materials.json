@@ -22,5 +22,8 @@
     },
     "liquid" : {
         "file" : "dat/materials/liquid.json"
+    },
+    "snow" : {
+        "file" : "dat/materials/snow.json"
     }
 }

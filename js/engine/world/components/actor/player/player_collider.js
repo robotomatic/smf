@@ -76,7 +76,7 @@ PlayerCollider.prototype.handleCollide = function(collider, result) {
 //    result = this.handleCollideHorizontal(collider, result);
 //    result = this.handleCollideDepth(collider, result);
     if (collider.damage) this.handleCollideDamage(collider, result);
-    if (collider.gravity || collider.viscosity) result = this.handleCollideLiquid(collider, result);
+    if (collider.properties && collider.density) result = this.handleCollideLiquid(collider, result);
     return result;
 }
 
@@ -185,13 +185,17 @@ PlayerCollider.prototype.handleCollideDepth = function(collider, result) {
 
 
 PlayerCollider.prototype.handleCollideDamage = function(collider, result) {
-    this.player.info.damage(collider.damage);
+    this.player.info.damage(collider.damage.hp * collider.damage.rate);
 }
 
 PlayerCollider.prototype.handleCollideLiquid = function(collider, result) {
     this.player.controller.floating = true;
     this.player.controller.falling = false;
     this.player.controller.grounded = true;
+    
+    // todo: calculate bouyancy
+    // todo: submerge...
+    
     return result;
 }
 

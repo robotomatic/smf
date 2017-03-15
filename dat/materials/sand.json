@@ -11,5 +11,27 @@
                 "bottom" : "#cec98b"
             }
        }
+   },
+   "quicksand" : {
+       "name" : "quicksand",
+        "renderer" : "sand",
+        "damage" : {
+            "hp" : 10,
+            "rate" : 0.5,
+            "effect" : "suffocate"
+        },
+        "properties" : {
+            "density" : 0.5,
+            "suction" : 10
+        },
+        "color" : {
+            "color" : "#d8d395",
+            "projected" : {
+                "front" : "#d8d395",
+                "top" : "#e0dba0",
+                "side" : "#cec989",
+                "bottom" : "#cec98b"
+            }
+       }
    }
 }

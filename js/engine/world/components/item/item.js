@@ -118,6 +118,21 @@ function Item(json) {
         hsr : false
     }
     
+    
+    this.damage = {
+        hp : 0,
+        rate : 0,
+        effect : ""
+    };
+    
+    this.properties = {
+        density : 0,
+        suction : 0
+    };
+    
+    
+    
+    
     if (json) this.loadJson(json);
 }
 
@@ -161,19 +176,10 @@ Item.prototype.loadJson = function(json) {
 }
 
 Item.prototype.clone = function() {
-    // todo: need a better way to clone Items --> manual is bestest?
     var newitem = new Item(cloneObject(this));
     if (!newitem) return null;
-//    newitem.x = this.x;
-//    newitem.y = this.y;
-//    newitem.z = this.z;
-//    newitem.width = this.width;
-//    newitem.height = this.height;
-//    newitem.depth = this.depth;
-//    
-//    newitem.parts = new Array(cloneObject(this.parts));
-//    newitem.geometry = this.geometry.copy(newitem.geometry);
-    
+    newitem.damage = cloneObject(this.damage);
+    newitem.properties = cloneObject(this.properties);
     return newitem;
 }
     

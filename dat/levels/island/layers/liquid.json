@@ -3,7 +3,7 @@
     {
         "name" : "liquid",
         "comment" : "liquid waterline",
-        "collide" : false,
+        "collide" : true,
         "cache" : true,
         "items" : [
             {

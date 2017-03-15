@@ -12,8 +12,7 @@ function WorldCollider() {
         height : null,
         ramp : null,
         collide : null,
-        gravity : null,
-        viscosity : null,
+        properties : null,
         damage : null,
         action : null
     };    
@@ -168,9 +167,10 @@ WorldCollider.prototype.collideItemPart = function(player, item, part, width, he
     this.box.id = item.id;
     this.box.ramp = (part.ramp) ? part.ramp : "";
     this.box.collide = (part.collide) ? part.collide : true;
-    this.box.gravity = this.gravity;
-    this.box.viscosity = this.viscosity;
-    this.box.damage = this.damage;
+    
+    this.box.damage = item.damage;
+    this.box.properties = item.properties;
+    
     this.box.action = item.action;
     this.collider.reset();
     this.collider = player.collideWith(this.box, this.collider);

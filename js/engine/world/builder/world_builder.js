@@ -20,9 +20,6 @@ WorldBuilder.prototype.buildWorld = function(now, world) {
     this.themebuilder.buildTheme(world);
     benchmark("build world - theme");
     
-    this.collidebuilder.buildColliders(world);
-    benchmark("build world - colliders");
-
     this.chunkbuilder.chunk(world);
     benchmark("build world - chunks");
     
@@ -37,6 +34,9 @@ WorldBuilder.prototype.buildWorld = function(now, world) {
 
     this.environmentbuilder.buildEnvironment(world);
     benchmark("build world - environment");
+    
+    this.collidebuilder.buildColliders(world);
+    benchmark("build world - colliders");
 
     //
     // TODO: Build render stack here too?

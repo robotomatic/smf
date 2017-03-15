@@ -4,8 +4,12 @@
         "renderer" : "liquid",
         "damage" : {
             "hp" : 10,
-            "rate" : 100,
+            "rate" : 0.1,
             "effect" : "drown"
+        },
+        "properties" : {
+            "density" : 0,
+            "suction" : 2
         },
         "waterline" : {
             "flow" : true,
@@ -37,6 +41,10 @@
             "miny" : -10,
             "maxy" : 10
         },
+        "properties" : {
+            "density" : 0.5,
+            "suction" : 5
+        },
         "color" : {
             "color" : "#b73636",
             "projected" : {
@@ -50,9 +58,13 @@
         "name" : "goo",
         "renderer" : "liquid",
         "damage" : {
-            "hp" : 100,
-            "rate" : 10,
+            "hp" : 10,
+            "rate" : 1,
             "effect" : "radiation"
+        },
+         "properties" : {
+            "density" : 0.2,
+            "suction" : 2
         },
         "waterline" : {
             "flow" : true,
@@ -68,23 +80,5 @@
                 "bottom" : "#bcea65"
             }
         }
-   },
-   "snow" : {
-       "name" : "snow",
-        "renderer" : "snow",
-        "damage" : {
-            "hp" : 10,
-            "rate" : 10,
-            "effect" : "freeze"
-        },
-        "color" : {
-            "color" : "#f7f7f7",
-            "projected" : {
-                "front" : "#f7f7f7",
-                "top" : "#ffffff",
-                "side" : "#eaeaea",
-                "bottom" : "#ebebeb"
-            }
-       }
    }
 }

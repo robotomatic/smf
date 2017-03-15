@@ -31,10 +31,6 @@ WorldBuilderColliders.prototype.buildCollidersColliders = function(world, items)
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
         if (item.collide === false) continue;
-        
-//        world.worldcollider.colliders.push(item);
-        
-        
         var newitem = this.buildCollidersCollidersItem(item);
         if (newitem) {
             world.worldcollider.colliders.push(newitem);

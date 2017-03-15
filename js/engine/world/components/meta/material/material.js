@@ -14,5 +14,6 @@ Material.prototype.loadJson = function(json) {
     this.color = json.color;
     this.waterline = json.waterline;
     this.damage = json.damage;
+    this.properties = json.properties;
     return this;
 }

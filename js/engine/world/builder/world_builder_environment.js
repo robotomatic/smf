@@ -24,7 +24,15 @@ WorldBuilderEnvironment.prototype.buildEnvironmentItem = function(world, itemren
     
     var damage = material.damage;
     if (damage) {
-        // hp rate effect
+        item.damage.hp = damage.hp;
+        item.damage.rate = damage.rate;
+        item.damage.effect = damage.effect;
+    }
+    
+    var properties = material.properties;
+    if (properties) {
+        item.properties.density = properties.density;
+        item.properties.suction = properties.suction;
     }
     
     var waterline = material.waterline;

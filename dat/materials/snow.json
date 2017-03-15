@@ -1,0 +1,24 @@
+{
+   "snow" : {
+       "name" : "snow",
+        "renderer" : "snow",
+        "damage" : {
+            "hp" : 10,
+            "rate" : 0.1,
+            "effect" : "freeze"
+        },
+        "properties" : {
+            "density" : 0.8,
+            "suction" : 1
+        },
+        "color" : {
+            "color" : "#f7f7f7",
+            "projected" : {
+                "front" : "#f7f7f7",
+                "top" : "#ffffff",
+                "side" : "#eaeaea",
+                "bottom" : "#ebebeb"
+            }
+       }
+   }
+}
