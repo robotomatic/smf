@@ -153,7 +153,7 @@
     background-color: rgba(32, 32, 33, 0.35);
     border: 1px solid #7b7b7b;
     color: white;
-    padding: .1em;
+    padding: .2em .1em .2em .1em;
     cursor: pointer;
 }
 
@@ -184,6 +184,15 @@
 .dialog-check-small {
     width: 6.6em;
 }
+
+.dialog-select {
+    width: 15em;
+}
+
+
+
+
+
 
 
 .dialog-canvas {
