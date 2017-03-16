@@ -2,6 +2,9 @@
    "sand" : {
        "name" : "sand",
         "renderer" : "sand",
+        "properties" : {
+            "friction" : 1
+        },
         "color" : {
             "color" : "#d8d395",
             "projected" : {
@@ -21,6 +24,7 @@
             "effect" : "suffocate"
         },
         "properties" : {
+            "friction" : 1,
             "density" : 0.5,
             "suction" : 10
         },

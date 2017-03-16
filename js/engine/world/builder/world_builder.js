@@ -19,6 +19,12 @@ WorldBuilder.prototype.buildWorld = function(now, world) {
     
     this.themebuilder.buildTheme(world);
     benchmark("build world - theme");
+
+    this.environmentbuilder.buildEnvironment(world);
+    benchmark("build world - environment");
+    
+    this.collidebuilder.buildColliders(world);
+    benchmark("build world - colliders");
     
     this.chunkbuilder.chunk(world);
     benchmark("build world - chunks");
@@ -31,12 +37,13 @@ WorldBuilder.prototype.buildWorld = function(now, world) {
     
     this.surfacebuilder.buildSurfaces(world);
     benchmark("build world - surfaces");
-
-    this.environmentbuilder.buildEnvironment(world);
-    benchmark("build world - environment");
     
-    this.collidebuilder.buildColliders(world);
-    benchmark("build world - colliders");
+    //
+    // TODO: Need to handle extruded trim!!!
+    //      - Needs to extrude VISIBLE edges outward on X and Z axes
+    //      - Nice to be able to add extruded Y axis trim this way too
+    // - Trim need to be added to colliders
+    //
 
     //
     // TODO: Build render stack here too?

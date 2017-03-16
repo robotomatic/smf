@@ -31,6 +31,8 @@ WorldBuilderEnvironment.prototype.buildEnvironmentItem = function(world, itemren
     
     var properties = material.properties;
     if (properties) {
+        item.properties.friction = properties.friction;
+        item.properties.airfriction = properties.airfriction;
         item.properties.density = properties.density;
         item.properties.suction = properties.suction;
     }

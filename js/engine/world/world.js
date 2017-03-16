@@ -13,6 +13,7 @@ function World(level, players, npcs) {
 
 World.prototype.setTheme = function(themename, theme, materials) { 
     this.worldrenderer.setTheme(themename, theme, materials);
+    if (theme.physics) this.physics.setPhysics(theme.physics);
 }
 
 World.prototype.setLevel = function(level) { 

@@ -86,6 +86,8 @@ Player.prototype.collideWith = function(collider, result, debug) {
     this.collider.collideWith(collider, result, debug);
     if (result.collided()) {
         this.collided = true;
+        this.controller.groundfriction = result.friction;
+        this.controller.airfriction = result.airfriction;
     }
     return result;
 };

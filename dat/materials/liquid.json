@@ -8,6 +8,7 @@
             "effect" : "drown"
         },
         "properties" : {
+            "friction" : 1.2,
             "density" : 0,
             "suction" : 2
         },
@@ -42,6 +43,7 @@
             "maxy" : 10
         },
         "properties" : {
+            "friction" : 2,
             "density" : 0.5,
             "suction" : 5
         },
@@ -63,6 +65,7 @@
             "effect" : "radiation"
         },
          "properties" : {
+            "friction" : 3,
             "density" : 0.2,
             "suction" : 2
         },

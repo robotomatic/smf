@@ -3,11 +3,12 @@
        "name" : "snow",
         "renderer" : "snow",
         "damage" : {
-            "hp" : 10,
-            "rate" : 0.1,
+            "hp" : 1,
+            "rate" : 0.01,
             "effect" : "freeze"
         },
         "properties" : {
+            "friction" : 1,
             "density" : 0.8,
             "suction" : 1
         },
@@ -18,6 +19,27 @@
                 "top" : "#ffffff",
                 "side" : "#eaeaea",
                 "bottom" : "#ebebeb"
+            }
+       }
+   },
+   "ice" : {
+       "name" : "ice",
+        "renderer" : "ice",
+        "damage" : {
+            "hp" : 1,
+            "rate" : 0.1,
+            "effect" : "freeze"
+        },
+        "properties" : {
+            "friction" : 0.1
+        },
+        "color" : {
+            "color" : "#d0dfe3",
+            "projected" : {
+                "front" : "#d0dfe3",
+                "top" : "#d0dfe3",
+                "side" : "#d0dfe3",
+                "bottom" : "#d0dfe3"
             }
        }
    }

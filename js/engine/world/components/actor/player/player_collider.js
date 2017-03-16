@@ -118,6 +118,8 @@ PlayerCollider.prototype.handleCollideVertical = function(collider, result) {
         }
     }
     result.y = 0;
+    result.friction = collider.properties.friction ? collider.properties.friction : 0;
+    result.airfriction = collider.properties.airfriction ? collider.properties.airfriction : 0;
     return result;
 }
 

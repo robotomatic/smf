@@ -40,6 +40,7 @@ WorldRenderer.prototype.setTheme = function(themename, theme, materials) {
         this.itemrenderer.theme = new Theme(themename); 
         this.itemrenderer.materials = materials; 
         this.itemrenderer.theme.background = theme.background;
+        this.itemrenderer.theme.physics = JSON.parse(JSON.stringify(theme.physics));
         this.itemrenderer.theme.items = JSON.parse(JSON.stringify(theme.items));
         return;
     }

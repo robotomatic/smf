@@ -1,6 +1,10 @@
 {
     "lava" : {
         
+        "physics" : {
+            "airfriction" : 0.08
+        },
+        
         "background" : {
             "color" : "#6c7679",
             "canvas" : {

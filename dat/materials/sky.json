@@ -22,7 +22,14 @@
            "rate" : 1,
            "effect" : "suffocate"
        },
+        "waterline" : {
+            "flow" : true,
+            "amount" : 0.1,
+            "miny" : -10,
+            "maxy" : 10
+        },
        "properties" : {
+           "airfriction" : 2,
            "density" : 0
        },
        "color" : {

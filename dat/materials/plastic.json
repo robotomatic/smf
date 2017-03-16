@@ -2,6 +2,9 @@
    "plastic" : {
        "name" : "plastic",
         "renderer" : "plastic",
+        "properties" : {
+            "friction" : 0.6
+        },
         "color" : {
             "color" : "#c1e3de",
             "projected" : {
@@ -15,6 +18,9 @@
     "plastic-trim" : {
        "name" : "plastic-trim",
         "renderer" : "plastic",
+        "properties" : {
+            "friction" : 0.6
+        },
         "color" : {
             "color" : "#5dafa2",
             "projected" : {

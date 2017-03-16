@@ -1,6 +1,12 @@
 {
     "snow" : {
 
+        "physics" : {
+            "friction" : 0.5,
+            "airfriction" : 0.15,
+            "wallfriction" : 0.1
+        },
+
         "background" : {
             "color" : "#6c7679",
             "canvas" : {
@@ -26,8 +32,8 @@
             },
             
             "liquid" : {
-                "name" : "snow",
-                "material" : "snow"
+                "name" : "ice",
+                "material" : "ice"
             },
             
             "snow" : {

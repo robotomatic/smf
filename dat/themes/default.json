@@ -1,6 +1,14 @@
 {
 "default" :  {
 
+        "physics" : {
+            "friction" : 0.8,
+            "airfriction" : 0.1,
+            "gravity" : 0.3,
+            "terminalVelocity" : 10,
+            "wallfriction" : 0.5
+        },
+    
         "background" : {
             "color" : "#6c7679",
             "canvas" : {
@@ -31,8 +39,8 @@
             
 
             "liquid" : {
-                "name" : "water",
-                "draw" : false
+                "name" : "fog",
+                "material" : "fog"
             },
 
             "ground" : {

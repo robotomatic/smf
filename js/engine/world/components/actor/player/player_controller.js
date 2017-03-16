@@ -25,6 +25,9 @@ function PlayerController(player, x, y, z, width, height, speed) {
     this.speed = speed;
     this.jumpspeed = this.speed * 3;
     
+    this.groundfriction = 0;
+    this.airfriction = 0;
+    
     this.bounce = false;
 
     this.lookThreshold = 5;
@@ -489,20 +492,26 @@ PlayerController.prototype.update = function(now, delta, physics) {
 PlayerController.prototype.applyPhysics = function(now, delta, physics) {
     var inair = this.jumping || this.falling;
     
+    var friction = this.groundfriction ? this.groundfriction : physics.friction;
+    var airfriction = this.airfriction ? this.airfriction : physics.airfriction;
+    
     if (this.velX > 0) {
-        this.velX -= (inair) ? physics.airfriction : physics.friction;
+        this.velX -= (inair) ? airfriction : friction;
         if (this.velX < 0) this.velX = 0;
     } else if (this.velX < 0) {
-        this.velX += (inair) ? physics.airfriction : physics.friction;
+        this.velX += (inair) ? airfriction : friction;
         if (this.velX > 0) this.velX = 0;
     }
     if (this.velZ > 0) {
-        this.velZ -= (inair) ? physics.airfriction : physics.friction;
+        this.velZ -= (inair) ? airfriction : friction;
         if (this.velZ < 0) this.velZ = 0;
     } else if (this.velZ < 0) {
-        this.velZ += (inair) ? physics.airfriction : physics.friction;
+        this.velZ += (inair) ? airfriction : friction;
         if (this.velZ > 0) this.velZ = 0;
     }
+    
+    // todo: eventually consider wind direction
+    
     
     if (this.floating) {
         // todo: get physics properties of collider

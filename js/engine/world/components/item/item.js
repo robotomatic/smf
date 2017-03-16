@@ -126,6 +126,8 @@ function Item(json) {
     };
     
     this.properties = {
+        friction : 0,
+        airfriction : 0,
         density : 0,
         suction : 0
     };
@@ -170,6 +172,11 @@ Item.prototype.loadJson = function(json) {
     this.actions = json.actions;
     this.top = json.top;
     this.bottom = json.bottom;
+    
+    if (json.damage) this.damage = json.damage;
+    if (json.properties) this.properties = json.properties;
+    if (json.friction) this.friction = json.friction;
+    if (json.airfriction) this.airfriction = json.airfriction;
     
     if (json.addparts != undefined) this.addparts = json.addparts;
     this.parts = json.parts;
