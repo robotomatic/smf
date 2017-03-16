@@ -1,0 +1,23 @@
+{
+    "name" : "mountain",
+    "width" : 5000,
+    "height" : 1200,
+    "debug" : false,
+    "layers" : {
+        "level" : {
+            "file" : "dat/levels/mountain/layers/level.json"
+        },
+        
+        "sky" : {
+            "file" : "dat/levels/mountain/layers/sky.json"
+        },
+        
+        "mountain" : {
+            "file" : "dat/levels/mountain/layers/mountain.json"
+        },
+        
+        "liquid" : {
+            "file" : "dat/levels/mountain/layers/liquid.json"
+        }
+    }
+ }

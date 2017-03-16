@@ -1,0 +1,60 @@
+[
+    {
+        "name" : "mountain",
+        "comment" : "mountain",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 300,
+        "items" : [
+            
+            {
+                "x" : 900,
+                "y" : 200,
+                "z" : 900,
+                "depth" : 300,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 400
+                    }
+                ]
+            },
+            
+            {
+                "x" : 600,
+                "y" : 600,
+                "z" : 600,
+                "depth" : 900,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 900,
+                        "height": 400
+                    }
+                ]
+            },
+            
+            {
+                "x" : 300,
+                "y" : 1000,
+                "z" : 300,
+                "depth" : 1500,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 1500,
+                        "height": 160
+                    }
+                ]
+            }
+        ]
+    }
+]
+    

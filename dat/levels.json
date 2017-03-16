@@ -1,10 +1,18 @@
 {
-    "level0" : {
-        "name" : "Jungle Island",
+    "level-0" : {
+        "name" : "island",
         "file" : "dat/levels/island/island.json",
         "themes" : {
             "0" : "default",
             "1" : "jungle"
+        }
+    },
+    "level-1" : {
+        "name" : "mountain",
+        "file" : "dat/levels/mountain/mountain.json",
+        "themes" : {
+            "0" : "default",
+            "1" : "lava"
         }
     }
 }
