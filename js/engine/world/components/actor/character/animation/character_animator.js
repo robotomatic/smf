@@ -8,6 +8,20 @@ function CharacterAnimator(animations) {
     this.idlespeed = .1;
 }
 
+CharacterAnimator.prototype.pause = function(now) {
+    var keys = Object.keys(this.currentAnimations);
+    for (var i = 0; i < keys.length; i++) {
+        this.currentAnimations[keys[i]].pause(now);
+    }
+}
+
+CharacterAnimator.prototype.resume = function(now) {
+    var keys = Object.keys(this.currentAnimations);
+    for (var i = 0; i < keys.length; i++) {
+        this.currentAnimations[keys[i]].resume(now);
+    }
+}
+
 CharacterAnimator.prototype.animate = function(now, character) {
     this.puppet.initialize(character);
     this.idlespeed = character.idlespeed;

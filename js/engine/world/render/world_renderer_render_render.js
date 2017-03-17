@@ -6,7 +6,8 @@ function WorldRendererRender(renderitems, itemcache) {
     this.doblur = true;
 }
 
-WorldRendererRender.prototype.renderRender = function(now, graphics, camera, world, mbr, window, debug) {
+WorldRendererRender.prototype.renderRender = function(now, graphics, camera, world, mbr, window, debug, render) {
+    if (!render) return;
     this.renderRenderItems(now, graphics, camera, world, mbr, window, debug);
 }
 

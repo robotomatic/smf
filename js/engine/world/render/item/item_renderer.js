@@ -94,6 +94,10 @@ function ItemRenderer(theme, materials) {
 ItemRenderer.prototype.reset = function() {
     this.itemrendererdefault = new ItemRendererDefault();
     this.itemrenderertheme = new ItemRendererTheme();
+    this.theme = null;
+    
+    this.polygon.points.length = 0;
+    this.box.reset();
 }
 
 ItemRenderer.prototype.shouldThemeProject = function(item) {

@@ -29,18 +29,49 @@ Players.prototype.getPlayers = function() {
     return this.players;
 }
 
+Players.prototype.pause = function(when) { 
+    var t = this.players.length;
+    for (var i = 0; i < t; i++) {
+        var player = this.players[i];
+        if (!player) continue;
+        player.pause(when);
+    }
+}
+
+Players.prototype.resume = function(when) { 
+    var t = this.players.length;
+    for (var i = 0; i < t; i++) {
+        var player = this.players[i];
+        if (!player) continue;
+        player.resume(when);
+    }
+}
+
+Players.prototype.reset = function(when) { 
+    var t = this.players.length;
+    for (var i = 0; i < t; i++) {
+        var player = this.players[i];
+        if (!player) continue;
+        player.reset(when);
+    }
+}
+
 Players.prototype.update = function(when, delta) {
     updateDevPlayers(this.players);
 }
 
 Players.prototype.getMbr = function(mbr) {
     var minx, miny, maxx, maxy, minz, maxz;
+    
+    var found = false;
     var t = this.players.length;
     for (var i = 0; i < t; i++) {
         var player = this.players[i];
         if (!player) continue;
         if (!player.getscamera) continue;
-        var item = this.players[i].getMbr();
+        if (!player.camera.ready) continue;
+        var item = player.getMbr();
+        found = true;
         if (!minx || item.x <= minx) minx = item.x;
         if (!miny || item.y <= miny) miny = item.y;
         if (!maxx || item.x + item.width >= maxx) maxx = item.x + item.width;
@@ -48,6 +79,12 @@ Players.prototype.getMbr = function(mbr) {
         if (!minz || item.z <= minz) minz = item.z;
         if (!maxz || item.z + item.depth >= maxz) maxz = item.z + item.depth;
     }
+    
+    if (!found) {
+        mbr.reset();
+        return mbr;
+    }
+    
     if (!mbr) mbr = geometryfactory.getRectangle(0, 0, 0, 0);
     mbr.x = minx;
     mbr.y = miny;

@@ -19,6 +19,7 @@ World.prototype.setTheme = function(themename, theme, materials) {
 World.prototype.setLevel = function(level) { 
     this.level = level;
     if (this.level.gravity) this.physics.gravity = this.level.gravity;
+    this.buildLevel();
     return this.level; 
 }
 
@@ -53,10 +54,34 @@ World.prototype.getPhysics = function() {
     return this.physics; 
 }
 
-World.prototype.init = function(now) { 
+World.prototype.buildLevel = function(now) { 
+    benchmark("build world - start", "build");
     this.worldbuilder.buildWorld(now, this);
+    benchmark("build world - end", "build");
 }
     
+World.prototype.pause = function(now) { 
+    this.players.pause(now);
+}
+    
+World.prototype.resume = function(now) { 
+    this.players.resume(now);
+}
+    
+World.prototype.reset = function() { 
+    benchmark("world reset - start", "reset");
+    this.level.reset();
+    delete(this.level);
+    this.items.length = 0;
+    this.worldrenderer.reset();
+    this.worldcollider.reset();
+    benchmark("world reset - end", "reset");
+}
+
+World.prototype.resetPlayers = function() { 
+    this.worldcollider.resetPlayers(this.players.players);
+}
+
 World.prototype.update = function(now, delta) { 
     this.updateItems(now, delta);
     this.updateNPCs(now, delta);
@@ -78,17 +103,23 @@ World.prototype.updatePlayers = function(now, delta) {
     this.players.update(now, delta);
     for (var i = 0; i < this.players.players.length; i++) this.updatePlayer(now, delta, this.players.players[i]);
 }
+
 World.prototype.updatePlayer = function(now, delta, player) {
     if (!player) return;
     player.update(now, delta, this.physics);
 }
 
-World.prototype.render = function(now, graphics, camera, mbr, window) { 
-    this.worldrenderer.render(now, graphics, camera, this, mbr, window);
+World.prototype.render = function(now, graphics, camera, mbr, window, render) { 
+    this.worldrenderer.render(now, graphics, camera, this, mbr, window, render);
 }
 
-World.prototype.reset = function(now, graphics) { 
-    this.worldrenderer.reset(now, graphics);
+World.prototype.reset = function(now) { 
+    this.level = null;
+    this.items.length = 0;
+    this.worldcollider.reset(now);
+    this.worldrenderer.reset(now);
+    if (this.players) this.players.reset(now);
+    if (this.npcs) this.npcs.reset(now);
 }
 
 World.prototype.doAction = function(action, args, key, val, callback) { if (this.npcs) this.npcs.doAction(action, args, key, val, callback); }

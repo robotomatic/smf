@@ -8,6 +8,7 @@ function PartyView(id, width, height, scale) {
         toggleFullScreen();
         controller.resize();
         */
+        if (controller.paused) return;
         controller.view.renderer.camera.shakeScreen(1.2, 800);
     }
     
@@ -33,6 +34,9 @@ function PartyView(id, width, height, scale) {
         }
     };
 
+    this.rendercount = 0;
+    this.renderwait = 10;
+    
     this.view.renderer.camera.blur.blur = false;
     this.view.renderer.camera.blur.shift = false;
     this.view.renderer.camera.drift.enabled = true;
@@ -80,17 +84,41 @@ PartyView.prototype.resizeUI = function() {
 }
 
 PartyView.prototype.initialize = function(world) {
-    this.view.initialize(world);
+    this.view.renderer.mbr.x = world.worldbuilder.collidebuilder.collisionindex.bounds.min.x;
+    this.view.renderer.mbr.y = world.worldbuilder.collidebuilder.collisionindex.bounds.min.y;
+    this.view.renderer.mbr.z = world.worldbuilder.collidebuilder.collisionindex.bounds.min.z;
+    this.view.renderer.mbr.width = world.worldbuilder.collidebuilder.collisionindex.bounds.max.x = this.view.renderer.mbr.x;
+    this.view.renderer.mbr.height = world.worldbuilder.collidebuilder.collisionindex.bounds.max.y = this.view.renderer.mbr.y;
 }
 
 PartyView.prototype.update = function(now, delta, game) {
     this.view.update(now, delta, game.world);
 }
 
+PartyView.prototype.reset = function() {
+    this.view.reset();
+    this.render = false;
+    this.view.renderer.mbr.width = 0;
+    this.view.renderer.mbr.height = 0;
+    this.rendercount = 0;
+}
+
 PartyView.prototype.render = function(now, game) { 
 
     var world = game.world;
+
+    
+    //
+    // TODO: Fix camera swimmyness when changing levels...
+    //
+    
+    var render = false;
     this.view.renderer.mbr = world.players.getMbr(this.view.renderer.mbr);
+    if (this.view.renderer.mbr && this.view.renderer.mbr.width && this.view.renderer.mbr.height) {
+        if (this.rendercount++ >= this.renderwait) {
+            render = true;
+        }
+    }
 
     var offx = this.offset.x;
     this.view.renderer.mbr.x -= offx;
@@ -104,7 +132,7 @@ PartyView.prototype.render = function(now, game) {
     this.view.renderer.mbr.z -= offz;
     this.view.renderer.mbr.depth += offz;
     
-    this.view.render(now, world);
+    this.view.render(now, world, render);
 }
 
 PartyView.prototype.setMessage = function(message) { }

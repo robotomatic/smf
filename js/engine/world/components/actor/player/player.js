@@ -38,6 +38,16 @@ function Player(id, name, color, x, y, z, width, height, speed, character, hp, l
 }
 
 
+Player.prototype.pause = function(when) { 
+    this.controller.pause(when);
+    this.character.pause(when);
+}
+
+Player.prototype.resume = function(when) { 
+    this.controller.resume(when);
+    this.character.resume(when);
+}
+
 Player.prototype.loadJson = function(json) { 
     for (var key in json) this[key]= json[key]; 
     return this;
@@ -74,6 +84,7 @@ Player.prototype.respawn = function(x, y, z) {
 Player.prototype.reset = function() {
     this.info.reset();
     this.collider.reset();
+    this.camera.reset();
 }
 
 Player.prototype.resetCollisions = function() {
@@ -128,7 +139,7 @@ Player.prototype.update = function(now, delta, physics) {
     var dir = this.controller.getDirection(now);
     var state = this.controller.getState(now, dir);
     if (state == "idle") this.controller.idle(now);
-    this.character.update(now, dir, state);
+    this.character.update(now, this, dir, state);
     this.collider.updateCollisionBox(this);
     updateDevPlayer(this);
 }

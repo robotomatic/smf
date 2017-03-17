@@ -30,6 +30,12 @@ CharacterAnimationManager.prototype.reset = function(name, animation) {
     this.lerp = null;
 }
 
+CharacterAnimationManager.prototype.pause = function(now) {
+}
+
+CharacterAnimationManager.prototype.resume = function(now) {
+    this.lastRender = now;
+}
 
 CharacterAnimationManager.prototype.start = function(now, indexchar) {
     this.lastRender = now;

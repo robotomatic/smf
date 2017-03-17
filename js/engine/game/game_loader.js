@@ -2,8 +2,9 @@
 
 function GameLoader() {
     this.callback;
+
     this.levels;
-    
+    this.levelkeys;
     this.level;
     
     this.themes;
@@ -19,6 +20,7 @@ function GameLoader() {
 GameLoader.prototype.reset = function() {
     this.callback = null;
     this.levels = null;
+    this.levelkeys = null;
     this.level = null;
     this.themes = null;
     this.players = null;
@@ -97,6 +99,7 @@ GameLoader.prototype.loadLevelsFile = function(file, callback) {
 
 GameLoader.prototype.loadLevels = function(data, callback) {
     this.levels = new Levels().loadJson(data);
+    this.levelkeys = Object.keys(this.levels);
     benchmark("levels loaded");
     if (callback) callback();
 }

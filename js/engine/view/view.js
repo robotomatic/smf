@@ -35,6 +35,10 @@ function View(id, width, height, scale) {
     this.createView();
 }
 
+View.prototype.reset = function(when) { 
+    this.ready = false;
+}
+
 View.prototype.setBlur = function(amount) { 
     this.blur = amount > 0 ? true : false;
     this.bluramount = amount;
@@ -232,9 +236,9 @@ View.prototype.setMessage = function(message) { }
 View.prototype.updateUI = function() {
 }
 
-View.prototype.render = function(now, world) {
+View.prototype.render = function(now, world, render) {
     this.setBackground(world);
-    this.renderer.render(now, world, this.view, this.graphics);
+    this.renderer.render(now, world, this.view, this.graphics, render);
     this.renderFPS();
 }
 

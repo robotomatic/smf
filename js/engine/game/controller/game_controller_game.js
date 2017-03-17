@@ -5,7 +5,6 @@ function GameControllerGame(gamecontroller, gamesettings, levelsettings, players
     this.input = this.gamecontroller.input;
     this.loop = new GameLoop(this.input);
     this.gameloader = this.gamecontroller.gameloader;
-    this.level = null;
     this.levelname = "";
     this.players = null;
     this.gamesettings = gamesettings;
@@ -20,14 +19,12 @@ function GameControllerGame(gamecontroller, gamesettings, levelsettings, players
     this.scale = 0;
     this.device = "";
     this.gamequality = new GameQuality(this, 1);
-    
-    this.load();
     return this;
 }
 
 GameControllerGame.prototype.getSettings = function() { return this.settings; }
 
-GameControllerGame.prototype.load = function() {
+GameControllerGame.prototype.load = function(callback) {
     var controller = this;
     var level = this.gameloader.levels[this.levelsettings.levelname];
     if (level) {
@@ -37,17 +34,20 @@ GameControllerGame.prototype.load = function() {
         level = this.gameloader.levels[k[0]];
         this.levelname = k[0];
     }
-    benchmark("load level - start", "level");
-    this.gameloader.loadLevelFile(level.file, function() {
-        benchmark("load level - end", "level");
-        controller.loadLevel();
-    });
+    this.loadLevel(level, this.levelname, callback);
 }
 
-GameControllerGame.prototype.loadLevel = function() {
+GameControllerGame.prototype.loadLevel = function(level, name, callback) {
+    this.levelname = name;
+    var controller = this;
+    this.gameloader.loadLevelFile(level.file, function() {
+        controller.loadLevelLevel(controller.gameloader.level, controller.levelname);
+        if (callback) callback();
+    });
+}
     
-    this.level = this.gameloader.level;
-    
+GameControllerGame.prototype.loadLevelLevel = function(level, name, callback) {
+    benchmark("load level: " + this.levelname);
     var themes = this.gameloader.levels[this.levelname].themes;
     if (themes) {
         var themkeys = Object.keys(themes);
@@ -56,8 +56,12 @@ GameControllerGame.prototype.loadLevel = function() {
             this.loop.loadTheme(themename, this.gameloader.themes.themes[themename], this.gameloader.materials);
         }
     }
+    this.loop.loadLevel(level);
+}
     
-    this.loop.loadLevel(this.level);
+GameControllerGame.prototype.loadPlayers = function() {
+    
+    benchmark("load players - start", "players");
     
     this.players = new Players();
     var charnames = Object.keys(this.gameloader.characters.characters);
@@ -103,8 +107,8 @@ GameControllerGame.prototype.loadLevel = function() {
         
         var spacing = 200;
         
-        var x = (this.level.width / 2 - (spacing * (playertotal / 2))) + (spacing * i);
-        var y = 10;
+        var x = 0;
+        var y = 0;
         var z = 0;
         var width = character.width;
         var height = character.height;
@@ -120,16 +124,13 @@ GameControllerGame.prototype.loadLevel = function() {
         var pc = new Player(i, name, color, x, y, z, width, height, speed, char, hp, this);
         if (i == 0) pc.getscamera = true;
         
-        if (this.level.speed) pc.controller.speed = this.level.speed;
-        if (this.level.jumpspeed) pc.controller.jumpspeed = this.level.jumpspeed;
-        
         this.players.addPlayer(pc);
         
         playertotal++;
     }
     
     if (playertotal > 1) {
-        setFOV(this.fov + 100);
+//        setFOV(this.fov + 100);
     }
 
     this.players.shadow.draw = false;
@@ -137,25 +138,21 @@ GameControllerGame.prototype.loadLevel = function() {
     
     this.loop.loadPlayers(this.players);
     
+    benchmark("load players - end", "players");
+}
+
+GameControllerGame.prototype.loadViews = function() {
     this.loop.hideViews();
-    
     var w = this.width;
     var h = this.height;
     var s = this.scale;
-    
     this.view = new PartyView("game-canvas", w, h, s);
     this.loop.loadViews(new Array(this.view));
-    
-    if (!this.running && this.started) {
-        this.resize();
-        this.start();
-    }
+    this.view.initialize(this.loop.game.world);
 }
-
 
 GameControllerGame.prototype.start = function() {
     this.started = true;
-    if (!this.level) return;
     this.gamecontroller.initDebug();
     this.loop.start();
     this.loop.showViews();
@@ -167,6 +164,22 @@ GameControllerGame.prototype.startPlayers = function() {
     for (var i = 0; i < this.players.players.length; i++) {
         this.loop.game.world.worldcollider.resetPlayer(this.players.players[i], 1);
     }
+}
+
+GameControllerGame.prototype.reset = function() {
+    this.loop.reset(timestamp());
+}
+
+GameControllerGame.prototype.run = function(when) {
+    this.loop.run(when);
+}
+
+GameControllerGame.prototype.pause = function(when, render) {
+    this.loop.pause(when, render);
+}
+
+GameControllerGame.prototype.resume = function(when) {
+    this.loop.resume(when);
 }
 
 GameControllerGame.prototype.stop = function() {

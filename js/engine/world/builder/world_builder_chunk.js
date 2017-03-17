@@ -15,6 +15,7 @@ WorldBuilderChunk.prototype.chunk = function(world) {
     var chunksize = this.chunksize;
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
+        if (!item.parts) continue;
         if (item.draw === false) continue;
         if (item.width == "100%" || item.height == "100%" || item.depth == "100%") continue;
         items = this.chunkItem(items, item, chunksize);
@@ -43,6 +44,7 @@ WorldBuilderChunk.prototype.chunkItemX = function(items, item, chunksize) {
     var ttt = floor(newt);
     var leftover = newt - ttt;
     for (var i = 1; i < ttt; i++) {
+        if (!item.parts) continue;
         var newitem = item.clone();
         newitem.x = item.x + chunksize.width * i;
         var newparts = new Array();
@@ -101,6 +103,7 @@ WorldBuilderChunk.prototype.chunkItemY = function(items, item, chunksize) {
     var ttt = floor(newt);
     var leftover = newt - ttt;
     for (var i = 1; i < ttt; i++) {
+        if (!item.parts) continue;
         var newitem = item.clone();
         newitem.dotheme = false;
         newitem.y = item.y + (chunksize.height * i);

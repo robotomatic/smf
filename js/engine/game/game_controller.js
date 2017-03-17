@@ -6,6 +6,7 @@ function GameController() {
     this.ignorefade = true;
     this.gameloader = new GameLoader();
     this.game = null;
+    this.paused = false;
     var controller = this;
     window.onbeforeunload = function (e) { 
         if (controller.game && controller.gamesettings) controller.saveGameSettings();
@@ -119,7 +120,11 @@ GameController.prototype.showGameParty = function(data) {
                 var levelsettings = controller.gamesettings.getSettings("menu-level-chooser");
                 var playersettings = controller.gamesettings.getSettings("menu-player-chooser");
                 controller.game = new GameControllerGame(controller, gamesettings, levelsettings, playersettings);
-                controller.start();
+                controller.game.load(function() {
+                    controller.game.loadPlayers();
+                    controller.game.loadViews();
+                    controller.start();
+                });
             }
         );
     });
@@ -174,8 +179,30 @@ GameController.prototype.resize = function() {
 
 GameController.prototype.run = function(now) {
     if (!this.game) return;
-    if (!Array.isArray(this.game)) { if (this.game.loop) this.game.loop.run(now); }
-    else { for (var i = 0; i < this.game.length; i++) this.game[i].loop.run(now); }
+    if (!Array.isArray(this.game)) { if (this.game.loop) this.game.run(now); }
+    else { for (var i = 0; i < this.game.length; i++) this.game[i].run(now); }
+}
+
+GameController.prototype.pause = function(now) {
+    if (this.paused) return;
+    if (!this.game) return;
+    if (!Array.isArray(this.game)) { if (this.game.loop) this.game.pause(now); }
+    else { for (var i = 0; i < this.game.length; i++) this.game[i].pause(now); }
+    logDev("");
+    logDev("Pause : " + round(now));
+    logDev("");
+    this.paused = true;
+}
+
+GameController.prototype.resume = function(now) {
+    if (!this.paused) return;
+    if (!this.game) return;
+    logDev("");
+    logDev("Resume : " + round(now));
+    logDev("");
+    if (!Array.isArray(this.game)) { if (this.game.loop) this.game.resume(now); }
+    else { for (var i = 0; i < this.game.length; i++) this.game[i].resume(now); }
+    this.paused = false;
 }
 
 //GameController.prototype.render = function(now) {

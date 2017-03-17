@@ -8,6 +8,7 @@ var dev_level = null;
 var dev_render = null;
 var dev_hsr = null;
 var dev_collision = null;
+var dev_pause = null;
 
 var gamepads = null;
 
@@ -21,6 +22,12 @@ function initializeDevDebug() {
     dev_overlay.onclick = function() {
         toggleOverlay();
     };
+    
+    dev_pause = document.getElementById("dev-debug-pause");
+    dev_pause.onclick = function() {
+        debugPause();
+    };
+    
     dev_player = document.getElementById("dev-debug-player");
     dev_player.onchange = function() {
         setDebugPlayers(this.checked);
@@ -99,6 +106,22 @@ function updateDevDebugOverlay() {
     var hide = gp.className.indexOf("hidden-all") > -1;
     dev_overlay.checked = hide;
 }
+
+function debugPause() {
+    
+    if (!__dev) return;
+    
+    var paused = controller.paused;
+    if (paused) {
+        controller.resume(timestamp());
+        dev_pause.value = "Pause";
+    } else {
+        controller.pause(timestamp());
+        dev_pause.value = "Play";
+    }
+}
+
+
 
 function setDebugPlayers(debug) {
     

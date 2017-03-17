@@ -46,6 +46,7 @@ function PlayerController(player, x, y, z, width, height, speed) {
 
     this.move_left = false;
     this.move_right = false;
+    
     this.lastMoveLeft;
     this.lastMoveRight;
     this.lastDirection;
@@ -75,7 +76,10 @@ function PlayerController(player, x, y, z, width, height, speed) {
 
     this.idle_timeout = 0;
     this.idle_start = null;
+    
     this.paused = false;
+    this.pausedleft = false;
+    this.pausedright = false;
 
     this.lastwhen = null;
 }
@@ -111,11 +115,22 @@ PlayerController.prototype.stop = function() {
     this.velZ = 0;
 }
 
-PlayerController.prototype.pause = function(p) {
+PlayerController.prototype.pause = function(when) {
     this.stop();
-    this.paused = p;
+    this.paused = true;
+    if (this.isLookingLeft) this.pausedleft = true;
+    else if (this.isLookingRight) this.pausedright = true;
+    else {
+        this.pausedleft = false;
+        this.pausedright = false;
+    }
 }
 
+PlayerController.prototype.resume = function(when) {
+    this.paused = false;
+    if (this.pausedleft) this.lastMoveLeft = when;
+    else if (this.pausedRight) this.lastMoveRight = when;
+}
 
 PlayerController.prototype.moveTo = function(where) {
     if (where.x) this.x += where.x;

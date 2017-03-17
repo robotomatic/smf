@@ -12,10 +12,19 @@ function NPC(player) {
     this.busy = false;
 }
 
+NPC.prototype.reset = function(when) {
+    this.action = null;
+    this.callback = null;
+    this.busy = false;
+}
+
+
 NPC.prototype.doActionTimeout = function(action, start, end, when) {
     this.player.controller.lookStop();
     this.player.controller[action](start);
     var p = this.player;
+    
+    // todo: don't like this. keep a time delta instead.
     setTimeout(function() {
         p.controller[action](end);
     }, when);

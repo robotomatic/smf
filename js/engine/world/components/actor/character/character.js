@@ -46,9 +46,23 @@ Character.prototype.setRenderer = function(renderer) {
     this.renderer = renderer;
 }
 
-Character.prototype.update = function(now, direction, state)  { 
+Character.prototype.pause = function(now)  { 
+    this.paused = true;
+}
+
+Character.prototype.resume = function(now)  { 
+    this.paused = false;
+}
+
+Character.prototype.update = function(now, player, direction, state)  { 
     this.direction = direction;
     this.state = state;
+    if (!this.paused) {
+        if (this.emitter && player.box) {
+            if (!this.emitter.alive) this.emitter.alive = true;
+            this.emitter.update(player.box.x, player.box.y, player.box.width / this.width);
+        }
+    }
 }
 
 Character.prototype.translate = function(dx, dy, leftright, updown)  { 
@@ -56,10 +70,11 @@ Character.prototype.translate = function(dx, dy, leftright, updown)  {
 }
 
 Character.prototype.draw = function(now, ctx, player, px, py, scale, pad, debug)  { 
-    this.animator.animate(now, this);
+    if (!this.paused) {
+        this.animator.animate(now, this);
+    }
     if (this.emitter) {
-        if (!this.emitter.alive) this.emitter.alive = true;
-        this.emitter.update(px + pad, py + pad, player.box.width / this.width, ctx);
+        this.emitter.render(px + pad, py + pad, player.box.width / this.width, ctx);
     }
     this.mbr.x = px + pad;
     this.mbr.y = py + pad;

@@ -41,6 +41,7 @@ function initializeDev(game) {
     initializeDevDebug();
     initializeDevSize();
     initializeDevCamera();
+    initializeDevWorld();
     initializeDevPlayers();
     initializeDevPlayer();
     resizeDev();

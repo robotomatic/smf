@@ -26,6 +26,11 @@ function WorldCollider() {
     
 }
 
+WorldCollider.prototype.reset = function() {
+    this.colliders.length = 0;
+    this.collider = new Collider();
+}
+
 WorldCollider.prototype.addCollider = function(c) {
     this.colliders.push(c);
 //    this.addColliderIndex(c);
@@ -178,10 +183,17 @@ WorldCollider.prototype.collideItemPart = function(player, item, part, width, he
 }
 
 
+WorldCollider.prototype.resetPlayers = function(players) {
+    if (!players) return;
+    var t = players.length;
+    for (var i = 0; i < t; i++) {
+        this.resetPlayer(players[i]);
+    }
+}
 
 
 
-WorldCollider.prototype.resetPlayer = function(player, timeout) {
+WorldCollider.prototype.resetPlayer = function(player) {
     player.controller.stop();
     var t = this.colliders.length;
     if (t == 0) return;

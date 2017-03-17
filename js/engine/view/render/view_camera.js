@@ -42,6 +42,8 @@ function ViewCamera() {
         }
     }
     
+    this.fit = false;
+    
     this.center = geometryfactory.getPoint(0, 0);
     this.center.z = 0;
     this.lastview = null;
@@ -101,9 +103,9 @@ ViewCamera.prototype.isShaking = function() {
     return this.shake.elapsed < this.shake.duration;
 }
 
-ViewCamera.prototype.getView = function(now, mbr, width, height) {
+ViewCamera.prototype.getView = function(now, mbr, width, height, keepview) {
     mbr = this.scaleMbr(mbr, width, height);
-    mbr = this.getCameraBox(mbr);
+    mbr = this.getCameraBox(mbr, keepview);
     mbr = this.getCenterPoint(now, mbr);
     return mbr;
 }
@@ -191,9 +193,9 @@ ViewCamera.prototype.reset = function() {
     this.lastview = null;
 }
     
-ViewCamera.prototype.getCameraBox = function(mbr) {
+ViewCamera.prototype.getCameraBox = function(mbr, keepview) {
 
-    if (!this.lastview) {
+    if (!this.lastview || !keepview) {
         this.lastview = {
             x : mbr.x,
             y : mbr.y,

@@ -5,9 +5,10 @@ function MenuView(id, width, height, scale) {
     this.ready = false;
     var controller = this;
     this.view.parent.onclick = function() {
+        if (controller.paused) return;
         window.location.hash="#game";
     }
-    this.follow = true;
+    this.follow = false;
     this.offset = {
         x : 0,
         y : 0,
@@ -65,7 +66,7 @@ MenuView.prototype.renderStatic = function(now, game) {
     var vd = vh - this.view.renderer.mbr.height;
     var vy = vd / 2;
     this.view.renderer.mbr.y = -vy;
-    this.view.render(now, world);
+    this.view.render(now, world, true);
 }
 
 MenuView.prototype.renderFollow = function(now, game) { 
@@ -100,6 +101,11 @@ MenuView.prototype.update = function(now, delta, game) {
         var npc = world.npcs.npcs[i];
         this.updateNPC(world, npc);
     }
+}
+
+
+MenuView.prototype.reset = function() {
+    this.view.reset();
 }
 
 MenuView.prototype.updateNPC = function(world, npc) {

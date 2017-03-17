@@ -14,6 +14,12 @@ NPCs.prototype.doAction = function(action, args, key, val, callback, playercallb
     }
 }
 
+NPCs.prototype.reset = function(when) {
+    for (var i = 0; i < this.npcs.length; i++)  {
+        this.npcs[i].reset(when);
+    }
+}
+    
 NPCs.prototype.update = function(when, delta) {
     var docallback = true;
     for (var i = 0; i < this.npcs.length; i++) {

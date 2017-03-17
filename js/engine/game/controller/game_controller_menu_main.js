@@ -164,6 +164,18 @@ GameControllerMenuMain.prototype.start = function() {
     this.running = true;
 }
 
+GameControllerMenuMain.prototype.run = function(when) {
+    this.loop.run(when);
+}
+
+GameControllerMenuMain.prototype.pause = function(when) {
+    this.loop.pause(when);
+}
+
+GameControllerMenuMain.prototype.resume = function(when) {
+    this.loop.resume(when);
+}
+
 GameControllerMenuMain.prototype.stop = function() {
     this.loop.stop();
     this.running = false;

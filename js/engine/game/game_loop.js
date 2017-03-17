@@ -7,6 +7,8 @@ function GameLoop(input) {
     this.now = null;
     this.last = null;
 
+    this.paused = false;
+    
     this.stepspeed = 60;
     this.step = 1000 / this.stepspeed;
     
@@ -41,12 +43,25 @@ GameLoop.prototype.resize = function() {
 }
 
 GameLoop.prototype.start = function() {
-    this.game.init();
     this.running = true;
     this.run();
 }
+
 GameLoop.prototype.stop = function() {
     this.running = false;
+}
+
+GameLoop.prototype.pause = function(when) {
+    this.paused = true;
+    this.game.pause(when);
+    this.gameperformance.pauseStart(when);
+}
+
+GameLoop.prototype.resume = function(when) {
+    this.paused = false;
+    this.last = when;
+    this.game.resume(when);
+    this.gameperformance.pauseEnd(when);
 }
 
 GameLoop.prototype.run = function(now) {
@@ -54,8 +69,10 @@ GameLoop.prototype.run = function(now) {
     if (!now) return;
     this.gameperformance.loopStart(now);
     geometryfactory.reset();
-    if (this.steprender) this.runStep(now);
-    else this.runUpdate(now);
+    if (!this.paused) {
+        if (this.steprender) this.runStep(now);
+        else this.runUpdate(now);
+    }
     this.render(timestamp());
     this.gameperformance.loopEnd(now);
 }

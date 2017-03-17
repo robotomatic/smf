@@ -39,6 +39,11 @@ Level.prototype.loadJson = function(json) {
     return this;
 }
 
+Level.prototype.reset = function() { 
+    this.layers.length = 0;
+    this.layerkeys.length = 0;
+}
+
 Level.prototype.loadLayers = function(layers) { 
     for (var layername in layers) {
         this.layers.push(new Layer().loadJson(layers[layername]));

@@ -24,12 +24,12 @@ function WorldColliderIndex() {
 
 WorldColliderIndex.prototype.checkBounds = function(c) {
     if (c.width == "100%" || c.height == "100%" || c.depth == "100%") return;
-    if (!this.bounds.minx || c.x < this.bounds.minx) this.bounds.minx = c.x;
-    if (!this.bounds.maxx || c.x > this.bounds.maxx) this.bounds.maxx = c.x;
-    if (!this.bounds.miny || c.y < this.bounds.miny) this.bounds.miny = c.y;
-    if (!this.bounds.maxy || c.y > this.bounds.maxy) this.bounds.maxy = c.y;
-    if (!this.bounds.minz || c.z < this.bounds.minz) this.bounds.minz = c.z;
-    if (!this.bounds.maxz || c.z > this.bounds.maxz) this.bounds.maxz = c.z;
+    if (!this.bounds.min.x || c.x < this.bounds.min.x) this.bounds.min.x = c.x;
+    if (!this.bounds.max.x || c.x > this.bounds.max.x) this.bounds.max.x = c.x;
+    if (!this.bounds.min.y || c.y < this.bounds.min.y) this.bounds.min.y = c.y;
+    if (!this.bounds.max.y || c.y > this.bounds.max.y) this.bounds.max.y = c.y;
+    if (!this.bounds.min.z || c.z < this.bounds.min.z) this.bounds.min.z = c.z;
+    if (!this.bounds.max.z || c.z > this.bounds.max.z) this.bounds.max.z = c.z;
 }
 
 

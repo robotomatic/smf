@@ -15,12 +15,17 @@ Game.prototype.setViews = function(views) {
     return this.views; 
 }
 
-Game.prototype.init = function(now) { 
-    this.world.init();
+Game.prototype.pause = function(now) { 
+    this.world.pause(now);
+}
+
+Game.prototype.resume = function(now) { 
+    this.world.resume(now);
 }
 
 Game.prototype.update = function(now, delta) { 
     this.world.update(now, delta);
+    updateDevWorld(this.world);
     if (!this.views) return;
     var t = this.views.length;
     for (var i = 0; i < t; i++) {
@@ -46,6 +51,12 @@ Game.prototype.fps = function(type, fps, avg) {
 
 Game.prototype.reset = function(now) {
     this.world.reset(now);
+    if (this.views) {
+        var t = this.views.length;
+        for (var i = 0; i < t; i++) {
+            this.views[i].view.reset(); 
+        }
+    }
     benchmark("world reset");
 }
 

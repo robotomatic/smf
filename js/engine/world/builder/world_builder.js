@@ -12,7 +12,6 @@ function WorldBuilder() {
 }
 
 WorldBuilder.prototype.buildWorld = function(now, world) {
-    benchmark("build world - start", "build");
     
     this.itembuilder.buildWorld(world);
     benchmark("build world - items");
@@ -49,5 +48,4 @@ WorldBuilder.prototype.buildWorld = function(now, world) {
     // TODO: Build render stack here too?
     //
     
-    benchmark("build world - end", "build");
 }

@@ -48,21 +48,8 @@ GamePerformance.prototype.getFPS = function (when) {
     this.avg = clamp(this.total / this.count);
 }
 
-GamePerformance.prototype.tick = function(when) {
-//    this.nt += 1;
-//    if (this.lt) {
-//        this.tps = this.calculateFPS(when, this.lt);
-//        this.ttps += this.tps;
-//        this.atps = this.calculateAverageFPS(this.ttps, this.nt);
-//    }
-//    this.lt = when;
-//    this.logFPS("tick", this.tps, this.atps);
-}
-
-
-
-GamePerformance.prototype.loopStart = function(when) {
-}
+GamePerformance.prototype.tick = function(when) {}
+GamePerformance.prototype.loopStart = function(when) {}
 
 GamePerformance.prototype.loopEnd = function(when) {
     this.getFPS(timestamp());
@@ -70,62 +57,18 @@ GamePerformance.prototype.loopEnd = function(when) {
 }
 
 
-
-
-GamePerformance.prototype.updateStart = function(when) {
-//    this.nu += 1;
-//    if (this.lu) {
-//        this.ups = this.calculateFPS(when, this.lu);
-//        this.tups += this.ups;
-//        this.aups = this.calculateAverageFPS(this.tups, this.nu);
-//    }
-//    this.lu = when;
-//    this.logFPS("update", this.ups, this.aups);
-}
-
-GamePerformance.prototype.updateEnd = function(when) {
-}
-
-
-
-
-GamePerformance.prototype.renderStart = function(when) {
-//    this.nr += 1;
-//    if (this.lr) {
-//        this.rps = this.calculateFPS(when, this.lr);
-//        this.trps += this.rps;
-//        this.arps = this.calculateAverageFPS(this.trps, this.nr);
-//    }
-//    this.lr = when;
-//    this.logFPS("render", this.rps, this.arps);
-}
-
-GamePerformance.prototype.renderEnd = function(when) {
-}
-
-
-
-
-
-
-GamePerformance.prototype.calculateFPS = function(when, last) {
-//    return 1000 / (when - last); 
-}
-
-GamePerformance.prototype.calculateAverageFPS = function(fps, num) {
-//    return fps / num;
-}
-
-GamePerformance.prototype.logFPS = function(type, fps, avg) {
-//    if (!__dev) return;
-//    this.game.fps(type, fps, avg);
-}
+GamePerformance.prototype.updateStart = function(when) {}
+GamePerformance.prototype.updateEnd = function(when) {}
+GamePerformance.prototype.renderStart = function(when) {}
+GamePerformance.prototype.renderEnd = function(when) {}
 
 GamePerformance.prototype.reset = function(when) {
-//    logDev();
-//    logDev("Reset Graphics ---> " + when);
-//    logDev();
+    this.start = when;
 }
 
+GamePerformance.prototype.pauseStart = function(when) {
+}
 
-
+GamePerformance.prototype.pauseEnd = function(when) {
+    this.start = when;
+}
