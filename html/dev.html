@@ -1,8 +1,9 @@
-<div id="dev" class="dialog shadow hidden">
+<div id="dev" class="toolbar shadow hidden">
     <div id="dev-toolbar-title" class="dialog-toolbar">
         <div id="dev-toolbar-tools" class="dev-toolbar-tools">
             <a class="float-left dev-toolbar-tools-tool pad-left-small" id="dev-tools-world">World</a>
             <a class="float-left dev-toolbar-tools-tool pad-left-small" id="dev-tools-players">Players</a>
+            <a class="float-left dev-toolbar-tools-tool pad-left-small" id="dev-tools-meta">Meta</a>
             <a class="float-left dev-toolbar-tools-tool" id="dev-tools-debug">Debug</a>
             <a class="float-left dev-toolbar-tools-tool" id="dev-tools-size">Size</a>
             <a class="float-left dev-toolbar-tools-tool" id="dev-tools-camera">Camera</a>
@@ -26,7 +27,7 @@
     <div class="dialog-wrap">
         <div class="dialog-row dialog-row-border">
             <div class="dialog-check">
-                <label class="text-left float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-overlay" value="Overlay"> Show Gamepad Overlay</label>
+                <label class="text-left dialog-label-pad-top-small float-left"><input type="checkbox" class="dialog-toggle float-left" id="dev-overlay" value="Overlay"> Show Gamepad Overlay</label>
             </div>
             
             <input type="button" class="float-right text-center dialog-input-button" id="dev-debug-pause" value="Pause">
@@ -89,11 +90,8 @@
             <input type="number" class="dialog-input float-left text-right" id="dev-view-width" value="" placeholder="Width">
             <p class="text-left float-left dialog-input-label"> x </p>
             <input type="number" class="dialog-input float-left text-right" id="dev-view-height" value="" placeholder="Height">
-        </div>
-        <div class="dialog-row">
-            <label class="text-left float-left  dialog-label-short">Ratio :</label> 
-            <input type="number" class="dialog-input float-left text-right" id="dev-view-ratio" value="" placeholder="Ratio">
-            <p class="text-left float-left dialog-input-label"> : 1</p>
+            <input type="number" class="dialog-input float-right text-right" id="dev-view-ratio" value="" placeholder="Ratio">
+            <label class="text-center float-right  dialog-label-short">Ratio :</label> 
         </div>
     </div>
 </div>
@@ -111,61 +109,60 @@
         <div class="dialog-row">
             <label class="text-left float-left dialog-label-short">Offset X :</label>
             <input type="range" class="float-left dialog-input-range" id="dev-camera-offset-x-amount-range" min="-500" max="500">
-            <input type="number" class="float-right text-right dialog-input-small" id="dev-camera-offset-x-amount" min="-500" max="500">
+            <input type="number" class="float-right text-right dialog-input dialog-input-small" id="dev-camera-offset-x-amount" min="-500" max="500">
         </div>
         <div class="dialog-row">
             <label class="text-left float-left dialog-label-short">Offset Y :</label>
             <input type="range" class="float-left dialog-input-range" id="dev-camera-offset-y-amount-range" min="-500" max="500">
-            <input type="number" class="float-right text-right dialog-input-small" id="dev-camera-offset-y-amount" min="-500" max="500">
+            <input type="number" class="float-right text-right dialog-input dialog-input-small" id="dev-camera-offset-y-amount" min="-500" max="500">
         </div>
         <div class="dialog-row dialog-row">
             <label class="text-left float-left dialog-label-short">Offset Z :</label>
             <input type="range" class="float-left dialog-input-range" id="dev-camera-offset-z-amount-range" min="-500" max="500">
-            <input type="number" class="float-right text-right dialog-input-small" id="dev-camera-offset-z-amount" min="-500" max="500">
+            <input type="number" class="float-right text-right dialog-input dialog-input-small" id="dev-camera-offset-z-amount" min="-500" max="500">
         </div>
         <div class="dialog-row dialog-row-border">
             <input type="button" class="float-left text-left dialog-input-button" id="dev-camera-offset-tight" value="Tight">
+            <input type="button" class="float-left text-left dialog-input-button" id="dev-camera-offset-cosy" value="Cosy">
             <input type="button" class="float-left text-left dialog-input-button" id="dev-camera-offset-comfy" value="Comfy">
             <input type="button" class="float-left text-left dialog-input-button" id="dev-camera-offset-loose" value="Loose">
         </div>
         <div class="dialog-row dialog-row-border">
             <label class="text-left float-left dialog-label">Follow Speed :</label>
-            <input type="number" class="float-left text-right dialog-input-small margin-left" id="dev-camera-follow-speed" min="1" max="10">
+            <input type="number" class="float-left text-right dialog-input dialog-input-small margin-left" id="dev-camera-follow-speed" min="1" max="10">
         </div>
         <div class="dialog-row dialog-row-border">
             <div class="dialog-check float-left">
                 <label class="text-left float-left">
-                    <input type="checkbox" class="dialog-toggle float-left" id="dev-camera-dof-blur-blur" value="Depth Of Field Blur" CHECKED> Depth Of Field Blur - Blur
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-camera-dof-blur-blur" value="Depth Of Field Blur" CHECKED> DOF Blur - Blur
                 </label>
             </div>
-            <div class="dialog-check float-left">
+            <div class="dialog-check float-right">
                 <label class="text-left float-left">
-                    <input type="checkbox" class="dialog-toggle float-left" id="dev-camera-dof-blur-shift" value="Depth Of Field Shift" CHECKED> Depth Of Field Blur - Shift
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-camera-dof-blur-shift" value="Depth Of Field Shift" CHECKED> DOF Blur - Shift
                 </label>
             </div>
         </div>
         <div class="dialog-row">
             <div class="dialog-check float-left">
                 <label class="text-left float-left">
-                    <input type="checkbox" class="dialog-toggle float-left" id="dev-camera-drift" value="Drift" CHECKED> Drift
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-camera-drift" value="Drift" CHECKED> ADHD Indie Camera Drift
                 </label>
-            </div>
-            <div class="dialog-check float-right">
-                <label class="text-left float-left dialog-label-short">Speed :</label>
-                <input type="number" class="float-left text-right dialog-input-small" id="dev-camera-drift-speed" min="0" max="10">
             </div>
         </div>
         <div class="dialog-row dialog-row-border">
             <label class="text-center float-left dialog-label-short">Min :</label>
-            <input type="number" class="float-left text-right dialog-input-small" id="dev-camera-drift-min" min="0" max="10">
+            <input type="number" class="float-left text-right dialog-input dialog-input-small" id="dev-camera-drift-min" min="0" max="10">
             
             <label class="text-center float-left dialog-label-short"> Max :</label>
-            <input type="number" class="float-left text-right dialog-input-small" id="dev-camera-drift-max" min="0" max="10">
+            <input type="number" class="float-left text-right dialog-input dialog-input-small" id="dev-camera-drift-max" min="0" max="10">
+            <input type="number" class="float-right text-right dialog-input dialog-input-small" id="dev-camera-drift-speed" min="0" max="10">
+            <label class="text-center float-right dialog-label-short">Speed :</label>
         </div>
         <div class="dialog-row">
             <label class="pad-top text-left float-left dialog-label-short">FOV :</label>
             <input type="range" class="float-left dialog-input-range" id="dev-fov-amount-range" min="0" max="1000">
-            <input type="number" class="float-right text-right dialog-input-small" id="dev-fov-amount" min="0" max="1000">
+            <input type="number" class="float-right text-right dialog-input dialog-input-small" id="dev-fov-amount" min="0" max="1000">
         </div>
     </div>
 </div>
@@ -261,24 +258,107 @@
 </div>
 
 
+<div id="dev-dialog-meta" class="dialog shadow hidden dialog-resize">
+
+    <div class="dialog-title dialog-drag">
+        <a id="dev-dialog-player-close" class="float-left dialog-title-close circle">x</a>
+        <a id="dev-dialog-player-title" class="float-right dialog-title-title">Meta</a>
+    </div>
+    
+    <div class="dialog-wrap resize-vertical resize-resize resize-resize-large">
+        
+        <div class="dev-body">
+            <div class="dialog-tab-list">
+                
+                <div class="dialog-tab-list-tabs">
+                    <a class="dialog-tab-list-tabs-tab dialog-tab-list-tabs-tab-selected" id="dialog-tab-list-tab-meta-levels" href="#">Levels</a>
+                    <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-meta-themes" href="#">Themes</a>
+                    <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-meta-materials" href="#">Materials</a>
+                    <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-meta-characters" href="#">Characters</a>
+                    <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-meta-animations" href="#">Animations</a>
+                </div>
+
+                <div class="dialog-tab-list-list">
+                    <div class="dialog-tab-list-list-tablist dialog-tab-list-list-tablist-selected" id="dialog-tab-list-list-meta-levels">
+                        <p class="dialog-tab-list-list-tablist-item">
+                            Levels
+                        </p>
+                    </div>
+                    <div class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-meta-themes">
+                        <p class="dialog-tab-list-list-tablist-item">
+                            Themes
+                        </p>
+                    </div>
+                    <div class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-meta-materials">
+                        <p class="dialog-tab-list-list-tablist-item">
+                            Materials
+                        </p>
+                    </div>
+                    <div class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-meta-characters">
+                        <p class="dialog-tab-list-list-tablist-item">
+                            Characters
+                        </p>
+                    </div>
+                    <div class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-meta-animations">
+                        <p class="dialog-tab-list-list-tablist-item">
+                            Animations
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-
-<div id="dev-dialog-world" class="dialog shadow hidden">
+<div id="dev-dialog-world" class="dialog shadow hidden dialog-resize">
+    
     <div class="dialog-title dialog-drag">
         <a id="dev-dialog-player-close" class="float-left dialog-title-close circle">x</a>
         <a id="dev-dialog-player-title" class="float-right dialog-title-title">World</a>
     </div>
-    <div class="dialog-wrap">
-
+    
+    <div class="dialog-wrap no-pad-bottom">
         <div class="dialog-row dialog-row-border">
             <label class="text-left float-left  dialog-label-short">Level :</label>
-            <select class="dialog-select float-left" id="dev-world-level" value="" placeholder="Level">
-            </select>
+            <select class="dialog-select float-left" id="dev-world-level" value="" placeholder="Level"></select>
         </div>
-        
-        
-        
-        
+    </div>
+
+    <div class="dialog-wrap no-pad-top resize-vertical resize-resize resize-resize-large">
+        <div class="dialog-tab-list">
+
+            <div class="dialog-tab-list-tabs">
+                <a class="dialog-tab-list-tabs-tab dialog-tab-list-tabs-tab-selected" id="dialog-tab-list-tab-world-physics" href="#">Physics</a>
+                <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-world-layers" href="#">Layers</a>
+                <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-world-items" href="#">Items</a>
+                <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-world-colliders" href="#">Colliders</a>
+            </div>
+
+            <div class="dialog-tab-list-list">
+                <div class="dialog-tab-list-list-tablist dialog-tab-list-list-tablist-selected" id="dialog-tab-list-list-world-physics">
+                    <p class="dialog-tab-list-list-tablist-item">
+                        Physics
+                    </p>
+                </div>
+                <div class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-world-layers">
+                    <p class="dialog-tab-list-list-tablist-item">
+                        Layers
+                    </p>
+                </div>
+                <div class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-world-items">
+                    <p class="dialog-tab-list-list-tablist-item">
+                        Items
+                    </p>
+                </div>
+                <div class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-world-colliders">
+                    <p class="dialog-tab-list-list-tablist-item">
+                        Colliders
+                    </p>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>

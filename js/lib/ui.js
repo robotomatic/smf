@@ -155,6 +155,17 @@ function goFullScreen() {
 
 
 
+function findChildrenByClassName(element, classname) {
+    var out = new Array();
+    var children = getAllDescendants(element);
+    for (var i = 0; i < children.length; i++) {
+        if (children[i].className.indexOf(classname) > -1) {
+            out.push(children[i]);
+        }
+    }
+    return out;
+}
+
 function findChildById(element, childid) {
     var child = null;
     var children = getAllDescendants(element);

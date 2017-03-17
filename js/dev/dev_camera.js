@@ -7,6 +7,7 @@ var dev_camera_offset_y_range = null;
 var dev_camera_offset_z_amount = null;
 var dev_camera_offset_loose = null;
 var dev_camera_offset_comfy = null;
+var dev_camera_offset_cosy = null;
 var dev_camera_offset_tight = null;
 var dev_camera_offset_z_range = null;
 var dev_camera_dof_blur_blur = null;
@@ -54,6 +55,10 @@ function initializeDevCamera() {
     dev_camera_offset_comfy = document.getElementById("dev-camera-offset-comfy");
     dev_camera_offset_comfy.onclick = function() {
         setDevCameraOffsetComfy();
+    };
+    dev_camera_offset_cosy = document.getElementById("dev-camera-offset-cosy");
+    dev_camera_offset_cosy.onclick = function() {
+        setDevCameraOffsetCosy();
     };
     dev_camera_offset_tight = document.getElementById("dev-camera-offset-tight");
     dev_camera_offset_tight.onclick = function() {
@@ -201,6 +206,17 @@ function setDevCameraOffsetComfy() {
     var vv = gamecontroller.game.loop.game.views[0];
     vv.view.renderer.camera.reset();
     vv.setCameraComfy();
+}
+
+function setDevCameraOffsetCosy() {
+    
+    if (!__dev) return;
+    
+    if (!gamecontroller || !gamecontroller.game) return;
+    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
+    var vv = gamecontroller.game.loop.game.views[0];
+    vv.view.renderer.camera.reset();
+    vv.setCameraCosy();
 }
 
 function setDevCameraOffsetTight() {

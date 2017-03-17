@@ -170,6 +170,14 @@ body {
     padding-left: 1em;
 }
 
+.no-pad-top {
+    padding-top: 0 !important;
+}
+
+.no-pad-bottom {
+    padding-bottom: 0 !important;
+}
+
 .margin-top {
     margin-top: 1em;
 }

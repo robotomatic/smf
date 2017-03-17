@@ -37,15 +37,47 @@ function initializeDev(game) {
             return false;
         };
     }
+
+    var devTabClick = function(e) {
+        var dlg = this.parentNode.parentNode;
+        var seltabs = findChildrenByClassName(dlg, "dialog-tab-list-tabs-tab-selected");
+        for (var i = 0; i < seltabs.length; i++) {
+            seltabs[i].className = seltabs[i].className.replace(" dialog-tab-list-tabs-tab-selected", "");
+        }    
+        this.className += " dialog-tab-list-tabs-tab-selected";
+        var sellists = findChildrenByClassName(dlg, "dialog-tab-list-list-tablist-selected");
+        for (var ii = 0; ii < sellists.length; ii++) {
+            var sellist = sellists[ii];
+            sellist.className = sellist.className.replace(" dialog-tab-list-list-tablist-selected", "");
+            sellist.className += " hidden";
+        }    
+        var tabid = this.id.replace("dialog-tab-list-tab-", "");
+        var tablist = document.getElementById("dialog-tab-list-list-" + tabid);
+        if (tablist) {
+            tablist.className = tablist.className.replace(" hidden", "");
+            tablist.className += " dialog-tab-list-list-tablist-selected";
+        }
+        e.stopPropagation()
+        e.preventDefault();
+        return false;
+    }
+    
+    var tabs = document.getElementsByClassName("dialog-tab-list-tabs-tab");
+    for (var i = 0; i < tabs.length; i++) {
+        tabs[i].addEventListener('click', devTabClick, false);
+    }    
     
     initializeDevDebug();
     initializeDevSize();
     initializeDevCamera();
+    initializeDevMeta();
     initializeDevWorld();
     initializeDevPlayers();
     initializeDevPlayer();
     resizeDev();
 }
+
+
 
 function resizeDev() {
     

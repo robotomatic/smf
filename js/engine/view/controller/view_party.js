@@ -22,10 +22,15 @@ function PartyView(id, width, height, scale) {
             y : -150,
             z : 25
         },
-        comfy : {
+        cosy : {
             x : 0,
             y : -50,
             z : 100
+        },
+        comfy : {
+            x : 0,
+            y : 100,
+            z : 150
         },
         loose : {
             x : 0,
@@ -42,30 +47,31 @@ function PartyView(id, width, height, scale) {
     this.view.renderer.camera.drift.enabled = true;
 }
 
-
 PartyView.prototype.setCameraLoose = function() {
-    this.offset.x = this.offset.loose.x;
-    this.offset.y = this.offset.loose.y;
-    this.offset.z = this.offset.loose.z;
-    this.offset.name = "loose";
-    updateDevViewCameraOffset(this);
+    this.setCameraZoom("loose");
 }
 
 PartyView.prototype.setCameraComfy = function() {
-    this.offset.x = this.offset.comfy.x;
-    this.offset.y = this.offset.comfy.y;
-    this.offset.z = this.offset.comfy.z;
-    this.offset.name = "Comfy";
-    updateDevViewCameraOffset(this);
+    this.setCameraZoom("comfy");
+}
+
+PartyView.prototype.setCameraCosy = function() {
+    this.setCameraZoom("cosy");
 }
 
 PartyView.prototype.setCameraTight = function() {
-    this.offset.x = this.offset.tight.x;
-    this.offset.y = this.offset.tight.y;
-    this.offset.z = this.offset.tight.z;
-    this.offset.name = "tight";
+    this.setCameraZoom("tight");
+}
+
+PartyView.prototype.setCameraZoom = function(name) {
+    if (!this.offset[name]) return;
+    this.offset.x = this.offset[name].x;
+    this.offset.y = this.offset[name].y;
+    this.offset.z = this.offset[name].z;
+    this.offset.name = "name";
     updateDevViewCameraOffset(this);
 }
+
 
 PartyView.prototype.view;
 PartyView.prototype.resizeText = function() { this.view.resizeText(); }

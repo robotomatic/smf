@@ -1,4 +1,4 @@
-.dialog {
+.toolbar, .dialog  {
     position: absolute;
     z-index: 999;
     width: auto;
@@ -7,6 +7,10 @@
     font-size: .8em;
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.25)    
+}
+
+.dialog {
+    width: 28em;
 }
 
 .dialog-toolbar {
@@ -51,12 +55,14 @@
 .dialog-wrap {
     clear: both;
     float: left;
-    width: 20em;
-    padding: 1em;
+    width: 92%;
+    padding: 1em 4% 1em 4%;
     height: auto;
     overflow: hidden;
     position: relative;
 }
+
+
 
 .dialog-wrap.resize {
 /*    height: 5em;*/
@@ -73,7 +79,7 @@
 }
 
 .dialog-wrap.resize-resize-large {
-    height: 10em;
+    height: 18em;
 }
 
 .dialog-row {
@@ -121,6 +127,9 @@
     margin-right: .5em;
 }
 
+.dialog-label-pad-top-small {
+    padding-top: .3em;
+}
 
 .dialog-input-label {
     margin: 0;
@@ -130,6 +139,11 @@
 
 .dialog-input {
     width: 4em;
+    margin-top: -.2em;
+}
+
+.dialog-input-small {
+    width: 3em;
 }
 
 .dialog-input-short {
@@ -138,12 +152,9 @@
     margin-top: -.25em;
 }
 
-.dialog-input-small {
-    width: 3em;
-}
-
 .dialog-input-range {
     margin: 0 1em 0 1em;
+    width: 15em;
 }
 
 .dialog-input-button {
@@ -153,7 +164,7 @@
     background-color: rgba(32, 32, 33, 0.35);
     border: 1px solid #7b7b7b;
     color: white;
-    padding: .2em .1em .2em .1em;
+    padding: .4em;
     cursor: pointer;
 }
 
@@ -182,13 +193,75 @@
 }
 
 .dialog-check-small {
-    width: 6.6em;
+    width: 7.5em;
 }
 
 .dialog-select {
-    width: 15em;
+    width: 20.5em;
 }
 
+
+
+
+.dialog-tab-list {
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+
+.dialog-tab-list-tabs {
+    float: left;
+    width: 30%;
+    height: auto;
+}
+
+.dialog-tab-list-tabs-tab {
+    float: left;
+    color: white;
+    padding: .5em 10% .5em 0;
+    width: 90%;
+    height: 100%;
+    color: lightgray;
+    text-align: right;
+    text-decoration: none;
+    border-bottom: rgba(32, 32, 33, 0.35) 1px solid;
+}
+
+.dialog-tab-list-tabs-tab:hover {
+    color: white;
+}
+
+.dialog-tab-list-tabs-tab-selected {
+    color: white;
+    font-weight: bold;
+}
+
+.dialog-tab-list-list {
+    float: left;
+    width: 70%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(32, 32, 33, 0.35);
+}
+
+.dialog-tab-list-list-tablist {
+    float: left;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-align: left;
+    display: none;
+}
+
+.dialog-tab-list-list-tablist-item {
+    width: 90%;
+    margin: .5em 5% .5em 5%;
+    height: auto;
+}
+
+.dialog-tab-list-list-tablist-selected {
+    display: block;
+}
 
 
 
