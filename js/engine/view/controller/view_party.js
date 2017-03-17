@@ -19,7 +19,7 @@ function PartyView(id, width, height, scale) {
         name : "loose",
         tight : {
             x : 0,
-            y : -150,
+            y : -125,
             z : 25
         },
         cosy : {
