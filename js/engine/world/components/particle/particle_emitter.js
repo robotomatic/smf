@@ -40,7 +40,7 @@ ParticleEmitter.prototype.translate = function(dx, dy, leftright, updown) {
 //    this.updown = -updown;
 }
 
-ParticleEmitter.prototype.update = function(x, y, scale, ctx) {
+ParticleEmitter.prototype.update = function(x, y, scale) {
 
     if (this.cp.x == 0 && this.cp.y == 0) {
         this.cp.x = x;
@@ -99,22 +99,22 @@ ParticleEmitter.prototype.update = function(x, y, scale, ctx) {
     this.cp.y = clamp(y);
 }
 
-ParticleEmitter.prototype.render = function(x, y, scale, ctx) {
+ParticleEmitter.prototype.render = function(x, y, scale, gamecanvas) {
     if (!this.alive) return;
-    ctx.globalCompositeOperation = "lighter";
+    gamecanvas.setCompositeOperation("lighter");
     for(var i = 0; i < this.particles.length; i++) {
         var p = this.particles[i];
         p.opacity = round(p.death / p.life);
         if ((p.radius * scale) > .1) {
-            var gradient = ctx.createRadialGradient(p.location.x, p.location.y, 0, p.location.x, p.location.y, p.radius * scale);
+            var gradient = gamecanvas.createRadialGradient(p.location.x, p.location.y, 0, p.location.x, p.location.y, p.radius * scale);
             gradient.addColorStop(0, "rgba(" + p.r + ", " + p.g + ", " + p.b + ", " + p.opacity + ")");
             gradient.addColorStop(0.5, "rgba(" + p.r + ", " + p.g + ", " + p.b + ", " + p.opacity + ")");
             gradient.addColorStop(1, "rgba(" + p.r + ", " + p.g + ", " + p.b + ", 0)");
-            ctx.fillStyle = gradient;
-            ctx.beginPath();
+            gamecanvas.setFillStyle(gradient);
+            gamecanvas.beginPath();
             var c = geometryfactory.getCircle(p.location.x, p.location.y, p.radius * scale);
-            c.draw(ctx);
+            c.draw(gamecanvas);
         }
     }
-    ctx.globalCompositeOperation = "source-over";
+    gamecanvas.setCompositeOperation("source-over");
 }

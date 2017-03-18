@@ -178,36 +178,36 @@ Rectangle.prototype.contains = function(point) {
     return true;
 }
 
-Rectangle.prototype.path = function(ctx) {
-    ctx.moveTo(this.x, this.y);
-    ctx.lineTo(this.x + this.width, this.y);
-    ctx.lineTo(this.x + this.width, this.y + this.height);
-    ctx.lineTo(this.x, this.y + this.height);
-    ctx.lineTo(this.x, this.y);
+Rectangle.prototype.path = function(gamecanvas) {
+    gamecanvas.moveTo(this.x, this.y);
+    gamecanvas.lineTo(this.x + this.width, this.y);
+    gamecanvas.lineTo(this.x + this.width, this.y + this.height);
+    gamecanvas.lineTo(this.x, this.y + this.height);
+    gamecanvas.lineTo(this.x, this.y);
 }
 
-Rectangle.prototype.draw = function(ctx) {
-    this.path(ctx);
-    ctx.fill();
+Rectangle.prototype.draw = function(gamecanvas) {
+    this.path(gamecanvas);
+    gamecanvas.fill();
 }
 
-Rectangle.prototype.drawOutline = function(ctx, color, weight) {
-    ctx.lineCap = "round";            
-    ctx.strokeStyle = color;
-    ctx.lineWidth = weight ? weight : .2;
-    ctx.strokeRect(this.x, this.y, this.width, this.height);            
+Rectangle.prototype.drawOutline = function(gamecanvas, color, weight) {
+    gamecanvas.setLineCap("round");
+    gamecanvas.setStrokeStyle(color);
+    gamecanvas.setLineWidth(weight ? weight : .2);
+    gamecanvas.strokeRect(this.x, this.y, this.width, this.height);            
 }
 
-Rectangle.prototype.drawRound = function(ctx) {
+Rectangle.prototype.drawRound = function(gamecanvas) {
     if (!this.polygon) this.polygon = new Polygon();
     this.polygon.setPoints(this.getPoints());
-    this.polygon.drawRound(ctx);
+    this.polygon.drawRound(gamecanvas);
 }
 
-Rectangle.prototype.drawSmooth = function(ctx) {
+Rectangle.prototype.drawSmooth = function(gamecanvas) {
     if (!this.polygon) this.polygon = new Polygon();
     this.polygon.setPoints(this.getPoints());
-    this.polygon.drawSmooth(ctx);
+    this.polygon.drawSmooth(gamecanvas);
 }
 
 

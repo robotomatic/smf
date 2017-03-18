@@ -65,7 +65,6 @@ WorldRenderer.prototype.render = function(now, graphics, camera, world, mbr, win
     this.worldrenderer_end.renderEnd(graphics, mbr);
 }
 
-WorldRenderer.prototype.clearGraphics = function(graphics) { 
-    clearRect(graphics.ctx, 0, 0, graphics.canvas.width, graphics.canvas.height);
-    graphics.ctx.beginPath();
+WorldRenderer.prototype.clearGraphics = function(graphics) {
+    graphics.canvas.clear()
 }

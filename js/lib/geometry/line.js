@@ -94,15 +94,15 @@ Line.prototype.rotate = function(deg) {
 }
 
 
-Line.prototype.path = function(ctx) {
-    ctx.moveTo(this.start.x, this.start.y);
-    ctx.lineTo(this.end.x, this.end.y);
+Line.prototype.path = function(gamecanvas) {
+    gamecanvas.moveTo(this.start.x, this.start.y);
+    gamecanvas.lineTo(this.end.x, this.end.y);
 }
 
-Line.prototype.draw = function(ctx, color, weight) {
-    this.path(ctx);
-    ctx.lineCap = "round";            
-    ctx.strokeStyle = color;
-    ctx.lineWidth = weight ? weight : .2;
-    ctx.stroke();            
+Line.prototype.draw = function(gamecanvas, color, weight) {
+    this.path(gamecanvas);
+    gamecanvas.setLineCap("round");
+    gamecanvas.setStrokeStyle(color);
+    gamecanvas.setLineWidth(weight ? weight : .2);
+    gamecanvas.stroke();            
 }

@@ -100,8 +100,8 @@ function Item(json) {
 
     this.projectedmbr = new Rectangle(0, 0, 0, 0);
 
-    this.canvas = document.createElement('canvas');
-    this.ctx = this.canvas.getContext("2d")
+    this.gamecanvas = new GameCanvas();
+
     this.image = new Image(null, 0, 0, 0, 0);
     this.imagepad = 50;
     
@@ -443,7 +443,7 @@ Item.prototype.translate = function(window, width, height) {
 
 
 
-Item.prototype.render = function(now, renderer, width, height, ctx, scale = 1, debug) {
+Item.prototype.render = function(now, renderer, width, height, gamecanvas, scale = 1, debug) {
 
     this.debugtemp.level = false;
     this.debugtemp.render = false;
@@ -454,12 +454,12 @@ Item.prototype.render = function(now, renderer, width, height, ctx, scale = 1, d
         this.debugtemp.hsr = this.debug.hsr ? true : debug.hsr;
     }
     
-    if (!ctx) {
+    if (!gamecanvas) {
         this.renderStart(now, width, height, scale);
-        this.renderRender(now, renderer, this.ctx, scale, this.debugtemp);
+        this.renderRender(now, renderer, this.gamecanvas, scale, this.debugtemp);
         this.renderEnd(now);
     } else {
-        this.renderRender(now, renderer, ctx, 1, this.debugtemp);
+        this.renderRender(now, renderer, gamecanvas, 1, this.debugtemp);
     }
 }
 
@@ -498,20 +498,19 @@ Item.prototype.renderStart = function(now, width, height, scale = 1) {
     this.projectedlocation.x -= sip;
     this.projectedlocation.y -= sip;
     
-    this.canvas.width = iwidth + doublepad;
-    this.canvas.height = iheight + doublepad;
+    this.gamecanvas.setSizew(width = iwidth + doublepad, iheight + doublepad);
 }
 
-Item.prototype.renderRender = function(now, renderer, ctx, scale = 1, debug) {
-    this.item3Drenderer.renderItem3D(now, renderer, this, ctx, scale, debug);
+Item.prototype.renderRender = function(now, renderer, gamecanvas, scale = 1, debug) {
+    this.item3Drenderer.renderItem3D(now, renderer, this, gamecanvas, scale, debug);
 }
 
 Item.prototype.renderEnd = function(when) {
     this.image.x = 0;
     this.image.y = 0;
-    this.image.width = this.canvas.width;
-    this.image.height = this.canvas.height;
-    this.image.data = this.canvas;
+    this.image.width = this.gamecanvas.width;
+    this.image.height = this.gamecanvas.height;
+    this.image.data = this.gamecanvas.canvas;
 }
 
 Item.prototype.drawImage = function(ctx, scale = 1, offset = 0) {

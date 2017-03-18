@@ -4,8 +4,8 @@ function ViewGraphics(amt) {
     this.graphics = {
         view : {
             canvas : null,
-            ctx : null,
-            css : ""
+            css : "",
+            scale : 1
         }
     }
 }

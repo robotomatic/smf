@@ -6,28 +6,28 @@ function Circle(x, y, radius) {
     this.radius = radius;
 }
 
-Circle.prototype.path = function(ctx) {
-    ctx.arc(this.x, this.y, this.radius, 0, 2 * MATH_PI, false);
-    ctx.closePath();
+Circle.prototype.path = function(gamecanvas) {
+    gamecanvas.arc(this.x, this.y, this.radius, 0, 2 * MATH_PI, false);
+    gamecanvas.closePath();
 }
 
-Circle.prototype.draw = function(ctx) {
-    this.path(ctx);
-    ctx.fill();    
+Circle.prototype.draw = function(gamecanvas) {
+    this.path(gamecanvas);
+    gamecanvas.fill();    
 }
 
-Circle.prototype.drawOutline = function(ctx, color, weight, opacity, scale) {
-    this.path(ctx);
-    ctx.lineCap = "round";            
-    ctx.strokeStyle = color;
-    if (opacity) ctx.globalAlpha = opacity;
+Circle.prototype.drawOutline = function(gamecanvas, color, weight, opacity, scale) {
+    this.path(gamecanvas);
+    gamecanvas.setLineCap("round");
+    gamecanvas.setStrokeStyle(color);
+    if (opacity) gamecanvas.setAlpha(opacity);
     weight = scale ? weight * scale : weight;
-    ctx.lineWidth = weight ? weight : .2;
-    ctx.stroke();            
-    if (opacity) ctx.globalAlpha = 1;
+    gamecanvas.setLineWidth(weight ? weight : .2);
+    gamecanvas.stroke();            
+    if (opacity) gamecanvas.setAlpha(1);
 }
 
-Circle.prototype.drawEllipse = function(ctx, w, h) {
+Circle.prototype.drawEllipse = function(gamecanvas, w, h) {
     var kappa = .5522848;
     var ox = (w / 2) * kappa;
     var oy = (h / 2) * kappa;
@@ -39,11 +39,11 @@ Circle.prototype.drawEllipse = function(ctx, w, h) {
     var ye = y + h;
     var xm = x + w / 2;
     var ym = y + h / 2;
-    ctx.beginPath();
-    ctx.moveTo(x, ym);
-    ctx.bezierCurveTo(x, ym - oy, xm - ox, y, xm, y);
-    ctx.bezierCurveTo(xm + ox, y, xe, ym - oy, xe, ym);
-    ctx.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
-    ctx.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
-    ctx.fill();
+    gamecanvas.beginPath();
+    gamecanvas.moveTo(x, ym);
+    gamecanvas.bezierCurveTo(x, ym - oy, xm - ox, y, xm, y);
+    gamecanvas.bezierCurveTo(xm + ox, y, xe, ym - oy, xe, ym);
+    gamecanvas.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
+    gamecanvas.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
+    gamecanvas.fill();
 }

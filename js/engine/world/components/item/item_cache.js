@@ -12,8 +12,7 @@ function ItemCache() {
 //        canvas : null,
 //        ctx : null
 //    };
-//    this.temp.canvas = document.createElement('canvas');
-//    this.temp.ctx = this.temp.canvas.getContext("2d");
+//    this.temp.canvas = new GameCanvas();
     
 }
 
@@ -55,9 +54,8 @@ ItemCache.prototype.renderItem = function(now, ctx, item, renderer, mbr, window,
 ////    this.temp.canvas.width = pw;
 ////    this.temp.canvas.height = ph;
 ////    
-////    var gctx = this.temp.ctx;
 //
-//    this.renderItemItem(now, gctx, item, renderer, mbr, px, py, pz, pw, ph, scale, quality, waterline);
+//    this.renderItemItem(now, this.canvas, item, renderer, mbr, px, py, pz, pw, ph, scale, quality, waterline);
 //    this.debugItem(now, gctx, item, renderer, mbr, px, py, pz, pw, ph, scale);
 //    
 ////    item.image.x = 0;
@@ -133,7 +131,7 @@ ItemCache.prototype.renderItem = function(now, ctx, item, renderer, mbr, window,
 //            item.box.height = ih;
 //            cacheitem.canvas.width = item.box.width + qpad;
 //            cacheitem.canvas.height = item.box.height + qpad;
-//            item.render(now, cacheitem.ctx, window, qhpad, qhpad, quality, renderer);
+//            item.render(now, cacheitem, window, qhpad, qhpad, quality, renderer);
 //        }
 //        
 //        this.image.x = 0;

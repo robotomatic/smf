@@ -8,7 +8,7 @@ function CharacterRendererGroupsGroup() {
     this.debugoutlinecolor = "darkgray";
 }
 
-CharacterRendererGroupsGroup.prototype.renderGroup = function(ctx, groupdef, groupnames, group, color, debugrects, debug) {
+CharacterRendererGroupsGroup.prototype.renderGroup = function(gamecanvas, groupdef, groupnames, group, color, debugrects, debug) {
     
     var points = group.points;
     this.polygon.points.length = 0;
@@ -51,32 +51,32 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(ctx, groupdef, gro
         }
     } else {
         if (this.pathlink.linkpathStart.points.length && gg.link != "skip") {
-            this.pathlink.endLinkPath(ctx, this.pathlink.linkpathType);
+            this.pathlink.endLinkPath(gamecanvas, this.pathlink.linkpathType);
             
             if (debug.character) {
                 var p = this.pathlink.path;
-                ctx.beginPath();
-                p.drawOutline(ctx, this.debugoutlinecolor, 1);
+                gamecanvas.beginPath();
+                p.drawOutline(gamecanvas, this.debugoutlinecolor, 1);
             }
             
         }
 
-        ctx.fillStyle = dodebug ? color : this.renderer.setColor(gg.color ? gg.color : color, this.polygon, ctx);
-        ctx.beginPath();
+        gamecanvas.setFillStyle(dodebug ? color : this.renderer.setColor(gg.color ? gg.color : color, this.polygon, gamecanvas));
+        gamecanvas.beginPath();
 
         if (gg.clip) {
             if (gg.clip == "start") {
-                this.renderer.drawPolygon(gg.path, this.polygon, ctx);
-                this.pathclip.startClipPath(gg.path, this.polygon, ctx);
+                this.renderer.drawPolygon(gg.path, this.polygon, gamecanvas);
+                this.pathclip.startClipPath(gg.path, this.polygon, gamecanvas);
             } else if (gg.clip == "end") {
-                this.renderer.drawPolygon(gg.path, this.polygon, ctx);
-                this.pathclip.endClipPath(gg, this.polygon, ctx, color);
+                this.renderer.drawPolygon(gg.path, this.polygon, gamecanvas);
+                this.pathclip.endClipPath(gg, this.polygon, gamecanvas, color);
             }
-        } else this.renderer.drawPolygon(gg.path, this.polygon, ctx);
+        } else this.renderer.drawPolygon(gg.path, this.polygon, gamecanvas);
         
         if (debug.character) {
-            ctx.beginPath();
-            this.polygon.drawOutline(ctx, this.debugoutlinecolor, 1);
+            gamecanvas.beginPath();
+            this.polygon.drawOutline(gamecanvas, this.debugoutlinecolor, 1);
         }
     } 
 

@@ -37,8 +37,10 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
     var y = mbr.y;
     var z = mbr.z;
     var scale = mbr.scale;
-    var width = graphics.canvas.width;
-    var height = graphics.canvas.height;
+    
+    var width = graphics.canvas.getWidth();
+    var height = graphics.canvas.getHeight();
+    
     item.smooth();
     item.translate(mbr, width, height);
     item.item3D.createItem3D(item, world.worldrenderer.itemrenderer, mbr, world.worldrenderer.waterline);

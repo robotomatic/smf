@@ -5,15 +5,15 @@ function PlayerDebugger(player) {
     this.rect = new Rectangle(0, 0, 0, 0);
 }
 
-PlayerDebugger.prototype.drawDebug = function(now, ctx, debug) {
+PlayerDebugger.prototype.drawDebug = function(now, gamecanvas, debug) {
     
     if (!debug.player) return;
 
     var x = this.player.projectedlocation.x;
     var y = this.player.projectedlocation.y;
     
-    ctx.beginPath();
-    this.player.box.drawOutline(ctx, "blue", 2);
+    gamecanvas.beginPath();
+    this.player.box.drawOutline(gamecanvas, "blue", 2);
     
 //    ctx.beginPath();
 //    this.player.camera.camerabox.drawOutline(ctx, "blue", 2);
@@ -27,9 +27,9 @@ PlayerDebugger.prototype.drawDebug = function(now, ctx, debug) {
 //    this.rect.drawOutline(ctx, "white", 2);
     
     var gp = this.player.controller.gp;
-    ctx.beginPath();
-    ctx.fillStyle = "red";
-    gp.draw(ctx, 5);
+    gamecanvas.beginPath();
+    gamecanvas.setFillStyle("red");
+    gp.draw(gamecanvas, 5);
     
     
     
@@ -79,12 +79,12 @@ PlayerDebugger.prototype.drawDebug = function(now, ctx, debug) {
 //    gr.draw(ctx);
 //    
     
-    this.drawDebugText(ctx, x, y, 1);
+    this.drawDebugText(gamecanvas, x, y, 1);
 }
 
 
 
-PlayerDebugger.prototype.drawDebugText = function(ctx, x, y, scale) {
+PlayerDebugger.prototype.drawDebugText = function(gamecanvas, x, y, scale) {
 
     var pad = 5 * scale;
     var message = "x: " + this.player.controller.x + "\ny: " + this.player.controller.y + "\nz: " + this.player.controller.z;
@@ -92,14 +92,14 @@ PlayerDebugger.prototype.drawDebugText = function(ctx, x, y, scale) {
     
     message += "\n\ngpx: " + this.player.controller.groundpoint.x + "\ngpy: " + this.player.controller.groundpoint.y + "\ngpz: " + this.player.controller.groundpoint.z;
     
-    ctx.fillStyle = "black";
+    gamecanvas.setFillStyle("black");
     
     var tx = round(this.player.box.x + this.player.box.width + pad);
     var ty = round(this.player.box.y - (pad * 4));
     
     var t = geometryfactory.getText(tx, ty, message);
-    ctx.beginPath();
-    t.draw(ctx);
+    gamecanvas.beginPath();
+    t.draw(gamecanvas);
 }
 
 
@@ -109,15 +109,15 @@ PlayerDebugger.prototype.drawDebugText = function(ctx, x, y, scale) {
 
 
 
-PlayerDebugger.prototype.drawDebugRect = function(window, ctx, x, y, scale, rect, color) {
+PlayerDebugger.prototype.drawDebugRect = function(window, gamecanvas, x, y, scale, rect, color) {
     var r = geometryfactory.getRectangle(x, y, rect.width * scale, rect.height * scale);
     
     
-    ctx.beginPath();
-    r.drawOutline(ctx, color, 2);
+    gamecanvas.beginPath();
+    r.drawOutline(gamecanvas, color, 2);
 }
 
-PlayerDebugger.prototype.drawDebugItem = function(window, ctx, x, y, scale, item) {
+PlayerDebugger.prototype.drawDebugItem = function(window, gamecanvas, x, y, scale, item) {
     
     var pp = this.player.getLocation();
     var px = pp.x;
@@ -128,6 +128,6 @@ PlayerDebugger.prototype.drawDebugItem = function(window, ctx, x, y, scale, item
     var color = item.color;
     var rect = geometryfactory.getRectangle(x + ix, y + iy, item.width * scale, item.height * scale);
 
-    ctx.beginPath();
-    rect.drawOutline(ctx, color, 2);
+    gamecanvas.beginPath();
+    rect.drawOutline(gamecanvas, color, 2);
 }

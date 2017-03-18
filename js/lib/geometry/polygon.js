@@ -478,7 +478,7 @@ Polygon.prototype.createPolygon = function(items) {
 
 
 
-Polygon.prototype.path = function(ctx) {
+Polygon.prototype.path = function(gamecanvas) {
     var points = this.points;
     if (points.length == 0) return;
     var dx = 0;
@@ -487,12 +487,12 @@ Polygon.prototype.path = function(ctx) {
         if (points[1] && (!points[1].info || !points[1].info == "skip")) {
             dx = (points[1].x - points[0].x) / 2;
             dy = (points[1].y - points[0].y) / 2;
-            ctx.moveTo(points[0].x + dx, points[0].y + dy);
+            gamecanvas.moveTo(points[0].x + dx, points[0].y + dy);
         }
     } else if (points[0].info && points[0].info == "smooth" && points[1]) {
-        ctx.moveTo(points[1].x, points[1].y);
+        gamecanvas.moveTo(points[1].x, points[1].y);
     } else if (!points[0].info || points[0].info != "skip") {
-        ctx.moveTo(points[0].x, points[0].y);
+        gamecanvas.moveTo(points[0].x, points[0].y);
     }
     var npx = 0;
     var npy = 0;
@@ -505,12 +505,12 @@ Polygon.prototype.path = function(ctx) {
 
                     dx = (points[2].x - points[0].x) / 4;
                     dy = (points[2].y - points[0].y) / 4;
-                    ctx.moveTo(points[0].x + dx, points[0].y + dy);
+                    gamecanvas.moveTo(points[0].x + dx, points[0].y + dy);
                     
                     dx = (points[2].x - points[0].x) / 2;
                     dy = (points[2].y - points[0].y) / 2;
                     
-                    ctx.quadraticCurveTo(points[0].x, points[0].y, points[0].x + dx, points[0].y + dy);    
+                    gamecanvas.quadraticCurveTo(points[0].x, points[0].y, points[0].x + dx, points[0].y + dy);    
                 }
                 continue;
             }
@@ -519,7 +519,7 @@ Polygon.prototype.path = function(ctx) {
                 if (lastp < 0) lastp = points.length - 1;
                 dx = (points[i].x - points[lastp].x) / 2;
                 dy = (points[i].y - points[lastp].y) / 2;
-                ctx.lineTo(points[i].x - dx, points[i].y - dy);
+                gamecanvas.lineTo(points[i].x - dx, points[i].y - dy);
                 if (i < points.length - 1) {
                     var nextp = (points[i + 1].info && points[i + 1].info == "skip") ? i + 2 : i + 1;
                     if (nextp >= points.length) nextp = 0;
@@ -529,7 +529,7 @@ Polygon.prototype.path = function(ctx) {
                     dx = (points[0].x - points[i].x) / 2;
                     dy = (points[0].y - points[i].y) / 2;
                 }
-                ctx.quadraticCurveTo(p.x, p.y, p.x + dx, p.y + dy);    
+                gamecanvas.quadraticCurveTo(p.x, p.y, p.x + dx, p.y + dy);    
             } else if (p.info == "smooth") {
                 if (i < points.length - 1) {
                     npx = points[i + 1].x;
@@ -539,45 +539,45 @@ Polygon.prototype.path = function(ctx) {
                     npx = points[0].x;
                     npy = points[0].y;
                 }
-                ctx.quadraticCurveTo(p.x, p.y, npx, npy);    
+                gamecanvas.quadraticCurveTo(p.x, p.y, npx, npy);    
             } else {
-                ctx.lineTo(p.x, p.y);
+                gamecanvas.lineTo(p.x, p.y);
             }
         } else {
-            ctx.lineTo(p.x, p.y);
+            gamecanvas.lineTo(p.x, p.y);
         }
     }
     if (points[0].info && points[0].info == "round") {
         var lastp = (points[i - 1].info && points[i - 1].info == "skip") ? i - 2 : i - 1;
         dx = (points[0].x - points[lastp].x) / 2;
         dy = (points[0].y - points[lastp].y) / 2;
-        ctx.lineTo(points[lastp].x + dx, points[lastp].y + dy);
+        gamecanvas.lineTo(points[lastp].x + dx, points[lastp].y + dy);
         if (points[1] && points[1].info && points[1].info == "skip") {
             dx = (points[2].x - points[0].x) / 4;
             dy = (points[2].y - points[0].y) / 4;
-            ctx.quadraticCurveTo(points[0].x, points[0].y, points[0].x + dx, points[0].y + dy);    
+            gamecanvas.quadraticCurveTo(points[0].x, points[0].y, points[0].x + dx, points[0].y + dy);    
         } else if (points[1]) {
             dx = (points[1].x - points[0].x) / 2;
             dy = (points[1].y - points[0].y) / 2;
-            ctx.quadraticCurveTo(points[0].x, points[0].y, points[0].x + dx, points[0].y + dy);    
+            gamecanvas.quadraticCurveTo(points[0].x, points[0].y, points[0].x + dx, points[0].y + dy);    
         }
     } else if (points[0].info && points[0].info == "smooth" && points[1]) {
-        ctx.quadraticCurveTo(points[0].x, points[0].y, points[1].x, points[1].y);    
+        gamecanvas.quadraticCurveTo(points[0].x, points[0].y, points[1].x, points[1].y);    
     } else if (!points[0].info || points[0].info != "skip") {
-        ctx.closePath();
+        gamecanvas.closePath();
     }
 }
 
-Polygon.prototype.pathSimple = function(ctx) {
+Polygon.prototype.pathSimple = function(gamecanvas) {
     var points = this.points;
     if (!points.length) return;
-    ctx.moveTo(points[0].x, points[0].y);
+    gamecanvas.moveTo(points[0].x, points[0].y);
     var t = points.length;
-    for (var i = 1; i < t; i++) ctx.lineTo(points[i].x, points[i].y);
-    ctx.closePath();
+    for (var i = 1; i < t; i++) gamecanvas.lineTo(points[i].x, points[i].y);
+    gamecanvas.closePath();
 }
 
-Polygon.prototype.pathRound = function(ctx, amount) {
+Polygon.prototype.pathRound = function(gamecanvas, amount) {
     var points = this.points;
     if (points.length < 2) return;
     if (!amount) amount = 2;
@@ -590,10 +590,10 @@ Polygon.prototype.pathRound = function(ctx, amount) {
     var dy = abs(spy - npy) / amount;
     if (npy > spy) dy = -dy;
     var startpoint = new Point(spx - dx, spy - dy);
-    ctx.moveTo(startpoint.x, startpoint.y);
+    gamecanvas.moveTo(startpoint.x, startpoint.y);
     npx += dx;
     npy += dy;
-    ctx.lineTo(npx, npy);
+    gamecanvas.lineTo(npx, npy);
     var sspx = npx;
     var sspy = npy;
     var cpx = 0;
@@ -616,13 +616,13 @@ Polygon.prototype.pathRound = function(ctx, amount) {
         dy = abs(cpy - epy) / amount;
         if (epy < cpy) npy = cpy - dy;
         else npy = cpy + dy;
-        ctx.quadraticCurveTo(cpx, cpy, npx, npy);
+        gamecanvas.quadraticCurveTo(cpx, cpy, npx, npy);
         if (epx < cpx) npx = epx + dx;
         else npx = epx - dx;
         if (epy < cpy) npy = epy + dy;
         else npy = epy - dy;
         if (distance(cpx, cpy, npx, npy) > 0) {
-            ctx.lineTo(npx, npy);
+            gamecanvas.lineTo(npx, npy);
         }
         spx = cpx;
         spy = cpy;
@@ -637,7 +637,7 @@ Polygon.prototype.pathRound = function(ctx, amount) {
     dy = abs(cpy - epy) / amount;
     if (cpy < epy) npy = epy - dy;
     else npy = epy + dy;
-    ctx.lineTo(npx, npy);
+    gamecanvas.lineTo(npx, npy);
     cpx = epx;
     cpy = epy;
     epx = points[0].x;
@@ -648,7 +648,7 @@ Polygon.prototype.pathRound = function(ctx, amount) {
     dy = abs(cpy - epy) / amount;
     if (epy < cpy) npy = cpy - dy;
     else npy = cpy + dy;
-    ctx.quadraticCurveTo(cpx, cpy, npx, npy);
+    gamecanvas.quadraticCurveTo(cpx, cpy, npx, npy);
     cpx = npx;
     cpy = npy;
     epx = points[0].x;
@@ -659,31 +659,31 @@ Polygon.prototype.pathRound = function(ctx, amount) {
     dy = abs(cpy - epy) / amount;
     if (epy < cpy) npy = epy + dy;
     else npy = epy - dy;
-    ctx.lineTo(npx, npy);
-    ctx.quadraticCurveTo(epx, epy, startpoint.x, startpoint.y);
+    gamecanvas.lineTo(npx, npy);
+    gamecanvas.quadraticCurveTo(epx, epy, startpoint.x, startpoint.y);
 }
 
-Polygon.prototype.pathSmooth = function(ctx) {
+Polygon.prototype.pathSmooth = function(gamecanvas) {
     var points = this.points;
     var sxc = points[points.length - 1].x + ((points[0].x - points[points.length - 1].x) / 2);
     var syc = points[points.length - 1].y + ((points[0].y - points[points.length - 1].y) / 2);
-    ctx.moveTo(sxc, syc);
+    gamecanvas.moveTo(sxc, syc);
     for (var i = 0; i < points.length - 1; i++) {
         if (points[i].info) {
-            ctx.lineTo(points[i].x, points[i].y);
+            gamecanvas.lineTo(points[i].x, points[i].y);
         } else {
             if (points[i + 1] && points[i + 1].info) {
-                ctx.quadraticCurveTo(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);
+                gamecanvas.quadraticCurveTo(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);
             } else {
                 var xc = (points[i].x + points[i + 1].x) / 2;
                 var yc = (points[i].y + points[i + 1].y) / 2;
-                ctx.quadraticCurveTo(points[i].x, points[i].y, xc, yc);
+                gamecanvas.quadraticCurveTo(points[i].x, points[i].y, xc, yc);
             }
         }
     }
     var lxc = points[points.length - 1].x;
     var lyc = points[points.length - 1].y;
-    ctx.quadraticCurveTo(lxc, lyc, sxc, syc);    
+    gamecanvas.quadraticCurveTo(lxc, lyc, sxc, syc);    
 }
 
 
@@ -710,43 +710,43 @@ Polygon.prototype.pathSmooth = function(ctx) {
 
 
 
-Polygon.prototype.draw = function(ctx) {
-    this.path(ctx);
-    ctx.fill();
+Polygon.prototype.draw = function(gamecanvas) {
+    this.path(gamecanvas);
+    gamecanvas.fill();
 }
 
-Polygon.prototype.drawOutline = function(ctx, color, weight) {
-    this.path(ctx);
-    ctx.lineCap = "round";            
-    ctx.strokeStyle = color;
-    ctx.lineWidth = weight ? weight : .2;
-    ctx.stroke();                
+Polygon.prototype.drawOutline = function(gamecanvas, color, weight) {
+    this.path(gamecanvas);
+    gamecanvas.setLineCap("round");
+    gamecanvas.setStrokeStyle(color);
+    gamecanvas.setLineWidth(weight ? weight : .2);
+    gamecanvas.stroke();                
 }
 
-Polygon.prototype.drawRound = function(ctx, radius) {
-    this.pathRound(ctx, radius);
-    ctx.fill();
+Polygon.prototype.drawRound = function(gamecanvas, radius) {
+    this.pathRound(gamecanvas, radius);
+    gamecanvas.fill();
 }
 
-Polygon.prototype.drawOutlineRound = function(ctx, radius, color, weight) {
-    this.pathRound(ctx, radius);
-    ctx.lineCap = "round";            
-    ctx.strokeStyle = color;
-    ctx.lineWidth = weight ? weight : .2;
-    ctx.stroke();
+Polygon.prototype.drawOutlineRound = function(gamecanvas, radius, color, weight) {
+    this.pathRound(gamecanvas, radius);
+    gamecanvas.setLineCap("round");
+    gamecanvas.setStrokeStyle(color);
+    gamecanvas.setLineWidth(weight ? weight : .2);
+    gamecanvas.stroke();
 }
 
-Polygon.prototype.drawSmooth = function(ctx) {
-    this.pathSmooth(ctx);
-    ctx.fill();
+Polygon.prototype.drawSmooth = function(gamecanvas) {
+    this.pathSmooth(gamecanvas);
+    gamecanvas.fill();
 }
 
-Polygon.prototype.drawOutlineSmooth = function(ctx, color, weight) {
-    this.pathSmooth(ctx);
-    ctx.lineCap = "round";            
-    ctx.strokeStyle = color;
-    ctx.lineWidth = weight ? weight : .2;
-    ctx.stroke();                
+Polygon.prototype.drawOutlineSmooth = function(gamecanvas, color, weight) {
+    this.pathSmooth(gamecanvas);
+    gamecanvas.setLineCap("round");
+    gamecanvas.setStrokeStyle(color);
+    gamecanvas.setLineWidth(weight ? weight : .2);
+    gamecanvas.stroke();                
 }
 
 

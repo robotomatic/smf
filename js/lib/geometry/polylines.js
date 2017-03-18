@@ -56,7 +56,7 @@ Polylines.prototype.createPolylines = function(lines) {
     }
 }
 
-Polylines.prototype.draw = function(ctx, color, weight) {
-    for (var i = 0; i < this.polylines.length; i++) this.polylines[i].draw(ctx, color, weight);
+Polylines.prototype.draw = function(gamecanvas, color, weight) {
+    for (var i = 0; i < this.polylines.length; i++) this.polylines[i].draw(gamecanvas, color, weight);
 }
 

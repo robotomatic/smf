@@ -5,21 +5,21 @@ function CharacterRendererRenderer() {
     this.rotateline = new Line();
 }
 
-CharacterRendererRenderer.prototype.drawPolygon = function(path, poly, ctx) { 
-    if (path == "smooth") poly.drawSmooth(ctx);
-    else if (path == "round") poly.drawRound(ctx, 5);
-    else if (path == "chain") poly.drawRound(ctx, 5);
-    else poly.draw(ctx);
+CharacterRendererRenderer.prototype.drawPolygon = function(path, poly, gamecanvas) { 
+    if (path == "smooth") poly.drawSmooth(gamecanvas);
+    else if (path == "round") poly.drawRound(gamecanvas, 5);
+    else if (path == "chain") poly.drawRound(gamecanvas, 5);
+    else poly.draw(gamecanvas);
 }
 
-CharacterRendererRenderer.prototype.drawPolygonOutline = function(path, poly, ctx, color, lineweight) { 
-    if (path == "smooth") poly.drawOutlineSmooth(ctx, color, lineweight);
-    else if (path == "round") poly.drawOutlineRound(ctx, 5, color, lineweight);
-    else if (path == "chain") poly.drawOutlineRound(ctx, 5, color, lineweight);
-    else poly.drawOutline(ctx, color, lineweight);
+CharacterRendererRenderer.prototype.drawPolygonOutline = function(path, poly, gamecanvas, color, lineweight) { 
+    if (path == "smooth") poly.drawOutlineSmooth(gamecanvas, color, lineweight);
+    else if (path == "round") poly.drawOutlineRound(gamecanvas, 5, color, lineweight);
+    else if (path == "chain") poly.drawOutlineRound(gamecanvas, 5, color, lineweight);
+    else poly.drawOutline(gamecanvas, color, lineweight);
 }
 
-CharacterRendererRenderer.prototype.setColor = function(color, poly, ctx) { 
+CharacterRendererRenderer.prototype.setColor = function(color, poly, gamecanvas) { 
     if (color.gradient) {
         var gradient = color.gradient;
         var mbr = poly.getMbr();
@@ -28,7 +28,7 @@ CharacterRendererRenderer.prototype.setColor = function(color, poly, ctx) {
         if (mbry && mbrh) {
             if (gradient.top) mbry = mbry -= gradient.top;
             if (gradient.height) mbrh = mbry + gradient.height;
-            var g = ctx.createLinearGradient(0, mbry, 0, mbrh);
+            var g = gamecanvas.createLinearGradient(0, mbry, 0, mbrh);
             var start = gradient.start;
             var stop = gradient.stop;
             g.addColorStop(0, start);

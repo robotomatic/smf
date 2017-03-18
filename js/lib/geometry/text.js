@@ -7,14 +7,14 @@ function Text(x, y, message) {
 }
 
 
-Text.prototype.draw = function(ctx, size) {
+Text.prototype.draw = function(gamecanvas, size) {
     var lines = this.message.split("\n");
-    ctx.strokeStyle = "";
+    gamecanvas.setStrokeStyle("");
     var fontsize = size ? size : 15;
-    ctx.font = fontsize + "px Arial";
+    gamecanvas.setFont(fontsize + "px Arial");
     var tx = round(this.x);
     for (var i = 0; i < lines.length; i++) {
         var ty = round(this.y + (i * fontsize));
-        ctx.fillText(lines[i], tx, ty);
+        gamecanvas.fillText(lines[i], tx, ty);
     }
 }

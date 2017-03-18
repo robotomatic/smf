@@ -189,9 +189,9 @@ ItemDynamicGrass.prototype.animateGrass = function(ctx, item, titem, x, y, width
     var id = item.id;
     var grass = this.grass[id];
     if (!grass) return;
-    clearRect(grass.ctx, 0, 0, grass.canvas.width, grass.canvas.height);
+    clearRect(grass, 0, 0, grass.canvas.width, grass.canvas.height);
     
-    grass.ctx.beginPath();
+    grass.beginPath();
     var blades = grass.blades;
     for (var i = 0; i < blades.length; i++) {
         var blade = blades[i];
@@ -207,11 +207,11 @@ ItemDynamicGrass.prototype.animateGrass = function(ctx, item, titem, x, y, width
         
         this.grass[id].blades[i].polygon.points.length =  0;
         this.grass[id].blades[i].polygon.setPoints(this.bladepoly.getPoints());
-        this.bladepoly.pathSimple(grass.ctx);
+        this.bladepoly.pathSimple(grass);
     }
     
-    grass.ctx.fill();
-    this.renderGrass(ctx, id, x, y, width, height);
+    grass.fill();
+    this.renderGrass(grass, id, x, y, width, height);
 }
 
 ItemDynamicGrass.prototype.animateGrassBlade = function(grass, blade, scale, poly) {

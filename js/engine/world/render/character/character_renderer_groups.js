@@ -6,30 +6,30 @@ function CharacterRendererGroups() {
     this.debugrects = new Array();
 }
 
-CharacterRendererGroups.prototype.renderGroups = function(ctx, character, groupnames, groups, color, debug) {
+CharacterRendererGroups.prototype.renderGroups = function(gamecanvas, character, groupnames, groups, color, debug) {
     if (debug.character || debug.guts) color = "white";
     this.debugrects.length = 0;        
     if (!groups.length) return;
     groups.sort(sortByZIndex);  
     for (var i = 0; i < groups.length; i++) {
         var group = groups[i];
-        this.grouprenderer.renderGroup(ctx, character.groups[group.name], groupnames, group, color, this.debugrects, debug);
+        this.grouprenderer.renderGroup(gamecanvas, character.groups[group.name], groupnames, group, color, this.debugrects, debug);
     }
-    this.renderDebug(ctx);
+    this.renderDebug(gamecanvas);
 }
 
-CharacterRendererGroups.prototype.renderDebug = function(ctx) { 
+CharacterRendererGroups.prototype.renderDebug = function(gamecanvas) { 
     if (!this.debugrects || !this.debugrects.length) return;
-    this.drawDebugRectangles(this.debugrects, ctx);        
+    this.drawDebugRectangles(this.debugrects, gamecanvas);        
 }
 
-CharacterRendererGroups.prototype.drawDebugRectangles = function(rects, ctx) { 
+CharacterRendererGroups.prototype.drawDebugRectangles = function(rects, gamecanvas) { 
     if (!rects.length) return;
-    ctx.strokeStyle = "darkgray";
-    ctx.lineWidth = .5;
-    ctx.beginPath();
+    gamecanvas.setStrokeStyle("darkgray");
+    gamecanvas.setLineWidth(.5);
+    gamecanvas.beginPath();
     for (var i = 0; i < rects.length; i++) {
-        rects[i].path(ctx);
+        rects[i].path(gamecanvas);
     }
-    ctx.stroke();
+    gamecanvas.stroke();
 }

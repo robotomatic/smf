@@ -17,7 +17,7 @@ Image.prototype.clipY = function(y) {
     this.clip.y = y;
 }
 
-Image.prototype.draw = function(ctx, dx, dy, dw, dh) {
+Image.prototype.draw = function(gamecanvas, dx, dy, dw, dh) {
     
     if (this.width == 0  || this.height == 0) return;
     if ((dw && dw < 0) || (dh && dh < 0)) return;
@@ -55,21 +55,21 @@ Image.prototype.draw = function(ctx, dx, dy, dw, dh) {
         }
         
         if (clip) {
-            ctx.save();
-            ctx.beginPath();
-            this.rectangle.path(ctx);
-            ctx.clip();
+            gamecanvas.save();
+            gamecanvas.beginPath();
+            this.rectangle.path(gamecanvas);
+            gamecanvas.clip();
         }
         
-        ctx.drawImage(this.data, this.x, this.y, this.width, this.height, dx, dy, dw, dh);
+        gamecanvas.drawImage(this.data, this.x, this.y, this.width, this.height, dx, dy, dw, dh);
         
-        if (clip) ctx.restore();
+        if (clip) gamecanvas.restore();
         
     } else {
-        ctx.drawImage(this.data, this.x, this.y, this.width, this.height);
+        gamecanvas.drawImage(this.data, this.x, this.y, this.width, this.height);
     }
 }
 
-Image.prototype.patch = function(ctx, px, py, pw, ph) {
-    ctx.drawImage(this.data, this.x, this.y, pw, ph, px, py, pw, ph);
+Image.prototype.patch = function(gamecanvas, px, py, pw, ph) {
+    gamecanvas.drawImage(this.data, this.x, this.y, pw, ph, px, py, pw, ph);
 }

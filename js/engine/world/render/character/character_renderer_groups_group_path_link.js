@@ -38,15 +38,15 @@ CharacterRendererGroupsGroupPathLink.prototype.addLinkPath = function(poly) {
     this.linkpathEnd.addPoint(poly.points[3]);
 }
     
-CharacterRendererGroupsGroupPathLink.prototype.endLinkPath = function(ctx, linktype) { 
+CharacterRendererGroupsGroupPathLink.prototype.endLinkPath = function(gamecanvas, linktype) { 
     this.path.points.length = 0;
     for (var i = 0; i < this.linkpathStart.points.length; i++) this.path.addPoint(this.linkpathStart.points[i]);
     for (var i = this.linkpathEnd.points.length; i > 0 ; i--) this.path.addPoint(this.linkpathEnd.points[i - 1]);
     
-    ctx.beginPath();
-    ctx.fillStyle = this.linkpathColor;
-    if (linktype === "join") this.path.draw(ctx);
-    else this.path.drawSmooth(ctx);
+    gamecanvas.beginPath();
+    gamecanvas.setFillStyle(this.linkpathColor);
+    if (linktype === "join") this.path.draw(gamecanvas);
+    else this.path.drawSmooth(gamecanvas);
     
     this.linkpathStart.points.length = 0;
     this.linkpathEnd.points.length = 0;

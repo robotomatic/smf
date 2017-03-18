@@ -93,22 +93,17 @@ View.prototype.createGraphics = function() {
 }
     
 View.prototype.createCanvas = function(graphics) {     
-    graphics.canvas = document.createElement('canvas');
-    graphics.ctx = graphics.canvas.getContext("2d");
-    graphics.canvas.className = "absolute game-canvas";
-    if (graphics.css) graphics.canvas.className += " " + graphics.css;
+    graphics.canvas = new GameCanvas();
+    var classname = "absolute game-canvas";
+    if (graphics.css) classname += " " + graphics.css;
+    graphics.canvas.setClassName(classname);
 }
 
-
 View.prototype.createView = function() {
-    this.view.canvas = document.createElement('canvas');
-    this.view.ctx = this.view.canvas.getContext("2d");
-    this.view.canvas.className = "absolute game-canvas";
-    this.parent.appendChild(this.view.canvas);
-    
+    this.view.canvas = new GameCanvas();
+    this.view.canvas.setClassName("absolute game-canvas");
+    this.view.canvas.attach(this.parent);
     this.graphics["view"].canvas = this.view.canvas;
-    this.graphics["view"].ctx = this.view.ctx;
-    this.graphics["view"].canvas.className = this.view.canvas.className;
 }
 
 View.prototype.resize = function() {
@@ -165,11 +160,10 @@ View.prototype.sizeViewGraphics = function(left, top, width, height) {
 }
 
 View.prototype.sizeGraphics = function(graphics, left, top, width, height) { 
+    
     var canvas = graphics.canvas;
-    canvas.style.left = left + "px";
-    canvas.style.top = top + "px";
-    canvas.width = width;
-    canvas.height = height;
+    canvas.setPosition(left, top);
+    canvas.setSize(width, height);
     
     var rect = this.parent.getBoundingClientRect();
     var rwidth = rect.width;
@@ -183,18 +177,15 @@ View.prototype.sizeGraphics = function(graphics, left, top, width, height) {
     var dh = round(sh - height);
 
     if (graphics.fit) {
-        canvas.style.left -= dw / 2;
-        canvas.style.top -= dh / 2;
-        canvas.style.webkitTransform = "scale(" + (s) + ")";
+        canvas.setScale(s);
         graphics.scale = s;
         logDev("view scale: " + s); 
         logDev("width: " + sw + ", height: " + sh);
         return;
     }
 
-    // this.viewscale = 1;
-    canvas.style.webkitTransform = "scale(1)";
-    graphics.scale = 0;
+    canvas.setScale(1);
+    graphics.scale = 1;
 }
 
 View.prototype.resizeUI = function() { }
@@ -202,24 +193,22 @@ View.prototype.resizeUI = function() { }
 View.prototype.resizeText = function() { }
 
 View.prototype.show = function() { 
-    fadeIn(this.canvas_render);
 }
 
 View.prototype.hide = function() { 
     return;
-    fadeOut(this.canvas_render);
 }
 
 View.prototype.setBackground = function(world) {
     if (world.worldrenderer.debug.level.level || world.worldrenderer.debug.level.render || world.worldrenderer.debug.level.hsr) {
         this.parent.style.background = "white";
-        this.view.canvas.style.background = "white";
+        this.view.canvas.setBackground("white");
         this.ready = false;
     } else if (world.worldrenderer.itemrenderer) {
         if (!this.ready) {
             if (world.worldrenderer.itemrenderer.theme && world.worldrenderer.itemrenderer.theme.background) {
                 this.parent.style.background = world.worldrenderer.itemrenderer.theme.background.color;
-                this.view.canvas.style.background = world.worldrenderer.itemrenderer.theme.background.canvas.color;
+                this.view.canvas.setBackground(world.worldrenderer.itemrenderer.theme.background.canvas.color);
             }
             this.ready = true;
         }
@@ -254,7 +243,7 @@ View.prototype.renderFPS = function() {
     var avg = round(this.avg);
     if (avg < 10) avg = "0" + avg;
     this.fpstext.message = "FPS: " + fps + "\n" + "AVG: " + avg;
-    this.view.ctx.fillStyle = "black";
-    this.view.ctx.beginPath();
-    this.fpstext.draw(this.view.ctx, 8);
+    this.view.canvas.setFillStyle("black");
+    this.view.canvas.beginPath();
+    this.fpstext.draw(this.view.canvas, 8);
 }

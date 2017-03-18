@@ -43,16 +43,16 @@ WorldRendererDebug.prototype.renderDebugItemsItemCenter = function(graphics, win
     
     var p = 5;
     var c = geometryfactory.getCircle(mbrxw - p, mbryh - p, p * 2);
-    graphics.ctx.fillStyle = "cyan";
-    graphics.ctx.beginPath();
-    c.draw(graphics.ctx);
+    graphics.canvas.setFillStyle("cyan");
+    graphics.canvas.beginPath();
+    c.draw(graphics.canvas);
 }
 
 
 WorldRendererDebug.prototype.renderDebugItemsItemBox = function(graphics, item) {
     var box = item.box;
     if (!box) return;
-    box.drawOutline(graphics.ctx, "white", 1);
+    box.drawOutline(graphics.canvas, "white", 1);
 }
 
 WorldRendererDebug.prototype.renderDebugItemsItemText = function(graphics, item) {
@@ -63,9 +63,9 @@ WorldRendererDebug.prototype.renderDebugItemsItemText = function(graphics, item)
     
     var ty = item.box.y + 10;
     var t = geometryfactory.getText(tx, ty, message);
-    graphics.ctx.fillStyle = "white";
-    graphics.ctx.beginPath();
-    t.draw(graphics.ctx, 9);
+    graphics.canvas.setFillStyle("white");
+    graphics.canvas.beginPath();
+    t.draw(graphics.canvas, 9);
 }
 
 WorldRendererDebug.prototype.renderDebugItemsItemGeometry = function(graphics, item) {
@@ -82,7 +82,7 @@ WorldRendererDebug.prototype.renderDebugItemsItemGeometryGeometry = function(gra
     if (!geometry || !geometry.length) return;
     for (var i = 0; i < geometry.length; i++) {
         var geom = geometry[i];
-        graphics.ctx.beginPath();
-        geom.drawOutline(graphics.ctx, color, .5);
+        graphics.canvas.beginPath();
+        geom.drawOutline(graphics.canvas, color, .5);
     }
 }

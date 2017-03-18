@@ -11,7 +11,7 @@ Point.prototype.setInfo = function(info) {
     this.info = info;
 }
 
-Point.prototype.draw = function(ctx, size) {
+Point.prototype.draw = function(gamecanvas, size) {
     var ss = size / 2;
-    ctx.fillRect(this.x - ss, this.y - ss, size, size); 
+    gamecanvas.fillRect(this.x - ss, this.y - ss, size, size); 
 }
