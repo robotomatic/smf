@@ -121,13 +121,13 @@ MenuView.prototype.updateNPC = function(world, npc) {
         if (player.controller.move_right) player.controller.right(false);        
     }
 
-    if (player.controller.z <= -hviewpad) {
-        player.controller.z = -hviewpad;
-        if (player.controller.move_in) player.controller.in(false);
-    } else if (player.controller.z >= world.level.layers[0].depth - viewpad) {
-        player.controller.z = world.level.layers[0].depth - viewpad;
-        if (player.controller.move_out) player.controller.out(false);
-    }
+//    if (player.controller.z <= -hviewpad) {
+//        player.controller.z = -hviewpad;
+//        if (player.controller.move_in) player.controller.in(false);
+//    } else if (player.controller.z >= world.level.layers[0].depth - viewpad) {
+//        player.controller.z = world.level.layers[0].depth - viewpad;
+//        if (player.controller.move_out) player.controller.out(false);
+//    }
     
     if (!player.controller.paused && !player.controller.move_left && !player.controller.move_right && player.controller.grounded) {
         var dir = random(0, 8);
