@@ -498,7 +498,7 @@ Item.prototype.renderStart = function(now, width, height, scale = 1) {
     this.projectedlocation.x -= sip;
     this.projectedlocation.y -= sip;
     
-    this.gamecanvas.setSizew(width = iwidth + doublepad, iheight + doublepad);
+    this.gamecanvas.setSize(width = iwidth + doublepad, iheight + doublepad);
 }
 
 Item.prototype.renderRender = function(now, renderer, gamecanvas, scale = 1, debug) {
@@ -513,14 +513,14 @@ Item.prototype.renderEnd = function(when) {
     this.image.data = this.gamecanvas.canvas;
 }
 
-Item.prototype.drawImage = function(ctx, scale = 1, offset = 0) {
+Item.prototype.drawImage = function(gamecanvas, scale = 1, offset = 0) {
     
     var px = this.projectedlocation.x * scale;
     var py = this.projectedlocation.y * scale;
-    var cw = this.canvas.width * scale;
-    var ch = this.canvas.height * scale;
+    var cw = this.gamecanvas.width * scale;
+    var ch = this.gamecanvas.height * scale;
     
-    this.image.draw(ctx, px + offset, py + offset, cw - (offset * 2), ch);
+    this.image.draw(gamecanvas, px + offset, py + offset, cw - (offset * 2), ch);
 
     this.projectedlocation.x = this.projectedlocation_backup.x;
     this.projectedlocation.y = this.projectedlocation_backup.y;
