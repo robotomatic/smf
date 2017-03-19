@@ -29,6 +29,10 @@ function initializeDev(game) {
     var tools = document.getElementsByClassName("dev-toolbar-tools-tool");
     for (var i = 0; i < tools.length; i++) {
         tools[i].onclick = function(e) {
+            if (isMobile()) {
+                unselectTools();
+                this.className += " dev-toolbar-tools-tool-selected";
+            }
             var typ = this.id.replace("dev-tools-", "");
             var nid = "dev-dialog-" + typ;
             toggleDevDialog(nid);
@@ -38,6 +42,15 @@ function initializeDev(game) {
         };
     }
 
+    /*
+    var resizers = document.getElementsByClassName("resize-resize");
+    for (var i = 0; i < resizers.length; i++) {
+        resizers[i].onmousedown = function(e) {
+            this.parentNode.style.width = "auto";
+        }
+    }
+    */
+    
     var devTabClick = function(e) {
         var dlg = this.parentNode.parentNode;
         var seltabs = findChildrenByClassName(dlg, "dialog-tab-list-tabs-tab-selected");
@@ -77,7 +90,12 @@ function initializeDev(game) {
     resizeDev();
 }
 
-
+function unselectTools() {
+    var tools = document.getElementsByClassName("dev-toolbar-tools-tool");
+    for (var i = 0; i < tools.length; i++) {
+        tools[i].className = tools[i].className.replace(" dev-toolbar-tools-tool-selected", "");
+    }
+}
 
 function resizeDev() {
     
@@ -93,14 +111,18 @@ function resizeDev() {
 function toggleDev() {
     
     if (!__dev) return;
-    
+    unselectTools();
+    var dev = document.getElementById("dev");
     var tt = document.getElementById("dev-toolbar-tools");
     if (!tt) return;
     var w = tt.offsetWidth;
     if (w) {
         tt.style.width = 0;
+        dev.style.width = "auto";
+        if (isMobile()) hideDialogs("");
     } else {
         tt.style.width = "auto";
+        if (isMobile()) dev.style.width = "100%";
     }
 }
 
@@ -111,15 +133,14 @@ function toggleDevDialog(nid) {
     var d = document.getElementById(nid);
     if (!d) return;
 
-    var keys = Object.keys(dialogs);
-    for (var i = 0; i < keys.length; i++) {
-        var k = keys[i];
-        if (k == nid) continue;
-        var ddd = dialogs[k];
-        if (!ddd.moved) {
-            var p = ddd.dialog.className.indexOf("hidden");
-            if (p < 0) ddd.dialog.className += " hidden";
-        }
+    hideDialogs(nid);
+    
+    if (isMobile() && dialogs[nid]) {
+        var md = dialogs[nid];
+        var p = md.dialog.className.indexOf("hidden");
+        if (p < 0) md.dialog.className += " hidden";
+        else md.dialog.className = md.dialog.className.replace("hidden", "");
+        return;
     }
     
     var dr = d.getBoundingClientRect();
@@ -130,14 +151,12 @@ function toggleDevDialog(nid) {
     var w = rect.width;
     var h = rect.height;
     
-//    var dw = d.offsetWidth + 10;
-//    var dh = d.offsetHeight + 10;
-//    
-//    var l = random(10, w - dw);
-//    var t = random(10, h - dh);
-    
     var t = 50;
     var l = w - dr.width - 15;
+    if (isMobile()) {
+        t = 30;
+        l = 0;
+    }
     
     d.style.top = t + "px";
     d.style.left = l + "px";
@@ -152,6 +171,19 @@ function toggleDevDialog(nid) {
     }
     
     dialogs[nid].bringToTop();
+}
+
+function hideDialogs(id) {
+    var keys = Object.keys(dialogs);
+    for (var i = 0; i < keys.length; i++) {
+        var k = keys[i];
+        if (k == id) continue;
+        var ddd = dialogs[k];
+        if (!ddd.moved) {
+            var p = ddd.dialog.className.indexOf("hidden");
+            if (p < 0) ddd.dialog.className += " hidden";
+        }
+    }
 }
 
 function handleDevFocus(elem) {

@@ -1,7 +1,8 @@
 #dev {
     position: absolute;
-    right: 1em;
-    top: 1em;
+    right: 0;
+    top: 0;
+    width: auto;
     padding: .25em;
 }
 
@@ -11,7 +12,7 @@
 
 
 .dev-toolbar-tools {
-    float: left;
+    float: right;
     width: 0;
     height: 1.5em;
     overflow: hidden;
@@ -25,10 +26,17 @@
     height: 1.5em;
 }
 
+.dev-toolbar-tools-tool-selected {
+    font-weight: bold;
+}
+
+
 .dev-toolbar-title {
     float: right;
     width: auto;
 }
+
+
 
 .dev-body {
     clear: both;
@@ -57,3 +65,16 @@
 .dev-margin-top {
     margin-top: 1em;
 }
+
+
+
+
+
+@media (min-width: 768px) {
+    #dev {
+        right: 1em;
+        top: 1em;
+    }
+}
+
+

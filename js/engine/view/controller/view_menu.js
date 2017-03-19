@@ -11,7 +11,7 @@ function MenuView(id, width, height, scale) {
     this.follow = false;
     this.offset = {
         x : 0,
-        y : 0,
+        y : 20,
         z : 20
     }
     this.view.renderer.camera.blur.blur = false;
@@ -19,13 +19,16 @@ function MenuView(id, width, height, scale) {
     this.view.renderer.camera.drift.enabled = false;
 }
 
-MenuView.prototype.loose = function() {
+MenuView.prototype.setCameraLoose = function() {
 }
 
-MenuView.prototype.comfy = function() {
+MenuView.prototype.setCameraCosy = function() {
 }
 
-MenuView.prototype.tight = function() {
+MenuView.prototype.setCameraComfy = function() {
+}
+
+MenuView.prototype.setCameraTight = function() {
 }
 
 MenuView.prototype.view;

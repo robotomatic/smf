@@ -1,16 +1,16 @@
 .toolbar, .dialog  {
     position: absolute;
     z-index: 999;
-    width: auto;
+    width: 100%;
     height: auto;
     background: rgba(22, 21, 21, 0.5);
-    font-size: .8em;
+    font-size: .75em;
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.25)    
 }
 
 .dialog {
-    width: 28em;
+    width: 100%;
 }
 
 .dialog-toolbar {
@@ -27,6 +27,7 @@
     height: auto;
     background-color: rgba(32, 32, 33, 0.35);
     font-weight: bold;
+    display: none;
 }
 
 .dialog-toolbar-title {
@@ -56,7 +57,7 @@
     clear: both;
     float: left;
     width: 92%;
-    padding: 1em 4% 1em 4%;
+    padding: 1em;
     height: auto;
     overflow: hidden;
     position: relative;
@@ -100,6 +101,43 @@
 }
 
 
+
+
+.dialog-col-20 {
+    width: 20%;
+}
+
+.dialog-col-25 {
+    width: 25%;
+}
+
+.dialog-col-60 {
+    width: 60%;
+}
+
+.dialog-col-80 {
+    width: 80%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .dialog-label-color {
     float: left;
     margin-top: 2px;
@@ -137,9 +175,14 @@
     text-align: center;
 }
 
+.dialog-input-label-short {
+    width: 3.5em;
+}
+
 .dialog-input {
     width: 4em;
     margin-top: -.2em;
+    padding-right: 2px;
 }
 
 .dialog-input-small {
@@ -153,8 +196,8 @@
 }
 
 .dialog-input-range {
-    margin: 0 1em 0 1em;
-    width: 15em;
+    margin: 0 2% 0 2%;
+    width: 96%;
 }
 
 .dialog-input-button {
@@ -197,7 +240,7 @@
 }
 
 .dialog-select {
-    width: 20.5em;
+    width: 100%;
 }
 
 
@@ -271,4 +314,26 @@
 .dialog-canvas {
     width: 100%;
     height: 100%;
+}
+
+
+@media (min-width: 768px) {
+    .toolbar, .dialog  {
+        font-size: .8em;
+    }
+    #dev {
+        right: 1em;
+        top: 1em;
+    }
+    .dialog {
+        min-width: 25em;
+        width: 25em;
+    }
+    .dialog-resize {
+        min-width: 25em;
+        width: auto;
+    }
+    .dialog-title {
+        display: block;
+    }
 }
