@@ -4,8 +4,9 @@ function MenuView(gamecontroller, id, width, height, scale) {
     this.view = new View(gamecontroller, id, width, height, scale);
     this.ready = false;
     var controller = this;
-    gamecontroller.main.onclick = function() {
+    gamecontroller.main.onclick = function(e) {
         if (controller.paused) return;
+        if (e.target.id != "gamecanvas") return;
         window.location.hash="#game";
     }
     this.follow = false;

@@ -25,8 +25,6 @@ function View(gamecontroller, id, width, height, scale) {
         scale : 0
     }
 
-    this.attact = false;
-    
     this.viewscale = 1;
     
     this.fps = 0;
@@ -96,16 +94,20 @@ View.prototype.createGraphics = function() {
 }
     
 View.prototype.createCanvas = function(graphics) {     
-    graphics.canvas = new GameCanvas();
+    graphics.canvas = new GameCanvas("");
     var classname = "absolute game-canvas";
     if (graphics.css) classname += " " + graphics.css;
     graphics.canvas.setClassName(classname);
 }
 
 View.prototype.createView = function(gamecontroller) {
-    this.view.canvas = new GameCanvas();
+    this.view.canvas = new GameCanvas("gamecanvas");
     this.view.canvas.setClassName("absolute game-canvas");
     this.graphics["view"].canvas = this.view.canvas;
+    var main = document.getElementById("main-content");
+    if (main) {
+        this.view.canvas.attach(main);
+    }
 }
 
 View.prototype.resize = function() {
@@ -227,18 +229,7 @@ View.prototype.setMessage = function(message) { }
 View.prototype.updateUI = function() {
 }
 
-View.prototype.attachView = function() {
-    if (!this.attach) {
-        var main = document.getElementById("main-content");
-        if (main) {
-            this.view.canvas.attach(main);
-            this.attach = true;
-        }
-    }
-}
-
 View.prototype.render = function(now, world, render) {
-    this.attachView();
     this.setBackground(world);
     this.renderer.render(now, world, this.view, this.graphics, render, this.gamecontroller.paused);
     this.renderFPS();

@@ -3,12 +3,13 @@
 function PartyView(gamecontroller, id, width, height, scale) {
     this.view = new View(gamecontroller, id, width, height, scale);
     var controller = this;
-    gamecontroller.main.onclick = function() {
+    gamecontroller.main.onclick = function(e) {
         /*
         toggleFullScreen();
         controller.resize();
         */
         if (controller.paused) return;
+        if (e.target.id != "gamecanvas") return;
         controller.view.renderer.camera.shakeScreen(1.2, 800);
     }
     

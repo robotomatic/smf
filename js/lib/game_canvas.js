@@ -1,7 +1,8 @@
 "use strict";
 
-function GameCanvas() {
+function GameCanvas(id) {
     this.canvas = document.createElement('canvas');
+    this.canvas.id = id;
     this.ctx = this.canvas.getContext("2d");
     this.classname = "";
     this.top = 0;
