@@ -13,12 +13,16 @@ document.addEventListener('mousedown', function(e) {
     target = id;
     dialogs[id].bringToTop();
     dialogs[id].dragStart(e);
+    e.stopPropagation()
+    e.preventDefault();
     return false;
 }, false);
 
 document.addEventListener('mousemove', function(e) {
     if (!drag || !target || !dialogs[target]) return;
     dialogs[target].dragMove(e);
+    e.stopPropagation()
+    e.preventDefault();
     return false;
 }, false);
 
@@ -27,6 +31,8 @@ document.addEventListener('mouseup', function(e) {
     dialogs[target].dragEnd(e);
     drag = false;
     target= null;
+    e.stopPropagation()
+    e.preventDefault();
     return false;
 }, false);
 
@@ -70,12 +76,18 @@ function Dialog(id, d) {
     
     d.addEventListener('click', function(e) {
         c.bringToTop();
+        e.stopPropagation()
+        e.preventDefault();
+        return false;
     });
     var close = d.getElementsByClassName("dialog-title-close");
     if (close.length) {
         var cc = close[0];
         cc.addEventListener('click', function(e) {
             if (!d.className.indexOf("hidden") > -1) d.className += " hidden";
+            e.stopPropagation()
+            e.preventDefault();
+            return false;
         });
     }
 }

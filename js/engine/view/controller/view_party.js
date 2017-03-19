@@ -1,9 +1,9 @@
 "use strict";
 
-function PartyView(id, width, height, scale) {
-    this.view = new View(id, width, height, scale);
+function PartyView(gamecontroller, id, width, height, scale) {
+    this.view = new View(gamecontroller, id, width, height, scale);
     var controller = this;
-    this.view.parent.onclick = function() {
+    gamecontroller.main.onclick = function() {
         /*
         toggleFullScreen();
         controller.resize();

@@ -25,7 +25,7 @@ function GameControllerMenuMain(gamecontroller) {
     this.scale = 0;
     this.device = "";
     this.gamequality = new GameQuality(this, 2);
-    
+
     this.load();
     return this;
 }
@@ -148,7 +148,7 @@ GameControllerMenuMain.prototype.loadPlayer = function(id, x, y, z, character) {
 
 GameControllerMenuMain.prototype.loadView = function() {
     this.loop.hideViews();
-    this.view = new MenuView("menu-canvas", this.width, this.height, this.scale);
+    this.view = new MenuView(this.gamecontroller, "menu-canvas", this.width, this.height, this.scale);
     this.loop.loadViews(new Array(this.view));
     if (!this.running && this.started) {
         this.resize();

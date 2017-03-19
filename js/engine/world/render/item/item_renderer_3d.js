@@ -4,8 +4,8 @@ function ItemRenderer3D() {
     this.polygon = new Polygon();
     this.colors = {
         front : "black",
-        side : "red",
-        top : "#dbdbdb",
+        side : "#d6d6d6",
+        top : "#e8e8e8",
         bottom : "blue"
     }
     this.dotop = false;

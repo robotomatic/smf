@@ -146,7 +146,7 @@ GameControllerGame.prototype.loadViews = function() {
     var w = this.width;
     var h = this.height;
     var s = this.scale;
-    this.view = new PartyView("game-canvas", w, h, s);
+    this.view = new PartyView(this.gamecontroller, "game-canvas", w, h, s);
     this.loop.loadViews(new Array(this.view));
     this.view.initialize(this.loop.game.world);
 }

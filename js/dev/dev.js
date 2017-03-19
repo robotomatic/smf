@@ -22,9 +22,15 @@ function initializeDev(game) {
     dialogs = new Array();
     
     gamecontroller = game;
-    document.getElementById("dev-toolbar").onclick = function() {
-        toggleDev();
-    };
+    var toolbar = document.getElementById("dev-toolbar");
+    if (toolbar) {
+        toolbar.onclick = function(e) {
+            toggleDev();
+            e.stopPropagation()
+            e.preventDefault();
+            return false;
+        };
+    }
 
     var tools = document.getElementsByClassName("dev-toolbar-tools-tool");
     for (var i = 0; i < tools.length; i++) {

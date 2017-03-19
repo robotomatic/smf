@@ -1,7 +1,8 @@
 "use strict";
 
-function View(id, width, height, scale) {
+function View(gamecontroller, id, width, height, scale) {
     if (!id) return;
+    this.gamecontroller = gamecontroller;
     this.id = id;
     this.width = width;
     this.height = height;
@@ -9,7 +10,7 @@ function View(id, width, height, scale) {
     this.maxheight = height;
     this.renderer = new ViewRenderer();
     this.scale = scale;
-    this.parent = document.getElementById(this.id);
+    this.parent = document.getElementById("main");
     
     this.bluramount = 2;
     var v = new ViewGraphics(this.bluramount);
@@ -23,6 +24,8 @@ function View(id, width, height, scale) {
         auto : true,
         scale : 0
     }
+
+    this.attact = false;
     
     this.viewscale = 1;
     
@@ -32,7 +35,7 @@ function View(id, width, height, scale) {
 
     this.ready = false;
     this.createGraphics();
-    this.createView();
+    this.createView(gamecontroller);
 }
 
 View.prototype.reset = function(when) { 
@@ -99,10 +102,9 @@ View.prototype.createCanvas = function(graphics) {
     graphics.canvas.setClassName(classname);
 }
 
-View.prototype.createView = function() {
+View.prototype.createView = function(gamecontroller) {
     this.view.canvas = new GameCanvas();
     this.view.canvas.setClassName("absolute game-canvas");
-    this.view.canvas.attach(this.parent);
     this.graphics["view"].canvas = this.view.canvas;
 }
 
@@ -225,9 +227,20 @@ View.prototype.setMessage = function(message) { }
 View.prototype.updateUI = function() {
 }
 
+View.prototype.attachView = function() {
+    if (!this.attach) {
+        var main = document.getElementById("main-content");
+        if (main) {
+            this.view.canvas.attach(main);
+            this.attach = true;
+        }
+    }
+}
+
 View.prototype.render = function(now, world, render) {
+    this.attachView();
     this.setBackground(world);
-    this.renderer.render(now, world, this.view, this.graphics, render);
+    this.renderer.render(now, world, this.view, this.graphics, render, this.gamecontroller.paused);
     this.renderFPS();
 }
 

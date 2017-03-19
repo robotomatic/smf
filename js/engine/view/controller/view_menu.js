@@ -1,10 +1,10 @@
 "use strict";
 
-function MenuView(id, width, height, scale) {
-    this.view = new View(id, width, height, scale);
+function MenuView(gamecontroller, id, width, height, scale) {
+    this.view = new View(gamecontroller, id, width, height, scale);
     this.ready = false;
     var controller = this;
-    this.view.parent.onclick = function() {
+    gamecontroller.main.onclick = function() {
         if (controller.paused) return;
         window.location.hash="#game";
     }

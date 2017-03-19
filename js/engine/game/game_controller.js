@@ -2,6 +2,7 @@
 
 function GameController() {
     this.input = new Input();
+    this.main = document.getElementById("main");
     this.maincontent = document.getElementById("main-content");
     this.ignorefade = true;
     this.gameloader = new GameLoader();
@@ -44,6 +45,7 @@ GameController.prototype.loadDev = function(callback) {
     var controller = this;
     this.gameloader.loadDev("html/dev.html", function() {
         controller.devtools = controller.gameloader.dev;
+        controller.main.innerHTML += controller.devtools;
         if (callback) callback();
         benchmark("load dev tools");
     });
@@ -90,65 +92,49 @@ GameController.prototype.showView = function(view, data) {
 GameController.prototype.showMenu = function(data) {
     this.stop();
     var controller = this;
-    this.loadUI(data, function() {
-        controller.gameloader.loadMenu(
-            "dat/menus/main_menu.json",
-            "dat/characters.json", 
-            "dat/animations.json",
-            function() {
-                controller.currentview = "menu";
-                controller.game = new GameControllerMenuMain(controller);
-                controller.start();
-            }
-        );
-    });
+    this.loadUI(data);
+    controller.gameloader.loadMenu(
+        "dat/menus/main_menu.json",
+        "dat/characters.json", 
+        "dat/animations.json",
+        function() {
+            controller.currentview = "menu";
+            controller.game = new GameControllerMenuMain(controller);
+            controller.start();
+        }
+    );
 }
 
 GameController.prototype.showGameParty = function(data) {
     this.stop();
     var controller = this;
-    this.loadUI(data, function() {
-        controller.gameloader.loadGameParty(
-            "dat/levels.json",
-            "dat/themes.json",
-            "dat/materials.json",
-            "dat/characters.json", 
-            "dat/animations.json",
-            function() {
-                controller.currentview = "game";
-                var gamesettings = controller.gamesettings.getSettings("game-party");
-                var levelsettings = controller.gamesettings.getSettings("menu-level-chooser");
-                var playersettings = controller.gamesettings.getSettings("menu-player-chooser");
-                controller.game = new GameControllerGame(controller, gamesettings, levelsettings, playersettings);
-                controller.game.load(function() {
-                    controller.game.loadPlayers();
-                    controller.game.loadViews();
-                    controller.start();
-                });
-            }
-        );
-    });
+    this.loadUI(data);
+    controller.gameloader.loadGameParty(
+        "dat/levels.json",
+        "dat/themes.json",
+        "dat/materials.json",
+        "dat/characters.json", 
+        "dat/animations.json",
+        function() {
+            controller.currentview = "game";
+            var gamesettings = controller.gamesettings.getSettings("game-party");
+            var levelsettings = controller.gamesettings.getSettings("menu-level-chooser");
+            var playersettings = controller.gamesettings.getSettings("menu-player-chooser");
+            controller.game = new GameControllerGame(controller, gamesettings, levelsettings, playersettings);
+            controller.game.load(function() {
+                controller.game.loadPlayers();
+                controller.game.loadViews();
+                controller.start();
+            });
+        }
+    );
 }
 
-GameController.prototype.loadUI = function(data, callback) {
-    this.fadeOut();
-    var controller = this;
-    setTimeout(function() { controller.swapUI(data, callback); }, 1000);
-}
-
-GameController.prototype.swapUI = function(data, callback) {
-    var div = document.createElement("div");
-    div.innerHTML = data;
-    var main = div.getElementsByClassName("main-content-wrap");
-    var controller = this;
-    if (main.length) {
-        controller.maincontent.innerHTML = "";
-        controller.maincontent.innerHTML = main[0].innerHTML;
-        if (controller.devtools) controller.maincontent.innerHTML += controller.devtools;
-        if (__dev) dev_log = null;
-    }
+GameController.prototype.loadUI = function(data) {
+    var content = document.getElementById("main-content");
+    content.innerHTML = "";
+    content.innerHTML = data;
     this.resize();
-    if (callback) callback();
 }
     
 GameController.prototype.start = function() {
