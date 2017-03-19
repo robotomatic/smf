@@ -43,9 +43,9 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
     
     item.smooth();
     item.translate(mbr, width, height);
-    item.item3D.createItem3D(item, world.worldrenderer.itemrenderer, mbr, world.worldrenderer.waterline);
+    item.item3D.createItem3D(item, world.worldrenderer.itemrenderer, mbr, width, height, world.worldrenderer.waterline);
     var showing = item.isVisible(window, mbr, 100);
-    if (item.y > world.worldrenderer.waterline) showing = false;
+    if (!item.waterline && world.worldrenderer.waterline.flow && item.y > world.worldrenderer.waterline.waterline) showing = false;
     var iz = item.z;
     if (item.width == "100%") iz = item.z + item.depth;
     var d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, item, 0, 0, 0);

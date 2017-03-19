@@ -101,13 +101,12 @@ ItemRenderer.prototype.reset = function() {
 }
 
 ItemRenderer.prototype.shouldThemeProject = function(item) {
-    if (!this.theme) return;
+    if (!this.theme) return true;
     var titem = this.theme.items[String(item.itemtype)];
-    if (!titem) return item.depth;
+    if (!titem) return true;
     if (titem.project === false) return false;
     if (titem.depth === 0) return false;
-    if (titem.depth > 0) return titem.depth;
-    return item.depth;
+    return true;
 }
     
 ItemRenderer.prototype.drawItem = function(ctx, color, item, window, x, y, scale) {

@@ -20,7 +20,7 @@ function Item3D() {
     this.projectedpolygon = new Polygon();
 }
 
-Item3D.prototype.createItem3D = function(item, renderer, window, waterline = null) {
+Item3D.prototype.createItem3D = function(item, renderer, window, width, height, waterline = null) {
     
     item.geometry.projected.points.length = 0;
     
@@ -54,7 +54,7 @@ Item3D.prototype.createItem3D = function(item, renderer, window, waterline = nul
         this.polygon.setPoints(box.getPoints());
     }
 
-    if (waterline && waterline.flow) {
+    if (waterline && waterline.flow && !item.waterline) {
         var fw = waterline.waterline;
 
 //        if (item.y > fw) {
@@ -87,15 +87,22 @@ Item3D.prototype.createItem3D = function(item, renderer, window, waterline = nul
         }
     }
 
-    this.projectItem3D(item, depth, scale, x, y, window);
+    this.projectItem3D(item, depth, scale, x, y, window, width, height);
 }
 
-Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window) {
+Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window, width, height) {
 
     if (!this.polygon || !this.polygon.points) return;
     
     if (!item.geometry.fronts[0]) item.geometry.fronts[0] = new Polygon(this.polygon.getPoints());
     else item.geometry.fronts[0].setPoints(this.polygon.getPoints())
+    
+    if (item.width == "100%") {
+        item.geometry.fronts[0].points[0].x = 0;
+        item.geometry.fronts[0].points[1].x = width;
+        item.geometry.fronts[0].points[2].x = width;
+        item.geometry.fronts[0].points[3].x = 0;
+    }
 
     var wc = window.getCenter();
     var t = this.polygon.points.length;
@@ -198,6 +205,8 @@ Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window) {
         if (item.width == "100%") {
             this.projectedpolygon.points[0].x = this.p1.x;
             this.projectedpolygon.points[1].x = this.p2.x;
+            this.projectedpolygon.points[2].x = this.p1.x;
+            this.projectedpolygon.points[3].x = this.p2.x;
         }
         
         if (!item.geometry.tops[0]) {

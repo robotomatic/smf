@@ -46,5 +46,6 @@ WorldBuilderEnvironment.prototype.buildEnvironmentItem = function(world, itemren
         world.worldrenderer.waterline.miny = waterline.miny;
         world.worldrenderer.waterline.maxy = waterline.maxy;
         world.worldrenderer.waterline.flow = true;
+        item.waterline = true;
     }
 }

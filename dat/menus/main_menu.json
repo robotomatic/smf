@@ -5,8 +5,7 @@
         {
             "name" : "bounds",
             "collide" : true,
-            "draw" : true,
-            "depth" : 1200,
+            "draw" : false,
             "items" : [
                 {
                     "name" : "floor",
@@ -14,7 +13,8 @@
                     "y": 320,
                     "z" : -300,
                     "width": 1240,
-                    "height": 50
+                    "height": 50,
+                    "depth" : 1200
                 }
             ]
         }

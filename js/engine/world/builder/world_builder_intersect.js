@@ -300,35 +300,39 @@ WorldBuilderIntersect.prototype.intersectClipLeft = function(item, itemc, newite
 WorldBuilderIntersect.prototype.intersectClipTop = function(item, itemc, newitem) {
     var dh = itemc.y - item.y;
     var dy = item.y + item.height - itemc.y;
-    var t = item.parts.length;
-    for (var i = 0; i < t; i++) {
-        var p = item.parts[i];
-        var ph = p.height;
-        if (ph > dh) p.height = dh;
-    }
-    newitem.dotheme = false;
-    newitem.y = itemc.y;
-    for (var i = 0; i < t; i++) {
-        var p = newitem.parts[i];
-        var ph = p.height;
-        if (ph > dy) p.height = dy;
+    if (item.parts) {
+        var t = item.parts.length;
+        for (var i = 0; i < t; i++) {
+            var p = item.parts[i];
+            var ph = p.height;
+            if (ph > dh) p.height = dh;
+        }
+        newitem.dotheme = false;
+        newitem.y = itemc.y;
+        for (var i = 0; i < t; i++) {
+            var p = newitem.parts[i];
+            var ph = p.height;
+            if (ph > dy) p.height = dy;
+        }
     }
 }
 
 WorldBuilderIntersect.prototype.intersectClipBottom = function(item, itemc, newitem) {
     var dh = itemc.y - item.y + itemc.height;
     var dy = (item.y + item.height) - (itemc.y + itemc.height);
-    var t = item.parts.length;
-    item.y = itemc.y + itemc.height;
-    for (var i = 0; i < t; i++) {
-        var p = item.parts[i];
-        var ph = p.height;
-        if (ph > dy) p.height = dy;
-    }
-    newitem.dotheme = false;
-    for (var i = 0; i < t; i++) {
-        var p = newitem.parts[i];
-        var ph = p.height;
-        if (ph > dh) p.height = dh;
+    if (item.parts) {
+        var t = item.parts.length;
+        item.y = itemc.y + itemc.height;
+        for (var i = 0; i < t; i++) {
+            var p = item.parts[i];
+            var ph = p.height;
+            if (ph > dy) p.height = dy;
+        }
+        newitem.dotheme = false;
+        for (var i = 0; i < t; i++) {
+            var p = newitem.parts[i];
+            var ph = p.height;
+            if (ph > dh) p.height = dh;
+        }
     }
 }
