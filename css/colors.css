@@ -20,22 +20,23 @@
     background: linear-gradient(to right,  #00ffff 0%,#45cfe8  52%,#00ffff 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffff', endColorstr='#00ffff',GradientType=1 );
 }
-*/
 
 .bg-main {
-    background: #31f9cb; /* Old browsers */
-    background: -moz-linear-gradient(top,  #31f9cb 18%, #ffffff 67%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top,  #31f9cb 18%, #ffffff 67%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, #31f9cb 18%, #ffffff 67%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31f9cb', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+    background: #31f9cb;
+    background: -moz-linear-gradient(top,  #31f9cb 18%, #ffffff 67%); 
+    background: -webkit-linear-gradient(top,  #31f9cb 18%, #ffffff 67%);
+    background: linear-gradient(to bottom, #31f9cb 18%, #ffffff 67%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31f9cb', endColorstr='#ffffff',GradientType=0 );
 }
+*/
 
 .bg-color-red {
     background-color: red;
 }
 
 .bg-color-main {
-    background-color: #00ffff ;
+/*    background-color: #00ffff ;*/
+    background-color: white;
 }
 
 .bg-color-ok {
