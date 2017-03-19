@@ -17,6 +17,8 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
     if (item.width == "100%") {
         if (debug.level || debug.render || debug.hsr) return;
     }
+
+    
     
     if (!renderer.shouldThemeProject(item)) return;
     if (item.draw == false) return;
