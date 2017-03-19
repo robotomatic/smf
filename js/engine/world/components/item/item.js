@@ -79,6 +79,8 @@ function Item(json) {
     
     this.dotheme = true;
     
+    this.waterline = false;
+    
     this.mbr = new Rectangle();
     
     this.box = new Rectangle(0, 0, 0, 0);
@@ -251,13 +253,19 @@ Item.prototype.getProjectedGeometryMbr = function(geometry, mbr) {
             mbr.x = gmbr.x;
             mbr.width += d;
         }
+        if ((gmbr.x + gmbr.width) >= mbr.x + mbr.width) mbr.width = gmbr.x + gmbr.width - mbr.x;
         if (gmbr.y < mbr.y) {
             var d = mbr.y - gmbr.y;
             mbr.y = gmbr.y;
             mbr.height += d;
         }
-        if ((gmbr.x + gmbr.width) >= mbr.x + mbr.width) mbr.width = gmbr.x + gmbr.width - mbr.x;
         if ((gmbr.y + gmbr.height) >= mbr.y + mbr.height) mbr.height = gmbr.y + gmbr.height - mbr.y;
+        if (gmbr.z != 0 && gmbr.z < mbr.z) {
+            var d = mbr.z - gmbr.z;
+            mbr.z = gmbr.z;
+            mbr.depth += d;
+        }
+        if (gmbr.z != 0 && (gmbr.z + gmbr.depth) >= mbr.z + mbr.depth) mbr.depth = gmbr.z + gmbr.depth - mbr.z;
     }
     return mbr;
 }
@@ -266,20 +274,61 @@ Item.prototype.getProjectedGeometryMbr = function(geometry, mbr) {
 
 Item.prototype.isVisible = function(w, wmbr, pad = 0) {
     if (this.draw == false) return false;
+
     var mbr = this.getProjectedMbr();
+//    pad *= this.scalefactor;
+    
+    var wx = w.x;
+    var ww = w.width;
     if (this.width != "100%") {
-        if (mbr.x > (w.x + w.width + pad)) return false;
-        if ((mbr.x + mbr.width) < w.x - pad) return false;
+        if (mbr.x > (wx + ww + pad)) return false;
+        if ((mbr.x + mbr.width) < wx - pad) return false;
     }
+    
+    var wy = w.y;
+    var wh = w.height;
     if (this.height != "100%") {
-        if (mbr.y > (w.y + w.height + pad)) return false;
-        if ((mbr.y + mbr.height) < w.y - pad) return false;
+        if (mbr.y > (wy + wh + pad)) return false;
+        if ((mbr.y + mbr.height) < wy - pad) return false;
     }
+    
+    var wz = w.z;
+    var wd = w.depth;
     if (this.depth != "100%") {
-        if (mbr.z + mbr.depth < w.z - 100 - pad) return false;
+        if (mbr.z + mbr.depth < wz - 100 - pad) return false;
     }
+    
     return true;
 }
+
+//Item.prototype.isVisible = function(w, wmbr, pad = 0) {
+//    if (this.draw == false) return false;
+//
+//    var mbr = this.getProjectedMbr();
+//    pad *= this.scalefactor;
+//    
+//    var wx = w.x * this.scalefactor;
+//    var ww = w.width * this.scalefactor;
+//    if (this.width != "100%") {
+//        if (mbr.x > (wx + ww + pad)) return false;
+//        if ((mbr.x + mbr.width) < wx - pad) return false;
+//    }
+//    
+//    var wy = w.y * this.scalefactor;
+//    var wh = w.height * this.scalefactor;
+//    if (this.height != "100%") {
+//        if (mbr.y > (wy + wh + pad)) return false;
+//        if ((mbr.y + mbr.height) < wy - pad) return false;
+//    }
+//    
+//    var wz = w.z * this.scalefactor;
+//    var wd = w.depth * this.scalefactor;
+//    if (this.depth != "100%") {
+//        if (mbr.z + mbr.depth < wz - 100 - pad) return false;
+//    }
+//    
+//    return true;
+//}
 
 
 
@@ -417,6 +466,7 @@ Item.prototype.translate = function(window, width, height) {
     this.np2 = projectPoint3D(this.pnew, iz, scale, x, y, wc, this.np2);
 
     var nw = abs(this.np2.x - this.np1.x);
+//    iw = (this.width == "100%") ? width : nw;
     iw = nw;
 
     this.scalefactor = iw / bw;
@@ -427,6 +477,7 @@ Item.prototype.translate = function(window, width, height) {
     var nd = id * this.scalefactor;
     id = nd;
 
+//    ix = (this.width == "100%") ? 0 : this.np1.x;
     ix = this.np1.x;
     iy = this.np1.y - ih;
     
