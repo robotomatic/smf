@@ -1,10 +1,11 @@
 "use strict";
 
-function Level(width, height) {
+function Level(width, height, depth) {
     this.name = "";
     this.theme = "";
-    this.width = width;
-    this.height = height;
+    this.width = width ? width : 0;
+    this.height = height ? height : 0;
+    this.depth = depth ? depth : 0;
     
     this.debug = true;
     
@@ -28,14 +29,8 @@ Level.prototype.loadJson = function(json) {
     this.theme = json.theme;
     this.width = json.width;
     this.height = json.height;
-    
+    this.depth = json.depth;
     this.debug = json.debug;
-//    
-//    this.zoompad = json.zoompad;
-//    this.gravity = json.gravity;
-//    this.speed = json.speed;
-//    this.jumpspeed = json.jumpspeed;
-    
     return this;
 }
 

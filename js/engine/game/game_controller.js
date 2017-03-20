@@ -94,7 +94,7 @@ GameController.prototype.showMenu = function(data) {
     var controller = this;
     this.loadUI(data);
     controller.gameloader.loadMenu(
-        "dat/menus/main_menu.json",
+        "dat/levels/main_menu/main_menu.json",
         "dat/characters.json", 
         "dat/animations.json",
         function() {

@@ -2,6 +2,7 @@
     "name" : "mountain",
     "width" : 5000,
     "height" : 1200,
+    "depth" : 3000,
     "debug" : false,
     "layers" : {
         "level" : {

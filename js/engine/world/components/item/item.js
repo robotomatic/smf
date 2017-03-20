@@ -273,7 +273,8 @@ Item.prototype.getProjectedGeometryMbr = function(geometry, mbr) {
 
 
 Item.prototype.isVisible = function(w, wmbr, pad = 0) {
-    if (this.draw == false) return false;
+
+//    if (this.draw == false) return false;
 
     var mbr = this.getProjectedMbr();
 //    pad *= this.scalefactor;

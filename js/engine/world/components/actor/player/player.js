@@ -90,6 +90,12 @@ Player.prototype.resetCollisions = function() {
     this.controller.reset();
     this.collider.levelcollisions.length = 0;
     this.collided = false;
+    this.controller.canMoveDown = true;    
+    this.controller.canMoveUp = true;    
+    this.controller.canMoveLeft = true;    
+    this.controller.canMoveRight = true;    
+    this.controller.falling = true;
+    this.controller.grounded = false;
 }
 
 Player.prototype.collideWith = function(collider, result, debug) {
@@ -103,14 +109,7 @@ Player.prototype.collideWith = function(collider, result, debug) {
 };
 
 Player.prototype.updateLevelCollisions = function() {
-    this.collider.updateCollisionBox(this);
-    if (this.collided) return;
-    this.controller.canMoveDown = true;    
-    this.controller.canMoveUp = true;    
-    this.controller.canMoveLeft = true;    
-    this.controller.canMoveRight = true;    
-    this.controller.falling = true;
-    this.controller.grounded = false;
+    this.collider.updateCollisionBox();
 }
 
 

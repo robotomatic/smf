@@ -27,7 +27,7 @@ WorldRendererStart.prototype.getRenderItemsWorldItems = function(mbr, window, cp
     var t = world.items.length;
     for (var i = 0; i < t; i++) {
         var item = world.items[i];
-        if (item.draw == false) continue;
+//        if (item.draw == false) continue;
         this.getRenderItemsWorldLevelLayerItemsItem(mbr, window, cp, graphics, world, item, debug);
     }
 }

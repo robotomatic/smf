@@ -113,16 +113,35 @@ WorldCollider.prototype.collideWithItems = function(world, player) {
     // ---> profit..?
     
     
-    
-    
-    this.collideWithCollider(player, world.level.width, world.level.height);
 
-    if (player.controller.x < 0) player.controller.x = 0;
-    if (player.controller.x + player.controller.width > world.level.width) player.controller.x = world.level.width - player.controller.width;
-    if (player.controller.y < 0) player.controller.y = 0;
+    if (player.controller.x < 0) {
+        player.controller.x = 0;
+        player.controller.canMoveLeft = false;
+    }
+    if (player.controller.x + player.controller.width > world.level.width) {
+        player.controller.x = world.level.width - player.controller.width;
+        player.controller.canMoveRight = false;
+    }
+    if (player.controller.y < 0) {
+        player.controller.y = 0;
+        player.controller.canMoveUp = false;
+    }
     if (player.controller.y + player.controller.height > world.level.height) {
         player.info.die();
     }
+    if (player.controller.z < 0) {
+        player.controller.z = 0;
+        player.controller.canMoveIn = false;
+    }
+    if (player.controller.z + player.controller.depth > world.level.depth) {
+        player.controller.z = world.level.depth - player.controller.depth;
+        player.controller.canMoveOut = false;
+    }
+
+    player.collider.updateCollisionBox();        
+    
+    this.collideWithCollider(player, world.level.width, world.level.height);
+    
     player.updateLevelCollisions();
 }
 

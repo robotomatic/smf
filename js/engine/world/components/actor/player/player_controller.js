@@ -76,6 +76,8 @@ function PlayerController(player, x, y, z, width, height, speed) {
 
     this.idle_timeout = 0;
     this.idle_start = null;
+
+    this.waiting = false;
     
     this.paused = false;
     this.pausedleft = false;
@@ -124,6 +126,11 @@ PlayerController.prototype.pause = function(when) {
         this.pausedleft = false;
         this.pausedright = false;
     }
+}
+
+PlayerController.prototype.wait = function(wait) {
+    this.stop();
+    this.waiting = wait;
 }
 
 PlayerController.prototype.resume = function(when) {

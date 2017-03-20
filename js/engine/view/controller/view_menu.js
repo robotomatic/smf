@@ -125,15 +125,15 @@ MenuView.prototype.updateNPC = function(world, npc) {
         if (player.controller.move_right) player.controller.right(false);        
     }
 
-//    if (player.controller.z <= -hviewpad) {
-//        player.controller.z = -hviewpad;
-//        if (player.controller.move_in) player.controller.in(false);
-//    } else if (player.controller.z >= world.level.layers[0].depth - viewpad) {
-//        player.controller.z = world.level.layers[0].depth - viewpad;
-//        if (player.controller.move_out) player.controller.out(false);
-//    }
+    if (player.controller.z <= -hviewpad) {
+        player.controller.z = -hviewpad;
+        if (player.controller.move_in) player.controller.in(false);
+    } else if (player.controller.z >= world.level.layers[0].depth - viewpad) {
+        player.controller.z = world.level.layers[0].depth - viewpad;
+        if (player.controller.move_out) player.controller.out(false);
+    }
     
-    if (!player.controller.paused && !player.controller.move_left && !player.controller.move_right && player.controller.grounded) {
+    if (!player.controller.waiting && !player.controller.move_left && !player.controller.move_right && player.controller.grounded) {
         var dir = random(0, 8);
         if (dir == 0) {
             if (player.controller.x > viewpad) {
@@ -143,14 +143,14 @@ MenuView.prototype.updateNPC = function(world, npc) {
             if (player.controller.x < world.level.width - (player.controller.width + viewpad))  {
                 npc.doActionTimeout("right", true, false, random(1000, 3000));
             }
-//        } else if (dir == 2) {
-//            if (player.controller.z > -hviewpad)  {
-//                npc.doActionTimeout("in", true, false, random(1000, 3000));
-//            }
-//        } else if (dir == 3) {
-//            if (player.controller.z < world.level.layers[0].depth - viewpad)  {
-//                npc.doActionTimeout("out", true, false, random(1000, 3000));
-//            }
+        } else if (dir == 2) {
+            if (player.controller.z > -hviewpad)  {
+                npc.doActionTimeout("in", true, false, random(1000, 3000));
+            }
+        } else if (dir == 3) {
+            if (player.controller.z < world.level.layers[0].depth - viewpad)  {
+                npc.doActionTimeout("out", true, false, random(1000, 3000));
+            }
         } else {
             if (!player.controller.falling) {
                 var pw = player.controller.x + (player.controller.width / 2);
@@ -158,7 +158,7 @@ MenuView.prototype.updateNPC = function(world, npc) {
                 var paused = true;
                 for (var ii = 0; ii < world.players.players.length; ii++) {
                     if (world.players.players[ii] == player) continue;
-                    if (world.players.players[ii].controller.paused) {
+                    if (world.players.players[ii].controller.waiting) {
                         var npcw = world.players.players[ii].controller.x + (world.players.players[ii].controller.width / 2)
                         var d = abs(pw - npcw);
                         if (d < 30) {
@@ -171,10 +171,10 @@ MenuView.prototype.updateNPC = function(world, npc) {
                     if (paused) {
                         
                         // todo: if everybody is paused, sway for a bit!!!!!!
-                        npc.doActionTimeout("pause", true, false, random(1000, 3000));
+                        npc.doActionTimeout("wait", true, false, random(1000, 3000));
                         
                     } else {
-                        npc.doActionTimeout("pause", true, false, random(1000, 3000));
+                        npc.doActionTimeout("wait", true, false, random(1000, 3000));
                     }
                 } else {
                     var dir2 = random(0, 1);
@@ -193,7 +193,7 @@ MenuView.prototype.updateNPC = function(world, npc) {
     }
     if (player.controller.falling) {
         if (!player.controller.jumpReleased) player.controller.jumpReleased = true;
-    } else if (!player.controller.paused) {
+    } else if (!player.controller.waiting) {
         var r = random(1, 100);
         if (r == 1) {
             player.controller.jump(true);

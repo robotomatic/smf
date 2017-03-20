@@ -1,0 +1,23 @@
+{
+    "width" : 1220,
+    "height" : 400,
+    "depth" : 1500,
+    "layers" : [
+        {
+            "name" : "bounds",
+            "collide" : true,
+            "draw" : false,
+            "items" : [
+                {
+                    "name" : "floor",
+                    "x": 0,
+                    "y": 320,
+                    "z" : 0,
+                    "width": 1220,
+                    "height": 50,
+                    "depth" : 1500
+                }
+            ]
+        }
+    ]
+}

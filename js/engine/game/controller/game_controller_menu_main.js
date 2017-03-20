@@ -118,7 +118,7 @@ GameControllerMenuMain.prototype.addCharacters = function() {
             }
         }
         var playery = 10; 
-        var playerz = 0;
+        var playerz = random(10, this.level.depth);
         var player = this.loadPlayer(i, playerx, playery, playerz, character);
         this.players.addPlayer(player);
         var npc = new NPC(player);
