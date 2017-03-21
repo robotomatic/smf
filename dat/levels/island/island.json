@@ -2,7 +2,7 @@
     "name" : "island",
     "width" : 5000,
     "height" : 1200,
-    "depth" : 3000,
+    "depth" : 5000,
     "debug" : false,
     "layers" : {
         "level" : {
