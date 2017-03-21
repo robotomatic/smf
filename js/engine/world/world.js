@@ -96,7 +96,11 @@ World.prototype.updateItems = function(now, delta) {
     }
 }
 
-World.prototype.updateNPCs = function(now, delta) { if (this.npcs) this.npcs.update(now, delta); }
+World.prototype.updateNPCs = function(now, delta) { 
+    if (this.npcs) {
+        this.npcs.update(now, delta); 
+    }
+}
 
 World.prototype.updatePlayers = function(now, delta) { 
     if (!this.players || !this.players.players) return;

@@ -12,8 +12,8 @@ function MenuView(gamecontroller, id, width, height, scale) {
     this.follow = false;
     this.offset = {
         x : 0,
-        y : 20,
-        z : 20
+        y : -10,
+        z : 0
     }
     this.view.renderer.camera.blur.blur = false;
     this.view.renderer.camera.blur.shift = false;
@@ -103,7 +103,7 @@ MenuView.prototype.update = function(now, delta, game) {
     this.follow = t == 1;
     for (var i = 0; i < t; i++) {
         var npc = world.npcs.npcs[i];
-        this.updateNPC(world, npc);
+        this.updateNPC(now, world, npc);
     }
 }
 
@@ -112,44 +112,65 @@ MenuView.prototype.reset = function() {
     this.view.reset();
 }
 
-MenuView.prototype.updateNPC = function(world, npc) {
+MenuView.prototype.updateNPC = function(when, world, npc) {
     var player = npc.player;
-    var viewpad = 100;
-    var hviewpad = viewpad / 2;
+    var viewpad = 10;
     
     if (player.controller.x <= viewpad) {
         player.controller.x = viewpad;
-        if (player.controller.move_left) player.controller.left(false);
+        if (player.controller.move_left) {
+            player.controller.left(false);
+            player.controller.stop();
+            npc.stop();
+        }
     } else if (player.controller.x >= world.level.width - (player.controller.width + viewpad)) {
         player.controller.x = world.level.width - (player.controller.width + viewpad);
-        if (player.controller.move_right) player.controller.right(false);        
+        if (player.controller.move_right) {
+            player.controller.right(false);        
+            player.controller.stop();
+            npc.stop();
+        }
     }
 
-    if (player.controller.z <= -hviewpad) {
-        player.controller.z = -hviewpad;
-        if (player.controller.move_in) player.controller.in(false);
-    } else if (player.controller.z >= world.level.layers[0].depth - viewpad) {
-        player.controller.z = world.level.layers[0].depth - viewpad;
-        if (player.controller.move_out) player.controller.out(false);
+    if (player.controller.z <= viewpad) {
+        player.controller.z = viewpad;
+        if (player.controller.move_in) {
+            player.controller.in(false);
+            player.controller.stop();
+            npc.stop();
+        }
+    } else if (player.controller.z >= world.level.depth - viewpad) {
+        player.controller.z = world.level.depth - viewpad;
+        if (player.controller.move_out) {
+            player.controller.out(false);
+            player.controller.stop();
+            npc.stop();
+        }
     }
     
-    if (!player.controller.waiting && !player.controller.move_left && !player.controller.move_right && player.controller.grounded) {
+    if (!player.controller.waiting && 
+        !player.controller.move_left && 
+        !player.controller.move_right && 
+//        !player.controller.move_in && 
+//        !player.controller.move_out && 
+        player.controller.grounded) {
+        
         var dir = random(0, 8);
         if (dir == 0) {
             if (player.controller.x > viewpad) {
-                npc.doActionTimeout("left", true, false, random(1000, 3000));
+                npc.doActionTimeout("left", true, false, when, random(1000, 3000));
             }
         } else if (dir == 1) {
             if (player.controller.x < world.level.width - (player.controller.width + viewpad))  {
-                npc.doActionTimeout("right", true, false, random(1000, 3000));
+                npc.doActionTimeout("right", true, false, when, random(1000, 3000));
             }
         } else if (dir == 2) {
-            if (player.controller.z > -hviewpad)  {
-                npc.doActionTimeout("in", true, false, random(1000, 3000));
+            if (player.controller.z > viewpad)  {
+                npc.doActionTimeout("out", true, false, when, random(1000, 3000));
             }
         } else if (dir == 3) {
-            if (player.controller.z < world.level.layers[0].depth - viewpad)  {
-                npc.doActionTimeout("out", true, false, random(1000, 3000));
+            if (player.controller.z < world.level.depth - viewpad)  {
+                npc.doActionTimeout("in", true, false, when, random(1000, 3000));
             }
         } else {
             if (!player.controller.falling) {
@@ -171,20 +192,20 @@ MenuView.prototype.updateNPC = function(world, npc) {
                     if (paused) {
                         
                         // todo: if everybody is paused, sway for a bit!!!!!!
-                        npc.doActionTimeout("wait", true, false, random(1000, 3000));
+                        npc.doActionTimeout("wait", true, false, when, random(1000, 3000));
                         
                     } else {
-                        npc.doActionTimeout("wait", true, false, random(1000, 3000));
+                        npc.doActionTimeout("wait", true, false, when, random(1000, 3000));
                     }
                 } else {
-                    var dir2 = random(0, 1);
+                    var dir2 = random(0, 4);
                     if (dir2 == 0) {
                         if (player.controller.x > viewpad) {
-                            npc.doActionTimeout("left", true, false, random(1000, 2000));
+                            npc.doActionTimeout("left", true, false, when, random(1000, 2000));
                         }
                     } else if (dir2 == 1) {
                         if (player.controller.x < world.level.width - (player.controller.width + viewpad))  {
-                            npc.doActionTimeout("right", true, false, random(1000, 2000));
+                            npc.doActionTimeout("right", true, false, when, random(1000, 2000));
                         }
                     }
                 }

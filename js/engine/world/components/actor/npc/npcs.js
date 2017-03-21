@@ -23,7 +23,7 @@ NPCs.prototype.reset = function(when) {
 NPCs.prototype.update = function(when, delta) {
     var docallback = true;
     for (var i = 0; i < this.npcs.length; i++) {
-        if (this.npcs[i] && this.npcs[i].action) {
+        if (this.npcs[i] && (this.npcs[i].action || this.npcs[i].timeout.action)) {
             var update = this.npcs[i].update(when, delta);
             if (update) docallback = false;
         }

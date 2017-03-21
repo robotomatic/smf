@@ -10,28 +10,59 @@ function NPC(player) {
     this.currentval = null;
     this.endval = null;
     this.busy = false;
+    
+    this.timeout = {
+        timeout : false,
+        start : 0,
+        end : 0,
+        action : "",
+        val : null
+    }
+        
 }
 
 NPC.prototype.reset = function(when) {
     this.action = null;
     this.callback = null;
     this.busy = false;
+    this.timeout.timeout = false;
+}
+
+NPC.prototype.stop = function() {
+    if (this.timeout.timeout) {
+        this.player.controller[this.timeout.action](this.timeout.val);
+    }
+    if (this.action) {
+        this.player.controller[this.action](false);
+    }
+    this.reset();
 }
 
 
-NPC.prototype.doActionTimeout = function(action, start, end, when) {
+NPC.prototype.doActionTimeout = function(action, start, end, starttime, duration) {
+
+    if (this.timeout.timeout) {
+        this.player.controller[this.timeout.action](this.timeout.val);
+    }
+
+    this.player.controller.stop();
     this.player.controller.lookStop();
     this.player.controller[action](start);
     var p = this.player;
     
-    // todo: don't like this. keep a time delta instead.
-    setTimeout(function() {
-        p.controller[action](end);
-    }, when);
+    this.timeout.timeout = true;
+    this.timeout.start = starttime;
+    this.timeout.end = starttime + duration;
+    this.timeout.action = action;
+    this.timeout.val = end;
+
+    this.busy = true;
+    this.update(starttime, 0);
 }
 
 NPC.prototype.doAction = function(action, args, key, val, callback) {
     if (this.action) return;
+    this.timeout.timeout = false;
     this.busy = true;
     if (key && val) {
         this.callback = callback;
@@ -49,6 +80,11 @@ NPC.prototype.doAction = function(action, args, key, val, callback) {
 }
 
 NPC.prototype.update = function(when, delta) {
+    
+    if (this.timeout.timeout) {
+        return this.updateTimeout(when, delta);
+    }
+    
     var update = false;
     if (this.action) {
         if (this.key) {
@@ -86,4 +122,16 @@ NPC.prototype.update = function(when, delta) {
         }
     }
     return update;
+}
+
+
+NPC.prototype.updateTimeout = function(when, delta) {
+    if (!this.timeout.timeout) return false;
+    if (when >= this.timeout.end) {
+        this.player.controller[this.timeout.action](this.timeout.val);
+        this.timeout.timeout = false;
+        this.busy = false;
+        return false;
+    }
+    return true;
 }
