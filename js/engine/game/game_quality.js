@@ -30,8 +30,8 @@ function GameQuality(game, quality) {
         game.device = "desktop";
     }
     
-    game.width = 800;
-    game.height = 350;
+    game.width = 1280;
+    game.height = 1024;
     game.fov = 800;
     game.scale = 1;
     game.levelquality = 2;
