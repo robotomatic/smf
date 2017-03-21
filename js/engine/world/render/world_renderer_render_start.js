@@ -27,7 +27,7 @@ WorldRendererStart.prototype.getRenderItemsWorldItems = function(mbr, window, cp
     var t = world.items.length;
     for (var i = 0; i < t; i++) {
         var item = world.items[i];
-//        if (item.draw == false) continue;
+        if (item.isbounds) continue;
         this.getRenderItemsWorldLevelLayerItemsItem(mbr, window, cp, graphics, world, item, debug);
     }
 }
@@ -43,9 +43,8 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
     
     item.smooth();
     item.translate(mbr, width, height);
-    item.item3D.createItem3D(item, world.worldrenderer.itemrenderer, mbr, width, height, world.worldrenderer.waterline);
+    item.item3D.createItem3D(item, world.worldrenderer.itemrenderer, mbr, width, height, world.worldrenderer.waterline, debug);
     var showing = item.isVisible(window, mbr, 100);
-    if (!item.waterline && world.worldrenderer.waterline.flow && item.y > world.worldrenderer.waterline.waterline) showing = false;
     var iz = item.z;
     if (item.width == "100%") iz = item.z + item.depth;
     var d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, item, 0, 0, 0);

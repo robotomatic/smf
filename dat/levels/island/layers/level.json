@@ -3,6 +3,7 @@
         "name" : "bounds",
         "collide" : true,
         "draw" : false,
+        "bounds" : true,
         "damage" : 1000,
         "items" : [
             {

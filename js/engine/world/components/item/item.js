@@ -7,6 +7,8 @@ function Item(json) {
     this.name = "";
     
     this.json = json;
+
+    this.isbounds = false;
     
     this.x = 0;
     this.y = 0;
@@ -146,6 +148,8 @@ Item.prototype.loadJson = function(json) {
     
     var name = json.name ? json.name : "default";
     this.name = name;
+    
+    if (json.bounds) this.isbounds = json.bounds;
     
     var itemtype = json.itemtype ? json.itemtype : "default";
     this.itemtype = itemtype;

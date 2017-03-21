@@ -9,6 +9,7 @@ WorldBuilderEnvironment.prototype.buildEnvironment = function(world) {
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
         if (item.draw === false) continue;
+        if (item.isbounds) continue;
         this.buildEnvironmentItem(world, itemrenderer, item);
     }
     world.items = items;

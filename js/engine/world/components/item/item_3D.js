@@ -18,7 +18,7 @@ function Item3D() {
     this.projectedpolygon = new Polygon();
 }
 
-Item3D.prototype.createItem3D = function(item, renderer, window, width, height, waterline = null) {
+Item3D.prototype.createItem3D = function(item, renderer, window, width, height, waterline = null, debug = null) {
     
     item.geometry.projected.points.length = 0;
     
@@ -29,7 +29,9 @@ Item3D.prototype.createItem3D = function(item, renderer, window, width, height, 
     
     if (!renderer.shouldThemeProject(item)) return;
     
-//    if (item.draw == false) return;
+    if (item.draw == false) {
+        if (!debug || (!debug.level && !debug.render && !debug.hsr)) return;
+    }
     if (item.scalefactor < 0) return;
     
     var x = window.x;

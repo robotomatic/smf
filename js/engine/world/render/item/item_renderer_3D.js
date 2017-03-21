@@ -89,7 +89,7 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
             var topoutline = true;
             if (item.draw === false) topoutline = false;
             if (item.width == "100%") {
-                if (dodebug) topooutline = true;
+                if (dodebug) topoutline = true;
             }
             // todo: only draw outline on contiguous surfaces - tile of same type must exist on outline side
             

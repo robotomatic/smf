@@ -10,6 +10,8 @@ WorldBuilderHSR.prototype.removeHiddenSurfaces = function(world) {
         var item = items[i];
         if (item.draw === false) continue;
         if (item.width == "100%" || item.height == "100%" || item.depth == "100%") continue;
+        if (item.waterline) continue;
+        if (item.isbounds) continue;
         item = this.removeItemItemsHiddenSurfaces(item, items);
     }
     world.items = items;

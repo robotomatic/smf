@@ -4,6 +4,7 @@ function Layer() {
     this.name;
 
     this.collide = false;
+    this.isbounds = false;
     
     this.physics = false;
     this.gravity = null;
@@ -44,6 +45,7 @@ function Layer() {
 Layer.prototype.loadJson = function(json) {
     this.name = json.name;
     this.collide = json.collide;
+    if (json.bounds) this.isbounds = json.bounds;
     this.physics = json.physics;
     this.gravity = json.gravity;
     this.viscosity = json.viscosity;

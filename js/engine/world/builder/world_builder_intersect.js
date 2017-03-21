@@ -9,6 +9,8 @@ WorldBuilderIntersect.prototype.intersectItems = function(world) {
         var item = items[i];
         if (item.draw === false) continue;
         if (item.width == "100%" || item.height == "100%" || item.depth == "100%") continue;
+        if (item.waterline) continue;
+        if (item.isbounds) continue;
         var newitems = this.intersectItemItems(item, items);
         if (newitems) {
             items = items.concat(newitems);

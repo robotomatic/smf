@@ -13,6 +13,7 @@ WorldBuilderTheme.prototype.buildTheme = function(world) {
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
         if (!item.dotheme) continue;
+        if (item.isbounds) continue;
         newitems = this.buildThemeItems(itemrenderer, item, newitems);
     }
     for (var ii = 0; ii < newitems.length; ii++) {

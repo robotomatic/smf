@@ -15,7 +15,7 @@
         "waterline" : {
             "flow" : true,
             "amount" : 0.3,
-            "miny" : -5,
+            "miny" : -10,
             "maxy" : 10
         },
         "color" : {
