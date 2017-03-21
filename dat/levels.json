@@ -1,10 +1,4 @@
 {
-    "menu-0" : {
-        "name" : "main-menu",
-        "file" : "dat/levels/main_menu/main_menu.json",
-        "themes" : {
-        }
-    },
     "level-0" : {
         "name" : "island",
         "file" : "dat/levels/island/island.json",
