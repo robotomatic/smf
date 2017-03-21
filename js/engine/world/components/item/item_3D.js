@@ -49,7 +49,6 @@ Item3D.prototype.createItem3D = function(item, renderer, window, width, height, 
     if (item.parts) {
         var ip = item.getPolygon();
         this.polygon.setPoints(ip.getPoints());
-        this.polygon.translate(bx, by, scale * bs);
     } else {
         this.polygon.setPoints(box.getPoints());
     }
@@ -57,9 +56,9 @@ Item3D.prototype.createItem3D = function(item, renderer, window, width, height, 
     if (waterline && waterline.flow && !item.waterline) {
         var fw = waterline.waterline;
 
-//        if (item.y > fw) {
-//            return;
-//        }
+        if (item.y >= fw) {
+            return;
+        }
         
         var tpt = item.polygon.points.length;
         for (var i = 0; i < tpt; i++) {
@@ -68,24 +67,17 @@ Item3D.prototype.createItem3D = function(item, renderer, window, width, height, 
             var tpp = this.polygon.points[i];
             if (!tpp) continue;
             
-            //      
-            // TODO: Need to project waterline
-            //
-            /*
-            var wc = window.getCenter();
-            var h = (wc.y - y) * scale;
-            var depth = box.z;
-            var fw = projectPoint3DCoord(waterline.waterline, depth, h);
-            */
-
             if (item.y + ppp.y >= fw) {
                 var ddd = (item.y + ppp.y) - fw;
                 var ds = ddd * bs;
-                tpp.y -= ds;
+                //tpp.y -= ds;
+                tpp.y -= ddd;
                 if (tpp.y < 0) tpp.y = 0;
             }
         }
     }
+    
+    if (item.parts) this.polygon.translate(bx, by, scale * bs);
 
     this.projectItem3D(item, depth, scale, x, y, window, width, height);
 }
