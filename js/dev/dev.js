@@ -8,10 +8,13 @@ var devfpstype = [];
 var elapsed = [];
 var delay = 5;
 var dialogs = new Array();
+var dev_init = false;
 
 function initializeDev(game) {
     
     if (!__dev) return;
+    if (dev_init) return;
+    dev_init = true;
     
     fpsmain = null;
     devlog = null;
