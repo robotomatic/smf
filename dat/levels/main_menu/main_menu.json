@@ -1,7 +1,7 @@
 {
-    "width" : 1220,
+    "width" : 800,
     "height" : 400,
-    "depth" : 1500,
+    "depth" : 200,
     "layers" : [
         {
             "name" : "bounds",
@@ -12,10 +12,10 @@
                     "name" : "floor",
                     "x": 0,
                     "y": 320,
-                    "z" : 0,
-                    "width": 1220,
+                    "z" : -100,
+                    "width": 800,
                     "height": 50,
-                    "depth" : 1500
+                    "depth" : 300
                 }
             ]
         }
