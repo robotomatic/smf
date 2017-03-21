@@ -53,11 +53,12 @@ Item3D.prototype.createItem3D = function(item, renderer, window, width, height, 
         this.polygon.setPoints(box.getPoints());
     }
 
+    item.underwater = false;
     if (waterline && waterline.flow && !item.waterline) {
         var fw = waterline.waterline;
 
         if (item.y >= fw) {
-            return;
+            item.underwater = true;
         }
         
         var tpt = item.polygon.points.length;

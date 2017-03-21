@@ -82,6 +82,7 @@ function Item(json) {
     this.dotheme = true;
     
     this.waterline = false;
+    this.underwater = false;
     
     this.mbr = new Rectangle();
     

@@ -33,6 +33,9 @@
         "properties" : {
             "friction" : 0.1
         },
+        "waterline" : {
+            "flow" : false
+        },
         "color" : {
             "color" : "#d0dfe3",
             "projected" : {

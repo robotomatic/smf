@@ -32,7 +32,14 @@ MenuView.prototype.setCameraComfy = function() {
 MenuView.prototype.setCameraTight = function() {
 }
 
-MenuView.prototype.view;
+MenuView.prototype.pause = function(when) { 
+    this.view.pause(when);
+}
+
+MenuView.prototype.resume = function(when) { 
+    this.view.resume(when);
+}
+
 
 MenuView.prototype.resizeText = function() { this.view.resizeText(); }
 

@@ -10,7 +10,7 @@
         "background" : {
             "color" : "#6c7679",
             "canvas" : {
-                "color" : "#e8f2f5"
+                "color" : "#97999a"
             }
         },
         
@@ -19,8 +19,8 @@
                 "name" : "sky",
                 "color" : {
                     "gradient" : {
-                        "start" : "#e8f2f5",
-                        "stop" : "#97999a"
+                        "start" : "#97999a",
+                        "stop" : "#e8f2f5"
                     }
                 }
             },

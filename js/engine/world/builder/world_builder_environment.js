@@ -42,7 +42,10 @@ WorldBuilderEnvironment.prototype.buildEnvironmentItem = function(world, itemren
     if (waterline) {
         world.worldrenderer.waterline.y = item.y;
         world.worldrenderer.waterline.z = item.z;
-        if (!waterline.flow) return;
+        if (!waterline.flow) {
+            world.worldrenderer.waterline.flow = false;    
+            return;
+        }
         world.worldrenderer.waterline.amount = waterline.amount;
         world.worldrenderer.waterline.miny = waterline.miny;
         world.worldrenderer.waterline.maxy = waterline.maxy;

@@ -1,0 +1,85 @@
+[
+    {
+        "name" : "fortress",
+        "comment" : "fortress",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 300,
+        "items" : [
+            {
+                "x" : 300,
+                "y" : 1000,
+                "z" : 300,
+                "itemtype" : "ground",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 160
+                    }
+                ]
+            },
+            {
+                "x" : 300,
+                "y" : 1000,
+                "z" : 900,
+                "itemtype" : "ground",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 160
+                    }
+                ]
+            },
+
+            {
+                "x" : 600,
+                "y" : 800,
+                "z" : 600,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 360
+                    }
+                ]
+            },
+            
+            
+            {
+                "x" : 900,
+                "y" : 1000,
+                "z" : 300,
+                "itemtype" : "ground",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 160
+                    }
+                ]
+            },
+            {
+                "x" : 900,
+                "y" : 1000,
+                "z" : 900,
+                "itemtype" : "ground",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 160
+                    }
+                ]
+            }
+        ]
+    }
+]
+    

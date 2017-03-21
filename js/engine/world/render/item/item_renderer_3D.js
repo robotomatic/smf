@@ -13,6 +13,8 @@ function ItemRenderer3D() {
 }
 
 ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas, scale, debug) {
+    
+    if (item.underwater) return;
 
     var dodebug = (debug.level || debug.render || debug.hsr);
     
@@ -38,7 +40,7 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
  
         this.renderItemParts3D(gamecanvas, item, item.geometry.fronts, this.colors.front, x, y, scale, debug, outline, fill);
         
-        if (!debug.level && fill) {
+        if (!debug.level && fill && item.width != "100%") {
             var lc = this.colors.side;
             var lw = 1;
             gamecanvas.setStrokeStyle(lc);
@@ -90,6 +92,7 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
             if (item.draw === false) topoutline = false;
             if (item.width == "100%") {
                 if (dodebug) topoutline = true;
+                else topoutline = false;
             }
             // todo: only draw outline on contiguous surfaces - tile of same type must exist on outline side
             
@@ -214,7 +217,7 @@ ItemRenderer3D.prototype.getColors = function(gamecanvas, renderer, item, debug)
         if (theme.color.gradient) {
             
             var gradient = theme.color.gradient;
-            themecolor = gradient.stop;
+            themecolor = gradient.start;
             
             /*
             var t = gradient.top ? gradient.top : item.box.y;

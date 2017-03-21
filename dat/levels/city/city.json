@@ -1,0 +1,24 @@
+{
+    "name" : "city",
+    "width" : 5000,
+    "height" : 1200,
+    "depth" : 3000,
+    "debug" : false,
+    "layers" : {
+        "level" : {
+            "file" : "dat/levels/city/layers/level.json"
+        },
+        
+        "sky" : {
+            "file" : "dat/levels/city/layers/sky.json"
+        },
+        
+        "city" : {
+            "file" : "dat/levels/city/layers/city.json"
+        },
+        
+        "liquid" : {
+            "file" : "dat/levels/city/layers/liquid.json"
+        }
+    }
+ }

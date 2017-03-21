@@ -17,10 +17,19 @@ Game.prototype.setViews = function(views) {
 
 Game.prototype.pause = function(now) { 
     this.world.pause(now);
+    var t = this.views.length;
+    for (var i = 0; i < t; i++) {
+        this.views[i].view.reset(now); 
+        this.views[i].view.pause(now); 
+    }
 }
 
 Game.prototype.resume = function(now) { 
     this.world.resume(now);
+    var t = this.views.length;
+    for (var i = 0; i < t; i++) {
+        this.views[i].view.resume(now); 
+    }
 }
 
 Game.prototype.update = function(now, delta) { 

@@ -74,8 +74,18 @@ PartyView.prototype.setCameraZoom = function(name) {
 }
 
 
-PartyView.prototype.view;
-PartyView.prototype.resizeText = function() { this.view.resizeText(); }
+PartyView.prototype.pause = function(when) { 
+    this.view.pause(when);
+}
+
+PartyView.prototype.resume = function(when) { 
+    this.view.resume(when);
+}
+
+PartyView.prototype.resizeText = function() { 
+    this.view.resizeText(); 
+}
+
 PartyView.prototype.show = function() { 
     this.resizeUI();
     this.view.show(); 
@@ -104,7 +114,6 @@ PartyView.prototype.update = function(now, delta, game) {
 
 PartyView.prototype.reset = function() {
     this.view.reset();
-    this.render = false;
     this.view.renderer.mbr.width = 0;
     this.view.renderer.mbr.height = 0;
     this.rendercount = 0;

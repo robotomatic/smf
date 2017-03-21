@@ -32,12 +32,24 @@ function View(gamecontroller, id, width, height, scale) {
     this.fpstext = new Text(5, 10, "FPS: ");
 
     this.ready = false;
+    this.paused = false;
+    
     this.createGraphics();
     this.createView(gamecontroller);
 }
 
 View.prototype.reset = function(when) { 
+    this.parent.style.background = "white";
+    this.view.canvas.setBackground("white");
     this.ready = false;
+}
+
+View.prototype.pause = function(when) { 
+    this.paused = true;
+}
+
+View.prototype.resume = function(when) { 
+    this.paused = false;
 }
 
 View.prototype.setBlur = function(amount) { 
@@ -204,6 +216,7 @@ View.prototype.hide = function() {
 }
 
 View.prototype.setBackground = function(world) {
+    if (this.paused) return;
     if (world.worldrenderer.debug.level.level || world.worldrenderer.debug.level.render || world.worldrenderer.debug.level.hsr) {
         this.parent.style.background = "white";
         this.view.canvas.setBackground("white");
@@ -246,7 +259,7 @@ View.prototype.renderFPS = function() {
     if (fps < 10) fps = "0" + fps;
     var avg = round(this.avg);
     if (avg < 10) avg = "0" + avg;
-    this.fpstext.message = "FPS: " + fps + "\n" + "AVG: " + avg;
+    this.fpstext.message = this.paused ? "PAUSE" : "FPS: " + fps + "\n" + "AVG: " + avg;
     this.view.canvas.setFillStyle("black");
     this.view.canvas.beginPath();
     this.fpstext.draw(this.view.canvas, 8);

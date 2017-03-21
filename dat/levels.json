@@ -14,5 +14,21 @@
             "0" : "default",
             "1" : "lava"
         }
+    },
+    "level-2" : {
+        "name" : "fortress",
+        "file" : "dat/levels/fortress/fortress.json",
+        "themes" : {
+            "0" : "default",
+            "1" : "space"
+        }
+    },
+    "level-3" : {
+        "name" : "city",
+        "file" : "dat/levels/city/city.json",
+        "themes" : {
+            "0" : "default",
+            "1" : "snow"
+        }
     }
 }
