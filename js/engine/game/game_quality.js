@@ -32,7 +32,7 @@ function GameQuality(game, quality) {
     
     game.width = 1280;
     game.height = 1024;
-    game.fov = 800;
+    game.fov = 1500;
     game.scale = 1;
     game.levelquality = 2;
     game.playerquality = 3;
