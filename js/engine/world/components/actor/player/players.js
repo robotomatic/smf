@@ -20,10 +20,26 @@ Players.prototype.loadJson = function(json) {
     return this.players;
 }
 
+
+
 Players.prototype.addPlayer = function(player) {
     this.players.push(player);
     updateDevPlayers(this.players);
 }
+
+Players.prototype.removePlayer = function(player) {
+    var t = this.players.length;
+    for (var i = 0; i < t; i++) {
+        var p = this.players[i];
+        if (p == player) {
+            this.players.splice(i, 1);
+            break;
+        }
+    }
+    updateDevPlayers(this.players);
+}
+
+
 
 Players.prototype.getPlayers = function() {
     return this.players;
@@ -57,7 +73,6 @@ Players.prototype.reset = function(when) {
 }
 
 Players.prototype.update = function(when, delta) {
-    updateDevPlayers(this.players);
 }
 
 Players.prototype.getMbr = function(mbr) {

@@ -163,7 +163,6 @@ GameControllerGame.prototype.loadViews = function() {
 
 GameControllerGame.prototype.start = function() {
     this.started = true;
-    this.gamecontroller.initDebug();
     this.loop.start();
     this.loop.showViews();
     this.running = true;

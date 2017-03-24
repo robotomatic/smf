@@ -51,15 +51,6 @@ function initializeDev(game) {
         };
     }
 
-    /*
-    var resizers = document.getElementsByClassName("resize-resize");
-    for (var i = 0; i < resizers.length; i++) {
-        resizers[i].onmousedown = function(e) {
-            this.parentNode.style.width = "auto";
-        }
-    }
-    */
-    
     var devTabClick = function(e) {
         var dlg = this.parentNode.parentNode;
         var seltabs = findChildrenByClassName(dlg, "dialog-tab-list-tabs-tab-selected");
@@ -106,6 +97,16 @@ function unselectTools() {
     }
 }
 
+function resetDev(game) {
+    if (!__dev) return;
+    gamecontroller = game;
+    var world = gamecontroller.game.loop.game.world;
+    if (world) {
+        resetDevPlayers(world.players);
+        resetDevWorld(world);
+    }
+}
+    
 function resizeDev() {
     if (!__dev) return;
     if (!gamecontroller || !gamecontroller.game) return;

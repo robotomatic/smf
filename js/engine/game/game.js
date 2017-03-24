@@ -34,7 +34,6 @@ Game.prototype.resume = function(now) {
 
 Game.prototype.update = function(now, delta) { 
     this.world.update(now, delta);
-    updateDevWorld(this.world);
     if (!this.views) return;
     var t = this.views.length;
     for (var i = 0; i < t; i++) {

@@ -13,6 +13,14 @@ function initializeDevPlayers() {
     dev_template = document.getElementById("dev-dialog-players-players-player-template");
 }
 
+function resetDevPlayers(players) {
+    
+    // todo: remove all players that aren't active
+    // todo: hide all player dialogs that aren't active
+    updateDevPlayers(players.players);
+    
+}
+
 function updateDevPlayers(players) {
     
     if (!__dev) return;

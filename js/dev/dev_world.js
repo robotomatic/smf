@@ -14,6 +14,13 @@ function initializeDevWorld() {
     };
 }
 
+function resetDevWorld(world) {
+    
+    // todo: remove all layer info
+    updateDevWorld(world);
+    
+}
+
 function updateDevWorld(world) {
     
     if (!__dev) return;

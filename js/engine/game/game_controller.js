@@ -139,10 +139,8 @@ GameController.prototype.loadUI = function(data) {
     
 GameController.prototype.start = function() {
     this.resize();
-    if (this.game) {
-        if (!Array.isArray(this.game)) { this.game.start(); }
-        else { for (var i = 0; i < this.game.length; i++) this.game[i].start(); }
-    }
+    this.initDebug();
+    this.game.start();
     this.fadeIn();
     this.ignorefade = false;
     benchmark("start game");
@@ -151,29 +149,27 @@ GameController.prototype.start = function() {
 
 GameController.prototype.initDebug = function() {
     if (!__dev) return;
-    initializeDev(this);
+    if (!dev_init) initializeDev(this);
+    resetDev(this);
     updateDevView();
     show(document.getElementById("dev"));
 }
 
 GameController.prototype.resize = function() {
     if (!this.game) return;
-    if (!Array.isArray(this.game)) { this.game.resize(); }
-    else { for (var i = 0; i < this.game.length; i++) this.game[i].resize(); }
+    this.game.resize();
     if (__dev) resizeDev();
 }
 
 GameController.prototype.run = function(now) {
     if (!this.game) return;
-    if (!Array.isArray(this.game)) { if (this.game.loop) this.game.run(now); }
-    else { for (var i = 0; i < this.game.length; i++) this.game[i].run(now); }
+    if (this.game.loop) this.game.run(now);
 }
 
 GameController.prototype.pause = function(now) {
     if (this.paused) return;
     if (!this.game) return;
-    if (!Array.isArray(this.game)) { if (this.game.loop) this.game.pause(now); }
-    else { for (var i = 0; i < this.game.length; i++) this.game[i].pause(now); }
+    if (this.game.loop) this.game.pause(now);
     logDev("");
     logDev("Pause : " + round(now));
     logDev("");
@@ -186,21 +182,13 @@ GameController.prototype.resume = function(now) {
     logDev("");
     logDev("Resume : " + round(now));
     logDev("");
-    if (!Array.isArray(this.game)) { if (this.game.loop) this.game.resume(now); }
-    else { for (var i = 0; i < this.game.length; i++) this.game[i].resume(now); }
+    if (this.game.loop) this.game.resume(now);
     this.paused = false;
 }
 
-//GameController.prototype.render = function(now) {
-//    if (!this.game) return;
-//    if (!Array.isArray(this.game)) { if (this.game.loop) this.game.loop.render(now); }
-//    else { for (var i = 0; i < this.game.length; i++) this.game[i].loop.render(now); }
-//}
-
 GameController.prototype.stop = function() {
     if (!this.game) return;
-    if (!Array.isArray(this.game)) { this.game.stop(); }
-    else { for (var i = 0; i < this.game.length; i++) this.game[i].stop(); }
+    this.game.stop();
 }
 
 GameController.prototype.fadeIn = function() {
