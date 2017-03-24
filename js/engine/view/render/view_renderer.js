@@ -10,14 +10,14 @@ function ViewRenderer() {
 ViewRenderer.prototype.update = function(now, world, view) {
 }
 
-ViewRenderer.prototype.render = function(now, world, view, graphics, render, paused) {
-    this.mbr = this.camera.getView(now, this.mbr, view.canvas.width, view.canvas.height, render, paused);
+ViewRenderer.prototype.render = function(now, world, width, height, graphics, render, paused) {
+    this.mbr = this.camera.getView(now, this.mbr, width, height, render, paused);
     this.window.x = 0;
     this.window.y = 0;
     this.window.z = 0;
-    this.window.width = view.canvas.width;
-    this.window.height = view.canvas.height;
+    this.window.width = width;
+    this.window.height = height;
     this.window.depth = 1;
     this.window.scale = this.mbr.scale;
-    world.render(now, graphics["view"], this.camera, this.mbr, this.window, render);
+    world.render(now, graphics["main"], this.camera, this.mbr, this.window, render);
 }

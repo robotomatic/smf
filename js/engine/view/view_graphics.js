@@ -2,7 +2,7 @@
 
 function ViewGraphics(amt) {
     this.graphics = {
-        view : {
+        main : {
             canvas : null,
             css : "",
             scale : 1

@@ -156,9 +156,13 @@ GameCanvas.prototype.fillText = function(text, x, y) {
 
 
 
+GameCanvas.prototype.getData = function() {
+    return this.canvas;
+}
 
 
 
 GameCanvas.prototype.drawImage = function(data, x, y, w, h, xx, yy, ww, hh) {
-    this.ctx.drawImage(data, x, y, w, h, xx, yy, ww, hh);
+    if (xx && yy && ww && hh) this.ctx.drawImage(data, x, y, w, h, xx, yy, ww, hh);
+    else this.ctx.drawImage(data, x, y, w, h);
 }

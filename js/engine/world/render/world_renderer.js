@@ -57,7 +57,6 @@ WorldRenderer.prototype.setTheme = function(themename, theme, materials) {
 }
 
 WorldRenderer.prototype.render = function(now, graphics, camera, world, mbr, window, render) {
-    this.clearGraphics(graphics);
     this.waterline.getFlood();
     this.worldrenderer_start.renderStart(mbr, window, graphics, camera, world, this.debug);
     this.worldrenderer_render.renderRender(now, graphics, camera, world, mbr, window, this.debug, render);
@@ -65,6 +64,3 @@ WorldRenderer.prototype.render = function(now, graphics, camera, world, mbr, win
     this.worldrenderer_end.renderEnd(graphics, mbr);
 }
 
-WorldRenderer.prototype.clearGraphics = function(graphics) {
-    graphics.canvas.clear()
-}

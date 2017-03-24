@@ -90,7 +90,7 @@ function updateDevViewSize(v) {
     var rr = dev_size_view_ratio;
     rr.value = round(r);
     var ss = dev_size_stretch;
-    ss.checked = v.view.fit;
+    ss.checked = v.rendertarget.fit;
     var aa = dev_size_auto;
-    aa.checked = v.view.auto;
+    aa.checked = v.rendertarget.auto;
 }
