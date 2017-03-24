@@ -234,6 +234,9 @@ View.prototype.setBackground = function(world) {
             if (world.worldrenderer.itemrenderer.theme && world.worldrenderer.itemrenderer.theme.background) {
                 this.parent.style.background = world.worldrenderer.itemrenderer.theme.background.color;
                 this.rendertarget.canvas.setBackground(world.worldrenderer.itemrenderer.theme.background.canvas.color);
+            } else {
+                this.parent.style.background = "";
+                this.rendertarget.canvas.setBackground("");
             }
             this.ready = true;
         }
