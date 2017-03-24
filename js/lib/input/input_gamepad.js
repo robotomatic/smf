@@ -7,20 +7,6 @@ function GamepadInputMenuBindings() {
     this.bindings[this.bindings.length] = { item : "buttons", element : 0, test : "button", action : "startGame" };
 }
 
-function GamepadInputPlayerChooserBindings() {
-    this.bindings = new Array();
-    this.bindings[this.bindings.length] = { item : "buttons", element : 8, test : "button", action : "startGame" };
-    this.bindings[this.bindings.length] = { item : "buttons", element : 9, test : "button", action : "startGame" };
-    this.bindings[this.bindings.length] = { item : "buttons", element : 0, test : "button", action : "startGame" };
-}
-
-function GamepadInputLevelChooserBindings() {
-    this.bindings = new Array();
-    this.bindings[this.bindings.length] = { item : "buttons", element : 8, test : "button", action : "startGame" };
-    this.bindings[this.bindings.length] = { item : "buttons", element : 9, test : "button", action : "startGame" };
-    this.bindings[this.bindings.length] = { item : "buttons", element : 0, test : "button", action : "startGame" };
-}
-
 function GamepadInputPlayerBindings() {
     this.bindings = new Array();
     this.bindings[this.bindings.length] = { item : "buttons", element : 8, test : "button", action : "startGame" };
@@ -159,8 +145,6 @@ GamepadInput.prototype.mapButton = function(obj, index, padid, binding) {
 }
 
 GamepadInput.prototype.setMenu = function(menu) { this.bindGamepads(menu, new GamepadInputMenuBindings()); }
-GamepadInput.prototype.setPlayerChooser = function(chooser) { this.bindGamepads(chooser, new GamepadInputPlayerChooserBindings()); }
-GamepadInput.prototype.setLevelChooser = function(chooser) { this.bindGamepads(chooser, new GamepadInputLevelChooserBindings()); }
 
 GamepadInput.prototype.setPlayers = function(players) { 
     this.players = players;

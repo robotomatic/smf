@@ -5,16 +5,6 @@ function KeyboardInputMenuKeyBindings() {
     this.bindings[0] = { 13 : "startGame", 32 : "startGame" };
 }
 
-function KeyboardInputPlayerChooserKeyBindings() {
-    this.bindings = new Array();
-    this.bindings[0] = { 13 : "startGame", 32 : "startGame" };
-}
-
-function KeyboardInputLevelChooserKeyBindings() {
-    this.bindings = new Array();
-    this.bindings[0] = { 13 : "startGame", 32 : "startGame" };
-}
-
 function KeyboardInputPlayerKeyBindings() {
     this.bindings = new Array();
     this.bindings[0] = { 87: "in", 83: "out", 65: "left", 68: "right", 221: "jump", 220: "action", 32: "jump", 80: "action" };
@@ -58,8 +48,7 @@ KeyboardInput.prototype.mapKey = function(key, obj, action) { this.keys[key] = n
 KeyboardInput.prototype.keyEvent = function(key, val) { if (this.keys[key]) this.input.do(this.keys[key][0], this.keys[key][1], val); }
 
 KeyboardInput.prototype.setMenu = function(menu) { this.bind(menu, new KeyboardInputMenuKeyBindings()); }
-KeyboardInput.prototype.setPlayerChooser = function(chooser) { this.bind(chooser, new KeyboardInputPlayerChooserKeyBindings()); }
-KeyboardInput.prototype.setLevelChooser = function(chooser) { this.bind(chooser, new KeyboardInputLevelChooserKeyBindings()); }
+
 KeyboardInput.prototype.setPlayers = function(players) { 
     if (players.players.length == 1) this.bind(players.players[0].controller, new KeyboardInputPlayerKeyBindings()); 
     else this.bindList(players.players, new KeyboardInputPlayerKeyBindings()); 

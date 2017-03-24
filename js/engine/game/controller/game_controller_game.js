@@ -19,7 +19,17 @@ function GameControllerGame(gamecontroller, gamesettings, levelsettings, players
     this.scale = 0;
     this.device = "";
     this.gamequality = new GameQuality(this, 1);
+    
+    this.initGamepads();
+    
     return this;
+}
+
+GameControllerGame.prototype.initGamepads = function() { 
+    gamepads = document.getElementById("gamepads");
+    if (!gamepads) return;
+    if (isMobile() || isTablet()) show(gamepads);
+    else hide(gamepads);
 }
 
 GameControllerGame.prototype.getSettings = function() { return this.settings; }

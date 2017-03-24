@@ -1,6 +1,5 @@
 "use strict";
 
-var dev_overlay = null;
 var dev_player = null;
 var dev_character = null;
 var dev_guts = null;
@@ -8,26 +7,11 @@ var dev_level = null;
 var dev_render = null;
 var dev_hsr = null;
 var dev_collision = null;
-var dev_pause = null;
-
-var gamepads = null;
 
 function initializeDevDebug() {
     
     if (!__dev) return;
 
-    gamepads = document.getElementById("gamepads");
-    
-    dev_overlay = document.getElementById("dev-overlay");
-    dev_overlay.onclick = function() {
-        toggleOverlay();
-    };
-    
-    dev_pause = document.getElementById("dev-debug-pause");
-    dev_pause.onclick = function() {
-        debugPause();
-    };
-    
     dev_player = document.getElementById("dev-debug-player");
     dev_player.onchange = function() {
         setDebugPlayers(this.checked);
@@ -62,7 +46,6 @@ function updateDevDebug() {
     
     if (!__dev) return;
     
-    updateDevDebugOverlay();
     updateDevDebugPlayers();
     updateDevDebugCharacters();
     updateDevDebugGutss();
@@ -70,58 +53,6 @@ function updateDevDebug() {
     updateDevDebugRender();
     updateDevDebugHSR();
 }
-
-function toggleOverlay() {
-    
-    if (!__dev) return;
-    
-    var gp = gamepads;
-    if (!gp) return;
-    var hide = gp.className.indexOf("hidden-all") > -1;
-    if (hide) {
-        gp.className = gp.className.replace("hidden-all", "");
-        gp.className += " show-all";
-    } else {
-        var show = gp.className.indexOf("show-all") > -1;
-        if (show) {
-            gp.className = gp.className.replace("show-all", "");
-            gp.className += " hidden-all";
-        } else {
-            var style = window.getComputedStyle(gp);
-            if (style.display === 'none') {
-                gp.className += " show-all";
-            } else {
-                gp.className += " hidden-all";
-            }
-        }
-    }
-}
-
-function updateDevDebugOverlay() {
-    
-    if (!__dev) return;
-    
-    var gp = gamepads;
-    if (!gp) return;
-    var hide = gp.className.indexOf("hidden-all") > -1;
-    dev_overlay.checked = hide;
-}
-
-function debugPause() {
-    
-    if (!__dev) return;
-    
-    var paused = controller.paused;
-    if (paused) {
-        controller.resume(timestamp());
-        dev_pause.value = "Pause";
-    } else {
-        controller.pause(timestamp());
-        dev_pause.value = "Play";
-    }
-}
-
-
 
 function setDebugPlayers(debug) {
     

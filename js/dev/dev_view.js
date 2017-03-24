@@ -7,6 +7,11 @@ var dev_size_view_width = null;
 var dev_size_view_height = null;
 var dev_size_view_ratio = null;
 
+var dev_overlay = null;
+var gamepads = null;
+
+var dev_pause = null;
+
 function initializeDevSize() {
     
     if (!__dev) return;
@@ -33,6 +38,21 @@ function initializeDevSize() {
     dev_size_view_ratio.onchange = function() {
         changeRatio();
     };
+    
+    gamepads = document.getElementById("gamepads");
+    
+    dev_overlay = document.getElementById("dev-overlay");
+    dev_overlay.onclick = function() {
+        toggleOverlay();
+    };
+    
+    dev_pause = document.getElementById("dev-debug-pause");
+    dev_pause.onclick = function() {
+        debugPause();
+    };
+    
+    
+    updateDevViewOverlay();
 }
 
 function toggleStretch() {
@@ -73,10 +93,13 @@ function changeRatio() {
     updateDevView();
 }
 
-function updateDevViewSize(v) {
+function updateDevViewSize(vv) {
     
     if (!__dev) return;
     
+    
+    var v = vv.view;
+
     var vs = round(v.viewscale);
     var vv = dev_size_view_label;
     vv.innerText = vs;
@@ -94,3 +117,47 @@ function updateDevViewSize(v) {
     var aa = dev_size_auto;
     aa.checked = v.rendertarget.auto;
 }
+
+function toggleOverlay() {
+    
+    if (!__dev) return;
+    
+    var gp = gamepads;
+    if (!gp) return;
+    var showing = isVisible(gp);
+    if (showing) {
+        hide(gp);
+    } else {
+        show(gp);
+    }
+    
+    updateDevViewOverlay();
+}
+
+
+function updateDevViewOverlay() {
+    
+    if (!__dev) return;
+    
+    var gp = gamepads;
+    if (!gp) return;
+    var showing = isVisible(gp);
+    dev_overlay.checked = showing;
+}
+
+function debugPause() {
+    
+    if (!__dev) return;
+    
+    var paused = controller.paused;
+    if (paused) {
+        controller.resume(timestamp());
+        dev_pause.value = "Pause";
+    } else {
+        controller.pause(timestamp());
+        dev_pause.value = "Play";
+    }
+}
+
+
+

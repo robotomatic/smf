@@ -17,8 +17,7 @@ function Input() {
 }
 
 Input.prototype.setMenu = function(menu) { this.set("setMenu", menu); }
-Input.prototype.setPlayerChooser = function(chooser) { this.set("setPlayerChooser", chooser); }
-Input.prototype.setLevelChooser = function(chooser) { this.set("setLevelChooser", chooser); }
+
 Input.prototype.setPlayers = function(players) { this.set("setPlayers", players); }
 
 Input.prototype.update = function(now) {

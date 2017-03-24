@@ -107,14 +107,12 @@ function unselectTools() {
 }
 
 function resizeDev() {
-    
     if (!__dev) return;
-    
-    var gp = document.getElementById("gamepads");
-    if (!gp) return;
-    var style = window.getComputedStyle(gp);
-    var chk = document.getElementById("dev-overlay");
-    chk.checked = (style.display === 'none') ? false : true;
+    if (!gamecontroller || !gamecontroller.game) return;
+    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
+    var vv = gamecontroller.game.loop.game.views[0];
+    updateDevViewSize(vv);
+    updateDevViewCamera(vv);
 }
 
 function toggleDev() {
@@ -234,7 +232,4 @@ function updateDevView() {
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
     var v = vv.view;
-    updateDevViewSize(v);
-    updateDevViewCamera(vv);
-    updateDevDebug();
  }

@@ -53,8 +53,7 @@ ScreenInput.prototype.bind = function(id, event, item, action, value) {
 ScreenInput.prototype.update = function(now) { }
 
 ScreenInput.prototype.setMenu = function(menu) {  }
-ScreenInput.prototype.setPlayerChooser = function(chooser) {  }
-ScreenInput.prototype.setLevelChooser = function(chooser) {  }
+
 ScreenInput.prototype.setPlayers = function(players) { 
     this.players = players;
     this.bindEvents();

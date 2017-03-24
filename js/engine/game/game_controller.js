@@ -150,17 +150,17 @@ GameController.prototype.start = function() {
 
 
 GameController.prototype.initDebug = function() {
+    if (!__dev) return;
     initializeDev(this);
     updateDevView();
     show(document.getElementById("dev"));
-    resizeDev();
 }
 
 GameController.prototype.resize = function() {
     if (!this.game) return;
     if (!Array.isArray(this.game)) { this.game.resize(); }
     else { for (var i = 0; i < this.game.length; i++) this.game[i].resize(); }
-    resizeDev();
+    if (__dev) resizeDev();
 }
 
 GameController.prototype.run = function(now) {

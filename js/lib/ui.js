@@ -38,6 +38,13 @@ function hide(e) {
     e.className += " hidden";
 }
 
+function isVisible(e) {
+    return (e.className.indexOf("hidden") < 0);
+}
+
+function isHidden(e) {
+    return (e.className.indexOf("hidden") > -1);
+}
 
 function showError(error) {
     alert(error.responseText);
