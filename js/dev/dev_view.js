@@ -136,11 +136,14 @@ function toggleOverlay() {
 
 
 function updateDevViewOverlay() {
-    
     if (!__dev) return;
-    
     var gp = gamepads;
-    if (!gp) return;
+    if (!gp) {
+        dev_overlay.checked = false;
+        dev_overlay.disabled = true;
+        return;
+    }
+    dev_overlay.disabled = false;
     var showing = isVisible(gp);
     dev_overlay.checked = showing;
 }

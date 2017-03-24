@@ -105,6 +105,7 @@ function resetDev(game) {
         resetDevPlayers(world.players);
         resetDevWorld(world);
     }
+    updateDevViewOverlay();
 }
     
 function resizeDev() {
