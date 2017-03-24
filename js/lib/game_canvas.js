@@ -164,5 +164,5 @@ GameCanvas.prototype.getData = function() {
 
 GameCanvas.prototype.drawImage = function(data, x, y, w, h, xx, yy, ww, hh) {
     if (xx && yy && ww && hh) this.ctx.drawImage(data, x, y, w, h, xx, yy, ww, hh);
-    else this.ctx.drawImage(data, x, y, w, h);
+    else this.ctx.drawImage(data, x, y, w, h, x, y, w, h);
 }
