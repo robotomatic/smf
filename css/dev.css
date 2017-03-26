@@ -52,7 +52,7 @@
 
 #dev-log {
     float: left;
-    width: auto;
+    width: 100%;
     height: 100%;
     color: lightgray;
     font-size: .8em;

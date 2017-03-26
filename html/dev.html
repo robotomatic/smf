@@ -18,7 +18,7 @@
 <div id="dev-dialog-size" class="dialog shadow hidden">
     <div class="dialog-title dialog-drag">
         <a class="float-left dialog-title-close circle">x</a>
-        <a class="float-right dialog-title-title">Size</a>
+        <a class="float-right dialog-title-title">View</a>
     </div>
     <div class="dialog-wrap">
         <div class="dialog-row dialog-row-border">
@@ -80,8 +80,7 @@
             </div>
         </div>
     </div>
-        
-    </div>
+</div>
 
 
 <div id="dev-dialog-camera" class="dialog shadow hidden">
@@ -276,45 +275,49 @@
     <div class="dialog-wrap resize resize-resize resize-resize-large">
         
         <div class="dev-body">
-            <div class="dialog-tab-list">
-                
-                <div class="dialog-tab-list-tabs">
-                    <a class="dialog-tab-list-tabs-tab dialog-tab-list-tabs-tab-selected" id="dialog-tab-list-tab-meta-levels" href="#">Levels</a>
-                    <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-meta-themes" href="#">Themes</a>
-                    <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-meta-materials" href="#">Materials</a>
-                    <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-meta-characters" href="#">Characters</a>
-                    <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-meta-animations" href="#">Animations</a>
-                </div>
+            <table class="dialog-tab-list">
+                <tbody>
 
-                <div class="dialog-tab-list-list">
-                    <div class="dialog-tab-list-list-tablist dialog-tab-list-list-tablist-selected" id="dialog-tab-list-list-meta-levels">
-                        <p class="dialog-tab-list-list-tablist-item">
-                            Levels
-                        </p>
-                    </div>
-                    <div class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-meta-themes">
-                        <p class="dialog-tab-list-list-tablist-item">
-                            Themes
-                        </p>
-                    </div>
-                    <div class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-meta-materials">
-                        <p class="dialog-tab-list-list-tablist-item">
-                            Materials
-                        </p>
-                    </div>
-                    <div class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-meta-characters">
-                        <p class="dialog-tab-list-list-tablist-item">
-                            Characters
-                        </p>
-                    </div>
-                    <div class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-meta-animations">
-                        <p class="dialog-tab-list-list-tablist-item">
-                            Animations
-                        </p>
-                    </div>
+                    <tr class="dialog-tab-list-tabs">
+                        <td class="dialog-tab-list-tabs-tabs">
+                            <a class="dialog-tab-list-tabs-tab dialog-tab-list-tabs-tab-selected" id="dialog-tab-list-tab-meta-levels" href="#">Levels</a>
+                            <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-meta-themes" href="#">Themes</a>
+                            <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-meta-materials" href="#">Materials</a>
+                            <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-meta-characters" href="#">Characters</a>
+                            <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-meta-animations" href="#">Animations</a>
+                        </td>
+                    </tr>
 
-                </div>
-            </div>
+                    <tr class="dialog-tab-list-list">
+                        <td class="dialog-tab-list-list-tablist dialog-tab-list-list-tablist-selected" id="dialog-tab-list-list-meta-levels">
+                            <p class="dialog-tab-list-list-tablist-item">
+                                Levels
+                            </p>
+                        </td>
+                        <td class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-meta-themes">
+                            <p class="dialog-tab-list-list-tablist-item">
+                                Themes
+                            </p>
+                        </td>
+                        <td class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-meta-materials">
+                            <p class="dialog-tab-list-list-tablist-item">
+                                Materials
+                            </p>
+                        </td>
+                        <td class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-meta-characters">
+                            <p class="dialog-tab-list-list-tablist-item">
+                                Characters
+                            </p>
+                        </td>
+                        <td class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-meta-animations">
+                            <p class="dialog-tab-list-list-tablist-item">
+                                Animations
+                            </p>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
@@ -339,38 +342,42 @@
     </div>
 
     <div class="dialog-wrap no-pad-top resize resize-resize resize-resize-large">
-        <div class="dialog-tab-list">
+        <table class="dialog-tab-list">
+            <tbody>
 
-            <div class="dialog-tab-list-tabs">
-                <a class="dialog-tab-list-tabs-tab dialog-tab-list-tabs-tab-selected" id="dialog-tab-list-tab-world-physics" href="#">Physics</a>
-                <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-world-layers" href="#">Layers</a>
-                <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-world-items" href="#">Items</a>
-                <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-world-colliders" href="#">Colliders</a>
-            </div>
+                <tr class="dialog-tab-list-tabs">
+                    <td class="dialog-tab-list-tabs-tabs">
+                        <a class="dialog-tab-list-tabs-tab dialog-tab-list-tabs-tab-selected" id="dialog-tab-list-tab-world-physics" href="#">Physics</a>
+                        <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-world-layers" href="#">Layers</a>
+                        <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-world-items" href="#">Items</a>
+                        <a class="dialog-tab-list-tabs-tab" id="dialog-tab-list-tab-world-colliders" href="#">Colliders</a>
+                    </td>
+                </tr>
 
-            <div class="dialog-tab-list-list">
-                <div class="dialog-tab-list-list-tablist dialog-tab-list-list-tablist-selected" id="dialog-tab-list-list-world-physics">
-                    <p class="dialog-tab-list-list-tablist-item">
-                        Physics
-                    </p>
-                </div>
-                <div class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-world-layers">
-                    <p class="dialog-tab-list-list-tablist-item">
-                        Layers
-                    </p>
-                </div>
-                <div class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-world-items">
-                    <p class="dialog-tab-list-list-tablist-item">
-                        Items
-                    </p>
-                </div>
-                <div class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-world-colliders">
-                    <p class="dialog-tab-list-list-tablist-item">
-                        Colliders
-                    </p>
-                </div>
-            </div>
-
-        </div>
+                <tr class="dialog-tab-list-list">
+                    <td class="dialog-tab-list-list-tablist dialog-tab-list-list-tablist-selected" id="dialog-tab-list-list-world-physics">
+                        <p class="dialog-tab-list-list-tablist-item">
+                            Physics
+                        </p>
+                    </td>
+                    <td class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-world-layers">
+                        <p class="dialog-tab-list-list-tablist-item">
+                            Layers
+                        </p>
+                    </td>
+                    <td class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-world-items">
+                        <p class="dialog-tab-list-list-tablist-item">
+                            Items
+                        </p>
+                    </td>
+                    <td class="dialog-tab-list-list-tablist" id="dialog-tab-list-list-world-colliders">
+                        <p class="dialog-tab-list-list-tablist-item">
+                            Colliders
+                        </p>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
     </div>
 </div>

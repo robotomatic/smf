@@ -246,65 +246,82 @@
 
 
 
+
+
+
+
+
+
+
 .dialog-tab-list {
     float: left;
     width: 100%;
     height: 100%;
 }
 
+
+
+
 .dialog-tab-list-tabs {
-    float: left;
-    width: 30%;
+    display: table-cell;
+    vertical-align: top;
+    width: 8em;
     height: auto;
 }
 
-.dialog-tab-list-tabs-tab {
-    float: left;
-    color: white;
-    padding: .5em 10% .5em 0;
-    width: 90%;
-    height: 100%;
-    color: lightgray;
-    text-align: right;
-    text-decoration: none;
-    border-bottom: rgba(32, 32, 33, 0.35) 1px solid;
-}
+    .dialog-tab-list-tabs-tab {
+        float: left;
+        color: white;
+        padding: .5em 10% .5em 0;
+        width: 90%;
+        height: 100%;
+        color: lightgray;
+        text-align: right;
+        text-decoration: none;
+        border-bottom: rgba(32, 32, 33, 0.35) 1px solid;
+    }
 
-.dialog-tab-list-tabs-tab:hover {
-    color: white;
-}
+    .dialog-tab-list-tabs-tab:hover {
+        color: white;
+    }
 
-.dialog-tab-list-tabs-tab-selected {
-    color: white;
-    font-weight: bold;
-}
+    .dialog-tab-list-tabs-tab-selected {
+        color: white;
+        font-weight: bold;
+    }
+
+
+
+
 
 .dialog-tab-list-list {
-    float: left;
-    width: 70%;
+    display: table-cell;
+    vertical-align: top;
     height: 100%;
+    width: auto;
     overflow-y: auto;
+    overflow-x: hidden;
     background-color: rgba(32, 32, 33, 0.35);
 }
 
-.dialog-tab-list-list-tablist {
-    float: left;
-    width: 100%;
-    height: 100%;
-    color: white;
-    text-align: left;
-    display: none;
-}
+    .dialog-tab-list-list-tablist {
+        float: left;
+        width: 100%;
+        height: 100%;
+        color: white;
+        text-align: left;
+        display: none;
+    }
 
-.dialog-tab-list-list-tablist-item {
-    width: 90%;
-    margin: .5em 5% .5em 5%;
-    height: auto;
-}
+    .dialog-tab-list-list-tablist-item {
+        width: 90%;
+        margin: .5em 5% .5em 5%;
+        height: auto;
+    }
 
-.dialog-tab-list-list-tablist-selected {
-    display: block;
-}
+    .dialog-tab-list-list-tablist-selected {
+        display: block;
+    }
 
 
 

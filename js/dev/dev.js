@@ -52,7 +52,7 @@ function initializeDev(game) {
     }
 
     var devTabClick = function(e) {
-        var dlg = this.parentNode.parentNode;
+        var dlg = this.parentNode.parentNode.parentNode.parentNode;
         var seltabs = findChildrenByClassName(dlg, "dialog-tab-list-tabs-tab-selected");
         for (var i = 0; i < seltabs.length; i++) {
             seltabs[i].className = seltabs[i].className.replace(" dialog-tab-list-tabs-tab-selected", "");
