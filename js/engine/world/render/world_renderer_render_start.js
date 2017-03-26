@@ -6,13 +6,6 @@ function WorldRendererStart(renderitems) {
 }
 
 WorldRendererStart.prototype.renderStart = function(mbr, window, graphics, camera, world, debug) {
-    
-    
-    //
-    // todo: look at filling the array once and updating items instead of re-adding them?
-    //
-    
-    
     this.index = 0;
     this.getRenderItems(mbr, window, graphics, camera, world, debug);
 }
@@ -33,40 +26,47 @@ WorldRendererStart.prototype.getRenderItemsWorldItems = function(mbr, window, cp
 }
 
 WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(mbr, window, cp, graphics, world, item, debug) {
-    var x = mbr.x;
-    var y = mbr.y;
-    var z = mbr.z;
-    var scale = mbr.scale;
-    
     var width = graphics.canvas.getWidth();
     var height = graphics.canvas.getHeight();
-    
     item.smooth();
     item.translate(mbr, width, height);
     item.item3D.createItem3D(item, world.worldrenderer.itemrenderer, mbr, width, height, world.worldrenderer.waterline, debug);
     var showing = item.isVisible(window, mbr, 100);
-    
     if (world.worldrenderer.waterline.flow && item.y >= world.worldrenderer.waterline) showing = false;
-    
-    var iz = item.z;
-    if (item.width == "100%") iz = item.z + item.depth;
     var d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, item, 0, 0, 0);
     if (isNaN(d)) d = 0;
-    var itemmbr = item.getMbr();
     var id = item.id;
-    var newitem = {
-        type : "item",
-        name : id,
-        showing : showing,
-        y : item.y,
-        z : item.z + item.depth,
-        distance: d,
-        item : item,
-        box : item.box,
-        mbr : itemmbr,
-        geometry : item.geometry
+    
+    if (this.renderitems.keys[id]) {
+        var newitem = this.renderitems.keys[id];
+        newitem.showing = showing;
+        newitem.x = item.x;
+        newitem.y = item.y;
+        newitem.z = item.z + item.depth;
+        newitem.width = item.width;
+        newitem.height = item.height;
+        newitem.depth = item.depth;
+        newitem.distance = d;
+    } else {
+        var newitem = {
+            type : "item",
+            name : id,
+            showing : showing,
+            x : item.x,
+            y : item.y,
+            z : item.z + item.depth,
+            width : item.width,
+            height : item.height,
+            depth : item.depth,
+            distance : d,
+            item : item,
+            box : item.box,
+            mbr : item.getMbr(),
+            geometry : item.geometry
+        }
+        this.renderitems.all[this.index++] = newitem;
+        this.renderitems.keys[id] = newitem;
     }
-    this.renderitems.all[this.index++] = newitem;
 }
 
 WorldRendererStart.prototype.getRenderItemsWorldPlayers = function(mbr, window, cp, graphics, world, debug) {
@@ -87,18 +87,35 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(mbr, wi
     var d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, player.controller, 0, 0, -10);
     if (!showing || isNaN(d)) d = 0;
     var id = player.name + "-" + player.id;
-    var newitem = {
-        type : "player",
-        name : id,
-        showing : showing, 
-        y : player.controller.y,
-        z : player.controller.z,
-        height : player.controller.height,
-        distance: d,
-        item : player,
-        mbr : playermbr
+    
+    if (this.renderitems.keys[id]) {
+        var newitem = this.renderitems.keys[id];
+        newitem.showing = showing;
+        newitem.x = player.controller.x;
+        newitem.y = player.controller.y;
+        newitem.z = player.controller.z;
+        newitem.width = player.controller.width;
+        newitem.height = player.controller.height;
+        newitem.depth = player.controller.depth;
+        newitem.distance = d;
+    } else {
+        var newitem = {
+            type : "player",
+            name : id,
+            showing : showing, 
+            x : player.controller.x,
+            y : player.controller.y,
+            z : player.controller.z,
+            width : player.controller.width,
+            height : player.controller.height,
+            depth : player.controller.depth,
+            distance: d,
+            item : player,
+            mbr : playermbr
+        }
+        this.renderitems.all[this.index++] = newitem;
+        this.renderitems.keys[id] = newitem;
     }
-    this.renderitems.all[this.index++] = newitem;
 }
 
 WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItemCenter = function(mbr, cp, item, ox, oy, oz) {

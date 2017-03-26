@@ -2,7 +2,8 @@
 
 function WorldRenderer() {
     this.renderitems = {
-        all : new Array()
+        all : new Array(),
+        keys : new Array()
     }
     this.itemcache = new ItemCache();
     this.itemrenderer = new ItemRenderer();
