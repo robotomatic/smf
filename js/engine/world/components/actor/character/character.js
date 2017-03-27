@@ -34,7 +34,9 @@ Character.prototype.loadJson = function(json) {
     this.parts = json.parts;
     this.animations = json.animations;
     this.hidden = json.hidden;
-    if (json.emitter) this.emitter = new ParticleEmitter(json.emitter);
+    if (json.emitter) {
+        this.emitter = new ParticleEmitter(json.emitter);
+    }
     return this;
 }
 
@@ -60,7 +62,7 @@ Character.prototype.update = function(now, player, direction, state)  {
     if (!this.paused) {
         if (this.emitter && player.box) {
             if (!this.emitter.alive) this.emitter.alive = true;
-            this.emitter.update(player.box.x, player.box.y, player.box.width / this.width);
+            this.emitter.update();
         }
     }
 }

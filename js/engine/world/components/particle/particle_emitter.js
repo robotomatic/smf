@@ -2,7 +2,7 @@
 
 function ParticleEmitter(info) {
 
-    // todo: this needs it's own canvas
+    // todo: this needs its own canvas
     //       flames need to respect origin motion
     //       old particles decouple from origin
     //       proper class separation
@@ -25,12 +25,16 @@ function ParticleEmitter(info) {
     this.leftright = 0;
     this.updown = 0;
     
-    this.cp = new Point(0, 0);
-    this.lp = new Point(0, 0);
+    this.cp = new Point(this.x, this.y);
+    
+    for(var i = 0; i < this.max; i++) {
+        var size = this.size + random() * 1;
+        this.particles.push(new Particle(this.cp.x, this.cp.y, size));    
+    }
 }
 
 ParticleEmitter.prototype.stop = function() {
-    this.particles = null;
+    this.particles.length = 0;
     this.alive = false;
 }
 
@@ -40,81 +44,47 @@ ParticleEmitter.prototype.translate = function(dx, dy, leftright, updown) {
 //    this.updown = -updown;
 }
 
-ParticleEmitter.prototype.update = function(x, y, scale) {
-
-    if (this.cp.x == 0 && this.cp.y == 0) {
-        this.cp.x = x;
-        this.cp.y = y;
-    } else {
-        x += (this.x * scale);
-        y += (this.y * scale);
-    }
-    
-    var size = this.size + random() * 1;
-
-    if (!this.particles.length) {
-        for(var i = 0; i < this.max; i++) {
-            this.particles.push(new Particle(x, y, size));    
-        }
-    }
-
-    if (!this.alive) return;
-    
+ParticleEmitter.prototype.update = function() {
     for(var i = 0; i < this.particles.length; i++) {
-        
         var p = this.particles[i];
-        
-        if (p.death > this.halflife) {
-            p.location.x = clamp(p.location.x + (x - this.cp.x));
-            p.location.y = clamp(p.location.y + (y - this.cp.y));
-        }
-        
-        if (p.death > this.quadlife) {
-            if (this.leftright < 0) p.location.x -= this.leftright * scale;
-            else if (this.leftright > 0) p.location.x += this.leftright * scale;
-            if (this.updown < 0) p.location.y -= this.updown * scale;
-            else if (this.updown > 0) p.location.y += this.updown * scale;
-        }
-        
         p.opacity = round(p.death / p.life);
-
         p.death--;
         p.radius -= 0.3;
-
         if (p.death > this.halflife) {
             p.location.x = clamp(p.location.x + p.speed.x);
             p.location.y = clamp(p.location.y + p.speed.y);
-        } else {
-            p.location.x = clamp(p.location.x + p.speed.x);
-            p.location.y = clamp(p.location.y + p.speed.y);
         }
-        
-        if (abs(p.location.x - x) > this.maxdx * scale) p.death = -1;
-        if (abs(p.location.y - y) > this.maxdy * scale) p.death = -1;
-        
-        if(p.death < 0 || p.radius < 0) this.particles[i] = new Particle(x, y, this.size + random() * 1);
+        if (p.location.x > this.maxdx) p.death = -1;
+        if (p.location.y > this.maxdy) p.death = -1;
+        if(p.death < 0 || p.radius < 0) {
+            this.particles[i].reset(this.cp.x, this.cp.y, this.size + random() * 1);
+        }
     }
-    
-    this.cp.x = clamp(x);
-    this.cp.y = clamp(y);
 }
 
 ParticleEmitter.prototype.render = function(x, y, scale, gamecanvas) {
     if (!this.alive) return;
     gamecanvas.setCompositeOperation("lighter");
+    
     for(var i = 0; i < this.particles.length; i++) {
         var p = this.particles[i];
         p.opacity = round(p.death / p.life);
-        if ((p.radius * scale) > .1) {
-            var gradient = gamecanvas.createRadialGradient(p.location.x, p.location.y, 0, p.location.x, p.location.y, p.radius * scale);
-            gradient.addColorStop(0, "rgba(" + p.r + ", " + p.g + ", " + p.b + ", " + p.opacity + ")");
-            gradient.addColorStop(0.5, "rgba(" + p.r + ", " + p.g + ", " + p.b + ", " + p.opacity + ")");
-            gradient.addColorStop(1, "rgba(" + p.r + ", " + p.g + ", " + p.b + ", 0)");
-            gamecanvas.setFillStyle(gradient);
-            gamecanvas.beginPath();
-            var c = geometryfactory.getCircle(p.location.x, p.location.y, p.radius * scale);
-            c.draw(gamecanvas);
-        }
+        if ((p.radius * scale) <= .1) continue;
+            
+        var px = x + (p.location.x * scale);
+        var py = y + (p.location.y * scale);
+        var pr = p.radius * scale;
+
+        var gradient = gamecanvas.createRadialGradient(px, py, 0, px, py, p.radius * scale);
+        gradient.addColorStop(0, "rgba(" + p.r + ", " + p.g + ", " + p.b + ", " + p.opacity + ")");
+        gradient.addColorStop(0.5, "rgba(" + p.r + ", " + p.g + ", " + p.b + ", " + p.opacity + ")");
+        gradient.addColorStop(1, "rgba(" + p.r + ", " + p.g + ", " + p.b + ", 0)");
+        gamecanvas.setFillStyle(gradient);
+        gamecanvas.beginPath();
+
+        var c = geometryfactory.getCircle(px, py, pr);
+        c.draw(gamecanvas);
     }
+    
     gamecanvas.setCompositeOperation("source-over");
 }
