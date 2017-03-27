@@ -19,5 +19,5 @@ ViewRenderer.prototype.render = function(now, world, width, height, graphics, re
     this.window.height = height;
     this.window.depth = 1;
     this.window.scale = this.mbr.scale;
-    world.render(now, graphics["main"], this.camera, this.mbr, this.window, render);
+    world.render(now, graphics, this.camera, this.mbr, this.window, render);
 }

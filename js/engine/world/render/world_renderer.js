@@ -34,6 +34,7 @@ WorldRenderer.prototype.reset = function(now, graphics) {
     this.itemrenderer.reset();
     this.itemcache.reset();
     this.renderitems.all.length = 0;
+    this.renderitems.keys = new Array();
 }
 
 WorldRenderer.prototype.setTheme = function(themename, theme, materials) { 

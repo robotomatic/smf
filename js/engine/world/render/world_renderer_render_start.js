@@ -64,9 +64,9 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
             mbr : item.getMbr(),
             geometry : item.geometry
         }
-        this.renderitems.all[this.index++] = newitem;
         this.renderitems.keys[id] = newitem;
     }
+    this.renderitems.all[this.index++] = newitem;
 }
 
 WorldRendererStart.prototype.getRenderItemsWorldPlayers = function(mbr, window, cp, graphics, world, debug) {
@@ -113,9 +113,9 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(mbr, wi
             item : player,
             mbr : playermbr
         }
-        this.renderitems.all[this.index++] = newitem;
         this.renderitems.keys[id] = newitem;
     }
+    this.renderitems.all[this.index++] = newitem;
 }
 
 WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItemCenter = function(mbr, cp, item, ox, oy, oz) {

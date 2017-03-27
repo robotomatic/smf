@@ -36,6 +36,8 @@ function View(gamecontroller, id, width, height, scale) {
     this.ready = false;
     this.paused = false;
     
+    this.doublebuffer = true;
+    
     this.createGraphics();
     this.createView(gamecontroller);
     
@@ -255,9 +257,14 @@ View.prototype.updateUI = function() {
 
 View.prototype.render = function(now, world, render) {
     this.setBackground(world);
-    this.clearGraphics();
-    this.renderer.render(now, world, this.rendertarget.canvas.width, this.rendertarget.canvas.height, this.graphics, render, this.gamecontroller.paused);
-    this.renderView();
+    if (this.doublebuffer) {
+        this.clearGraphics();
+        this.renderer.render(now, world, this.rendertarget.canvas.width, this.rendertarget.canvas.height, this.graphics["main"], render, this.gamecontroller.paused);
+        this.renderView();
+    } else {
+        this.clearViewGraphics(this.rendertarget);
+        this.renderer.render(now, world, this.rendertarget.canvas.width, this.rendertarget.canvas.height, this.rendertarget, render, this.gamecontroller.paused);
+    }
     this.renderFPS();
 }
 
