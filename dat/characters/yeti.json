@@ -64,11 +64,11 @@
                                 "path" : "smooth"
                             },
                             "tongue" : {
-                                "width" : 10,
-                                "height" : 1,
-                                "x" : 45,
-                                "y" : 14,
-                                "color" : "#af2c2c",
+                                "width" : 20,
+                                "height" : 10,
+                                "x" : 40,
+                                "y" : 13.5,
+                                "color" : "#db4949",
                                 "clip" : "end",
                                 "zindex" : 651,
                                 "pointinfo" : {
