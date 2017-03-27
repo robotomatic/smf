@@ -25,11 +25,12 @@ CharacterRendererGroups.prototype.renderDebug = function(gamecanvas) {
 
 CharacterRendererGroups.prototype.drawDebugRectangles = function(rects, gamecanvas) { 
     if (!rects.length) return;
+    gamecanvas.beginPath();
     gamecanvas.setStrokeStyle("darkgray");
     gamecanvas.setLineWidth(.5);
-    gamecanvas.beginPath();
     for (var i = 0; i < rects.length; i++) {
         rects[i].path(gamecanvas);
     }
     gamecanvas.stroke();
+    gamecanvas.commit();
 }

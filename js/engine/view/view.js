@@ -281,6 +281,7 @@ View.prototype.renderView = function() {
 }
 
 View.prototype.renderViewGraphics = function(graphics) {
+    graphics.canvas.commit();
     this.image.width = graphics.canvas.width;
     this.image.height = graphics.canvas.height;
     this.image.data = graphics.canvas.getData();

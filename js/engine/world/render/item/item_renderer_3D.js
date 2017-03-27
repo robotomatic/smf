@@ -45,26 +45,28 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
             var lw = 1;
             gamecanvas.setStrokeStyle(lc);
             gamecanvas.setLineWidth(lw);
-            gamecanvas.beginPath();
             if (item.geometry.visible.left.visible) {
                 if (item.item3D.polygon.points.length >= 4) {
+                    gamecanvas.beginPath();
                     item.item3D.line.start.x = item.item3D.polygon.points[3].x;
                     item.item3D.line.start.y = item.item3D.polygon.points[3].y;
                     item.item3D.line.end.x = item.item3D.polygon.points[0].x;
                     item.item3D.line.end.y = item.item3D.polygon.points[0].y;
                     item.item3D.line.path(gamecanvas);
+                    gamecanvas.stroke();
                 }
             }
             if (item.geometry.visible.right.visible) {
                 if (item.item3D.polygon.points.length >= 3) {
+                    gamecanvas.beginPath();
                     item.item3D.line.start.x = item.item3D.polygon.points[1].x;
                     item.item3D.line.start.y = item.item3D.polygon.points[1].y;
                     item.item3D.line.end.x = item.item3D.polygon.points[2].x;
                     item.item3D.line.end.y = item.item3D.polygon.points[2].y;
                     item.item3D.line.path(gamecanvas);
+                    gamecanvas.stroke();
                 }
             }
-            gamecanvas.stroke();
         }
     }
     
@@ -134,6 +136,7 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
                         item.item3D.line.path(gamecanvas);
                     }
                 } 
+                
                 gamecanvas.stroke();
 
                 if (item.item3D.dopoly && !item.geometry.visible.front.visible) {
@@ -148,6 +151,7 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
                         item.item3D.line.draw(gamecanvas);
                     }
                 }
+                gamecanvas.commit();
             }
         }
     }
@@ -170,6 +174,7 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
         }
     }
     
+    gamecanvas.commit();
 }
 
 ItemRenderer3D.prototype.getColors = function(gamecanvas, renderer, item, debug) {

@@ -79,5 +79,6 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(gamecanvas, groupd
             this.polygon.drawOutline(gamecanvas, this.debugoutlinecolor, 1);
         }
     } 
-
+    
+    gamecanvas.commit();
 }

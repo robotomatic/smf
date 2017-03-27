@@ -47,6 +47,7 @@ CharacterRendererGroupsGroupPathLink.prototype.endLinkPath = function(gamecanvas
     gamecanvas.setFillStyle(this.linkpathColor);
     if (linktype === "join") this.path.draw(gamecanvas);
     else this.path.drawSmooth(gamecanvas);
+    gamecanvas.commit();
     
     this.linkpathStart.points.length = 0;
     this.linkpathEnd.points.length = 0;
