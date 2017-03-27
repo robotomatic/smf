@@ -31,6 +31,7 @@ WorldRendererDebug.prototype.renderDebugItemsItem = function(graphics, item, mbr
 //    this.renderDebugItemsItemText(graphics, item);
     
     this.renderDebugItemsItemGeometry(graphics, item);
+    graphics.canvas.commit();
 }
 
 WorldRendererDebug.prototype.renderDebugItemsItemCenter = function(graphics, window, mbr) {
