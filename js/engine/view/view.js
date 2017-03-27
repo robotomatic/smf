@@ -93,8 +93,8 @@ View.prototype.setSize = function(s) {
     var w = s[0];
     var h = s[1];
     if (!w || !isNumeric(w) || !h || !isNumeric(h)) return;
-    this.width = w;
-    this.height = h;
+    this.width = Number(w);
+    this.height = Number(h);
     this.resize();
 }
 
