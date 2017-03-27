@@ -219,19 +219,7 @@ function updateViews(f, args) {
 }
 
 function updateView(v, f, a) {
-    
     if (!__dev) return;
-    
     var t = v.length;
     for (var i = 0; i < t; i++) v[i].view[f](a);
 }
-
-function updateDevView() {
-    
-    if (!__dev) return;
-    
-    if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
-    var v = vv.view;
- }

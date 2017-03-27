@@ -151,7 +151,6 @@ GameController.prototype.initDebug = function() {
     if (!__dev) return;
     if (!dev_init) initializeDev(this);
     resetDev(this);
-    updateDevView();
     show(document.getElementById("dev"));
 }
 

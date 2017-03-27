@@ -71,6 +71,15 @@ function toggleAuto() {
     updateDevView();
 }
 
+
+function updateDevView() {
+    if (!__dev) return;
+    if (!gamecontroller || !gamecontroller.game) return;
+    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
+    var vv = gamecontroller.game.loop.game.views[0];
+    updateDevViewSize(vv);
+ }
+
 function changeSize() {
     
     if (!__dev) return;
@@ -79,6 +88,9 @@ function changeSize() {
     var w = ww.value;
     var hh = dev_size_view_height;
     var h = hh.value;
+    
+    if (dev_size_auto.checked) toggleAuto();
+    
     updateViews("setSize", [w, h]);
     updateDevView();
 }
@@ -117,6 +129,11 @@ function updateDevViewSize(vv) {
     var aa = dev_size_auto;
     aa.checked = v.rendertarget.auto;
 }
+
+
+
+
+
 
 function toggleOverlay() {
     
