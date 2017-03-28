@@ -3,6 +3,7 @@
 function Player(id, name, color, x, y, z, width, height, speed, character, hp, listener) {
     this.id = id;
     this.name = name;
+    this.uid = name;
     this.color = color;
     this.character = character;
     this.controller = new PlayerController(this, x, y, z, width, height, speed);

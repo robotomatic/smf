@@ -11,7 +11,7 @@ function initializeDevPlayer() {
 
 function showDevPlayer(player) {
     if (!__dev) return;
-    var pid = "dev-dialog-players-player-" + player.id;
+    var pid = "dev-dialog-players-player-" + player.uid;
     var pd = devplayer[pid];
     if (!devplayer[pid]) {
         pd = createDevPlayerDialog(player, pid);
@@ -19,13 +19,13 @@ function showDevPlayer(player) {
     }
     pd.visible = true;
     updateDevPlayer(player);
-    toggleDevDialog(pid);
+    toggleDevDialog(pid, false);
 }
 
 function createDevPlayerDialog(player, pid) {
     if (!__dev) return;
 
-    var id = player.id;
+    var id = player.uid;
     
     var pd = dev_player_template.cloneNode(true);
     pd.id = pid;
@@ -136,7 +136,7 @@ function createDevPlayerDialog(player, pid) {
 
 function updateDevPlayer(player) {
     if (!__dev) return;
-    var pid = "dev-dialog-players-player-" + player.id;
+    var pid = "dev-dialog-players-player-" + player.uid;
     var pd = devplayer[pid];
     if (!pd || !pd.visible) return;
     updateDevPlayerPosition(pd, player);
@@ -229,13 +229,16 @@ function updateDevPlayerIndex(index) {
 
 
 
-function devRemovePlayer(player) {
-    var id = player.id;
-    var dialog = document.getElementById("dev-dialog-players-player-" + player.id);
+function removeDevPlayer(player) {
+    removeDevPlayerId(player.uid);
+}
+
+
+function removeDevPlayerId(playerid) {
+    var dialog = document.getElementById("dev-dialog-players-player-" + playerid);
     if (dialog) dialog.parentNode.removeChild(dialog);
-    var pid = "dev-dialog-players-player-" + player.id;
+    var pid = "dev-dialog-players-player-" + playerid;
     delete devplayer[pid];   
-    controller.removePlayer(player);
 }
 
 

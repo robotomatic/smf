@@ -3,7 +3,8 @@
 var devplayers;
 
 var dev_template = null;
-
+var dev_player_list = null;
+var dev_player_characters = null;
 
 function initializeDevPlayers() {
     
@@ -11,24 +12,78 @@ function initializeDevPlayers() {
     
     devplayers = new Array();
     dev_template = document.getElementById("dev-dialog-players-players-player-template");
+    dev_player_list = document.getElementById("dev-dialog-players-players");
+    dev_player_characters = document.getElementById("dev-players-add-player-character");
+    
+    var chars = controller.gameloader.characters.characters;
+    if (chars) {
+        var keys = Object.keys(chars);
+        var t = keys.length;
+        for (var i = 0; i < t; i++) {
+            var key = keys[i];
+            var char = chars[key];
+            var opt = document.createElement('option');
+            opt.value = key;
+            opt.innerHTML = char.name;
+            dev_player_characters.appendChild(opt);        
+        }
+    }
+    
+    var addplayer = document.getElementById("dev-players-add-player");
+    addplayer.onclick = function() {
+        addDevPlayersPlayerCharacter(dev_player_characters.value)
+    }
 }
 
 function resetDevPlayers(players) {
+
+    var notfound = new Array();
+    var keys = Object.keys(devplayers);
+    var t = keys.length;
+    for (var i = 0; i < t; i++) {
+        var key = keys[i];
+        var found = false;
+        var tt = players.players.length;
+        for (var ii = 0; ii < tt; ii++) {
+            var player = players.players[ii];
+            if (player.uid == key) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) notfound.push(key);
+    }
     
-    // todo: remove all players that aren't active
-    // todo: hide all player dialogs that aren't active
+    var ttt = notfound.length;
+    for (var iii = 0; iii< ttt; iii++) removeDevPlayersPlayerId(notfound[iii]);
+    
     updateDevPlayers(players.players);
-    
 }
 
-function devPlayersAddPlayer(player) {
+
+
+function updateDevPlayers(players) {
+    if (!__dev) return;
+    if (!devplayers) return;
+    for (var i = 0; i < players.length; i++) updateDevPlayersPlayer(players[i]);
+}
+
+function updateDevPlayersPlayer(player) {
+    if (!__dev) return;
+    if (!devplayers) return;
+    var id = player.uid;
+    if (!devplayers[id]) addDevPlayersPlayer(player);
+}
+
+
+function addDevPlayersPlayer(player) {
     
     if (!__dev) return;
     
-    var id = player.id;
+    var id = player.uid;
     if (!devplayers || devplayers[id]) return;
     
-    var name = player.name;
+    var name = player.uid;
     
     var template = dev_template;
     if (!template) return;
@@ -53,7 +108,7 @@ function devPlayersAddPlayer(player) {
     var pdel = item.children.item(2);
     pdel.id = "dev-dialog-players-players-player-remove-" + id;
     pdel.onclick = function(e) {
-        devRemovePlayersPlayer(player);
+        removeDevPlayersPlayer(player);
         e.stopPropagation();
         e.preventDefault();
         return false;
@@ -69,11 +124,10 @@ function devPlayersAddPlayer(player) {
     pcamlabelcam.onchange = function() {
         var id = this.id.replace("dev-dialog-players-players-player-camera-camera-", "");
         var check = this.checked;
-        devPlayersUpdatePlayerCamera(id, check);
+        updateDevPlayersPlayerCamera(id, check);
     };
     
-    var list = document.getElementById("dev-dialog-players-players");
-    list.appendChild(item);
+    dev_player_list.appendChild(item);
 
     devplayers[id] = {
         player : player,
@@ -84,28 +138,11 @@ function devPlayersAddPlayer(player) {
 
 
 
-function updateDevPlayers(players) {
-    if (!__dev) return;
-    if (!devplayers) return;
-    for (var i = 0; i < players.length; i++) updateDevPlayersPlayer(players[i]);
-}
 
-function updateDevPlayersPlayer(player) {
-    if (!__dev) return;
-    if (!devplayers) return;
-    var id = player.id;
-    if (!devplayers[id]) devPlayersAddPlayer(player);
-    devPlayersUpdatePlayer(player);
-}
 
-function devPlayersUpdatePlayer(player) {
-    if (!__dev) return;
-    var id = player.id;
-    var item = devplayers[id];
-    if (!item) return;
-}
 
-function devPlayersUpdatePlayerCamera(id, check) {
+
+function updateDevPlayersPlayerCamera(id, check) {
     if (!__dev) return;
     var player = devplayers[id];
     if (!player) return;
@@ -114,10 +151,19 @@ function devPlayersUpdatePlayerCamera(id, check) {
 
 
 
-function devRemovePlayersPlayer(player) {
-    var id = player.id;
-    var div = document.getElementById("dev-dialog-players-players-player-" + player.id);
+function removeDevPlayersPlayer(player) {
+    controller.removePlayer(player);
+    removeDevPlayersPlayerId(player.uid);
+}
+
+function removeDevPlayersPlayerId(playerid) {
+    var div = document.getElementById("dev-dialog-players-players-player-" + playerid);
     if (div) div.parentNode.removeChild(div);
-    delete devplayers[id];
-    devRemovePlayer(player);
+    delete devplayers[playerid];
+    removeDevPlayerId(playerid);
+}
+
+
+function addDevPlayersPlayerCharacter(charname) {
+    controller.addPlayer(charname);
 }

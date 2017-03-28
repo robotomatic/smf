@@ -74,85 +74,30 @@ GameControllerGame.prototype.loadLevelLevel = function(level, name, callback) {
 }
     
 GameControllerGame.prototype.loadPlayers = function() {
-    
     benchmark("load players - start", "players");
-    
     this.players = new Players();
     var charnames = Object.keys(this.gameloader.characters.characters);
     var players = this.playersettings.players;
     if (players) players.length = 0;
-    
-    var playertotal = 0;
-    
-    var numplayers = players ?  Object.keys(players).length : 1;
-    
-    
-    numplayers = 1;
-    for (var i = 0; i < numplayers; i++) {
 
+    var playertotal = 0;
+    var numplayers = players ?  Object.keys(players).length : 1;
+    numplayers = 1;
+    
+    for (var i = 0; i < numplayers; i++) {
         var charname = "";
         if (i == 0) charname = charnames[1];
         else {
             var rando = random(0, charnames.length - 1);
             charname = charnames[rando];
         }
-        
-//                var charname = charnames[i + 1];
-
-//        if (players) {
-//            var player = players[i];
-//            if (!player) continue;
-//            charname = player.charactername;
-//        }
-        //if (!player.start || !player.ready) continue;
-        
-        var character = this.gameloader.characters.characters[charname];
-        
-        if (!character) character = this.gameloader.characters.characters[charnames[0]];
-        
-        var charanims = new Array();
-        for (var a in character.animations) charanims[character.animations[a]] = this.gameloader.animations.animations[character.animations[a]];
-        
-        var char = new Character().loadJson(character.json);
-        char.setAnimator(new CharacterAnimator(charanims));
-        char.setRenderer(new CharacterRenderer());
-        var name = character.name;
-        var color = character.color;
-        
-        var spacing = 200;
-        
-        var x = 0;
-        var y = 0;
-        var z = 0;
-        var width = character.width;
-        var height = character.height;
-        
-        if (i > 0) {
-//            width *= 2;
-//            height *= 2;
-        }
-        
-        var speed = 3;
-        var hp = 1000;
-        
-        var pc = new Player(i, name, color, x, y, z, width, height, speed, char, hp, this);
-        if (i == 0) pc.getscamera = true;
-        
-        this.players.addPlayer(pc);
-        
+        this.addPlayerCharacter(charname);
         playertotal++;
     }
-    
-    if (playertotal > 1) {
-//        setFOV(this.fov + 100);
-    }
-
     this.players.shadow.draw = false;
     this.input.setPlayers(this.players);
-    
     this.loop.loadPlayers(this.players);
     this.loop.loadNPCs(this.npcs);
-    
     benchmark("load players - end", "players");
 }
 
@@ -202,6 +147,44 @@ GameControllerGame.prototype.stop = function() {
 
 GameControllerGame.prototype.resize = function() {
     this.loop.resize();
+}
+
+GameControllerGame.prototype.addPlayer = function(charname) {
+    var player = this.addPlayerCharacter(charname);
+    this.loop.game.world.worldcollider.resetPlayer(player);
+}
+
+GameControllerGame.prototype.addPlayerCharacter = function(charname) {
+    var character = this.gameloader.characters.characters[charname];
+    if (!character) {
+        logDev("Unable to Add Character: No character named " + charname);
+        return;
+    }
+
+    var charanims = new Array();
+    for (var a in character.animations) charanims[character.animations[a]] = this.gameloader.animations.animations[character.animations[a]];
+
+    var char = new Character().loadJson(character.json);
+    char.setAnimator(new CharacterAnimator(charanims));
+    char.setRenderer(new CharacterRenderer());
+    var name = character.name;
+    var color = character.color;
+
+    var x = 0;
+    var y = 0;
+    var z = 0;
+    var width = character.width;
+    var height = character.height;
+    var speed = 3;
+    var hp = 1000;
+
+    var player = new Player(this.players.players.length, name, color, x, y, z, width, height, speed, char, hp, this);
+    if (this.players.players.length == 0) player.getscamera = true;
+    this.players.addPlayer(player);
+    
+    updateDevPlayers(this.players.players);
+    
+    return player;
 }
 
 GameControllerGame.prototype.removePlayer = function(player) {

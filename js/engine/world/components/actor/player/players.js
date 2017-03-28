@@ -23,6 +23,15 @@ Players.prototype.loadJson = function(json) {
 
 
 Players.prototype.addPlayer = function(player) {
+    
+    var tot = 0;
+    var t = this.players.length;
+    for (var i = 0; i < t; i++) {
+        var p = this.players[i];
+        if (p.name == player.name) tot++;
+    }
+    player.uid =player.name + "-" + tot;
+    
     this.players.push(player);
     updateDevPlayers(this.players);
 }

@@ -135,14 +135,14 @@ function toggleDev() {
     }
 }
 
-function toggleDevDialog(nid) {
+function toggleDevDialog(nid, hide = true) {
     
     if (!__dev) return;
     
     var d = document.getElementById(nid);
     if (!d) return;
 
-    hideDialogs(nid);
+    if (hide) hideDialogs(nid);
     
     if (isMobile() && dialogs[nid]) {
         var md = dialogs[nid];
@@ -165,6 +165,11 @@ function toggleDevDialog(nid) {
     if (isMobile()) {
         t = 30;
         l = 0;
+    }
+    
+    if (!hide) {
+        t = (h / 2) - (dr.height / 2);
+        l = (w / 2) - (dr.width / 2);
     }
     
     d.style.top = t + "px";

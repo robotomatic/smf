@@ -192,6 +192,11 @@ GameController.prototype.resume = function(now) {
 }
 
 
+GameController.prototype.addPlayer = function(charname) {
+    if (!this.game) return;
+    this.game.addPlayer(charname);
+}
+
 GameController.prototype.removePlayer = function(player) {
     if (!this.game) return;
     this.game.removePlayer(player);
