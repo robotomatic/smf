@@ -13,6 +13,11 @@
     width: 100%;
 }
 
+.dialog-color-dark {
+    background-color: rgba(32, 32, 33, 0.35);
+}
+
+
 .dialog-toolbar {
     float: left;
     width: 100%;
@@ -107,7 +112,6 @@
     border-bottom: 1px solid darkgray;
     margin-bottom: 0;
     padding: 1em .5em 1em .5em;
-    background-color: rgba(32, 32, 33, 0.35);
 }
 
 
@@ -214,7 +218,6 @@
     margin: 0 1em 0 1em;
     width: 4em;
     text-align: center;
-    background-color: rgba(32, 32, 33, 0.35);
     border: 1px solid #7b7b7b;
     color: white;
     padding: .4em;
@@ -325,7 +328,6 @@
     width: auto;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: rgba(32, 32, 33, 0.35);
 }
 
     .dialog-tab-list-list-tablist {
