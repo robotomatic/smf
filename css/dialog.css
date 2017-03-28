@@ -129,8 +129,24 @@
     width: 25%;
 }
 
+.dialog-col-30 {
+    width: 30%;
+}
+
+.dialog-col-33 {
+    width: 33%;
+}
+
 .dialog-col-60 {
     width: 60%;
+}
+
+.dialog-col-70 {
+    width: 70%;
+}
+
+.dialog-col-75 {
+    width: 75%;
 }
 
 .dialog-col-80 {

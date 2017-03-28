@@ -165,9 +165,7 @@ function toggleDevDialog(nid, hide = true) {
     if (isMobile()) {
         t = 30;
         l = 0;
-    }
-    
-    if (!hide) {
+    } else if (!hide) {
         t = (h / 2) - (dr.height / 2);
         l = (w / 2) - (dr.width / 2);
     }
@@ -181,10 +179,12 @@ function toggleDevDialog(nid, hide = true) {
         ddd = new Dialog(nid, d);
         dialogs[nid] = ddd;    
     } else {
-        dialogs[nid].reset();
+        ddd.reset();
     }
     
-    dialogs[nid].bringToTop();
+    if (!hide) ddd.moved = true;
+    
+    ddd.bringToTop();
 }
 
 function hideDialogs(id) {

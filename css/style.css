@@ -170,6 +170,14 @@ body {
     padding-left: 1em;
 }
 
+.pad-right-small {
+    padding-right: .2em;
+}
+
+.pad-right {
+    padding-right: 1em;
+}
+
 .no-pad-top {
     padding-top: 0 !important;
 }
