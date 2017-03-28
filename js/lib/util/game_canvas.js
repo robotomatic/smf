@@ -133,13 +133,13 @@ GameCanvas.prototype.commit = function() {
     
     if (this.current.fill) this.ctx.fill();
     if (this.current.fillrect) {
-        this.ctx.fillRect(this.current.rect.x, this.current.rect.y, this.current.rect.width, this.current.rect.height);
+        this.ctx.fillRect(round(this.current.rect.x), round(this.current.rect.y), round(this.current.rect.width), round(this.current.rect.height));
     }
     if (this.current.stroke) this.ctx.stroke();
     if (this.current.strokerect) {
-        this.ctx.strokeRect(this.current.rect.x, this.current.rect.y, this.current.rect.width, this.current.rect.height);
+        this.ctx.strokeRect(round(this.current.rect.x), round(this.current.rect.y), round(this.current.rect.width), round(this.current.rect.height));
     }
-    if (this.current.filltext) this.ctx.fillText(this.current.text.text, this.current.text.x, this.current.text.y);
+    if (this.current.filltext) this.ctx.fillText(this.current.text.text, round(this.current.text.x), round(this.current.text.y));
     
     this.reset();
 }
@@ -203,29 +203,41 @@ GameCanvas.prototype.setFont = function(font) {
 
 
 GameCanvas.prototype.createLinearGradient = function(x, y, width, height) {
-    if (this.gradient.linear.x == x && this.gradient.linear.y == y && this.gradient.linear.width == width && this.gradient.linear.height == height) {
+    var rx = clamp(x);
+    var ry = clamp(y);
+    var rw = clamp(width);
+    var rh = clamp(height);
+    if (this.gradient.linear.x == rx && this.gradient.linear.y == ry && this.gradient.linear.width == rw && this.gradient.linear.height == rh) {
         return this.gradient.linear.gradient;
     }
-    this.gradient.linear.x = x;
-    this.gradient.linear.y = y;
-    this.gradient.linear.width = width;
-    this.gradient.linear.height = height;
-    this.gradient.linear.gradient = this.ctx.createLinearGradient(x, y, width, height);
+    this.gradient.linear.x = rx;
+    this.gradient.linear.y = ry;
+    this.gradient.linear.width = rw;
+    this.gradient.linear.height = rh;
+    this.gradient.linear.gradient = this.ctx.createLinearGradient(rx, ry, rw, rh);
     return this.gradient.linear.gradient;
 }
 
 GameCanvas.prototype.createRadialGradient = function(x0, y0, r0, x1, y1, r1) {
-    if (this.gradient.radial.x0 == x0 && this.gradient.radial.y0 == y0 && this.gradient.radial.r0 == r0 &&
-        this.gradient.radial.x1 == x1 && this.gradient.radial.y1 == y1 && this.gradient.radial.r1 == r1 ) {
+    
+    var rx0 = round(x0);
+    var ry0 = round(y0);
+    var rr0 = round(r0);
+    var rx1 = round(x1);
+    var ry1 = round(y1);
+    var rr1 = round(r1);
+    
+    if (this.gradient.radial.x0 == rx0 && this.gradient.radial.y0 == ry0 && this.gradient.radial.r0 == rr0 &&
+        this.gradient.radial.x1 == rx1 && this.gradient.radial.y1 == ry1 && this.gradient.radial.r1 == rr1 ) {
         return this.gradient.radial.gradient;
     }
-    this.gradient.radial.x0 = x0;
-    this.gradient.radial.y0 = y0;
-    this.gradient.radial.r0 = r0;
-    this.gradient.radial.x1 = x1;
-    this.gradient.radial.y1 = y1;
-    this.gradient.radial.r1 = r1;
-    this.gradient.radial.gradient = this.ctx.createRadialGradient(x0, y0, r0, x1, y1, r1);
+    this.gradient.radial.x0 = rx0;
+    this.gradient.radial.y0 = ry0;
+    this.gradient.radial.r0 = rr0;
+    this.gradient.radial.x1 = rx1;
+    this.gradient.radial.y1 = ry1;
+    this.gradient.radial.r1 = rr1;
+    this.gradient.radial.gradient = this.ctx.createRadialGradient(rx0, ry0, rr0, rx1, ry1, rr1);
     return this.gradient.radial.gradient;
 }
 
@@ -272,27 +284,46 @@ GameCanvas.prototype.closePath = function() {
 
 
 GameCanvas.prototype.moveTo = function(x, y) {
-    this.ctx.moveTo(x, y);
+    var rx = round(x);
+    var ry = round(y);
+    this.ctx.moveTo(rx, ry);
     this.current.dirty = true;
 }
 
 GameCanvas.prototype.bezierCurveTo = function(x1, y1, x2, y2, x3, y3) {
-    this.ctx.bezierCurveTo(x1, y1, x2, y2, x3, y3);
+    var rx1 = round(x1);
+    var ry1 = round(y1);
+    var rx2 = round(x2);
+    var ry2 = round(y2);
+    var rx3 = round(x3);
+    var ry3 = round(y3);
+    this.ctx.bezierCurveTo(rx1, ry1, rx2, ry2, rx3, ry3);
     this.current.dirty = true;
 }
 
 GameCanvas.prototype.quadraticCurveTo = function(x1, y1, x2, y2) {
-    this.ctx.quadraticCurveTo(x1, y1, x2, y2);
+    var rx1 = round(x1);
+    var ry1 = round(y1);
+    var rx2 = round(x2);
+    var ry2 = round(y2);
+    this.ctx.quadraticCurveTo(rx1, ry1, rx2, ry2);
     this.current.dirty = true;
 }
 
 GameCanvas.prototype.lineTo = function(x, y) {
-    this.ctx.lineTo(x, y);
+    var rx = round(x);
+    var ry = round(y);
+    this.ctx.lineTo(rx, ry);
     this.current.dirty = true;
 }
 
 GameCanvas.prototype.arc = function(x, y, radius, start, end, ccw) {
-    this.ctx.arc(x, y, radius, start, end, ccw);
+    var rx = round(x);
+    var ry = round(y);
+    var rr = round(radius);
+    var rs = round(start);
+    var re = round(end);
+    this.ctx.arc(rx, ry, rr, rs, re, ccw);
     this.current.dirty = true;
 }
 
@@ -306,10 +337,10 @@ GameCanvas.prototype.stroke = function() {
 
 GameCanvas.prototype.strokeRect = function(x, y, width, height) {
     this.current.strokerect = true;
-    this.current.rect.x = x;
-    this.current.rect.y = y;
-    this.current.rect.width = width;
-    this.current.rect.height = height;
+    this.current.rect.x = round(x);
+    this.current.rect.y = round(y);
+    this.current.rect.width = round(width);
+    this.current.rect.height = round(height);
 }
 
 GameCanvas.prototype.fill = function() {
@@ -318,17 +349,19 @@ GameCanvas.prototype.fill = function() {
 
 GameCanvas.prototype.fillRect = function(x, y, width, height) {
     this.current.fillrect = true;
-    this.current.rect.x = x;
-    this.current.rect.y = y;
-    this.current.rect.width = width;
-    this.current.rect.height = height;
+    this.current.rect.x = round(x);
+    this.current.rect.y = round(y);
+    this.current.rect.width = round(width);
+    this.current.rect.height = round(height);
 }
 
 GameCanvas.prototype.fillText = function(text, x, y) {
 //    this.current.text.text = text;
 //    this.current.text.x = x;
 //    this.current.text.y = y;
-    this.ctx.fillText(text, x, y);
+    var rx = round(x);
+    var ry = round(y);
+    this.ctx.fillText(text, rx, ry);
     this.current.filltext = true;
 }
 
