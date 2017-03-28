@@ -21,24 +21,6 @@ function resetDevPlayers(players) {
     
 }
 
-function updateDevPlayers(players) {
-    
-    if (!__dev) return;
-    
-    if (!devplayers) return;
-    for (var i = 0; i < players.length; i++) updateDevPlayersPlayer(players[i]);
-}
-
-function updateDevPlayersPlayer(player) {
-    
-    if (!__dev) return;
-    
-    if (!devplayers) return;
-    var id = player.id;
-    if (!devplayers[id]) devPlayersAddPlayer(player);
-    devPlayersUpdatePlayer(player);
-}
-
 function devPlayersAddPlayer(player) {
     
     if (!__dev) return;
@@ -68,7 +50,16 @@ function devPlayersAddPlayer(player) {
         return false;
     }
     
-    var pcam = item.children.item(2);
+    var pdel = item.children.item(2);
+    pdel.id = "dev-dialog-players-players-player-remove-" + id;
+    pdel.onclick = function(e) {
+        devRemovePlayersPlayer(player);
+        e.stopPropagation();
+        e.preventDefault();
+        return false;
+    }
+
+    var pcam = item.children.item(3);
     pcam.id = "dev-dialog-players-players-player-camera-" + id;
     var pcamlabel = pcam.children.item(0);
     var pcamlabelcam = pcamlabel.children.item(0);
@@ -89,21 +80,44 @@ function devPlayersAddPlayer(player) {
         item : item
     }
 }
-    
-function devPlayersUpdatePlayer(player) {
-    
+
+
+
+
+function updateDevPlayers(players) {
     if (!__dev) return;
-    
+    if (!devplayers) return;
+    for (var i = 0; i < players.length; i++) updateDevPlayersPlayer(players[i]);
+}
+
+function updateDevPlayersPlayer(player) {
+    if (!__dev) return;
+    if (!devplayers) return;
+    var id = player.id;
+    if (!devplayers[id]) devPlayersAddPlayer(player);
+    devPlayersUpdatePlayer(player);
+}
+
+function devPlayersUpdatePlayer(player) {
+    if (!__dev) return;
     var id = player.id;
     var item = devplayers[id];
     if (!item) return;
 }
 
 function devPlayersUpdatePlayerCamera(id, check) {
-    
     if (!__dev) return;
-    
     var player = devplayers[id];
     if (!player) return;
     player.player.getscamera = check;
+}
+
+
+
+function devRemovePlayersPlayer(player) {
+    var id = player.id;
+    var div = document.getElementById("dev-dialog-players-players-player-" + player.id);
+    if (div) div.parentNode.removeChild(div);
+    delete devplayers[id];
+    devRemovePlayer(player);
 }

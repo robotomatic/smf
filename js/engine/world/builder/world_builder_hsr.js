@@ -3,6 +3,9 @@
 function WorldBuilderHSR() {
 }
 
+WorldBuilderHSR.prototype.reset = function() { 
+}
+
 WorldBuilderHSR.prototype.removeHiddenSurfaces = function(world) { 
     var items = world.items;
     items.sort(sortByY);

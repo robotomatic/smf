@@ -163,6 +163,10 @@ GameControllerMenuMain.prototype.start = function() {
     this.running = true;
 }
 
+GameControllerMenuMain.prototype.reset = function() {
+    this.loop.reset(timestamp());
+}
+
 GameControllerMenuMain.prototype.run = function(when) {
     this.loop.run(when);
 }
@@ -188,3 +192,10 @@ GameControllerMenuMain.prototype.startGame = function() {
     var b = document.getElementById("start-game");
     window.location = b.href;
 }
+
+GameControllerMenuMain.prototype.removePlayer = function(player) {
+    this.loop.removePlayer(player);
+    this.players.removePlayer(player);
+    this.npcs.removeNPC(player);
+}
+

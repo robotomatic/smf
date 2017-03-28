@@ -10,8 +10,8 @@ function ViewRenderer() {
 ViewRenderer.prototype.update = function(now, world, view) {
 }
 
-ViewRenderer.prototype.render = function(now, world, width, height, graphics, render, paused) {
-    this.mbr = this.camera.getView(now, this.mbr, width, height, render, paused);
+ViewRenderer.prototype.render = function(now, world, width, height, graphics, render, follow, paused) {
+    this.mbr = this.camera.getView(now, this.mbr, width, height, follow, paused);
     this.window.x = 0;
     this.window.y = 0;
     this.window.z = 0;

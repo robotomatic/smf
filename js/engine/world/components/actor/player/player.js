@@ -36,6 +36,18 @@ function Player(id, name, color, x, y, z, width, height, speed, character, hp, l
     this.playerdebugger = new PlayerDebugger(this);
 }
 
+Player.prototype.delete = function() { 
+    logDev("Removing Player: " + this.id);
+    this.controller = null;
+    this.info = null;
+    this.collider = null;
+    this.camera = null;
+    this.box = null;
+    this.canvas = null;
+    this.image = null;
+}
+
+
 
 Player.prototype.pause = function(when) { 
     this.controller.pause(when);

@@ -93,11 +93,21 @@
 
 .dialog-row-pad {
     width: 95%;
+    padding-top: .2em;
+    padding-left: .2em;
+    
 }
 
 .dialog-row-border {
     border-bottom: 1px solid darkgray;
     margin-bottom: 1em;
+}
+
+.dialog-row-dark {
+    border-bottom: 1px solid darkgray;
+    margin-bottom: 0;
+    padding: 1em .5em 1em .5em;
+    background-color: rgba(32, 32, 33, 0.35);
 }
 
 
@@ -211,9 +221,23 @@
     cursor: pointer;
 }
 
+.dialog-input-button-round {
+    margin: 0 0 0 1em;
+    text-align: center;
+    padding: .4em .6em .4em .6em;
+    font-size: .8em;
+    font-weight: bold;
+    width: auto;
+}
+
 .dialog-input-button:focus {
     outline: none;
     border: 1px solid #b7b7b7;
+}
+
+.dialog-input-button:hover {
+    font-weight: bold;
+    border: 1px solid white;
 }
 
 .dialog-input-radio {

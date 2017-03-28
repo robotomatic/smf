@@ -3,6 +3,9 @@
 function WorldBuilderItems() {
 }
 
+WorldBuilderItems.prototype.reset = function() { 
+}
+
 WorldBuilderItems.prototype.buildWorld = function(world) {
     var level = world.level;
     if (!level.layers) return;

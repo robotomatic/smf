@@ -40,8 +40,11 @@ function PartyView(gamecontroller, id, width, height, scale) {
         }
     };
 
+    this.paused = false;
+    
     this.rendercount = 0;
     this.renderwait = 10;
+    this.renderall = true;
     
     this.view.renderer.camera.blur.blur = false;
     this.view.renderer.camera.blur.shift = false;
@@ -75,10 +78,12 @@ PartyView.prototype.setCameraZoom = function(name) {
 
 
 PartyView.prototype.pause = function(when) { 
+    this.paused = true;
     this.view.pause(when);
 }
 
 PartyView.prototype.resume = function(when) { 
+    this.paused = false;
     this.view.resume(when);
 }
 
@@ -100,14 +105,6 @@ PartyView.prototype.resizeUI = function() {
     this.view.resizeUI(); 
 }
 
-PartyView.prototype.initialize = function(world) {
-    this.view.renderer.mbr.x = world.worldbuilder.collidebuilder.collisionindex.bounds.min.x;
-    this.view.renderer.mbr.y = world.worldbuilder.collidebuilder.collisionindex.bounds.min.y;
-    this.view.renderer.mbr.z = world.worldbuilder.collidebuilder.collisionindex.bounds.min.z;
-    this.view.renderer.mbr.width = world.worldbuilder.collidebuilder.collisionindex.bounds.max.x = this.view.renderer.mbr.x;
-    this.view.renderer.mbr.height = world.worldbuilder.collidebuilder.collisionindex.bounds.max.y = this.view.renderer.mbr.y;
-}
-
 PartyView.prototype.update = function(now, delta, game) {
     this.view.update(now, delta, game.world);
 }
@@ -117,39 +114,71 @@ PartyView.prototype.reset = function() {
     this.view.renderer.mbr.width = 0;
     this.view.renderer.mbr.height = 0;
     this.rendercount = 0;
+    this.renderall = true;
+    this.view.renderer.camera.lastview = null;
 }
 
 PartyView.prototype.render = function(now, game) { 
 
     var world = game.world;
 
-    
-    //
-    // TODO: Fix camera swimmyness when changing levels...
-    //
-    
-    var render = false;
-    this.view.renderer.mbr = world.players.getMbr(this.view.renderer.mbr);
-    if (this.view.renderer.mbr && this.view.renderer.mbr.width && this.view.renderer.mbr.height) {
-        if (this.rendercount++ >= this.renderwait) {
-            render = true;
-        }
-    }
-
     var offx = this.offset.x;
+    var offy = this.offset.y;
+    var offz = this.offset.z;
+    
+    this.view.renderer.mbr = world.players.getMbr(this.view.renderer.mbr);
+    
+    var follow = true;
+    if (this.view.renderer.mbr && !this.view.renderer.mbr.width && !this.view.renderer.mbr.height) {
+        offx = 0;
+        offy = 0;
+        offz = 0;
+        this.view.renderer.mbr = this.getViewBounds(world, this.view.renderer.mbr);
+        follow = false;
+        this.renderall = true;
+        this.view.renderer.camera.lastview = null;
+    } else if (this.renderall) {
+        follow = false;
+        this.renderall = false;
+        this.view.renderer.camera.lastview = null;
+    }
+    
+    var render = true;
+    if (this.rendercount < 10) {
+        render = false;
+        follow = false;
+    }
+    
+    if (!this.paused) this.rendercount++;
+    
     this.view.renderer.mbr.x -= offx;
     this.view.renderer.mbr.width += offx;
     
-    var offy = this.offset.y;
     this.view.renderer.mbr.y -= offy;
     this.view.renderer.mbr.height += offy;
     
-    var offz = this.offset.z;
     this.view.renderer.mbr.z -= offz;
     this.view.renderer.mbr.depth += offz;
-    
-    this.view.render(now, world, render);
+
+    this.view.render(now, world, render, follow);
 }
+
+PartyView.prototype.getViewBounds = function(world, mbr) {
+    var b = world.worldbuilder.collidebuilder.collisionindex.bounds;
+    mbr.x = b.min.x;
+    mbr.y = 0;
+    mbr.z = 0;
+    mbr.width = b.max.x - mbr.x;
+    if (world.level) {
+        var height = this.view.height;
+        mbr.height = world.level.height < height ? world.level.height : height;
+    } else {
+        mbr.height = b.max.y - mbr.y;
+    }
+    mbr.depth = 0;
+    return mbr;
+}
+
 
 PartyView.prototype.setMessage = function(message) { }
 

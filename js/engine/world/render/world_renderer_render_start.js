@@ -37,8 +37,11 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
     if (isNaN(d)) d = 0;
     var id = item.id;
     
+    var index = this.index++;
+    
     if (this.renderitems.keys[id]) {
         var newitem = this.renderitems.keys[id];
+        newitem.index = index;
         newitem.showing = showing;
         newitem.x = item.x;
         newitem.y = item.y;
@@ -51,6 +54,7 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
         var newitem = {
             type : "item",
             name : id,
+            index : index,
             showing : showing,
             x : item.x,
             y : item.y,
@@ -66,7 +70,7 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
         }
         this.renderitems.keys[id] = newitem;
     }
-    this.renderitems.all[this.index++] = newitem;
+    this.renderitems.all[index] = newitem;
 }
 
 WorldRendererStart.prototype.getRenderItemsWorldPlayers = function(mbr, window, cp, graphics, world, debug) {
@@ -88,8 +92,11 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(mbr, wi
     if (!showing || isNaN(d)) d = 0;
     var id = player.name + "-" + player.id;
     
+    var index = this.index++;
+    
     if (this.renderitems.keys[id]) {
         var newitem = this.renderitems.keys[id];
+        newitem.index = index;
         newitem.showing = showing;
         newitem.x = player.controller.x;
         newitem.y = player.controller.y;
@@ -102,6 +109,7 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(mbr, wi
         var newitem = {
             type : "player",
             name : id,
+            index : index,
             showing : showing, 
             x : player.controller.x,
             y : player.controller.y,
@@ -115,7 +123,7 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(mbr, wi
         }
         this.renderitems.keys[id] = newitem;
     }
-    this.renderitems.all[this.index++] = newitem;
+    this.renderitems.all[index] = newitem;
 }
 
 WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItemCenter = function(mbr, cp, item, ox, oy, oz) {

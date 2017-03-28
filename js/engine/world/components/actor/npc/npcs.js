@@ -5,7 +5,24 @@ function NPCs() {
     this.callback = "";
 }
 
-NPCs.prototype.addNPC = function(npc) { this.npcs.push(npc); }
+NPCs.prototype.addNPC = function(npc) { 
+    this.npcs.push(npc); 
+}
+
+
+NPCs.prototype.removeNPC = function(player) {
+    var t = this.npcs.length;
+    for (var i = 0; i < t; i++) {
+        var n = this.npcs[i];
+        if (n.player == player) {
+            n = null;
+            this.npcs.splice(i, 1);
+            break;
+        }
+    }
+//    updateDevNPCs(this.npcs);
+}
+
 
 NPCs.prototype.doAction = function(action, args, key, val, callback, playercallback) { 
     this.callback = callback;

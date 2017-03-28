@@ -32,6 +32,12 @@ World.prototype.setPlayers = function(players) {
     return this.players; 
 }
 
+World.prototype.removePlayer = function(player) { 
+    this.npcs.removeNPC(player);
+    this.players.removePlayer(player);
+    this.worldrenderer.removePlayer(player);
+}
+
 World.prototype.getPlayers = function() { 
     return this.players; 
 }
@@ -68,13 +74,16 @@ World.prototype.resume = function(now) {
     this.players.resume(now);
 }
     
-World.prototype.reset = function() { 
+World.prototype.reset = function(when) { 
     benchmark("world reset - start", "reset");
     this.level.reset();
     delete(this.level);
     this.items.length = 0;
+    this.worldbuilder.reset();
     this.worldrenderer.reset();
     this.worldcollider.reset();
+    if (this.players) this.players.reset(when);
+    if (this.npcs) this.npcs.reset(when);
     benchmark("world reset - end", "reset");
 }
 
@@ -115,15 +124,6 @@ World.prototype.updatePlayer = function(now, delta, player) {
 
 World.prototype.render = function(now, graphics, camera, mbr, window, render) { 
     this.worldrenderer.render(now, graphics, camera, this, mbr, window, render);
-}
-
-World.prototype.reset = function(now) { 
-    this.level = null;
-    this.items.length = 0;
-    this.worldcollider.reset(now);
-    this.worldrenderer.reset(now);
-    if (this.players) this.players.reset(now);
-    if (this.npcs) this.npcs.reset(now);
 }
 
 World.prototype.doAction = function(action, args, key, val, callback) { if (this.npcs) this.npcs.doAction(action, args, key, val, callback); }

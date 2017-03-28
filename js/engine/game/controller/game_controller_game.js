@@ -6,7 +6,10 @@ function GameControllerGame(gamecontroller, gamesettings, levelsettings, players
     this.loop = new GameLoop(this.input);
     this.gameloader = this.gamecontroller.gameloader;
     this.levelname = "";
-    this.players = null;
+    
+    this.players = new Players();
+    this.npcs = new NPCs();
+    
     this.gamesettings = gamesettings;
     this.levelsettings = levelsettings;
     this.playersettings = playersettings;
@@ -41,8 +44,9 @@ GameControllerGame.prototype.load = function(callback) {
         this.levelname = this.levelsettings.levelname;
     } else {
         var k = Object.keys(this.gameloader.levels);
-        level = this.gameloader.levels[k[0]];
-        this.levelname = k[0];
+        var levelnum = 0;
+        level = this.gameloader.levels[k[levelnum]];
+        this.levelname = k[levelnum];
     }
     this.loadLevel(level, this.levelname, callback);
 }
@@ -147,6 +151,7 @@ GameControllerGame.prototype.loadPlayers = function() {
     this.input.setPlayers(this.players);
     
     this.loop.loadPlayers(this.players);
+    this.loop.loadNPCs(this.npcs);
     
     benchmark("load players - end", "players");
 }
@@ -158,7 +163,6 @@ GameControllerGame.prototype.loadViews = function() {
     var s = this.scale;
     this.view = new PartyView(this.gamecontroller, "game-canvas", w, h, s);
     this.loop.loadViews(new Array(this.view));
-    this.view.initialize(this.loop.game.world);
 }
 
 GameControllerGame.prototype.start = function() {
@@ -198,6 +202,12 @@ GameControllerGame.prototype.stop = function() {
 
 GameControllerGame.prototype.resize = function() {
     this.loop.resize();
+}
+
+GameControllerGame.prototype.removePlayer = function(player) {
+    this.loop.removePlayer(player);
+    this.players.removePlayer(player);
+    this.npcs.removeNPC(player);
 }
 
 GameControllerGame.prototype.playerDied = function(player) {

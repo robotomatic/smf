@@ -30,6 +30,8 @@ GameLoop.prototype.loadPlayers = function(players) { this.game.setPlayers(player
 GameLoop.prototype.loadNPCs = function(npcs) { this.game.setNPCs(npcs); }
 GameLoop.prototype.loadViews = function(views) { this.game.setViews(views); }
 
+GameLoop.prototype.removePlayer = function(player) { this.game.removePlayer(player); }
+
 GameLoop.prototype.showViews = function() { if (this.game.views) for (var i = 0; i < this.game.views.length; i++) this.game.views[i].show(); }
 GameLoop.prototype.hideViews = function() { if (this.game.views) for (var i = 0; i < this.game.views.length; i++) this.game.views[i].hide(); }
 

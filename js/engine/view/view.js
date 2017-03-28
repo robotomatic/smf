@@ -255,15 +255,15 @@ View.prototype.setMessage = function(message) { }
 View.prototype.updateUI = function() {
 }
 
-View.prototype.render = function(now, world, render) {
+View.prototype.render = function(now, world, render, follow) {
     this.setBackground(world);
     if (this.doublebuffer) {
         this.clearGraphics();
-        this.renderer.render(now, world, this.rendertarget.canvas.width, this.rendertarget.canvas.height, this.graphics["main"], render, this.gamecontroller.paused);
+        this.renderer.render(now, world, this.rendertarget.canvas.width, this.rendertarget.canvas.height, this.graphics["main"], render, follow, this.gamecontroller.paused);
         this.renderView();
     } else {
         this.clearViewGraphics(this.rendertarget);
-        this.renderer.render(now, world, this.rendertarget.canvas.width, this.rendertarget.canvas.height, this.rendertarget, render, this.gamecontroller.paused);
+        this.renderer.render(now, world, this.rendertarget.canvas.width, this.rendertarget.canvas.height, this.rendertarget, render, follow, this.gamecontroller.paused);
     }
     this.renderFPS();
 }

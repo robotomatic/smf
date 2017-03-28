@@ -11,6 +11,17 @@ function WorldBuilder() {
     this.environmentbuilder = new WorldBuilderEnvironment();
 }
 
+WorldBuilder.prototype.reset = function() {
+    this.itembuilder.reset();
+    this.collidebuilder.reset();
+    this.themebuilder.reset();
+    this.intersectbuilder.reset();
+    this.hsrbuilder.reset();
+    this.chunkbuilder.reset();
+    this.surfacebuilder.reset();
+    this.environmentbuilder.reset();
+}
+    
 WorldBuilder.prototype.buildWorld = function(now, world) {
     
     this.itembuilder.buildWorld(world);

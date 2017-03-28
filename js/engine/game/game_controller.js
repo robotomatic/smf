@@ -144,6 +144,7 @@ GameController.prototype.start = function() {
     this.fadeIn();
     this.ignorefade = false;
     benchmark("start game");
+    logDev("");
 }
 
 
@@ -165,6 +166,11 @@ GameController.prototype.run = function(now) {
     if (this.game.loop) this.game.run(now);
 }
 
+GameController.prototype.reset = function() {
+    if (!this.game) return;
+    this.game.reset();
+}
+
 GameController.prototype.pause = function(now) {
     if (this.paused) return;
     if (!this.game) return;
@@ -184,6 +190,13 @@ GameController.prototype.resume = function(now) {
     if (this.game.loop) this.game.resume(now);
     this.paused = false;
 }
+
+
+GameController.prototype.removePlayer = function(player) {
+    if (!this.game) return;
+    this.game.removePlayer(player);
+}
+
 
 GameController.prototype.stop = function() {
     if (!this.game) return;

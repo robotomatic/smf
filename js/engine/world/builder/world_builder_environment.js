@@ -3,6 +3,9 @@
 function WorldBuilderEnvironment() {
 }
 
+WorldBuilderEnvironment.prototype.reset = function() { 
+}
+
 WorldBuilderEnvironment.prototype.buildEnvironment = function(world) {
     var itemrenderer = world.worldrenderer.itemrenderer;
     var items = world.items;

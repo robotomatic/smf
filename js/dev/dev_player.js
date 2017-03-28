@@ -229,7 +229,14 @@ function updateDevPlayerIndex(index) {
 
 
 
-
+function devRemovePlayer(player) {
+    var id = player.id;
+    var dialog = document.getElementById("dev-dialog-players-player-" + player.id);
+    if (dialog) dialog.parentNode.removeChild(dialog);
+    var pid = "dev-dialog-players-player-" + player.id;
+    delete devplayer[pid];   
+    controller.removePlayer(player);
+}
 
 
 

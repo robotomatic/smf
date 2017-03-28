@@ -13,6 +13,12 @@ function WorldBuilderColliders() {
     this.collisionindex = new WorldColliderIndex();
 }
 
+WorldBuilderColliders.prototype.reset = function() { 
+    this.collisionindex.reset();
+}
+
+
+
 WorldBuilderColliders.prototype.buildColliders = function(world) {
     var items = world.items;
     this.setBounds(items);
@@ -23,6 +29,7 @@ WorldBuilderColliders.prototype.setBounds = function(items) {
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
         if (item.collide === false) continue;
+        if (item.isbounds) continue;
         this.collisionindex.checkBounds(item);        
     }
 }

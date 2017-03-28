@@ -182,6 +182,10 @@ body {
     margin-top: 1em;
 }
 
+.margin-top-small {
+    margin-top: .3em;
+}
+
 .margin-bottom {
     margin-bottom: 1em;
 }

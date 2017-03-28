@@ -10,6 +10,8 @@ Game.prototype.setTheme = function(themename, theme, materials) { this.world.set
 Game.prototype.setPlayers = function(players) { this.world.setPlayers(players); }
 Game.prototype.setNPCs = function(npcs) { this.world.setNPCs(npcs); }
 
+Game.prototype.removePlayer = function(player) { this.world.removePlayer(player); }
+
 Game.prototype.setViews = function(views) { 
     this.views = views;
     return this.views; 
@@ -19,8 +21,7 @@ Game.prototype.pause = function(now) {
     this.world.pause(now);
     var t = this.views.length;
     for (var i = 0; i < t; i++) {
-        this.views[i].view.reset(now); 
-        this.views[i].view.pause(now); 
+        this.views[i].pause(now); 
     }
 }
 
@@ -28,7 +29,7 @@ Game.prototype.resume = function(now) {
     this.world.resume(now);
     var t = this.views.length;
     for (var i = 0; i < t; i++) {
-        this.views[i].view.resume(now); 
+        this.views[i].resume(now); 
     }
 }
 
@@ -62,7 +63,7 @@ Game.prototype.reset = function(now) {
     if (this.views) {
         var t = this.views.length;
         for (var i = 0; i < t; i++) {
-            this.views[i].view.reset(); 
+            this.views[i].reset(); 
         }
     }
     benchmark("world reset");

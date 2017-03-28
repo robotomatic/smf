@@ -44,8 +44,18 @@ KeyboardInput.prototype.bindList = function(list, bindings) {
 }
 
 KeyboardInput.prototype.mapKeys = function(obj, keys) { for (var key in keys) this.mapKey(key, obj, keys[key]); }
-KeyboardInput.prototype.mapKey = function(key, obj, action) { this.keys[key] = new Array(obj, action) };    
-KeyboardInput.prototype.keyEvent = function(key, val) { if (this.keys[key]) this.input.do(this.keys[key][0], this.keys[key][1], val); }
+
+KeyboardInput.prototype.mapKey = function(key, obj, action) { 
+    this.keys[key] = {
+        object: obj,
+        action : action
+    };
+};    
+
+KeyboardInput.prototype.keyEvent = function(key, val) { 
+    if (!this.keys[key]) return;
+    this.input.do(this.keys[key].object, this.keys[key].action, val); 
+}
 
 KeyboardInput.prototype.setMenu = function(menu) { this.bind(menu, new KeyboardInputMenuKeyBindings()); }
 

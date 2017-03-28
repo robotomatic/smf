@@ -9,6 +9,9 @@ function WorldBuilderChunk() {
     }
 }
 
+WorldBuilderChunk.prototype.reset = function() { 
+}
+
 WorldBuilderChunk.prototype.chunk = function(world) { 
     var items = world.items;
     if (!this.dochunk) return items;

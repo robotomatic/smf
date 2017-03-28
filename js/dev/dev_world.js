@@ -73,12 +73,8 @@ function changeWorldLevel(levelname) {
         return;
     }
 
-    //
-    // TODO: No workeeeeeeeeeeeeeyyyyyy
-    //
-    
     controller.pause(timestamp());
-    controller.game.reset();
+    controller.reset();
     controller.game.loadLevel(newlevel, levelname, function() {
         controller.game.startPlayers();
         controller.resume(timestamp());

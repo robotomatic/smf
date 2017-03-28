@@ -4,6 +4,9 @@ function WorldBuilderTheme() {
     this.addparts = true;
 }
 
+WorldBuilderTheme.prototype.reset = function() { 
+}
+
 WorldBuilderTheme.prototype.buildTheme = function(world) { 
     var items = world.items;
     if (!this.addparts) return items;

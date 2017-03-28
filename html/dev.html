@@ -197,33 +197,6 @@
 </div>
 
 
-<div id="dev-dialog-players" class="dialog shadow hidden dialog-resize-vertical">
-    
-    <div class="dialog-title dialog-drag">
-        <a class="float-left dialog-title-close circle">x</a>
-        <a class="float-right dialog-title-title">Players</a>
-    </div>
-    
-        
-    <div class="dialog-wrap resize-vertical resize-resize resize-resize-large">
-        <div class="dev-body" id="dev-dialog-players-players">
-        
-            <div id="dev-dialog-players-players-player-template" class="dialog-row dialog-row-pad dialog-row-border" style="display: none;">
-                <label class="text-left float-left" id="dev-dialog-players-players-player-template-id"></label>
-                <a class="text-left float-left pointer-cursor" id="dev-dialog-players-players-player-template-name"></a>
-                <div class="dialog-check float-right" id="dev-dialog-players-players-player-template-camera">
-                    <label class="text-left float-left">
-                        <input type="checkbox" class="dialog-toggle float-left dev-toggle-player-camera" id="dev-dialog-players-players-player-template-camera-camera" value="Auto" CHECKED> Camera
-                    </label>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-    
-</div>
-
-
 <div id="dev-dialog-player" class="dialog shadow hidden">
     <div class="dialog-title dialog-drag">
         <a id="dev-dialog-player-close" class="float-left dialog-title-close circle">x</a>
@@ -380,4 +353,55 @@
             </tbody>
         </table>
     </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="dev-dialog-players" class="dialog shadow hidden dialog-resize-vertical">
+    
+    <div class="dialog-title dialog-drag">
+        <a class="float-left dialog-title-close circle">x</a>
+        <a class="float-right dialog-title-title">Players</a>
+    </div>
+
+    <div class="dialog-wrap no-pad-bottom">
+        <div class="dialog-row dialog-row-border">
+            <div class="float-left dialog-col-80">
+                <select class="dialog-select margin-top-small float-left" id="dev-players-add-player-character" value=""></select>
+            </div>
+            <div class="float-left dialog-col-20">
+                <input type="button" class="float-right no-margin-right text-center dialog-input-button" id="dev-players-add-player" value="ADD">
+            </div>
+        </div>
+    </div>
+        
+    <div class="dialog-wrap resize-vertical resize-resize resize-resize-large">
+        <div class="dev-body" id="dev-dialog-players-players">
+            <div id="dev-dialog-players-players-player-template" class="dialog-row dialog-row-pad dialog-row-border dialog-row-dark" style="display: none;">
+                
+                <label class="text-left float-left" id="dev-dialog-players-players-player-template-id"></label>
+                
+                <a class="text-left float-left pointer-cursor" id="dev-dialog-players-players-player-template-name"></a>
+
+                <input type="button" class="float-right circle no-margin-right text-center dialog-input-button dialog-input-button-round" id="dev-players-remove-player" value="X">
+                
+                <div class="dialog-check float-right" id="dev-dialog-players-players-player-template-camera">
+                    <label class="text-left float-left">
+                        <input type="checkbox" class="dialog-toggle float-left dev-toggle-player-camera" id="dev-dialog-players-players-player-template-camera-camera" value="Auto" CHECKED> Camera
+                    </label>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
 </div>

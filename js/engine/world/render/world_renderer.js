@@ -66,3 +66,11 @@ WorldRenderer.prototype.render = function(now, graphics, camera, world, mbr, win
     this.worldrenderer_end.renderEnd(graphics, mbr);
 }
 
+WorldRenderer.prototype.removePlayer = function(player) {
+    var id = player.name + "-" + player.id;
+    var p = this.renderitems.keys[id];
+    if (p) {
+        this.renderitems.all.splice(p.index, 1);
+        delete this.renderitems.keys[id];
+    }
+}

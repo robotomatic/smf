@@ -3,6 +3,9 @@
 function WorldBuilderIntersect() {
 }
 
+WorldBuilderIntersect.prototype.reset = function() { 
+}
+
 WorldBuilderIntersect.prototype.intersectItems = function(world) { 
     var items = world.items;
     for (var i = 0; i < items.length; i++) {

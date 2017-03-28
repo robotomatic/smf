@@ -43,10 +43,6 @@ function GamepadInput(input) {
     });
 }
 
-GamepadInput.prototype.connectGamepad = function(gamepad) {
-    this.updatePlayers();
-}
-
 GamepadInput.prototype.disconnectGamepad = function(gamepad) {
     var index = null;
     for (var i =0 ; i < this.bindings.length; i++) {
@@ -146,18 +142,20 @@ GamepadInput.prototype.mapButton = function(obj, index, padid, binding) {
 
 GamepadInput.prototype.setMenu = function(menu) { this.bindGamepads(menu, new GamepadInputMenuBindings()); }
 
+
+
+
+
+
 GamepadInput.prototype.setPlayers = function(players) { 
     this.players = players;
     this.actions = new Array();
     this.bindings.length = 0;
-    this.updatePlayers();
-}
-
-GamepadInput.prototype.updatePlayers = function() { 
     
     if (!navigator.getGamepads) return;
     
     if (!this.players || !this.players.players || !this.players.players.length) return;
+    
     var pads = navigator.getGamepads();
     for (var i = 0; i < this.players.players.length; i++) {
         if (pads[i] && !this.bindings[i]) {
@@ -167,7 +165,16 @@ GamepadInput.prototype.updatePlayers = function() {
         }
     }
 }
-                     
+
+
+GamepadInput.prototype.connectGamepad = function(gamepad) {
+    // todo: keep list of gamepads
+}
+
+
+
+
+
 GamepadInput.prototype.log = function(action, index, id, player) { 
     logDev("Controller " + action + ": index = " + index + ", id = " + id + ", player = " + ((player) ? player.name : "???"));
 }

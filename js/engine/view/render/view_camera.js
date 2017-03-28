@@ -1,8 +1,9 @@
 "use strict";
 
 function ViewCamera() {
-    
+
     this.speed = 5;
+    this.originalspeed = this.speed;
     
     this.shake = {
         magnitude: 0,
@@ -22,7 +23,7 @@ function ViewCamera() {
         max : 2,
         amount : 0.05,
         speed : 0.5,
-        enabled : true
+        enabled : false
     }
 
     this.blur = {
@@ -48,8 +49,6 @@ function ViewCamera() {
     this.center.z = 0;
     this.lastview = null;
     
-    this.box = geometryfactory.getRectangle(0, 0, 0, 0);
-    this.box.z = 0;
 }
 
 ViewCamera.prototype.shouldBlur = function(distance) {
@@ -103,10 +102,29 @@ ViewCamera.prototype.isShaking = function() {
     return this.shake.elapsed < this.shake.duration;
 }
 
-ViewCamera.prototype.getView = function(now, mbr, width, height, keepview, paused) {
+ViewCamera.prototype.getView = function(now, mbr, width, height, follow, paused) {
+    
+    if (!follow) {
+        if (this.speed != 1) this.originalspeed = this.speed;
+        this.speed = 1;
+    } else {
+        this.speed = this.originalspeed;
+    }
+    
     mbr = this.scaleMbr(mbr, width, height);
-    mbr = this.getCameraBox(mbr, keepview);
+    mbr = this.roundMbr(mbr);
+    mbr = this.getCameraBox(mbr);
     mbr = this.getCenterPoint(now, mbr, paused);
+    return mbr;
+}
+
+ViewCamera.prototype.roundMbr = function(mbr) {
+    mbr.x = round(mbr.x);
+    mbr.y = round(mbr.y);
+    mbr.z = round(mbr.z);
+    mbr.width = round(mbr.width);
+    mbr.height = round(mbr.height);
+    mbr.depth = round(mbr.depth);
     return mbr;
 }
 
@@ -194,17 +212,29 @@ ViewCamera.prototype.scaleMbr = function(mbr, width, height) {
 ViewCamera.prototype.reset = function() {
     this.lastview = null;
 }
-    
-ViewCamera.prototype.getCameraBox = function(mbr, keepview) {
 
-    if (!this.lastview || !keepview) {
+ViewCamera.prototype.updateCameraBox = function(mbr) {
+    this.lastview = {
+        x : mbr.x,
+        y : mbr.y,
+        z : mbr.z,
+        width: mbr.width,
+        height: mbr.height
+    };
+}
+
+ViewCamera.prototype.getCameraBox = function(mbr) {
+
+    if (!this.lastview) {
         this.lastview = {
             x : mbr.x,
             y : mbr.y,
             z : mbr.z,
             width: mbr.width,
-            height: mbr.height
+            height: mbr.height,
+            depth: mbr.depth
         }
+        return mbr;
     }
     
     mbr = this.smoothCameraBox(mbr);
@@ -214,34 +244,39 @@ ViewCamera.prototype.getCameraBox = function(mbr, keepview) {
     this.lastview.z = mbr.z;
     this.lastview.width = mbr.width;
     this.lastview.height = mbr.height;
+    this.lastview.depth = mbr.depth;
     
     return mbr;
 }
 
 ViewCamera.prototype.smoothCameraBox = function(mbr) {
 
-    this.box.x = mbr.x;
-    this.box.y = mbr.y;
-    this.box.z = mbr.z;
-    this.box.width = mbr.width;
-    this.box.height = mbr.height;
-
     var d = this.speed;
     
     var dx = (mbr.x - this.lastview.x) / d;
-    if (abs(dx)) mbr.x = this.lastview.x + dx;
+    var nx = this.lastview.x + dx; 
 
     var dy = (mbr.y - this.lastview.y) / d;
-    if (abs(dy)) mbr.y =  this.lastview.y + dy;
+    var ny = this.lastview.y + dy;
 
     var dz = (mbr.z - this.lastview.z) / d;
-    if (abs(dz)) mbr.z =  this.lastview.z + dz;
+    var nz = this.lastview.z + dz;
 
     var dw = (mbr.width - this.lastview.width) / d;
-    if (abs(dw)) mbr.width = this.lastview.width + dw;
+    var nw = this.lastview.width + dw;
     
     var dh = (mbr.height - this.lastview.height) / d;
-    if (abs(dh)) mbr.height =  this.lastview.height + dh;
+    var nh = this.lastview.height + dh;
+
+    var dd = (mbr.depth - this.lastview.depth) / d;
+    var nd = this.lastview.depth + dd;
+    
+    mbr.x = round(nx);
+    mbr.y = round(ny);
+    mbr.z = round(nz);
+    mbr.width = round(nw);
+    mbr.height = round(nh);
+    mbr.depth = round(nd);
     
     return mbr;
 }

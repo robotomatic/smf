@@ -121,6 +121,9 @@ MenuView.prototype.reset = function() {
 
 MenuView.prototype.updateNPC = function(when, world, npc) {
     var player = npc.player;
+    
+    if (!player) return;
+    
     var viewpad = 10;
     
     if (player.controller.x <= viewpad) {

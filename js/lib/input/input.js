@@ -16,6 +16,12 @@ function Input() {
     }
 }
 
+
+// todo: this needs to be generic. set controller and get actions from it. 
+// todo: controller needs to be genericized as well so there is only 1 with config
+// todo: inputs need to enumerate so they can be assigned instead of the other way around...
+
+
 Input.prototype.setMenu = function(menu) { this.set("setMenu", menu); }
 
 Input.prototype.setPlayers = function(players) { this.set("setPlayers", players); }

@@ -90,7 +90,7 @@ Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window, widt
     if (!item.geometry.fronts[0]) item.geometry.fronts[0] = new Polygon(this.polygon.getPoints());
     else item.geometry.fronts[0].setPoints(this.polygon.getPoints())
     
-     if (item.width == "100%") {
+     if (item.width == "100%" && item.geometry.fronts[0].points.length > 3) {
          item.geometry.fronts[0].points[0].x = 0;
          item.geometry.fronts[0].points[1].x = width;
          item.geometry.fronts[0].points[2].x = width;

@@ -32,6 +32,8 @@ Players.prototype.removePlayer = function(player) {
     for (var i = 0; i < t; i++) {
         var p = this.players[i];
         if (p == player) {
+            p.delete();
+            p = null;
             this.players.splice(i, 1);
             break;
         }

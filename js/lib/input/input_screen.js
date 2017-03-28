@@ -2,51 +2,48 @@
 
 function ScreenInput(input) {
     this.input = input;
-    var si = this;
     this.players = null;
 }
 
 ScreenInput.prototype.bindEvents = function() { 
-    var p = this.players.players[0].controller;
-    this.bind("screen-gamepad-button-in", "mousedown", p, "in", true);
-    this.bind("screen-gamepad-button-in", "mouseup", p, "in", false);
-    this.bind("screen-gamepad-button-in", "touchstart", p, "in", true);
-    this.bind("screen-gamepad-button-in", "touchend", p, "in", false);
+    this.bind("screen-gamepad-button-in", "mousedown", "in", true);
+    this.bind("screen-gamepad-button-in", "mouseup", "in", false);
+    this.bind("screen-gamepad-button-in", "touchstart", "in", true);
+    this.bind("screen-gamepad-button-in", "touchend", "in", false);
     
-    this.bind("screen-gamepad-button-out", "mousedown", p, "out", true);
-    this.bind("screen-gamepad-button-out", "mouseup", p, "out", false);
-    this.bind("screen-gamepad-button-out", "touchstart", p, "out", true);
-    this.bind("screen-gamepad-button-out", "touchend", p, "out", false);
+    this.bind("screen-gamepad-button-out", "mousedown", "out", true);
+    this.bind("screen-gamepad-button-out", "mouseup", "out", false);
+    this.bind("screen-gamepad-button-out", "touchstart", "out", true);
+    this.bind("screen-gamepad-button-out", "touchend", "out", false);
     
-    this.bind("screen-gamepad-button-left", "mousedown", p, "left", true);
-    this.bind("screen-gamepad-button-left", "mouseup", p, "left", false);
-    this.bind("screen-gamepad-button-left", "touchstart", p, "left", true);
-    this.bind("screen-gamepad-button-left", "touchend", p, "left", false);
+    this.bind("screen-gamepad-button-left", "mousedown", "left", true);
+    this.bind("screen-gamepad-button-left", "mouseup", "left", false);
+    this.bind("screen-gamepad-button-left", "touchstart", "left", true);
+    this.bind("screen-gamepad-button-left", "touchend", "left", false);
 
-    this.bind("screen-gamepad-button-right", "mousedown", p, "right", true);
-    this.bind("screen-gamepad-button-right", "mouseup", p, "right", false);
-    this.bind("screen-gamepad-button-right", "touchstart", p, "right", true);
-    this.bind("screen-gamepad-button-right", "touchend", p, "right", false);
+    this.bind("screen-gamepad-button-right", "mousedown", "right", true);
+    this.bind("screen-gamepad-button-right", "mouseup", "right", false);
+    this.bind("screen-gamepad-button-right", "touchstart", "right", true);
+    this.bind("screen-gamepad-button-right", "touchend", "right", false);
     
-    this.bind("screen-gamepad-button-jump", "mousedown", p, "jump", true);
-    this.bind("screen-gamepad-button-jump", "mouseup", p, "jump", false);
-    this.bind("screen-gamepad-button-jump", "touchstart", p, "jump", true);
-    this.bind("screen-gamepad-button-jump", "touchend", p, "jump", false);
+    this.bind("screen-gamepad-button-jump", "mousedown", "jump", true);
+    this.bind("screen-gamepad-button-jump", "mouseup", "jump", false);
+    this.bind("screen-gamepad-button-jump", "touchstart", "jump", true);
+    this.bind("screen-gamepad-button-jump", "touchend", "jump", false);
     
-    this.bind("screen-gamepad-button-action", "mousedown", p, "jump", true);
-    this.bind("screen-gamepad-button-action", "mouseup", p, "jump", false);
-    this.bind("screen-gamepad-button-action", "touchstart", p, "jump", true);
-    this.bind("screen-gamepad-button-action", "touchend", p, "jump", false);
+    this.bind("screen-gamepad-button-action", "mousedown", "jump", true);
+    this.bind("screen-gamepad-button-action", "mouseup", "jump", false);
+    this.bind("screen-gamepad-button-action", "touchstart", "jump", true);
+    this.bind("screen-gamepad-button-action", "touchend", "jump", false);
 }
     
-ScreenInput.prototype.bind = function(id, event, item, action, value) { 
+ScreenInput.prototype.bind = function(id, event, action, value) { 
     var elem = document.getElementById(id);
     if (!elem) return;
     var si = this;
+    var p = this.players.players[0].controller;
     elem.addEventListener(event, function (e) { 
-        si.input.do(item, action, value);
-//        e.preventDefault();
-//        return false;
+        si.input.do(p, action, value);
     });
 }
 
