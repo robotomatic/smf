@@ -14,6 +14,10 @@
 }
 
 .dialog-color-dark {
+    background-color: rgba(62, 62, 62, 0.35);
+}
+
+.dialog-color-darkest {
     background-color: rgba(32, 32, 33, 0.35);
 }
 
@@ -222,6 +226,7 @@
     color: white;
     padding: .4em;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .dialog-input-button-round {
