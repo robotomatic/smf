@@ -26,6 +26,8 @@ function updateDevWorld(world) {
     if (!__dev) return;
     
     var level = world.level;
+    if (!level) return;
+    
     var levels = controller.gameloader.levels;
     var keys = controller.gameloader.levelkeys;
     if (!keys || !keys.length) return;
