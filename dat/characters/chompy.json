@@ -6,7 +6,7 @@
         "pad" : 1,
         "debug" : false,
         "idlespeed" : ".5",
-        "color" : "#92c73a",
+        "color" : "#73a819",
         "animations" : [
             "default", 
             "blink",
@@ -22,7 +22,7 @@
                 "belly" : {
                     "path" : "smooth",
                     "zindex" : 600,
-                    "color" : "#bfde8c"
+                    "color" : "#84bc25"
                 },
                 "mouth" : {
                     "path" : "smooth",
@@ -246,7 +246,7 @@
             "body" : {
                 "parts" : {
                     "body-spikes" : {
-                        "color" : "#71a31e",
+                        "color" : "#628e1a",
                         "parts" : {
                             "spike-top" : {
                                 "width" : 20,
@@ -284,7 +284,7 @@
                                 "zindex" : -120,
                                 "angle" : 15,
                                 "path" : "round",
-                                "color" : "#71a31e"
+                                "color" : "#628e1a"
                             },
                             "tail-bottom" : {
                                 "width" : 48,
