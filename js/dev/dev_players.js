@@ -36,27 +36,13 @@ function initializeDevPlayers() {
 }
 
 function resetDevPlayers(players) {
-
-    var notfound = new Array();
     var keys = Object.keys(devplayers);
     var t = keys.length;
     for (var i = 0; i < t; i++) {
         var key = keys[i];
-        var found = false;
-        var tt = players.players.length;
-        for (var ii = 0; ii < tt; ii++) {
-            var player = players.players[ii];
-            if (player.uid == key) {
-                found = true;
-                break;
-            }
-        }
-        if (!found) notfound.push(key);
+        removeDevPlayersPlayerId(key);
     }
-    
-    var ttt = notfound.length;
-    for (var iii = 0; iii< ttt; iii++) removeDevPlayersPlayerId(notfound[iii]);
-    
+    devplayers = new Array();
     updateDevPlayers(players.players);
 }
 
