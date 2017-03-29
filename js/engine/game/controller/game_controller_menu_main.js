@@ -97,37 +97,9 @@ GameControllerMenuMain.prototype.addPlayer = function(charname) {
         return;
     }
     
-    var playerx;
-    var found = false;
-    var loops = 0;
-    var maxloops = 100;
-    while (!found) {
-        var testx = random(100, this.level.width - 100);
-        if (this.players.players.length == 0) {
-            found = true;
-            playerx = testx;
-        } else {
-            var ok = true;
-            for (var ii = 0; ii < this.players.players.length; ii++) {
-                var d = abs(this.players.players[ii].controller.x - testx);
-                if (d < 20) {
-                    ok = false;
-                    break;
-                }
-            }
-            if (ok) {
-                found = true;
-                playerx = testx;
-            }
-        }
-        loops++;
-        if (loops > maxloops) {
-            found = true;
-            playerx = testx;
-        }
-    }
-    var playery = 10; 
-    var playerz = random(10, this.level.depth);
+    var playerx = 0;
+    var playery = 0; 
+    var playerz = 0;
 
     var player = this.loadPlayer(this.players.players.length, playerx, playery, playerz, character);
 
@@ -141,7 +113,7 @@ GameControllerMenuMain.prototype.addPlayer = function(charname) {
 GameControllerMenuMain.prototype.loadPlayer = function(id, x, y, z, character) {
     var char = new Character().loadJson(character.json);
     char = this.loadCharacterAnimations(char);
-    var speed = 2;
+    var speed = 1;
     var pw = character.width;
     var ph = character.height;
     var pdiff = (20 - pw) / 2;
@@ -182,7 +154,15 @@ GameControllerMenuMain.prototype.start = function() {
     this.loop.start();
     this.loop.showViews();
     this.running = true;
+    this.startPlayers();
 }
+
+GameControllerMenuMain.prototype.startPlayers = function() {
+    for (var i = 0; i < this.players.players.length; i++) {
+        this.loop.game.world.worldcollider.resetPlayer(this.players.players[i], 1);
+    }
+}
+
 
 GameControllerMenuMain.prototype.reset = function() {
     this.loop.reset(timestamp());
