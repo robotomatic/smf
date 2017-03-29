@@ -1,6 +1,6 @@
 {
-    "width" : 800,
-    "height" : 400,
+    "width" : 400,
+    "height" : 200,
     "depth" : 200,
     "layers" : [
         {
@@ -11,9 +11,9 @@
                 {
                     "name" : "floor",
                     "x": 0,
-                    "y": 320,
+                    "y": 120,
                     "z" : -100,
-                    "width": 800,
+                    "width": 400,
                     "height": 50,
                     "depth" : 300
                 }
