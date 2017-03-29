@@ -42,6 +42,31 @@ function createDevPlayerDialog(player, pid) {
         title.innerHTML = player.name;
         title.id = "dev-dialog-player-title-" + id;
     }
+    
+    var playerchar = findChildById(pd, "dev-player-character");
+    if (playerchar) {
+        playerchar.id = "dev-player-character-" + id;
+        var chars = controller.gameloader.characters.characters;
+        if (chars) {
+            var keys = Object.keys(chars);
+            var t = keys.length;
+            for (var i = 0; i < t; i++) {
+                var key = keys[i];
+                var char = chars[key];
+                var opt = document.createElement('option');
+                opt.value = key;
+                opt.innerHTML = char.name;
+                if (char.name == player.character.name) opt.selected = true;
+                playerchar.appendChild(opt);        
+            }
+        }
+        playerchar.onchange = function(e) {
+            changeDevPlayerCharacter(player, playerchar.value);
+            e.stopPropagation()
+            e.preventDefault();
+            return false;
+        }
+    }
 
     var debugplayerx = findChildById(pd, "dev-player-position-x");
     if (debugplayerx) {
@@ -270,4 +295,13 @@ function setDevPlayerDebugCharacter(player, debug) {
 function setDevPlayerDebugGuts(player, debug) {
     if (!__dev) return;
     player.debug.guts = debug;
+}
+
+
+
+
+
+function changeDevPlayerCharacter(player, char) {
+    if (!__dev) return;
+    controller.changePlayerCharacter(player, char);
 }

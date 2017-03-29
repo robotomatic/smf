@@ -91,7 +91,8 @@ GameControllerGame.prototype.loadPlayers = function() {
             var rando = random(0, charnames.length - 1);
             charname = charnames[rando];
         }
-        this.addPlayerCharacter(charname);
+        var character = this.loadPlayerCharacter(charname);
+        this.addPlayerCharacter(character);
         playertotal++;
     }
     this.players.shadow.draw = false;
@@ -150,23 +151,26 @@ GameControllerGame.prototype.resize = function() {
 }
 
 GameControllerGame.prototype.addPlayer = function(charname) {
-    var player = this.addPlayerCharacter(charname);
+    var character = this.loadPlayerCharacter(charname);
+    var player = this.addPlayerCharacter(character);
     this.loop.game.world.worldcollider.resetPlayer(player);
 }
 
-GameControllerGame.prototype.addPlayerCharacter = function(charname) {
+GameControllerGame.prototype.loadPlayerCharacter = function(charname) {
     var character = this.gameloader.characters.characters[charname];
     if (!character) {
         logDev("Unable to Add Character: No character named " + charname);
         return;
     }
-
     var charanims = new Array();
     for (var a in character.animations) charanims[character.animations[a]] = this.gameloader.animations.animations[character.animations[a]];
-
     var char = new Character().loadJson(character.json);
     char.setAnimator(new CharacterAnimator(charanims));
     char.setRenderer(new CharacterRenderer());
+    return char;
+}
+    
+GameControllerGame.prototype.addPlayerCharacter = function(character) {
     var name = character.name;
     var color = character.color;
 
@@ -178,13 +182,23 @@ GameControllerGame.prototype.addPlayerCharacter = function(charname) {
     var speed = 3;
     var hp = 1000;
 
-    var player = new Player(this.players.players.length, name, color, x, y, z, width, height, speed, char, hp, this);
+    var player = new Player(this.players.players.length, name, color, x, y, z, width, height, speed, character, hp, this);
     if (this.players.players.length == 0) player.getscamera = true;
     this.players.addPlayer(player);
     
     updateDevPlayers(this.players.players);
     
     return player;
+}
+
+GameControllerGame.prototype.changePlayerCharacter = function(player, charname) {
+    var character = this.gameloader.characters.characters[charname];
+    if (!character) {
+        logDev("Change Player Character - No such Character named " + charname);
+        return;
+    }
+    var character = this.loadPlayerCharacter(charname);
+    player.setCharacter(character);
 }
 
 GameControllerGame.prototype.removePlayer = function(player) {

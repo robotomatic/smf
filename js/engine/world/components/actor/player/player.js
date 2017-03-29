@@ -37,6 +37,16 @@ function Player(id, name, color, x, y, z, width, height, speed, character, hp, l
     this.playerdebugger = new PlayerDebugger(this);
 }
 
+
+Player.prototype.setCharacter = function(character) { 
+    delete(this.character);
+    this.character = character;
+    this.controller.width = character.width;
+    this.controller.height = character.height;
+    this.controller.depth = 10;
+}
+
+
 Player.prototype.delete = function() { 
     logDev("Removing Player: " + this.id);
     this.controller = null;
@@ -81,10 +91,6 @@ Player.prototype.isVisible = function(w, wmbr, pad = 0) {
     if ((mbr.y + mbr.height) < w.y - pad) return false;
     if (mbr.z + mbr.depth < w.z - pad - 500) return false;
     return true;
-}
-
-Player.prototype.setCharacter = function(character) { 
-    this.character = character; 
 }
 
 Player.prototype.respawn = function(x, y, z) {

@@ -47,7 +47,9 @@ GameControllerMenuMain.prototype.loadLevel = function() {
     this.loop.loadLevel(this.level);
 }
 
-GameControllerMenuMain.prototype.loadCharacters = function() { for (var charname in this.characters.characters) this.loadCharacter(charname); }
+GameControllerMenuMain.prototype.loadCharacters = function() { 
+    for (var charname in this.characters.characters) this.loadCharacter(charname); 
+}
 
 GameControllerMenuMain.prototype.loadCharacter = function(charname) {
     var chars = this.characters.characters;
@@ -140,8 +142,8 @@ GameControllerMenuMain.prototype.loadPlayer = function(id, x, y, z, character) {
     var char = new Character().loadJson(character.json);
     char = this.loadCharacterAnimations(char);
     var speed = 2;
-    var pw = character.width * 2;
-    var ph = character.height * 2;
+    var pw = character.width;
+    var ph = character.height;
     var pdiff = (20 - pw) / 2;
     var player = new Player(id, character.name, "", x, y, z, pw, ph, speed, char);
     player.controller.jumpspeed = 5;
@@ -151,6 +153,19 @@ GameControllerMenuMain.prototype.loadPlayer = function(id, x, y, z, character) {
     player.controller.lookThreshold = .1;
     return player;
 }
+
+
+GameControllerMenuMain.prototype.changePlayerCharacter = function(player, charname) {
+    var character = this.gamecontroller.gameloader.characters.characters[charname];
+    if (!character) {
+        logDev("Change Player Character - No such Character named " + charname);
+        return;
+    }
+    var char = new Character().loadJson(character.json);
+    char = this.loadCharacterAnimations(char);
+    player.setCharacter(character);
+}
+
 
 GameControllerMenuMain.prototype.loadView = function() {
     this.loop.hideViews();

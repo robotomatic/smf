@@ -202,6 +202,11 @@ GameController.prototype.removePlayer = function(player) {
     this.game.removePlayer(player);
 }
 
+GameController.prototype.changePlayerCharacter = function(player, charname) {
+    if (!this.game) return;
+    this.game.changePlayerCharacter(player, charname);
+}
+
 
 GameController.prototype.stop = function() {
     if (!this.game) return;
