@@ -276,6 +276,19 @@ Item.prototype.getProjectedGeometryMbr = function(geometry, mbr) {
 }
 
 
+Item.prototype.isHidden = function() {
+    if (this.draw == false) return true;
+    if (!this.geometry.visible.top.visible &&
+        !this.geometry.visible.bottom.visible &&
+        !this.geometry.visible.left.visible &&
+        !this.geometry.visible.right.visible &&
+        !this.geometry.visible.front.visible &&
+        !this.geometry.visible.back.visible) {
+        return true;
+    }
+    return false;
+}
+
 
 Item.prototype.isVisible = function(w, wmbr, pad = 0) {
 

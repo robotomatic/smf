@@ -26,6 +26,9 @@ WorldRendererStart.prototype.getRenderItemsWorldItems = function(mbr, window, cp
 }
 
 WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(mbr, window, cp, graphics, world, item, debug) {
+    
+    if (item.isHidden()) return;
+    
     var width = graphics.canvas.getWidth();
     var height = graphics.canvas.getHeight();
     item.smooth();
