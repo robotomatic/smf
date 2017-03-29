@@ -167,11 +167,41 @@ PartyView.prototype.getViewBounds = function(world, mbr) {
     var b = world.worldbuilder.collidebuilder.collisionindex.bounds;
     mbr.x = b.min.x;
     mbr.y = 0;
-    mbr.z = 0;
+    mbr.z = -1500;
     mbr.width = b.max.x - mbr.x;
     if (world.level) {
+
+        mbr.height = world.level.height;
+        
+        var width = this.view.width;
+        if (width < mbr.width) {
+            var dw = width / mbr.width;
+
+             var newheight = mbr.height * dw;
+             var newy = mbr.height - newheight;
+             mbr.y -= (newy / 2);
+             mbr.height = newheight;
+
+            var newx = mbr.width - width;
+            mbr.x += (newx / 2);
+            mbr.width = width;
+        }
+
         var height = this.view.height;
-        mbr.height = world.level.height < height ? world.level.height : height;
+        if (height < mbr.height) {
+            var dh = height / mbr.height;
+
+            var newwidth = mbr.width * dh;
+            var newx = mbr.width - newwidth;
+            mbr.x += (newx / 2);
+            mbr.width = newwidth;
+
+            var newy = mbr.height - height;
+            mbr.y += (newy / 2);
+            mbr.height = height;
+        } else {
+            mbr.height = world.level.height;
+        }
     } else {
         mbr.height = b.max.y - mbr.y;
     }

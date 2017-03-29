@@ -95,6 +95,7 @@ Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window, widt
          item.geometry.fronts[0].points[1].x = width;
          item.geometry.fronts[0].points[2].x = width;
          item.geometry.fronts[0].points[3].x = 0;
+//          return;
      }
 
     var wc = window.getCenter();
@@ -197,10 +198,14 @@ Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window, widt
         
         if (item.width == "100%") {
             if (this.projectedpolygon.points.length > 3) {
-                this.projectedpolygon.points[0].x = this.p1.x;
-                this.projectedpolygon.points[1].x = this.p2.x;
-                this.projectedpolygon.points[2].x = this.p2.x;
-                this.projectedpolygon.points[3].x = this.p1.x;
+                this.projectedpolygon.points[0].x = 0;
+                this.projectedpolygon.points[1].x = width;
+                this.projectedpolygon.points[2].x = width;
+                this.projectedpolygon.points[3].x = 0;
+                if (item.waterline) {
+                    this.projectedpolygon.points[2].y += (height - this.projectedpolygon.points[2].y);
+                    this.projectedpolygon.points[3].y +=  (height -this.projectedpolygon.points[3].y);
+                }
             }
         }
         
