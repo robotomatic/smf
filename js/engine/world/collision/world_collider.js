@@ -222,7 +222,7 @@ WorldCollider.prototype.resetPlayer = function(player) {
         spawnitem = this.colliders[r];
         if (!spawnitem.traversable) spawnitem = null;
         else if (spawnitem.width < 50 || spawnitem.height < 50 || spawnitem.depth < 50) spawnitem = null;
-        else if (spawnitem.isbounds || spawnitem.damage && spawnitem.damage.hp > 0) spawnitem = null;
+        else if ((spawnitem.isbounds && !spawnitem.traversable) || spawnitem.damage && spawnitem.damage.hp > 0) spawnitem = null;
     }
     var box = spawnitem.getMbr();
     var rpx = random(box.x + 10, box.x + box.width - 10);
