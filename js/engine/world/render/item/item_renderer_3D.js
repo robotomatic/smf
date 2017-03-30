@@ -105,6 +105,16 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
                 gamecanvas.setStrokeStyle(lc);
                 gamecanvas.setLineWidth(lw);
                 gamecanvas.beginPath();
+                
+                if (item.geometry.visible.back.visible) {
+                    if (item.item3D.polygon.points.length >= 2) {
+                        item.item3D.line.start.x = item.item3D.polygon.points[0].x;
+                        item.item3D.line.start.y = item.item3D.polygon.points[0].y;
+                        item.item3D.line.end.x = item.item3D.polygon.points[1].x;
+                        item.item3D.line.end.y = item.item3D.polygon.points[1].y;
+                        item.item3D.line.path(gamecanvas);
+                    }
+                } 
 
                 if (item.geometry.visible.left.visible) {
                     if (item.item3D.polygon.points.length >= 4) {
@@ -126,16 +136,6 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
                     }
                 }
 
-                if (item.geometry.visible.back.visible) {
-                    if (item.item3D.polygon.points.length >= 2) {
-                        item.item3D.line.start.x = item.item3D.polygon.points[0].x;
-                        item.item3D.line.start.y = item.item3D.polygon.points[0].y;
-                        item.item3D.line.end.x = item.item3D.polygon.points[1].x;
-                        item.item3D.line.end.y = item.item3D.polygon.points[1].y;
-                        item.item3D.line.path(gamecanvas);
-                    }
-                } 
-                
                 gamecanvas.stroke();
 
                 if (item.item3D.dopoly && !item.geometry.visible.front.visible) {
