@@ -135,7 +135,7 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItemCenter = func
     }
     var mbrcp = mbr.getCenter();
     var ix = item.x + (item.width / 2) + ox;
-    var iy = item.y + oy;
+    var iy = (item.y * 2) + oy;
     var iz = item.z + (item.depth) + oz;
     var pd = distance3D(ix, iy, iz, mbrcp.x, mbrcp.y, mbrcp.z);
     return round(pd);
