@@ -3,9 +3,7 @@
 function Item(json) {
     
     this.id = "";
-
     this.name = "";
-    
     this.json = json;
 
     this.isbounds = false;
@@ -191,9 +189,47 @@ Item.prototype.loadJson = function(json) {
     this.parts = json.parts;
 }
 
+
+
+
+
+
 Item.prototype.clone = function(dogeom = true) {
-    var newitem = new Item(cloneObject(this));
-    if (!newitem) return null;
+    var newitem = new Item();
+    newitem.id = this.id;
+    newitem.name = this.name;
+    newitem.isbounds = this.isbounds;
+    newitem.x = this.x;
+    newitem.y = this.y;
+    newitem.z = this.z;
+    newitem.traversable = this.traversable;
+    newitem.extrude = this.extrude;
+    newitem.width = this.width;
+    newitem.height = this.height;
+    newitem.scalefactor = this.scalefactor;
+    newitem.depth = this.depth;
+    newitem.top = this.top;
+    newitem.bottom = this.bottom;
+    newitem.invert = this.invert;
+    newitem.radius = this.radius;
+    newitem.ramp = this.ramp;
+    newitem.angle = this.angle;
+    newitem.actionnum = this.actionnum;
+    newitem.originx = this.originx;
+    newitem.originy = this.originy;
+    newitem.angle = this.angle;
+    newitem.collide = this.collide;
+    newitem.draw = this.draw;
+    newitem.animate = this.animate;
+    newitem.itemtype = this.itemtype;
+    newitem.iteminfo = this.iteminfo;
+    newitem.actions = this.actions;
+    newitem.addparts = this.addparts;
+    newitem.top = this.top;
+    newitem.waterline = this.waterline;
+    newitem.underwater = this.underwater;
+    newitem.parts = cloneObject(this.parts);
+    newitem.keys = Object.keys(newitem.parts);
     newitem.dotheme = this.dotheme;
     newitem.damage = cloneObject(this.damage);
     newitem.properties = cloneObject(this.properties);
@@ -201,6 +237,43 @@ Item.prototype.clone = function(dogeom = true) {
     return newitem;
 }
     
+//Item.prototype.clone = function(dogeom = true) {
+//    var newitem = new Item(cloneObject(this));
+//    if (!newitem) return null;
+//    newitem.dotheme = this.dotheme;
+//    newitem.damage = cloneObject(this.damage);
+//    newitem.properties = cloneObject(this.properties);
+//    if (dogeom) newitem.geometry = this.geometry.copy(newitem.geometry);
+//    return newitem;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Item.prototype.initialize = function() {
     this.polygon.points.length = 0;
     if (this.parts) {
