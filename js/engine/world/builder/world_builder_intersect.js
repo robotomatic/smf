@@ -65,6 +65,12 @@ WorldBuilderIntersect.prototype.intersectItemItemVertical = function(item, itemc
     if (itemc.x + itemc.width <= item.x) return newitems;
     if (itemc.z >= item.z + item.depth) return newitems;
     if (itemc.z + itemc.depth <= item.z) return newitems;
+    if (item.z < itemc.z) {
+        newitems = this.intersectClip(this.intersectClipFront, item, itemc, newitems);
+    }
+    if (item.z + item.depth > itemc.z + itemc.depth) {        
+        newitems = this.intersectClip(this.intersectClipBack, item, itemc, newitems);
+    }
     if (item.x < itemc.x) {
         newitems = this.intersectClip(this.intersectClipLeft, item, itemc, newitems);
     }

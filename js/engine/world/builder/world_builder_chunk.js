@@ -4,7 +4,7 @@ function WorldBuilderChunk() {
     this.dochunk = true;
     this.chunksize = {
         width: 300,
-        height: 300,
+        height: 100,
         depth : 300
     }
 }
@@ -45,12 +45,15 @@ WorldBuilderChunk.prototype.chunkItemX = function(items, item, chunksize) {
     
     if (item.width <= chunksize.width) return items;
     
-    var newt = item.width / chunksize.width;
+    var iw = item.width;
+//    if (item.trim) iw -= item.trim;
+    var newt = iw / chunksize.width;
+    
     var ttt = floor(newt);
     var leftover = newt - ttt;
     for (var i = 1; i < ttt; i++) {
         if (!item.parts) continue;
-        var newitem = item.clone(false);
+        var newitem = item.clone();
         newitem.x = item.x + chunksize.width * i;
         var newparts = new Array();
         for (var ii = 0; ii < item.parts.length; ii++) {
@@ -75,8 +78,27 @@ WorldBuilderChunk.prototype.chunkItemX = function(items, item, chunksize) {
     }
     
     if (isDecimal(newt)) {
-        // todo
-        console.log("Chunk Overflow -- X : " + newt);
+        var newitem = item.clone();
+        newitem.x = item.x + (chunksize.width * ttt);
+        
+        var newparts = new Array();
+        for (var ii = 0; ii < newitem.parts.length; ii++) {
+            var part = newitem.parts[ii];
+            if (part.x < chunksize.width * ttt) {
+                if (part.x + part.width > chunksize.width) {
+                    part.width = chunksize.width * leftover;
+                    part.x = chunksize.width * ii;
+                    newparts.push(part);
+                }
+            }
+        }
+        if (newparts.length) {
+            newitem.parts = newparts;
+            newitem.initialize();
+            newitem.geometry.visible.left.visible = false;
+            newitem.geometry.visible.right.visible = false;
+            items.push(newitem);
+        }
     }
     
     if (item.parts) {
@@ -180,11 +202,15 @@ WorldBuilderChunk.prototype.chunkItemY = function(items, item, chunksize) {
 
 WorldBuilderChunk.prototype.chunkItemZ = function(items, item, chunksize) { 
     if (item.depth <= chunksize.depth) return items;
-    var newt = item.depth / chunksize.depth;
+    
+    var id = item.depth;
+//    if (item.trim) id -= item.trim;
+    var newt = id / chunksize.depth;
+    
     var ttt = floor(newt);
     var leftover = newt - ttt;
     for (var i = 1; i < ttt; i++) {
-        var newitem = item.clone(false);
+        var newitem = item.clone();
         if (!newitem) continue;
         newitem.z = item.z + (chunksize.depth * i);
         newitem.depth = chunksize.depth;
@@ -196,7 +222,7 @@ WorldBuilderChunk.prototype.chunkItemZ = function(items, item, chunksize) {
     }
     
     if (isDecimal(newt)) {
-        var newitem = item.clone(false);
+        var newitem = item.clone();
         newitem.z = item.z + (chunksize.depth * ttt);
         newitem.depth = chunksize.depth * leftover;
         newitem.initialize();

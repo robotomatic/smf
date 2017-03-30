@@ -7,6 +7,7 @@ function Item(json) {
     this.json = json;
 
     this.isbounds = false;
+    this.trim = 0;
     
     this.x = 0;
     this.y = 0;
@@ -151,6 +152,7 @@ Item.prototype.loadJson = function(json) {
     this.name = name;
     
     if (json.bounds) this.isbounds = json.bounds;
+    if (json.trim) this.trim = json.trim;
     
     var itemtype = json.itemtype ? json.itemtype : "default";
     this.itemtype = itemtype;
@@ -185,6 +187,17 @@ Item.prototype.loadJson = function(json) {
     if (json.friction) this.friction = json.friction;
     if (json.airfriction) this.airfriction = json.airfriction;
     
+    if (json.geometry) {
+        if (json.geometry.visible) {
+            if (json.geometry.visible.left !== undefined) this.geometry.visible.left.visible = json.geometry.visible.left;
+            if (json.geometry.visible.right !== undefined) this.geometry.visible.right.visible = json.geometry.visible.right;
+            if (json.geometry.visible.front !== undefined) this.geometry.visible.front.visible = json.geometry.visible.front;
+            if (json.geometry.visible.back !== undefined) this.geometry.visible.back.visible = json.geometry.visible.back;
+            if (json.geometry.visible.top !== undefined) this.geometry.visible.top.visible = json.geometry.visible.top;
+            if (json.geometry.visible.bottom !== undefined) this.geometry.visible.bottom.visible = json.geometry.visible.bottom;
+        }
+    }
+    
     if (json.addparts != undefined) this.addparts = json.addparts;
     this.parts = json.parts;
 }
@@ -199,6 +212,7 @@ Item.prototype.clone = function(dogeom = true) {
     newitem.id = this.id;
     newitem.name = this.name;
     newitem.isbounds = this.isbounds;
+    newitem.trim = this.trim;
     newitem.x = this.x;
     newitem.y = this.y;
     newitem.z = this.z;

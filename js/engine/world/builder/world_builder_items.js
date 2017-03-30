@@ -22,13 +22,12 @@ WorldBuilderItems.prototype.buildWorldLevelLayer = function(world, level, layer)
     if (!items.items.length) return newitems;
     for (var i = 0; i < items.items.length; i++) {
         var item = items.items[i];
-        var newitem = this.buildWorldLevelLayerItem(world, layer, item);
-        if (newitem) newitems.push(newitem);
+        this.buildWorldLevelLayerItem(world, layer, item, newitems);
     }
     return newitems;
 }
 
-WorldBuilderItems.prototype.buildWorldLevelLayerItem = function(world, layer, item) { 
+WorldBuilderItems.prototype.buildWorldLevelLayerItem = function(world, layer, item, newitems) { 
     if (!item) return null;
     if (layer.isbounds === true) item.isbounds = true;
     if (layer.collide === false) item.collide = false;
@@ -44,5 +43,5 @@ WorldBuilderItems.prototype.buildWorldLevelLayerItem = function(world, layer, it
         if (theme.draw !== undefined) item.draw = theme.draw;
     }
     item.initialize();
-    return item;
+    newitems.push(item);
 }

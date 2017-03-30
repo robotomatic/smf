@@ -2,6 +2,7 @@
 
 function WorldBuilder() {
     this.itembuilder = new WorldBuilderItems();
+    this.trimbuilder = new WorldBuilderTrim();
     this.collidebuilder = new WorldBuilderColliders();
     this.themebuilder = new WorldBuilderTheme();
     this.overlapbuilder = new WorldBuilderOverlap();
@@ -29,9 +30,15 @@ WorldBuilder.prototype.buildWorld = function(now, world) {
     this.itembuilder.buildWorld(world);
     benchmark("build world - items");
 
+    this.trimbuilder.buildWorldTrim(world);
+    benchmark("build world - trim");
+
     this.environmentbuilder.buildEnvironment(world);
     benchmark("build world - environment");
 
+    
+    this.chunkbuilder.chunk(world);
+    benchmark("build world - chunks");
     
     
     this.overlapbuilder.overlapItems(world);
@@ -44,9 +51,7 @@ WorldBuilder.prototype.buildWorld = function(now, world) {
     
     
     
-    this.chunkbuilder.chunk(world);
-    benchmark("build world - chunks");
-
+    
     
     
     
