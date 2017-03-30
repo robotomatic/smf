@@ -1,0 +1,174 @@
+[
+    {
+        "name" : "raised platform 1",
+        "comment" : "raised platform 1",
+        "collide" : true,
+        "cache" : true,
+        "items" : [
+
+            {
+                "x" : 600,
+                "y" : 700,
+                "z" : 1200,
+                "depth" : 1200,
+                "trim" : 50,
+                "itemtype" : "raised-platform",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 900,
+                        "height": 50
+                    }
+                ]
+            },
+            
+            {
+                "x" : 1500,
+                "y" : 700,
+                "z" : 1200,
+                "depth" : 1200,
+                "trim" : 50,
+                "itemtype" : "raised-platform",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 600,
+                        "height": 50
+                    }
+                ]
+            },
+            
+            
+            
+            
+            
+            {
+                "x" : 600,
+                "y" : 750,
+                "z" : 1200,
+                "depth" : 50,
+                "itemtype" : "raised-platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 250
+                    }
+                ]
+            },
+            {
+                "x" : 600,
+                "y" : 750,
+                "z" : 2350,
+                "depth" : 50,
+                "itemtype" : "raised-platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 250
+                    }
+                ]
+            },
+            
+            
+            {
+                "x" : 1500,
+                "y" : 750,
+                "z" : 1200,
+                "depth" : 50,
+                "itemtype" : "raised-platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 200
+                    }
+                ]
+            },
+            {
+                "x" : 1500,
+                "y" : 750,
+                "z" : 1750,
+                "depth" : 50,
+                "itemtype" : "raised-platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 200
+                    }
+                ]
+            },
+            {
+                "x" : 1500,
+                "y" : 750,
+                "z" : 2350,
+                "depth" : 50,
+                "itemtype" : "raised-platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 300
+                    }
+                ]
+            },
+            
+            {
+                "x" : 2050,
+                "y" : 750,
+                "z" : 1200,
+                "depth" : 50,
+                "itemtype" : "raised-platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 200
+                    }
+                ]
+            },
+            {
+                "x" : 2050,
+                "y" : 750,
+                "z" : 1750,
+                "depth" : 50,
+                "itemtype" : "raised-platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 200
+                    }
+                ]
+            },
+            {
+                "x" : 2050,
+                "y" : 750,
+                "z" : 2350,
+                "depth" : 50,
+                "itemtype" : "raised-platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 300
+                    }
+                ]
+            }
+            
+        ]
+    }
+]
+    

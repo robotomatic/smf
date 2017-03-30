@@ -13,8 +13,16 @@
             "file" : "dat/levels/fortress/layers/sky.json"
         },
         
-        "fortress" : {
-            "file" : "dat/levels/fortress/layers/fortress.json"
+        "raised platform 1" : {
+            "file" : "dat/levels/fortress/layers/raised_platform_1.json"
+        },
+        
+        "raised platform 2" : {
+            "file" : "dat/levels/fortress/layers/raised_platform_2.json"
+        },
+        
+        "raised platform 3" : {
+            "file" : "dat/levels/fortress/layers/raised_platform_3.json"
         },
         
         "liquid" : {
