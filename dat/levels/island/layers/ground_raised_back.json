@@ -1,0 +1,44 @@
+[
+
+    {
+        "name" : "ground-raised-back",
+        "comment" : "ground-raised-back",
+        "collide" : true,
+        "cache" : true,
+        "items" : [
+            
+
+            {
+                "x" : 600,
+                "y" : 830,
+                "z" : 3300,
+                "depth" : 900,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 1200,
+                        "height": 350
+                    }
+                ]
+            }        ,
+            {
+                "x" : 1800,
+                "y" : 800,
+                "z" : 3300,
+                "depth" : 900,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 1200,
+                        "height": 380
+                    }
+                ]
+            }        
+        ]
+    }
+]
+    

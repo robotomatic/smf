@@ -1,0 +1,69 @@
+[
+
+    {
+        "name" : "ground-raised-stairs",
+        "comment" : "ground-raised-stairs",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 300,
+        "items" : [
+            
+            
+            
+            {
+                "x" : 900,
+                "y" : 1020,
+                "z" : 600,
+                "depth" : 2700,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 1500,
+                        "height": 40
+                    }
+                ]
+            },
+            
+            
+            
+            
+            
+            {
+                "x" : 1200,
+                "y" : 980,
+                "z" : 900,
+                "depth" : 2400,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 900,
+                        "height": 40
+                    }
+                ]
+            },
+            
+            {
+                "x" : 1500,
+                "y" : 940,
+                "z" : 1500,
+                "depth" : 1800,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 40
+                    }
+                ]
+            }        
+            
+            
+        ]
+    }
+]
+    
