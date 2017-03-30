@@ -176,9 +176,11 @@ function debugPause() {
     if (paused) {
         controller.resume(timestamp());
         dev_pause.value = "Pause";
+        dev_overlay.disabled = false;
     } else {
         controller.pause(timestamp());
         dev_pause.value = "Play";
+        dev_overlay.disabled = true;
     }
 }
 

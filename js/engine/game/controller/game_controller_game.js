@@ -23,7 +23,7 @@ function GameControllerGame(gamecontroller, gamesettings, levelsettings, players
     this.device = "";
     this.gamequality = new GameQuality(this, 1);
     
-    this.initGamepads();
+    this.hidegamepads = false;
     
     return this;
 }
@@ -33,6 +33,25 @@ GameControllerGame.prototype.initGamepads = function() {
     if (!gamepads) return;
     if (isMobile() || isTablet()) show(gamepads);
     else hide(gamepads);
+    if (__dev) updateDevViewOverlay();
+}
+
+GameControllerGame.prototype.hideGamepads = function() { 
+    gamepads = document.getElementById("gamepads");
+    if (!gamepads) return;
+    if (isVisible(gamepads)) {
+        this.hidegamepads = true;
+        hide(gamepads);
+    }
+}
+
+GameControllerGame.prototype.showGamepads = function() { 
+    gamepads = document.getElementById("gamepads");
+    if (!gamepads) return;
+    if (this.hidegamepads) {
+        this.hidegamepads = false;
+        show(gamepads);
+    }
 }
 
 GameControllerGame.prototype.getSettings = function() { return this.settings; }
@@ -116,6 +135,7 @@ GameControllerGame.prototype.start = function() {
     this.loop.start();
     this.loop.showViews();
     this.running = true;
+    this.initGamepads();
     this.startPlayers();
 }
 
@@ -135,14 +155,17 @@ GameControllerGame.prototype.run = function(when) {
 
 GameControllerGame.prototype.pause = function(when, render) {
     this.loop.pause(when, render);
+    this.hideGamepads();
 }
 
 GameControllerGame.prototype.resume = function(when) {
     this.loop.resume(when);
+    this.showGamepads();
 }
 
 GameControllerGame.prototype.stop = function() {
     this.loop.stop();
+    this.hideGamepads();
     this.running = false;
 }
 
