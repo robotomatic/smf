@@ -167,6 +167,7 @@ WorldBuilderHSR.prototype.removeItemsItemHiddenSurfacesFront = function(item, it
     
     if (itemc.z + itemc.depth < item.z) return item;
     if (itemc.z + itemc.depth > item.z + item.depth) return item;
+    if (itemc.z > item.z) return item;
 
     if (item.geometry.visible.front.coverage.width > 0) {
         if (itemc.x + itemc.width <= item.geometry.visible.front.coverage.x) return item;

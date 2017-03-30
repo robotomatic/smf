@@ -38,10 +38,12 @@ WorldBuilderTheme.prototype.buildThemeItems = function(renderer, item, newitems)
 
 WorldBuilderTheme.prototype.buildThemeItemsItem = function(renderer, theme, item, itemitem, newitems) { 
 
-    var newitem = new Item();
+    var newitem = item.clone();
     var name = item.name + "-" + itemitem.name;
     newitem.name = item.id + "_" + name + "_" + item.z;
 
+    
+    
     newitem.cache = item.cache;
     newitem.collide = item.collide;
     newitem.draw = true;

@@ -18,6 +18,8 @@ function Item(json) {
     this.lastZ = 0;
     this.location = new Point(0, 0);
     
+    this.traversable = false;
+    
     this.item3D = new Item3D();
     this.item3Drenderer = new ItemRenderer3D();
     
@@ -189,11 +191,13 @@ Item.prototype.loadJson = function(json) {
     this.parts = json.parts;
 }
 
-Item.prototype.clone = function() {
+Item.prototype.clone = function(dogeom = true) {
     var newitem = new Item(cloneObject(this));
     if (!newitem) return null;
+    newitem.dotheme = this.dotheme;
     newitem.damage = cloneObject(this.damage);
     newitem.properties = cloneObject(this.properties);
+    if (dogeom) newitem.geometry = this.geometry.copy(newitem.geometry);
     return newitem;
 }
     
@@ -277,7 +281,6 @@ Item.prototype.getProjectedGeometryMbr = function(geometry, mbr) {
 
 
 Item.prototype.isHidden = function() {
-    if (this.draw == false) return true;
     if (!this.geometry.visible.top.visible &&
         !this.geometry.visible.bottom.visible &&
         !this.geometry.visible.left.visible &&
@@ -292,10 +295,7 @@ Item.prototype.isHidden = function() {
 
 Item.prototype.isVisible = function(w, wmbr, pad = 0) {
 
-//    if (this.draw == false) return false;
-
     var mbr = this.getProjectedMbr();
-//    pad *= this.scalefactor;
     
     var wx = w.x;
     var ww = w.width;
@@ -320,36 +320,29 @@ Item.prototype.isVisible = function(w, wmbr, pad = 0) {
     return true;
 }
 
-//Item.prototype.isVisible = function(w, wmbr, pad = 0) {
-//    if (this.draw == false) return false;
-//
-//    var mbr = this.getProjectedMbr();
-//    pad *= this.scalefactor;
-//    
-//    var wx = w.x * this.scalefactor;
-//    var ww = w.width * this.scalefactor;
-//    if (this.width != "100%") {
-//        if (mbr.x > (wx + ww + pad)) return false;
-//        if ((mbr.x + mbr.width) < wx - pad) return false;
-//    }
-//    
-//    var wy = w.y * this.scalefactor;
-//    var wh = w.height * this.scalefactor;
-//    if (this.height != "100%") {
-//        if (mbr.y > (wy + wh + pad)) return false;
-//        if ((mbr.y + mbr.height) < wy - pad) return false;
-//    }
-//    
-//    var wz = w.z * this.scalefactor;
-//    var wd = w.depth * this.scalefactor;
-//    if (this.depth != "100%") {
-//        if (mbr.z + mbr.depth < wz - 100 - pad) return false;
-//    }
-//    
-//    return true;
-//}
 
 
+Item.prototype.touches = function(otheritem) {
+    if (otheritem.x == this.x + this.width) return true;
+    if (otheritem.x + otheritem.width == this.x) return true;
+    if (otheritem.y == this.y + this.height) return true;
+    if (otheritem.y + otheritem.height == this.y) return true;
+    if (otheritem.z == this.z + this.depth) return true;
+    if (otheritem.z + otheritem.depth == this.z) return true;
+    return false;
+}
+
+
+
+Item.prototype.overlaps = function(otheritem) {
+    if (otheritem.x >= this.x + this.width) return false;
+    if (otheritem.x + otheritem.width <= this.x) return false;
+    if (otheritem.y >= this.y + this.height) return false;
+    if (otheritem.y + otheritem.height <= this.y) return false;
+    if (otheritem.z >= this.z + this.depth) return false;
+    if (otheritem.z + otheritem.depth <= this.z) return false;
+    return true;
+}
 
 
 

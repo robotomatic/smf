@@ -30,6 +30,7 @@ WorldBuilderColliders.prototype.setBounds = function(items) {
         var item = items[i];
         if (item.collide === false) continue;
         if (item.isbounds) continue;
+        if (item.isHidden()) continue;
         this.collisionindex.checkBounds(item);        
     }
 }
@@ -38,6 +39,8 @@ WorldBuilderColliders.prototype.buildCollidersColliders = function(world, items)
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
         if (item.collide === false) continue;
+        if (item.draw === false && !item.isbounds) continue;
+        if (item.isHidden()) continue;
         var newitem = this.buildCollidersCollidersItem(item);
         if (newitem) {
             world.worldcollider.colliders.push(newitem);
@@ -49,5 +52,6 @@ WorldBuilderColliders.prototype.buildCollidersCollidersItem = function(item) {
     var newitem = item.clone();
     newitem.collide = true;
     newitem.initialize();
+    if (newitem.geometry.visible.top.visible) newitem.traversable = true;
     return newitem;
 }

@@ -4,7 +4,7 @@ function WorldBuilderChunk() {
     this.dochunk = true;
     this.chunksize = {
         width: 300,
-        height: 100,
+        height: 300,
         depth : 300
     }
 }
@@ -50,7 +50,7 @@ WorldBuilderChunk.prototype.chunkItemX = function(items, item, chunksize) {
     var leftover = newt - ttt;
     for (var i = 1; i < ttt; i++) {
         if (!item.parts) continue;
-        var newitem = item.clone();
+        var newitem = item.clone(false);
         newitem.x = item.x + chunksize.width * i;
         var newparts = new Array();
         for (var ii = 0; ii < item.parts.length; ii++) {
@@ -109,7 +109,7 @@ WorldBuilderChunk.prototype.chunkItemY = function(items, item, chunksize) {
     var leftover = newt - ttt;
     for (var i = 1; i < ttt; i++) {
         if (!item.parts) continue;
-        var newitem = item.clone();
+        var newitem = item.clone(false);
         newitem.dotheme = false;
         newitem.y = item.y + (chunksize.height * i);
         
@@ -134,7 +134,7 @@ WorldBuilderChunk.prototype.chunkItemY = function(items, item, chunksize) {
     }
     
     if (isDecimal(newt)) {
-        var newitem = item.clone();
+        var newitem = item.clone(false);
         newitem.dotheme = false;
         newitem.y = item.y + (chunksize.height * ttt);
         
@@ -184,7 +184,7 @@ WorldBuilderChunk.prototype.chunkItemZ = function(items, item, chunksize) {
     var ttt = floor(newt);
     var leftover = newt - ttt;
     for (var i = 1; i < ttt; i++) {
-        var newitem = item.clone();
+        var newitem = item.clone(false);
         if (!newitem) continue;
         newitem.z = item.z + (chunksize.depth * i);
         newitem.depth = chunksize.depth;
@@ -196,7 +196,7 @@ WorldBuilderChunk.prototype.chunkItemZ = function(items, item, chunksize) {
     }
     
     if (isDecimal(newt)) {
-        var newitem = item.clone();
+        var newitem = item.clone(false);
         newitem.z = item.z + (chunksize.depth * ttt);
         newitem.depth = chunksize.depth * leftover;
         newitem.initialize();
