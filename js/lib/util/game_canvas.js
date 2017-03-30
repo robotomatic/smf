@@ -100,7 +100,6 @@ GameCanvas.prototype.attach = function(what) {
 
 GameCanvas.prototype.clear = function() {
     clearRect(this.ctx, 0, 0, this.canvas.width, this.canvas.height);
-    this.ctx.beginPath();
 }
 
 
@@ -130,7 +129,6 @@ GameCanvas.prototype.reset = function() {
 }
     
 GameCanvas.prototype.commit = function() {
-    
     if (this.current.fill) this.ctx.fill();
     if (this.current.fillrect) {
         this.ctx.fillRect(round(this.current.rect.x), round(this.current.rect.y), round(this.current.rect.width), round(this.current.rect.height));
@@ -140,7 +138,6 @@ GameCanvas.prototype.commit = function() {
         this.ctx.strokeRect(round(this.current.rect.x), round(this.current.rect.y), round(this.current.rect.width), round(this.current.rect.height));
     }
     if (this.current.filltext) this.ctx.fillText(this.current.text.text, round(this.current.text.x), round(this.current.text.y));
-    
     this.reset();
 }
 
@@ -267,7 +264,6 @@ GameCanvas.prototype.restore = function() {
 
 GameCanvas.prototype.beginPath = function() {
     this.ctx.beginPath();
-    this.current.dirty = true;
 }
 
 GameCanvas.prototype.closePath = function() {
