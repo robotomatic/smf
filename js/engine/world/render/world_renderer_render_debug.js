@@ -72,16 +72,15 @@ WorldRendererDebug.prototype.renderDebugItemsItemText = function(graphics, item)
 WorldRendererDebug.prototype.renderDebugItemsItemGeometry = function(graphics, item) {
     var geom = item.geometry;
     if (!geom) return;
-    if (!item.showing) return;
-    this.renderDebugItemsItemGeometryGeometry(graphics, geom.left, "white");
-    this.renderDebugItemsItemGeometryGeometry(graphics, geom.right, "white");
-    this.renderDebugItemsItemGeometryGeometry(graphics, geom.bottom, "white");
-    this.renderDebugItemsItemGeometryGeometry(graphics, geom.top, "white");
-    this.renderDebugItemsItemGeometryGeometry(graphics, geom.front, "white");
+    this.renderDebugItemsItemGeometryGeometry(graphics, geom.left.geometry, "white");
+    this.renderDebugItemsItemGeometryGeometry(graphics, geom.right.geometry, "white");
+    this.renderDebugItemsItemGeometryGeometry(graphics, geom.bottom.geometry, "white");
+    this.renderDebugItemsItemGeometryGeometry(graphics, geom.top.geometry, "white");
+    this.renderDebugItemsItemGeometryGeometry(graphics, geom.front.geometry, "white");
 }
 
 WorldRendererDebug.prototype.renderDebugItemsItemGeometryGeometry = function(graphics, geometry, color) {
-    if (!geometry || !geometry.length) return;
+    if (!geometry) return;
     graphics.canvas.beginPath();
     geometry.drawOutline(graphics.canvas, color, .5);
 }

@@ -157,10 +157,10 @@ Polygon.prototype.getPoints = function() {
 
 Polygon.prototype.setPoints = function(points) {
     if (!points) return;
-    if (this.points.length == points.length) {
-        this.updatePoints(points);
-        return;
-    }
+//    if (this.points.length == points.length) {
+//        this.updatePoints(points);
+//        return;
+//    }
     this.points.length = 0;
     this.addPoints(points);
     this.mbr.width = 0;

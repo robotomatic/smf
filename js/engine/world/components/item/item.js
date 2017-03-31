@@ -94,11 +94,7 @@ function Item(json) {
     
     this.top = false;
     this.polygon = new Polygon();
-    this.tops = new Array();
     
-    this.pad = 5;
-    this.polylines = new Polylines();
-    this.polytops = new Array();
     this.np = new Point(0, 0);
     
     this.pnew = new Point(0, 0);
@@ -337,36 +333,34 @@ Item.prototype.getProjectedMbr = function() {
     this.projectedmbr.width = this.box.width;
     this.projectedmbr.height = this.box.height;
     this.projectedmbr.depth = this.box.depth;
-    this.projectedmbr = this.getProjectedGeometryMbr(this.geometry.tops, this.projectedmbr);
-    this.projectedmbr = this.getProjectedGeometryMbr(this.geometry.bottoms, this.projectedmbr);
-    this.projectedmbr = this.getProjectedGeometryMbr(this.geometry.sides, this.projectedmbr);
+    this.projectedmbr = this.getProjectedGeometryMbr(this.geometry.top, this.projectedmbr);
+    this.projectedmbr = this.getProjectedGeometryMbr(this.geometry.bottom, this.projectedmbr);
+    this.projectedmbr = this.getProjectedGeometryMbr(this.geometry.left, this.projectedmbr);
+    this.projectedmbr = this.getProjectedGeometryMbr(this.geometry.right, this.projectedmbr);
     return this.projectedmbr;
 }
 
 Item.prototype.getProjectedGeometryMbr = function(geometry, mbr) {
-    var t = geometry.length;
-    for (var i = 0; i < t; i++) {
-        var g = geometry[i];
-        var gmbr =  g.getMbr();
-        if (gmbr.x < mbr.x) {
-            var d = mbr.x - gmbr.x;
-            mbr.x = gmbr.x;
-            mbr.width += d;
-        }
-        if ((gmbr.x + gmbr.width) >= mbr.x + mbr.width) mbr.width = gmbr.x + gmbr.width - mbr.x;
-        if (gmbr.y < mbr.y) {
-            var d = mbr.y - gmbr.y;
-            mbr.y = gmbr.y;
-            mbr.height += d;
-        }
-        if ((gmbr.y + gmbr.height) >= mbr.y + mbr.height) mbr.height = gmbr.y + gmbr.height - mbr.y;
-        if (gmbr.z != 0 && gmbr.z < mbr.z) {
-            var d = mbr.z - gmbr.z;
-            mbr.z = gmbr.z;
-            mbr.depth += d;
-        }
-        if (gmbr.z != 0 && (gmbr.z + gmbr.depth) >= mbr.z + mbr.depth) mbr.depth = gmbr.z + gmbr.depth - mbr.z;
+    if (!geometry.showing) return mbr;
+    var gmbr =  geometry.geometry.getMbr();
+    if (gmbr.x < mbr.x) {
+        var d = mbr.x - gmbr.x;
+        mbr.x = gmbr.x;
+        mbr.width += d;
     }
+    if ((gmbr.x + gmbr.width) >= mbr.x + mbr.width) mbr.width = gmbr.x + gmbr.width - mbr.x;
+    if (gmbr.y < mbr.y) {
+        var d = mbr.y - gmbr.y;
+        mbr.y = gmbr.y;
+        mbr.height += d;
+    }
+    if ((gmbr.y + gmbr.height) >= mbr.y + mbr.height) mbr.height = gmbr.y + gmbr.height - mbr.y;
+    if (gmbr.z != 0 && gmbr.z < mbr.z) {
+        var d = mbr.z - gmbr.z;
+        mbr.z = gmbr.z;
+        mbr.depth += d;
+    }
+    if (gmbr.z != 0 && (gmbr.z + gmbr.depth) >= mbr.z + mbr.depth) mbr.depth = gmbr.z + gmbr.depth - mbr.z;
     return mbr;
 }
 
@@ -385,29 +379,24 @@ Item.prototype.isHidden = function() {
 
 
 Item.prototype.isVisible = function(w, wmbr, pad = 0) {
-
     var mbr = this.getProjectedMbr();
-    
     var wx = w.x;
     var ww = w.width;
     if (this.width != "100%") {
         if (mbr.x > (wx + ww + pad)) return false;
         if ((mbr.x + mbr.width) < wx - pad) return false;
     }
-    
     var wy = w.y;
     var wh = w.height;
     if (this.height != "100%") {
         if (mbr.y > (wy + wh + pad)) return false;
         if ((mbr.y + mbr.height) < wy - pad) return false;
     }
-    
     var wz = w.z;
     var wd = w.depth;
     if (this.depth != "100%") {
         if (mbr.z + mbr.depth < wz - 100 - pad) return false;
     }
-    
     return true;
 }
 
@@ -438,43 +427,9 @@ Item.prototype.overlaps = function(otheritem) {
 
 
 Item.prototype.getPolygon = function() {
-    if (this.polygon.points.length) return this.polygon;
-    this.polygon.points.length = 0;
-    if (this.parts) this.polygon.createPolygon(this.parts);
-    else this.polygon.createPolygon([this.getMbr()]);
-    this.tops = this.polygon.tops;
-    this.createPolygonTops();
+    this.polygon.createPolygon(this.getMbr());
     return this.polygon;
 }
-
-Item.prototype.createPolygonTops = function() {
-    this.polylines.createPolylines(this.tops);
-    for (var i = 0; i < this.polylines.polylines.length; i++) this.polytops[i] = this.createPolygonTop(this.polylines.polylines[i]);
-}
-
-Item.prototype.createPolygonTop = function(top) {
-    // todo: this is part of the theme
-    var pad = 1;
-    var pg = new Polygon();
-    var p;
-    var np;
-    for (var i = 0; i < top.points.length; i++) {
-        p = top.points[i];
-        this.np.x = p.x;
-        this.np.y = p.y;
-        pg.addPoint(this.np);
-    }
-    for (var i = top.points.length; i > 0; i--) {
-        p = top.points[i - 1];
-        this.np.x = p.x;
-        this.np.y = p.y + pad;
-        pg.addPoint(this.np);
-    }
-    return pg;
-}
-
-
-
 
 
 
@@ -569,7 +524,6 @@ Item.prototype.translate = function(window, width, height) {
     this.np2 = projectPoint3D(this.pnew, iz, scale, x, y, wc, this.np2);
 
     var nw = abs(this.np2.x - this.np1.x);
-//    iw = (this.width == "100%") ? width : nw;
     iw = nw;
 
     this.scalefactor = iw / bw;
@@ -580,7 +534,6 @@ Item.prototype.translate = function(window, width, height) {
     var nd = id * this.scalefactor;
     id = nd;
 
-//    ix = (this.width == "100%") ? 0 : this.np1.x;
     ix = this.np1.x;
     iy = this.np1.y - ih;
     
