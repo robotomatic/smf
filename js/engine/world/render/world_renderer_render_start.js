@@ -36,7 +36,7 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
     item.item3D.createItem3D(item, world.worldrenderer.itemrenderer, mbr, width, height, world.worldrenderer.waterline, debug);
     var showing = item.isVisible(window, mbr, 100);
     if (world.worldrenderer.waterline.flow && item.y >= world.worldrenderer.waterline) showing = false;
-    var d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, item, 0, 0, 0);
+    var d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, item, 0, item.height, 0);
     if (isNaN(d)) d = 0;
     var id = item.id;
     
