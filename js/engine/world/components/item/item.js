@@ -7,7 +7,10 @@ function Item(json) {
     this.json = json;
 
     this.isbounds = false;
+    
     this.trim = 0;
+    this.trimdepth = 0;
+    this.trimwidth = 0;
     
     this.x = 0;
     this.y = 0;
@@ -213,6 +216,8 @@ Item.prototype.clone = function(dogeom = true) {
     newitem.name = this.name;
     newitem.isbounds = this.isbounds;
     newitem.trim = this.trim;
+    newitem.trimdepth = this.trimdepth;
+    newitem.trimwidth = this.trimwidth;
     newitem.x = this.x;
     newitem.y = this.y;
     newitem.z = this.z;
@@ -251,15 +256,6 @@ Item.prototype.clone = function(dogeom = true) {
     return newitem;
 }
     
-//Item.prototype.clone = function(dogeom = true) {
-//    var newitem = new Item(cloneObject(this));
-//    if (!newitem) return null;
-//    newitem.dotheme = this.dotheme;
-//    newitem.damage = cloneObject(this.damage);
-//    newitem.properties = cloneObject(this.properties);
-//    if (dogeom) newitem.geometry = this.geometry.copy(newitem.geometry);
-//    return newitem;
-//}
 
 
 
@@ -302,6 +298,14 @@ Item.prototype.initialize = function() {
     this.geometry.initialize(this);
     this.id = this.name + "_" + this.itemtype + "_" + this.x + "_" + this.y + "_" + this.z + "_" + this.width + "_" + this.height + "_" +  this.depth;
 }
+
+
+
+
+
+
+
+
 
 Item.prototype.getMbr = function() {
     var ip = this.getLocation();

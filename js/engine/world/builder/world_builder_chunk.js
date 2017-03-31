@@ -46,7 +46,6 @@ WorldBuilderChunk.prototype.chunkItemX = function(items, item, chunksize) {
     if (item.width <= chunksize.width) return items;
     
     var iw = item.width;
-//    if (item.trim) iw -= item.trim;
     var newt = iw / chunksize.width;
     
     var ttt = floor(newt);
@@ -55,6 +54,11 @@ WorldBuilderChunk.prototype.chunkItemX = function(items, item, chunksize) {
         if (!item.parts) continue;
         var newitem = item.clone();
         newitem.x = item.x + chunksize.width * i;
+
+        if (item.trimwidth) {
+            newitem.x -= item.trimwidth;
+        }
+        
         var newparts = new Array();
         for (var ii = 0; ii < item.parts.length; ii++) {
             var part = cloneObject(item.parts[ii]);
@@ -79,15 +83,26 @@ WorldBuilderChunk.prototype.chunkItemX = function(items, item, chunksize) {
     
     if (isDecimal(newt)) {
         var newitem = item.clone();
+        
         newitem.x = item.x + (chunksize.width * ttt);
+
+        if (item.trimwidth) {
+            newitem.x -= item.trimwidth;
+        }
         
         var newparts = new Array();
         for (var ii = 0; ii < newitem.parts.length; ii++) {
             var part = newitem.parts[ii];
             if (part.x < chunksize.width * ttt) {
                 if (part.x + part.width > chunksize.width) {
-                    part.width = chunksize.width * leftover;
-                    part.x = chunksize.width * ii;
+                    var cw = chunksize.width * leftover;
+                    part.width = cw;
+                    part.x = cw * ii;
+
+                    if (item.trimwidth) {
+                        part.width += item.trimwidth;
+                    }
+        
                     newparts.push(part);
                 }
             }
@@ -109,10 +124,9 @@ WorldBuilderChunk.prototype.chunkItemX = function(items, item, chunksize) {
             if (part.x + part.width > chunksize.width) {
                 var d = part.x + part.width - chunksize.width;
                 part.width -= d;
-                newparts.push(part);
-            } else {
-                newparts.push(part);
             }
+            if (item.trimwidth) part.width -= item.trimwidth;
+            newparts.push(part);
         }
         item.parts = newparts;
     }
@@ -165,8 +179,9 @@ WorldBuilderChunk.prototype.chunkItemY = function(items, item, chunksize) {
             var part = newitem.parts[ii];
             if (part.y < chunksize.height * ttt) {
                 if (part.y + part.height > chunksize.height) {
-                    part.height = chunksize.height * leftover;
-                    part.y = chunksize.height * ii;
+                    var ch = chunksize.height * leftover;
+                    part.height = ch;
+                    part.y = ch * ii;
                     newparts.push(part);
                 }
             }
@@ -204,7 +219,6 @@ WorldBuilderChunk.prototype.chunkItemZ = function(items, item, chunksize) {
     if (item.depth <= chunksize.depth) return items;
     
     var id = item.depth;
-//    if (item.trim) id -= item.trim;
     var newt = id / chunksize.depth;
     
     var ttt = floor(newt);
@@ -214,7 +228,14 @@ WorldBuilderChunk.prototype.chunkItemZ = function(items, item, chunksize) {
         if (!newitem) continue;
         newitem.z = item.z + (chunksize.depth * i);
         newitem.depth = chunksize.depth;
+        
+        if (item.trimdepth) {
+            newitem.z -= item.trimdepth;
+            newitem.depth += item.trimdepth;
+        }
+        
         newitem.initialize();
+        newitem.trimdepth = 0;
         newitem.geometry.visible.front.visible = false;
         newitem.geometry.visible.back.visible = false;
         if (i == (ttt - 1) && !leftover) newitem.geometry.visible.back.visible = item.geometry.visible.back.visible;
@@ -225,12 +246,24 @@ WorldBuilderChunk.prototype.chunkItemZ = function(items, item, chunksize) {
         var newitem = item.clone();
         newitem.z = item.z + (chunksize.depth * ttt);
         newitem.depth = chunksize.depth * leftover;
+        
+        if (item.trimdepth) {
+            newitem.z -= item.trimdepth;
+            newitem.depth += item.trimdepth;
+        }
+        
+        newitem.trimdepth = 0;
         newitem.initialize();
         newitem.geometry.visible.front.visible = false;
         items.push(newitem);
     }
     
     item.depth = chunksize.depth;
+    
+    if (item.trimdepth) {
+        item.depth -= item.trimdepth;
+    }
+    
     item.initialize();
     item.geometry.visible.back.visible = false;
     return items;

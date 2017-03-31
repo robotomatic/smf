@@ -37,18 +37,19 @@ WorldBuilder.prototype.buildWorld = function(now, world) {
     benchmark("build world - environment");
 
     
-    this.chunkbuilder.chunk(world);
-    benchmark("build world - chunks");
-    
     
     this.overlapbuilder.overlapItems(world);
     benchmark("build world - overlap");
+
     
-    
-    
+
     this.intersectbuilder.intersectItems(world);
     benchmark("build world - intersect");
     
+    
+    
+    this.chunkbuilder.chunk(world);
+    benchmark("build world - chunks");
     
     
     

@@ -31,16 +31,21 @@ WorldBuilderTrim.prototype.buildWorldTrimItem = function(items, item) {
     
     var trim = item.trim;
     if (!trim) return items;
+    item.trimdepth = trim;
     
     if (item.depth > trim) {
         var newitem = this.copyItem(item);
         newitem = this.resizeItemDepth(newitem, 0, trim);
         newitem.initialize();
-        newitem.trim = false;
+//        newitem.trim = false;
+        newitem.trimdepth = 0;
+        newitem.trimdwidth = trim;
         newitem.geometry.visible.back.visible = false;
         items.push(newitem);
         item = this.resizeItemDepth(item, trim, item.depth - trim);
         item.initialize();
+        item.trimdepth = trim;
+        newitem.trimwidth = trim;
         item.geometry.visible.front.visible = false;
     }
     
@@ -48,11 +53,14 @@ WorldBuilderTrim.prototype.buildWorldTrimItem = function(items, item) {
         var newitem = this.copyItem(item);
         newitem = this.resizeItemDepth(newitem, item.depth - trim, trim);
         newitem.initialize();
-        newitem.trim = false;
+//        newitem.trim = false;
+        newitem.trimdepth = 0;
+        newitem.trimdwidth = trim;
         newitem.geometry.visible.front.visible = false;
         items.push(newitem);
         item = this.resizeItemDepth(item, 0, item.depth - trim);
         item.initialize();
+        newitem.trimwidth = trim;
         item.geometry.visible.back.visible = false;
     }
     
@@ -61,10 +69,13 @@ WorldBuilderTrim.prototype.buildWorldTrimItem = function(items, item) {
         newitem = this.resizeItemHorizontal(newitem, 0, trim);
         newitem.initialize();
         newitem.trim = false;
+        newitem.trimwidth = 0;
         newitem.geometry.visible.right.visible = false;
         items.push(newitem);
         item = this.resizeItemHorizontal(item, trim, item.width - trim);
         item.initialize();
+        item.trimdepth = trim;
+        item.trimwidth = trim;
         item.geometry.visible.left.visible = false;
     }
     
@@ -73,10 +84,13 @@ WorldBuilderTrim.prototype.buildWorldTrimItem = function(items, item) {
         newitem = this.resizeItemHorizontal(newitem, item.width - trim, trim);
         newitem.initialize();
         newitem.trim = false;
+        newitem.trimwidth = 0;
         newitem.geometry.visible.left.visible = false;
         items.push(newitem);
         item = this.resizeItemHorizontal(item, 0, item.width - trim);
         item.initialize();
+        item.trimdepth = trim;
+        item.trimwidth = trim;
         item.geometry.visible.right.visible = false;
     }
     
