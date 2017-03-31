@@ -38,11 +38,22 @@ function project3D(p1, p2, depth, poly, s, x, y, wc, np1, np2) {
     np1.y = round(np1y);
     np2.x = round(np2x);
     np2.y = round(np2y);
-    poly.points.length = 0;
-    poly.addPoint(np1);
-    poly.addPoint(np2);
-    poly.addPoint(p2);
-    poly.addPoint(p1);
+    if (poly.points.length != 4) {
+        poly.points.length = 0;
+        poly.addPoint(np1);
+        poly.addPoint(np2);
+        poly.addPoint(p2);
+        poly.addPoint(p1);
+    } else {
+        poly.points[0].x = np1.x;
+        poly.points[0].y = np1.y;
+        poly.points[1].x = np2.x;
+        poly.points[1].y = np2.y;
+        poly.points[2].x = p2.x;
+        poly.points[2].y = p2.y;
+        poly.points[3].x = p1.x;
+        poly.points[3].y = p1.y;
+    }
     return poly;
 }
 
