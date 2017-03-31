@@ -216,6 +216,10 @@ WorldBuilderIntersect.prototype.intersectClipBack = function(item, itemc, newite
     var dd = item.depth - dz;
     if (item.depth > dd) item.depth = dd;
     newitem.z = itemc.z + dd;
+
+    // TODO: this stinks
+    if (newitem.width == newitem.trimdepth) newitem.trimdepth = 0;
+    
     newitem.depth = dz;
 }
 
