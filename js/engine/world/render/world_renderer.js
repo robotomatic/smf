@@ -14,9 +14,9 @@ function WorldRenderer() {
     this.waterline = new Waterline();
     this.debug = {
         level : {
-            render : false,
             level : false,
             hsr : false,
+            render : false
         },
         player : {
             player : false,
