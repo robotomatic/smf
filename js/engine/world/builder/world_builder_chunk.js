@@ -111,7 +111,7 @@ WorldBuilderChunk.prototype.chunkItemX = function(items, item, chunksize) {
             newitem.parts = newparts;
             newitem.initialize();
             newitem.geometry.visible.left.visible = false;
-            newitem.geometry.visible.right.visible = false;
+            newitem.geometry.visible.right.visible = item.geometry.visible.right.visible;
             items.push(newitem);
         }
     }
@@ -145,7 +145,7 @@ WorldBuilderChunk.prototype.chunkItemY = function(items, item, chunksize) {
     var leftover = newt - ttt;
     for (var i = 1; i < ttt; i++) {
         if (!item.parts) continue;
-        var newitem = item.clone(false);
+        var newitem = item.clone();
         newitem.dotheme = false;
         newitem.y = item.y + (chunksize.height * i);
         
@@ -170,7 +170,7 @@ WorldBuilderChunk.prototype.chunkItemY = function(items, item, chunksize) {
     }
     
     if (isDecimal(newt)) {
-        var newitem = item.clone(false);
+        var newitem = item.clone();
         newitem.dotheme = false;
         newitem.y = item.y + (chunksize.height * ttt);
         

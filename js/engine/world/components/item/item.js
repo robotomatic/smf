@@ -206,7 +206,7 @@ Item.prototype.loadJson = function(json) {
 
 
 
-Item.prototype.clone = function(dogeom = true) {
+Item.prototype.clone = function() {
     var newitem = new Item();
     newitem.id = this.id;
     newitem.name = this.name;
@@ -248,7 +248,7 @@ Item.prototype.clone = function(dogeom = true) {
     newitem.dotheme = this.dotheme;
     newitem.damage = cloneObject(this.damage);
     newitem.properties = cloneObject(this.properties);
-    if (dogeom) newitem.geometry = this.geometry.copy(newitem.geometry);
+    newitem.geometry = this.geometry.copy(newitem.geometry);
     return newitem;
 }
     

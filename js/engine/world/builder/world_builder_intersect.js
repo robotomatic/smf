@@ -110,7 +110,7 @@ WorldBuilderIntersect.prototype.intersectItemItemDepth = function(item, itemc, n
 
 
 WorldBuilderIntersect.prototype.intersectClip = function(f, item, itemc, newitems) {
-    var newitem = item.clone(false);
+    var newitem = item.clone();
     if (!newitem ) return newitems;
     f(item, itemc, newitem);
     item.initialize();

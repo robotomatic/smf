@@ -37,7 +37,6 @@ WorldBuilderTrim.prototype.buildWorldTrimItem = function(items, item) {
         var newitem = this.copyItem(item);
         newitem = this.resizeItemDepth(newitem, 0, trim);
         newitem.initialize();
-//        newitem.trim = false;
         newitem.trimdepth = 0;
         newitem.trimdwidth = trim;
         newitem.geometry.visible.back.visible = false;
@@ -53,7 +52,6 @@ WorldBuilderTrim.prototype.buildWorldTrimItem = function(items, item) {
         var newitem = this.copyItem(item);
         newitem = this.resizeItemDepth(newitem, item.depth - trim, trim);
         newitem.initialize();
-//        newitem.trim = false;
         newitem.trimdepth = 0;
         newitem.trimdwidth = trim;
         newitem.geometry.visible.front.visible = false;
@@ -100,7 +98,7 @@ WorldBuilderTrim.prototype.buildWorldTrimItem = function(items, item) {
 
 
 WorldBuilderTrim.prototype.copyItem = function(item) {
-    var newitem = item.clone(false);
+    var newitem = item.clone();
     newitem.initialize();
     return newitem;
 }
