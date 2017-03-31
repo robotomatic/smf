@@ -176,21 +176,22 @@ ItemRenderer3D.prototype.getColors = function(gamecanvas, renderer, item, debug)
 
     var dodebug = debug && debug.level;
     
-    if (dodebug){
-        this.colors.front = "#ededed";
-        this.colors.side = "#d3d3d3";
-        this.colors.top = "#dbdbdb";
-        this.colors.bottom = "#c7c7c7";
-    }
-
     if (item.width == "100%" || item.height == "100%" || item.depth == "100%") {
         if (debug.level || debug.render || debug.hsr) {
             this.dotop = true;
+            if (debug.level || debug.hsr) dodebug = true;
         } else {
             this.dotop = false;
         }
     } else {
         this.dotop = item.top === false ? false : true;
+    }
+    
+    if (dodebug){
+        this.colors.front = "#ededed";
+        this.colors.side = "#d3d3d3";
+        this.colors.top = "#dbdbdb";
+        this.colors.bottom = "#c7c7c7";
     }
     
     var theme = (renderer && renderer.theme) ? renderer.theme.items[item.itemtype] : null;

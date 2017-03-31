@@ -37,36 +37,36 @@ WorldRendererDebug.prototype.renderDebugItemsItem = function(graphics, item, mbr
 WorldRendererDebug.prototype.renderDebugItemsItemCenter = function(graphics, window, mbr) {
 //    var mbrxw = ((mbr.x + (mbr.width / 2)) - mbr.x) * mbr.scale;
 //    var mbryh = ((mbr.y + (mbr.height / 2)) - mbr.y) * mbr.scale;
-    
-    var cp = window.getCenter();
-    var mbrxw = cp.x;
-    var mbryh = cp.y + 20; 
-    
-    var p = 5;
-    var c = geometryfactory.getCircle(mbrxw - p, mbryh - p, p * 2);
-    graphics.canvas.setFillStyle("cyan");
-    graphics.canvas.beginPath();
-    c.draw(graphics.canvas);
+//    
+//    var cp = window.getCenter();
+//    var mbrxw = cp.x;
+//    var mbryh = cp.y + 20; 
+//    
+//    var p = 5;
+//    var c = geometryfactory.getCircle(mbrxw - p, mbryh - p, p * 2);
+//    graphics.canvas.setFillStyle("cyan");
+//    graphics.canvas.beginPath();
+//    c.draw(graphics.canvas);
 }
 
 
 WorldRendererDebug.prototype.renderDebugItemsItemBox = function(graphics, item) {
-    var box = item.box;
-    if (!box) return;
-    box.drawOutline(graphics.canvas, "white", 1);
+//    var box = item.box;
+//    if (!box) return;
+//    box.drawOutline(graphics.canvas, "white", 1);
 }
 
 WorldRendererDebug.prototype.renderDebugItemsItemText = function(graphics, item) {
-    var message = "D: " + round(item.distance);
-    var tx = item.box.x + 5;
-    
-//    if (tx < 0) tx = 100;
-    
-    var ty = item.box.y + 10;
-    var t = geometryfactory.getText(tx, ty, message);
-    graphics.canvas.setFillStyle("white");
-    graphics.canvas.beginPath();
-    t.draw(graphics.canvas, 9);
+//    var message = "D: " + round(item.distance);
+//    var tx = item.box.x + 5;
+//    
+////    if (tx < 0) tx = 100;
+//    
+//    var ty = item.box.y + 10;
+//    var t = geometryfactory.getText(tx, ty, message);
+//    graphics.canvas.setFillStyle("white");
+//    graphics.canvas.beginPath();
+//    t.draw(graphics.canvas, 9);
 }
 
 WorldRendererDebug.prototype.renderDebugItemsItemGeometry = function(graphics, item) {
@@ -83,4 +83,5 @@ WorldRendererDebug.prototype.renderDebugItemsItemGeometryGeometry = function(gra
     if (!geometry) return;
     graphics.canvas.beginPath();
     geometry.drawOutline(graphics.canvas, color, .5);
+    graphics.canvas.commit();
 }
