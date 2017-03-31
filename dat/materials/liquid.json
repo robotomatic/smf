@@ -14,7 +14,7 @@
         },
         "waterline" : {
             "flow" : true,
-            "amount" : 0.5,
+            "amount" : 0.2,
             "miny" : -10,
             "maxy" : 10
         },
@@ -38,9 +38,9 @@
         },
         "waterline" : {
             "flow" : true,
-            "amount" : 1,
-            "miny" : -5,
-            "maxy" : 10
+            "amount" : 0.1,
+            "miny" : -15,
+            "maxy" : 15
         },
         "properties" : {
             "friction" : 2,
@@ -71,9 +71,9 @@
         },
         "waterline" : {
             "flow" : true,
-            "amount" : 0.3,
-            "miny" : -15,
-            "maxy" : 5
+            "amount" : 1,
+            "miny" : -25,
+            "maxy" : 50
         },
         "color" : {
             "color" : "#bcea65",

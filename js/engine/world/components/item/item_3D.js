@@ -18,7 +18,15 @@ function Item3D() {
     this.projectedpolygon = new Polygon();
 }
 
-Item3D.prototype.createItem3D = function(item, renderer, window, width, height, waterline = null, debug = null) {
+Item3D.prototype.createItem3D = function(item, renderer, window, width, height, debug = null) {
+    
+    item.geometry.front.showing = false;
+    item.geometry.top.showing = false;
+    item.geometry.bottom.showing = false;
+    item.geometry.left.showing = false;
+    item.geometry.right.showing = false;
+
+    if (item.underwater) return;
     if (!renderer.shouldThemeProject(item)) return;
     if (item.draw == false) {
         if (!debug || (!debug.level && !debug.render && !debug.hsr)) return;
@@ -35,31 +43,6 @@ Item3D.prototype.createItem3D = function(item, renderer, window, width, height, 
     var bs = item.scalefactor;
     
     this.polygon.setPoints(box.getPoints());
-    
-    item.underwater = false;
-    if (waterline && waterline.flow && !item.waterline) {
-        
-        // todo: this is still fucked...
-        
-        var fw = waterline.waterline;
-        if (item.y >= fw) {
-            item.underwater = true;
-        }
-        var tpt = item.polygon.points.length;
-        for (var i = 0; i < tpt; i++) {
-            var ppp = item.polygon.points[i];
-            if (!ppp) continue;
-            var tpp = this.polygon.points[i];
-            if (!tpp) continue;
-            
-            if (ppp.y >= fw) {
-                var ddd = ppp.y - fw;
-                var ds = ddd * bs;
-                tpp.y -= ds;
-                if (tpp.y < 0) tpp.y = 0;
-            }
-        }
-    }
     this.projectItem3D(item, depth, scale, x, y, window, width, height);
 }
 
@@ -68,10 +51,6 @@ Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window, widt
     if (!this.polygon || !this.polygon.points) return;
     
     item.geometry.front.showing = true;
-    item.geometry.top.showing = false;
-    item.geometry.bottom.showing = false;
-    item.geometry.left.showing = false;
-    item.geometry.right.showing = false;
     
     item.geometry.front.geometry.setPoints(this.polygon.getPoints())
     

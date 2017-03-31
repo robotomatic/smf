@@ -32,14 +32,27 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
     var width = graphics.canvas.getWidth();
     var height = graphics.canvas.getHeight();
     item.smooth();
-    item.translate(mbr, width, height);
-    item.item3D.createItem3D(item, world.worldrenderer.itemrenderer, mbr, width, height, world.worldrenderer.waterline, debug);
-    var showing = item.isVisible(window, mbr, 100);
-    if (world.worldrenderer.waterline.flow && item.y >= world.worldrenderer.waterline) showing = false;
-    var d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, item, 0, item.height, 0);
-    if (isNaN(d)) d = 0;
-    var id = item.id;
     
+    var waterline = world.worldrenderer.waterline;
+    item.translate(mbr, width, height, waterline.waterline);
+    item.underwater = false;
+    if (waterline && waterline.flow && !item.waterline) {
+        var fw = waterline.waterline;
+        if (item.y >= fw) {
+            item.underwater = true;
+            item.showing = false;
+        }
+    } 
+    
+    var d = 0;
+    if (!item.underwater) {
+        item.item3D.createItem3D(item, world.worldrenderer.itemrenderer, mbr, width, height, debug);
+        var showing = item.isVisible(window, mbr, 100);
+        d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, item, 0, item.height, 0);
+        if (isNaN(d)) d = 0;
+    }
+    
+    var id = item.id;
     var index = this.index++;
     
     if (this.renderitems.keys[id]) {
