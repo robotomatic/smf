@@ -118,9 +118,7 @@ GameController.prototype.showGameParty = function(data) {
         function() {
             controller.currentview = "game";
             var gamesettings = controller.gamesettings.getSettings("game-party");
-            var levelsettings = controller.gamesettings.getSettings("menu-level-chooser");
-            var playersettings = controller.gamesettings.getSettings("menu-player-chooser");
-            controller.game = new GameControllerGame(controller, gamesettings, levelsettings, playersettings);
+            controller.game = new GameControllerGame(controller, gamesettings);
             controller.game.load(function() {
                 controller.game.loadPlayers();
                 controller.game.loadViews();

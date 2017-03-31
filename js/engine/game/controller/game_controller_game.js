@@ -1,6 +1,6 @@
 "use strict";
 
-function GameControllerGame(gamecontroller, gamesettings, levelsettings, playersettings) {
+function GameControllerGame(gamecontroller, gamesettings) {
     this.gamecontroller = gamecontroller;
     this.input = this.gamecontroller.input;
     this.loop = new GameLoop(this.input);
@@ -11,8 +11,6 @@ function GameControllerGame(gamecontroller, gamesettings, levelsettings, players
     this.npcs = new NPCs();
     
     this.gamesettings = gamesettings;
-    this.levelsettings = levelsettings;
-    this.playersettings = playersettings;
     this.view = null;
     this.started = false;
 
@@ -54,13 +52,15 @@ GameControllerGame.prototype.showGamepads = function() {
     }
 }
 
-GameControllerGame.prototype.getSettings = function() { return this.settings; }
+GameControllerGame.prototype.getSettings = function() { 
+    return this.gamesettings; 
+}
 
 GameControllerGame.prototype.load = function(callback) {
     var controller = this;
-    var level = this.gameloader.levels[this.levelsettings.levelname];
+    var level = this.gameloader.levels[this.gamesettings.levelname];
     if (level) {
-        this.levelname = this.levelsettings.levelname;
+        this.levelname = this.gamesettings.levelname;
     } else {
         var k = Object.keys(this.gameloader.levels);
         var levelnum = 0;
@@ -90,22 +90,27 @@ GameControllerGame.prototype.loadLevelLevel = function(level, name, callback) {
         }
     }
     this.loop.loadLevel(level);
+    this.gamesettings.levelname = this.levelname;
+    this.gamecontroller.saveGameSettings();
 }
     
 GameControllerGame.prototype.loadPlayers = function() {
     benchmark("load players - start", "players");
     this.players = new Players();
     var charnames = Object.keys(this.gameloader.characters.characters);
-    var players = this.playersettings.players;
+    var players = this.gamesettings.players;
     if (players) players.length = 0;
 
     var playertotal = 0;
     var numplayers = players ?  Object.keys(players).length : 1;
     numplayers = 1;
     
+    var playercharname = charnames[1];
+    if (this.gamesettings.character) playercharname = this.gamesettings.character;
+    
     for (var i = 0; i < numplayers; i++) {
         var charname = "";
-        if (i == 0) charname = charnames[1];
+        if (i == 0) charname = playercharname;
         else {
             var rando = random(0, charnames.length - 1);
             charname = charnames[rando];
@@ -222,6 +227,8 @@ GameControllerGame.prototype.changePlayerCharacter = function(player, charname) 
     }
     var character = this.loadPlayerCharacter(charname);
     player.setCharacter(character);
+    this.gamesettings.character = charname;
+    this.gamecontroller.saveGameSettings();
 }
 
 GameControllerGame.prototype.removePlayer = function(player) {
