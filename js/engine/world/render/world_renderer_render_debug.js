@@ -73,17 +73,15 @@ WorldRendererDebug.prototype.renderDebugItemsItemGeometry = function(graphics, i
     var geom = item.geometry;
     if (!geom) return;
     if (!item.showing) return;
-    this.renderDebugItemsItemGeometryGeometry(graphics, geom.sides, "white");
-    this.renderDebugItemsItemGeometryGeometry(graphics, geom.bottoms, "white");
-    this.renderDebugItemsItemGeometryGeometry(graphics, geom.tops, "white");
-    this.renderDebugItemsItemGeometryGeometry(graphics, geom.fronts, "white");
+    this.renderDebugItemsItemGeometryGeometry(graphics, geom.left, "white");
+    this.renderDebugItemsItemGeometryGeometry(graphics, geom.right, "white");
+    this.renderDebugItemsItemGeometryGeometry(graphics, geom.bottom, "white");
+    this.renderDebugItemsItemGeometryGeometry(graphics, geom.top, "white");
+    this.renderDebugItemsItemGeometryGeometry(graphics, geom.front, "white");
 }
 
 WorldRendererDebug.prototype.renderDebugItemsItemGeometryGeometry = function(graphics, geometry, color) {
     if (!geometry || !geometry.length) return;
-    for (var i = 0; i < geometry.length; i++) {
-        var geom = geometry[i];
-        graphics.canvas.beginPath();
-        geom.drawOutline(graphics.canvas, color, .5);
-    }
+    graphics.canvas.beginPath();
+    geometry.drawOutline(graphics.canvas, color, .5);
 }

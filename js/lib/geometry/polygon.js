@@ -2,9 +2,6 @@
 
 function Polygon(points) {
     this.points = new Array();
-    this.tops = new Array();
-    this.bottoms = new Array();
-    this.sides = new Array();
     this.outline = new Array();
     this.leftpoints = new Array();
     this.rightpoints = new Array();
@@ -147,23 +144,64 @@ Polygon.prototype.getPoints = function() {
     return this.points;
 }
 
+
+
+
+
+
+
+
+
+
+
+
 Polygon.prototype.setPoints = function(points) {
+    if (!points) return;
+    if (this.points.length == points.length) {
+        this.updatePoints(points);
+        return;
+    }
     this.points.length = 0;
     this.addPoints(points);
+    this.mbr.width = 0;
 }
+
+
+
+
+Polygon.prototype.updatePoints = function(points) {
+    if (!points || !points.length) return;
+    for (var i = 0; i < points.length; i++) this.updatePoint(i, points[i]);
+}
+
+Polygon.prototype.updatePoint = function(index, point) {
+    if (!point) return;
+    this.updatePointXY(index, point.x, point.y, point.z, point.info);
+}
+
+Polygon.prototype.updatePointXY = function(index, x, y, z, info = null) {
+    this.points[index].x = x;
+    this.points[index].y = y;
+    this.points[index].z = z;
+    this.points[index].info = info;
+}
+
+
+
+
+
 
 Polygon.prototype.addPoints = function(points) {
     if (!points || !points.length) return;
     for (var i = 0; i < points.length; i++) this.addPoint(points[i]);
-    this.mbr.width = 0;
 }
 
 Polygon.prototype.addPoint = function(point) {
     if (!point) return;
-    this.addPointXY(point.x, point.y, point.info);
+    this.addPointXY(point.x, point.y, point.z, point.info);
 }
 
-Polygon.prototype.addPointXY = function(x, y, info = null) {
+Polygon.prototype.addPointXY = function(x, y, z, info = null) {
     var ok = true;
     var t = this.points.length;
     for (var i = 0; i < t; i++) {
@@ -175,10 +213,14 @@ Polygon.prototype.addPointXY = function(x, y, info = null) {
         }
     }
     if (!ok) return;
-//    this.points[this.points.length] = this.factory ? geometryfactory.getPoint(x, y, info) : new Point(x, y, info);
-    this.points[this.points.length] = geometryfactory.getPoint(x, y, info);
-    this.mbr.width = 0;
+    var p = geometryfactory.getPoint(x, y, info);
+    p.z = z;
+    this.points[this.points.length] = p;
 }
+
+
+
+
 
 
 
@@ -307,20 +349,13 @@ Polygon.prototype.createPolygon = function(items) {
     if (!items) return;
 
     this.points.length = 0;
-    this.tops.length = 0;
-    this.bottoms.length = 0;
-    this.sides.length = 0;
 
     if (items.length == 1) {
         var item = items[0];
         this.points[0] = new Point(item.x, item.y);
         this.points[1] = new Point(item.x + item.width, item.y);
-        this.tops[0] = new Line(this.points[0], this.points[1]);
         this.points[2] = new Point(item.x + item.width, item.y + item.height);
-        this.sides[0] = new Line(this.points[1], this.points[2]);
         this.points[3] = new Point(item.x, item.y + item.height);
-        this.bottoms[0] = new Line(this.points[2], this.points[3]);
-        this.sides[1] = new Line(this.points[3], this.points[0]);
         return this.points;
     }
 
@@ -384,18 +419,12 @@ Polygon.prototype.createPolygon = function(items) {
             if (current.ramp) {
                 if (current.ramp == "left") {
                     this.points[this.points.length] = sp;
-                    this.tops[this.tops.length] = new Line(this.points[this.points.length - 2], new Point(cx2, cy2));                    
                 } else if (current.ramp == "right") {
                     this.points[this.points.length] = ep;
-                    this.tops[this.tops.length] = new Line(this.points[this.points.length - 2], ep);                    
                 }
             } else {
                 this.points[this.points.length] = sp;                
                 this.points[this.points.length] = ep;
-                if (this.points.length > 1) {
-                    var l = new Line(sp, ep);
-                    if (l.length() > 1) this.tops[this.tops.length] = l;
-                }
             }
         } else  {
             if (!turn) {
@@ -410,7 +439,6 @@ Polygon.prototype.createPolygon = function(items) {
                     this.points[this.points.length] = new Point(cx2, cy1);
                 }
                 
-                this.tops[this.tops.length] = new Line(this.points[this.points.length - 2], this.points[this.points.length - 1]);    
                 turn = true;
             }
             
@@ -444,9 +472,6 @@ Polygon.prototype.createPolygon = function(items) {
         if (cx1 <= nx2) nx2 = cx1;
         this.points[this.points.length] = new Point(nx2, ny2);
         this.points[this.points.length] = new Point(nx1, ny2);
-        
-        // could be here
-        
     }
 
     

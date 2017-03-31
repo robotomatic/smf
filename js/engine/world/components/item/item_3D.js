@@ -19,25 +19,14 @@ function Item3D() {
 }
 
 Item3D.prototype.createItem3D = function(item, renderer, window, width, height, waterline = null, debug = null) {
-    
-    item.geometry.projected.points.length = 0;
-    
-    if (item.geometry.fronts.length) item.geometry.fronts[0].points.length = 0;
-    if (item.geometry.tops.length) item.geometry.tops[0].points.length = 0;
-    if (item.geometry.sides.length) item.geometry.sides[0].points.length = 0;
-    if (item.geometry.bottoms.length) item.geometry.bottoms[0].points.length = 0;
-    
     if (!renderer.shouldThemeProject(item)) return;
-    
     if (item.draw == false) {
         if (!debug || (!debug.level && !debug.render && !debug.hsr)) return;
     }
     if (item.scalefactor < 0) return;
-    
     var x = window.x;
     var y = window.y;
     var scale = window.scale || 0;
-    
     var top = item.top;
     var box = item.box;
     var bx = box.x;
@@ -45,22 +34,14 @@ Item3D.prototype.createItem3D = function(item, renderer, window, width, height, 
     var depth = box.depth;
     var bs = item.scalefactor;
     
-    this.polygon.points.length = 0;
-    if (item.parts) {
-        var ip = item.getPolygon();
-        this.polygon.setPoints(ip.getPoints());
-    } else {
-        this.polygon.setPoints(box.getPoints());
-    }
-
+    this.polygon.setPoints(box.getPoints());
+    
     item.underwater = false;
     if (waterline && waterline.flow && !item.waterline) {
         var fw = waterline.waterline;
-
         if (item.y >= fw) {
             item.underwater = true;
         }
-        
         var tpt = item.polygon.points.length;
         for (var i = 0; i < tpt; i++) {
             var ppp = item.polygon.points[i];
@@ -77,9 +58,6 @@ Item3D.prototype.createItem3D = function(item, renderer, window, width, height, 
             }
         }
     }
-    
-    if (item.parts) this.polygon.translate(bx, by, scale * bs);
-
     this.projectItem3D(item, depth, scale, x, y, window, width, height);
 }
 
@@ -87,15 +65,19 @@ Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window, widt
 
     if (!this.polygon || !this.polygon.points) return;
     
-    if (!item.geometry.fronts[0]) item.geometry.fronts[0] = new Polygon(this.polygon.getPoints());
-    else item.geometry.fronts[0].setPoints(this.polygon.getPoints())
+    item.geometry.front.showing = true;
+    item.geometry.top.showing = false;
+    item.geometry.bottom.showing = false;
+    item.geometry.left.showing = false;
+    item.geometry.right.showing = false;
     
-     if (item.width == "100%" && item.geometry.fronts[0].points.length > 3) {
-         item.geometry.fronts[0].points[0].x = 0;
-         item.geometry.fronts[0].points[1].x = width;
-         item.geometry.fronts[0].points[2].x = width;
-         item.geometry.fronts[0].points[3].x = 0;
-//          return;
+    item.geometry.front.geometry.setPoints(this.polygon.getPoints())
+    
+     if (item.width == "100%" && item.geometry.front.geometry.points.length > 3) {
+         item.geometry.front.geometry.points[0].x = 0;
+         item.geometry.front.geometry.points[1].x = width;
+         item.geometry.front.geometry.points[2].x = width;
+         item.geometry.front.geometry.points[3].x = 0;
      }
 
     var wc = window.getCenter();
@@ -127,10 +109,10 @@ Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window, widt
         
         var view = null;
         if (horiz) {
-            if (side) view = item.geometry.sides;
-            else view = item.geometry.bottoms;
+            if (side) view = left ? item.geometry.left : item.geometry.right;
+            else view = item.geometry.bottom;
         } else {
-            if (vert) view = item.geometry.sides;
+            if (vert) view = left ? item.geometry.left : item.geometry.right;
             else {
                 var ramptopleft = this.p1.x < this.p2.x && this.p1.y > this.p2.y;
                 var ramptopright = this.p1.x < this.p2.x && this.p1.y < this.p2.y;
@@ -138,17 +120,13 @@ Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window, widt
                 var rampbottomleft = this.p1.x > this.p2.x && this.p1.y > this.p2.y;
                 var rampbottomright = this.p1.x > this.p2.x && this.p1.y < this.p2.y;
                 var rampbottom = rampbottomleft || rampbottomright;
-                if (ramptop) view = item.geometry.tops;
-                else if (rampbottom) view = item.geometry.bottoms;
-                else view = item.geometry.sides;
+                if (ramptop) view = item.geometry.top;
+                else if (rampbottom) view = item.geometry.bottom;
+                else view = left ? item.geometry.left : item.geometry.right;
             }
         }
-        
-        if (!view[0]) {
-            var p = new Polygon();
-            view[0] = p;
-        }
-        view[0].setPoints(this.projectedpolygon.getPoints());
+        view.geometry.setPoints(this.projectedpolygon.getPoints());
+        view.showing = true;
     }
 
     var px = (wc.x - x) * scale;
@@ -174,15 +152,9 @@ Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window, widt
     if (shouldProject(this.p1, this.p2, scale, x, y, wc, this.cp)) {
         this.projectedpolygon.points.length = 0;
         this.projectedpolygon = project3D(this.p1, this.p2, depth, this.projectedpolygon, scale, x, y, wc, this.np1, this.np2);
-        
-        if (!item.geometry.sides[0]) {
-            var p = new Polygon();
-            item.geometry.sides[0] = p;
-        }
-        
-        item.geometry.sides[0].setPoints(this.projectedpolygon.getPoints());
-    } else {
-        if (item.geometry.sides && item.geometry.sides.length) item.geometry.sides[0].points.length = 0;
+        var side = this.left ? item.geometry.left : item.geometry.right;
+        side.geometry.setPoints(this.projectedpolygon.getPoints());
+        side.showing = true;
     }
     
     var t = this.polygon.points.length;
@@ -208,14 +180,8 @@ Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window, widt
                 }
             }
         }
-        
-        if (!item.geometry.tops[0]) {
-            var p = new Polygon();
-            item.geometry.tops[0] = p;
-        }
-        item.geometry.tops[0].setPoints(this.projectedpolygon.getPoints());
+        item.geometry.top.geometry.setPoints(this.projectedpolygon.getPoints());
+        item.geometry.top.showing = true;
     }
-    
-    if (item.bottom !== true) item.geometry.bottoms.length = 0;
 }
 

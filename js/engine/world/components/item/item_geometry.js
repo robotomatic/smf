@@ -1,11 +1,28 @@
 "use strict";
 
 function ItemGeometry() {
-    this.projected = new Polygon();
-    this.fronts = new Array();
-    this.tops = new Array();
-    this.sides = new Array();
-    this.bottoms = new Array();
+    
+    this.top = {
+        geometry : new Polygon(),
+        showing : false
+    };
+    this.bottom = {
+        geometry : new Polygon(),
+        showing : false
+    };
+    this.front = {
+        geometry : new Polygon(),
+        showing : false
+    };
+    this.left = {
+        geometry : new Polygon(),
+        showing : false
+    };
+    this.right = {
+        geometry : new Polygon(),
+        showing : false
+    };
+
     this.visible = {
         top : {
             coverage : new Rectangle(0, 0, 0, 0),
