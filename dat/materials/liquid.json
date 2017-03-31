@@ -14,7 +14,7 @@
         },
         "waterline" : {
             "flow" : true,
-            "amount" : 0.3,
+            "amount" : 0.5,
             "miny" : -10,
             "maxy" : 10
         },
@@ -71,9 +71,9 @@
         },
         "waterline" : {
             "flow" : true,
-            "amount" : 0.1,
-            "miny" : -5,
-            "maxy" : 10
+            "amount" : 0.3,
+            "miny" : -15,
+            "maxy" : 5
         },
         "color" : {
             "color" : "#bcea65",

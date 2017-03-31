@@ -350,8 +350,8 @@ Polygon.prototype.createPolygon = function(items) {
 
     this.points.length = 0;
 
-    if (items.length == 1) {
-        var item = items[0];
+    if (!Array.isArray(items)) {
+        var item = items;
         this.points[0] = new Point(item.x, item.y);
         this.points[1] = new Point(item.x + item.width, item.y);
         this.points[2] = new Point(item.x + item.width, item.y + item.height);

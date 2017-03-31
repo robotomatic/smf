@@ -38,6 +38,9 @@ Item3D.prototype.createItem3D = function(item, renderer, window, width, height, 
     
     item.underwater = false;
     if (waterline && waterline.flow && !item.waterline) {
+        
+        // todo: this is still fucked...
+        
         var fw = waterline.waterline;
         if (item.y >= fw) {
             item.underwater = true;
@@ -49,11 +52,10 @@ Item3D.prototype.createItem3D = function(item, renderer, window, width, height, 
             var tpp = this.polygon.points[i];
             if (!tpp) continue;
             
-            if (item.y + ppp.y >= fw) {
-                var ddd = (item.y + ppp.y) - fw;
+            if (ppp.y >= fw) {
+                var ddd = ppp.y - fw;
                 var ds = ddd * bs;
-                //tpp.y -= ds;
-                tpp.y -= ddd;
+                tpp.y -= ds;
                 if (tpp.y < 0) tpp.y = 0;
             }
         }
