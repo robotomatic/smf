@@ -3,7 +3,7 @@
         
         "physics" : {
             "airfriction" : 0.08,
-            "gravity" : 0.1
+            "gravity" : 0.25
         },
 
         "background" : {

@@ -1,0 +1,33 @@
+[
+    {
+        "name" : "ground raised",
+        "comment" : "ground raised",
+        "collide" : true,
+        "cache" : true,
+        "items" : [
+
+            
+            
+            {
+                "x" : 2700,
+                "y" : 900,
+                "z" : 600,
+                "depth" : 1800,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 600,
+                        "height": 300
+                    }
+                ]
+            }
+            
+            
+            
+            
+            
+        ]
+    }
+]

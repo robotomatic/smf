@@ -10,7 +10,7 @@
                 "x" : 600,
                 "y" : 700,
                 "z" : 1200,
-                "depth" : 1200,
+                "depth" : 900,
                 "trim" : 50,
                 "itemtype" : "raised-platform",
                 "parts" : [
@@ -27,7 +27,7 @@
                 "x" : 1500,
                 "y" : 700,
                 "z" : 1200,
-                "depth" : 1200,
+                "depth" : 1800,
                 "trim" : 50,
                 "itemtype" : "raised-platform",
                 "parts" : [
@@ -62,7 +62,7 @@
             {
                 "x" : 600,
                 "y" : 750,
-                "z" : 2350,
+                "z" : 2050,
                 "depth" : 50,
                 "itemtype" : "raised-platform-support",
                 "parts" : [
@@ -109,7 +109,7 @@
             {
                 "x" : 1500,
                 "y" : 750,
-                "z" : 2350,
+                "z" : 2950,
                 "depth" : 50,
                 "itemtype" : "raised-platform-support",
                 "parts" : [
@@ -121,6 +121,9 @@
                     }
                 ]
             },
+
+            
+            
             
             {
                 "x" : 2050,
@@ -155,7 +158,7 @@
             {
                 "x" : 2050,
                 "y" : 750,
-                "z" : 2350,
+                "z" : 2950,
                 "depth" : 50,
                 "itemtype" : "raised-platform-support",
                 "parts" : [

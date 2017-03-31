@@ -20,7 +20,7 @@
         "file" : "dat/levels/fortress/fortress.json",
         "themes" : {
             "0" : "default",
-            "1" : "space"
+            "1" : "snow"
         }
     },
     "level-3" : {
@@ -28,7 +28,7 @@
         "file" : "dat/levels/city/city.json",
         "themes" : {
             "0" : "default",
-            "1" : "snow"
+            "1" : "space"
         }
     }
 }

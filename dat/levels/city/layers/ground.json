@@ -1,0 +1,162 @@
+[
+    {
+        "name" : "ground",
+        "comment" : "ground",
+        "collide" : true,
+        "cache" : true,
+        "items" : [
+
+            {
+                "x" : 900,
+                "y" : 980,
+                "z" : 0,
+                "depth" : 600,
+                "itemtype" : "ground",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 1200,
+                        "height": 100
+                    }
+                ]
+            },
+            
+            
+            
+            {
+                "x" : 800,
+                "y" : 980,
+                "z" : 600,
+                "depth" : 600,
+                "itemtype" : "ground",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 100,
+                        "height": 100
+                    }
+                ]
+            },
+            {
+                "x" : 900,
+                "y" : 980,
+                "z" : 600,
+                "depth" : 600,
+                "itemtype" : "ground",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 500,
+                        "height": 100
+                    }
+                ]
+            },
+            {
+                "x" : 800,
+                "y" : 980,
+                "z" : 1200,
+                "depth" : 600,
+                "itemtype" : "ground",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 600,
+                        "height": 100
+                    }
+                ]
+            },
+            {
+                "x" : 1200,
+                "y" : 900,
+                "z" : 2100,
+                "depth" : 600,
+                "itemtype" : "ground",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 600,
+                        "height": 200
+                    }
+                ]
+            },
+            
+
+            
+            
+            {
+                "x" : 1900,
+                "y" : 950,
+                "z" : 100,
+                "depth" : 200,
+                "itemtype" : "ground",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 200,
+                        "height": 30
+                    }
+                ]
+            },
+            {
+                "x" : 2100,
+                "y" : 920,
+                "z" : 100,
+                "depth" : 200,
+                "itemtype" : "ground",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 200,
+                        "height": 200
+                    }
+                ]
+            },
+            
+            
+            {
+                "x" : 2400,
+                "y" : 900,
+                "z" : 180,
+                "depth" : 400,
+                "itemtype" : "ground",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 400,
+                        "height": 200
+                    }
+                ]
+            },
+            
+            
+            {
+                "x" : 2600,
+                "y" : 940,
+                "z" : 230,
+                "depth" : 300,
+                "itemtype" : "ground",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 300,
+                        "height": 200
+                    }
+                ]
+            }
+            
+            
+            
+            
+            
+        ]
+    }
+]

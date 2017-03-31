@@ -1,0 +1,161 @@
+[
+    {
+        "name" : "ground raised",
+        "comment" : "ground raised",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 300,
+        "items" : [
+
+            {
+                "x" : 600,
+                "y" : 560,
+                "z" : 1200,
+                "depth" : 600,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 600,
+                        "height": 460
+                    }
+                ]
+            },
+            
+            
+            {
+                "x" : 900,
+                "y" : 660,
+                "z" : 600,
+                "depth" : 600,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 900,
+                        "height": 360
+                    }
+                ]
+            },
+            {
+                "x" : 1800,
+                "y" : 800,
+                "z" : 600,
+                "depth" : 600,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 600,
+                        "height": 180
+                    }
+                ]
+            },
+            
+            
+            
+            
+            {
+                "x" : 1200,
+                "y" : 360,
+                "z" : 1200,
+                "depth" : 600,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 900,
+                        "height": 660
+                    }
+                ]
+            },
+            
+            
+            {
+                "x" : 2100,
+                "y" : 680,
+                "z" : 1200,
+                "depth" : 600,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 700,
+                        "height": 340
+                    }
+                ]
+            },
+            {
+                "x" : 2800,
+                "y" : 680,
+                "z" : 1200,
+                "depth" : 600,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 700,
+                        "height": 40
+                    }
+                ]
+            },
+            {
+                "x" : 3500,
+                "y" : 680,
+                "z" : 1200,
+                "depth" : 600,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 400,
+                        "height": 340
+                    }
+                ]
+            },
+            
+
+            
+            
+            {
+                "x" : 3900,
+                "y" : 660,
+                "z" : 1200,
+                "depth" : 300,
+                "itemtype" : "raised-platform",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 600,
+                        "height": 300
+                    }
+                ]
+            },
+            {
+                "x" : 3900,
+                "y" : 660,
+                "z" : 1500,
+                "depth" : 300,
+                "itemtype" : "raised-platform",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 600,
+                        "height": 300
+                    }
+                ]
+            }
+            
+        ]
+    }
+]
+    

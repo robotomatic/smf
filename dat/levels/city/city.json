@@ -13,8 +13,20 @@
             "file" : "dat/levels/city/layers/sky.json"
         },
         
-        "city" : {
-            "file" : "dat/levels/city/layers/city.json"
+        "ground" : {
+            "file" : "dat/levels/city/layers/ground.json"
+        },
+        
+        "ground raised" : {
+            "file" : "dat/levels/city/layers/ground_raised.json"
+        },
+        
+        "raised platform 2" : {
+            "file" : "dat/levels/city/layers/raised_platform_2.json"
+        },
+        
+        "raised platform 3" : {
+            "file" : "dat/levels/city/layers/raised_platform_3.json"
         },
         
         "liquid" : {

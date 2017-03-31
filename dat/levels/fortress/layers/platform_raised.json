@@ -1,0 +1,95 @@
+[
+    {
+        "name" : "platform raised",
+        "comment" : "platform raised",
+        "collide" : true,
+        "cache" : true,
+        "depth" : 300,
+        "items" : [
+
+            {
+                "x" : 4000,
+                "y" : 360,
+                "z" : 1300,
+                "depth" : 50,
+                "itemtype" : "raised-platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 300
+                    }
+                ]
+            },
+            {
+                "x" : 4000,
+                "y" : 360,
+                "z" : 1650,
+                "depth" : 50,
+                "itemtype" : "raised-platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 300
+                    }
+                ]
+            },
+            
+            {
+                "x" : 4350,
+                "y" : 360,
+                "z" : 1300,
+                "depth" : 50,
+                "itemtype" : "raised-platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 300
+                    }
+                ]
+            },
+            
+            {
+                "x" : 4350,
+                "y" : 360,
+                "z" : 1650,
+                "depth" : 50,
+                "itemtype" : "raised-platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 300
+                    }
+                ]
+            },
+            
+            
+            
+            {
+                "x" : 4000,
+                "y" : 260,
+                "z" : 1300,
+                "depth" : 400,
+                "itemtype" : "raised-platform",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 400,
+                        "height": 100
+                    }
+                ]
+            }
+            
+            
+        ]
+    }
+]
+            
