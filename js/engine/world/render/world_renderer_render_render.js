@@ -56,7 +56,7 @@ WorldRendererRender.prototype.renderPlayer = function(now, window, graphics, cam
         player.render(now, pw, ph, null, scalerender, debug.player);
         if (this.doblur && camera.blur.shift) {
             var shift = camera.getBlurShiftAmount(distance);
-            blurCanvas(player.canvas.canvas, player.gamecanvas, shift, 1);
+            blurCanvas(player.gamecanvas.canvas, player.gamecanvas, shift, 1);
         }
         player.drawImage(graphics.canvas, scaledraw, 0);
     } else {

@@ -39,7 +39,7 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
         
         if (!debug.level && fill && item.width != "100%") {
             var lc = this.colors.side;
-            var lw = 1;
+            var lw = 1 * scale;
             gamecanvas.setStrokeStyle(lc);
             gamecanvas.setLineWidth(lw);
             if (item.geometry.visible.left.visible) {
@@ -98,7 +98,7 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
             
             if (fill && !debug.level && item.width != "100%") {
                 var lc = this.colors.side;
-                var lw = 1;
+                var lw = 1 * scale;
                 gamecanvas.setStrokeStyle(lc);
                 gamecanvas.setLineWidth(lw);
                 gamecanvas.beginPath();
@@ -238,7 +238,7 @@ ItemRenderer3D.prototype.renderItemParts3D = function(gamecanvas, item, geometry
     if (fill) gamecanvas.fill();
     if (outline || debug.level) {
         gamecanvas.setStrokeStyle(debug.level ? "gray" : color);
-        gamecanvas.setLineWidth(1);
+        gamecanvas.setLineWidth(1 * scale);
         gamecanvas.stroke();
         gamecanvas.commit();
     }

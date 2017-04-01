@@ -17,7 +17,7 @@ function Player(id, name, color, x, y, z, width, height, speed, character, hp, l
     this.getscamera = false;
     
     this.projectedlocation = new Point(0, 0);
-    this.canvas = new GameCanvas();
+    this.gamecanvas = new GameCanvas();
     this.image = new Image(null, 0, 0, 0, 0);
     this.imagepad = 100;
 
@@ -54,7 +54,7 @@ Player.prototype.delete = function() {
     this.collider = null;
     this.camera = null;
     this.box = null;
-    this.canvas = null;
+    this.gamecanvas = null;
     this.image = null;
 }
 
@@ -233,7 +233,7 @@ Player.prototype.renderStart = function(now, width, height, scale = 1) {
 
     var bw = this.box.width * scale;
     var bh = this.box.height * scale;
-    this.canvas.setSize(bw + doublepad, bh + doublepad);
+    this.gamecanvas.setSize(bw + doublepad, bh + doublepad);
 }
 
 Player.prototype.renderRender = function(now, gamecanvas = null, scale = 1, debug) {
