@@ -87,24 +87,14 @@ PartyView.prototype.resume = function(when) {
     this.view.resume(when);
 }
 
-PartyView.prototype.resizeText = function() { 
-    this.view.resizeText(); 
-}
-
 PartyView.prototype.show = function() { 
-    this.resizeUI();
     this.view.show(); 
 }
 PartyView.prototype.hide = function() { this.view.hide(); }
 
 PartyView.prototype.resize = function() { 
     this.view.resize();
-    this.resizeUI();
 }
-PartyView.prototype.resizeUI = function() { 
-    this.view.resizeUI(); 
-}
-
 PartyView.prototype.update = function(now, delta, game) {
     this.view.update(now, delta, game.world);
 }
@@ -151,15 +141,10 @@ PartyView.prototype.render = function(now, game) {
     
     if (!this.paused) this.rendercount++;
     
-    this.view.renderer.mbr.x -= offx;
-    this.view.renderer.mbr.width += offx;
+    this.view.renderer.camera.offset.x = offx;
+    this.view.renderer.camera.offset.y = offy;
+    this.view.renderer.camera.offset.z = offz;
     
-    this.view.renderer.mbr.y -= offy;
-    this.view.renderer.mbr.height += offy;
-    
-    this.view.renderer.mbr.z -= offz;
-    this.view.renderer.mbr.depth += offz;
-
     this.view.render(now, world, render, follow);
 }
 
@@ -167,7 +152,7 @@ PartyView.prototype.getViewBounds = function(world, mbr) {
     var b = world.worldbuilder.collidebuilder.collisionindex.bounds;
     mbr.x = b.min.x;
     mbr.y = 0;
-    mbr.z = -1500;
+    mbr.z = -2500;
     mbr.width = b.max.x - mbr.x;
     if (world.level) {
 
@@ -208,10 +193,3 @@ PartyView.prototype.getViewBounds = function(world, mbr) {
     mbr.depth = 0;
     return mbr;
 }
-
-
-PartyView.prototype.setMessage = function(message) { }
-
-PartyView.prototype.updateUI = function() { }
-PartyView.prototype.updatePlayerUI = function(player, ui) { }
-

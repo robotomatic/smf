@@ -11,7 +11,6 @@ var dev_camera_offset_cosy = null;
 var dev_camera_offset_tight = null;
 var dev_camera_offset_z_range = null;
 var dev_camera_dof_blur_blur = null;
-var dev_camera_dof_blur_shift = null;
 var dev_camera_follow_speed = null;
 var dev_camera_drift = null;
 var dev_camera_drift_min = null;
@@ -68,10 +67,6 @@ function initializeDevCamera() {
     dev_camera_dof_blur_blur = document.getElementById("dev-camera-dof-blur-blur");
     dev_camera_dof_blur_blur.onchange = function() {
         setDevCameraDepthOfFieldBlurBlur(this.checked);
-    };
-    dev_camera_dof_blur_shift = document.getElementById("dev-camera-dof-blur-shift");
-    dev_camera_dof_blur_shift.onchange = function() {
-        setDevCameraDepthOfFieldBlurShift(this.checked);
     };
     
     dev_camera_follow_speed = document.getElementById("dev-camera-follow-speed");
@@ -258,7 +253,6 @@ function updateDevViewCameraDepthOfFieldBlur(vv) {
     if (!__dev) return;
     
     updateDevViewCameraDepthOfFieldBlurBlur(vv);
-    updateDevViewCameraDepthOfFieldBlurShift(vv);
 }
 
 
@@ -271,7 +265,7 @@ function setDevCameraDepthOfFieldBlurBlur(blur) {
     if (!gamecontroller || !gamecontroller.game) return;
     if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     var vv = gamecontroller.game.loop.game.views[0];
-    vv.view.renderer.camera.blur.blur = blur;
+    vv.blur = blur;
     updateDevViewCameraDepthOfFieldBlurBlur(vv);
 }
 
@@ -279,32 +273,10 @@ function updateDevViewCameraDepthOfFieldBlurBlur(vv) {
     
     if (!__dev) return;
     
-    var blur = vv.view.renderer.camera.blur.blur;
+    var blur = vv.blur;
     var vb = dev_camera_dof_blur_blur;
     vb.checked = blur;
 }
-
-function setDevCameraDepthOfFieldBlurShift(shift) {
-    
-    if (!__dev) return;
-    
-    if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
-    vv.view.renderer.camera.blur.shift = shift;
-    updateDevViewCameraDepthOfFieldBlurShift(vv);
-}
-
-function updateDevViewCameraDepthOfFieldBlurShift(vv) {
-    
-    if (!__dev) return;
-    
-    var shift = vv.view.renderer.camera.blur.shift;
-    var vb = dev_camera_dof_blur_shift;
-    vb.checked = shift;
-}
-
-
 
 function setDevCameraDrift(drift) {
     

@@ -3,10 +3,9 @@
 function WorldRendererRender(renderitems, itemcache) {
     this.renderitems = renderitems;
     this.np = new Point(0, 0);
-    this.doblur = true;
 }
 
-WorldRendererRender.prototype.renderRender = function(now, graphics, camera, world, mbr, window, debug, render = true) {
+WorldRendererRender.prototype.renderRender = function(now, mbr, window, graphics, camera, world, debug, render = true) {
     if (!render) return;
     this.renderRenderItems(now, graphics, camera, world, mbr, window, debug);
 }
@@ -18,48 +17,21 @@ WorldRendererRender.prototype.renderRenderItems = function(now, graphics, camera
         var renderitem = this.renderitems.all[i];
         if (!renderitem.showing) continue;
         var wd = round(renderitem.z - mbr.z);
-        if (renderitem.type == "item") this.renderItem(now, window, graphics, camera, world, renderitem.item, wd, debug);
-        else if (renderitem.type == "player") this.renderPlayer(now, window, graphics, camera, world, renderitem.item, wd, debug);
+        
+        var g = null;
+        if (renderitem.blur) g = graphics["blur"];
+        else g = graphics["main"];
+        
+        if (renderitem.type == "item") this.renderItem(now, window, g, camera, world, renderitem.item, wd, debug);
+        else if (renderitem.type == "player") this.renderPlayer(now, window, g, camera, world, renderitem.item, wd, debug);
     }
 }
 
 WorldRendererRender.prototype.renderItem = function(now, window, graphics, camera, world, item, distance, debug) {
     var renderer = world.worldrenderer.itemrenderer;
-    if (item.width == "100%" || !camera.shouldBlur(distance)) {
-        item.render(now, renderer, graphics.canvas.width, graphics.canvas.height, graphics.canvas, 1, debug.level);
-        return;
-    }
-    var scalerender = 1;
-    if (this.doblur && camera.blur.blur) {
-        scalerender = camera.getBlurAmount(distance);;
-    }
-    var scaledraw = 1 / scalerender;
-    item.render(now, renderer, graphics.canvas.width, graphics.canvas.height, null, scalerender, debug.level);
-    if (this.doblur && camera.blur.shift) {
-        var shift = camera.getBlurShiftAmount(distance);
-        blurCanvas(item.gamecanvas.canvas, item.gamecanvas, shift, 1);
-    }
-    item.drawImage(graphics.canvas, scaledraw, 0);
+    item.render(now, renderer, graphics.canvas.width, graphics.canvas.height, graphics.canvas, 1, debug.level);
 }
 
 WorldRendererRender.prototype.renderPlayer = function(now, window, graphics, camera, world, player, distance, debug) {
-    var pw = graphics.canvas.width;
-    var ph = graphics.canvas.height;
-    var scalerender = 1;
-    var scaledraw = 1;
-    var b = camera.shouldBlur(distance);
-    if (b) {
-        if (this.doblur && camera.blur.blur) {
-            scalerender = camera.getBlurAmount(distance);
-        }
-        scaledraw = 1 / scalerender;
-        player.render(now, pw, ph, null, scalerender, debug.player);
-        if (this.doblur && camera.blur.shift) {
-            var shift = camera.getBlurShiftAmount(distance);
-            blurCanvas(player.gamecanvas.canvas, player.gamecanvas, shift, 1);
-        }
-        player.drawImage(graphics.canvas, scaledraw, 0);
-    } else {
-        player.render(now, pw, ph, graphics.canvas, scalerender, debug.player);
-    }
+    player.render(now, graphics.canvas.width, graphics.canvas.height, graphics.canvas, 1, debug.player);
 }

@@ -137,7 +137,7 @@ GameCanvas.prototype.commit = function() {
     if (this.current.strokerect) {
         this.ctx.strokeRect(round(this.current.rect.x), round(this.current.rect.y), round(this.current.rect.width), round(this.current.rect.height));
     }
-    if (this.current.filltext) this.ctx.fillText(this.current.text.text, round(this.current.text.x), round(this.current.text.y));
+//    if (this.current.filltext) this.ctx.fillText(this.current.text.text, round(this.current.text.x), round(this.current.text.y));
     this.reset();
 }
 
@@ -358,7 +358,7 @@ GameCanvas.prototype.fillText = function(text, x, y) {
     var rx = round(x);
     var ry = round(y);
     this.ctx.fillText(text, rx, ry);
-    this.current.filltext = true;
+//    this.current.filltext = true;
 }
 
 
@@ -366,13 +366,11 @@ GameCanvas.prototype.fillText = function(text, x, y) {
 
 
 GameCanvas.prototype.getData = function() {
+    this.commit();
     return this.canvas;
 }
 
-
-
 GameCanvas.prototype.drawImage = function(data, x, y, w, h, xx, yy, ww, hh) {
-    
     x = clamp(x);
     y = clamp(y);
     w = clamp(w);
@@ -381,7 +379,10 @@ GameCanvas.prototype.drawImage = function(data, x, y, w, h, xx, yy, ww, hh) {
     yy = clamp(yy);
     ww = clamp(ww);
     hh = clamp(hh);
-    
     if (xx && yy && ww && hh) this.ctx.drawImage(data, x, y, w, h, xx, yy, ww, hh);
-    else this.ctx.drawImage(data, x, y, w, h, x, y, w, h);
+    else this.ctx.drawImage(data, x, y, w, h);
+}
+
+GameCanvas.prototype.blur = function(target, blur) {
+    blurCanvas(target, this, blur);
 }

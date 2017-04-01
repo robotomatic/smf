@@ -39,7 +39,6 @@ GameLoop.prototype.resize = function() {
     if (this.game.views) {
         for (var i = 0; i < this.game.views.length; i++) {
             this.game.views[i].resize(); 
-            this.game.views[i].resizeUI(); 
         }
     }
 }
@@ -114,5 +113,6 @@ GameLoop.prototype.reset = function(when) {
     this.game.reset(when);
 }
 
-GameLoop.prototype.setMessage = function(message) { this.game.setMessage(message); }
-GameLoop.prototype.doAction = function(action, args, key, val, callback) { this.game.doAction(action, args, key, val, callback); }
+GameLoop.prototype.doAction = function(action, args, key, val, callback) { 
+    this.game.doAction(action, args, key, val, callback); 
+}

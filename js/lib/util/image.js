@@ -69,7 +69,3 @@ Image.prototype.draw = function(gamecanvas, dx, dy, dw, dh) {
         gamecanvas.drawImage(this.data, this.x, this.y, this.width, this.height);
     }
 }
-
-Image.prototype.patch = function(gamecanvas, px, py, pw, ph) {
-    gamecanvas.drawImage(this.data, this.x, this.y, pw, ph, px, py, pw, ph);
-}

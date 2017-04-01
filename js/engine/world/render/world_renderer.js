@@ -60,9 +60,9 @@ WorldRenderer.prototype.setTheme = function(themename, theme, materials) {
 
 WorldRenderer.prototype.render = function(now, graphics, camera, world, mbr, window, render) {
     this.waterline.getFlood();
-    this.worldrenderer_start.renderStart(mbr, window, graphics, camera, world, this.debug);
-    this.worldrenderer_render.renderRender(now, graphics, camera, world, mbr, window, this.debug, render);
-    this.worldrenderer_debug.renderDebug(now, graphics, camera, world, mbr, window, this.debug);
+    this.worldrenderer_start.renderStart(now, mbr, window, graphics, camera, world, this.debug);
+    this.worldrenderer_render.renderRender(now, mbr, window, graphics, camera, world, this.debug, render);
+    this.worldrenderer_debug.renderDebug(now, mbr, window, graphics, camera, world, this.debug);
     this.worldrenderer_end.renderEnd(graphics, mbr);
 }
 

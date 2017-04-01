@@ -41,10 +41,7 @@ MenuView.prototype.resume = function(when) {
 }
 
 
-MenuView.prototype.resizeText = function() { this.view.resizeText(); }
-
 MenuView.prototype.show = function() { 
-    this.resizeUI();
     this.view.show(); 
 }
 
@@ -52,10 +49,7 @@ MenuView.prototype.hide = function() { this.view.hide(); }
 
 MenuView.prototype.resize = function() { 
     this.view.resize();
-    this.resizeUI();
 }
-
-MenuView.prototype.resizeUI = function() { this.view.resizeUI(); }
 
 MenuView.prototype.render = function(now, game) { 
     if (this.follow) this.renderFollow(now, game);
@@ -86,16 +80,12 @@ MenuView.prototype.renderFollow = function(now, game) {
     this.view.renderer.mbr = world.players.getMbr(this.view.renderer.mbr);
 
     var offx = this.offset.x;
-    this.view.renderer.mbr.x -= offx;
-    this.view.renderer.mbr.width += offx;
-    
     var offy = this.offset.y;
-    this.view.renderer.mbr.y -= offy;
-    this.view.renderer.mbr.height += offy;
-    
     var offz = this.offset.z;
-    this.view.renderer.mbr.z -= offz;
-    this.view.renderer.mbr.depth += offz;
+    
+    this.view.renderer.camera.offset.x = offx;
+    this.view.renderer.camera.offset.y = offy;
+    this.view.renderer.camera.offset.z = offz;
     
     this.view.render(now, world);
 }

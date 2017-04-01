@@ -5,6 +5,12 @@ function ViewCamera() {
     this.speed = 5;
     this.originalspeed = this.speed;
     
+    this.offset = {
+        x : 0,
+        y : 0,
+        z : 0
+    }
+    
     this.shake = {
         magnitude: 0,
         duration: 0,
@@ -27,19 +33,15 @@ function ViewCamera() {
     }
 
     this.blur = {
-        blur : false,
-        shift : false,
         near : {
             min_distance : 0,
             max_distance : 100,
-            amount : .25,
-            shift : 2.5
+            amount : 10
         }, 
         far : {
-            min_distance : 1000,
-            max_distance : 2000,
-            amount : .5,
-            shift : 1.5
+            min_distance : 200,
+            max_distance : 1000,
+            amount : 10
         }
     }
     
@@ -52,10 +54,12 @@ function ViewCamera() {
 }
 
 ViewCamera.prototype.shouldBlur = function(distance) {
-    return ((this.blur.blur || this.blur.shift)  && (distance >= this.blur.far.min_distance || distance <= this.blur.near.min_distance));
+    return ((distance >= this.blur.far.min_distance || distance <= this.blur.near.min_distance));
 }
 
 ViewCamera.prototype.getBlurAmount = function(distance) {
+    distance /= 10;
+    if (!this.shouldBlur(distance)) return 0;
     if (distance >= this.blur.far.max_distance) return this.blur.far.amount;
     if (distance <= -this.blur.near.max_distance) return this.blur.near.amount;
     if (distance > -this.blur.near.min_distance) return 1;
@@ -70,26 +74,8 @@ ViewCamera.prototype.getBlurAmountByDistance = function(distance, blur) {
     var ap = blur.amount * p;
     var dd = 1 - blur.amount;
     var out = dd * ap;
-    return 1 - out;
+    return floor(1 - out);
 }
-
-
-ViewCamera.prototype.getBlurShiftAmount = function(distance) {
-    if (distance >= this.blur.far.max_distance) return this.blur.far.shift;
-    if (distance <= -this.blur.near.max_distance) return this.blur.near.shift;
-    if (distance > -this.blur.near.min_distance) return 1;
-    if (distance < -this.blur.near.min_distance) return this.getBlurShiftByDistance(abs(distance), this.blur.near);
-    else return this.getBlurShiftByDistance(distance, this.blur.far);
-}
-
-ViewCamera.prototype.getBlurShiftByDistance = function(distance, blur) {
-    var maxd = blur.max_distance - blur.min_distance;
-    var d = distance - blur.min_distance;
-    var p = d / maxd;
-    var ap = blur.shift * p;
-    return ap;
-}
-
 
 ViewCamera.prototype.shakeScreen = function(magnitude, duration) {
     this.shake.magnitude = magnitude;
@@ -110,14 +96,30 @@ ViewCamera.prototype.getView = function(now, mbr, width, height, follow, paused)
     } else {
         this.speed = this.originalspeed;
     }
+
+    mbr = this.applyOffset(mbr);
     
     mbr = this.scaleMbr(mbr, width, height);
     mbr = this.roundMbr(mbr);
     mbr = this.getCameraBox(mbr);
     mbr = this.getCenterPoint(now, mbr, paused);
+    
     return mbr;
 }
 
+ViewCamera.prototype.applyOffset = function(mbr) {
+    mbr.x += this.offset.x;
+    mbr.width += this.offset.x;
+    mbr.y -= this.offset.y;
+    mbr.height += this.offset.y;
+    mbr.z -= this.offset.z;
+    mbr.depth += this.offset.z;
+    return mbr;
+}
+
+
+
+    
 ViewCamera.prototype.roundMbr = function(mbr) {
     mbr.x = round(mbr.x);
     mbr.y = round(mbr.y);

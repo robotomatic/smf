@@ -13,7 +13,7 @@ function WorldRendererDebug(renderitems) {
     this.polygon = new Polygon();
 }
 
-WorldRendererDebug.prototype.renderDebug = function(now, graphics, camera, world, mbr, window, debug) {
+WorldRendererDebug.prototype.renderDebug = function(now, mbr, window, graphics, camera, world, debug) {
     if (debug.level.render) this.renderDebugItems(graphics, mbr, window);
 }
 

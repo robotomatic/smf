@@ -12,9 +12,9 @@ function View(gamecontroller, id, width, height, scale) {
     this.scale = scale;
     this.parent = document.getElementById("main");
     
-    this.bluramount = 2;
-    var v = new ViewGraphics(this.bluramount);
+    var v = new ViewGraphics();
     this.graphics = v.graphics;
+    
     this.blur = true;
     
     this.rendertarget = {
@@ -36,13 +36,10 @@ function View(gamecontroller, id, width, height, scale) {
     this.ready = false;
     this.paused = false;
     
-    this.doublebuffer = true;
-    
     this.createGraphics();
     this.createView(gamecontroller);
     
     this.image = new Image(null, 0, 0, 0, 0);
-    
 }
 
 View.prototype.reset = function(when) { 
@@ -59,23 +56,8 @@ View.prototype.resume = function(when) {
     this.paused = false;
 }
 
-View.prototype.setBlur = function(amount) { 
-    this.blur = amount > 0 ? true : false;
-    this.bluramount = amount;
-    this.setGraphicsBlur(amount);
-}
-
 View.prototype.toggleBlur = function() { 
     this.blur = !this.blur;
-    var amount = this.blur ? this.bluramount : 0;
-    this.setGraphicsBlur(amount);
-}
-
-View.prototype.setGraphicsBlur = function(blur) { 
-    var keys = Object.keys(this.graphics);
-    for (var i = 0; i < keys.length; i++)  {
-        if (this.graphics[keys[i]].blur != undefined) this.graphics[keys[i]].blur = this.blur ? this.bluramount : false;
-    }
 }
 
 View.prototype.toggleStretch = function() { 
@@ -129,42 +111,30 @@ View.prototype.createView = function(gamecontroller) {
 }
 
 View.prototype.resize = function() {
-
     var rect = this.parent.getBoundingClientRect();
     var rwidth = rect.width;
     var rheight = rect.height;
-    
     if (!rwidth || !rheight) return;
-    
     logDev("window: " + rwidth + " x " + rheight);
-
     var cwidth = this.width;
     var cheight = this.height;
-
     if (this.rendertarget.auto) {
         var r = rheight / rwidth;
         cheight = cwidth * r;
     }
-    
     if (cwidth > rwidth) {
         cwidth = rwidth;
     }
-    
     if (cheight > rheight) {
         cheight = rheight;
     }
-
     this.height = round(cheight);
     this.width = round(cwidth);
-    
     var p = round(cwidth / this.width) * 100;
     logDev("canvas: " + cwidth + " x " + cheight + " == " + p + "%");
-    
     var ctop = (rheight - cheight) / 2;
     var cleft = (rwidth - cwidth) / 2;
-    
     this.sizeViewGraphics(cleft, ctop, cwidth, cheight);
-    
     logDev("");
 }
 
@@ -178,22 +148,18 @@ View.prototype.sizeViewGraphics = function(left, top, width, height) {
 }
 
 View.prototype.sizeGraphics = function(graphics, left, top, width, height) { 
-    
     var canvas = graphics.canvas;
     canvas.setPosition(left, top);
     canvas.setSize(width, height);
-    
     var rect = this.parent.getBoundingClientRect();
     var rwidth = rect.width;
     var rheight = rect.height;
     var s = round(rwidth / width);
     this.viewscale = s;
-    
     var sw = round(width * s);
     var dw = round(sw - width);
     var sh = round(height * s);
     var dh = round(sh - height);
-
     if (graphics.fit) {
         var testheight = height * s;
         if (testheight > rheight) {
@@ -209,20 +175,14 @@ View.prototype.sizeGraphics = function(graphics, left, top, width, height) {
         logDev("width: " + sw + ", height: " + sh);
         return;
     }
-
     canvas.setScale(1);
     graphics.scale = 1;
 }
-
-View.prototype.resizeUI = function() { }
-    
-View.prototype.resizeText = function() { }
 
 View.prototype.show = function() { 
 }
 
 View.prototype.hide = function() { 
-    return;
 }
 
 View.prototype.setBackground = function(world) {
@@ -246,25 +206,13 @@ View.prototype.setBackground = function(world) {
 }
 
 View.prototype.update = function(now, delta, world) {
-    this.updateUI();
-    return true;
-}
-
-View.prototype.setMessage = function(message) { }
-
-View.prototype.updateUI = function() {
 }
 
 View.prototype.render = function(now, world, render, follow) {
     this.setBackground(world);
-    if (this.doublebuffer) {
-        this.clearGraphics();
-        this.renderer.render(now, world, this.rendertarget.canvas.width, this.rendertarget.canvas.height, this.graphics["main"], render, follow, this.gamecontroller.paused);
-        this.renderView();
-    } else {
-        this.clearViewGraphics(this.rendertarget);
-        this.renderer.render(now, world, this.rendertarget.canvas.width, this.rendertarget.canvas.height, this.rendertarget, render, follow, this.gamecontroller.paused);
-    }
+    this.clearGraphics();
+    this.renderer.render(now, world, this.rendertarget.canvas.width, this.rendertarget.canvas.height, this.graphics, render, follow, this.gamecontroller.paused);
+    this.renderView();
     this.renderFPS();
 }
 
@@ -287,13 +235,38 @@ View.prototype.renderView = function() {
     }
 }
 
+
+
+
+
+
 View.prototype.renderViewGraphics = function(graphics) {
     graphics.canvas.commit();
     this.image.width = graphics.canvas.width;
     this.image.height = graphics.canvas.height;
     this.image.data = graphics.canvas.getData();
+    if (graphics.blur && this.blur) {
+        graphics.canvas.blur(this.rendertarget.canvas, graphics.blur * graphics.scale);
+    }
     this.image.draw(this.rendertarget.canvas);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 View.prototype.updateFPS = function(type, fps, avg) {
     this.fps = fps;

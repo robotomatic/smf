@@ -5,27 +5,27 @@ function WorldRendererStart(renderitems) {
     this.index = 0;
 }
 
-WorldRendererStart.prototype.renderStart = function(mbr, window, graphics, camera, world, debug) {
+WorldRendererStart.prototype.renderStart = function(now, mbr, window, graphics, camera, world, debug) {
     this.index = 0;
-    this.getRenderItems(mbr, window, graphics, camera, world, debug);
+    this.getRenderItems(mbr, window, graphics["main"], camera, world, debug);
 }
 
 WorldRendererStart.prototype.getRenderItems = function(mbr, window, graphics, camera, world, debug) {
     var cp = window.getCenter();
-    this.getRenderItemsWorldItems(mbr, window, cp, graphics, world, debug);
-    this.getRenderItemsWorldPlayers(mbr, window, cp, graphics, world, debug);
+    this.getRenderItemsWorldItems(mbr, window, cp, graphics, camera, world, debug);
+    this.getRenderItemsWorldPlayers(mbr, window, cp, graphics, camera, world, debug);
 }
 
-WorldRendererStart.prototype.getRenderItemsWorldItems = function(mbr, window, cp, graphics, world, debug) {
+WorldRendererStart.prototype.getRenderItemsWorldItems = function(mbr, window, cp, graphics, camera, world, debug) {
     var t = world.items.length;
     for (var i = 0; i < t; i++) {
         var item = world.items[i];
         if (item.isbounds) continue;
-        this.getRenderItemsWorldLevelLayerItemsItem(mbr, window, cp, graphics, world, item, debug);
+        this.getRenderItemsWorldLevelLayerItemsItem(mbr, window, cp, graphics, camera, world, item, debug);
     }
 }
 
-WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(mbr, window, cp, graphics, world, item, debug) {
+WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(mbr, window, cp, graphics, camera, world, item, debug) {
     
     if (item.isHidden()) return;
     
@@ -52,6 +52,14 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
         if (isNaN(d)) d = 0;
     }
     
+    
+    // todo: this is fucky. Need to consider xyz distance...
+//    var oz = clamp(item.box.z + item.box.depth - mbr.z);
+    
+    var oz = clamp(d);
+    var blur = camera.getBlurAmount(oz);
+    if (item.width == "100%") blur = 10000;
+    
     var id = item.id;
     var index = this.index++;
     
@@ -66,6 +74,7 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
         newitem.height = item.height;
         newitem.depth = item.depth;
         newitem.distance = d;
+        newitem.blur = blur;
     } else {
         var newitem = {
             type : "item",
@@ -82,34 +91,40 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
             item : item,
             box : item.box,
             mbr : item.getMbr(),
-            geometry : item.geometry
+            geometry : item.geometry,
+            blur : blur
         }
         this.renderitems.keys[id] = newitem;
     }
     this.renderitems.all[index] = newitem;
 }
 
-WorldRendererStart.prototype.getRenderItemsWorldPlayers = function(mbr, window, cp, graphics, world, debug) {
+WorldRendererStart.prototype.getRenderItemsWorldPlayers = function(mbr, window, cp, graphics, camera, world, debug) {
     var players = world.players;
     if (!players || !players.players) return;
     var t = players.players.length;
     for (var i = 0; i < t; i++) {
         var player = players.players[i];
-        this.getRenderItemsWorldPlayersPlayer(mbr, window, cp, graphics, player, debug);
+        this.getRenderItemsWorldPlayersPlayer(mbr, window, cp, graphics, camera, player, debug);
     }
 }
 
-WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(mbr, window, cp, graphics, player, debug) {
+WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(mbr, window, cp, graphics, camera, player, debug) {
     player.smooth();
     player.translate(mbr, mbr.width, mbr.height);
     var playermbr = player.getMbr();
     var showing = player.isVisible(window, mbr, 50);
     var d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, player.controller, 0, 0, -10);
     if (!showing || isNaN(d)) d = 0;
+    
+    // todo: this is fucky. Need to consider xyz distance...
+//    var oz = clamp(playermbr.z - mbr.z);
+    var oz = clamp(d);
+    var blur = camera.getBlurAmount(oz);
+    
     var id = player.name + "-" + player.id;
-    
     var index = this.index++;
-    
+
     if (this.renderitems.keys[id]) {
         var newitem = this.renderitems.keys[id];
         newitem.index = index;
@@ -121,6 +136,7 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(mbr, wi
         newitem.height = player.controller.height;
         newitem.depth = player.controller.depth;
         newitem.distance = d;
+        newitem.blur = blur;
     } else {
         var newitem = {
             type : "player",
@@ -135,7 +151,8 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(mbr, wi
             depth : player.controller.depth,
             distance: d,
             item : player,
-            mbr : playermbr
+            mbr : playermbr,
+            blur : blur
         }
         this.renderitems.keys[id] = newitem;
     }
