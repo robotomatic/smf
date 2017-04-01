@@ -3,7 +3,6 @@
         "name" : "Chompzilla",
         "width" : 29,
         "height" : 48,
-        "pad" : 1,
         "debug" : false,
         "idlespeed" : ".5",
         "color" : "#73a819",
@@ -61,7 +60,7 @@
                             },
                             "hood-bottom"  : {
                                 "width" : 50,
-                                "height" : 10,
+                                "height" : 11,
                                 "x" : 18,
                                 "y" : 40
                             }
