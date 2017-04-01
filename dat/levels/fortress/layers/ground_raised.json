@@ -73,8 +73,7 @@
                     }
                 ]
             },
-            
-            
+
             {
                 "x" : 2100,
                 "y" : 680,
@@ -90,26 +89,48 @@
                     }
                 ]
             },
+            
+            
+            
+            
+            
+            
+            
             {
-                "x" : 2800,
+                "x" : 3500,
                 "y" : 680,
                 "z" : 1200,
-                "depth" : 600,
+                "depth" : 200,
                 "itemtype" : "ground-raised",
                 "parts" : [
                     {
                         "x": 0,
                         "y": 0,
-                        "width": 700,
-                        "height": 40
+                        "width": 400,
+                        "height": 340
                     }
                 ]
             },
             {
                 "x" : 3500,
                 "y" : 680,
-                "z" : 1200,
-                "depth" : 600,
+                "z" : 1400,
+                "depth" : 200,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 400,
+                        "height": 340
+                    }
+                ]
+            },
+            {
+                "x" : 3500,
+                "y" : 680,
+                "z" : 1600,
+                "depth" : 200,
                 "itemtype" : "ground-raised",
                 "parts" : [
                     {

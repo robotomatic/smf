@@ -48,7 +48,7 @@
 
             "ground" : {
                 "name" : "ground",
-                "material" : "wood-horizontal",
+                "material" : "rock",
                 "items" : [
                     {
                         "name" : "ground-snow",

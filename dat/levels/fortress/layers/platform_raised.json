@@ -6,6 +6,27 @@
         "cache" : true,
         "depth" : 300,
         "items" : [
+            
+            
+            {
+                "x" : 2800,
+                "y" : 680,
+                "z" : 1200,
+                "depth" : 600,
+                "itemtype" : "raised-platform",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 700,
+                        "height": 40
+                    }
+                ]
+            },
+            
+            
+            
+            
 
             {
                 "x" : 4000,
