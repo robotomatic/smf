@@ -284,5 +284,5 @@ View.prototype.renderFPS = function() {
     this.fpstext.y = this.ty;
     this.rendertarget.canvas.setFillStyle("black");
     this.rendertarget.canvas.beginPath();
-    this.fpstext.draw(this.rendertarget.canvas, 8);
+    this.fpstext.draw(this.rendertarget.canvas, 12);
 }
