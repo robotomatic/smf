@@ -1,7 +1,7 @@
 {
     "width" : 400,
     "height" : 200,
-    "depth" : 200,
+    "depth" : 2300,
     "layers" : [
         {
             "name" : "bounds",
@@ -16,7 +16,7 @@
                     "z" : -100,
                     "width": 400,
                     "height": 50,
-                    "depth" : 300
+                    "depth" : 2300
                 }
             ]
         }
