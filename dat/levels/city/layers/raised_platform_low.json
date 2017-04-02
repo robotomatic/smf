@@ -10,8 +10,34 @@
                 "x" : 1800,
                 "y" : 950,
                 "z" : 900,
-                "depth" : 900,
+                "depth" : 300,
                 "trim" : 50,
+                "geometry" : {
+                    "visible" : {
+                        "back" : false
+                    }
+                },
+                "itemtype" : "raised-platform",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 600,
+                        "height": 50
+                    }
+                ]
+            },
+            {
+                "x" : 1800,
+                "y" : 950,
+                "z" : 1200,
+                "depth" : 600,
+                "trim" : 50,
+                "geometry" : {
+                    "visible" : {
+                        "front" : false
+                    }
+                },
                 "itemtype" : "raised-platform",
                 "parts" : [
                     {

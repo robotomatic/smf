@@ -11,7 +11,13 @@
                 "y" : 700,
                 "z" : 1200,
                 "depth" : 900,
+                "bottom" : true,
                 "trim" : 50,
+                "geometry" : {
+                    "visible" : {
+                        "right" : false
+                    }
+                },
                 "itemtype" : "raised-platform",
                 "parts" : [
                     {
@@ -27,7 +33,30 @@
                 "x" : 1500,
                 "y" : 700,
                 "z" : 1200,
-                "depth" : 1800,
+                "depth" : 900,
+                "bottom" : true,
+                "trim" : 50,
+                "geometry" : {
+                    "visible" : {
+                        "left" : false
+                    }
+                },
+                "itemtype" : "raised-platform",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 600,
+                        "height": 50
+                    }
+                ]
+            },
+            {
+                "x" : 1500,
+                "y" : 700,
+                "z" : 2100,
+                "depth" : 900,
+                "bottom" : true,
                 "trim" : 50,
                 "itemtype" : "raised-platform",
                 "parts" : [

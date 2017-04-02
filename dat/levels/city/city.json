@@ -21,12 +21,12 @@
             "file" : "dat/levels/city/layers/ground_raised.json"
         },
         
-        "raised platform 2" : {
-            "file" : "dat/levels/city/layers/raised_platform_2.json"
+        "raised platform high" : {
+            "file" : "dat/levels/city/layers/raised_platform_high.json"
         },
         
-        "raised platform 3" : {
-            "file" : "dat/levels/city/layers/raised_platform_3.json"
+        "raised platform low" : {
+            "file" : "dat/levels/city/layers/raised_platform_low.json"
         },
         
         "liquid" : {

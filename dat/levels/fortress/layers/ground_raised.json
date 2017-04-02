@@ -100,7 +100,7 @@
                 "x" : 3500,
                 "y" : 680,
                 "z" : 1200,
-                "depth" : 200,
+                "depth" : 300,
                 "itemtype" : "ground-raised",
                 "parts" : [
                     {
@@ -114,23 +114,8 @@
             {
                 "x" : 3500,
                 "y" : 680,
-                "z" : 1400,
-                "depth" : 200,
-                "itemtype" : "ground-raised",
-                "parts" : [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "width": 400,
-                        "height": 340
-                    }
-                ]
-            },
-            {
-                "x" : 3500,
-                "y" : 680,
-                "z" : 1600,
-                "depth" : 200,
+                "z" : 1500,
+                "depth" : 300,
                 "itemtype" : "ground-raised",
                 "parts" : [
                     {

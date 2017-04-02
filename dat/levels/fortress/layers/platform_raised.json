@@ -13,6 +13,7 @@
                 "y" : 680,
                 "z" : 1200,
                 "depth" : 600,
+                "bottom" : true,
                 "itemtype" : "raised-platform",
                 "parts" : [
                     {
