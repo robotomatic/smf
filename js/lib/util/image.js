@@ -69,3 +69,7 @@ Image.prototype.draw = function(gamecanvas, dx, dy, dw, dh) {
         gamecanvas.drawImage(this.data, this.x, this.y, this.width, this.height);
     }
 }
+
+Image.prototype.blur = function(gamecanvas, blur) {
+    gamecanvas.blur(this.data, blur);
+}

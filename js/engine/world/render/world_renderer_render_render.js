@@ -19,8 +19,12 @@ WorldRendererRender.prototype.renderRenderItems = function(now, graphics, camera
         var wd = round(renderitem.z - mbr.z);
         
         var g = null;
-        if (renderitem.blur) g = graphics["blur"];
-        else g = graphics["main"];
+        if (renderitem.blur) {
+            if (renderitem.blur >= 10) g = graphics["blur_max"];
+            else g = graphics["blur"];
+        } else {
+            g = graphics["main"];
+        }
         
         if (renderitem.type == "item") this.renderItem(now, window, g, camera, world, renderitem.item, wd, debug);
         else if (renderitem.type == "player") this.renderPlayer(now, window, g, camera, world, renderitem.item, wd, debug);

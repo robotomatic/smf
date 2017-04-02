@@ -379,10 +379,10 @@ GameCanvas.prototype.drawImage = function(data, x, y, w, h, xx, yy, ww, hh) {
     yy = clamp(yy);
     ww = clamp(ww);
     hh = clamp(hh);
-    if (xx && yy && ww && hh) this.ctx.drawImage(data, x, y, w, h, xx, yy, ww, hh);
-    else this.ctx.drawImage(data, x, y, w, h);
+    if (xx && yy && ww && hh) this.ctx.drawImage(data.canvas, x, y, w, h, xx, yy, ww, hh);
+    else this.ctx.drawImage(data.canvas, x, y, w, h);
 }
 
 GameCanvas.prototype.blur = function(target, blur) {
-    blurCanvas(target, this, blur);
+    blurCanvas(this, target, blur);
 }

@@ -53,10 +53,7 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
     }
     
     
-    // todo: this is fucky. Need to consider xyz distance...
-//    var oz = clamp(item.box.z + item.box.depth - mbr.z);
-    
-    var oz = clamp(d);
+    var oz = clamp(d - mbr.z);
     var blur = camera.getBlurAmount(oz);
     if (item.width == "100%") blur = 10000;
     
@@ -117,9 +114,7 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(mbr, wi
     var d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, player.controller, 0, 0, -10);
     if (!showing || isNaN(d)) d = 0;
     
-    // todo: this is fucky. Need to consider xyz distance...
-//    var oz = clamp(playermbr.z - mbr.z);
-    var oz = clamp(d);
+    var oz = clamp(d - mbr.z);
     var blur = camera.getBlurAmount(oz);
     
     var id = player.name + "-" + player.id;
@@ -165,7 +160,7 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItemCenter = func
     }
     var mbrcp = mbr.getCenter();
     var ix = item.x + (item.width / 2) + ox;
-    var iy = (item.y * 2) + oy;
+    var iy = item.y + oy;
     var iz = item.z + (item.depth) + oz;
     var pd = distance3D(ix, iy, iz, mbrcp.x, mbrcp.y, mbrcp.z);
     return round(pd);

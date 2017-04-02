@@ -628,7 +628,7 @@ Item.prototype.renderEnd = function(when) {
     this.image.y = 0;
     this.image.width = this.gamecanvas.width;
     this.image.height = this.gamecanvas.height;
-    this.image.data = this.gamecanvas.getData();
+    this.image.data = this.gamecanvas;
 }
 
 Item.prototype.drawImage = function(gamecanvas, scale = 1, offset = 0) {

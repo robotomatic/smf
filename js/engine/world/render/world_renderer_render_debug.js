@@ -26,12 +26,20 @@ WorldRendererDebug.prototype.renderDebugItemsItem = function(graphics, item, mbr
     if (item.item.width == "100%") return;
     if (item.type == "player") return;
     
+    var g = null;
+    if (item.blur) {
+        if (item.blur >= 10) g = graphics["blur_max"];
+        else g = graphics["blur"];
+    } else {
+        g = graphics["main"];
+    }
+    
 //    this.renderDebugItemsItemBox(graphics, item);
 //    this.renderDebugItemsItemCenter(graphics, window, mbr);
 //    this.renderDebugItemsItemText(graphics, item);
     
-    this.renderDebugItemsItemGeometry(graphics, item);
-    graphics.canvas.commit();
+    this.renderDebugItemsItemGeometry(g, item);
+    g.canvas.commit();
 }
 
 WorldRendererDebug.prototype.renderDebugItemsItemCenter = function(graphics, window, mbr) {
