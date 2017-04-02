@@ -44,18 +44,22 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
         }
     } 
     
+    var showing = false;
     var d = 0;
     if (!item.underwater) {
         item.item3D.createItem3D(item, world.worldrenderer.itemrenderer, mbr, width, height, debug);
-        var showing = item.isVisible(window, mbr, 100);
-        d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, item, 0, item.height, 0);
+        showing = item.isVisible(window, mbr, 100);
+        d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, item, 0, 0, 0);
         if (isNaN(d)) d = 0;
     }
-    
     
     var oz = clamp(d - mbr.z);
     var blur = camera.getBlurAmount(oz);
     if (item.width == "100%") blur = 10000;
+    
+    var itemmbr = item.getMbr();
+    var imd = itemmbr.z + itemmbr.depth;
+    if (imd - mbr.z < -100) blur = -10;
     
     var id = item.id;
     var index = this.index++;
@@ -87,7 +91,7 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
             distance : d,
             item : item,
             box : item.box,
-            mbr : item.getMbr(),
+            mbr : itemmbr,
             geometry : item.geometry,
             blur : blur
         }
@@ -116,6 +120,8 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(mbr, wi
     
     var oz = clamp(d - mbr.z);
     var blur = camera.getBlurAmount(oz);
+    var ddd = playermbr.z - mbr.z;
+    if (ddd < -80) blur = -10;
     
     var id = player.name + "-" + player.id;
     var index = this.index++;
@@ -160,7 +166,7 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItemCenter = func
     }
     var mbrcp = mbr.getCenter();
     var ix = item.x + (item.width / 2) + ox;
-    var iy = item.y + oy;
+    var iy = (item.y + item.height) + oy;
     var iz = item.z + (item.depth) + oz;
     var pd = distance3D(ix, iy, iz, mbrcp.x, mbrcp.y, mbrcp.z);
     return round(pd);

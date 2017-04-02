@@ -12,13 +12,19 @@ function ViewGraphics() {
             canvas : null,
             css : "",
             scale : 1,
-            blur : 2
+            blur : 1
         },
         main : {
             canvas : null,
             css : "",
             scale : 1,
             blur : 0
+        },
+        blur_min : {
+            canvas : null,
+            css : "",
+            scale : 1,
+            blur : 3
         }
     }
 }

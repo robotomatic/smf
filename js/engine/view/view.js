@@ -247,7 +247,8 @@ View.prototype.renderViewGraphics = function(graphics) {
     this.image.data = graphics.canvas;
     this.image.draw(this.rendertarget.canvas);
     if (graphics.blur && this.blur) {
-        this.image.blur(this.rendertarget.canvas, graphics.blur * graphics.scale);
+        var blur = graphics.blur * graphics.scale;
+        this.image.blur(this.rendertarget.canvas, blur);
     }
 }
 
