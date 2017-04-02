@@ -196,16 +196,16 @@
                                 }
                             },
                             "horn" : { 
-                                "width" : 15, 
-                                "height" : 15,
+                                "width" : 18, 
+                                "height" : 12,
                                 "x" : 85, 
-                                "y" : -8,
+                                "y" : -5,
                                 "angle" : 10,
                                 "color" : "#6c2d1b",
                                 "zindex" : 7000,
                                 "pointinfo" : {
-                                    "1" : "round",
-                                    "0" : "skip"
+                                    "0" : "round",
+                                    "1" : "skip"
                                 }
                             },
                             "chin" : {
@@ -296,7 +296,7 @@
             "body" : {
                 "parts" : {
                     "body-spikes" : {
-                        "color" : "#628e1a",
+                        "color" : "#6c2d1b",
                         "parts" : {
                             "spike-top" : {
                                 "width" : 20,
@@ -334,7 +334,7 @@
                                 "zindex" : -120,
                                 "angle" : 15,
                                 "path" : "round",
-                                "color" : "#628e1a"
+                                "color" : "#6c2d1b"
                             },
                             "tail-bottom" : {
                                 "width" : 48,

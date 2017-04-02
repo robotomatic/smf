@@ -244,30 +244,6 @@
             
             "body" : {
                 "parts" : {
-                    "body-spikes" : {
-                        "color" : "#628e1a",
-                        "parts" : {
-                            "spike-top" : {
-                                "width" : 20,
-                                "height" : 10,
-                                "x" :  10,
-                                "y" : 53,
-                                "zindex" : 120,
-                                "angle" : -10,
-                                "path" : "round"
-                            },
-                            "spike-mid" : {
-                                "width" : 20,
-                                "height" : 10,
-                                "x" :  0,
-                                "y" : 63,
-                                "zindex" : -120,
-                                "angle" : -20,
-                                "path" : "round"
-                            }
-                        }
-                    },
-                    
                     "tail" : {
                         "width" : 1,
                         "height" : 1,
@@ -275,16 +251,6 @@
                         "y" : 78,
                         "zindex" : -100,
                         "parts" : {
-                            "spike-tail" : {
-                                "width" : 10,
-                                "height" : 5,
-                                "x" :  -12,
-                                "y" : 71,
-                                "zindex" : -120,
-                                "angle" : 15,
-                                "path" : "round",
-                                "color" : "#628e1a"
-                            },
                             "tail-bottom" : {
                                 "width" : 48,
                                 "height" : 18,
