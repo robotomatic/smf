@@ -1,8 +1,8 @@
 {
     "chompy" : {
         "name" : "Chompzilla",
-        "width" : 29,
-        "height" : 48,
+        "width" : 60,
+        "height" : 100,
         "debug" : false,
         "idlespeed" : ".5",
         "color" : "#73a819",

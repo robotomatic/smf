@@ -1,8 +1,8 @@
 {
     "yeti" : {
         "name" : "Bluster",
-        "width" : 54,
-        "height" : 54, 
+        "width" : 120,
+        "height" : 120, 
         "debug" : false,
         "idlespeed" : ".45",
         "color" : "#c4dbe5",
