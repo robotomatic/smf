@@ -151,8 +151,8 @@ MenuView.prototype.updateNPC = function(when, world, npc) {
     if (!player.controller.waiting && 
         !player.controller.move_left && 
         !player.controller.move_right && 
-//        !player.controller.move_in && 
-//        !player.controller.move_out && 
+        !player.controller.move_in && 
+        !player.controller.move_out && 
         player.controller.grounded) {
         
         var dir = random(0, 8);
