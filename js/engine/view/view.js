@@ -244,11 +244,11 @@ View.prototype.renderViewGraphics = function(graphics) {
     graphics.canvas.commit();
     this.image.width = graphics.canvas.width;
     this.image.height = graphics.canvas.height;
-    this.image.data = graphics.canvas.getData();
-    if (graphics.blur && this.blur) {
-        graphics.canvas.blur(this.rendertarget.canvas, graphics.blur * graphics.scale);
-    }
+    this.image.data = graphics.canvas;
     this.image.draw(this.rendertarget.canvas);
+    if (graphics.blur && this.blur) {
+        this.image.blur(this.rendertarget.canvas, graphics.blur * graphics.scale);
+    }
 }
 
 

@@ -2,11 +2,17 @@
 
 function ViewGraphics() {
     this.graphics = {
+        blur_max : {
+            canvas : null,
+            css : "",
+            scale : 1,
+            blur : 3
+        },
         blur : {
             canvas : null,
             css : "",
             scale : 1,
-            blur : 4
+            blur : 2
         },
         main : {
             canvas : null,
