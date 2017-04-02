@@ -6,12 +6,12 @@
             "friction" : 0.6
         },
         "color" : {
-            "color" : "#c1e3de",
+            "color" : "#d9ebf2",
             "projected" : {
-                "front" : "#c1e3de",
-                "top" : "#d3f0ec",
-                "side" : "#b2d8d2",
-                "bottom" : "#c0d0cd"
+                "front" : "#dbe0e2",
+                "top" : "#d9ebf2",
+                "side" : "#c6d5db",
+                "bottom" : "#cdd3d6"
             }
        }
    },
@@ -22,12 +22,12 @@
             "friction" : 0.6
         },
         "color" : {
-            "color" : "#5dafa2",
+            "color" : "#d9ebf2",
             "projected" : {
-                "front" : "#ddfa9c",
-                "top" : "#94e0d4",
-                "side" : "#ddfa9c",
-                "bottom" : "#5dafa2"
+                "front" : "#dbe0e2",
+                "top" : "#d9ebf2",
+                "side" : "#c6d5db",
+                "bottom" : "#cdd3d6"
             }
        }
    }

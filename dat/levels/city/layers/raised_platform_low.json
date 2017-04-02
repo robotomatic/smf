@@ -6,120 +6,10 @@
         "cache" : true,
         "items" : [
 
-            {
-                "x" : 1800,
-                "y" : 950,
-                "z" : 900,
-                "depth" : 300,
-                "trim" : 50,
-                "geometry" : {
-                    "visible" : {
-                        "back" : false
-                    }
-                },
-                "itemtype" : "raised-platform",
-                "parts" : [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "width": 600,
-                        "height": 50
-                    }
-                ]
-            },
-            {
-                "x" : 1800,
-                "y" : 950,
-                "z" : 1200,
-                "depth" : 600,
-                "trim" : 50,
-                "geometry" : {
-                    "visible" : {
-                        "front" : false
-                    }
-                },
-                "itemtype" : "raised-platform",
-                "parts" : [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "width": 600,
-                        "height": 50
-                    }
-                ]
-            },
-            
-            
-            
-            {
-                "x" : 1800,
-                "y" : 1000,
-                "z" : 900,
-                "depth" : 50,
-                "itemtype" : "raised-platform-support",
-                "parts" : [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "width": 50,
-                        "height": 100
-                    }
-                ]
-            },
-            {
-                "x" : 1800,
-                "y" : 1000,
-                "z" : 1750,
-                "depth" : 50,
-                "itemtype" : "raised-platform-support",
-                "parts" : [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "width": 50,
-                        "height": 100
-                    }
-                ]
-            },
-            
-            {
-                "x" : 2350,
-                "y" : 1000,
-                "z" : 900,
-                "depth" : 50,
-                "itemtype" : "raised-platform-support",
-                "parts" : [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "width": 50,
-                        "height": 100
-                    }
-                ]
-            },
-            {
-                "x" : 2350,
-                "y" : 1000,
-                "z" : 1750,
-                "depth" : 50,
-                "itemtype" : "raised-platform-support",
-                "parts" : [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "width": 50,
-                        "height": 100
-                    }
-                ]
-            },
-            
-            
-            
-            
             
             {
                 "x" : 1500,
-                "y" : 950,
+                "y" : 750,
                 "z" : 1200,
                 "depth" : 600,
                 "trim" : 50,
@@ -128,7 +18,7 @@
                         "right" : false
                     }
                 },
-                "itemtype" : "raised-platform",
+                "itemtype" : "platform-raised",
                 "parts" : [
                     {
                         "x": 0,
@@ -142,34 +32,147 @@
             
             {
                 "x" : 1500,
-                "y" : 1000,
+                "y" : 800,
                 "z" : 1200,
                 "depth" : 50,
-                "itemtype" : "raised-platform-support",
+                "itemtype" : "platform-support",
                 "parts" : [
                     {
                         "x": 0,
                         "y": 0,
                         "width": 50,
-                        "height": 100
+                        "height": 400
                     }
                 ]
             },
             {
                 "x" : 1500,
-                "y" : 1000,
+                "y" : 800,
                 "z" : 1750,
                 "depth" : 50,
-                "itemtype" : "raised-platform-support",
+                "itemtype" : "platform-support",
                 "parts" : [
                     {
                         "x": 0,
                         "y": 0,
                         "width": 50,
-                        "height": 100
+                        "height": 400
+                    }
+                ]
+            },
+            
+            
+            
+            {
+                "x" : 1800,
+                "y" : 750,
+                "z" : 900,
+                "depth" : 300,
+                "trim" : 50,
+                "geometry" : {
+                    "visible" : {
+                        "back" : false
+                    }
+                },
+                "itemtype" : "platform-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 600,
+                        "height": 50
+                    }
+                ]
+            },
+            {
+                "x" : 1800,
+                "y" : 750,
+                "z" : 1200,
+                "depth" : 600,
+                "trim" : 50,
+                "geometry" : {
+                    "visible" : {
+                        "front" : false
+                    }
+                },
+                "itemtype" : "platform-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 600,
+                        "height": 50
+                    }
+                ]
+            },
+            
+            
+            
+            {
+                "x" : 1800,
+                "y" : 800,
+                "z" : 900,
+                "depth" : 50,
+                "itemtype" : "platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 400
+                    }
+                ]
+            },
+            {
+                "x" : 1800,
+                "y" : 800,
+                "z" : 1750,
+                "depth" : 50,
+                "itemtype" : "platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 400
+                    }
+                ]
+            },
+            
+            {
+                "x" : 2350,
+                "y" : 800,
+                "z" : 900,
+                "depth" : 50,
+                "itemtype" : "platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 400
+                    }
+                ]
+            },
+            {
+                "x" : 2350,
+                "y" : 800,
+                "z" : 1750,
+                "depth" : 50,
+                "itemtype" : "platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 400
                     }
                 ]
             }
+            
+            
+            
+            
             
             
             

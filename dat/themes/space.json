@@ -42,7 +42,7 @@
 
             "ground" : {
                 "name" : "ground",
-                "material" : "steel"
+                "material" : "slate"
             },
 
             "trim" : {

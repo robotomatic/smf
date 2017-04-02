@@ -6,13 +6,45 @@
         "cache" : true,
         "items" : [
 
+            {
+                "x" : 2900,
+                "y" : 700,
+                "z" : 2100,
+                "depth" : 600,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 600,
+                        "height": 500
+                    }
+                ]
+            },
             
             
             {
-                "x" : 2700,
+                "x" : 2600,
+                "y" : 800,
+                "z" : 1500,
+                "depth" : 600,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 600,
+                        "height": 400
+                    }
+                ]
+            },
+            
+            
+            {
+                "x" : 2900,
                 "y" : 900,
                 "z" : 600,
-                "depth" : 1800,
+                "depth" : 900,
                 "itemtype" : "ground-raised",
                 "parts" : [
                     {
@@ -23,6 +55,7 @@
                     }
                 ]
             }
+            
             
             
             

@@ -8,7 +8,7 @@
 
             {
                 "x" : 600,
-                "y" : 700,
+                "y" : 400,
                 "z" : 1200,
                 "depth" : 900,
                 "bottom" : true,
@@ -18,7 +18,7 @@
                         "right" : false
                     }
                 },
-                "itemtype" : "raised-platform",
+                "itemtype" : "platform-raised",
                 "parts" : [
                     {
                         "x": 0,
@@ -31,7 +31,7 @@
             
             {
                 "x" : 1500,
-                "y" : 700,
+                "y" : 400,
                 "z" : 1200,
                 "depth" : 900,
                 "bottom" : true,
@@ -41,7 +41,7 @@
                         "left" : false
                     }
                 },
-                "itemtype" : "raised-platform",
+                "itemtype" : "platform-raised",
                 "parts" : [
                     {
                         "x": 0,
@@ -53,12 +53,12 @@
             },
             {
                 "x" : 1500,
-                "y" : 700,
+                "y" : 400,
                 "z" : 2100,
                 "depth" : 900,
                 "bottom" : true,
                 "trim" : 50,
-                "itemtype" : "raised-platform",
+                "itemtype" : "platform-raised",
                 "parts" : [
                     {
                         "x": 0,
@@ -75,31 +75,31 @@
             
             {
                 "x" : 600,
-                "y" : 750,
+                "y" : 450,
                 "z" : 1200,
                 "depth" : 50,
-                "itemtype" : "raised-platform-support",
+                "itemtype" : "platform-support",
                 "parts" : [
                     {
                         "x": 0,
                         "y": 0,
                         "width": 50,
-                        "height": 250
+                        "height": 800
                     }
                 ]
             },
             {
                 "x" : 600,
-                "y" : 750,
+                "y" : 450,
                 "z" : 2050,
                 "depth" : 50,
-                "itemtype" : "raised-platform-support",
+                "itemtype" : "platform-support",
                 "parts" : [
                     {
                         "x": 0,
                         "y": 0,
                         "width": 50,
-                        "height": 250
+                        "height": 800
                     }
                 ]
             },
@@ -107,46 +107,46 @@
             
             {
                 "x" : 1500,
-                "y" : 750,
+                "y" : 450,
                 "z" : 1200,
                 "depth" : 50,
-                "itemtype" : "raised-platform-support",
-                "parts" : [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "width": 50,
-                        "height": 200
-                    }
-                ]
-            },
-            {
-                "x" : 1500,
-                "y" : 750,
-                "z" : 1750,
-                "depth" : 50,
-                "itemtype" : "raised-platform-support",
-                "parts" : [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "width": 50,
-                        "height": 200
-                    }
-                ]
-            },
-            {
-                "x" : 1500,
-                "y" : 750,
-                "z" : 2950,
-                "depth" : 50,
-                "itemtype" : "raised-platform-support",
+                "itemtype" : "platform-support",
                 "parts" : [
                     {
                         "x": 0,
                         "y": 0,
                         "width": 50,
                         "height": 300
+                    }
+                ]
+            },
+            {
+                "x" : 1500,
+                "y" : 450,
+                "z" : 1750,
+                "depth" : 50,
+                "itemtype" : "platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 300
+                    }
+                ]
+            },
+            {
+                "x" : 1500,
+                "y" : 450,
+                "z" : 2950,
+                "depth" : 50,
+                "itemtype" : "platform-support",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 50,
+                        "height": 800
                     }
                 ]
             },
@@ -156,46 +156,46 @@
             
             {
                 "x" : 2050,
-                "y" : 750,
+                "y" : 450,
                 "z" : 1200,
                 "depth" : 50,
-                "itemtype" : "raised-platform-support",
+                "itemtype" : "platform-support",
                 "parts" : [
                     {
                         "x": 0,
                         "y": 0,
                         "width": 50,
-                        "height": 200
+                        "height": 800
                     }
                 ]
             },
             {
                 "x" : 2050,
-                "y" : 750,
+                "y" : 450,
                 "z" : 1750,
                 "depth" : 50,
-                "itemtype" : "raised-platform-support",
+                "itemtype" : "platform-support",
                 "parts" : [
                     {
                         "x": 0,
                         "y": 0,
                         "width": 50,
-                        "height": 200
+                        "height": 800
                     }
                 ]
             },
             {
                 "x" : 2050,
-                "y" : 750,
+                "y" : 450,
                 "z" : 2950,
                 "depth" : 50,
-                "itemtype" : "raised-platform-support",
+                "itemtype" : "platform-support",
                 "parts" : [
                     {
                         "x": 0,
                         "y": 0,
                         "width": 50,
-                        "height": 300
+                        "height": 800
                     }
                 ]
             }

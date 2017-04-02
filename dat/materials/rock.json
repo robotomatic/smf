@@ -11,5 +11,18 @@
                 "bottom" : "#a3a3a3"
             }
        }
+   },
+   "slate" : {
+       "name" : "slate",
+        "renderer" : "slate",
+        "color" : {
+            "color" : "#6c7883",
+            "projected" : {
+                "front" : "#6c7883",
+                "top" : "#828c95",
+                "side" : "#636d76",
+                "bottom" : "#545d65"
+            }
+       }
    }
 }
