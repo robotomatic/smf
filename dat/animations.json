@@ -45,6 +45,9 @@
     "psycho" : {
         "file" : "dat/animations/characters/psycho.json"
     },
+    "burny" : {
+        "file" : "dat/animations/characters/burny.json"
+    },
     "chompy" : {
         "file" : "dat/animations/characters/chompy.json"
     },

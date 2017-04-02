@@ -1,0 +1,126 @@
+{
+    "burny" : {
+
+        "front" : {
+            "name" : "look_front",
+            "parts" : {
+                "left-eye-shadow" : {
+                    "frames" : [
+                        { 
+                            "draw" : true,
+                            "x" : -5
+                        }
+                    ]
+                },
+                "right-eye-shadow" : {
+                    "frames" : [
+                        { 
+                            "draw" : false
+                        }
+                    ]
+                }
+            }
+        },
+        "left" : {
+            "name" : "look_left",
+            "parts" : {
+                "body-spikes" : {
+                    "frames" : [
+                        { 
+                            "x" : 49,
+                            "y" : 1
+                        }
+                    ]
+                },
+                "spike-top" : {
+                    "frames" : [
+                        { 
+                            "angle" : 25
+                        }
+                    ]
+                },
+                "spike-mid" : {
+                    "frames" : [
+                        { 
+                            "x" : 18,
+                            "angle" : 35
+                        }
+                    ]
+                },
+                "spike-tail" : {
+                    "frames" : [
+                        { 
+                            "x" : 35,
+                            "angle" : 60
+                        }
+                    ]
+                },
+                "left-eye-shadow" : {
+                    "frames" : [
+                        { 
+                            "draw" : false
+                        }
+                    ]
+                },
+                "right-eye-shadow" : {
+                    "frames" : [
+                        { 
+                            "draw" : true
+                        }
+                    ]
+                },
+                "horn" : {
+                    "frames" : [
+                        { 
+                            "x" : -40,
+                            "y" : 3,
+                            "angle" : -30,
+                            "pointinfo" : {
+                                "1" : "skip",
+                                "0" : "round"
+                            }
+                        }
+                    ]
+                }
+                
+            }
+        },
+        "right" : {
+            "name" : "look_right",
+            "parts" : {
+                "body-spikes" : {
+                    "frames" : [
+                        { 
+                            "x" : -2
+                        }
+                    ]
+                },
+                
+                "left-eye-shadow" : {
+                    "frames" : [
+                        { 
+                            "draw" : true
+                        }
+                    ]
+                },
+                "right-eye-shadow" : {
+                    "frames" : [
+                        { 
+                            "draw" : false
+                        }
+                    ]
+                },
+                "horn" : {
+                    "frames" : [
+                        { 
+                            "x" : 10,
+                            "y" : 3,
+                            "angle" : 10
+                        }
+                    ]
+                }
+            }
+        }
+        
+    }
+}

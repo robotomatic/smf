@@ -1,4 +1,7 @@
 {
+    "burny" : {
+        "file" : "dat/characters/burny.json"
+    },
     "chompy" : {
         "file" : "dat/characters/chompy.json"
     },

@@ -1,8 +1,8 @@
 {
     "omegamecha-ii" : {
         "name" : "Omegamecha Blackheart",
-        "width" : 17,
-        "height" : 50, 
+        "width" : 27,
+        "height" : 80, 
         "debug" : false, 
         "idlespeed" : 1.9,
         "color" : "#588bb1",

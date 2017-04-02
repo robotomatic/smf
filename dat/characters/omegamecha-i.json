@@ -1,8 +1,8 @@
 {
     "omegamecha-i" : {
         "name" : "Omegamecha Candyheart",
-        "width" : 17,
-        "height" : 50, 
+        "width" : 27,
+        "height" : 80, 
         "debug" : false, 
         "idlespeed" : 2.2,
         "color" : "#e099bd",

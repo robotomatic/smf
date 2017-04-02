@@ -366,37 +366,6 @@
             "name" : "look_left",
             "override" : true,
             "parts" : {
-                "body-spikes" : {
-                    "frames" : [
-                        { 
-                            "x" : 49,
-                            "y" : 1
-                        }
-                    ]
-                },
-                "spike-top" : {
-                    "frames" : [
-                        { 
-                            "angle" : 25
-                        }
-                    ]
-                },
-                "spike-mid" : {
-                    "frames" : [
-                        { 
-                            "x" : 18,
-                            "angle" : 35
-                        }
-                    ]
-                },
-                "spike-tail" : {
-                    "frames" : [
-                        { 
-                            "x" : 35,
-                            "angle" : 60
-                        }
-                    ]
-                },
                 "head-top" : {
                     "frames" : [
                         { 
@@ -573,13 +542,6 @@
             "name" : "look_right",
             "override" : true,
             "parts" : {
-                "body-spikes" : {
-                    "frames" : [
-                        { 
-                            "x" : -2
-                        }
-                    ]
-                },
                 "snout" : {
                     "frames" : [
                         { 
