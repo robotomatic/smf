@@ -211,7 +211,7 @@ GameControllerGame.prototype.addPlayerCharacter = function(character) {
     var hp = 1000;
 
     var player = new Player(this.players.players.length, name, color, x, y, z, width, height, speed, character, hp, this);
-    if (this.players.players.length == 0) player.getscamera = true;
+//    if (this.players.players.length == 0) player.getscamera = true;
     this.players.addPlayer(player);
     
     updateDevPlayers(this.players.players);
