@@ -226,7 +226,7 @@ WorldCollider.prototype.resetPlayer = function(player) {
     }
     var box = spawnitem.getMbr();
     var rpx = random(box.x + 10, box.x + box.width - 10);
-    var rpy = box.y - 20;
+    var rpy = box.y - player.controller.height - 20;
     var rpz = random(10, spawnitem.depth - 10) + spawnitem.z;
     player.respawn(rpx, rpy, rpz);
     player.reset();
