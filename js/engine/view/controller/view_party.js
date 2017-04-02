@@ -40,6 +40,9 @@ function PartyView(gamecontroller, id, width, height, scale) {
         }
     };
 
+    this.offset.name = (gamecontroller.gamesettings.settings.camera && gamecontroller.gamesettings.settings.camera.view) || "fit";
+    this.setCameraZoom(this.offset.name);
+    
     this.paused = false;
     
     this.rendercount = 0;
@@ -72,7 +75,9 @@ PartyView.prototype.setCameraZoom = function(name) {
     this.offset.x = this.offset[name].x;
     this.offset.y = this.offset[name].y;
     this.offset.z = this.offset[name].z;
-    this.offset.name = "name";
+    this.offset.name = name;
+    this.view.gamecontroller.gamesettings.settings.camera.view = name;
+    this.view.gamecontroller.saveGameSettings();
     updateDevViewCameraOffset(this);
 }
 
@@ -119,7 +124,7 @@ PartyView.prototype.render = function(now, game) {
     this.view.renderer.mbr = world.players.getMbr(this.view.renderer.mbr);
     
     var follow = true;
-    if (this.view.renderer.mbr && !this.view.renderer.mbr.width && !this.view.renderer.mbr.height) {
+    if (this.view == "fit" || this.view.renderer.mbr && !this.view.renderer.mbr.width && !this.view.renderer.mbr.height) {
         offx = 0;
         offy = 0;
         offz = 0;

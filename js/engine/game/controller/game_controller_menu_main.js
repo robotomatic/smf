@@ -4,7 +4,7 @@ function GameControllerMenuMain(gamecontroller) {
     this.gamecontroller = gamecontroller;
     this.input = this.gamecontroller.input;
     this.input.setMenu(this);
-    var settings = this.gamecontroller.gamesettings.getSettings(this.gamecontroller.currentview)
+    
     this.loop = new GameLoop(this.input);
     this.charspacex = 45;
     this.charspacey = 200;
@@ -29,10 +29,6 @@ function GameControllerMenuMain(gamecontroller) {
     this.load();
     return this;
 }
-
-GameControllerMenuMain.prototype.loadSettings = function() {}
-    
-GameControllerMenuMain.prototype.getSettings = function() {}
 
 GameControllerMenuMain.prototype.load = function() {
     benchmark("build menu - start", "menu");
@@ -137,6 +133,21 @@ GameControllerMenuMain.prototype.changePlayerCharacter = function(player, charna
     char = this.loadCharacterAnimations(char);
     player.setCharacter(character);
 }
+
+GameControllerMenuMain.prototype.updatePlayerCamera = function(player, camera) {
+    player.getscamera = camera;
+    var follow = false;
+    var t = this.players.players.length;
+    for (var i = 0; i < t; i++) {
+        if (this.players.players[i].getscamera) {
+            follow = true;
+            break;
+        }
+    }
+    this.gamesontroller.gamesettings.settings.camera.follow = follow;
+    this.gamecontroller.saveGameSettings();
+}
+
 
 
 GameControllerMenuMain.prototype.loadView = function() {

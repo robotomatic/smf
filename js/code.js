@@ -17,8 +17,6 @@ function game() {
     log("game", "new");
     benchmark("new game - start", "game");
     controller = new GameController();
-    controller.loadView();
-    controller.resize();
     benchmark("new game - end", "game");
     runAnimationFrame(timestamp());
 }

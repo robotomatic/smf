@@ -1,6 +1,6 @@
 "use strict";
 
-function GameControllerGame(gamecontroller, gamesettings) {
+function GameControllerGame(gamecontroller) {
     this.gamecontroller = gamecontroller;
     this.input = this.gamecontroller.input;
     this.loop = new GameLoop(this.input);
@@ -10,7 +10,6 @@ function GameControllerGame(gamecontroller, gamesettings) {
     this.players = new Players();
     this.npcs = new NPCs();
     
-    this.gamesettings = gamesettings;
     this.view = null;
     this.started = false;
 
@@ -52,15 +51,11 @@ GameControllerGame.prototype.showGamepads = function() {
     }
 }
 
-GameControllerGame.prototype.getSettings = function() { 
-    return this.gamesettings; 
-}
-
 GameControllerGame.prototype.load = function(callback) {
     var controller = this;
-    var level = this.gameloader.levels[this.gamesettings.levelname];
+    var level = this.gameloader.levels[this.gamecontroller.gamesettings.settings.levelname];
     if (level) {
-        this.levelname = this.gamesettings.levelname;
+        this.levelname = this.gamecontroller.gamesettings.settings.levelname;
     } else {
         var k = Object.keys(this.gameloader.levels);
         var levelnum = 0;
@@ -90,7 +85,7 @@ GameControllerGame.prototype.loadLevelLevel = function(level, name, callback) {
         }
     }
     this.loop.loadLevel(level);
-    this.gamesettings.levelname = this.levelname;
+    this.gamecontroller.gamesettings.settings.levelname = this.levelname;
     this.gamecontroller.saveGameSettings();
 }
     
@@ -98,15 +93,14 @@ GameControllerGame.prototype.loadPlayers = function() {
     benchmark("load players - start", "players");
     this.players = new Players();
     var charnames = Object.keys(this.gameloader.characters.characters);
-    var players = this.gamesettings.players;
-    if (players) players.length = 0;
+    var players = this.gamecontroller.gamesettings.settings.players;
 
     var playertotal = 0;
     var numplayers = players ?  Object.keys(players).length : 1;
     numplayers = 1;
     
     var playercharname = charnames[1];
-    if (this.gamesettings.character) playercharname = this.gamesettings.character;
+    if (this.gamecontroller.gamesettings.settings.character) playercharname = this.gamecontroller.gamesettings.settings.character;
     
     for (var i = 0; i < numplayers; i++) {
         var charname = "";
@@ -115,11 +109,16 @@ GameControllerGame.prototype.loadPlayers = function() {
             var rando = random(0, charnames.length - 1);
             charname = charnames[rando];
         }
-        var character = this.loadPlayerCharacter(charname);
-        this.addPlayerCharacter(character);
+        var player = this.loadPlayerCharacter(charname);
+        
+        var camera = ((i == 0) && (this.gamecontroller.gamesettings.settings.camera && this.gamecontroller.gamesettings.settings.camera.follow));
+        this.addPlayerCharacter(player, camera);
+        
         playertotal++;
     }
     this.players.shadow.draw = false;
+    
+    
     this.input.setPlayers(this.players);
     this.loop.loadPlayers(this.players);
     this.loop.loadNPCs(this.npcs);
@@ -198,7 +197,7 @@ GameControllerGame.prototype.loadPlayerCharacter = function(charname) {
     return char;
 }
     
-GameControllerGame.prototype.addPlayerCharacter = function(character) {
+GameControllerGame.prototype.addPlayerCharacter = function(character, camera = false) {
     var name = character.name;
     var color = character.color;
 
@@ -211,7 +210,7 @@ GameControllerGame.prototype.addPlayerCharacter = function(character) {
     var hp = 1000;
 
     var player = new Player(this.players.players.length, name, color, x, y, z, width, height, speed, character, hp, this);
-//    if (this.players.players.length == 0) player.getscamera = true;
+    player.getscamera = camera;
     this.players.addPlayer(player);
     
     updateDevPlayers(this.players.players);
@@ -227,7 +226,7 @@ GameControllerGame.prototype.changePlayerCharacter = function(player, charname) 
     }
     var character = this.loadPlayerCharacter(charname);
     player.setCharacter(character);
-    this.gamesettings.character = charname;
+    this.gamecontroller.gamesettings.settings.character = charname;
     this.gamecontroller.saveGameSettings();
 }
 
@@ -235,6 +234,20 @@ GameControllerGame.prototype.removePlayer = function(player) {
     this.loop.removePlayer(player);
     this.players.removePlayer(player);
     this.npcs.removeNPC(player);
+}
+
+GameControllerGame.prototype.updatePlayerCamera = function(player, camera) {
+    player.getscamera = camera;
+    var follow = false;
+    var t = this.players.players.length;
+    for (var i = 0; i < t; i++) {
+        if (this.players.players[i].getscamera) {
+            follow = true;
+            break;
+        }
+    }
+    this.gamecontroller.gamesettings.settings.camera.follow = follow;
+    this.gamecontroller.saveGameSettings();
 }
 
 GameControllerGame.prototype.playerDied = function(player) {

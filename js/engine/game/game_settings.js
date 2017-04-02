@@ -1,22 +1,43 @@
 "use strict";
 
 function GameSettings() {
-    this.settings = {};
-    this.key = "super.murder.friends.settings";
-}
-
-GameSettings.prototype.getSettings = function(name) {
-    if (!this.settings) this.settings = {};
-    if (!this.settings[name]) this.settings[name] = {};
-    return this.settings[name];
-}
-
-GameSettings.prototype.setSettings = function(name, settings) {
-    this.settings[name] = settings;
+    
+    this.settings = {
+        camera : {
+            follow : false,
+            view : "loose"
+        },
+        debug : {
+            level : {
+                level : false,
+                hsr : false,
+                render : false
+            },
+            player : {
+                player : false,
+                character : false,
+                guts : false
+            },
+            collision : {
+                level : false,
+                players : false
+            }
+        },
+        levelname : "",
+        character : "",
+        players : 1
+    };
+    this.key = "super.murder.friends.info";
 }
 
 GameSettings.prototype.load = function() {
-    this.settings = JSON.parse(localStorage.getItem(this.key));
+    var settings = localStorage.getItem(this.key);
+    if (settings) {
+        var parsed = JSON.parse(settings);
+        for (var key in parsed) {
+            this.settings[key]  = parsed[key];
+        }
+    }
 }
 
 GameSettings.prototype.save = function() {

@@ -12,22 +12,7 @@ function WorldRenderer() {
     this.worldrenderer_debug = new WorldRendererDebug(this.renderitems);
     this.worldrenderer_end = new WorldRendererEnd(this.renderitems);
     this.waterline = new Waterline();
-    this.debug = {
-        level : {
-            level : false,
-            hsr : false,
-            render : false
-        },
-        player : {
-            player : false,
-            character : false,
-            guts : false
-        },
-        collision : {
-            level : false,
-            players : false
-        }
-    };
+    this.debug = {};
 }
 
 WorldRenderer.prototype.reset = function(now, graphics) {
@@ -60,9 +45,9 @@ WorldRenderer.prototype.setTheme = function(themename, theme, materials) {
 
 WorldRenderer.prototype.render = function(now, graphics, camera, world, mbr, window, render) {
     this.waterline.getFlood();
-    this.worldrenderer_start.renderStart(now, mbr, window, graphics, camera, world, this.debug);
-    this.worldrenderer_render.renderRender(now, mbr, window, graphics, camera, world, this.debug, render);
-    this.worldrenderer_debug.renderDebug(now, mbr, window, graphics, camera, world, this.debug);
+    this.worldrenderer_start.renderStart(now, mbr, window, graphics, camera, world, world.debug);
+    this.worldrenderer_render.renderRender(now, mbr, window, graphics, camera, world, world.debug, render);
+    this.worldrenderer_debug.renderDebug(now, mbr, window, graphics, camera, world, world.debug);
     this.worldrenderer_end.renderEnd(graphics, mbr);
 }
 

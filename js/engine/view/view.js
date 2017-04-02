@@ -187,7 +187,7 @@ View.prototype.hide = function() {
 
 View.prototype.setBackground = function(world) {
     if (this.paused) return;
-    if (world.worldrenderer.debug.level.level || world.worldrenderer.debug.level.render || world.worldrenderer.debug.level.hsr) {
+    if (world.debug.level.level || world.debug.level.render || world.debug.level.hsr) {
         this.parent.style.background = "white";
         this.rendertarget.canvas.setBackground("white");
         this.ready = false;

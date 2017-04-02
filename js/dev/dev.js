@@ -97,13 +97,14 @@ function unselectTools() {
     }
 }
 
-function resetDev(game) {
+function resetDev(gamecontroller) {
     if (!__dev) return;
-    gamecontroller = game;
+    if (!gamecontroller.game) return;
     var world = gamecontroller.game.loop.game.world;
     if (world) {
         resetDevPlayers(world.players);
         resetDevWorld(world);
+        updateDevDebug();
     }
     updateDevViewOverlay();
 }

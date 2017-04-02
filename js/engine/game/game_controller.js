@@ -20,28 +20,30 @@ function GameController() {
     this.currentview = "menu";
     this.gamesettings = null;
     this.devtools = null;
-    this.loadDev();
-    this.loadGameSettings();
+    
+    this.loading = true;
+    
+    this.load();
     return this;
 }
 
-
-GameController.prototype.dev = function() {
-    var d = document.getElementById("dev");
-    if (!d) return;
-    if (!__dev) {
-        __dev = true;
-        this.initDebug();
-    } else {
-        __dev = false;
-        hide(d);
-    }
+GameController.prototype.load = function() {
+    var controller = this;
+    this.loadDev(function() {
+        controller.loadGameSettings();
+        controller.loadView(function() {
+            controller.initDebug();
+            controller.resize();
+            controller.loading = false;
+        });
+    });
 }
 
 
 GameController.prototype.loadDev = function(callback) {
     if (!__dev) return;
     if (this.devtools) return;
+    this.loading = true;
     var controller = this;
     this.gameloader.loadDev("html/dev.html", function() {
         controller.devtools = controller.gameloader.dev;
@@ -58,13 +60,13 @@ GameController.prototype.loadGameSettings = function() {
 }
 
 GameController.prototype.saveGameSettings = function() {
-    this.gamesettings.setSettings(this.currentview, this.game.getSettings());
     this.gamesettings.save();
 }
 
-GameController.prototype.loadView = function() {
+GameController.prototype.loadView = function(callback) {
     if (this.game && this.gamesettings) this.saveGameSettings();
     this.game = null;
+    this.loading = true;
     var controller = this;
     if (window.location.hash) {
         if (!controller.ignorefade) this.fadeOut(controller.element);
@@ -73,6 +75,7 @@ GameController.prototype.loadView = function() {
         loadAJAX("html/"+hash+".html", function(data) {
             controller.showView(hash, data);
             benchmark("load view");
+            if (callback) callback();
         });
     } else {
         if (!controller.ignorefade) this.fadeOut(controller.element);
@@ -80,6 +83,7 @@ GameController.prototype.loadView = function() {
         loadAJAX("html/menu.html", function(data) {
             controller.showMenu(data);
             benchmark("load menu");
+            if (callback) callback();
         });
     }
 }
@@ -117,8 +121,7 @@ GameController.prototype.showGameParty = function(data) {
         "dat/animations.json",
         function() {
             controller.currentview = "game";
-            var gamesettings = controller.gamesettings.getSettings("game-party");
-            controller.game = new GameControllerGame(controller, gamesettings);
+            controller.game = new GameControllerGame(controller);
             controller.game.load(function() {
                 controller.game.loadPlayers();
                 controller.game.loadViews();
@@ -138,9 +141,11 @@ GameController.prototype.loadUI = function(data) {
 GameController.prototype.start = function() {
     this.resize();
     this.initDebug();
+    this.game.loop.game.world.debug = this.gamesettings.settings.debug;
     this.game.start();
     this.fadeIn();
     this.ignorefade = false;
+    this.loading = false;
     benchmark("start game");
     logDev("");
 }
@@ -160,6 +165,9 @@ GameController.prototype.resize = function() {
 }
 
 GameController.prototype.run = function(now) {
+    
+    if (this.loading) return;
+    
     if (!this.game) return;
     if (this.game.loop) this.game.run(now);
 }
@@ -204,6 +212,14 @@ GameController.prototype.changePlayerCharacter = function(player, charname) {
     if (!this.game) return;
     this.game.changePlayerCharacter(player, charname);
 }
+
+GameController.prototype.updatePlayerCamera = function(player, camera) {
+    if (!this.game) return;
+    this.game.updatePlayerCamera(player, camera);
+}
+
+
+
 
 
 GameController.prototype.stop = function() {

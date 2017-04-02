@@ -15,6 +15,8 @@ function initializeDevPlayers() {
     dev_player_list = document.getElementById("dev-dialog-players-players");
     dev_player_characters = document.getElementById("dev-players-add-player-character");
     
+    if (!controller.gameloader.characters) return;
+    
     var chars = controller.gameloader.characters.characters;
     if (chars) {
         var keys = Object.keys(chars);
@@ -132,7 +134,7 @@ function updateDevPlayersPlayerCamera(id, check) {
     if (!__dev) return;
     var player = devplayers[id];
     if (!player) return;
-    player.player.getscamera = check;
+    controller.updatePlayerCamera(player.player, check);
 }
 
 
