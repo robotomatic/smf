@@ -15,21 +15,7 @@ function initializeDevPlayers() {
     dev_player_list = document.getElementById("dev-dialog-players-players");
     dev_player_characters = document.getElementById("dev-players-add-player-character");
     
-    if (!controller.gameloader.characters) return;
-    
-    var chars = controller.gameloader.characters.characters;
-    if (chars) {
-        var keys = Object.keys(chars);
-        var t = keys.length;
-        for (var i = 0; i < t; i++) {
-            var key = keys[i];
-            var char = chars[key];
-            var opt = document.createElement('option');
-            opt.value = key;
-            opt.innerHTML = char.name;
-            dev_player_characters.appendChild(opt);        
-        }
-    }
+    loadDevCharacters();
     
     var addplayer = document.getElementById("dev-players-add-player");
     addplayer.onclick = function() {
@@ -38,6 +24,7 @@ function initializeDevPlayers() {
 }
 
 function resetDevPlayers(players) {
+    loadDevCharacters();
     var keys = Object.keys(devplayers);
     var t = keys.length;
     for (var i = 0; i < t; i++) {
@@ -49,7 +36,25 @@ function resetDevPlayers(players) {
 }
 
 
+function loadDevCharacters() {
+    if (!controller.gameloader.characters) return;
+    dev_player_characters.innerHTML = "";
+    var chars = controller.gameloader.characters.characters;
+    if (!chars) return;
+    var keys = Object.keys(chars);
+    var t = keys.length;
+    for (var i = 0; i < t; i++) {
+        var key = keys[i];
+        var char = chars[key];
+        var opt = document.createElement('option');
+        opt.value = key;
+        opt.innerHTML = char.name;
+        dev_player_characters.appendChild(opt);        
+    }
+}
+    
 
+    
 function updateDevPlayers(players) {
     if (!__dev) return;
     if (!devplayers) return;
