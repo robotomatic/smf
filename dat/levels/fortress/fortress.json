@@ -1,14 +1,7 @@
 {
     "name" : "fortress",
-    "width" : 5000,
-    "height" : 1200,
-    "depth" : 3000,
-    "debug" : false,
+    "pad" : 500,
     "layers" : {
-        "level" : {
-            "file" : "dat/levels/fortress/layers/level.json"
-        },
-        
         "sky" : {
             "file" : "dat/levels/fortress/layers/sky.json"
         },

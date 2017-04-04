@@ -5,10 +5,13 @@ var dev_camera_offset_x_range = null;
 var dev_camera_offset_y_amount = null;
 var dev_camera_offset_y_range = null;
 var dev_camera_offset_z_amount = null;
+
+var dev_camera_offset_all = null;
+var dev_camera_offset_fit = null;
 var dev_camera_offset_loose = null;
 var dev_camera_offset_comfy = null;
-var dev_camera_offset_cosy = null;
 var dev_camera_offset_tight = null;
+
 var dev_camera_offset_z_range = null;
 var dev_camera_dof_blur = null;
 var dev_camera_follow_speed = null;
@@ -47,6 +50,15 @@ function initializeDevCamera() {
     dev_camera_offset_z_range.onchange = function() {
         setDevCameraOffsetZ(this.value);
     };
+    
+    dev_camera_offset_all = document.getElementById("dev-camera-offset-all");
+    dev_camera_offset_all.onclick = function() {
+        setDevCameraOffsetAll();
+    };
+    dev_camera_offset_fit = document.getElementById("dev-camera-offset-fit");
+    dev_camera_offset_fit.onclick = function() {
+        setDevCameraOffsetFit();
+    };
     dev_camera_offset_loose = document.getElementById("dev-camera-offset-loose");
     dev_camera_offset_loose.onclick = function() {
         setDevCameraOffsetLoose();
@@ -54,10 +66,6 @@ function initializeDevCamera() {
     dev_camera_offset_comfy = document.getElementById("dev-camera-offset-comfy");
     dev_camera_offset_comfy.onclick = function() {
         setDevCameraOffsetComfy();
-    };
-    dev_camera_offset_cosy = document.getElementById("dev-camera-offset-cosy");
-    dev_camera_offset_cosy.onclick = function() {
-        setDevCameraOffsetCosy();
     };
     dev_camera_offset_tight = document.getElementById("dev-camera-offset-tight");
     dev_camera_offset_tight.onclick = function() {
@@ -166,6 +174,25 @@ function updateDevViewCameraOffset(vv) {
     zzz.value = z;
 }
 
+
+
+
+function setDevCameraOffsetAll() {
+    if (!__dev) return;
+    if (!gamecontroller || !gamecontroller.game) return;
+    var vv = gamecontroller.game.loop.gameworld.views[0];
+    vv.renderer.camera.reset();
+    vv.setCameraAll();
+}
+
+function setDevCameraOffsetFit() {
+    if (!__dev) return;
+    if (!gamecontroller || !gamecontroller.game) return;
+    var vv = gamecontroller.game.loop.gameworld.views[0];
+    vv.renderer.camera.reset();
+    vv.setCameraFit();
+}
+
 function setDevCameraOffsetLoose() {
     if (!__dev) return;
     if (!gamecontroller || !gamecontroller.game) return;
@@ -180,14 +207,6 @@ function setDevCameraOffsetComfy() {
     var vv = gamecontroller.game.loop.gameworld.views[0];
     vv.renderer.camera.reset();
     vv.setCameraComfy();
-}
-
-function setDevCameraOffsetCosy() {
-    if (!__dev) return;
-    if (!gamecontroller || !gamecontroller.game) return;
-    var vv = gamecontroller.game.loop.gameworld.views[0];
-    vv.renderer.camera.reset();
-    vv.setCameraCosy();
 }
 
 function setDevCameraOffsetTight() {

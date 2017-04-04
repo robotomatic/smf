@@ -29,7 +29,6 @@ WorldBuilderItems.prototype.buildWorldLevelLayer = function(world, level, layer)
 
 WorldBuilderItems.prototype.buildWorldLevelLayerItem = function(world, layer, item, newitems) { 
     if (!item) return null;
-    if (layer.isbounds === true) item.isbounds = true;
     if (layer.collide === false) item.collide = false;
     if (layer.draw === false) item.draw = false;
     if (layer.blur && !item.blur) item.blur = layer.blur;

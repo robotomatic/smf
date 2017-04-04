@@ -2,35 +2,18 @@
 
 function Level(width, height, depth) {
     this.name = "";
+    this.pad = 0;
     this.theme = "";
-    this.width = width ? width : 0;
-    this.height = height ? height : 0;
-    this.depth = depth ? depth : 0;
-    
-    this.debug = true;
-    
-    this.zoompad;
-    this.gravity;
-    this.speed;
-    this.jumpspeed;
-    
     this.loaded = false;
     this.loadedfiles = 0;
-    
     this.layers = new Array();
     this.layerkeys = new Array();
-    
-    this.rect = new Rectangle(0, 0, 0, 0);
-    this.text = new Text(0, 0, "");
 }
 
 Level.prototype.loadJson = function(json) { 
     this.name = json.name;
+    this.pad = json.pad;
     this.theme = json.theme;
-    this.width = json.width;
-    this.height = json.height;
-    this.depth = json.depth;
-    this.debug = json.debug;
     return this;
 }
 

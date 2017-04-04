@@ -79,7 +79,6 @@ GameControllerMenu.prototype.addCharacters = function() {
         this.addPlayer(charname);
         currentchar = (currentchar < playertotal - 1) ? currentchar + 1 : 0;
     }
-    this.players.sortByHeight();
     this.loop.loadPlayers(this.players);
     this.loop.loadNPCs(this.npcs);
 }
@@ -112,11 +111,10 @@ GameControllerMenu.prototype.loadPlayer = function(id, x, y, z, character) {
     var pw = character.width;
     var ph = character.height;
     var pdiff = (20 - pw) / 2;
-    var player = new Player(id, character.name, "", x, y, z, pw, ph, speed, char);
+    var player = new Player(id, character.name, "", x, y, z, pw, ph, speed, char, 100, this);
     player.controller.jumpspeed = 5;
     player.info.ready = true;
     player.info.alive = true;
-    player.getscamera = true;
     player.controller.lookThreshold = .1;
     return player;
 }
@@ -143,7 +141,7 @@ GameControllerMenu.prototype.updatePlayerCamera = function(player, camera) {
             break;
         }
     }
-    this.gamesontroller.gamesettings.settings.camera.follow = follow;
+    this.gamecontroller.gamesettings.settings.camera.follow = follow;
     this.gamecontroller.saveGameSettings();
 }
 
@@ -152,6 +150,7 @@ GameControllerMenu.prototype.updatePlayerCamera = function(player, camera) {
 GameControllerMenu.prototype.loadView = function() {
     this.loop.hideViews();
     this.view = new View(this, "menu-canvas", this.gamequality, this.onclick);
+    this.view.renderer.camerasettings.setCameraZoom("fit");
     this.loop.loadViews(new Array(this.view));
     if (!this.running && this.started) {
         this.resize();
@@ -216,3 +215,6 @@ GameControllerMenu.prototype.removePlayer = function(player) {
     this.npcs.removeNPC(player);
 }
 
+GameControllerMenu.prototype.playerDied = function(player) {
+    this.loop.gameworld.world.worldcollider.resetPlayer(player);
+}

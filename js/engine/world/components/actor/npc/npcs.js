@@ -59,17 +59,16 @@ NPCs.prototype.updateNPC = function(when, world, npc) {
     
     if (!player) return;
     
-    var viewpad = 10;
     
-    if (player.controller.x <= viewpad) {
-        player.controller.x = viewpad;
+    if (player.controller.x <= world.bounds.x) {
+        player.controller.x = world.bounds.x;
         if (player.controller.move_left) {
             player.controller.left(false);
             player.controller.stop();
             npc.stop();
         }
-    } else if (player.controller.x >= world.level.width - (player.controller.width + viewpad)) {
-        player.controller.x = world.level.width - (player.controller.width + viewpad);
+    } else if (player.controller.x >= (world.bounds.x + world.bounds.width) - player.controller.width) {
+        player.controller.x = (world.bounds.x + world.bounds.width) - player.controller.width;
         if (player.controller.move_right) {
             player.controller.right(false);        
             player.controller.stop();
@@ -77,15 +76,15 @@ NPCs.prototype.updateNPC = function(when, world, npc) {
         }
     }
 
-    if (player.controller.z <= viewpad) {
-        player.controller.z = viewpad;
+    if (player.controller.z <= world.bounds.z) {
+        player.controller.z = world.bounds.z;
         if (player.controller.move_in) {
             player.controller.in(false);
             player.controller.stop();
             npc.stop();
         }
-    } else if (player.controller.z >= world.level.depth - viewpad) {
-        player.controller.z = world.level.depth - viewpad;
+    } else if (player.controller.z >= world.bounds.z + world.bounds.depth) {
+        player.controller.z = world.bounds.z + world.bounds.depth;
         if (player.controller.move_out) {
             player.controller.out(false);
             player.controller.stop();
@@ -102,19 +101,19 @@ NPCs.prototype.updateNPC = function(when, world, npc) {
         
         var dir = random(0, 8);
         if (dir == 0) {
-            if (player.controller.x > viewpad) {
+            if (player.controller.x > world.bounds.x) {
                 npc.doActionTimeout("left", true, false, when, random(1000, 3000));
             }
         } else if (dir == 1) {
-            if (player.controller.x < world.level.width - (player.controller.width + viewpad))  {
+            if (player.controller.x < (world.bounds.x + world.bounds.width))  {
                 npc.doActionTimeout("right", true, false, when, random(1000, 3000));
             }
         } else if (dir == 2) {
-            if (player.controller.z > viewpad)  {
+            if (player.controller.z > world.bounds.z)  {
                 npc.doActionTimeout("out", true, false, when, random(1000, 3000));
             }
         } else if (dir == 3) {
-            if (player.controller.z < world.level.depth - viewpad)  {
+            if (player.controller.z < (world.bounds.z + world.bounds.depth))  {
                 npc.doActionTimeout("in", true, false, when, random(1000, 3000));
             }
         } else {
@@ -145,11 +144,11 @@ NPCs.prototype.updateNPC = function(when, world, npc) {
                 } else {
                     var dir2 = random(0, 4);
                     if (dir2 == 0) {
-                        if (player.controller.x > viewpad) {
+                        if (player.controller.x > (world.bounds.x)) {
                             npc.doActionTimeout("left", true, false, when, random(1000, 2000));
                         }
                     } else if (dir2 == 1) {
-                        if (player.controller.x < world.level.width - (player.controller.width + viewpad))  {
+                        if (player.controller.x < (world.bounds.x + world.bounds.width) - player.controller.width)  {
                             npc.doActionTimeout("right", true, false, when, random(1000, 2000));
                         }
                     }

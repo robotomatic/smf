@@ -28,13 +28,14 @@ WorldBuilderColliders.prototype.buildCollidersColliders = function(world, items)
         var item = items[i];
         if (item.collide === false) continue;
         if (item.isHidden()) continue;
-        if (!item.isbounds) this.collisionindex.checkBounds(item);        
-        if (item.draw === false && !item.isbounds) continue;
+        if (item.draw === false) continue;
+        this.collisionindex.checkBounds(item); 
         var newitem = this.buildCollidersCollidersItem(item);
         if (newitem) {
             world.worldcollider.colliders.push(newitem);
         }
     }
+    world.setBounds(this.collisionindex.bounds);
 }
 
 WorldBuilderColliders.prototype.buildCollidersCollidersItem = function(item) {

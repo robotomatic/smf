@@ -14,7 +14,6 @@ WorldBuilderOverlap.prototype.overlapItems = function(world) {
         if (item.isHidden()) continue;
         if (item.width == "100%" || item.height == "100%" || item.depth == "100%") continue;
         if (item.waterline) continue;
-        if (item.isbounds) continue;
         var newitems = this.overlapItemItems(item, items);
         if (newitems) {
             items = items.concat(newitems);
@@ -32,7 +31,6 @@ WorldBuilderOverlap.prototype.overlapItemItems = function(item, items) {
         if (itemc == item) continue;
         if (itemc.width == "100%" || itemc.height == "100%" || itemc.depth == "100%") continue;
         if (itemc.waterline) continue;
-        if (itemc.isbounds) continue;
         newitems = this.overlapItemItem(item, itemc, newitems);
     }
     return newitems;

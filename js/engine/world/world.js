@@ -10,6 +10,7 @@ function World(level, players, npcs) {
     this.worldbuilder = new WorldBuilder();
     this.worldcollider = new WorldCollider();
     this.worldrenderer = new WorldRenderer();
+    this.bounds = new Rectangle(0, 0, 0, 0);
 }
 
 World.prototype.unloadThemes = function() { 
@@ -28,7 +29,7 @@ World.prototype.loadTheme = function(theme) {
 
 World.prototype.setLevel = function(level) { 
     this.level = level;
-    if (this.level.gravity) this.physics.gravity = this.level.gravity;
+    this.pad = level.pad ? level.pad : 0;
     this.buildLevel();
     return this.level; 
 }
@@ -74,6 +75,15 @@ World.prototype.buildLevel = function(now) {
     benchmark("build world - start", "build");
     this.worldbuilder.buildWorld(now, this);
     benchmark("build world - end", "build");
+}
+    
+World.prototype.setBounds = function(bounds) { 
+    this.bounds.x = bounds.min.x - this.pad;
+    this.bounds.width = (bounds.max.x - bounds.min.x) + (this.pad * 2);
+    this.bounds.y = bounds.min.y - this.pad;
+    this.bounds.height = (bounds.max.y - bounds.min.y) + (this.pad * 2);
+    this.bounds.z = bounds.min.z - this.pad;
+    this.bounds.depth = (bounds.max.z- bounds.min.z) + (this.pad * 2);
 }
     
 World.prototype.pause = function(now) { 

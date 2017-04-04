@@ -1,14 +1,7 @@
 {
     "name" : "city",
-    "width" : 5000,
-    "height" : 1200,
-    "depth" : 3000,
-    "debug" : false,
+    "pad" : 500,
     "layers" : {
-        "level" : {
-            "file" : "dat/levels/city/layers/level.json"
-        },
-        
         "sky" : {
             "file" : "dat/levels/city/layers/sky.json"
         },

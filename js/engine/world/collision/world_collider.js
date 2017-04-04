@@ -114,27 +114,27 @@ WorldCollider.prototype.collideWithItems = function(world, player) {
     
     
 
-    if (player.controller.x < 0) {
-        player.controller.x = 0;
+    if (player.controller.x < world.bounds.x) {
+        player.controller.x = world.bounds.x;
         player.controller.canMoveLeft = false;
     }
-    if (player.controller.x + player.controller.width > world.level.width) {
-        player.controller.x = world.level.width - player.controller.width;
+    if (player.controller.x + player.controller.width > (world.bounds.x + world.bounds.width)) {
+        player.controller.x = (world.bounds.x + world.bounds.width) - player.controller.width;
         player.controller.canMoveRight = false;
     }
-    if (player.controller.y < 0) {
-        player.controller.y = 0;
+    if (player.controller.y < world.bounds.y) {
+        player.controller.y = world.bounds.y;
         player.controller.canMoveUp = false;
     }
-    if (player.controller.y + player.controller.height > world.level.height) {
+    if (player.controller.y + player.controller.height > (world.bounds.y + world.bounds.height)) {
         player.info.die();
     }
-    if (player.controller.z < 0) {
-        player.controller.z = 0;
+    if (player.controller.z < world.bounds.z) {
+        player.controller.z = world.bounds.z;
         player.controller.canMoveIn = false;
     }
-    if (player.controller.z + player.controller.depth > world.level.depth) {
-        player.controller.z = world.level.depth - player.controller.depth;
+    if (player.controller.z + player.controller.depth > (world.bounds.z + world.bounds.depth)) {
+        player.controller.z = (world.bounds.z + world.bounds.depth) - player.controller.depth;
         player.controller.canMoveOut = false;
     }
 
@@ -202,6 +202,10 @@ WorldCollider.prototype.collideItemPart = function(player, item, part, width, he
 }
 
 
+
+
+
+
 WorldCollider.prototype.resetPlayers = function(players) {
     if (!players) return;
     var t = players.length;
@@ -212,22 +216,30 @@ WorldCollider.prototype.resetPlayers = function(players) {
 
 
 
+
+
 WorldCollider.prototype.resetPlayer = function(player) {
     player.controller.stop();
     var t = this.colliders.length;
     if (t == 0) return;
+
+    var pad = 50;
+    var tpad = pad * 2;
+    
     var spawnitem = null;
     while (spawnitem == null) {
         var r = random(0, t - 1);
         spawnitem = this.colliders[r];
         if (!spawnitem.traversable) spawnitem = null;
-        else if (spawnitem.width < 50 || spawnitem.height < 50 || spawnitem.depth < 50) spawnitem = null;
-        else if ((spawnitem.isbounds && !spawnitem.traversable) || spawnitem.damage && spawnitem.damage.hp > 0) spawnitem = null;
+        else if (spawnitem.width < tpad || spawnitem.height < pad || spawnitem.depth < tpad) spawnitem = null;
+        else if ((!spawnitem.traversable) || (spawnitem.damage && spawnitem.damage.hp > 0)) spawnitem = null;
     }
     var box = spawnitem.getMbr();
-    var rpx = random(box.x + 10, box.x + box.width - 10);
+    
+    var rpx = random(pad,  box.width - pad) + box.x;
     var rpy = box.y - player.controller.height - 20;
-    var rpz = random(10, spawnitem.depth - 10) + spawnitem.z;
+    var rpz = random(pad, box.depth - pad) + box.z;
+    
     player.respawn(rpx, rpy, rpz);
     player.reset();
 }

@@ -6,6 +6,7 @@ function Material() {
     this.color = null;
     this.waterline = null;
     this.damage = null;
+    this.properties = null;
 }
 
 Material.prototype.loadJson = function(json) {

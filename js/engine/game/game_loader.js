@@ -129,9 +129,6 @@ GameLoader.prototype.loadLevel = function(data, callback) {
     }
 
     var totlayers = total;
-    for (var i = 0; i < total; i++) {
-        if (data.layers[keys[i]].draw === false) totlayers -= 1;
-    }
     
     for (var i = 0; i < total; i++) {
         var draw = data.layers[keys[i]].draw;

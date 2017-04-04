@@ -6,8 +6,6 @@ function Item(json) {
     this.name = "";
     this.json = json;
 
-    this.isbounds = false;
-    
     this.trim = 0;
     this.trimdepth = 0;
     this.trimwidth = 0;
@@ -150,7 +148,6 @@ Item.prototype.loadJson = function(json) {
     var name = json.name ? json.name : "default";
     this.name = name;
     
-    if (json.bounds) this.isbounds = json.bounds;
     if (json.trim) this.trim = json.trim;
     
     var itemtype = json.itemtype ? json.itemtype : "default";
@@ -172,7 +169,7 @@ Item.prototype.loadJson = function(json) {
     this.angle = json.angle;
     
     this.collide = json.collide;
-    this.draw = json.draw;
+    this.draw = (json.draw !== undefined) ? json.draw : true;
     this.animate = json.animate;
 
     this.shadow = json.shadow;
@@ -210,7 +207,6 @@ Item.prototype.clone = function() {
     var newitem = new Item();
     newitem.id = this.id;
     newitem.name = this.name;
-    newitem.isbounds = this.isbounds;
     newitem.trim = this.trim;
     newitem.trimdepth = this.trimdepth;
     newitem.trimwidth = this.trimwidth;

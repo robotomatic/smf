@@ -1,22 +1,25 @@
 {
-    "width" : 400,
-    "height" : 200,
-    "depth" : 2300,
+    "name" : "menu",
+    "pad" : -100,
     "layers" : [
         {
             "name" : "bounds",
             "collide" : true,
-            "draw" : false,
-            "bounds" : true,
             "items" : [
                 {
                     "name" : "floor",
                     "x": 0,
-                    "y": 120,
-                    "z" : -100,
-                    "width": 400,
-                    "height": 50,
-                    "depth" : 2400
+                    "y": 400,
+                    "z" : 0,
+                    "depth" : 1000,
+                    "parts" : [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 1000,
+                            "height": 300
+                        }
+                    ]
                 }
             ]
         }

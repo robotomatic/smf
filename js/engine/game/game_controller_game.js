@@ -130,8 +130,6 @@ GameControllerGame.prototype.loadPlayers = function() {
         
         playertotal++;
     }
-    this.players.shadow.draw = false;
-    
     
     this.input.setPlayers(this.players);
     this.loop.loadPlayers(this.players);

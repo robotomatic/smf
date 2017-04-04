@@ -38,16 +38,20 @@ function View(game, id, quality, action) {
 
 
 
+View.prototype.setCameraAll = function() {
+    this.setCameraZoom("all");
+}
+
+View.prototype.setCameraFit = function() {
+    this.setCameraZoom("fit");
+}
+
 View.prototype.setCameraLoose = function() {
     this.setCameraZoom("loose");
 }
 
 View.prototype.setCameraComfy = function() {
     this.setCameraZoom("comfy");
-}
-
-View.prototype.setCameraCosy = function() {
-    this.setCameraZoom("cosy");
 }
 
 View.prototype.setCameraTight = function() {

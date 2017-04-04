@@ -14,7 +14,6 @@ WorldBuilderTrim.prototype.buildWorldTrim = function(world) {
         if (item.draw === false) continue;
         if (item.width == "100%" || item.height == "100%" || item.depth == "100%") continue;
         if (item.waterline) continue;
-        if (item.isbounds) continue;
         items = this.buildWorldTrimItem(items, item);
     }
     world.items = items;

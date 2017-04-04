@@ -1,6 +1,7 @@
 "use strict";
 
 function ViewRenderer(view) {
+
     this.view = view;
     this.debug = false;
     this.mbr = geometryfactory.getRectangle(0, 0, 0, 0);
@@ -19,6 +20,7 @@ function ViewRenderer(view) {
     this.renderall = true;
     
     this.ready = false;
+    
     
     this.fps = 0;
     this.avg = 0;
@@ -99,6 +101,8 @@ ViewRenderer.prototype.renderWorld = function(now, world) {
     var height = this.view.rendertarget.canvas.height;
     var follow = true;
     this.mbr = this.camera.getView(now, this.mbr, width, height, follow, this.view.paused);
+    this.window.x = 0;
+    this.window.y = 0;
     this.window.width = width;
     this.window.height = height;
     this.window.depth = 1;
@@ -113,16 +117,31 @@ ViewRenderer.prototype.getViewWindow = function(world) {
     var offy = this.camerasettings.y;
     var offz = this.camerasettings.z;
     this.mbr = world.players.getMbr(this.mbr);
-    if (this.camerasettings.name == "fit" || this.mbr && !this.mbr.width && !this.mbr.height) {
+    var cname = this.camerasettings.name;
+    if (cname == "fit") {
         offx = 0;
-        offy = 0;
-        offz = 0;
+        var fy = this.camerasettings.settings[cname].y;
+        var dy = fy - this.camerasettings.y;
+        offy = dy;
+        var fz = this.camerasettings.settings[cname].z;
+        var dz = fz - this.camerasettings.z;
+        offz = dz;
         this.mbr = this.getViewBounds(world, this.mbr);
         this.renderall = true;
         this.camera.lastview = null;
-    } else if (this.renderall) {
-        this.renderall = false;
-        this.camera.lastview = null;
+    } else {
+        if (cname == "all" || this.mbr && !this.mbr.width && !this.mbr.height) {
+            cname = "all";
+            offx = 0;
+            offy = this.camerasettings.settings[cname].y;
+            offz = this.camerasettings.settings[cname].z;
+            this.mbr = this.getViewBounds(world, this.mbr);
+            this.renderall = true;
+            this.camera.lastview = null;
+        } else if (this.renderall) {
+            this.renderall = false;
+            this.camera.lastview = null;
+        }
     }
     if (!this.paused) this.rendercount++;
     this.camera.offset.x = offx;
@@ -134,38 +153,36 @@ ViewRenderer.prototype.getViewBounds = function(world, mbr) {
     var b = world.worldbuilder.collidebuilder.collisionindex.bounds;
     mbr.x = b.min.x;
     mbr.y = 0;
-    mbr.z = -2500;
+    mbr.z = 0;
     mbr.width = b.max.x - mbr.x;
+    mbr.height = b.max.y - mbr.y;
+    mbr.depth = b.max.z - mbr.z;
     if (!world.level) {
-        mbr.height = b.max.y - mbr.y;
         mbr.depth = 0;
         return mbr;
     }
-    mbr.height = world.level.height;
-    var width = this.view.width;
-    if (width < mbr.width) {
-        var dw = width / mbr.width;
-         var newheight = mbr.height * dw;
-         var newy = mbr.height - newheight;
-         mbr.y -= (newy / 2);
-         mbr.height = newheight;
-        var newx = mbr.width - width;
-        mbr.x += (newx / 2);
-        mbr.width = width;
-    }
-    var height = this.view.height;
-    if (height < mbr.height) {
-        var dh = height / mbr.height;
-        var newwidth = mbr.width * dh;
-        var newx = mbr.width - newwidth;
-        mbr.x += (newx / 2);
-        mbr.width = newwidth;
-        var newy = mbr.height - height;
-        mbr.y += (newy / 2);
-        mbr.height = height;
-    } else {
-        mbr.height = world.level.height;
-    }
+   var width = this.view.width;
+   if (width < mbr.width) {
+       var dw = width / mbr.width;
+        var newheight = mbr.height * dw;
+        var newy = mbr.height - newheight;
+        mbr.y -= (newy / 2);
+        mbr.height = newheight;
+       var newx = mbr.width - width;
+       mbr.x += (newx / 2);
+       mbr.width = width;
+   }
+   var height = this.view.height;
+   if (height < mbr.height) {
+       var dh = height / mbr.height;
+       var newwidth = mbr.width * dh;
+       var newx = mbr.width - newwidth;
+       mbr.x += (newx / 2);
+       mbr.width = newwidth;
+       var newy = mbr.height - height;
+       mbr.y += (newy / 2);
+       mbr.height = height;
+   }
     return mbr;
 }
 
