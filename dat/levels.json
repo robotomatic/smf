@@ -2,33 +2,34 @@
     "level-0" : {
         "name" : "island",
         "file" : "dat/levels/island/island.json",
-        "themes" : {
-            "0" : "default",
-            "1" : "jungle"
-        }
+        "themes" : [
+            "default", 
+            "jungle"
+        ]
     },
     "level-1" : {
         "name" : "mountain",
         "file" : "dat/levels/mountain/mountain.json",
-        "themes" : {
-            "0" : "default",
-            "1" : "lava"
-        }
+        "themes" : [
+            "default", 
+            "lava"
+        ]
     },
     "level-2" : {
         "name" : "fortress",
         "file" : "dat/levels/fortress/fortress.json",
-        "themes" : {
-            "0" : "default",
-            "1" : "snow"
-        }
+        "themes" : [
+            "default", 
+            "jungle", 
+            "snow"
+        ]
     },
     "level-3" : {
         "name" : "city",
         "file" : "dat/levels/city/city.json",
-        "themes" : {
-            "0" : "default",
-            "1" : "space"
-        }
+        "themes" : [
+            "default", 
+            "space"
+        ]
     }
 }

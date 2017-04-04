@@ -106,9 +106,7 @@ function initializeDevCamera() {
 
 
 function updateDevViewCamera(v) {
-    
     if (!__dev) return;
-    
     updateDevViewCameraOffset(v);
     updateDevViewCameraDepthOfFieldBlur(v);
     updateDevViewCameraFollowSpeed(v);
@@ -122,59 +120,46 @@ function updateDevViewCamera(v) {
 
 
 function setDevCameraOffsetX(x) {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
-    vv.offset.x = Number(x);
-    vv.view.renderer.camera.reset();
+    var vv = gamecontroller.game.loop.gameworld.views[0];
+    vv.renderer.camerasettings.x = Number(x);
+    vv.renderer.camera.reset();
     updateDevViewCameraOffset(vv);
 }
 
 function setDevCameraOffsetY(y) {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
-    vv.offset.y = Number(y);
-    vv.view.renderer.camera.reset();
+    var vv = gamecontroller.game.loop.gameworld.views[0];
+    vv.renderer.camerasettings.y = Number(y);
+    vv.renderer.camera.reset();
     updateDevViewCameraOffset(vv);
 }
 
 function setDevCameraOffsetZ(z) {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
-    vv.offset.z = Number(z);
-    vv.view.renderer.camera.reset();
+    var vv = gamecontroller.game.loop.gameworld.views[0];
+    vv.renderer.camerasettings.z = Number(z);
+    vv.renderer.camera.reset();
     updateDevViewCameraOffset(vv);
 }
 
 function updateDevViewCameraOffset(vv) {
-    
     if (!__dev) return;
-    
-    if (!vv.offset) return;
-    var x = vv.offset.x;
+    if (!vv.renderer.camerasettings) return;
+    var x = vv.renderer.camerasettings.x;
     var xx = dev_camera_offset_x_amount;
     xx.value = (x == undefined) ? 0 : x;
     var xxx = dev_camera_offset_x_range;
     xxx.value = x;
-    
-    var y = vv.offset.y;
+    var y = vv.renderer.camerasettings.y;
     var yy = dev_camera_offset_y_amount;
     yy.value = (y == undefined) ? 0 : y;
     var yyy = dev_camera_offset_y_range;
     yyy.value = y;
-    
-    var z = vv.offset.z;
+    var z = vv.renderer.camerasettings.z;
     var zz = dev_camera_offset_z_amount;
     zz.value = (z == undefined) ? 0 : z;
     var zzz = dev_camera_offset_z_range;
@@ -182,46 +167,34 @@ function updateDevViewCameraOffset(vv) {
 }
 
 function setDevCameraOffsetLoose() {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
-    vv.view.renderer.camera.reset();
+    var vv = gamecontroller.game.loop.gameworld.views[0];
+    vv.renderer.camera.reset();
     vv.setCameraLoose();
 }
 
 function setDevCameraOffsetComfy() {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
-    vv.view.renderer.camera.reset();
+    var vv = gamecontroller.game.loop.gameworld.views[0];
+    vv.renderer.camera.reset();
     vv.setCameraComfy();
 }
 
 function setDevCameraOffsetCosy() {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
-    vv.view.renderer.camera.reset();
+    var vv = gamecontroller.game.loop.gameworld.views[0];
+    vv.renderer.camera.reset();
     vv.setCameraCosy();
 }
 
 function setDevCameraOffsetTight() {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
-    vv.view.renderer.camera.reset();
+    var vv = gamecontroller.game.loop.gameworld.views[0];
+    vv.renderer.camera.reset();
     vv.setCameraTight();
 }
 
@@ -229,28 +202,23 @@ function setDevCameraOffsetTight() {
 
 
 function setDevCameraFollowSpeed(speed) {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
-    vv.view.renderer.camera.speed = speed;
+    var vv = gamecontroller.game.loop.gameworld.views[0];
+    vv.renderer.camera.speed = speed;
     updateDevViewCameraFollowSpeed(vv);
 }
 
 function updateDevViewCameraFollowSpeed(vv) {
-    
     if (!__dev) return;
-    
-    var speed = vv.view.renderer.camera.speed;
+    var speed = vv.renderer.camera.speed;
     dev_camera_follow_speed.value = speed;
 }
 
 
 function updateDevViewCameraDepthOfFieldBlur(vv) {
     if (!__dev) return;
-    var blur = vv.view.blur;
+    var blur = vv.blur;
     var vb = dev_camera_dof_blur;
     vb.checked = blur;
 }
@@ -261,9 +229,8 @@ function updateDevViewCameraDepthOfFieldBlur(vv) {
 function setDevCameraDepthOfFieldBlur(blur) {
     if (!__dev) return;
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
-    vv.view.blur = blur;
+    var vv = gamecontroller.game.loop.gameworld.views[0];
+    vv.blur = blur;
     updateDevViewCameraDepthOfFieldBlur(vv);
 }
 
@@ -272,63 +239,49 @@ function setDevCameraDepthOfFieldBlur(blur) {
 
 
 function setDevCameraDrift(drift) {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
-    vv.view.renderer.camera.drift.enabled = drift;
+    var vv = gamecontroller.game.loop.gameworld.views[0];
+    vv.renderer.camera.drift.enabled = drift;
     updateDevViewCameraDrift(vv);
 }
 
 function setDevCameraDriftMin(min) {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
-    vv.view.renderer.camera.drift.min = min;
+    var vv = gamecontroller.game.loop.gameworld.views[0];
+    vv.renderer.camera.drift.min = min;
     updateDevViewCameraDrift(vv);
 }
 
 function setDevCameraDriftMax(max) {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
-    vv.view.renderer.camera.drift.max = max;
+    var vv = gamecontroller.game.loop.gameworld.views[0];
+    vv.renderer.camera.drift.max = max;
     updateDevViewCameraDrift(vv);
 }
 
 function setDevCameraDriftSpeed(speed) {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
-    vv.view.renderer.camera.drift.speed = speed;
+    var vv = gamecontroller.game.loop.gameworld.views[0];
+    vv.renderer.camera.drift.speed = speed;
     updateDevViewCameraDrift(vv);
 }
 
 function updateDevViewCameraDrift(vv) {
-    
     if (!__dev) return;
-    
-    var drift = vv.view.renderer.camera.drift.enabled;
+    var drift = vv.renderer.camera.drift.enabled;
     var vd = dev_camera_drift;
     vd.checked = drift;
-    var min = vv.view.renderer.camera.drift.min;
+    var min = vv.renderer.camera.drift.min;
     var vdmin = dev_camera_drift_min;
     vdmin.value = min;
-    var max = vv.view.renderer.camera.drift.max;
+    var max = vv.renderer.camera.drift.max;
     var vdmax = dev_camera_drift_max;
     vdmax.value = max;
-    var speed = vv.view.renderer.camera.drift.speed;
+    var speed = vv.renderer.camera.drift.speed;
     var vds = dev_camera_drift_speed;
     vds.value = speed;
 }
@@ -340,17 +293,13 @@ function updateDevViewCameraDrift(vv) {
 
 
 function setDevCameraFOV(z) {
-    
     if (!__dev) return;
-    
     setFOV(Number(z));
     updateDevViewCameraFOV();
 }
 
 function updateDevViewCameraFOV() {
-    
     if (!__dev) return;
-    
     var z = getFOV();
     var zz = dev_camera_fov_amount;
     zz.value = z;

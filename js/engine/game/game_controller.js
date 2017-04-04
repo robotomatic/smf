@@ -103,7 +103,7 @@ GameController.prototype.showMenu = function(data) {
         "dat/animations.json",
         function() {
             controller.currentview = "menu";
-            controller.game = new GameControllerMenuMain(controller);
+            controller.game = new GameControllerMenu(controller);
             controller.start();
         }
     );
@@ -141,7 +141,7 @@ GameController.prototype.loadUI = function(data) {
 GameController.prototype.start = function() {
     this.resize();
     this.initDebug();
-    this.game.loop.game.world.debug = this.gamesettings.settings.debug;
+    this.game.loop.gameworld.world.debug = this.gamesettings.settings.debug;
     this.game.start();
     this.fadeIn();
     this.ignorefade = false;
@@ -165,9 +165,7 @@ GameController.prototype.resize = function() {
 }
 
 GameController.prototype.run = function(now) {
-    
     if (this.loading) return;
-    
     if (!this.game) return;
     if (this.game.loop) this.game.run(now);
 }
@@ -197,7 +195,20 @@ GameController.prototype.resume = function(now) {
     this.paused = false;
 }
 
+GameController.prototype.loadLevel = function(level, name, callback) {
+    var controller = this;
+    this.game.loadLevel(level, name, function() {
+        resetDev(controller);
+        if (callback) callback();
+    });
+}
 
+
+
+GameController.prototype.changeWorldTheme = function(theme, active) {
+    this.game.changeWorldTheme(theme, active);
+}
+    
 GameController.prototype.addPlayer = function(charname) {
     if (!this.game) return;
     this.game.addPlayer(charname);

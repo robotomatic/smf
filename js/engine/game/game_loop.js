@@ -3,7 +3,7 @@
 function GameLoop(input) {
     this.input = input;
     this.running = false;
-    this.game = new Game();
+    this.gameworld = new GameWorld();
     this.now = null;
     this.last = null;
 
@@ -13,7 +13,6 @@ function GameLoop(input) {
     this.step = 1000 / this.stepspeed;
     
     this.steprender = true;
-//    this.steprender = false;
 
     this.delta = 0;
     
@@ -22,25 +21,51 @@ function GameLoop(input) {
     
     this.dorender = false;
     
-    this.gameperformance = new GamePerformance(this.game, this.step);
+    this.gameperformance = new GamePerformance(this.step);
 }
-GameLoop.prototype.loadLevel = function(level) { this.game.setLevel(level); }
-GameLoop.prototype.loadTheme = function(themename, theme, materials) { this.game.setTheme(themename, theme, materials); }
-GameLoop.prototype.loadPlayers = function(players) { this.game.setPlayers(players); }
-GameLoop.prototype.loadNPCs = function(npcs) { this.game.setNPCs(npcs); }
-GameLoop.prototype.loadViews = function(views) { this.game.setViews(views); }
 
-GameLoop.prototype.removePlayer = function(player) { this.game.removePlayer(player); }
+GameLoop.prototype.loadLevel = function(level) { 
+    this.gameworld.setLevel(level); 
+}
 
-GameLoop.prototype.showViews = function() { if (this.game.views) for (var i = 0; i < this.game.views.length; i++) this.game.views[i].show(); }
-GameLoop.prototype.hideViews = function() { if (this.game.views) for (var i = 0; i < this.game.views.length; i++) this.game.views[i].hide(); }
+GameLoop.prototype.loadMaterials = function(materials) { 
+    this.gameworld.loadMaterials(materials);
+}
+    
+GameLoop.prototype.loadTheme = function(theme) { 
+    this.gameworld.loadTheme(theme); 
+}
+
+GameLoop.prototype.unloadThemes = function() { 
+    this.gameworld.unloadThemes();
+}
+
+GameLoop.prototype.loadPlayers = function(players) { 
+    this.gameworld.setPlayers(players);
+}
+
+GameLoop.prototype.loadNPCs = function(npcs) { 
+    this.gameworld.setNPCs(npcs);
+}
+
+GameLoop.prototype.loadViews = function(views) { 
+    this.gameworld.setViews(views); 
+}
+
+GameLoop.prototype.removePlayer = function(player) { 
+    this.gameworld.removePlayer(player); 
+}
+
+GameLoop.prototype.showViews = function() { 
+    this.gameworld.showViews();
+}
+
+GameLoop.prototype.hideViews = function() { 
+    this.gameworld.hideViews();
+}
 
 GameLoop.prototype.resize = function() { 
-    if (this.game.views) {
-        for (var i = 0; i < this.game.views.length; i++) {
-            this.game.views[i].resize(); 
-        }
-    }
+    this.gameworld.resize();
 }
 
 GameLoop.prototype.start = function() {
@@ -54,14 +79,14 @@ GameLoop.prototype.stop = function() {
 
 GameLoop.prototype.pause = function(when) {
     this.paused = true;
-    this.game.pause(when);
+    this.gameworld.pause(when);
     this.gameperformance.pauseStart(when);
 }
 
 GameLoop.prototype.resume = function(when) {
     this.paused = false;
     this.last = when;
-    this.game.resume(when);
+    this.gameworld.resume(when);
     this.gameperformance.pauseEnd(when);
 }
 
@@ -76,6 +101,7 @@ GameLoop.prototype.run = function(now) {
     }
     this.render(timestamp());
     this.gameperformance.loopEnd(now);
+    this.gameworld.fps("FPS", this.gameperformance);
 }
 
 GameLoop.prototype.runStep = function(now) {
@@ -98,21 +124,21 @@ GameLoop.prototype.runUpdate = function(when) {
 GameLoop.prototype.update = function(when, delta) {
     this.gameperformance.updateStart(when);
     this.input.update(when); 
-    this.game.update(when, delta); 
+    this.gameworld.update(when, delta); 
     this.gameperformance.updateEnd(when);
 }
                                                   
 GameLoop.prototype.render = function(when) { 
     this.gameperformance.renderStart(when);
-    this.game.render(when);
+    this.gameworld.render(when);
     this.gameperformance.renderEnd(when);
 }
 
 GameLoop.prototype.reset = function(when) { 
     this.gameperformance.reset(when);
-    this.game.reset(when);
+    this.gameworld.reset(when);
 }
 
 GameLoop.prototype.doAction = function(action, args, key, val, callback) { 
-    this.game.doAction(action, args, key, val, callback); 
+    this.gameworld.doAction(action, args, key, val, callback); 
 }

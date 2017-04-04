@@ -1,8 +1,7 @@
 "use strict"
 
-function GamePerformance(game, step) {
+function GamePerformance(step) {
 
-    this.game = game;
     this.step = step;
     
     this.lt = 0;
@@ -53,7 +52,6 @@ GamePerformance.prototype.loopStart = function(when) {}
 
 GamePerformance.prototype.loopEnd = function(when) {
     this.getFPS(timestamp());
-    this.game.fps("FPS", this.fps, this.avg);
 }
 
 

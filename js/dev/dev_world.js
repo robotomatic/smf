@@ -12,29 +12,26 @@ function initializeDevWorld() {
             changeWorldLevel(dev_world_level.value);
         }, 1000);
     };
+    
+    initializeDevWorldThemes();
 }
 
+
 function resetDevWorld(world) {
-    
     // todo: remove all layer info
     updateDevWorld(world);
-    
+    updateDevWorldThemes(world);
 }
 
 function updateDevWorld(world) {
-    
     if (!__dev) return;
-    
     var level = world.level;
     if (!level) return;
-    
     var levels = controller.gameloader.levels;
     var keys = controller.gameloader.levelkeys;
     if (!keys || !keys.length) return;
-    
     var total = dev_world_level.length;
     var lt = keys.length;
-    
     if (total != lt) {
         dev_world_level.innerHTML = "";
         for (var i = 0; i < lt; i++) {
@@ -50,14 +47,10 @@ function updateDevWorld(world) {
 }
 
 function changeWorldLevel(levelname) {
-    
     if (!__dev) return;
-    
-    var world = controller.game.loop.game.world;
-    
+    var world = controller.game.loop.gameworld.world;
     var level = world.level;
     if (levelname == level.name) return;
-
     var newlevel = null;
     var levels = controller.gameloader.levels;
     var keys = controller.gameloader.levelkeys;
@@ -69,15 +62,13 @@ function changeWorldLevel(levelname) {
             break;
         }
     }
-    
     if (!newlevel) {
         logDev("Unable to locate level: " + levelname);
         return;
     }
-
     controller.pause(timestamp());
     controller.reset();
-    controller.game.loadLevel(newlevel, levelname, function() {
+    controller.loadLevel(newlevel, levelname, function() {
         controller.game.startPlayers();
         controller.resume(timestamp());
     });

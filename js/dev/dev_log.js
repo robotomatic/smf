@@ -4,9 +4,7 @@ var dev_log = null;
 var messages = new Array();
 
 function logDev(message) {
-    
     console.log(message);
-    
     if (!dev_log) dev_log = document.getElementById("dev-log");
     if (!dev_log) {
         messages.push(message);

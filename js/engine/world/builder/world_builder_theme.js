@@ -8,7 +8,7 @@ WorldBuilderTheme.prototype.reset = function() {
 }
 
 WorldBuilderTheme.prototype.buildTheme = function(world) { 
-    var items = world.items;
+    var items = world.renderitems;
     if (!this.addparts) return items;
     if (!items.length) return items;
     var itemrenderer = world.worldrenderer.itemrenderer;
@@ -22,7 +22,7 @@ WorldBuilderTheme.prototype.buildTheme = function(world) {
     for (var ii = 0; ii < newitems.length; ii++) {
         items.push(newitems[ii]);
     }
-    world.items = items;
+    world.renderitems = items;
 }
 
 WorldBuilderTheme.prototype.buildThemeItems = function(renderer, item, newitems) {

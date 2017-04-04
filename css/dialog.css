@@ -397,6 +397,9 @@
         min-width: 25em;
         width: auto;
     }
+    .dialog-resize-vertical {
+        width: 25em;
+    }
     .dialog-title {
         display: block;
     }

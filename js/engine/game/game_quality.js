@@ -1,44 +1,36 @@
 "use strict"
 
-function GameQuality(game, quality) {
+function GameQuality() {
     var mobile = isMobile();
     var tablet = isTablet();
     var desktop = isDesktop();
+    
+    this.width = 800;
+    this.height = 600;
+    this.fov = 1500;
+    this.scale = 1;
+    
     if (mobile) {
-        game.width = 800;
-        game.height = 600;
-        game.fov = 400;
-        game.scale = 2;
-        game.levelquality = quality;
-        game.playerquality = quality  +1;
-        game.device = "mobile";
+        this.width = 800;
+        this.height = 600;
+        this.fov = 1500;
+        this.scale = 1;
+        this.device = "mobile";
     } else if (tablet) {
-        game.width = 1024;
-        game.height = 768;
-        game.fov = 400;
-        game.scale = 2;
-        game.levelquality = quality;
-        game.playerquality = quality  +1;
-        game.device = "tablet";
+        this.width = 800;
+        this.height = 600;
+        this.fov = 1500;
+        this.scale = 2;
+        this.device = "tablet";
     } else {
-        game.width = 1024;
-        game.height = 768;
-        game.fov = 400;
-        game.scale = 2;
-        game.levelquality = quality;
-        game.playerquality = quality  +1;
-        game.device = "desktop";
+        this.width = 800;
+        this.height = 600;
+        this.fov = 1500;
+        this.scale = 2;
+        this.device = "desktop";
     }
     
-    game.width = 800;
-    game.height = 600;
-    game.fov = 1500;
-    game.scale = 1;
-    game.levelquality = 2;
-    game.playerquality = 3;
-    
-    logDev(game.device + ": " + game.width + "x" + game.height + " @ " + game.scale + "x");
-    logDev("quality: level = " + game.levelquality + ", player = " + game.playerquality);
+    logDev(this.device + ": " + this.width + "x" + this.height + " @ " + this.scale + "x");
     logDev("");
-    setFOV(game.fov);
+    setFOV(this.fov);
 }

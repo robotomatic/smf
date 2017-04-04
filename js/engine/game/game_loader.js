@@ -232,9 +232,9 @@ GameLoader.prototype.loadThemes = function(data, callback) {
 GameLoader.prototype.loadTheme = function(data, total, callback) {
     var keys = Object.keys(data);
     var name = keys[0];
-    this.themes.themes[name] = new Theme(name).loadJson(data[name]);
-    var tkeys = Object.keys(this.themes.themes);
-    if (tkeys.length == total) {
+    this.themes.addTheme(new Theme(name).loadJson(data[name]));
+    var t = this.themes.themes.length;
+    if (t == total) {
         this.themes.loaded = true;
         benchmark("themes loaded");
         if (callback) callback();        

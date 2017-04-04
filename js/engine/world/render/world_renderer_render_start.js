@@ -17,9 +17,9 @@ WorldRendererStart.prototype.getRenderItems = function(mbr, window, graphics, ca
 }
 
 WorldRendererStart.prototype.getRenderItemsWorldItems = function(mbr, window, cp, graphics, camera, world, debug) {
-    var t = world.items.length;
+    var t = world.renderitems.length;
     for (var i = 0; i < t; i++) {
-        var item = world.items[i];
+        var item = world.renderitems[i];
         if (item.isbounds) continue;
         this.getRenderItemsWorldLevelLayerItemsItem(mbr, window, cp, graphics, camera, world, item, debug);
     }

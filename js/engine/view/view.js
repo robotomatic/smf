@@ -1,21 +1,28 @@
 "use strict";
 
-function View(gamecontroller, id, width, height, scale) {
-    if (!id) return;
-    this.gamecontroller = gamecontroller;
+function View(game, id, quality, action) {
     this.id = id;
-    this.width = width;
-    this.height = height;
-    this.maxwidth = width;
-    this.maxheight = height;
-    this.renderer = new ViewRenderer();
-    this.scale = scale;
-    this.parent = document.getElementById("main");
+    this.game = game;
     
-    var v = new ViewGraphics();
-    this.graphics = v.graphics;
-    
+    this.width = quality.width;
+    this.height = quality.height;
+    this.maxwidth = quality.width;
+    this.maxheight = quality.height;
+    this.scale = quality.scale;
+
+    this.viewscale = 1;
     this.blur = true;
+    this.paused = false;
+    
+    this.parent = document.getElementById("main");
+    if (action) {
+        this.parent.onclick = function(e) {
+            action(e, game);
+        }
+    }
+    
+    this.renderer = new ViewRenderer(this);
+    this.viewsizer = new ViewSizer(this);
     
     this.rendertarget = {
         canvas : null,
@@ -24,29 +31,60 @@ function View(gamecontroller, id, width, height, scale) {
         auto : true,
         scale : 0
     }
-
-    this.viewscale = 1;
     
-    this.fps = 0;
-    this.avg = 0;
-    this.tx = 20;
-    this.ty = 20;
-    this.fpstext = new Text(this.tx, this.ty, "FPS: ");
-
-    this.ready = false;
-    this.paused = false;
-    
-    this.createGraphics();
-    this.createView(gamecontroller);
-    
-    this.image = new Image(null, 0, 0, 0, 0);
+    this.createView();
 }
+
+
+
+
+View.prototype.setCameraLoose = function() {
+    this.setCameraZoom("loose");
+}
+
+View.prototype.setCameraComfy = function() {
+    this.setCameraZoom("comfy");
+}
+
+View.prototype.setCameraCosy = function() {
+    this.setCameraZoom("cosy");
+}
+
+View.prototype.setCameraTight = function() {
+    this.setCameraZoom("tight");
+}
+
+View.prototype.setCameraZoom = function(zoom) {
+    this.renderer.setCameraZoom(zoom);
+    this.game.gamecontroller.gamesettings.settings.camera.view = zoom;
+    this.game.gamecontroller.saveGameSettings();
+    updateDevViewCameraOffset(this);
+}
+
+
+
+
+
+View.prototype.createView = function() {
+    this.rendertarget.canvas = new GameCanvas("gamecanvas");
+    this.rendertarget.canvas.setClassName("absolute game-canvas");
+    var main = document.getElementById("main-content");
+    if (main) {
+        this.rendertarget.canvas.attach(main);
+    }
+}
+
+
+
 
 View.prototype.reset = function(when) { 
     this.parent.style.background = "white";
     this.rendertarget.canvas.setBackground("white");
-    this.ready = false;
+    this.renderer.reset(when);
 }
+
+
+
 
 View.prototype.pause = function(when) { 
     this.paused = true;
@@ -55,6 +93,9 @@ View.prototype.pause = function(when) {
 View.prototype.resume = function(when) { 
     this.paused = false;
 }
+
+
+
 
 View.prototype.toggleBlur = function() { 
     this.blur = !this.blur;
@@ -87,203 +128,32 @@ View.prototype.setRatio = function(r) {
 }
 
 
-View.prototype.createGraphics = function() { 
-    var keys = Object.keys(this.graphics);
-    for (var i = 0; i < keys.length; i++)  {
-        this.createCanvas(this.graphics[keys[i]]);
-    }
-}
-    
-View.prototype.createCanvas = function(graphics) {     
-    graphics.canvas = new GameCanvas("");
-    var classname = "absolute game-canvas";
-    if (graphics.css) classname += " " + graphics.css;
-    graphics.canvas.setClassName(classname);
-}
 
-View.prototype.createView = function(gamecontroller) {
-    this.rendertarget.canvas = new GameCanvas("gamecanvas");
-    this.rendertarget.canvas.setClassName("absolute game-canvas");
-    var main = document.getElementById("main-content");
-    if (main) {
-        this.rendertarget.canvas.attach(main);
-    }
-}
 
 View.prototype.resize = function() {
-    var rect = this.parent.getBoundingClientRect();
-    var rwidth = rect.width;
-    var rheight = rect.height;
-    if (!rwidth || !rheight) return;
-    logDev("window: " + rwidth + " x " + rheight);
-    var cwidth = this.width;
-    var cheight = this.height;
-    if (this.rendertarget.auto) {
-        var r = rheight / rwidth;
-        cheight = cwidth * r;
-    }
-    if (cwidth > rwidth) {
-        cwidth = rwidth;
-    }
-    if (cheight > rheight) {
-        cheight = rheight;
-    }
-    this.height = round(cheight);
-    this.width = round(cwidth);
-    var p = round(cwidth / this.width) * 100;
-    logDev("canvas: " + cwidth + " x " + cheight + " == " + p + "%");
-    var ctop = (rheight - cheight) / 2;
-    var cleft = (rwidth - cwidth) / 2;
-    this.sizeViewGraphics(cleft, ctop, cwidth, cheight);
-    logDev("");
+    this.viewsizer.resize();
 }
 
-View.prototype.sizeViewGraphics = function(left, top, width, height) { 
-    var keys = Object.keys(this.graphics);
-    for (var i = 0; i < keys.length; i++)  {
-        var g = this.graphics[keys[i]];
-        this.sizeGraphics(g, left, top, width, height);
-    }
-    this.sizeGraphics(this.rendertarget, left, top, width, height);
-}
 
-View.prototype.sizeGraphics = function(graphics, left, top, width, height) { 
-    var canvas = graphics.canvas;
-    canvas.setPosition(left, top);
-    canvas.setSize(width, height);
-    var rect = this.parent.getBoundingClientRect();
-    var rwidth = rect.width;
-    var rheight = rect.height;
-    var s = round(rwidth / width);
-    this.viewscale = s;
-    var sw = round(width * s);
-    var dw = round(sw - width);
-    var sh = round(height * s);
-    var dh = round(sh - height);
-    if (graphics.fit) {
-        var testheight = height * s;
-        if (testheight > rheight) {
-            var newheight = rheight / s;
-            canvas.setSize(width, newheight);
-            var newtop = round((rheight - newheight) / 2);
-            canvas.setPosition(left, newtop);
-            sh = newheight * s;
-        }
-        canvas.setScale(s);
-        graphics.scale = s;
-        logDev("view scale: " + s); 
-        logDev("width: " + sw + ", height: " + sh);
-        return;
-    }
-    canvas.setScale(1);
-    graphics.scale = 1;
-}
 
-View.prototype.show = function() { 
-}
 
-View.prototype.hide = function() { 
-}
+View.prototype.show = function() { }
 
-View.prototype.setBackground = function(world) {
-    if (this.paused) return;
-    if (world.debug.level.level || world.debug.level.render || world.debug.level.hsr) {
-        this.parent.style.background = "white";
-        this.rendertarget.canvas.setBackground("white");
-        this.ready = false;
-    } else if (world.worldrenderer.itemrenderer) {
-        if (!this.ready) {
-            if (world.worldrenderer.itemrenderer.theme && world.worldrenderer.itemrenderer.theme.background) {
-                this.parent.style.background = world.worldrenderer.itemrenderer.theme.background.color;
-                this.rendertarget.canvas.setBackground(world.worldrenderer.itemrenderer.theme.background.canvas.color);
-            } else {
-                this.parent.style.background = "";
-                this.rendertarget.canvas.setBackground("");
-            }
-            this.ready = true;
-        }
-    }
-}
+View.prototype.hide = function() { }
+
+
+
 
 View.prototype.update = function(now, delta, world) {
 }
 
-View.prototype.render = function(now, world, render, follow) {
-    this.setBackground(world);
-    this.clearGraphics();
-    this.renderer.render(now, world, this.rendertarget.canvas.width, this.rendertarget.canvas.height, this.graphics, render, follow, this.gamecontroller.paused);
-    this.renderView();
-    this.renderFPS();
+
+
+
+View.prototype.render = function(now, world) {
+    this.renderer.render(now, world);
 }
-
-View.prototype.clearGraphics = function() {
-    var keys = Object.keys(this.graphics);
-    for (var i = 0; i < keys.length; i++)  {
-        this.clearViewGraphics(this.graphics[keys[i]]);
-    }
-    this.clearViewGraphics(this.rendertarget);
-}
-
-View.prototype.clearViewGraphics = function(graphics) {
-    graphics.canvas.clear()
-}
-
-View.prototype.renderView = function() {
-    var keys = Object.keys(this.graphics);
-    for (var i = 0; i < keys.length; i++)  {
-        this.renderViewGraphics(this.graphics[keys[i]]);
-    }
-}
-
-
-
-
-
-
-View.prototype.renderViewGraphics = function(graphics) {
-    graphics.canvas.commit();
-    this.image.width = graphics.canvas.width;
-    this.image.height = graphics.canvas.height;
-    this.image.data = graphics.canvas;
-    this.image.draw(this.rendertarget.canvas);
-    if (graphics.blur && this.blur) {
-        var blur = graphics.blur * graphics.scale;
-        this.image.blur(this.rendertarget.canvas, blur);
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 View.prototype.updateFPS = function(type, fps, avg) {
-    this.fps = fps;
-    this.avg = avg;
-}
-
-View.prototype.renderFPS = function() {
-    if (!__dev) return;
-    var fps = round(this.fps);
-    if (fps < 10) fps = "0" + fps;
-    var avg = round(this.avg);
-    if (avg < 10) avg = "0" + avg;
-    this.fpstext.message = this.paused ? "PAUSE" : "FPS: " + fps + "\n" + "AVG: " + avg;
-    this.fpstext.x = this.tx;
-    this.fpstext.y = this.ty;
-    this.rendertarget.canvas.setFillStyle("black");
-    this.rendertarget.canvas.beginPath();
-    this.fpstext.draw(this.rendertarget.canvas, 12);
+    this.renderer.updateFPS(type, fps, avg);
 }

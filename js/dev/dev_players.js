@@ -2,24 +2,24 @@
 
 var devplayers;
 
-var dev_template = null;
-var dev_player_list = null;
-var dev_player_characters = null;
+var dev_players_template = null;
+var dev_players_list = null;
+var dev_players_characters = null;
 
 function initializeDevPlayers() {
     
     if (!__dev) return;
     
     devplayers = new Array();
-    dev_template = document.getElementById("dev-dialog-players-players-player-template");
-    dev_player_list = document.getElementById("dev-dialog-players-players");
-    dev_player_characters = document.getElementById("dev-players-add-player-character");
+    dev_players_template = document.getElementById("dev-dialog-players-players-player-template");
+    dev_players_list = document.getElementById("dev-dialog-players-players");
+    dev_players_characters = document.getElementById("dev-players-add-player-character");
     
     loadDevCharacters();
     
     var addplayer = document.getElementById("dev-players-add-player");
     addplayer.onclick = function() {
-        addDevPlayersPlayerCharacter(dev_player_characters.value)
+        addDevPlayersPlayerCharacter(dev_players_characters.value)
     }
 }
 
@@ -38,7 +38,7 @@ function resetDevPlayers(players) {
 
 function loadDevCharacters() {
     if (!controller.gameloader.characters) return;
-    dev_player_characters.innerHTML = "";
+    dev_players_characters.innerHTML = "";
     var chars = controller.gameloader.characters.characters;
     if (!chars) return;
     var keys = Object.keys(chars);
@@ -49,7 +49,7 @@ function loadDevCharacters() {
         var opt = document.createElement('option');
         opt.value = key;
         opt.innerHTML = char.name;
-        dev_player_characters.appendChild(opt);        
+        dev_players_characters.appendChild(opt);        
     }
 }
     
@@ -78,7 +78,7 @@ function addDevPlayersPlayer(player) {
     
     var name = player.uid;
     
-    var template = dev_template;
+    var template = dev_players_template;
     if (!template) return;
     
     var item = template.cloneNode(true);
@@ -120,7 +120,7 @@ function addDevPlayersPlayer(player) {
         updateDevPlayersPlayerCamera(id, check);
     };
     
-    dev_player_list.appendChild(item);
+    dev_players_list.appendChild(item);
 
     devplayers[id] = {
         player : player,

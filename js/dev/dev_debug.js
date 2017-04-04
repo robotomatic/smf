@@ -43,9 +43,7 @@ function initializeDevDebug() {
 }
 
 function updateDevDebug() {
-    
     if (!__dev) return;
-    
     updateDevDebugPlayers();
     updateDevDebugCharacters();
     updateDevDebugGutss();
@@ -54,122 +52,88 @@ function updateDevDebug() {
     updateDevDebugHSR();
 }
 
+
+
 function setDebugPlayers(debug) {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var t = gamecontroller.game.loop.game.world.players.players.length;
     gamecontroller.gamesettings.settings.debug.player.player = debug;
     updateDevDebugPlayers();
 }
 
 function updateDevDebugPlayers() {
-    
     if (!__dev) return;
-    
     var debug = gamecontroller.gamesettings.settings.debug.player.player;
     dev_player.checked = debug;
 }
 
 function setDebugCharacters(debug) {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     gamecontroller.gamesettings.settings.debug.player.character = debug;
     updateDevDebugCharacters();
 }
 
 function updateDevDebugCharacters() {
-    
     if (!__dev) return;
-    
     var debug = gamecontroller.gamesettings.settings.debug.player.character;
     dev_character.checked = debug;
 }
 
 function setDebugGutss(debug) {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     gamecontroller.gamesettings.settings.debug.player.guts = debug;
     updateDevDebugGutss();
 }
 
 function updateDevDebugGutss() {
-    
     if (!__dev) return;
-    
-    if (!gamecontroller.game.loop.game.world.players.players.length) return;
     var debug = gamecontroller.gamesettings.settings.debug.player.guts;
     dev_guts.checked = debug;
 }
 
 function setDebugCollision(debug) {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     // todo
-    //gamecontroller.game.loop.game.world.worldrenderer.itemcache.debug = debug;
 }
 
 function setDebugLevel(debug) {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     gamecontroller.gamesettings.settings.debug.level.level = debug;
     updateDevDebugLevel();
 }
 
 function updateDevDebugLevel() {
-    
     if (!__dev) return;
-    
     var debug = gamecontroller.gamesettings.settings.debug.level.level;
     dev_level.checked = debug;
 }
 
 function setDebugRender(debug) {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     gamecontroller.gamesettings.settings.debug.level.render = debug;
     updateDevDebugRender();
 }
 
 function updateDevDebugRender() {
-    
     if (!__dev) return;
-    
     var debug = gamecontroller.gamesettings.settings.debug.level.render;
     dev_render.checked = debug;
 }
 
 function setDebugHSR(debug) {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
     gamecontroller.gamesettings.settings.debug.level.hsr = debug;
     updateDevDebugHSR();
 }
 
 function updateDevDebugHSR() {
-    
     if (!__dev) return;
-    
     var debug = gamecontroller.gamesettings.settings.debug.level.hsr;
     dev_hsr.checked = debug;
 }

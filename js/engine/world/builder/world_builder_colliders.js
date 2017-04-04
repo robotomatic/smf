@@ -18,7 +18,8 @@ WorldBuilderColliders.prototype.reset = function() {
 }
 
 WorldBuilderColliders.prototype.buildColliders = function(world) {
-    var items = world.items;
+    world.worldcollider.colliders.length = 0;
+    var items = world.renderitems;
     this.buildCollidersColliders(world, items)
 }
 

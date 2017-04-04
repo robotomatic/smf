@@ -13,3 +13,10 @@ Theme.prototype.loadJson = function(json) {
     this.physics = json.physics;
     return this;
 }
+
+Theme.prototype.reset = function() {
+    this.name = name;
+    this.background = "";
+    this.physics = null;
+    this.items = new Array();
+}

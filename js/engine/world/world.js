@@ -3,6 +3,7 @@
 function World(level, players, npcs) {
     this.level = level;
     this.items = new Array();
+    this.renderitems = new Array();
     this.players = players;
     this.npcs = npcs;
     this.physics = new Physics();
@@ -11,9 +12,18 @@ function World(level, players, npcs) {
     this.worldrenderer = new WorldRenderer();
 }
 
-World.prototype.setTheme = function(themename, theme, materials) { 
-    this.worldrenderer.setTheme(themename, theme, materials);
-    if (theme.physics) this.physics.setPhysics(theme.physics);
+World.prototype.unloadThemes = function() { 
+    this.worldrenderer.unloadThemes();
+    this.physics.reset();
+}
+
+World.prototype.loadMaterials = function(materials) { 
+    this.worldrenderer.loadMaterials(materials);
+}
+
+World.prototype.loadTheme = function(theme) { 
+    this.worldrenderer.loadTheme(theme);
+    this.physics.setPhysics(theme.physics);
 }
 
 World.prototype.setLevel = function(level) { 
@@ -79,6 +89,7 @@ World.prototype.reset = function(when) {
     this.level.reset();
     delete(this.level);
     this.items.length = 0;
+    this.renderitems.length = 0;
     this.worldbuilder.reset();
     this.worldrenderer.reset();
     this.worldcollider.reset();
@@ -107,7 +118,7 @@ World.prototype.updateItems = function(now, delta) {
 
 World.prototype.updateNPCs = function(now, delta) { 
     if (this.npcs) {
-        this.npcs.update(now, delta); 
+        this.npcs.update(now, delta, this); 
     }
 }
 
@@ -122,8 +133,11 @@ World.prototype.updatePlayer = function(now, delta, player) {
     player.update(now, delta, this.physics);
 }
 
-World.prototype.render = function(now, graphics, camera, mbr, window, render) { 
-    this.worldrenderer.render(now, graphics, camera, this, mbr, window, render);
+World.prototype.render = function(now, graphics, camera, mbr, window) { 
+    this.worldrenderer.render(now, graphics, camera, this, mbr, window);
 }
 
-World.prototype.doAction = function(action, args, key, val, callback) { if (this.npcs) this.npcs.doAction(action, args, key, val, callback); }
+World.prototype.doAction = function(action, args, key, val, callback) { 
+    if (!this.npcs) return;
+    this.npcs.doAction(action, args, key, val, callback); 
+}

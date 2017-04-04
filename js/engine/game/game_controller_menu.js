@@ -1,6 +1,6 @@
 "use strict";
 
-function GameControllerMenuMain(gamecontroller) {
+function GameControllerMenu(gamecontroller) {
     this.gamecontroller = gamecontroller;
     this.input = this.gamecontroller.input;
     this.input.setMenu(this);
@@ -18,19 +18,13 @@ function GameControllerMenuMain(gamecontroller) {
     this.started = false;
     
     this.numplayers = 0;
-    
-    this.width = 100;
-    this.height = 100;
-    this.fov = 10;
-    this.scale = 0;
-    this.device = "";
     this.gamequality = new GameQuality(this, 2);
 
     this.load();
     return this;
 }
 
-GameControllerMenuMain.prototype.load = function() {
+GameControllerMenu.prototype.load = function() {
     benchmark("build menu - start", "menu");
     this.loadLevel();
     this.loadCharacters();
@@ -39,21 +33,26 @@ GameControllerMenuMain.prototype.load = function() {
     benchmark("build menu - end", "menu");
 }
 
-GameControllerMenuMain.prototype.loadLevel = function() { 
+GameControllerMenu.prototype.loadLevel = function() { 
     this.loop.loadLevel(this.level);
 }
 
-GameControllerMenuMain.prototype.loadCharacters = function() { 
+GameControllerMenu.prototype.changeWorldTheme = function(theme, active) {
+}
+
+
+
+GameControllerMenu.prototype.loadCharacters = function() { 
     for (var charname in this.characters.characters) this.loadCharacter(charname); 
 }
 
-GameControllerMenuMain.prototype.loadCharacter = function(charname) {
+GameControllerMenu.prototype.loadCharacter = function(charname) {
     var chars = this.characters.characters;
     var character = chars[charname];
     this.loadCharacterAnimations(character);
 }
     
-GameControllerMenuMain.prototype.loadCharacterAnimations = function(character) {
+GameControllerMenu.prototype.loadCharacterAnimations = function(character) {
     var charanims = new Array();
     for (var a in character.animations) charanims[character.animations[a]] = this.animations[character.animations[a]];
     character.setAnimator(new CharacterAnimator(charanims));
@@ -61,7 +60,7 @@ GameControllerMenuMain.prototype.loadCharacterAnimations = function(character) {
     return character;
 }
     
-GameControllerMenuMain.prototype.addCharacters = function() {
+GameControllerMenu.prototype.addCharacters = function() {
     var chars = this.characters.characters;
     var charnames = this.charnames;
     this.players = new Players();
@@ -85,7 +84,7 @@ GameControllerMenuMain.prototype.addCharacters = function() {
     this.loop.loadNPCs(this.npcs);
 }
 
-GameControllerMenuMain.prototype.addPlayer = function(charname) {
+GameControllerMenu.prototype.addPlayer = function(charname) {
     
     var character = this.gamecontroller.gameloader.characters.characters[charname];
     if (!character) {
@@ -106,7 +105,7 @@ GameControllerMenuMain.prototype.addPlayer = function(charname) {
     updateDevPlayers(this.players.players);
 }
 
-GameControllerMenuMain.prototype.loadPlayer = function(id, x, y, z, character) {
+GameControllerMenu.prototype.loadPlayer = function(id, x, y, z, character) {
     var char = new Character().loadJson(character.json);
     char = this.loadCharacterAnimations(char);
     var speed = 1;
@@ -123,7 +122,7 @@ GameControllerMenuMain.prototype.loadPlayer = function(id, x, y, z, character) {
 }
 
 
-GameControllerMenuMain.prototype.changePlayerCharacter = function(player, charname) {
+GameControllerMenu.prototype.changePlayerCharacter = function(player, charname) {
     var character = this.gamecontroller.gameloader.characters.characters[charname];
     if (!character) {
         logDev("Change Player Character - No such Character named " + charname);
@@ -134,7 +133,7 @@ GameControllerMenuMain.prototype.changePlayerCharacter = function(player, charna
     player.setCharacter(character);
 }
 
-GameControllerMenuMain.prototype.updatePlayerCamera = function(player, camera) {
+GameControllerMenu.prototype.updatePlayerCamera = function(player, camera) {
     player.getscamera = camera;
     var follow = false;
     var t = this.players.players.length;
@@ -150,9 +149,9 @@ GameControllerMenuMain.prototype.updatePlayerCamera = function(player, camera) {
 
 
 
-GameControllerMenuMain.prototype.loadView = function() {
+GameControllerMenu.prototype.loadView = function() {
     this.loop.hideViews();
-    this.view = new MenuView(this.gamecontroller, "menu-canvas", this.width, this.height, this.scale);
+    this.view = new View(this, "menu-canvas", this.gamequality, this.onclick);
     this.loop.loadViews(new Array(this.view));
     if (!this.running && this.started) {
         this.resize();
@@ -161,51 +160,57 @@ GameControllerMenuMain.prototype.loadView = function() {
     fadeIn(document.getElementById("menu-canvas-canvas"));    
 }
 
-GameControllerMenuMain.prototype.start = function() {
+GameControllerMenu.prototype.onclick = function(e) {
+    if (controller.paused) return;
+    if (e.target.id != "gamecanvas") return;
+    window.location.hash="#game";
+}
+
+GameControllerMenu.prototype.start = function() {
     this.loop.start();
     this.loop.showViews();
     this.running = true;
     this.startPlayers();
 }
 
-GameControllerMenuMain.prototype.startPlayers = function() {
+GameControllerMenu.prototype.startPlayers = function() {
     for (var i = 0; i < this.players.players.length; i++) {
-        this.loop.game.world.worldcollider.resetPlayer(this.players.players[i], 1);
+        this.loop.gameworld.world.worldcollider.resetPlayer(this.players.players[i], 1);
     }
 }
 
 
-GameControllerMenuMain.prototype.reset = function() {
+GameControllerMenu.prototype.reset = function() {
     this.loop.reset(timestamp());
 }
 
-GameControllerMenuMain.prototype.run = function(when) {
+GameControllerMenu.prototype.run = function(when) {
     this.loop.run(when);
 }
 
-GameControllerMenuMain.prototype.pause = function(when) {
+GameControllerMenu.prototype.pause = function(when) {
     this.loop.pause(when);
 }
 
-GameControllerMenuMain.prototype.resume = function(when) {
+GameControllerMenu.prototype.resume = function(when) {
     this.loop.resume(when);
 }
 
-GameControllerMenuMain.prototype.stop = function() {
+GameControllerMenu.prototype.stop = function() {
     this.loop.stop();
     this.running = false;
 }
 
-GameControllerMenuMain.prototype.resize = function() {
+GameControllerMenu.prototype.resize = function() {
     this.loop.resize();
 }
 
-GameControllerMenuMain.prototype.startGame = function() {
+GameControllerMenu.prototype.startGame = function() {
     var b = document.getElementById("start-game");
     window.location = b.href;
 }
 
-GameControllerMenuMain.prototype.removePlayer = function(player) {
+GameControllerMenu.prototype.removePlayer = function(player) {
     this.loop.removePlayer(player);
     this.players.removePlayer(player);
     this.npcs.removeNPC(player);

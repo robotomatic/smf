@@ -100,7 +100,7 @@ function unselectTools() {
 function resetDev(gamecontroller) {
     if (!__dev) return;
     if (!gamecontroller.game) return;
-    var world = gamecontroller.game.loop.game.world;
+    var world = gamecontroller.game.loop.gameworld.world;
     if (world) {
         resetDevPlayers(world.players);
         resetDevWorld(world);
@@ -112,14 +112,12 @@ function resetDev(gamecontroller) {
 function resizeDev() {
     if (!__dev) return;
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
+    var vv = gamecontroller.game.loop.gameworld.views[0];
     updateDevViewSize(vv);
     updateDevViewCamera(vv);
 }
 
 function toggleDev() {
-    
     if (!__dev) return;
     unselectTools();
     var dev = document.getElementById("dev");
@@ -137,14 +135,10 @@ function toggleDev() {
 }
 
 function toggleDevDialog(nid, hide = true) {
-    
     if (!__dev) return;
-    
     var d = document.getElementById(nid);
     if (!d) return;
-
     if (hide) hideDialogs(nid);
-    
     if (isMobile() && dialogs[nid]) {
         var md = dialogs[nid];
         var p = md.dialog.className.indexOf("hidden");
@@ -152,15 +146,11 @@ function toggleDevDialog(nid, hide = true) {
         else md.dialog.className = md.dialog.className.replace("hidden", "");
         return;
     }
-    
     var dr = d.getBoundingClientRect();
-    
     var p = document.getElementById("main-content");
-    
     var rect = p.getBoundingClientRect();
     var w = rect.width;
     var h = rect.height;
-    
     var t = 50;
     var l = w - dr.width - 15;
     if (isMobile()) {
@@ -170,11 +160,9 @@ function toggleDevDialog(nid, hide = true) {
         t = (h / 2) - (dr.height / 2);
         l = (w / 2) - (dr.width / 2);
     }
-    
     d.style.top = t + "px";
     d.style.left = l + "px";
     d.className = d.className.replace("hidden", "");
-    
     var ddd = dialogs[nid];
     if (!ddd) {
         ddd = new Dialog(nid, d);
@@ -182,9 +170,7 @@ function toggleDevDialog(nid, hide = true) {
     } else {
         ddd.reset();
     }
-    
     if (!hide) ddd.moved = true;
-    
     ddd.bringToTop();
 }
 
@@ -216,16 +202,13 @@ function handleDevFocus(elem) {
 
 
 function updateViews(f, args) {
-    
     if (!__dev) return;
-    
     if (!gamecontroller || !gamecontroller.game) return;
-    if (!Array.isArray(gamecontroller.game)) updateView(gamecontroller.game.loop.game.views, f, args); 
-    else for (var i = 0; i < gamecontroller.game.length; i++) updateView(gamecontroller.game[i].loop.game.views, f, args); 
+    updateView(gamecontroller.game.loop.gameworld.views, f, args); 
 }
 
 function updateView(v, f, a) {
     if (!__dev) return;
     var t = v.length;
-    for (var i = 0; i < t; i++) v[i].view[f](a);
+    for (var i = 0; i < t; i++) v[i][f](a);
 }

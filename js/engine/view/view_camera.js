@@ -133,24 +133,18 @@ ViewCamera.prototype.roundMbr = function(mbr) {
 }
 
 ViewCamera.prototype.getCenterPoint = function(now, mbr, paused) {
-    
     this.center.x = mbr.x + (mbr.width / 2);
     this.center.y = mbr.y + (mbr.height / 2);
     this.center.z = mbr.z;
-
-    if (!paused) {
-        this.getCenterPointDrift(now);
-        this.getCenterPointShake(now);
-    
-        this.center.x = round(this.center.x);
-        this.center.y = round(this.center.y);
-        this.center.z = round(this.center.z);
-    
-        mbr.x = this.center.x - (mbr.width / 2);
-        mbr.y = this.center.y - (mbr.height / 2);
-        mbr.z = this.center.z;
-    }
-    
+    if (paused) return mbr;
+    this.getCenterPointDrift(now);
+    this.getCenterPointShake(now);
+    this.center.x = round(this.center.x);
+    this.center.y = round(this.center.y);
+    this.center.z = round(this.center.z);
+    mbr.x = this.center.x - (mbr.width / 2);
+    mbr.y = this.center.y - (mbr.height / 2);
+    mbr.z = this.center.z;
     return mbr;
 }
 

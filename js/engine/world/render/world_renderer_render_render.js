@@ -5,8 +5,7 @@ function WorldRendererRender(renderitems, itemcache) {
     this.np = new Point(0, 0);
 }
 
-WorldRendererRender.prototype.renderRender = function(now, mbr, window, graphics, camera, world, debug, render = true) {
-    if (!render) return;
+WorldRendererRender.prototype.renderRender = function(now, mbr, window, graphics, camera, world, debug) {
     this.renderRenderItems(now, graphics, camera, world, mbr, window, debug);
 }
 

@@ -50,47 +50,36 @@ function initializeDevSize() {
     dev_pause.onclick = function() {
         debugPause();
     };
-    
-    
+
     updateDevViewOverlay();
 }
 
 function toggleStretch() {
-    
     if (!__dev) return;
-    
     updateViews("toggleStretch");
     updateDevView();
 }
 
 function toggleAuto() {
-    
     if (!__dev) return;
-    
     updateViews("toggleAuto");
     updateDevView();
 }
 
 
 function changeSize() {
-    
     if (!__dev) return;
-    
     var ww = dev_size_view_width;
     var w = ww.value;
     var hh = dev_size_view_height;
     var h = hh.value;
-    
     if (dev_size_auto.checked) toggleAuto();
-    
     updateViews("setSize", [w, h]);
     updateDevView();
 }
 
 function changeRatio() {
-    
     if (!__dev) return;
-    
     var rr = dev_size_view_ratio;
     var r = rr.value;
     updateViews("setRatio", r);
@@ -103,18 +92,12 @@ function changeRatio() {
 function updateDevView() {
     if (!__dev) return;
     if (!gamecontroller || !gamecontroller.game) return;
-    if (Array.isArray(gamecontroller.game) || gamecontroller.game.loop.game.views.length == 0) return;
-    var vv = gamecontroller.game.loop.game.views[0];
+    var vv = gamecontroller.game.loop.gameworld.views[0];
     updateDevViewSize(vv);
  }
 
-function updateDevViewSize(vv) {
-    
+function updateDevViewSize(v) {
     if (!__dev) return;
-    
-    
-    var v = vv.view;
-
     var vs = round(v.viewscale);
     var vv = dev_size_view_label;
     vv.innerText = vs;
@@ -139,9 +122,7 @@ function updateDevViewSize(vv) {
 
 
 function toggleOverlay() {
-    
     if (!__dev) return;
-    
     var gp = gamepads;
     if (!gp) return;
     var showing = isVisible(gp);
@@ -150,7 +131,6 @@ function toggleOverlay() {
     } else {
         show(gp);
     }
-    
     updateDevViewOverlay();
 }
 
@@ -169,9 +149,7 @@ function updateDevViewOverlay() {
 }
 
 function debugPause() {
-    
     if (!__dev) return;
-    
     var paused = controller.paused;
     if (paused) {
         controller.resume(timestamp());

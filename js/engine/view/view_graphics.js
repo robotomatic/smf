@@ -28,3 +28,17 @@ function ViewGraphics() {
         }
     }
 }
+
+ViewGraphics.prototype.createGraphics = function() { 
+    var keys = Object.keys(this.graphics);
+    for (var i = 0; i < keys.length; i++)  {
+        this.createCanvas(this.graphics[keys[i]]);
+    }
+}
+    
+ViewGraphics.prototype.createCanvas = function(graphics) {     
+    graphics.canvas = new GameCanvas("");
+    var classname = "absolute game-canvas";
+    if (graphics.css) classname += " " + graphics.css;
+    graphics.canvas.setClassName(classname);
+}

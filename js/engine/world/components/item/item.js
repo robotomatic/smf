@@ -23,7 +23,7 @@ function Item(json) {
     this.traversable = false;
     
     this.item3D = new Item3D();
-    this.item3Drenderer = new ItemRenderer3D();
+    this.itemrenderer = new ItemRenderer();
     
     this.projectedlocation = new Point(0, 0);
     this.projectedlocation_backup = new Point(0, 0);
@@ -244,7 +244,7 @@ Item.prototype.clone = function() {
     newitem.waterline = this.waterline;
     newitem.underwater = this.underwater;
     newitem.parts = cloneObject(this.parts);
-    newitem.keys = Object.keys(newitem.parts);
+    if (newitem.parts) newitem.keys = Object.keys(newitem.parts);
     newitem.dotheme = this.dotheme;
     newitem.damage = cloneObject(this.damage);
     newitem.properties = cloneObject(this.properties);
@@ -620,7 +620,7 @@ Item.prototype.renderStart = function(now, width, height, scale = 1) {
 }
 
 Item.prototype.renderRender = function(now, renderer, gamecanvas, scale = 1, debug) {
-    this.item3Drenderer.renderItem3D(now, renderer, this, gamecanvas, scale, debug);
+    this.itemrenderer.renderItem(now, renderer, this, gamecanvas, scale, debug);
 }
 
 Item.prototype.renderEnd = function(when) {

@@ -36,49 +36,33 @@ WorldBuilder.prototype.buildWorld = function(now, world) {
     this.environmentbuilder.buildEnvironment(world);
     benchmark("build world - environment");
 
-    
-    
     this.overlapbuilder.overlapItems(world);
     benchmark("build world - overlap");
 
-    
-
     this.intersectbuilder.intersectItems(world);
     benchmark("build world - intersect");
-    
-    
-    
+
     this.chunkbuilder.chunk(world);
     benchmark("build world - chunks");
-    
-    
-    
-    
-    
-    
-    
+
     this.hsrbuilder.removeHiddenSurfaces(world);
     benchmark("build world - HSR");
 
-    
-    
-    
-//    this.surfacebuilder.buildSurfaces(world);
+    //    this.surfacebuilder.buildSurfaces(world);
 //    benchmark("build world - surfaces");
     
     
+    this.buildWorldTheme(world);
     
+}
 
-    
-    
-    
-    
-    
+WorldBuilder.prototype.buildWorldTheme = function(world) {
+
+    this.createRenderItems(world);
+
     this.themebuilder.buildTheme(world);
     benchmark("build world - theme");
 
-    
-    
     this.collidebuilder.buildColliders(world);
     benchmark("build world - colliders");
     
@@ -92,5 +76,15 @@ WorldBuilder.prototype.buildWorld = function(now, world) {
     //
     // TODO: Build render stack here too?
     //
-    
+}
+
+WorldBuilder.prototype.createRenderItems = function(world) {
+    world.renderitems.length = 0;
+    var t = world.items.length;
+    for (var i = 0; i < t; i++) {
+        var worlditem = world.items[i];
+        var newitem = worlditem.clone();
+        newitem.initialize();
+        world.renderitems.push(newitem);
+    }
 }
