@@ -65,35 +65,35 @@ GeometryFactory.prototype.init = function() {
 }
 
 GeometryFactory.prototype.reset = function() {
-    if (this.pointmax > this.pointtot) logDebug("Point Max:" + this.pointmax);
+    if (this.pointmax > this.pointtot) logDev("Point Max:" + this.pointmax);
     this.pointnum = -1;
     this.pointmax = -1;
     
-    if (this.linemax > this.linetot) logDebug("Line Max: " + this.linemax);
+    if (this.linemax > this.linetot) logDev("Line Max: " + this.linemax);
     this.linenum = -1;
     this.linemax = -1;
     
-    if (this.circlemax > this.circletot) logDebug("Circle Max:" + this.circlemax);
+    if (this.circlemax > this.circletot) logDev("Circle Max:" + this.circlemax);
     this.circlenum = -1;
     this.circlemax = -1;
     
-    if (this.trianglemax > this.triangletot) logDebug("Triangle Max:" + this.trianglemax);
+    if (this.trianglemax > this.triangletot) logDev("Triangle Max:" + this.trianglemax);
     this.trianglenum = -1;
     this.trianglemax = -1;
     
-    if (this.rectmax > this.recttot) logDebug("Rectangle Max:" + this.rectmax);
+    if (this.rectmax > this.recttot) logDev("Rectangle Max:" + this.rectmax);
     this.rectnum = -1;
     this.rectmax = -1;
     
-    if (this.polylinemax > this.polylinetot) logDebug("POlyline Max:" + this.polylinemax);
+    if (this.polylinemax > this.polylinetot) logDev("POlyline Max:" + this.polylinemax);
     this.polylinenum = -1;
     this.polylinemax = -1;
     
-    if (this.polymax > this.polytot) logDebug("POlygone Max:" + this.polymax);
+    if (this.polymax > this.polytot) logDev("POlygone Max:" + this.polymax);
     this.polynum = -1;
     this.polymax = -1;
     
-    if (this.textmax > this.texttot) logDebug("Text Max:" + this.textmax);
+    if (this.textmax > this.texttot) logDev("Text Max:" + this.textmax);
     this.textnum = -1;
     this.textmax = -1;
 }
@@ -102,7 +102,7 @@ GeometryFactory.prototype.getPoint = function(x, y, info = null) {
     this.pointnum++;
     this.pointmax++;
     if (this.pointnum >= this.pointtot) {
-        logDebug("Point == " + this.pointnum)
+        logDev("Point == " + this.pointnum)
         this.pointnum = 0;
     }
     this.points[this.pointnum].x = x;
@@ -115,7 +115,7 @@ GeometryFactory.prototype.getLine = function(p1, p2) {
     this.linenum++;
     this.linemax++;
     if (this.linenum >= this.linetot) {
-        logDebug("Line == " + this.linenum)
+        logDev("Line == " + this.linenum)
         this.linenum = 0;
     }
     this.lines[this.linenum].start.x = p1 ? p1.x : 0;
@@ -129,7 +129,7 @@ GeometryFactory.prototype.getCircle = function(x, y, radius) {
     this.circlenum++;
     this.circlemax++;
     if (this.circlenum >= this.circletot) {
-        logDebug("Circle == " + this.circlenum)
+        logDev("Circle == " + this.circlenum)
         this.circlenum = 0;
     }
     this.circles[this.circlenum].x = x;
@@ -142,7 +142,7 @@ GeometryFactory.prototype.getTriangle = function(x, y, width, height, info) {
     this.trianglenum++;
     this.trianglemax++;
     if (this.trianglenum >= this.triangletot) {
-        logDebug("Triangle == " + this.trianglenum)
+        logDev("Triangle == " + this.trianglenum)
         this.trianglenum = 0;
     }
     this.triangles[this.trianglenum].x = x;
@@ -157,7 +157,7 @@ GeometryFactory.prototype.getRectangle = function(x, y, width, height, angle) {
     this.rectnum++;
     this.rectmax++;
     if (this.rectnum >= this.recttot) {
-        logDebug("Rect == " + this.rectnum)
+        logDev("Rect == " + this.rectnum)
         this.rectnum = 0;
     }
     this.rects[this.rectnum].x = x;
@@ -172,7 +172,7 @@ GeometryFactory.prototype.getPolyline = function() {
     this.polylinenum++;
     this.polylinemax++;
     if (this.polylinenum >= this.polylinetot) {
-        logDebug("Polyline == " + this.polylinenum)
+        logDev("Polyline == " + this.polylinenum)
         this.polylinenum = 0;
     }
     this.polylines[this.polylinenum].points.length = 0;
@@ -183,7 +183,7 @@ GeometryFactory.prototype.getPolygon = function(points) {
     this.polynum++;
     this.polymax++;
     if (this.polynum >= this.polytot) {
-        logDebug("Poly == " + this.polynum)
+        logDev("Poly == " + this.polynum)
         this.polynum = 0;
     }
     this.polys[this.polynum].points.length = 0;
@@ -195,7 +195,7 @@ GeometryFactory.prototype.getText = function(x, y, text) {
     this.textnum++;
     this.textmax++;
     if (this.textnum >= this.texttot) {
-        logDebug("Text == " + this.textnum)
+        logDev("Text == " + this.textnum)
         this.textnum = 0;
     }
     this.texts[this.textnum].x = x;
