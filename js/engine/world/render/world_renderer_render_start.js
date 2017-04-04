@@ -20,7 +20,6 @@ WorldRendererStart.prototype.getRenderItemsWorldItems = function(mbr, window, cp
     var t = world.renderitems.length;
     for (var i = 0; i < t; i++) {
         var item = world.renderitems[i];
-        if (item.isbounds) continue;
         this.getRenderItemsWorldLevelLayerItemsItem(mbr, window, cp, graphics, camera, world, item, debug);
     }
 }
@@ -166,7 +165,7 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItemCenter = func
     }
     var mbrcp = mbr.getCenter();
     var ix = item.x + (item.width / 2) + ox;
-    var iy = (item.y + item.height) + oy;
+    var iy = ((item.y * 2) + item.height) + oy;
     var iz = item.z + (item.depth) + oz;
     var pd = distance3D(ix, iy, iz, mbrcp.x, mbrcp.y, mbrcp.z);
     return round(pd);
