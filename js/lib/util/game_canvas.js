@@ -217,12 +217,12 @@ GameCanvas.prototype.createLinearGradient = function(x, y, width, height) {
 
 GameCanvas.prototype.createRadialGradient = function(x0, y0, r0, x1, y1, r1) {
     
-    var rx0 = round(x0);
-    var ry0 = round(y0);
-    var rr0 = round(r0);
-    var rx1 = round(x1);
-    var ry1 = round(y1);
-    var rr1 = round(r1);
+    var rx0 = clamp(x0);
+    var ry0 = clamp(y0);
+    var rr0 = clamp(r0);
+    var rx1 = clamp(x1);
+    var ry1 = clamp(y1);
+    var rr1 = clamp(r1);
     
     if (this.gradient.radial.x0 == rx0 && this.gradient.radial.y0 == ry0 && this.gradient.radial.r0 == rr0 &&
         this.gradient.radial.x1 == rx1 && this.gradient.radial.y1 == ry1 && this.gradient.radial.r1 == rr1 ) {
@@ -371,14 +371,14 @@ GameCanvas.prototype.getData = function() {
 }
 
 GameCanvas.prototype.drawImage = function(data, x, y, w, h, xx, yy, ww, hh) {
-    x = round(x);
-    y = round(y);
-    w = round(w);
-    h = round(h);
-    xx = round(xx);
-    yy = round(yy);
-    ww = round(ww);
-    hh = round(hh);
+    x = clamp(x);
+    y = clamp(y);
+    w = clamp(w);
+    h = clamp(h);
+    xx = clamp(xx);
+    yy = clamp(yy);
+    ww = clamp(ww);
+    hh = clamp(hh);
     if (xx && yy && ww && hh) this.ctx.drawImage(data.canvas, x, y, w, h, xx, yy, ww, hh);
     else this.ctx.drawImage(data.canvas, x, y, w, h);
 }
