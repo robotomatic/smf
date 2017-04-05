@@ -16,7 +16,7 @@ function GameLoop() {
     this.maxskip = 100;
     this.maxdelta = this.maxskip * this.step;
     
-    this.dorender = false;
+    this.paused = false;
     
     this.gameperformance = new GamePerformance(this.step);
 }
@@ -75,12 +75,15 @@ GameLoop.prototype.stop = function() {
 }
 
 GameLoop.prototype.pause = function(when) {
+    this.paused = true;
     this.gameworld.pause(when);
     this.gameperformance.pauseStart(when);
 }
 
 GameLoop.prototype.resume = function(when) {
+    this.paused = false;
     this.last = when;
+    this.delta = 0;
     this.gameworld.resume(when);
     this.gameperformance.pauseEnd(when);
 }
@@ -90,8 +93,10 @@ GameLoop.prototype.run = function(now, paused) {
     if (!now) return;
     this.gameperformance.loopStart(now);
     geometryfactory.reset();
-    if (this.steprender) this.runStep(now, paused);
-    else this.runUpdate(now, paused);
+    if (!paused) {
+        if (this.steprender) this.runStep(now, paused);
+        else this.runUpdate(now, paused);
+    }
     this.render(timestamp(), paused);
     this.gameperformance.loopEnd(now);
     this.gameworld.fps("FPS", this.gameperformance);
@@ -102,16 +107,24 @@ GameLoop.prototype.runStep = function(now, paused) {
     if (!this.last) this.last = this.now;
     this.delta = this.now - this.last;
     if (this.delta > this.maxdelta) this.delta = this.maxdelta;
-    while(this.delta >= this.step) {
-        this.last += this.step;
-        this.update(this.last, 1, paused); 
-        this.delta -= this.step;
+    if (!paused && !this.paused) {
+        while (this.delta >= this.step) {
+            this.last += this.step;
+            this.update(this.last, 1, paused); 
+            this.delta -= this.step;
+        }
+        if (this.delta > 0) {
+           this.last += this.delta;
+           var dp = 1 - (this.delta / this.step);
+           this.update(this.last, dp, paused); 
+        }
+        this.delta = 0;
     }
     this.last = this.now;
 }
 
 GameLoop.prototype.runUpdate = function(when, paused) {
-    this.update(when, this.step / 10, paused);
+    this.update(when, 1, paused);
 }
     
 GameLoop.prototype.update = function(when, delta, paused) {
