@@ -11,7 +11,15 @@ WorldRendererStart.prototype.renderStart = function(now, mbr, window, graphics, 
 }
 
 WorldRendererStart.prototype.getRenderItems = function(mbr, window, graphics, camera, world, debug) {
-    var cp = window.getCenter();
+
+    var cp = mbr.getCenter();
+    
+//    var ww = window.width / 2;
+//    var wh = window.height / 2;
+//    var cp = new Point(mbr.x + ww, mbr.y + wh);
+//    cp.z = mbr.z;
+    
+    
     this.getRenderItemsWorldItems(mbr, window, cp, graphics, camera, world, debug);
     this.getRenderItemsWorldPlayers(mbr, window, cp, graphics, camera, world, debug);
 }
@@ -42,7 +50,6 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
             item.showing = false;
         }
     } 
-    
     var showing = false;
     var d = 0;
     if (!item.underwater) {
@@ -51,12 +58,16 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
         d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, item, 0, 0, 0);
         if (isNaN(d)) d = 0;
     }
-    
-    var oz = clamp(d - mbr.z);
-    var blur = camera.getBlurAmount(oz);
-    if (item.width == "100%") blur = 10000;
-    
+
     var itemmbr = item.getMbr();
+
+    var blur = "";
+    if (camera.blur.blur) {
+        var oz = clamp((itemmbr.z + itemmbr.depth) - (mbr.z + mbr.offset.z));
+        blur = camera.getBlurAmount(oz);
+        if (item.width == "100%") blur = 10000;
+    }
+    
     var imd = itemmbr.z + itemmbr.depth;
     if (imd - mbr.z < -100) blur = -10;
     
@@ -117,10 +128,13 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(mbr, wi
     var d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, player.controller, 0, 0, -10);
     if (!showing || isNaN(d)) d = 0;
     
-    var oz = clamp(d - mbr.z);
-    var blur = camera.getBlurAmount(oz);
-    var ddd = playermbr.z - mbr.z;
-    if (ddd < -80) blur = -10;
+    var blur = "";
+    if (camera.blur.blur) {
+        var oz = clamp(playermbr.z - (mbr.z + mbr.offset.z));
+        blur = camera.getBlurAmount(oz);
+        var ddd = playermbr.z - mbr.z;
+        if (ddd < -80) blur = -10;
+    }
     
     var id = player.name + "-" + player.id;
     var index = this.index++;
@@ -159,13 +173,23 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(mbr, wi
     this.renderitems.all[index] = newitem;
 }
 
-WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItemCenter = function(mbr, cp, item, ox, oy, oz) {
+WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItemCenter = function(mbr, mbrcp, item, ox, oy, oz) {
     if (item.width == "100%") {
         return item.z + item.depth;
     }
-    var mbrcp = mbr.getCenter();
     var ix = item.x + (item.width / 2) + ox;
     var iy = ((item.y * 2) + item.height) + oy;
+    var iz = item.z + (item.depth) + oz;
+    var pd = distance3D(ix, iy, iz, mbrcp.x, mbrcp.y, mbrcp.z);
+    return round(pd);
+}
+
+WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItemBlur = function(mbr, mbrcp, item, ox, oy, oz) {
+    if (item.width == "100%") {
+        return item.z + item.depth;
+    }
+    var ix = item.x + (item.width / 2) + ox;
+    var iy = (item.y + item.height) + oy;
     var iz = item.z + (item.depth) + oz;
     var pd = distance3D(ix, iy, iz, mbrcp.x, mbrcp.y, mbrcp.z);
     return round(pd);

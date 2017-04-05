@@ -11,16 +11,9 @@ function ViewRenderer(view) {
     this.camerasettings = new ViewCameraSettings(this);
     this.camerasettings.setCameraZoom((gamecontroller.gamesettings.settings.camera && gamecontroller.gamesettings.settings.camera.view) || "fit");
 
-    this.camera.blur.blur = false;
-    this.camera.blur.shift = false;
-    this.camera.drift.enabled = true;
-    
     this.rendercount = 0;
     this.renderwait = 10;
     this.renderall = true;
-    
-    this.ready = false;
-    
     
     this.fps = 0;
     this.avg = 0;
@@ -32,6 +25,8 @@ function ViewRenderer(view) {
 
     this.graphics = new ViewGraphics();
     this.graphics.createGraphics();
+
+    this.ready = false;
 }
 
 
@@ -58,14 +53,15 @@ ViewRenderer.prototype.reset = function(when) {
 
 
 
-ViewRenderer.prototype.render = function(now, world) {
+ViewRenderer.prototype.render = function(now, world, paused) {
     this.setBackground(world);
     this.getViewWindow(world);
+    if (!paused) this.rendercount++;
     if (this.rendercount < this.renderwait) return;
     this.clearGraphics();
-    this.renderWorld(now, world);
+    this.renderWorld(now, world, paused);
     this.renderView();
-    this.renderFPS();
+    this.renderFPS(paused);
 }
     
 
@@ -73,7 +69,6 @@ ViewRenderer.prototype.render = function(now, world) {
 
 
 ViewRenderer.prototype.setBackground = function(world) {
-    if (this.paused) return;
     if (world.debug.level.level || world.debug.level.render || world.debug.level.hsr) {
         this.view.parent.style.background = "white";
         this.view.rendertarget.canvas.setBackground("white");
@@ -96,18 +91,22 @@ ViewRenderer.prototype.setBackground = function(world) {
 
 
 
-ViewRenderer.prototype.renderWorld = function(now, world) {
+ViewRenderer.prototype.renderWorld = function(now, world, paused) {
     var width = this.view.rendertarget.canvas.width;
     var height = this.view.rendertarget.canvas.height;
     var follow = true;
-    this.mbr = this.camera.getView(now, this.mbr, width, height, follow, this.view.paused);
+    this.mbr = this.camera.getView(now, this.mbr, width, height, follow, paused);
     this.window.x = 0;
     this.window.y = 0;
+    this.window.z = -((this.mbr.z + this.camera.offset.z) * this.mbr.scale);
     this.window.width = width;
     this.window.height = height;
     this.window.depth = 1;
     this.window.scale = this.mbr.scale;
-    world.render(now, this.graphics.graphics, this.camera, this.mbr, this.window);
+    this.window.offset.x = this.camera.offset.x;
+    this.window.offset.y = this.camera.offset.y;
+    this.window.offset.z = this.camera.offset.z;
+    world.render(now, this.graphics.graphics, this.camera, this.mbr, this.window, paused);
 }
 
 
@@ -118,6 +117,15 @@ ViewRenderer.prototype.getViewWindow = function(world) {
     var offz = this.camerasettings.z;
     this.mbr = world.players.getMbr(this.mbr);
     var cname = this.camerasettings.name;
+    
+    //
+    // TODO: 
+    //
+    // - Need to normalize Y and Z offset based on window ratio.
+    // - Pause not working
+    // - Renderer depth-sort and blur don't consider camera offset or something?
+    //
+    
     if (cname == "fit") {
         offx = 0;
         var fy = this.camerasettings.settings[cname].y;
@@ -143,7 +151,6 @@ ViewRenderer.prototype.getViewWindow = function(world) {
             this.camera.lastview = null;
         }
     }
-    if (!this.paused) this.rendercount++;
     this.camera.offset.x = offx;
     this.camera.offset.y = offy;
     this.camera.offset.z = offz;
@@ -220,7 +227,7 @@ ViewRenderer.prototype.renderViewGraphics = function(graphics) {
     this.image.height = graphics.canvas.height;
     this.image.data = graphics.canvas;
     this.image.draw(this.view.rendertarget.canvas);
-    if (graphics.blur && this.view.blur) {
+    if (graphics.blur && this.camera.blur.blur) {
         var blur = graphics.blur * graphics.scale;
         this.image.blur(this.view.rendertarget.canvas, blur);
     }
@@ -248,13 +255,13 @@ ViewRenderer.prototype.updateFPS = function(type, fps, avg) {
     this.avg = avg;
 }
 
-ViewRenderer.prototype.renderFPS = function() {
+ViewRenderer.prototype.renderFPS = function(paused) {
     if (!__dev) return;
     var fps = round(this.fps);
     if (fps < 10) fps = "0" + fps;
     var avg = round(this.avg);
     if (avg < 10) avg = "0" + avg;
-    this.fpstext.message = this.paused ? "PAUSE" : "FPS: " + fps + "\n" + "AVG: " + avg;
+    this.fpstext.message = paused ? "PAUSE" : "FPS: " + fps + "\n" + "AVG: " + avg;
     this.fpstext.x = this.tx;
     this.fpstext.y = this.ty;
     this.view.rendertarget.canvas.setFillStyle("black");
