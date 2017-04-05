@@ -1,6 +1,6 @@
 "use strict";
 
-function Level(width, height, depth) {
+function Level() {
     this.name = "";
     this.pad = 0;
     this.theme = "";
@@ -34,12 +34,4 @@ Level.prototype.layersLoaded = function() {
     this.layers.sort(sortByZIndex);
     this.layerkeys = Object.keys(this.layers);
     this.loaded = true;
-}
-
-Level.prototype.getWidth = function() { 
-    return this.width; 
-}
-
-Level.prototype.getHeight = function() { 
-    return this.height; 
 }

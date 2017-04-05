@@ -1,6 +1,11 @@
 "use strict";
 
+
 function WorldCollider() {
+
+    // todo
+    // ---> lookup collisions instead of hunting. we're on a grid so let's use it!!!!
+    // ---> this whole collider business is enfuckulated...
     
     this.colliders = new Array();
     
@@ -86,34 +91,25 @@ WorldCollider.prototype.collide = function(world) {
     if (!world.players) return; 
     var t = world.players.players.length;
     for (var i = 0; i < t; i++) {
-        var p = world.players.players[i];
-        
-        updateDevPlayerIndex(this.getPlayerColliderIndex(p));
-        
-        this.collideWithPlayers(world, p);
-        this.collideWithItems(world, p);
+        var player = world.players.players[i];
+        this.collideWithWorld(player, world);
     }
 }
 
-WorldCollider.prototype.collideWithPlayers = function(world, player) { 
-//    world.players.collidePlayer(player); 
-} 
 
-WorldCollider.prototype.collideWithItems = function(world, player) { 
+WorldCollider.prototype.collideWithWorld = function(player, world) { 
     player.resetCollisions();
-    
-    
-    
-    
-    // todo
-    // ---> lookup collisions instead of hunting. we're on a grid so let's use it!!!!
-    // ---> this whole collider business is enfuckulated...
-    // ---> wrap canvas and batch draw calls
-    // --->
-    // ---> profit..?
-    
-    
+    player.collider.updateCollisionBox();        
+    this.collideWithWorldBounds(player, world);
+    this.collideWithWorldPlayers(player, world.players);
+    this.collideWithWorldItems(player, this.colliders);
+    player.updateLevelCollisions();
+}
 
+
+
+
+WorldCollider.prototype.collideWithWorldBounds = function(player, world) { 
     if (player.controller.x < world.bounds.x) {
         player.controller.x = world.bounds.x;
         player.controller.canMoveLeft = false;
@@ -137,69 +133,42 @@ WorldCollider.prototype.collideWithItems = function(world, player) {
         player.controller.z = (world.bounds.z + world.bounds.depth) - player.controller.depth;
         player.controller.canMoveOut = false;
     }
-
-    player.collider.updateCollisionBox();        
-    
-    this.collideWithCollider(player, world.level.width, world.level.height);
-    
-    player.updateLevelCollisions();
 }
 
-WorldCollider.prototype.collideWithCollider = function(player, width, height) {
-    if (!player) return;
-    if (!this.colliders) return;
-    for (var i = 0; i < this.colliders.length; i++) {
-        var item = this.colliders[i];
-        // todo: check if renderer overrides draw
-//        if (item.parts) this.collideItemParts(player, item, width, height);
-//        else this.collideItem(player, item, width, height);
-        this.collideItem(player, item, width, height);
+WorldCollider.prototype.collideWithWorldPlayers = function(player, players) { 
+//    world.players.collidePlayer(player); 
+} 
+
+WorldCollider.prototype.collideWithWorldItems = function(player, items) { 
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        this.collideItem(player, item);
     }
 }
 
-WorldCollider.prototype.collideItem = function(player, item, width, height) {
-    return this.collideItemPart(player, item, item, width, height);
-}
-
-WorldCollider.prototype.collideItemParts = function(player, item, width, height) {
-    var out = false;
-    for (var i = 0 ; i < item.parts.length; i++) {
-        // todo: can collide rough here, but need item mbr
-        var col = this.collideItemPart(player, item, item.parts[i], width, height);
-        if (col) out = true;
-    }
-    return out;
-}
-    
-WorldCollider.prototype.collideItemPart = function(player, item, part, width, height) {
-    if (part.collide === false) return false;
+WorldCollider.prototype.collideItem = function(player, item) {
+    if (item.collide === false) return false;
     var ip = item.getLocation();
-    var ix = ip.x;
-    var iy = ip.y;
-    var px = ix;
-    var py = iy;
-    if (part.x != ix && part.y != iy) {
-        px += part.x;
-        py += part.y;
-    }
-    this.box.x = px
-    this.box.y = py;
-    this.box.z = item.z;
-    this.box.width = part.width == "100%" ? width : part.width;
-    this.box.height = part.height == "100%" ? height : part.height;
-    this.box.depth = item.depth;
     this.box.id = item.id;
-    this.box.ramp = (part.ramp) ? part.ramp : "";
-    this.box.collide = (part.collide) ? part.collide : true;
-    
+    this.box.x = ip.x;
+    this.box.y = ip.y;
+    this.box.z = ip.z;
+    this.box.width = item.width;
+    this.box.height = item.height;
+    this.box.depth = item.depth;
+    this.box.collide = true;
     this.box.damage = item.damage;
     this.box.properties = item.properties;
-    
     this.box.action = item.action;
     this.collider.reset();
     this.collider = player.collideWith(this.box, this.collider);
     return true;
 }
+
+
+
+
+
 
 
 
@@ -214,18 +183,12 @@ WorldCollider.prototype.resetPlayers = function(players) {
     }
 }
 
-
-
-
-
 WorldCollider.prototype.resetPlayer = function(player) {
     player.controller.stop();
     var t = this.colliders.length;
     if (t == 0) return;
-
     var pad = 50;
     var tpad = pad * 2;
-    
     var spawnitem = null;
     while (spawnitem == null) {
         var r = random(0, t - 1);
@@ -235,11 +198,9 @@ WorldCollider.prototype.resetPlayer = function(player) {
         else if ((!spawnitem.traversable) || (spawnitem.damage && spawnitem.damage.hp > 0)) spawnitem = null;
     }
     var box = spawnitem.getMbr();
-    
     var rpx = random(pad,  box.width - pad) + box.x;
     var rpy = box.y - player.controller.height - 20;
     var rpz = random(pad, box.depth - pad) + box.z;
-    
     player.respawn(rpx, rpy, rpz);
     player.reset();
 }
