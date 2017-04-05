@@ -11,12 +11,13 @@ function View(game, id, quality, action) {
     this.scale = quality.scale;
 
     this.viewscale = 1;
-    this.blur = true;
-    this.paused = false;
+    this.paused = false; 
     
     this.parent = document.getElementById("main");
     if (action) {
+        var v = this;
         this.parent.onclick = function(e) {
+            if (v.paused) return;
             action(e, game);
         }
     }
@@ -102,7 +103,7 @@ View.prototype.resume = function(when) {
 
 
 View.prototype.toggleBlur = function() { 
-    this.blur = !this.blur;
+    this.renderer.camera.blur.blur = !this.renderer.camera.blur.blur;
 }
 
 View.prototype.toggleStretch = function() { 
@@ -148,14 +149,14 @@ View.prototype.hide = function() { }
 
 
 
-View.prototype.update = function(now, delta, world) {
+View.prototype.update = function(now, delta, world, paused) {
 }
 
 
 
 
-View.prototype.render = function(now, world) {
-    this.renderer.render(now, world);
+View.prototype.render = function(now, world, paused) {
+    this.renderer.render(now, world, paused);
 }
 
 View.prototype.updateFPS = function(type, fps, avg) {

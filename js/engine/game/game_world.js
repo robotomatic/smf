@@ -50,7 +50,8 @@ GameWorld.prototype.resize = function() {
     this.do("resize");
 }
 
-GameWorld.prototype.pause = function(now) { 
+GameWorld.prototype.pause = function(now) {
+    this.world.pause(now);
     this.do("pause", now);
 }
 
@@ -59,13 +60,13 @@ GameWorld.prototype.resume = function(now) {
     this.do("resume", now);
 }
 
-GameWorld.prototype.update = function(now, delta) { 
-    this.world.update(now, delta);
-    this.do("update", [now, delta, this.world]);
+GameWorld.prototype.update = function(now, delta, paused) { 
+    this.world.update(now, delta, paused);
+    this.do("update", [now, delta, this.world, paused]);
 }
 
-GameWorld.prototype.render = function(now) { 
-    this.do("render", [now, this.world]);
+GameWorld.prototype.render = function(now, paused) { 
+    this.do("render", [now, this.world, paused]);
 }
 
 GameWorld.prototype.fps = function(type, fps) {

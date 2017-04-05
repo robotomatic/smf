@@ -500,6 +500,9 @@ PlayerController.prototype.getState = function(now, dir) {
 
 
 PlayerController.prototype.update = function(now, delta, physics) {
+    
+    if (this.paused) return;
+    
     var canjump = this.canJump(physics);
     if (this.jumped && canjump) this.doJump();
     else if (this.jumped && this.falling) this.stopJump();

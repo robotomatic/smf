@@ -8,7 +8,7 @@ var dev_size_view_height = null;
 var dev_size_view_ratio = null;
 
 var dev_overlay = null;
-var gamepads = null;
+var dev_gamepads = null;
 
 var dev_pause = null;
 
@@ -39,7 +39,7 @@ function initializeDevSize() {
         changeRatio();
     };
     
-    gamepads = document.getElementById("gamepads");
+    dev_gamepads = document.getElementById("gamepads");
     
     dev_overlay = document.getElementById("dev-overlay");
     dev_overlay.onclick = function() {
@@ -123,7 +123,7 @@ function updateDevViewSize(v) {
 
 function toggleOverlay() {
     if (!__dev) return;
-    var gp = gamepads;
+    var gp = dev_gamepads;
     if (!gp) return;
     var showing = isVisible(gp);
     if (showing) {
@@ -137,7 +137,7 @@ function toggleOverlay() {
 
 function updateDevViewOverlay() {
     if (!__dev) return;
-    var gp = gamepads;
+    var gp = dev_gamepads;
     if (!gp) {
         dev_overlay.checked = false;
         dev_overlay.disabled = true;
@@ -154,7 +154,7 @@ function debugPause() {
     if (paused) {
         controller.resume(timestamp());
         dev_pause.value = "Pause";
-        dev_overlay.disabled = false;
+        updateDevViewOverlay();
     } else {
         controller.pause(timestamp());
         dev_pause.value = "Play";

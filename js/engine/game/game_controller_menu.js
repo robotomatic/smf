@@ -183,8 +183,8 @@ GameControllerMenu.prototype.reset = function() {
     this.loop.reset(timestamp());
 }
 
-GameControllerMenu.prototype.run = function(when) {
-    this.loop.run(when);
+GameControllerMenu.prototype.run = function(when, paused) {
+    this.loop.run(when, paused);
 }
 
 GameControllerMenu.prototype.pause = function(when) {

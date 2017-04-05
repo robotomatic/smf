@@ -19,6 +19,7 @@ function Character() {
     
     this.direction = "";
     this.state = "";
+    this.paused = false;
 }
 
 Character.prototype.loadJson = function(json) {

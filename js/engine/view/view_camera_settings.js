@@ -10,7 +10,7 @@ function ViewCameraSettings(viewrenderer) {
         tight : {
             x : 0,
             y : -150,
-            z : 25
+            z : 200
         },
         comfy : {
             x : 0,
@@ -24,8 +24,8 @@ function ViewCameraSettings(viewrenderer) {
         },
         fit : {
             x : 0,
-            y : 600,
-            z : -800
+            y : 50,
+            z : 600
         },
         all : {
             x : 0,

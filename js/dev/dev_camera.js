@@ -235,9 +235,10 @@ function updateDevViewCameraFollowSpeed(vv) {
 }
 
 
+
 function updateDevViewCameraDepthOfFieldBlur(vv) {
     if (!__dev) return;
-    var blur = vv.blur;
+    var blur = vv.renderer.camera.blur.blur;
     var vb = dev_camera_dof_blur;
     vb.checked = blur;
 }
@@ -249,7 +250,7 @@ function setDevCameraDepthOfFieldBlur(blur) {
     if (!__dev) return;
     if (!gamecontroller || !gamecontroller.game) return;
     var vv = gamecontroller.game.loop.gameworld.views[0];
-    vv.blur = blur;
+    vv.renderer.camera.blur.blur = blur;
     updateDevViewCameraDepthOfFieldBlur(vv);
 }
 

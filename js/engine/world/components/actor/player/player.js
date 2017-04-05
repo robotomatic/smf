@@ -82,16 +82,28 @@ Player.prototype.getMbr = function() {
 Player.prototype.getLocation = function() { 
     return this.controller.getLocation();
 }
-    
+
+
+
+
+
 Player.prototype.isVisible = function(w, wmbr, pad = 0) {
     var mbr = this.box;
-    if (mbr.x > (w.x + w.width + pad)) return false;
-    if ((mbr.x + mbr.width) < w.x - pad) return false;
-    if (mbr.y > (w.y + w.height + pad)) return false;
-    if ((mbr.y + mbr.height) < w.y - pad) return false;
-    if (mbr.z + mbr.depth < w.z - pad - 1000) return false;
+    var wx = w.x + w.offset.x;
+    if (mbr.x > (wx + w.width + pad)) return false;
+    if ((mbr.x + mbr.width) < wx - pad) return false;
+    var wy = w.y;
+    if (mbr.y > (wy + w.height + pad)) return false;
+    if ((mbr.y + mbr.height) < wy - pad) return false;
+    var wz = w.z + w.offset.z;
+    if (mbr.z + mbr.depth < wz - pad) return false;
     return true;
 }
+
+
+
+
+
 
 Player.prototype.respawn = function(x, y, z) {
     this.controller.respawn(x, y, z);
@@ -174,22 +186,42 @@ Player.prototype.smooth = function(now, scale) {
     this.controller.smooth(now, scale);
 }
 
+
+
+
+
+
+
+
+
+
+
 Player.prototype.translate = function(window, width, height) {
+
     var x = window.x;
     var y = window.y;
     var z = window.z;
+    
     var scale = window.scale;
+    
     this.box.x = round((this.controller.lastX - x) * scale);
     this.box.y = round((this.controller.lastY - y) * scale);
     this.box.z = round((this.controller.lastZ - z) * scale);
+    
     this.box.width = round(this.controller.width * scale);
     this.box.height = round(this.controller.height * scale);
     this.box.depth = round(this.controller.depth * scale);
+    
     var bw = this.box.width;
     var wc = window.getCenter();
+    
     this.box = projectRectangle3D(this.box, this.box.z, scale, x, y, wc);
+    
     this.scalefactor = bw / this.box.width;
     this.scale = this.box.width / this.controller.width;
+    
+    this.box.depth *= this.scalefactor;
+    
     if (this.controller.grounded) {
         this.controller.gp.x = round(this.box.x + (this.box.width / 2));
         this.controller.gp.y = round(this.box.y + this.box.height);
@@ -203,8 +235,8 @@ Player.prototype.translate = function(window, width, height) {
 
 
 
-Player.prototype.render = function(now, width, height, ctx = null, scale = 1, debug) {
-    
+
+Player.prototype.render = function(now, width, height, ctx, scale, debug, paused) {
     this.debugtemp.player = false;
     this.debugtemp.character = false;
     this.debugtemp.guts = false;
@@ -213,14 +245,13 @@ Player.prototype.render = function(now, width, height, ctx = null, scale = 1, de
         this.debugtemp.character = this.debug.character ? true : debug.character;
         this.debugtemp.guts = this.debug.guts ? true : debug.guts;
     }
-    
     debug = debug ? debug : this.debug;
     if (!ctx) this.renderStart(now, width, height, scale);
-    this.renderRender(now, ctx, scale, this.debugtemp);
+    this.renderRender(now, ctx, scale, this.debugtemp, paused);
     if (!ctx) this.renderEnd(now);
 }
 
-Player.prototype.renderStart = function(now, width, height, scale = 1) {
+Player.prototype.renderStart = function(now, width, height, scale) {
 
     var sip = this.imagepad;
     var doublepad = sip * 2;
@@ -236,7 +267,7 @@ Player.prototype.renderStart = function(now, width, height, scale = 1) {
     this.gamecanvas.setSize(bw + doublepad, bh + doublepad);
 }
 
-Player.prototype.renderRender = function(now, gamecanvas = null, scale = 1, debug) {
+Player.prototype.renderRender = function(now, gamecanvas = null, scale, debug, paused) {
     var c = this.gamecanvas;
     var ip = this.imagepad;
     var px = 0;
@@ -247,7 +278,7 @@ Player.prototype.renderRender = function(now, gamecanvas = null, scale = 1, debu
         px = this.box.x;
         py = this.box.y;
     }
-    this.character.draw(now, c, this, px, py, scale, ip, debug);
+    this.character.draw(now, c, this, px, py, scale, ip, debug, paused);
     if (debug) this.playerdebugger.drawDebug(now, c, debug);
 }
 

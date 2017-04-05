@@ -10,7 +10,7 @@ function NPC(player) {
     this.currentval = null;
     this.endval = null;
     this.busy = false;
-    
+    this.paused = false;
     this.timeout = {
         timeout : false,
         start : 0,
@@ -21,6 +21,15 @@ function NPC(player) {
         
 }
 
+NPC.prototype.pause = function(when) {
+    this.paused = true;
+}
+
+NPC.prototype.resume = function(when) {
+    this.paused = false;
+}
+
+    
 NPC.prototype.reset = function(when) {
     this.action = null;
     this.callback = null;
@@ -79,7 +88,9 @@ NPC.prototype.doAction = function(action, args, key, val, callback) {
     }
 }
 
-NPC.prototype.update = function(when, delta) {
+NPC.prototype.update = function(when, delta, paused) {
+
+    if (this.paused || paused) return;
     
     if (this.timeout.timeout) {
         return this.updateTimeout(when, delta);

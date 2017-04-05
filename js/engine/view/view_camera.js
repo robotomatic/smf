@@ -28,19 +28,20 @@ function ViewCamera() {
         min : 1,
         max : 2,
         amount : 0.05,
-        speed : 0.5,
-        enabled : false
+        speed : 1,
+        enabled : true
     }
 
     this.blur = {
+        blur : true,
         near : {
             min_distance : 0,
             max_distance : 100,
             amount : 10
         }, 
         far : {
-            min_distance : 1000,
-            max_distance : 30000,
+            min_distance : 2000,
+            max_distance : 10000,
             amount : 10
         }
     }

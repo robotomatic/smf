@@ -68,7 +68,6 @@ ParticleEmitter.prototype.render = function(x, y, scale, gamecanvas) {
     
     for(var i = 0; i < this.particles.length; i++) {
         var p = this.particles[i];
-        p.opacity = round(p.death / p.life);
         if ((p.radius * scale) <= .1) continue;
             
         var px = x + (p.location.x * scale);

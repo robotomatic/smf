@@ -15,33 +15,41 @@ function GameControllerGame(gamecontroller) {
 
     this.gamequality = new GameQuality(this, 1);
     
-    this.hidegamepads = false;
+    this.hiddenegamepads = false;
+    this.dogamepads = false;
     
     return this;
 }
 
 GameControllerGame.prototype.initGamepads = function() { 
-    gamepads = document.getElementById("gamepads");
+    var gamepads = document.getElementById("gamepads");
     if (!gamepads) return;
-    if (isMobile() || isTablet()) show(gamepads);
-    else hide(gamepads);
+    if (isMobile() || isTablet()) {
+        this.dogamepads = true;
+        show(gamepads);
+    } else {
+        this.dogamepads = false;
+        hide(gamepads);
+    }
     if (__dev) updateDevViewOverlay();
 }
 
 GameControllerGame.prototype.hideGamepads = function() { 
-    gamepads = document.getElementById("gamepads");
+    var gamepads = document.getElementById("gamepads");
     if (!gamepads) return;
     if (isVisible(gamepads)) {
-        this.hidegamepads = true;
+        this.dogamepads = false;
+        this.hiddenegamepads = true;
         hide(gamepads);
     }
 }
 
 GameControllerGame.prototype.showGamepads = function() { 
-    gamepads = document.getElementById("gamepads");
+    var gamepads = document.getElementById("gamepads");
     if (!gamepads) return;
-    if (this.hidegamepads) {
-        this.hidegamepads = false;
+    if (this.hiddenegamepads) {
+        this.dogamepads = true;
+        this.hiddenegamepads = false;
         show(gamepads);
     }
 }
@@ -172,18 +180,20 @@ GameControllerGame.prototype.reset = function() {
     this.loop.reset(timestamp());
 }
 
-GameControllerGame.prototype.run = function(when) {
-    this.loop.run(when);
+GameControllerGame.prototype.run = function(when, paused) {
+    this.loop.run(when, paused);
 }
 
 GameControllerGame.prototype.pause = function(when, render) {
     this.loop.pause(when, render);
+    var gp = this.dogamepads;
     this.hideGamepads();
+    this.dogamepads = gp;
 }
 
 GameControllerGame.prototype.resume = function(when) {
     this.loop.resume(when);
-    this.showGamepads();
+    if (this.dogamepads) this.showGamepads();
 }
 
 GameControllerGame.prototype.stop = function() {

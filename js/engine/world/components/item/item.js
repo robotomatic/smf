@@ -376,22 +376,32 @@ Item.prototype.isHidden = function() {
 
 Item.prototype.isVisible = function(w, wmbr, pad = 0) {
     var mbr = this.getProjectedMbr();
-    var wx = w.x;
+    var wx = w.x + w.offset.x;
     var ww = w.width;
     if (this.width != "100%") {
-        if (mbr.x > (wx + ww + pad)) return false;
-        if ((mbr.x + mbr.width) < wx - pad) return false;
+        if (mbr.x > (wx + ww + pad)) {
+            return false;
+        }
+        if ((mbr.x + mbr.width) < wx - pad) {
+            return false;
+        }
     }
     var wy = w.y;
     var wh = w.height;
     if (this.height != "100%") {
-        if (mbr.y > (wy + wh + pad)) return false;
-        if ((mbr.y + mbr.height) < wy - pad) return false;
+        if (mbr.y > (wy + wh + pad)) {
+            return false;
+        }
+        if ((mbr.y + mbr.height) < wy - pad) {
+            return false;
+        }
     }
-    var wz = w.z;
+    var wz = w.z + w.offset.z;
     var wd = w.depth;
     if (this.depth != "100%") {
-        if (mbr.z + mbr.depth < wz - 500 - pad) return false;
+        if (mbr.z + mbr.depth < wz - pad) {
+            return false;
+        }
     }
     return true;
 }
@@ -430,18 +440,21 @@ Item.prototype.getPolygon = function() {
 
 
 
-Item.prototype.update = function(now, delta) { 
-    this.move(now, delta);
+Item.prototype.update = function(now, delta, paused) { 
+//    this.move(now, delta);
 }
 
 
 
 Item.prototype.move = function(now, delta) { 
-    if (!this.actions) return;
-    if (this.draw == false) return;
-    if (!this.animator) this.animator = new ItemAnimator();
-    this.animator.animate(now, this, delta);
+//    if (!this.actions) return;
+//    if (this.draw == false) return;
+//    if (!this.animator) this.animator = new ItemAnimator();
+//    this.animator.animate(now, this, delta);
 }
+
+
+
 
 Item.prototype.smooth = function() { 
     if (!this.action) return;
@@ -500,9 +513,6 @@ Item.prototype.translate = function(window, width, height, waterline) {
     var iw = this.width * scale;
     var ih = itemheight * scale;
     var id = this.depth * scale;
-    
-    
-    
 
     if (this.width === "100%") {
         ix = -200;
@@ -512,6 +522,7 @@ Item.prototype.translate = function(window, width, height, waterline) {
         iy = -200;
         ih = height + 200;
     }
+    
     var bw = iw;
     var dwh = ih / iw;
 
@@ -550,6 +561,7 @@ Item.prototype.translate = function(window, width, height, waterline) {
     this.box.width = round(iw);
     this.box.height = round(ih);
     this.box.depth = round(id);
+    
     this.scale = this.box.width / this.width;
  }
 
@@ -557,7 +569,7 @@ Item.prototype.translate = function(window, width, height, waterline) {
 
 
 
-Item.prototype.render = function(now, renderer, width, height, gamecanvas, scale = 1, debug) {
+Item.prototype.render = function(now, renderer, width, height, gamecanvas, scale, debug, paused) {
 
     this.debugtemp.level = false;
     this.debugtemp.render = false;
@@ -567,17 +579,17 @@ Item.prototype.render = function(now, renderer, width, height, gamecanvas, scale
         this.debugtemp.render = this.debug.render ? true : debug.render;
         this.debugtemp.hsr = this.debug.hsr ? true : debug.hsr;
     }
-    
+
     if (!gamecanvas) {
         this.renderStart(now, width, height, scale);
-        this.renderRender(now, renderer, this.gamecanvas, scale, this.debugtemp);
+        this.renderRender(now, renderer, this.gamecanvas, scale, this.debugtemp, paused);
         this.renderEnd(now);
     } else {
-        this.renderRender(now, renderer, gamecanvas, 1, this.debugtemp);
+        this.renderRender(now, renderer, gamecanvas, scale, this.debugtemp, paused);
     }
 }
 
-Item.prototype.renderStart = function(now, width, height, scale = 1) {
+Item.prototype.renderStart = function(now, width, height, scale) {
 
     this.projectedlocation_backup.x = this.projectedlocation.x;
     this.projectedlocation_backup.y = this.projectedlocation.y;
@@ -615,8 +627,8 @@ Item.prototype.renderStart = function(now, width, height, scale = 1) {
     this.gamecanvas.setSize(width = iwidth + doublepad, iheight + doublepad);
 }
 
-Item.prototype.renderRender = function(now, renderer, gamecanvas, scale = 1, debug) {
-    this.itemrenderer.renderItem(now, renderer, this, gamecanvas, scale, debug);
+Item.prototype.renderRender = function(now, renderer, gamecanvas, scale, debug, paused) {
+    this.itemrenderer.renderItem(now, renderer, this, gamecanvas, scale, debug, paused);
 }
 
 Item.prototype.renderEnd = function(when) {

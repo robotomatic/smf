@@ -6,13 +6,19 @@ function ViewGraphics() {
             canvas : null,
             css : "",
             scale : 1,
-            blur : 3
+            blur : 1
+        },
+        blur_med : {
+            canvas : null,
+            css : "",
+            scale : 1,
+            blur : 0.5
         },
         blur : {
             canvas : null,
             css : "",
             scale : 1,
-            blur : 1
+            blur : 0.2
         },
         main : {
             canvas : null,
@@ -24,7 +30,7 @@ function ViewGraphics() {
             canvas : null,
             css : "",
             scale : 1,
-            blur : 3
+            blur : 1
         }
     }
 }

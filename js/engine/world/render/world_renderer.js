@@ -34,10 +34,10 @@ WorldRenderer.prototype.loadTheme = function(theme) {
     this.itemrenderer.loadTheme(theme);
 }
 
-WorldRenderer.prototype.render = function(now, graphics, camera, world, mbr, window) {
-    this.waterline.getFlood();
+WorldRenderer.prototype.render = function(now, graphics, camera, world, mbr, window, paused) {
+    if (!paused) this.waterline.getFlood();
     this.worldrenderer_start.renderStart(now, mbr, window, graphics, camera, world, world.debug);
-    this.worldrenderer_render.renderRender(now, mbr, window, graphics, camera, world, world.debug);
+    this.worldrenderer_render.renderRender(now, mbr, window, graphics, camera, world, world.debug, paused);
     this.worldrenderer_debug.renderDebug(now, mbr, window, graphics, camera, world, world.debug);
     this.worldrenderer_end.renderEnd(graphics, mbr);
 }

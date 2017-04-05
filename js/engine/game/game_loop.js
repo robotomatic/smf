@@ -1,14 +1,11 @@
 "use strict";
 
-function GameLoop(input) {
-    this.input = input;
+function GameLoop() {
     this.running = false;
     this.gameworld = new GameWorld();
     this.now = null;
     this.last = null;
 
-    this.paused = false;
-    
     this.stepspeed = 60;
     this.step = 1000 / this.stepspeed;
     
@@ -78,59 +75,54 @@ GameLoop.prototype.stop = function() {
 }
 
 GameLoop.prototype.pause = function(when) {
-    this.paused = true;
     this.gameworld.pause(when);
     this.gameperformance.pauseStart(when);
 }
 
 GameLoop.prototype.resume = function(when) {
-    this.paused = false;
     this.last = when;
     this.gameworld.resume(when);
     this.gameperformance.pauseEnd(when);
 }
 
-GameLoop.prototype.run = function(now) {
+GameLoop.prototype.run = function(now, paused) {
     if (!this.running) return;
     if (!now) return;
     this.gameperformance.loopStart(now);
     geometryfactory.reset();
-    if (!this.paused) {
-        if (this.steprender) this.runStep(now);
-        else this.runUpdate(now);
-    }
-    this.render(timestamp());
+    if (this.steprender) this.runStep(now, paused);
+    else this.runUpdate(now, paused);
+    this.render(timestamp(), paused);
     this.gameperformance.loopEnd(now);
     this.gameworld.fps("FPS", this.gameperformance);
 }
 
-GameLoop.prototype.runStep = function(now) {
+GameLoop.prototype.runStep = function(now, paused) {
     this.now = now;
     if (!this.last) this.last = this.now;
     this.delta = this.now - this.last;
     if (this.delta > this.maxdelta) this.delta = this.maxdelta;
     while(this.delta >= this.step) {
         this.last += this.step;
-        this.update(this.last, 1); 
+        this.update(this.last, 1, paused); 
         this.delta -= this.step;
     }
     this.last = this.now;
 }
 
-GameLoop.prototype.runUpdate = function(when) {
-    this.update(when, this.step / 10);
+GameLoop.prototype.runUpdate = function(when, paused) {
+    this.update(when, this.step / 10, paused);
 }
     
-GameLoop.prototype.update = function(when, delta) {
+GameLoop.prototype.update = function(when, delta, paused) {
     this.gameperformance.updateStart(when);
-    this.input.update(when); 
-    this.gameworld.update(when, delta); 
+    this.gameworld.update(when, delta, paused); 
     this.gameperformance.updateEnd(when);
 }
                                                   
-GameLoop.prototype.render = function(when) { 
+GameLoop.prototype.render = function(when, paused) { 
     this.gameperformance.renderStart(when);
-    this.gameworld.render(when);
+    this.gameworld.render(when, paused);
     this.gameperformance.renderEnd(when);
 }
 

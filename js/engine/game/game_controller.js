@@ -167,7 +167,8 @@ GameController.prototype.resize = function() {
 GameController.prototype.run = function(now) {
     if (this.loading) return;
     if (!this.game) return;
-    if (this.game.loop) this.game.run(now);
+    this.input.update(now); 
+    this.game.run(now, this.paused);
 }
 
 GameController.prototype.reset = function() {

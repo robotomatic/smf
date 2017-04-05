@@ -81,12 +81,12 @@ function initializeDev(game) {
     }    
     
     initializeDevDebug();
-    initializeDevSize();
     initializeDevCamera();
     initializeDevMeta();
     initializeDevWorld();
     initializeDevPlayers();
     initializeDevPlayer();
+    initializeDevSize();
     resizeDev();
 }
 
@@ -110,7 +110,7 @@ function resetDev(gamecontroller) {
 }
     
 function resizeDev() {
-    if (!__dev) return;
+    if (!__dev || !dev_init) return;
     if (!gamecontroller || !gamecontroller.game) return;
     var vv = gamecontroller.game.loop.gameworld.views[0];
     updateDevViewSize(vv);

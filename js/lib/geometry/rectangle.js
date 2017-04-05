@@ -9,6 +9,12 @@ function Rectangle(x, y, width, height, angle) {
     this.depth = 0;
     this.angle = angle;
     
+    this.offset = {
+        x : 0,
+        y : 0,
+        z : 0
+    };
+    
     this.scale = 0;
 
     this.center = new Point(0, 0);

@@ -80,18 +80,20 @@ World.prototype.buildLevel = function(now) {
 World.prototype.setBounds = function(bounds) { 
     this.bounds.x = bounds.min.x - this.pad;
     this.bounds.width = (bounds.max.x - bounds.min.x) + (this.pad * 2);
-    this.bounds.y = bounds.min.y - this.pad;
-    this.bounds.height = (bounds.max.y - bounds.min.y) + (this.pad * 2);
+    this.bounds.y = bounds.min.y;
+    this.bounds.height = bounds.max.y - bounds.min.y;
     this.bounds.z = bounds.min.z - this.pad;
     this.bounds.depth = (bounds.max.z- bounds.min.z) + (this.pad * 2);
 }
     
 World.prototype.pause = function(now) { 
     this.players.pause(now);
+    this.npcs.pause(now);
 }
     
 World.prototype.resume = function(now) { 
     this.players.resume(now);
+    this.npcs.resume(now);
 }
     
 World.prototype.reset = function(when) { 
@@ -112,39 +114,39 @@ World.prototype.resetPlayers = function() {
     this.worldcollider.resetPlayers(this.players.players);
 }
 
-World.prototype.update = function(now, delta) { 
-    this.updateItems(now, delta);
-    this.updateNPCs(now, delta);
-    this.updatePlayers(now, delta);
+World.prototype.update = function(now, delta, paused) { 
+    this.updateItems(now, delta, paused);
+    this.updateNPCs(now, delta, paused);
+    this.updatePlayers(now, delta, paused);
     this.worldcollider.collide(this);
 }
 
-World.prototype.updateItems = function(now, delta) { 
+World.prototype.updateItems = function(now, delta, paused) { 
     var t = this.items.length;
     for (var i = 0; i < t; i++) {
-        this.items[i].update();
+        this.items[i].update(now, delta, paused);
     }
 }
 
-World.prototype.updateNPCs = function(now, delta) { 
+World.prototype.updateNPCs = function(now, delta, paused) { 
     if (this.npcs) {
-        this.npcs.update(now, delta, this); 
+        this.npcs.update(now, delta, this, paused); 
     }
 }
 
-World.prototype.updatePlayers = function(now, delta) { 
+World.prototype.updatePlayers = function(now, delta, paused) { 
     if (!this.players || !this.players.players) return;
-    this.players.update(now, delta);
-    for (var i = 0; i < this.players.players.length; i++) this.updatePlayer(now, delta, this.players.players[i]);
+    this.players.update(now, delta, paused);
+    for (var i = 0; i < this.players.players.length; i++) this.updatePlayer(now, delta, this.players.players[i], paused);
 }
 
-World.prototype.updatePlayer = function(now, delta, player) {
+World.prototype.updatePlayer = function(now, delta, player, paused) {
     if (!player) return;
-    player.update(now, delta, this.physics);
+    player.update(now, delta, this.physics, paused);
 }
 
-World.prototype.render = function(now, graphics, camera, mbr, window) { 
-    this.worldrenderer.render(now, graphics, camera, this, mbr, window);
+World.prototype.render = function(now, graphics, camera, mbr, window, paused) { 
+    this.worldrenderer.render(now, graphics, camera, this, mbr, window, paused);
 }
 
 World.prototype.doAction = function(action, args, key, val, callback) { 

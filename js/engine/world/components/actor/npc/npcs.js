@@ -31,13 +31,28 @@ NPCs.prototype.doAction = function(action, args, key, val, callback, playercallb
     }
 }
 
+
+NPCs.prototype.pause = function(when) {
+    for (var i = 0; i < this.npcs.length; i++)  {
+        this.npcs[i].pause(when);
+    }
+}
+
+NPCs.prototype.resume = function(when) {
+    for (var i = 0; i < this.npcs.length; i++)  {
+        this.npcs[i].resume(when);
+    }
+}
+
+
 NPCs.prototype.reset = function(when) {
     for (var i = 0; i < this.npcs.length; i++)  {
         this.npcs[i].reset(when);
     }
 }
     
-NPCs.prototype.update = function(when, delta, world) {
+NPCs.prototype.update = function(when, delta, world, paused) {
+    if (paused) return;
     var docallback = true;
     for (var i = 0; i < this.npcs.length; i++) {
         var npc = this.npcs[i];
