@@ -3,7 +3,7 @@
        "name" : "sand",
         "renderer" : "sand",
         "properties" : {
-            "friction" : 1
+            "friction" : 0.85
         },
         "color" : {
             "color" : "#d8d395",
@@ -24,7 +24,7 @@
             "effect" : "suffocate"
         },
         "properties" : {
-            "friction" : 1,
+            "friction" : 1.5,
             "density" : 0.5,
             "suction" : 10
         },
