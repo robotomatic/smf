@@ -28,7 +28,6 @@ WorldBuilderColliders.prototype.buildCollidersColliders = function(world, items)
         var item = items[i];
         if (item.collide === false) continue;
         if (item.isHidden()) continue;
-        if (item.draw === false) continue;
         this.collisionindex.checkBounds(item); 
         var newitem = this.buildCollidersCollidersItem(item);
         if (newitem) {

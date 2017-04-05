@@ -200,9 +200,9 @@ ViewCamera.prototype.scaleMbr = function(mbr, width, height) {
         var dw = mbr.width * d;
         mbr.x = mbr.x + (mbr.width - dw) / 2;
         mbr.width = dw;
+        mbr.scale = width / mbr.width;
     }
     
-    mbr.scale = width / mbr.width;
     return mbr;    
 }
 

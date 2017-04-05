@@ -12,8 +12,7 @@ function ViewRenderer(view) {
     this.camerasettings.setCameraZoom((gamecontroller.gamesettings.settings.camera && gamecontroller.gamesettings.settings.camera.view) || "fit");
 
     this.rendercount = 0;
-    this.renderwait = 10;
-    this.renderall = true;
+    this.renderwait = 0;
     
     this.fps = 0;
     this.avg = 0;
@@ -78,11 +77,8 @@ ViewRenderer.prototype.setBackground = function(world) {
             if (world.worldrenderer.itemrenderer.theme && world.worldrenderer.itemrenderer.theme.background) {
                 this.view.parent.style.background = world.worldrenderer.itemrenderer.theme.background.color;
                 this.view.rendertarget.canvas.setBackground(world.worldrenderer.itemrenderer.theme.background.canvas.color);
-            } else {
-                this.view.parent.style.background = "";
-                this.view.rendertarget.canvas.setBackground("");
+                this.ready = true;
             }
-            this.ready = true;
         }
     }
 }
@@ -118,39 +114,10 @@ ViewRenderer.prototype.getViewWindow = function(world) {
     this.mbr = world.players.getMbr(this.mbr);
     var cname = this.camerasettings.name;
     
-    //
-    // TODO: 
-    //
-    // - Need to normalize Y and Z offset based on window ratio.
-    // - Pause not working
-    // - Renderer depth-sort and blur don't consider camera offset or something?
-    //
-    
-    if (cname == "fit") {
-        offx = 0;
-        var fy = this.camerasettings.settings[cname].y;
-        var dy = fy - this.camerasettings.y;
-        offy = dy;
-        var fz = this.camerasettings.settings[cname].z;
-        var dz = fz - this.camerasettings.z;
-        offz = dz;
+    if (cname == "fit" || this.mbr && !this.mbr.width && !this.mbr.height) {
         this.mbr = this.getViewBounds(world, this.mbr);
-        this.renderall = true;
-        this.camera.lastview = null;
-    } else {
-        if (cname == "all" || this.mbr && !this.mbr.width && !this.mbr.height) {
-            cname = "all";
-            offx = 0;
-            offy = this.camerasettings.settings[cname].y;
-            offz = this.camerasettings.settings[cname].z;
-            this.mbr = this.getViewBounds(world, this.mbr);
-            this.renderall = true;
-            this.camera.lastview = null;
-        } else if (this.renderall) {
-            this.renderall = false;
-            this.camera.lastview = null;
-        }
     }
+    
     this.camera.offset.x = offx;
     this.camera.offset.y = offy;
     this.camera.offset.z = offz;
@@ -161,35 +128,27 @@ ViewRenderer.prototype.getViewBounds = function(world, mbr) {
     mbr.x = b.min.x;
     mbr.y = 0;
     mbr.z = 0;
-    mbr.width = b.max.x - mbr.x;
+    mbr.width = b.max.x;
     mbr.height = b.max.y - mbr.y;
     mbr.depth = b.max.z - mbr.z;
     if (!world.level) {
         mbr.depth = 0;
         return mbr;
     }
-   var width = this.view.width;
-   if (width < mbr.width) {
+    var width = this.view.width;
+    if (width < mbr.width) {
        var dw = width / mbr.width;
-        var newheight = mbr.height * dw;
-        var newy = mbr.height - newheight;
-        mbr.y -= (newy / 2);
-        mbr.height = newheight;
-       var newx = mbr.width - width;
-       mbr.x += (newx / 2);
+       mbr.scale = dw;
+       var newheight = mbr.height * dw;
+       var newy = mbr.height - newheight;
+       mbr.y -= (newy / 2);
+       mbr.height = newheight;
+       mbr.x *= dw;
        mbr.width = width;
    }
-   var height = this.view.height;
-   if (height < mbr.height) {
-       var dh = height / mbr.height;
-       var newwidth = mbr.width * dh;
-       var newx = mbr.width - newwidth;
-       mbr.x += (newx / 2);
-       mbr.width = newwidth;
-       var newy = mbr.height - height;
-       mbr.y += (newy / 2);
-       mbr.height = height;
-   }
+    var height = this.view.height;
+    var hd = height - mbr.height;
+    mbr.y = -hd;
     return mbr;
 }
 

@@ -39,23 +39,23 @@ function View(game, id, quality, action) {
 
 
 
-View.prototype.setCameraAll = function() {
-    this.setCameraZoom("all");
-}
-
 View.prototype.setCameraFit = function() {
+    this.game.players.unfollow();
     this.setCameraZoom("fit");
 }
 
 View.prototype.setCameraLoose = function() {
+    this.game.players.follow();
     this.setCameraZoom("loose");
 }
 
 View.prototype.setCameraComfy = function() {
+    this.game.players.follow();
     this.setCameraZoom("comfy");
 }
 
 View.prototype.setCameraTight = function() {
+    this.game.players.follow();
     this.setCameraZoom("tight");
 }
 

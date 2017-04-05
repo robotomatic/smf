@@ -24,13 +24,8 @@ function ViewCameraSettings(viewrenderer) {
         },
         fit : {
             x : 0,
-            y : 50,
-            z : 600
-        },
-        all : {
-            x : 0,
-            y : -200,
-            z : 5000
+            y : 0,
+            z : 0
         }
     };
 }

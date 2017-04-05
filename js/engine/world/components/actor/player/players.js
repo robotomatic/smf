@@ -83,8 +83,36 @@ Players.prototype.reset = function(when) {
     }
 }
 
-Players.prototype.update = function(when, delta) {
+Players.prototype.update = function(when, delta, paused) {
 }
+
+
+
+Players.prototype.follow = function() {
+    if (!this.players.length) return;
+    var f = false;
+    for (var i = 0; i < this.players.length; i++) {
+        var player = this.players[i];
+        if (!player) continue;
+        if (!player.getscamera) continue;
+        if (!player.camera.ready) continue;
+        f = true;
+        break;
+    }
+    if (!f) this.players[0].getscamera = true;
+}
+
+Players.prototype.unfollow = function() {
+    if (!this.players.length) return;
+    for (var i = 0; i < this.players.length; i++) {
+        var player = this.players[i];
+        if (!player) continue;
+        player.getscamera = false;
+    }
+}
+
+
+
 
 Players.prototype.getMbr = function(mbr) {
     var minx, miny, maxx, maxy, minz, maxz;

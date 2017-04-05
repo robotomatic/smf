@@ -5,6 +5,7 @@
         {
             "name" : "bounds",
             "collide" : true,
+            "draw" : false,
             "items" : [
                 {
                     "name" : "floor",
