@@ -63,7 +63,8 @@ Character.prototype.update = function(now, player, direction, state)  {
     if (!this.paused) {
         if (this.emitter && player.box) {
             if (!this.emitter.alive) this.emitter.alive = true;
-            this.emitter.update();
+            var scale = player.box.width / this.width;
+            this.emitter.update(player.box.x, player.box.y, player.box.z, scale);
         }
     }
 }
@@ -75,9 +76,6 @@ Character.prototype.translate = function(dx, dy, leftright, updown)  {
 Character.prototype.draw = function(now, gamecanvas, player, px, py, scale, pad, debug)  { 
     if (!this.paused) {
         this.animator.animate(now, this);
-    }
-    if (this.emitter) {
-        this.emitter.render(px + pad, py + pad, player.box.width / this.width, gamecanvas);
     }
     this.mbr.x = px + pad;
     this.mbr.y = py + pad;
