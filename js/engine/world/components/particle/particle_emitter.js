@@ -11,6 +11,10 @@ function ParticleEmitter(info) {
     this.y = info.y;
     this.size = info.size;
     
+    
+    this.source = new Point(0, 0);
+    this.scale = 0;
+    
     this.max = 10;
     this.particles = new Array();
 
@@ -31,6 +35,8 @@ function ParticleEmitter(info) {
         var size = this.size + random() * 1;
         this.particles.push(new Particle(this.cp.x, this.cp.y, size));    
     }
+    
+    this.renderer = new ParticleRenderer(this);
 }
 
 ParticleEmitter.prototype.stop = function() {
@@ -44,7 +50,11 @@ ParticleEmitter.prototype.translate = function(dx, dy, leftright, updown) {
 //    this.updown = -updown;
 }
 
-ParticleEmitter.prototype.update = function() {
+ParticleEmitter.prototype.update = function(x, y, z, scale) {
+    this.source.x = x;
+    this.source.y = y;
+    this.source.z = z;
+    this.scale = scale;
     for(var i = 0; i < this.particles.length; i++) {
         var p = this.particles[i];
         p.opacity = round(p.death / p.life);
@@ -62,28 +72,6 @@ ParticleEmitter.prototype.update = function() {
     }
 }
 
-ParticleEmitter.prototype.render = function(x, y, scale, gamecanvas) {
-    if (!this.alive) return;
-    gamecanvas.setCompositeOperation("lighter");
-    
-    for(var i = 0; i < this.particles.length; i++) {
-        var p = this.particles[i];
-        if ((p.radius * scale) <= .1) continue;
-            
-        var px = x + (p.location.x * scale);
-        var py = y + (p.location.y * scale);
-        var pr = p.radius * scale;
-
-        var gradient = gamecanvas.createRadialGradient(px, py, 0, px, py, p.radius * scale);
-        gradient.addColorStop(0, "rgba(" + p.r + ", " + p.g + ", " + p.b + ", " + p.opacity + ")");
-        gradient.addColorStop(0.5, "rgba(" + p.r + ", " + p.g + ", " + p.b + ", " + p.opacity + ")");
-        gradient.addColorStop(1, "rgba(" + p.r + ", " + p.g + ", " + p.b + ", 0)");
-        gamecanvas.setFillStyle(gradient);
-        gamecanvas.beginPath();
-
-        var c = geometryfactory.getCircle(px, py, pr);
-        c.draw(gamecanvas);
-    }
-    
-    gamecanvas.setCompositeOperation("source-over");
+ParticleEmitter.prototype.render = function(gamecanvas) {
+    this.renderer.render(this.source.x, this.source.y, this.scale, gamecanvas);
 }

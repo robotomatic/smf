@@ -11,15 +11,7 @@ WorldRendererStart.prototype.renderStart = function(now, mbr, window, graphics, 
 }
 
 WorldRendererStart.prototype.getRenderItems = function(mbr, window, graphics, camera, world, debug) {
-
     var cp = mbr.getCenter();
-    
-//    var ww = window.width / 2;
-//    var wh = window.height / 2;
-//    var cp = new Point(mbr.x + ww, mbr.y + wh);
-//    cp.z = mbr.z;
-    
-    
     this.getRenderItemsWorldItems(mbr, window, cp, graphics, camera, world, debug);
     this.getRenderItemsWorldPlayers(mbr, window, cp, graphics, camera, world, debug);
 }
@@ -31,6 +23,12 @@ WorldRendererStart.prototype.getRenderItemsWorldItems = function(mbr, window, cp
         this.getRenderItemsWorldLevelLayerItemsItem(mbr, window, cp, graphics, camera, world, item, debug);
     }
 }
+
+
+
+
+
+
 
 WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(mbr, window, cp, graphics, camera, world, item, debug) {
     
@@ -79,43 +77,18 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
     if (imd - mbr.z < -100) blur = -10;
     
     var id = item.id;
-    var index = this.index++;
-    
-    if (this.renderitems.keys[id]) {
-        var newitem = this.renderitems.keys[id];
-        newitem.index = index;
-        newitem.showing = showing;
-        newitem.x = item.x;
-        newitem.y = item.y;
-        newitem.z = item.z + item.depth;
-        newitem.width = item.width;
-        newitem.height = item.height;
-        newitem.depth = item.depth;
-        newitem.distance = d;
-        newitem.blur = blur;
-    } else {
-        var newitem = {
-            type : itemtype,
-            name : id,
-            index : index,
-            showing : showing,
-            x : item.x,
-            y : item.y,
-            z : item.z + item.depth,
-            width : item.width,
-            height : item.height,
-            depth : item.depth,
-            distance : d,
-            item : item,
-            box : item.box,
-            mbr : itemmbr,
-            geometry : item.geometry,
-            blur : blur
-        }
-        this.renderitems.keys[id] = newitem;
-    }
-    this.renderitems.all[index] = newitem;
+    this.setRenderItemsRenderItem(itemtype, id, showing, item, d, item, itemmbr, d, blur);
 }
+
+
+
+
+
+
+
+
+
+
 
 WorldRendererStart.prototype.getRenderItemsWorldPlayers = function(mbr, window, cp, graphics, camera, world, debug) {
     var players = world.players;
@@ -134,7 +107,6 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(mbr, wi
     var showing = player.isVisible(window, mbr, 50);
     var d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, player.controller, 0, 0, -10);
     if (!showing || isNaN(d)) d = 0;
-    
     var blur = "";
     if (camera.blur.blur) {
         var oz = clamp(playermbr.z - (mbr.z + mbr.offset.z));
@@ -142,43 +114,32 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(mbr, wi
         var ddd = playermbr.z - mbr.z;
         if (ddd < -80) blur = -10;
     }
-    
     var id = player.name + "-" + player.id;
-    var index = this.index++;
-
-    if (this.renderitems.keys[id]) {
-        var newitem = this.renderitems.keys[id];
-        newitem.index = index;
-        newitem.showing = showing;
-        newitem.x = player.controller.x;
-        newitem.y = player.controller.y;
-        newitem.z = player.controller.z;
-        newitem.width = player.controller.width;
-        newitem.height = player.controller.height;
-        newitem.depth = player.controller.depth;
-        newitem.distance = d;
-        newitem.blur = blur;
-    } else {
-        var newitem = {
-            type : "player",
-            name : id,
-            index : index,
-            showing : showing, 
-            x : player.controller.x,
-            y : player.controller.y,
-            z : player.controller.z,
-            width : player.controller.width,
-            height : player.controller.height,
-            depth : player.controller.depth,
-            distance: d,
-            item : player,
-            mbr : playermbr,
-            blur : blur
-        }
-        this.renderitems.keys[id] = newitem;
+    if (player.character.emitter) {
+        this.getRenderItemsWorldPlayersPlayerParticleEmitter(id, showing, player.controller, d + playermbr.depth + 1, player.character.emitter, playermbr, blur);
     }
-    this.renderitems.all[index] = newitem;
+    this.setRenderItemsRenderItem("player", id, showing, player.controller, d, player, playermbr, blur);
 }
+
+
+
+
+
+
+
+
+
+WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayerParticleEmitter = function(id, showing, box, d, emitter, mbr, blur) {
+    this.setRenderItemsRenderItem("particle", id + "_emitter", showing, box, distance, emitter, mbr, blur);
+}
+
+
+
+
+
+
+
+
 
 WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItemCenter = function(mbr, mbrcp, item, ox, oy, oz) {
     if (item.width == "100%") {
@@ -201,3 +162,64 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItemBlur = functi
     var pd = distance3D(ix, iy, iz, mbrcp.x, mbrcp.y, mbrcp.z);
     return round(pd);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WorldRendererStart.prototype.setRenderItemsRenderItem = function(type, id, showing, box, distance, item, mbr, blur) {
+    var index = this.index++;
+    if (this.renderitems.keys[id]) {
+        var newitem = this.renderitems.keys[id];
+        newitem.index = index;
+        newitem.showing = showing;
+        newitem.x = box.x;
+        newitem.y = box.y;
+        newitem.z = box.z;
+        newitem.width = box.width;
+        newitem.height = box.height;
+        newitem.depth = box.depth;
+        newitem.distance = distance;
+        newitem.blur = blur;
+    } else {
+        var newitem = {
+            type : type,
+            name : id,
+            index : index,
+            showing : showing, 
+            x : box.x,
+            y : box.y,
+            z : box.z,
+            width : box.width,
+            height : box.height,
+            depth : box.depth,
+            distance: distance,
+            item : item,
+            mbr : mbr,
+            blur : blur
+        }
+        this.renderitems.keys[id] = newitem;
+    }
+    this.renderitems.all[index] = newitem;
+}
+

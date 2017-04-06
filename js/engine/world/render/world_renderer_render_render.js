@@ -56,4 +56,5 @@ WorldRendererRender.prototype.renderPlayer = function(now, window, graphics, cam
 }
 
 WorldRendererRender.prototype.renderParticle = function(now, window, graphics, camera, world, particle, distance, scale, debug, paused) {
+    particle.render(graphics.canvas);
 }
