@@ -35,12 +35,14 @@ WorldRendererStart.prototype.getRenderItemsWorldItems = function(mbr, window, cp
 WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(mbr, window, cp, graphics, camera, world, item, debug) {
     
     if (item.isHidden()) return;
+
+    var itemtype = "item";
     
     var width = graphics.canvas.getWidth();
     var height = graphics.canvas.getHeight();
     item.smooth();
     
-    var waterline = world.worldrenderer.waterline;
+    var waterline = world.worldrenderer.waterline && world.worldrenderer.render.world;
     item.translate(mbr, width, height, waterline.waterline);
     item.underwater = false;
     if (waterline && waterline.flow && !item.waterline) {
@@ -49,7 +51,12 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
             item.underwater = true;
             item.showing = false;
         }
-    } 
+    }
+    
+    if (item.waterline || item.width == "100%") {
+        itemtype = "world";
+    }
+    
     var showing = false;
     var d = 0;
     if (!item.underwater) {
@@ -88,7 +95,7 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
         newitem.blur = blur;
     } else {
         var newitem = {
-            type : "item",
+            type : itemtype,
             name : id,
             index : index,
             showing : showing,

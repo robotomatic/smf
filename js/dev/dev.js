@@ -86,7 +86,7 @@ function initializeDev(game) {
     initializeDevWorld();
     initializeDevPlayers();
     initializeDevPlayer();
-    initializeDevSize();
+    initializeDevView();
     resizeDev();
 }
 
@@ -104,6 +104,7 @@ function resetDev(gamecontroller) {
     if (world) {
         resetDevPlayers(world.players);
         resetDevWorld(world);
+        resetDevView(world);
         updateDevDebug();
     }
     updateDevViewOverlay();

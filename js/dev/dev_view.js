@@ -12,7 +12,7 @@ var dev_gamepads = null;
 
 var dev_pause = null;
 
-function initializeDevSize() {
+function initializeDevView() {
     
     if (!__dev) return;
 
@@ -20,54 +20,61 @@ function initializeDevSize() {
     
     dev_size_stretch = document.getElementById("dev-stretch");
     dev_size_stretch.onclick = function() {
-        toggleStretch();
+        toggleDevViewStretch();
     };
     dev_size_auto = document.getElementById("dev-auto");
     dev_size_auto.onclick = function() {
-        toggleAuto();
+        toggleDevViewAuto();
     };
     dev_size_view_width = document.getElementById("dev-view-width");
     dev_size_view_width.onchange = function() {
-        changeSize();
+        changeDevViewSize();
     };
     dev_size_view_height = document.getElementById("dev-view-height");
     dev_size_view_height.onchange = function() {
-        changeSize();
+        changeDevViewSize();
     };
     dev_size_view_ratio = document.getElementById("dev-view-ratio");
     dev_size_view_ratio.onchange = function() {
-        changeRatio();
+        changeDevViewRatio();
     };
     
     dev_gamepads = document.getElementById("gamepads");
     
     dev_overlay = document.getElementById("dev-overlay");
     dev_overlay.onclick = function() {
-        toggleOverlay();
+        toggleDevViewOverlay();
     };
     
     dev_pause = document.getElementById("dev-debug-pause");
     dev_pause.onclick = function() {
-        debugPause();
+        devPause();
     };
 
+    initializeDevViewRender();
     updateDevViewOverlay();
 }
 
-function toggleStretch() {
+
+function resetDevView(world) {
+    resetDevViewRender(world);
+}
+
+
+function toggleDevViewStretch() {
     if (!__dev) return;
     updateViews("toggleStretch");
     updateDevView();
 }
 
-function toggleAuto() {
+function toggleDevViewAuto() {
     if (!__dev) return;
     updateViews("toggleAuto");
     updateDevView();
 }
 
 
-function changeSize() {
+function changeDevViewSize() {
     if (!__dev) return;
     var ww = dev_size_view_width;
     var w = ww.value;
@@ -78,7 +85,7 @@ function changeSize() {
     updateDevView();
 }
 
-function changeRatio() {
+function changeDevViewRatio() {
     if (!__dev) return;
     var rr = dev_size_view_ratio;
     var r = rr.value;
@@ -94,6 +101,7 @@ function updateDevView() {
     if (!gamecontroller || !gamecontroller.game) return;
     var vv = gamecontroller.game.loop.gameworld.views[0];
     updateDevViewSize(vv);
+    updateDevViewRender();
  }
 
 function updateDevViewSize(v) {
@@ -121,7 +129,7 @@ function updateDevViewSize(v) {
 
 
 
-function toggleOverlay() {
+function toggleDevViewOverlay() {
     if (!__dev) return;
     var gp = dev_gamepads;
     if (!gp) return;
@@ -148,7 +156,7 @@ function updateDevViewOverlay() {
     dev_overlay.checked = showing;
 }
 
-function debugPause() {
+function devPause() {
     if (!__dev) return;
     var paused = controller.paused;
     if (paused) {

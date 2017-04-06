@@ -146,7 +146,7 @@ World.prototype.updatePlayer = function(now, delta, player, paused) {
 }
 
 World.prototype.render = function(now, graphics, camera, mbr, window, paused) { 
-    this.worldrenderer.render(now, graphics, camera, this, mbr, window, paused);
+    this.worldrenderer.renderWorld(now, graphics, camera, this, mbr, window, paused);
 }
 
 World.prototype.doAction = function(action, args, key, val, callback) { 

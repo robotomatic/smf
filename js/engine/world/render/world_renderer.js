@@ -5,6 +5,12 @@ function WorldRenderer() {
         all : new Array(),
         keys : new Array()
     }
+    this.render = {
+        world : true,
+        players : true,
+        items : true,
+        particles : true
+    }
     this.itemcache = new ItemCache();
     this.itemrenderer = new ItemRenderer();
     this.worldrenderer_start = new WorldRendererStart(this.renderitems);
@@ -34,10 +40,10 @@ WorldRenderer.prototype.loadTheme = function(theme) {
     this.itemrenderer.loadTheme(theme);
 }
 
-WorldRenderer.prototype.render = function(now, graphics, camera, world, mbr, window, paused) {
+WorldRenderer.prototype.renderWorld = function(now, graphics, camera, world, mbr, window, paused) {
     if (!paused) this.waterline.getFlood();
     this.worldrenderer_start.renderStart(now, mbr, window, graphics, camera, world, world.debug);
-    this.worldrenderer_render.renderRender(now, mbr, window, graphics, camera, world, world.debug, paused);
+    this.worldrenderer_render.renderRender(now, mbr, window, graphics, camera, world, world.debug, this.render, paused);
     this.worldrenderer_debug.renderDebug(now, mbr, window, graphics, camera, world, world.debug);
     this.worldrenderer_end.renderEnd(graphics, mbr);
 }
