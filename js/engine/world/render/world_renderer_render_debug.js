@@ -2,96 +2,45 @@
 
 function WorldRendererDebug(worldrenderer) {
     this.worldrenderer = worldrenderer;
-    this.line = new Line(new Point(0, 0), new Point(0, 0));
-    
-    this.temp = {
-        canvas : null,
-        ctx : null
-    };
-    
-    this.mbr = new Rectangle(0, 0, 0, 0);
-    this.polygon = new Polygon();
 }
 
 WorldRendererDebug.prototype.renderDebug = function(now, mbr, window, graphics, camera, world, debug) {
-    if (debug.level.render) this.renderDebugItems(graphics, mbr, window);
+    if (debug.level.render) this.renderDebugItems(graphics, camera, mbr, window, debug);
 }
 
-WorldRendererDebug.prototype.renderDebugItems = function(graphics, mbr, window) {
+WorldRendererDebug.prototype.renderDebugItems = function(graphics, camera, mbr, window, debug) {
     for (var i = 0; i < this.worldrenderer.renderitems.all.length; i++) {
-        this.renderDebugItemsItem(graphics, this.worldrenderer.renderitems.all[i], mbr, window);
+        this.renderDebugItemsItem(graphics, camera, this.worldrenderer.renderitems.all[i], mbr, window, debug);
     }
 }
 
-WorldRendererDebug.prototype.renderDebugItemsItem = function(graphics, item, mbr, window) {
-    
+WorldRendererDebug.prototype.renderDebugItemsItem = function(graphics, camera, item, mbr, window, debug) {
+    if (!item.showing) return;
     if (item.item.width == "100%") return;
     if (item.type == "player") return;
-    
-    var g = null;
-    if (item.blur) {
-        if (item.blur >= 10) g = graphics["blur_max"];
-        else g = graphics["blur"];
-    } else {
-        g = graphics["main"];
-    }
-    
-//    this.renderDebugItemsItemBox(graphics, item);
-//    this.renderDebugItemsItemCenter(graphics, window, mbr);
-//    this.renderDebugItemsItemText(graphics, item);
-    
-    this.renderDebugItemsItemGeometry(g, item);
-    g.canvas.commit();
+    if (item.item.isHidden()) return;
+    var g = graphics.graphics["main"];
+    this.renderDebugItemsItemGeometry(g, item.item, mbr.scale, debug);
 }
 
-WorldRendererDebug.prototype.renderDebugItemsItemCenter = function(graphics, window, mbr) {
-//    var mbrxw = ((mbr.x + (mbr.width / 2)) - mbr.x) * mbr.scale;
-//    var mbryh = ((mbr.y + (mbr.height / 2)) - mbr.y) * mbr.scale;
-//    
-//    var cp = window.getCenter();
-//    var mbrxw = cp.x;
-//    var mbryh = cp.y + 20; 
-//    
-//    var p = 5;
-//    var c = geometryfactory.getCircle(mbrxw - p, mbryh - p, p * 2);
-//    graphics.canvas.setFillStyle("cyan");
-//    graphics.canvas.beginPath();
-//    c.draw(graphics.canvas);
-}
-
-
-WorldRendererDebug.prototype.renderDebugItemsItemBox = function(graphics, item) {
-//    var box = item.box;
-//    if (!box) return;
-//    box.drawOutline(graphics.canvas, "white", 1);
-}
-
-WorldRendererDebug.prototype.renderDebugItemsItemText = function(graphics, item) {
-//    var message = "D: " + round(item.distance);
-//    var tx = item.box.x + 5;
-//    
-////    if (tx < 0) tx = 100;
-//    
-//    var ty = item.box.y + 10;
-//    var t = geometryfactory.getText(tx, ty, message);
-//    graphics.canvas.setFillStyle("white");
-//    graphics.canvas.beginPath();
-//    t.draw(graphics.canvas, 9);
-}
-
-WorldRendererDebug.prototype.renderDebugItemsItemGeometry = function(graphics, item) {
+WorldRendererDebug.prototype.renderDebugItemsItemGeometry = function(graphics, item, scale, debug) {
     var geom = item.geometry;
     if (!geom) return;
-    this.renderDebugItemsItemGeometryGeometry(graphics, geom.left.geometry, "white");
-    this.renderDebugItemsItemGeometryGeometry(graphics, geom.right.geometry, "white");
-    this.renderDebugItemsItemGeometryGeometry(graphics, geom.bottom.geometry, "white");
-    this.renderDebugItemsItemGeometryGeometry(graphics, geom.top.geometry, "white");
-    this.renderDebugItemsItemGeometryGeometry(graphics, geom.front.geometry, "white");
+    var color = debug.level.level ? "black" : "white";
+    graphics.canvas.setStrokeStyle(color);
+    var lw = debug.level.level ? .1 : 1;
+    graphics.canvas.setLineWidth(lw * scale);
+    graphics.canvas.beginPath();
+    this.renderDebugItemsItemGeometryGeometry(graphics, geom.left.geometry);
+    this.renderDebugItemsItemGeometryGeometry(graphics, geom.right.geometry);
+    this.renderDebugItemsItemGeometryGeometry(graphics, geom.bottom.geometry);
+    this.renderDebugItemsItemGeometryGeometry(graphics, geom.top.geometry);
+    this.renderDebugItemsItemGeometryGeometry(graphics, geom.front.geometry);
+    graphics.canvas.stroke();
+    graphics.canvas.commit();
 }
 
-WorldRendererDebug.prototype.renderDebugItemsItemGeometryGeometry = function(graphics, geometry, color) {
+WorldRendererDebug.prototype.renderDebugItemsItemGeometryGeometry = function(graphics, geometry) {
     if (!geometry) return;
-    graphics.canvas.beginPath();
-    geometry.drawOutline(graphics.canvas, color, .5);
-    graphics.canvas.commit();
+    geometry.path(graphics.canvas);
 }

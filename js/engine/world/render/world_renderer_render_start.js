@@ -7,7 +7,7 @@ function WorldRendererStart(worldrenderer) {
 
 WorldRendererStart.prototype.renderStart = function(now, mbr, window, graphics, camera, world, debug) {
     this.index = 0;
-    this.getRenderItems(mbr, window, graphics["main"], camera, world, debug);
+    this.getRenderItems(mbr, window, graphics.graphics["main"], camera, world, debug);
 }
 
 WorldRendererStart.prototype.getRenderItems = function(mbr, window, graphics, camera, world, debug) {

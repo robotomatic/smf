@@ -65,3 +65,7 @@ WorldRenderer.prototype.removePlayer = function(player) {
         delete this.renderitems.keys[id];
     }
 }
+
+
+
+

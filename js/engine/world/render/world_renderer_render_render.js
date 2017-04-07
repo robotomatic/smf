@@ -17,30 +17,12 @@ WorldRendererRender.prototype.renderRenderItems = function(now, graphics, camera
         var renderitem = this.worldrenderer.renderitems.all[i];
         if (!renderitem.showing) continue;
         var wd = round(renderitem.z - mbr.z);
-        var g = this.getGraphics(camera, renderitem, graphics);
+        var g = graphics.getGraphics(camera, renderitem);
         if (renderitem.type == "world" && render.world) this.renderWorld(now, window, g, camera, world, renderitem.item, wd, scale, debug, paused);
         else if (renderitem.type == "item" && render.items) this.renderItem(now, window, g, camera, world, renderitem.item, wd, scale, debug, paused);
         else if (renderitem.type == "player" && render.players) this.renderPlayer(now, window, g, camera, world, renderitem.item, wd, scale, debug, paused);
         else if (renderitem.type == "particle" && render.particles) this.renderParticle(now, window, g, camera, world, renderitem.item, wd, scale, debug, paused);
     }
-}
-
-WorldRendererRender.prototype.getGraphics = function(camera, renderitem, graphics) {
-    var g = null;
-    if (camera.blur.blur) {
-        if (renderitem.blur > 0) {
-            if (renderitem.blur >= 10) g = graphics["blur_max"];
-            else if (renderitem.blur >= 6) g = graphics["blur_med"];
-            else g = graphics["blur"];
-        } else if (renderitem.blur < 0) {
-            g = graphics["blur_min"];
-        } else {
-            g = graphics["main"];
-        }
-    } else {
-        g = graphics["main"];
-    }
-    return g;
 }
 
 WorldRendererRender.prototype.renderWorld = function(now, window, graphics, camera, world, item, distance, scale, debug, paused) {

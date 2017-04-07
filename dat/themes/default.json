@@ -61,9 +61,9 @@
                 "color" : {
                     "color" : "#529ab5",
                     "projected" : {
-                        "front" : "#529ab5",
+                        "front" : "#6eaec6",
                         "top" : "#7fc1d9",
-                        "side" : "#75b8d1",
+                        "side" : "#529ab5",
                         "bottom" : "#53869a"
                     }
                }
@@ -88,9 +88,9 @@
                 "color" : {
                     "color" : "#529ab5",
                     "projected" : {
-                        "front" : "#529ab5",
+                        "front" : "#6eaec6",
                         "top" : "#7fc1d9",
-                        "side" : "#75b8d1",
+                        "side" : "#529ab5",
                         "bottom" : "#53869a"
                     }
                }
@@ -102,9 +102,9 @@
                 "color" : {
                     "color" : "#529ab5",
                     "projected" : {
-                        "front" : "#529ab5",
+                        "front" : "#6eaec6",
                         "top" : "#7fc1d9",
-                        "side" : "#75b8d1",
+                        "side" : "#529ab5",
                         "bottom" : "#53869a"
                     }
                }

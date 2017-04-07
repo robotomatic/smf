@@ -106,7 +106,7 @@ ViewRenderer.prototype.renderWorld = function(now, world, paused) {
     this.window.offset.x = this.camera.offset.x;
     this.window.offset.y = this.camera.offset.y;
     this.window.offset.z = this.camera.offset.z;
-    world.render(now, this.graphics.graphics, this.camera, this.mbr, this.window, paused);
+    world.render(now, this.graphics, this.camera, this.mbr, this.window, paused);
 }
 
 

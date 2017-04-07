@@ -48,3 +48,21 @@ ViewGraphics.prototype.createCanvas = function(graphics) {
     if (graphics.css) classname += " " + graphics.css;
     graphics.canvas.setClassName(classname);
 }
+
+ViewGraphics.prototype.getGraphics = function(camera, renderitem) {
+    var g = null;
+    if (camera.blur.blur) {
+        if (renderitem.blur > 0) {
+            if (renderitem.blur >= 10) g = this.graphics["blur_max"];
+            else if (renderitem.blur >= 6) g = this.graphics["blur_med"];
+            else g = this.graphics["blur"];
+        } else if (renderitem.blur < 0) {
+            g = this.graphics["blur_min"];
+        } else {
+            g = this.graphics["main"];
+        }
+    } else {
+        g = this.graphics["main"];
+    }
+    return g;
+}

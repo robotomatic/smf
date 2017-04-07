@@ -9,6 +9,9 @@ function CharacterRendererGroupsGroup() {
 }
 
 CharacterRendererGroupsGroup.prototype.renderGroup = function(gamecanvas, groupdef, groupnames, group, color, debugrects, debug) {
+
+    gamecanvas.commit();
+    gamecanvas.beginPath();
     
     var points = group.points;
     this.polygon.points.length = 0;
