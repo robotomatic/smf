@@ -125,41 +125,11 @@
                         "height": 340
                     }
                 ]
-            },
+            }
             
 
             
             
-            {
-                "x" : 3900,
-                "y" : 660,
-                "z" : 1200,
-                "depth" : 300,
-                "itemtype" : "raised-platform",
-                "parts" : [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "width": 600,
-                        "height": 300
-                    }
-                ]
-            },
-            {
-                "x" : 3900,
-                "y" : 660,
-                "z" : 1500,
-                "depth" : 300,
-                "itemtype" : "raised-platform",
-                "parts" : [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "width": 600,
-                        "height": 300
-                    }
-                ]
-            }
             
         ]
     }

@@ -66,7 +66,7 @@
 
             "ground-raised" : {
                 "name" : "ground-raised",
-                "material" : "wood-horizontal",
+                "material" : "wood",
                 "items" : [
                     {
                         "name" : "ground-raised-snow",
@@ -84,7 +84,7 @@
             
             "platform" : {
                 "name" : "platform",
-                "material" : "wood-vertical",
+                "material" : "slate",
                 "items" : [
                     {
                         "name" : "platform-snow",
@@ -102,7 +102,7 @@
             
             "platform-raised" : {
                 "name" : "platform-raised",
-                "material" : "wood-horizontal",
+                "material" : "bark",
                 "items" : [
                     {
                         "name" : "platform-snow",
@@ -118,9 +118,9 @@
                 ]
             },
             
-            "platform-support" : {
-                "name" : "platform-support",
-                "material" : "wood-vertical",
+            "platform-raised-support" : {
+                "name" : "platform-raised-support",
+                "material" : "bark",
                 "top" : false
             }
         }

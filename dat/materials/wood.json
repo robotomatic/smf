@@ -11,7 +11,7 @@
             "projected" : {
                 "front" : "#b5b0a0",
                 "top" : "#c6c1b3",
-                "side" : "#aca89c",
+                "side" : "#a09d92",
                 "bottom" : "#969283"
             }
         }
@@ -35,40 +35,6 @@
                 "top" : "#a39e8e",
                 "side" : "#a39e8e",
                 "bottom" : "#a39e8e"
-            }
-        }
-   },
-   "wood-horizontal" : {
-       "name" : "wood",
-        "direction" : "horizontal",
-        "bark" : false,
-        "sectionwidth" : 2,
-        "linewidth" : 1,
-        "color" : {
-            "light" : "#b5b0a0",
-            "dark" : "#cbc8be",
-            "projected" : {
-                "front" : "#a5986e",
-                "top" : "#bcad7f",
-                "side" : "#aca89c",
-                "bottom" : "#969283"
-            }
-        }
-   },
-   "wood-vertical" : {
-       "name" : "wood",
-        "direction" : "vertical",
-        "bark" : false,
-        "sectionwidth" : 2,
-        "linewidth" : 1,
-        "color" : {
-            "light" : "#b5b0a0",
-            "dark" : "#cbc8be",
-            "projected" : {
-                "front" : "#a5986e",
-                "top" : "#bcad7f",
-                "side" : "#aca89c",
-                "bottom" : "#969283"
             }
         }
    }

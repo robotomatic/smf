@@ -96,8 +96,8 @@
                }
             },
             
-            "platform-support" : {
-                "name" : "platform-support",
+            "platform-raised-support" : {
+                "name" : "platform-raised-support",
                 "top" : false,
                 "color" : {
                     "color" : "#529ab5",

@@ -79,8 +79,8 @@
                 "material" : "steel"
             },
             
-            "platform-support" : {
-                "name" : "platform-support",
+            "platform-raised-support" : {
+                "name" : "platform-raised-support",
                 "material" : "steel",
                 "top" : false
             }

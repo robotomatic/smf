@@ -15,11 +15,11 @@
         },
         
         "raised platform high" : {
-            "file" : "dat/levels/city/layers/raised_platform_high.json"
+            "file" : "dat/levels/city/layers/platform_raised_high.json"
         },
         
         "raised platform low" : {
-            "file" : "dat/levels/city/layers/raised_platform_low.json"
+            "file" : "dat/levels/city/layers/platform_raised_low.json"
         },
         
         "liquid" : {

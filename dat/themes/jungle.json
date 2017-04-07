@@ -64,17 +64,17 @@
 
             "platform" : {
                 "name" : "platform",
-                "material" : "metal"
+                "material" : "bark"
             },
             
             "platform-raised" : {
                 "name" : "platform-raised",
-                "material" : "wood-horizontal"
+                "material" : "wood"
             },
             
-            "platform-support" : {
-                "name" : "platform-support",
-                "material" : "wood-vertical",
+            "platform-raised-support" : {
+                "name" : "platform-raised-support",
+                "material" : "wood",
                 "top" : false
             }
         }

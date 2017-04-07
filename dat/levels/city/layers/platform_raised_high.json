@@ -78,7 +78,7 @@
                 "y" : 450,
                 "z" : 1200,
                 "depth" : 50,
-                "itemtype" : "platform-support",
+                "itemtype" : "platform-raised-support",
                 "parts" : [
                     {
                         "x": 0,
@@ -93,7 +93,7 @@
                 "y" : 450,
                 "z" : 2050,
                 "depth" : 50,
-                "itemtype" : "platform-support",
+                "itemtype" : "platform-raised-support",
                 "parts" : [
                     {
                         "x": 0,
@@ -110,7 +110,7 @@
                 "y" : 450,
                 "z" : 1200,
                 "depth" : 50,
-                "itemtype" : "platform-support",
+                "itemtype" : "platform-raised-support",
                 "parts" : [
                     {
                         "x": 0,
@@ -125,7 +125,7 @@
                 "y" : 450,
                 "z" : 1750,
                 "depth" : 50,
-                "itemtype" : "platform-support",
+                "itemtype" : "platform-raised-support",
                 "parts" : [
                     {
                         "x": 0,
@@ -140,7 +140,7 @@
                 "y" : 450,
                 "z" : 2950,
                 "depth" : 50,
-                "itemtype" : "platform-support",
+                "itemtype" : "platform-raised-support",
                 "parts" : [
                     {
                         "x": 0,
@@ -159,7 +159,7 @@
                 "y" : 450,
                 "z" : 1200,
                 "depth" : 50,
-                "itemtype" : "platform-support",
+                "itemtype" : "platform-raised-support",
                 "parts" : [
                     {
                         "x": 0,
@@ -174,7 +174,7 @@
                 "y" : 450,
                 "z" : 1750,
                 "depth" : 50,
-                "itemtype" : "platform-support",
+                "itemtype" : "platform-raised-support",
                 "parts" : [
                     {
                         "x": 0,
@@ -189,7 +189,7 @@
                 "y" : 450,
                 "z" : 2950,
                 "depth" : 50,
-                "itemtype" : "platform-support",
+                "itemtype" : "platform-raised-support",
                 "parts" : [
                     {
                         "x": 0,

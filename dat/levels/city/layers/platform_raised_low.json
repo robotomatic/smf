@@ -35,7 +35,7 @@
                 "y" : 800,
                 "z" : 1200,
                 "depth" : 50,
-                "itemtype" : "platform-support",
+                "itemtype" : "platform-raised-support",
                 "parts" : [
                     {
                         "x": 0,
@@ -50,7 +50,7 @@
                 "y" : 800,
                 "z" : 1750,
                 "depth" : 50,
-                "itemtype" : "platform-support",
+                "itemtype" : "platform-raised-support",
                 "parts" : [
                     {
                         "x": 0,
@@ -113,7 +113,7 @@
                 "y" : 800,
                 "z" : 900,
                 "depth" : 50,
-                "itemtype" : "platform-support",
+                "itemtype" : "platform-raised-support",
                 "parts" : [
                     {
                         "x": 0,
@@ -128,7 +128,7 @@
                 "y" : 800,
                 "z" : 1750,
                 "depth" : 50,
-                "itemtype" : "platform-support",
+                "itemtype" : "platform-raised-support",
                 "parts" : [
                     {
                         "x": 0,
@@ -144,7 +144,7 @@
                 "y" : 800,
                 "z" : 900,
                 "depth" : 50,
-                "itemtype" : "platform-support",
+                "itemtype" : "platform-raised-support",
                 "parts" : [
                     {
                         "x": 0,
@@ -159,7 +159,7 @@
                 "y" : 800,
                 "z" : 1750,
                 "depth" : 50,
-                "itemtype" : "platform-support",
+                "itemtype" : "platform-raised-support",
                 "parts" : [
                     {
                         "x": 0,

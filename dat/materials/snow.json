@@ -34,7 +34,10 @@
             "friction" : 0.1
         },
         "waterline" : {
-            "flow" : false
+            "flow" : true,
+            "amount" : 0,
+            "miny" : 0,
+            "maxy" : 0
         },
         "color" : {
             "color" : "#d0dfe3",
