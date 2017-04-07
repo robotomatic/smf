@@ -83,29 +83,15 @@ GameControllerGame.prototype.loadLevelLevel = function(level, name, callback) {
     if (themes) {
         this.changeLevelThemes(themes);
     }
+    this.loop.loadMaterials(this.gameloader.materials);
     this.loop.loadLevel(level);
     this.gamecontroller.gamesettings.settings.levelname = this.levelname;
     this.gamecontroller.saveGameSettings();
 }
 
-GameControllerGame.prototype.changeWorldTheme = function(theme, active) {
-    
-    //
-    // todo --> here
-    //
-    alert(theme);
-    
-}
-
-GameControllerGame.prototype.changeLevelThemes = function(themes) {
-    this.loop.unloadThemes();
-    this.loadLevelThemes(themes);
-}
-
 GameControllerGame.prototype.loadLevelThemes = function(themes) {
-    this.loop.loadMaterials(this.gameloader.materials);
     for (var i = 0; i < themes.length; i++) {
-        var themename= themes[i];
+        var themename = themes[i];
         var theme = this.gameloader.themes.getThemeByName(themename);
         if (theme) this.loop.loadTheme(theme);
     }
@@ -149,6 +135,10 @@ GameControllerGame.prototype.loadViews = function() {
     this.loop.hideViews();
     this.view = new View(this, "game-canvas", this.gamequality, this.onclick);
     this.loop.loadViews(new Array(this.view));
+}
+
+GameControllerGame.prototype.resetViews = function() {
+    this.loop.gameworld.resetViews();
 }
 
 GameControllerGame.prototype.onclick = function(e, controller) {
@@ -282,3 +272,33 @@ GameControllerGame.prototype.updatePlayerCamera = function(player, camera) {
 GameControllerGame.prototype.playerDied = function(player) {
     this.loop.gameworld.world.worldcollider.resetPlayer(player);
 }
+
+
+
+
+
+
+GameControllerGame.prototype.changeWorldTheme = function(themename, index, active) {
+    var world = this.loop.gameworld.world;
+    var worldthemes = world.getThemes();
+    var newthemes = new Array();
+    for (var i = 0; i < worldthemes.length; i++) {
+        var worldtheme = worldthemes[i];
+        var worldthemename = worldtheme.name;
+        if (i == index && active) newthemes.push(themename);
+        if (worldtheme.name == themename) continue;
+        newthemes.push(worldthemename);
+    }
+    if (index >= worldthemes.length && active) {
+        newthemes.push(themename);
+    }
+    world.resetRendererCollider();
+    this.changeLevelThemes(newthemes);
+    world.updateThemes();
+}
+
+GameControllerGame.prototype.changeLevelThemes = function(themes) {
+    this.loop.unloadThemes();
+    this.loadLevelThemes(themes);
+}
+

@@ -83,7 +83,7 @@ GameLoop.prototype.pause = function(when) {
 GameLoop.prototype.resume = function(when) {
     this.paused = false;
     this.last = when;
-    this.delta = 0;
+    this.delta = this.step;
     this.gameworld.resume(when);
     this.gameperformance.pauseEnd(when);
 }

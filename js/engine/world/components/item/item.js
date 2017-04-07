@@ -374,7 +374,7 @@ Item.prototype.isHidden = function() {
 }
 
 
-Item.prototype.isVisible = function(w, wmbr, pad = 0) {
+Item.prototype.isVisible = function(w, pad = 0) {
     var mbr = this.getProjectedMbr();
     var wx = w.x + w.offset.x;
     var ww = w.width;
@@ -442,6 +442,7 @@ Item.prototype.getPolygon = function() {
 
 Item.prototype.update = function(now, delta, paused) { 
 //    this.move(now, delta);
+    this.smooth();
 }
 
 

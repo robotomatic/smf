@@ -3,7 +3,7 @@
 function WorldBuilderSurfaces() {
 }
 
-WorldBuilderSurfaces.prototype.reset = function() { 
+WorldBuilderSurfaces.prototype.reset = function(world) { 
 }
 
 WorldBuilderSurfaces.prototype.buildSurfaces = function(world) {

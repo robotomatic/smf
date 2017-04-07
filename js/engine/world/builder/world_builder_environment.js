@@ -3,18 +3,18 @@
 function WorldBuilderEnvironment() {
 }
 
-WorldBuilderEnvironment.prototype.reset = function() { 
+WorldBuilderEnvironment.prototype.reset = function(world) { 
 }
 
 WorldBuilderEnvironment.prototype.buildEnvironment = function(world) {
     var itemrenderer = world.worldrenderer.itemrenderer;
-    var items = world.items;
+    var items = world.renderitems;
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
         if (item.draw === false) continue;
         this.buildEnvironmentItem(world, itemrenderer, item);
     }
-    world.items = items;
+    world.renderitems = items;
 }
 
 WorldBuilderEnvironment.prototype.buildEnvironmentItem = function(world, itemrenderer, item) {

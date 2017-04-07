@@ -88,6 +88,9 @@ View.prototype.reset = function(when) {
     this.renderer.reset(when);
 }
 
+View.prototype.resetView = function() { 
+    this.renderer.ready = false;
+}
 
 
 

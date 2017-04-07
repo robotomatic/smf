@@ -3,7 +3,7 @@
 function WorldBuilderIntersect() {
 }
 
-WorldBuilderIntersect.prototype.reset = function() { 
+WorldBuilderIntersect.prototype.reset = function(world) { 
 }
 
 WorldBuilderIntersect.prototype.intersectItems = function(world) { 

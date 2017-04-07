@@ -65,11 +65,14 @@ function addDevWorldTheme(world, theme) {
         }
     }
     tactivelabelactive.checked = checked;
+    var index = document.getElementsByClassName("dev-dialog-world-themes-theme").length - 1;
+    tactivelabelactive.index = index;
     
     tactivelabelactive.onchange = function() {
         var theme = this.id.replace("dev-dialog-world-themes-theme-active-active-", "");
         var check = this.checked;
-        updateDevWorldThemesTheme(theme, check);
+        var index = this.index;
+        updateDevWorldThemesTheme(theme, index, check);
     };
     
     dev_world_themes_theme_list.appendChild(item);
@@ -77,7 +80,7 @@ function addDevWorldTheme(world, theme) {
 
 
 
-function updateDevWorldThemesTheme(theme, active) {
-    controller.changeWorldTheme(theme, active);
+function updateDevWorldThemesTheme(theme, index, active) {
+    controller.changeWorldTheme(theme, index, active);
 }
 

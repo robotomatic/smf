@@ -37,9 +37,6 @@ GameControllerMenu.prototype.loadLevel = function() {
     this.loop.loadLevel(this.level);
 }
 
-GameControllerMenu.prototype.changeWorldTheme = function(theme, active) {
-}
-
 
 
 GameControllerMenu.prototype.loadCharacters = function() { 
@@ -159,6 +156,12 @@ GameControllerMenu.prototype.loadView = function() {
     fadeIn(document.getElementById("menu-canvas-canvas"));    
 }
 
+GameControllerMenu.prototype.resetViews = function() {
+    this.loop.gameworld.resetViews();
+}
+
+
+
 GameControllerMenu.prototype.onclick = function(e) {
     if (controller.paused) return;
     if (e.target.id != "gamecanvas") return;
@@ -218,3 +221,7 @@ GameControllerMenu.prototype.removePlayer = function(player) {
 GameControllerMenu.prototype.playerDied = function(player) {
     this.loop.gameworld.world.worldcollider.resetPlayer(player);
 }
+
+GameControllerMenu.prototype.changeWorldTheme = function(theme, active) {
+}
+

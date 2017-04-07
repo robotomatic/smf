@@ -3,7 +3,7 @@
 function WorldBuilderTrim() {
 }
 
-WorldBuilderTrim.prototype.reset = function() { 
+WorldBuilderTrim.prototype.reset = function(world) { 
 }
 
 WorldBuilderTrim.prototype.buildWorldTrim = function(world) {

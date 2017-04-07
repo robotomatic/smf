@@ -3,7 +3,8 @@
 function WorldBuilderItems() {
 }
 
-WorldBuilderItems.prototype.reset = function() { 
+WorldBuilderItems.prototype.reset = function(world) { 
+    world.items.length = 0;
 }
 
 WorldBuilderItems.prototype.buildWorld = function(world) {

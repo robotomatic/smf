@@ -3,7 +3,7 @@
 function WorldBuilderHSR() {
 }
 
-WorldBuilderHSR.prototype.reset = function() { 
+WorldBuilderHSR.prototype.reset = function(world) { 
 }
 
 WorldBuilderHSR.prototype.removeHiddenSurfaces = function(world) { 

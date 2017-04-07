@@ -18,6 +18,10 @@ World.prototype.unloadThemes = function() {
     this.physics.reset();
 }
 
+World.prototype.getThemes = function() { 
+    return this.worldrenderer.getThemes();
+}
+
 World.prototype.loadMaterials = function(materials) { 
     this.worldrenderer.loadMaterials(materials);
 }
@@ -25,6 +29,12 @@ World.prototype.loadMaterials = function(materials) {
 World.prototype.loadTheme = function(theme) { 
     this.worldrenderer.loadTheme(theme);
     this.physics.setPhysics(theme.physics);
+}
+
+World.prototype.updateThemes = function() { 
+    benchmark("build world theme - start", "build");
+    this.worldbuilder.buildWorldTheme(this);
+    benchmark("build world theme - end", "build");
 }
 
 World.prototype.setLevel = function(level) { 
@@ -96,19 +106,29 @@ World.prototype.resume = function(now) {
     this.npcs.resume(now);
 }
     
+
+
+
 World.prototype.reset = function(when) { 
     benchmark("world reset - start", "reset");
     this.level.reset();
     delete(this.level);
     this.items.length = 0;
     this.renderitems.length = 0;
-    this.worldbuilder.reset();
+    this.worldbuilder.reset(this);
     this.worldrenderer.reset();
     this.worldcollider.reset();
     if (this.players) this.players.reset(when);
     if (this.npcs) this.npcs.reset(when);
     benchmark("world reset - end", "reset");
 }
+
+
+World.prototype.resetRendererCollider = function(when) { 
+    this.worldrenderer.reset();
+    this.worldcollider.reset();
+}
+
 
 World.prototype.resetPlayers = function() { 
     this.worldcollider.resetPlayers(this.players.players);

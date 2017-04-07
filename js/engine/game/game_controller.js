@@ -206,8 +206,21 @@ GameController.prototype.loadLevel = function(level, name, callback) {
 
 
 
-GameController.prototype.changeWorldTheme = function(theme, active) {
-    this.game.changeWorldTheme(theme, active);
+GameController.prototype.changeWorldLevel = function(level, levelname) {
+    var controller = this;
+    this.loadLevel(level, levelname, function() {
+        controller.game.resetViews();
+        controller.game.startPlayers();
+        controller.resume(timestamp());
+    });
+}
+    
+GameController.prototype.changeWorldTheme = function(theme, index, active) {
+    this.pause(timestamp());
+    geometryfactory.reset();
+    this.game.changeWorldTheme(theme, index, active);
+    this.game.resetViews();
+    this.resume(timestamp());
 }
     
 GameController.prototype.addPlayer = function(charname) {

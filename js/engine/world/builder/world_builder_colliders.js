@@ -13,7 +13,7 @@ function WorldBuilderColliders() {
     this.collisionindex = new WorldColliderIndex();
 }
 
-WorldBuilderColliders.prototype.reset = function() { 
+WorldBuilderColliders.prototype.reset = function(world) { 
     this.collisionindex.reset();
 }
 

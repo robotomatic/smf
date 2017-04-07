@@ -4,7 +4,7 @@ function WorldBuilderTheme() {
     this.addparts = true;
 }
 
-WorldBuilderTheme.prototype.reset = function() { 
+WorldBuilderTheme.prototype.reset = function(world) { 
 }
 
 WorldBuilderTheme.prototype.buildTheme = function(world) { 
@@ -16,6 +16,7 @@ WorldBuilderTheme.prototype.buildTheme = function(world) {
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
         if (!item.dotheme) continue;
+        if (!item.geometry.visible.top.visible) continue;
         newitems = this.buildThemeItems(itemrenderer, item, newitems);
     }
     for (var ii = 0; ii < newitems.length; ii++) {

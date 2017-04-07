@@ -13,16 +13,16 @@ function WorldBuilder() {
     this.environmentbuilder = new WorldBuilderEnvironment();
 }
 
-WorldBuilder.prototype.reset = function() {
-    this.itembuilder.reset();
-    this.collidebuilder.reset();
-    this.themebuilder.reset();
-    this.overlapbuilder.reset();
-    this.intersectbuilder.reset();
-    this.hsrbuilder.reset();
-    this.chunkbuilder.reset();
-    this.surfacebuilder.reset();
-    this.environmentbuilder.reset();
+WorldBuilder.prototype.reset = function(world) {
+    this.itembuilder.reset(world);
+    this.collidebuilder.reset(world);
+    this.themebuilder.reset(world);
+    this.overlapbuilder.reset(world);
+    this.intersectbuilder.reset(world);
+    this.hsrbuilder.reset(world);
+    this.chunkbuilder.reset(world);
+    this.surfacebuilder.reset(world);
+    this.environmentbuilder.reset(world);
 }
     
 WorldBuilder.prototype.buildWorld = function(now, world) {
@@ -32,9 +32,6 @@ WorldBuilder.prototype.buildWorld = function(now, world) {
 
     this.trimbuilder.buildWorldTrim(world);
     benchmark("build world - trim");
-
-    this.environmentbuilder.buildEnvironment(world);
-    benchmark("build world - environment");
 
     this.overlapbuilder.overlapItems(world);
     benchmark("build world - overlap");
@@ -59,7 +56,12 @@ WorldBuilder.prototype.buildWorld = function(now, world) {
 WorldBuilder.prototype.buildWorldTheme = function(world) {
 
     this.createRenderItems(world);
+    benchmark("build world - render items");
 
+    this.environmentbuilder.buildEnvironment(world);
+    benchmark("build world - environment");
+
+    
     this.themebuilder.buildTheme(world);
     benchmark("build world - theme");
 

@@ -3,7 +3,7 @@
 function WorldBuilderOverlap() {
 }
 
-WorldBuilderOverlap.prototype.reset = function() { 
+WorldBuilderOverlap.prototype.reset = function(world) { 
 }
 
 WorldBuilderOverlap.prototype.overlapItems = function(world) { 

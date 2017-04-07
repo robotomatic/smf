@@ -31,9 +31,11 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
     var outline = fill ? true : dodebug ? true : false;
     
     if (item.geometry.visible.front.visible) {
+
         //
-        // todo: this can eventually go -- item cache will draw fronts
+        // todo: SOON! this can eventually go -- item cache will draw fronts
         //
+        if (item.width == "100%") outline = false;
  
         this.renderItemParts3D(gamecanvas, item, item.geometry.front, this.colors.front, x, y, scale, debug, outline, fill);
         
@@ -66,43 +68,46 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
             }
         }
     }
-    
-    if (item.geometry.visible.left.visible || item.geometry.visible.right.visible) {
-        var left = item.item3D.left && item.geometry.visible.left.visible;
-        var right = item.item3D.right && item.geometry.visible.right.visible;
-        var sides = left || right;
-        if (sides) {
-            if (left && item.geometry.left.showing) this.renderItemParts3D(gamecanvas, item, item.geometry.left, this.colors.side, x, y, scale, debug, outline, fill);
-            else if (right && item.geometry.right.showing)  this.renderItemParts3D(gamecanvas, item, item.geometry.right, this.colors.side, x, y, scale, debug, outline, fill);
+
+    if (item.width != "100%") {
+        if (item.geometry.visible.left.visible || item.geometry.visible.right.visible) {
+            var left = item.item3D.left && item.geometry.visible.left.visible;
+            var right = item.item3D.right && item.geometry.visible.right.visible;
+            var sides = left || right;
+            if (sides) {
+                if (left && item.geometry.left.showing) this.renderItemParts3D(gamecanvas, item, item.geometry.left, this.colors.side, x, y, scale, debug, outline, fill);
+                else if (right && item.geometry.right.showing)  this.renderItemParts3D(gamecanvas, item, item.geometry.right, this.colors.side, x, y, scale, debug, outline, fill);
+            }
+        }
+
+        if (item.bottom === true) {
+            if (item.geometry.visible.bottom.visible && item.geometry.bottom.showing) {
+                this.renderItemParts3D(gamecanvas, item, item.geometry.bottom, this.colors.bottom, x, y, scale, debug, outline, fill);
+            }
         }
     }
-    
-    if (item.bottom === true) {
-        if (item.geometry.visible.bottom.visible && item.geometry.bottom.showing) {
-            this.renderItemParts3D(gamecanvas, item, item.geometry.bottom, this.colors.bottom, x, y, scale, debug, outline, fill);
-        }
-    }
-    
+
     if (this.dotop) {
         if (item.geometry.visible.top.visible && item.geometry.top.showing) {
-            
+
             var topoutline = true;
             if (item.draw === false) topoutline = false;
             if (item.width == "100%") {
                 if (dodebug) topoutline = true;
                 else topoutline = false;
             }
+
             // todo: only draw outline on contiguous surfaces - tile of same type must exist on outline side
-            
+
             this.renderItemParts3D(gamecanvas, item, item.geometry.top, this.colors.top, x, y, scale, debug, topoutline, fill);
-            
+
             if (fill && !debug.level && item.width != "100%") {
                 var lc = this.colors.side;
                 var lw = 1 * scale;
                 gamecanvas.setStrokeStyle(lc);
                 gamecanvas.setLineWidth(lw);
                 gamecanvas.beginPath();
-                
+
                 if (item.geometry.visible.back.visible) {
                     if (item.item3D.polygon.points.length >= 2) {
                         item.item3D.line.start.x = item.item3D.polygon.points[0].x;
@@ -187,14 +192,19 @@ ItemRenderer3D.prototype.getColors = function(gamecanvas, renderer, item, debug)
         this.dotop = item.top === false ? false : true;
     }
     
-    if (dodebug){
+    
+    var theme = (renderer && renderer.theme) ? renderer.theme.items[item.itemtype] : null;
+
+    if (dodebug || !theme){
         this.colors.front = "#ededed";
         this.colors.side = "#d3d3d3";
         this.colors.top = "#dbdbdb";
         this.colors.bottom = "#c7c7c7";
+        if (item.width == "100%") {
+            this.colors.front = "white";
+        }
     }
     
-    var theme = (renderer && renderer.theme) ? renderer.theme.items[item.itemtype] : null;
     if (!theme) return;
     
     this.dotop = item.top === false ? false : true;

@@ -64,6 +64,10 @@ Character.prototype.update = function(now, player, direction, state)  {
         if (this.emitter && player.box) {
             if (!this.emitter.alive) this.emitter.alive = true;
             var scale = player.box.width / this.width;
+            
+            // todo: fucked
+            
+//            this.emitter.update(player.controller.location.x, player.controller.location.y, player.controller.location.z, scale);
             this.emitter.update(player.box.x, player.box.y, player.box.z, scale);
         }
     }

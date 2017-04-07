@@ -87,7 +87,7 @@ Player.prototype.getLocation = function() {
 
 
 
-Player.prototype.isVisible = function(w, wmbr, pad = 0) {
+Player.prototype.isVisible = function(w, pad = 0) {
     var mbr = this.box;
     var wx = w.x + w.offset.x;
     if (mbr.x > (wx + w.width + pad)) return false;
@@ -165,6 +165,7 @@ Player.prototype.updateLevelCollisions = function() {
 
 Player.prototype.update = function(now, delta, physics) {
     this.controller.update(now, delta, physics);
+    this.smooth();
     var dir = this.controller.getDirection(now);
     var state = this.controller.getState(now, dir);
     if (state == "idle") this.controller.idle(now);

@@ -79,6 +79,10 @@ GameWorld.prototype.reset = function(now) {
     benchmark("world reset");
 }
 
+GameWorld.prototype.resetViews = function() {
+    this.do("resetView");
+}
+
 GameWorld.prototype.do = function(f, a) { 
     if (!this.views) return;
     for (var i = 0; i < this.views.length; i++) {

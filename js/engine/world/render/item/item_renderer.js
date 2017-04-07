@@ -23,6 +23,9 @@ ItemRenderer.prototype.unloadThemes = function() {
     if (this.theme) this.theme.reset();
 }
 
+ItemRenderer.prototype.getThemes = function() {
+    return this.themes;
+}
 
 ItemRenderer.prototype.loadMaterials = function(materials) {
     this.materials = materials; 

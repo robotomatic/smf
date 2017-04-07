@@ -78,6 +78,10 @@ ViewRenderer.prototype.setBackground = function(world) {
                 this.view.parent.style.background = world.worldrenderer.itemrenderer.theme.background.color;
                 this.view.rendertarget.canvas.setBackground(world.worldrenderer.itemrenderer.theme.background.canvas.color);
                 this.ready = true;
+            } else {
+                this.view.parent.style.background = "white";
+                this.view.rendertarget.canvas.setBackground("white");
+                this.ready = true;
             }
         }
     }
@@ -94,7 +98,7 @@ ViewRenderer.prototype.renderWorld = function(now, world, paused) {
     this.mbr = this.camera.getView(now, this.mbr, width, height, follow, paused);
     this.window.x = 0;
     this.window.y = 0;
-    this.window.z = -((this.mbr.z + this.camera.offset.z) * this.mbr.scale);
+    this.window.z = -(this.mbr.z + this.camera.offset.z);
     this.window.width = width;
     this.window.height = height;
     this.window.depth = 1;

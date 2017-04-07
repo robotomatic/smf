@@ -13,19 +13,28 @@ function WorldRenderer() {
     }
     this.itemcache = new ItemCache();
     this.itemrenderer = new ItemRenderer();
-    this.worldrenderer_start = new WorldRendererStart(this.renderitems);
-    this.worldrenderer_render = new WorldRendererRender(this.renderitems, this.itemcache);
-    this.worldrenderer_debug = new WorldRendererDebug(this.renderitems);
-    this.worldrenderer_end = new WorldRendererEnd(this.renderitems);
+    this.worldrenderer_start = new WorldRendererStart(this);
+    this.worldrenderer_render = new WorldRendererRender(this);
+    this.worldrenderer_debug = new WorldRendererDebug(this);
+    this.worldrenderer_end = new WorldRendererEnd(this);
     this.waterline = new Waterline();
     this.debug = {};
 }
+
+
 
 WorldRenderer.prototype.reset = function(now, graphics) {
     this.itemrenderer.reset();
     this.itemcache.reset();
     this.renderitems.all.length = 0;
     this.renderitems.keys = new Array();
+}
+
+
+
+
+WorldRenderer.prototype.getThemes = function() { 
+   return this.itemrenderer.getThemes();
 }
 
 WorldRenderer.prototype.unloadThemes = function() { 
@@ -45,7 +54,7 @@ WorldRenderer.prototype.renderWorld = function(now, graphics, camera, world, mbr
     this.worldrenderer_start.renderStart(now, mbr, window, graphics, camera, world, world.debug);
     this.worldrenderer_render.renderRender(now, mbr, window, graphics, camera, world, world.debug, this.render, paused);
     this.worldrenderer_debug.renderDebug(now, mbr, window, graphics, camera, world, world.debug);
-    this.worldrenderer_end.renderEnd(graphics, mbr);
+    this.worldrenderer_end.renderEnd(now, mbr, window, graphics, camera, world, world.debug);
 }
 
 WorldRenderer.prototype.removePlayer = function(player) {

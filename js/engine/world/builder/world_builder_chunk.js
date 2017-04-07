@@ -9,7 +9,7 @@ function WorldBuilderChunk() {
     }
 }
 
-WorldBuilderChunk.prototype.reset = function() { 
+WorldBuilderChunk.prototype.reset = function(world) { 
 }
 
 WorldBuilderChunk.prototype.chunk = function(world) { 

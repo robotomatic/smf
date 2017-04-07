@@ -1,8 +1,8 @@
 "use strict";
 
-function WorldRendererEnd(renderitems) {
-    this.renderitems = renderitems;
+function WorldRendererEnd(worldrenderer) {
+    this.worldrenderer = worldrenderer;
 }
 
-WorldRendererEnd.prototype.renderEnd = function(graphics, mbr) {
+WorldRendererEnd.prototype.renderEnd = function(now, mbr, window, graphics, camera, world, debug) {
 }

@@ -1,7 +1,7 @@
 "use strict";
 
-function WorldRendererRender(renderitems, itemcache) {
-    this.renderitems = renderitems;
+function WorldRendererRender(worldrenderer) {
+    this.worldrenderer = worldrenderer;
     this.np = new Point(0, 0);
 }
 
@@ -11,10 +11,10 @@ WorldRendererRender.prototype.renderRender = function(now, mbr, window, graphics
 
 WorldRendererRender.prototype.renderRenderItems = function(now, graphics, camera, world, mbr, window, debug, render, paused) {
     var scale = 1;
-    this.renderitems.all.sort(sortByDistance);
-    var t = this.renderitems.all.length;
+    this.worldrenderer.renderitems.all.sort(sortByDistance);
+    var t = this.worldrenderer.renderitems.all.length;
     for (var i = 0; i < t; i++) {
-        var renderitem = this.renderitems.all[i];
+        var renderitem = this.worldrenderer.renderitems.all[i];
         if (!renderitem.showing) continue;
         var wd = round(renderitem.z - mbr.z);
         var g = this.getGraphics(camera, renderitem, graphics);

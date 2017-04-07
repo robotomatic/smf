@@ -1,7 +1,7 @@
 "use strict";
 
-function WorldRendererDebug(renderitems) {
-    this.renderitems = renderitems;
+function WorldRendererDebug(worldrenderer) {
+    this.worldrenderer = worldrenderer;
     this.line = new Line(new Point(0, 0), new Point(0, 0));
     
     this.temp = {
@@ -18,7 +18,9 @@ WorldRendererDebug.prototype.renderDebug = function(now, mbr, window, graphics, 
 }
 
 WorldRendererDebug.prototype.renderDebugItems = function(graphics, mbr, window) {
-    for (var i = 0; i < this.renderitems.all.length; i++) this.renderDebugItemsItem(graphics, this.renderitems.all[i], mbr, window);
+    for (var i = 0; i < this.worldrenderer.renderitems.all.length; i++) {
+        this.renderDebugItemsItem(graphics, this.worldrenderer.renderitems.all[i], mbr, window);
+    }
 }
 
 WorldRendererDebug.prototype.renderDebugItemsItem = function(graphics, item, mbr, window) {

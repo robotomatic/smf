@@ -1,6 +1,9 @@
 "use strict";
 
 function GeometryFactory() {
+    
+    this.factory = true;
+    this.ready = false;
 
     this.points = new Array();
     this.pointnum = -1;
@@ -44,6 +47,7 @@ function GeometryFactory() {
 }
 
 GeometryFactory.prototype.init = function() {
+    if (!this.factory) return;
     benchmark("geometry factory - start", "gf");
     for (var i = 0; i < this.pointtot; i++) this.points.push(new Point(0, 0));
     for (var i = 0; i < this.linetot; i++) this.lines.push(new Line(new Point(0, 0), new Point(0, 0)));
@@ -61,10 +65,16 @@ GeometryFactory.prototype.init = function() {
         this.polys.push(p);
     }
     for (var i = 0; i < this.texttot; i++) this.texts.push(new Text(0, 0, ""));
+    this.ready = true;
     benchmark("geometry factory - end", "gf");
 }
 
 GeometryFactory.prototype.reset = function() {
+    if (!this.factory) return;
+    if (!this.ready) {
+        this.init();
+        return;
+    }
     if (this.pointmax > this.pointtot) logDev("Point Max:" + this.pointmax);
     this.pointnum = -1;
     this.pointmax = -1;
@@ -99,6 +109,7 @@ GeometryFactory.prototype.reset = function() {
 }
 
 GeometryFactory.prototype.getPoint = function(x, y, info = null) {
+    if (!this.factory) return new Point(x, y, info);
     this.pointnum++;
     this.pointmax++;
     if (this.pointnum >= this.pointtot) {
@@ -112,6 +123,7 @@ GeometryFactory.prototype.getPoint = function(x, y, info = null) {
 }
 
 GeometryFactory.prototype.getLine = function(p1, p2) {
+    if (!this.factory) return new Line(p1, p2);
     this.linenum++;
     this.linemax++;
     if (this.linenum >= this.linetot) {
@@ -126,6 +138,7 @@ GeometryFactory.prototype.getLine = function(p1, p2) {
 }
 
 GeometryFactory.prototype.getCircle = function(x, y, radius) {
+    if (!this.factory) return new Circle(x, y, radius);
     this.circlenum++;
     this.circlemax++;
     if (this.circlenum >= this.circletot) {
@@ -139,6 +152,7 @@ GeometryFactory.prototype.getCircle = function(x, y, radius) {
 }
 
 GeometryFactory.prototype.getTriangle = function(x, y, width, height, info) {
+    if (!this.factory) return new Triangle(x, y, width, height, info);
     this.trianglenum++;
     this.trianglemax++;
     if (this.trianglenum >= this.triangletot) {
@@ -154,6 +168,7 @@ GeometryFactory.prototype.getTriangle = function(x, y, width, height, info) {
 }
 
 GeometryFactory.prototype.getRectangle = function(x, y, width, height, angle) {
+    if (!this.factory) return new Rectangle(x, y, width, height, angle);
     this.rectnum++;
     this.rectmax++;
     if (this.rectnum >= this.recttot) {
@@ -169,6 +184,7 @@ GeometryFactory.prototype.getRectangle = function(x, y, width, height, angle) {
 }
 
 GeometryFactory.prototype.getPolyline = function() {
+    if (!this.factory) return new Polyline();
     this.polylinenum++;
     this.polylinemax++;
     if (this.polylinenum >= this.polylinetot) {
@@ -180,6 +196,7 @@ GeometryFactory.prototype.getPolyline = function() {
 }
 
 GeometryFactory.prototype.getPolygon = function(points) {
+    if (!this.factory) return new Polygon(points);
     this.polynum++;
     this.polymax++;
     if (this.polynum >= this.polytot) {
@@ -192,6 +209,7 @@ GeometryFactory.prototype.getPolygon = function(points) {
 }
 
 GeometryFactory.prototype.getText = function(x, y, text) {
+    if (!this.factory) return new Text(x, y, text);
     this.textnum++;
     this.textmax++;
     if (this.textnum >= this.texttot) {
