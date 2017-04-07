@@ -1,31 +1,21 @@
 "use strict";
 
 function Item3D() {
-    
-    this.line = new Line(new Point(0, 0), new Point(0, 0));
-    this.polygon = new Polygon();
-
     this.left = false;
     this.right = false;
-    
     this.p1 = new Point(0, 0);
     this.p2 = new Point(0, 0);
     this.cp = new Point(0, 0);
-    
     this.np1 = new Point(0, 0);
     this.np2 = new Point(0, 0);
-
-    this.projectedpolygon = new Polygon();
 }
 
 Item3D.prototype.createItem3D = function(item, renderer, window, width, height, debug = null) {
-    
     item.geometry.front.showing = false;
     item.geometry.top.showing = false;
     item.geometry.bottom.showing = false;
     item.geometry.left.showing = false;
     item.geometry.right.showing = false;
-
     if (item.underwater) return;
     if (!renderer.shouldThemeProject(item)) return;
     if (item.draw == false) {
@@ -35,24 +25,21 @@ Item3D.prototype.createItem3D = function(item, renderer, window, width, height, 
     var x = window.x;
     var y = window.y;
     var scale = window.scale || 0;
-    var top = item.top;
     var box = item.box;
-    var bx = box.x;
-    var by = box.y;
     var depth = box.depth;
-    var bs = item.scalefactor;
-    
-    this.polygon.setPoints(box.getPoints());
-    this.projectItem3D(item, depth, scale, x, y, window, width, height);
+    this.projectItem3D(item, box, depth, scale, x, y, window, width, height);
 }
 
-Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window, width, height) {
+Item3D.prototype.projectItem3D = function(item, geom, depth, scale, x, y, window, width, height) {
 
-    if (!this.polygon || !this.polygon.points) return;
-    
     item.geometry.front.showing = true;
-    
-    item.geometry.front.geometry.setPoints(this.polygon.getPoints())
+    item.geometry.front.geometry.updatePoints(geom.getPoints());
+    item.geometry.front.geometry.points[0].x -=1;
+    item.geometry.front.geometry.points[0].y -=1;
+    item.geometry.front.geometry.points[1].x +=1;
+    item.geometry.front.geometry.points[1].y -=1;
+    item.geometry.front.geometry.points[2].x +=1;
+    item.geometry.front.geometry.points[3].x -=1;
     
      if (item.width == "100%" && item.geometry.front.geometry.points.length > 3) {
          item.geometry.front.geometry.points[0].x = 0;
@@ -62,16 +49,16 @@ Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window, widt
      }
 
     var wc = window.getCenter();
-    var t = this.polygon.points.length;
+    var t = item.geometry.front.geometry.points.length;
     for (var i = 1; i < t; i++) {
         
-        this.p1.x = round(this.polygon.points[i - 1].x);
-        this.p2.x = round(this.polygon.points[i].x);
+        this.p1.x = round(item.geometry.front.geometry.points[i - 1].x);
+        this.p2.x = round(item.geometry.front.geometry.points[i].x);
         
         if (this.p1.x < this.p2.x) continue;
         
-        this.p1.y = round(this.polygon.points[i - 1].y);
-        this.p2.y = round(this.polygon.points[i].y);
+        this.p1.y = round(item.geometry.front.geometry.points[i - 1].y);
+        this.p2.y = round(item.geometry.front.geometry.points[i].y);
 
         if (!shouldProject(this.p1, this.p2, scale, x, y, wc, this.cp)) continue;
         
@@ -82,9 +69,6 @@ Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window, widt
         var left = vert && (this.p1.y > this.p2.y);
         var right = vert && !left;
         var side = left || right;
-
-        this.projectedpolygon.points.length = 0;
-        this.projectedpolygon = project3D(this.p1, this.p2, depth, this.projectedpolygon, scale, x, y, wc, this.np1, this.np2);
 
         if (this.p1.x < this.p2.x) continue;
         
@@ -106,7 +90,7 @@ Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window, widt
                 else view = left ? item.geometry.left : item.geometry.right;
             }
         }
-        view.geometry.setPoints(this.projectedpolygon.getPoints());
+        view.geometry = project3D(this.p1, this.p2, depth, view.geometry, scale, x, y, wc, this.np1, this.np2);
         view.showing = true;
     }
 
@@ -115,53 +99,48 @@ Item3D.prototype.projectItem3D = function(item, depth, scale, x, y, window, widt
     this.right = !this.left;
     
     if (this.left) {
-        if (this.polygon.points.length) {
-            this.p1.x = round(this.polygon.points[t - 1].x);
-            this.p1.y = round(this.polygon.points[t - 1].y);
-            this.p2.x = round(this.polygon.points[0].x);
-            this.p2.y = round(this.polygon.points[0].y);
+        if (item.geometry.front.geometry.points.length) {
+            this.p1.x = round(item.geometry.front.geometry.points[t - 1].x);
+            this.p1.y = round(item.geometry.front.geometry.points[t - 1].y);
+            this.p2.x = round(item.geometry.front.geometry.points[0].x);
+            this.p2.y = round(item.geometry.front.geometry.points[0].y);
         }
     } else {
-        if (this.polygon.points.length > 2) {
-            this.p1.x = round(this.polygon.points[1].x);
-            this.p1.y = round(this.polygon.points[1].y);
-            this.p2.x = round(this.polygon.points[2].x);
-            this.p2.y = round(this.polygon.points[2].y);
+        if (item.geometry.front.geometry.points.length > 2) {
+            this.p1.x = round(item.geometry.front.geometry.points[1].x);
+            this.p1.y = round(item.geometry.front.geometry.points[1].y);
+            this.p2.x = round(item.geometry.front.geometry.points[2].x);
+            this.p2.y = round(item.geometry.front.geometry.points[2].y);
         }
     }
     
     if (shouldProject(this.p1, this.p2, scale, x, y, wc, this.cp)) {
-        this.projectedpolygon.points.length = 0;
-        this.projectedpolygon = project3D(this.p1, this.p2, depth, this.projectedpolygon, scale, x, y, wc, this.np1, this.np2);
         var side = this.left ? item.geometry.left : item.geometry.right;
-        side.geometry.setPoints(this.projectedpolygon.getPoints());
+        side.geometry = project3D(this.p1, this.p2, depth, side.geometry, scale, x, y, wc, this.np1, this.np2);
         side.showing = true;
     }
     
-    var t = this.polygon.points.length;
+    var t = item.geometry.front.geometry.points.length;
     for (var i = 1; i < t; i++) {
-        this.p1.x = round(this.polygon.points[i - 1].x);
-        this.p2.x = round(this.polygon.points[i].x);
+        this.p1.x = round(item.geometry.front.geometry.points[i - 1].x);
+        this.p2.x = round(item.geometry.front.geometry.points[i].x);
         if (this.p1.x >= this.p2.x) continue;
-        this.p1.y = round(this.polygon.points[i - 1].y);
-        this.p2.y = round(this.polygon.points[i].y);
+        this.p1.y = round(item.geometry.front.geometry.points[i - 1].y);
+        this.p2.y = round(item.geometry.front.geometry.points[i].y);
         if (!shouldProject(this.p1, this.p2, scale, x, y, wc, this.cp)) continue;
-        this.projectedpolygon.points.length = 0;
-        this.projectedpolygon = project3D(this.p1, this.p2, depth, this.projectedpolygon, scale, x, y, wc, this.np1, this.np2);
-        
+        item.geometry.top.geometry = project3D(this.p1, this.p2, depth, item.geometry.top.geometry, scale, x, y, wc, this.np1, this.np2);
         if (item.width == "100%") {
-            if (this.projectedpolygon.points.length > 3) {
-                this.projectedpolygon.points[0].x = 0;
-                this.projectedpolygon.points[1].x = width;
-                this.projectedpolygon.points[2].x = width;
-                this.projectedpolygon.points[3].x = 0;
+            if (item.geometry.top.geometry.points.length > 3) {
+                item.geometry.top.geometry.points[0].x = 0;
+                item.geometry.top.geometry.points[1].x = width;
+                item.geometry.top.geometry.points[2].x = width;
+                item.geometry.top.geometry.points[3].x = 0;
                 if (item.waterline) {
-                    this.projectedpolygon.points[2].y += (height - this.projectedpolygon.points[2].y);
-                    this.projectedpolygon.points[3].y +=  (height -this.projectedpolygon.points[3].y);
+                    item.geometry.top.geometry.points[2].y += (height - item.geometry.top.geometry.points[2].y);
+                    item.geometry.top.geometry.points[3].y +=  (height - item.geometry.top.geometry.points[3].y);
                 }
             }
         }
-        item.geometry.top.geometry.setPoints(this.projectedpolygon.getPoints());
         item.geometry.top.showing = true;
     }
 }

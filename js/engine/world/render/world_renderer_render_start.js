@@ -31,7 +31,10 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
     var height = graphics.canvas.getHeight();
     var waterline = world.worldrenderer.waterline;
     var wl = waterline.waterline;
-    if (!world.worldrenderer.render.world) wl = 0;
+    if (!world.worldrenderer.render.world) {
+        waterline = null;
+        wl = 0;
+    }
     item.translate(mbr, width, height, wl);
     item.underwater = false;
     if (waterline && waterline.flow && !item.waterline) {
@@ -45,7 +48,7 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
     var d = 0;
     if (!item.underwater) {
         item.item3D.createItem3D(item, world.worldrenderer.itemrenderer, mbr, width, height, debug);
-        showing = item.isVisible(window, 0);
+        showing = item.isVisible(window, 200);
         d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, item, 0, 0, 0);
         if (isNaN(d)) d = 0;
     }

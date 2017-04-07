@@ -1,7 +1,6 @@
 "use strict";
 
 function ItemRenderer3D() {
-    this.polygon = new Polygon();
     this.colors = {
         front : "#dedede",
         side : "#d6d6d6",
@@ -10,6 +9,7 @@ function ItemRenderer3D() {
     }
     this.dotop = false;
     this.fadepercent = 0.6;
+    this.line = new Line();
 }
 
 ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas, scale, debug) {
@@ -30,56 +30,6 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
     var fill = item.draw === false ? false : true;
     var outline = fill ? true : dodebug ? true : false;
     
-    if (item.geometry.visible.front.visible) {
-
-        //
-        // todo: SOON! this can eventually go -- item cache will draw fronts
-        //
-        if (item.width == "100%") outline = false;
- 
-        this.renderItemParts3D(gamecanvas, item, item.geometry.front, this.colors.front, x, y, scale, debug, outline, fill);
-        
-        if (!debug.level && fill && item.width != "100%") {
-            var lc = this.colors.side;
-            var lw = 1 * scale;
-
-            gamecanvas.setStrokeStyle(lc);
-            gamecanvas.setLineWidth(lw);
-            gamecanvas.beginPath();
-
-            if (item.geometry.visible.bottom.visible) {
-                if (item.item3D.polygon.points.length >= 3) {
-                    item.item3D.line.start.x = item.item3D.polygon.points[3].x;
-                    item.item3D.line.start.y = item.item3D.polygon.points[3].y;
-                    item.item3D.line.end.x = item.item3D.polygon.points[2].x;
-                    item.item3D.line.end.y = item.item3D.polygon.points[2].y;
-                    item.item3D.line.path(gamecanvas);
-                }
-            } 
-
-            if (item.geometry.visible.left.visible) {
-                if (item.item3D.polygon.points.length >= 4) {
-                    item.item3D.line.start.x = item.item3D.polygon.points[3].x;
-                    item.item3D.line.start.y = item.item3D.polygon.points[3].y;
-                    item.item3D.line.end.x = item.item3D.polygon.points[0].x;
-                    item.item3D.line.end.y = item.item3D.polygon.points[0].y;
-                    item.item3D.line.path(gamecanvas);
-                }
-            }
-            if (item.geometry.visible.right.visible) {
-                if (item.item3D.polygon.points.length >= 3) {
-                    item.item3D.line.start.x = item.item3D.polygon.points[1].x;
-                    item.item3D.line.start.y = item.item3D.polygon.points[1].y;
-                    item.item3D.line.end.x = item.item3D.polygon.points[2].x;
-                    item.item3D.line.end.y = item.item3D.polygon.points[2].y;
-                    item.item3D.line.path(gamecanvas);
-                }
-            }
-            gamecanvas.stroke();
-            gamecanvas.commit();
-        }
-    }
-
     if (item.width != "100%") {
         if (item.geometry.visible.left.visible || item.geometry.visible.right.visible) {
             var left = item.item3D.left && item.geometry.visible.left.visible;
@@ -98,74 +48,98 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
         }
     }
 
+    var topoutline = false;
     if (this.dotop) {
         if (item.geometry.visible.top.visible && item.geometry.top.showing) {
-
-            var topoutline = true;
+            topoutline = true;
             if (item.draw === false) topoutline = false;
-            if (item.width == "100%") {
-                if (dodebug) topoutline = true;
-                else topoutline = false;
-            }
-
+            if (item.width == "100%") topoutline = false;
+            //
             // todo: only draw outline on contiguous surfaces - tile of same type must exist on outline side
-
-            this.renderItemParts3D(gamecanvas, item, item.geometry.top, this.colors.top, x, y, scale, debug, topoutline, fill);
-
-            if (fill && !debug.level && item.width != "100%") {
-                var lc = this.colors.side;
-                var lw = 1 * scale;
-                gamecanvas.setStrokeStyle(lc);
-                gamecanvas.setLineWidth(lw);
-                gamecanvas.beginPath();
-
-                if (item.geometry.visible.back.visible) {
-                    if (item.item3D.polygon.points.length >= 2) {
-                        item.item3D.line.start.x = item.item3D.polygon.points[0].x;
-                        item.item3D.line.start.y = item.item3D.polygon.points[0].y;
-                        item.item3D.line.end.x = item.item3D.polygon.points[1].x;
-                        item.item3D.line.end.y = item.item3D.polygon.points[1].y;
-                        item.item3D.line.path(gamecanvas);
-                    }
-                } 
-
-                if (item.geometry.visible.left.visible) {
-                    if (item.item3D.polygon.points.length >= 4) {
-                        item.item3D.line.start.x = item.item3D.polygon.points[3].x;
-                        item.item3D.line.start.y = item.item3D.polygon.points[3].y;
-                        item.item3D.line.end.x = item.item3D.polygon.points[0].x;
-                        item.item3D.line.end.y = item.item3D.polygon.points[0].y;
-                        item.item3D.line.path(gamecanvas);
-                    }
-                }
-
-                if (item.geometry.visible.right.visible) {
-                    if (item.item3D.polygon.points.length >= 3) {
-                        item.item3D.line.start.x = item.item3D.polygon.points[1].x;
-                        item.item3D.line.start.y = item.item3D.polygon.points[1].y;
-                        item.item3D.line.end.x = item.item3D.polygon.points[2].x;
-                        item.item3D.line.end.y = item.item3D.polygon.points[2].y;
-                        item.item3D.line.path(gamecanvas);
-                    }
-                }
-
-                if (item.geometry.visible.front.visible) {
-                    if (item.item3D.polygon.points.length >= 3) {
-                        item.item3D.line.start.x = item.item3D.polygon.points[2].x;
-                        item.item3D.line.start.y = item.item3D.polygon.points[2].y;
-                        item.item3D.line.end.x = item.item3D.polygon.points[3].x;
-                        item.item3D.line.end.y = item.item3D.polygon.points[3].y;
-                        item.item3D.line.path(gamecanvas);
-                    }
-                }
-
-                gamecanvas.stroke();
-                gamecanvas.commit();
-            }
+            //
+            this.renderItemParts3D(gamecanvas, item, item.geometry.top, this.colors.top, x, y, scale, debug, false, fill);
+            gamecanvas.setStrokeStyle(this.colors.top);
+            gamecanvas.setLineWidth(1 * scale);
+            gamecanvas.stroke();
+            gamecanvas.commit();
         }
+    }
+
+    var frontoutline = false;
+    if (item.geometry.visible.front.visible) {
+        //
+        // todo: SOON! this can eventually go -- item cache will draw fronts
+        //
+        frontoutline = true;
+        if (item.draw === false) frontoutline = false;
+        if (item.width == "100%") frontoutline = false;
+        this.renderItemParts3D(gamecanvas, item, item.geometry.front, this.colors.front, x, y, scale, debug, false, fill);
     }
     
     gamecanvas.commit();
+    
+    if (topoutline || frontoutline) {
+        var lc = this.colors.side;
+        var lw = 1 * scale;
+        gamecanvas.setStrokeStyle(lc);
+        gamecanvas.setLineWidth(lw);
+        gamecanvas.beginPath();
+        if (topoutline) {
+            if (item.geometry.visible.back.visible) {
+                this.line.start.x = item.geometry.top.geometry.points[0].x;
+                this.line.start.y = item.geometry.top.geometry.points[0].y;
+                this.line.end.x = item.geometry.top.geometry.points[1].x;
+                this.line.end.y = item.geometry.top.geometry.points[1].y;
+                this.line.path(gamecanvas);
+            } 
+            if (item.geometry.visible.left.visible) {
+                this.line.start.x = item.geometry.top.geometry.points[3].x;
+                this.line.start.y = item.geometry.top.geometry.points[3].y;
+                this.line.end.x = item.geometry.top.geometry.points[0].x;
+                this.line.end.y = item.geometry.top.geometry.points[0].y;
+                this.line.path(gamecanvas);
+            }
+            if (item.geometry.visible.right.visible) {
+                this.line.start.x = item.geometry.top.geometry.points[1].x;
+                this.line.start.y = item.geometry.top.geometry.points[1].y;
+                this.line.end.x = item.geometry.top.geometry.points[2].x;
+                this.line.end.y = item.geometry.top.geometry.points[2].y;
+                this.line.path(gamecanvas);
+            }
+            if (item.geometry.visible.front.visible) {
+                this.line.start.x = item.geometry.top.geometry.points[2].x;
+                this.line.start.y = item.geometry.top.geometry.points[2].y;
+                this.line.end.x = item.geometry.top.geometry.points[3].x;
+                this.line.end.y = item.geometry.top.geometry.points[3].y;
+                this.line.path(gamecanvas);
+            }
+        }
+        if (frontoutline) {
+            if (item.geometry.visible.bottom.visible) {
+                this.line.start.x = item.geometry.front.geometry.points[3].x;
+                this.line.start.y = item.geometry.front.geometry.points[3].y;
+                this.line.end.x = item.geometry.front.geometry.points[2].x;
+                this.line.end.y = item.geometry.front.geometry.points[2].y;
+                this.line.path(gamecanvas);
+            } 
+            if (item.geometry.visible.left.visible) {
+                this.line.start.x = item.geometry.front.geometry.points[3].x;
+                this.line.start.y = item.geometry.front.geometry.points[3].y;
+                this.line.end.x = item.geometry.front.geometry.points[0].x;
+                this.line.end.y = item.geometry.front.geometry.points[0].y;
+                this.line.path(gamecanvas);
+            }
+            if (item.geometry.visible.right.visible) {
+                this.line.start.x = item.geometry.front.geometry.points[1].x;
+                this.line.start.y = item.geometry.front.geometry.points[1].y;
+                this.line.end.x = item.geometry.front.geometry.points[2].x;
+                this.line.end.y = item.geometry.front.geometry.points[2].y;
+                this.line.path(gamecanvas);
+            }
+        }
+        gamecanvas.stroke();
+        gamecanvas.commit();
+    }
     
     if (debug.hsr) {
         gamecanvas.setAlpha(1);        
@@ -241,10 +215,13 @@ ItemRenderer3D.prototype.renderItemParts3D = function(gamecanvas, item, geometry
     if (!geometry.showing) return;
     gamecanvas.beginPath();
     gamecanvas.setFillStyle(color);
-    item.item3D.polygon.setPoints(geometry.geometry.points);
-    item.item3D.polygon.translate(-x, -y, scale);
-    item.item3D.polygon.path(gamecanvas);
-    if (fill) gamecanvas.fill();
+    geometry.geometry.translate(-x, -y, scale);
+    geometry.geometry.path(gamecanvas);
+    geometry.geometry.translate(x, y, scale);
+    if (fill) {
+        gamecanvas.fill();
+        gamecanvas.commit();
+    }
     if (outline || debug.level) {
         if (debug.level && !overridecolor) color="gray";
         gamecanvas.setStrokeStyle(color);

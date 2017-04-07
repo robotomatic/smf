@@ -40,10 +40,7 @@ function project3D(p1, p2, depth, poly, s, x, y, wc, np1, np2) {
     np2.y = round(np2y);
     if (poly.points.length != 4) {
         poly.points.length = 0;
-        poly.addPoint(np1);
-        poly.addPoint(np2);
-        poly.addPoint(p2);
-        poly.addPoint(p1);
+        poly.updatePoints([new Point(np1.x, np1.y), new Point(np2.x, np2.y), new Point(p2.x, p2.y), new Point(p1.x, p1.y)]);
     } else {
         poly.points[0].x = np1.x;
         poly.points[0].y = np1.y;

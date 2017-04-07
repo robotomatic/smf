@@ -399,7 +399,7 @@ Item.prototype.isVisible = function(w, pad = 0) {
     var wz = w.z + w.offset.z;
     var wd = w.depth;
     if (this.depth != "100%") {
-        if (mbr.z + mbr.depth < wz - pad) {
+        if (mbr.z + mbr.depth < wz - (pad * 2)) {
             return false;
         }
     }

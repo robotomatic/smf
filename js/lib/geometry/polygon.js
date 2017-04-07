@@ -13,7 +13,7 @@ function Polygon(points) {
     this.cache = false;
     this.id = "";
     this.factory = false;
-    if (points) this.setPoints(points);
+    if (points) this.updatePoints(points);
 }
 
 Polygon.prototype.getId = function(id) {
@@ -180,10 +180,14 @@ Polygon.prototype.updatePoint = function(index, point) {
 }
 
 Polygon.prototype.updatePointXY = function(index, x, y, z, info = null) {
-    this.points[index].x = x;
-    this.points[index].y = y;
+    if (!this.points[index]) {
+        this.points[index] = new Point(x, y, info);
+    } else {
+        this.points[index].x = x;
+        this.points[index].y = y;
+        this.points[index].info = info;
+    }
     this.points[index].z = z;
-    this.points[index].info = info;
 }
 
 

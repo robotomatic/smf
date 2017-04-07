@@ -3,23 +3,23 @@
 function ItemGeometry() {
     
     this.top = {
-        geometry : new Polygon(),
+        geometry : new Polygon([new Point(0, 0), new Point(0, 0), new Point(0, 0), new Point(0, 0)]),
         showing : false
     };
     this.bottom = {
-        geometry : new Polygon(),
+        geometry : new Polygon([new Point(0, 0), new Point(0, 0), new Point(0, 0), new Point(0, 0)]),
         showing : false
     };
     this.front = {
-        geometry : new Polygon(),
+        geometry : new Polygon([new Point(0, 0), new Point(0, 0), new Point(0, 0), new Point(0, 0)]),
         showing : false
     };
     this.left = {
-        geometry : new Polygon(),
+        geometry : new Polygon([new Point(0, 0), new Point(0, 0), new Point(0, 0), new Point(0, 0)]),
         showing : false
     };
     this.right = {
-        geometry : new Polygon(),
+        geometry : new Polygon([new Point(0, 0), new Point(0, 0), new Point(0, 0), new Point(0, 0)]),
         showing : false
     };
 
