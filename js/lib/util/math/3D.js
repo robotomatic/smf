@@ -34,10 +34,14 @@ function project3D(p1, p2, depth, poly, s, x, y, wc, np1, np2) {
 	var np1y = projectPoint3DCoord(p1.y, depth, h);
     var np2x = projectPoint3DCoord(p2.x, depth, w);
 	var np2y = projectPoint3DCoord(p2.y, depth, h);
-    np1.x = round(np1x);
-    np1.y = round(np1y);
-    np2.x = round(np2x);
-    np2.y = round(np2y);
+    np1.x = np1x;
+    np1.y = np1y;
+    np2.x = np2x;
+    np2.y = np2y;
+//    np1.x = round(np1x);
+//    np1.y = round(np1y);
+//    np2.x = round(np2x);
+//    np2.y = round(np2y);
     if (poly.points.length != 4) {
         poly.points.length = 0;
         poly.updatePoints([new Point(np1.x, np1.y), new Point(np2.x, np2.y), new Point(p2.x, p2.y), new Point(p1.x, p1.y)]);
