@@ -9,7 +9,17 @@ function ViewCamera() {
         x : 0,
         y : 0,
         z : 0
-    }
+    };
+
+    this.lastview = {
+        x : 0,
+        y : 0,
+        z : 0,
+        width: 0,
+        height: 0,
+        depth: 0
+    };
+    
     
     this.shake = {
         magnitude: 0,
@@ -30,7 +40,7 @@ function ViewCamera() {
         amount : 0.05,
         speed : 1,
         enabled : true
-    }
+    };
 
     this.blur = {
         blur : true,
@@ -44,13 +54,12 @@ function ViewCamera() {
             max_distance : 10000,
             amount : 10
         }
-    }
+    };
     
     this.fit = false;
     
     this.center = geometryfactory.getPoint(0, 0);
     this.center.z = 0;
-    this.lastview = null;
     
 }
 
@@ -209,7 +218,12 @@ ViewCamera.prototype.scaleMbr = function(mbr, width, height) {
 
 
 ViewCamera.prototype.reset = function() {
-    this.lastview = null;
+    this.lastview.x = 0;
+    this.lastview.y = 0;
+    this.lastview.z = 0;
+    this.lastview.width = 0;
+    this.lastview.height = 0;
+    this.lastview.depth = 0;
 }
 
 ViewCamera.prototype.updateCameraBox = function(mbr) {
@@ -224,15 +238,13 @@ ViewCamera.prototype.updateCameraBox = function(mbr) {
 
 ViewCamera.prototype.getCameraBox = function(mbr) {
 
-    if (!this.lastview) {
-        this.lastview = {
-            x : mbr.x,
-            y : mbr.y,
-            z : mbr.z,
-            width: mbr.width,
-            height: mbr.height,
-            depth: mbr.depth
-        }
+    if (!this.lastview.x || !this.lastview.y) {
+        this.lastview.x = mbr.x;
+        this.lastview.y = mbr.y;
+        this.lastview.z = mbr.z;
+        this.lastview.width = mbr.width;
+        this.lastview.height = mbr.height;
+        this.lastview.depth = mbr.depth;
         return mbr;
     }
     

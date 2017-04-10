@@ -46,7 +46,7 @@ ViewRenderer.prototype.reset = function(when) {
     this.mbr.height = 0;
     this.rendercount = 0;
     this.renderall = true;
-    this.camera.lastview = null;
+    this.camera.reset();
 }
 
 
