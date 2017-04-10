@@ -197,11 +197,14 @@ Player.prototype.smooth = function(now, scale) {
 
 
 
-Player.prototype.translate = function(window, width, height) {
-
+Player.prototype.translate = function(window) {
+    
     var x = window.x;
     var y = window.y;
     var z = window.z;
+    
+    var width = window.width;
+    var height = window.height;
     
     var scale = window.scale;
     
@@ -222,6 +225,7 @@ Player.prototype.translate = function(window, width, height) {
     this.scale = this.box.width / this.controller.width;
     
     this.box.depth *= this.scalefactor;
+    this.box.scale = this.scale;
     
     if (this.controller.grounded) {
         this.controller.gp.x = round(this.box.x + (this.box.width / 2));
@@ -229,6 +233,8 @@ Player.prototype.translate = function(window, width, height) {
         this.controller.gp.z = round(this.box.z);
     }
     this.camera.updateCameraBox(window, width, height);
+    
+    this.character.translate(this.box);
 }
 
 

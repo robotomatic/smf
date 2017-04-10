@@ -6,34 +6,28 @@ function ParticleEmitter(info) {
     //       flames need to respect origin motion
     //       old particles decouple from origin
     //       proper class separation
-    
+
     this.x = info.x;
     this.y = info.y;
+    this.z = info.z;
     this.size = info.size;
     
-    
-    this.source = new Point(0, 0);
-    this.scale = 0;
+    this.cp = new Point(0, 0);
     
     this.max = 10;
     this.particles = new Array();
 
-    this.halflife = 6;
-    this.quadlife = 3;
-    
-    this.maxdx = 75;
-    this.maxdy = 75;
-    
     this.alive = false;
     
-    this.leftright = 0;
-    this.updown = 0;
-    
-    this.cp = new Point(this.x, this.y);
+    this.trans = {
+        x : 0,
+        y : 0,
+        z : 0,
+        scale : 0
+    };
     
     for(var i = 0; i < this.max; i++) {
-        var size = this.size + random() * 1;
-        this.particles.push(new Particle(this.cp.x, this.cp.y, size));    
+        this.particles.push(new Particle(this.x, this.y, this.size));    
     }
     
     this.renderer = new ParticleRenderer(this);
@@ -44,34 +38,28 @@ ParticleEmitter.prototype.stop = function() {
     this.alive = false;
 }
 
-ParticleEmitter.prototype.translate = function(dx, dy, leftright, updown) {
-    // no workee
-//    this.leftright = -leftright;
-//    this.updown = -updown;
-}
-
-ParticleEmitter.prototype.update = function(x, y, z, scale) {
-    this.source.x = x;
-    this.source.y = y;
-    this.source.z = z;
-    this.scale = scale;
+ParticleEmitter.prototype.translate = function(mbr) {
+    var scale = mbr.scale;
+    this.trans.x = round((this.x - mbr.x) * scale);
+    this.trans.y = round((this.y - mbr.y) * scale);
+    this.trans.z = round((this.z - mbr.z) * scale);
+    this.trans.scale = scale;
     for(var i = 0; i < this.particles.length; i++) {
         var p = this.particles[i];
-        p.opacity = round(p.death / p.life);
-        p.death--;
-        p.radius -= 0.3;
-        if (p.death > this.halflife) {
-            p.location.x = clamp(p.location.x + p.speed.x);
-            p.location.y = clamp(p.location.y + p.speed.y);
-        }
-        if (p.location.x > this.maxdx) p.death = -1;
-        if (p.location.y > this.maxdy) p.death = -1;
-        if(p.death < 0 || p.radius < 0) {
-            this.particles[i].reset(this.cp.x, this.cp.y, this.size + random() * 1);
-        }
+        p.translate(mbr);
+    }
+}
+
+ParticleEmitter.prototype.update = function(point) {
+    this.cp.x = point.x - this.x;
+    this.cp.y = point.y - this.y;
+    this.cp.z = point.z - this.z;
+    for(var i = 0; i < this.particles.length; i++) {
+        var p = this.particles[i];
+        p.update(this.cp);
     }
 }
 
 ParticleEmitter.prototype.render = function(gamecanvas) {
-    this.renderer.render(this.source.x, this.source.y, this.scale, gamecanvas);
+    this.renderer.render(gamecanvas);
 }
