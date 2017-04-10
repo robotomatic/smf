@@ -50,15 +50,18 @@ ParticleEmitter.prototype.translate = function(mbr) {
     }
 }
 
-ParticleEmitter.prototype.update = function(point) {
+ParticleEmitter.prototype.update = function(point, controller) {
     this.cp.x = point.x - this.x;
     this.cp.y = point.y - this.y;
     this.cp.z = point.z - this.z;
     for(var i = 0; i < this.particles.length; i++) {
         var p = this.particles[i];
         p.update(this.cp);
+        p.updateVelocity(controller);
     }
 }
+
+
 
 ParticleEmitter.prototype.render = function(gamecanvas) {
     this.renderer.render(gamecanvas);

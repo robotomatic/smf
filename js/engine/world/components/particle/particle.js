@@ -57,7 +57,16 @@ Particle.prototype.update = function(point) {
         this.reset();
     }
 }
-    
+
+Particle.prototype.updateVelocity = function(controller) {
+    var velx = controller.velX;
+    var velz = controller.velY;
+    var vely = controller.velZ;
+    this.location.x -= velx;
+    this.location.y -= vely;
+    this.location.z -= velz;
+}
+
 Particle.prototype.translate = function(mbr) {
     var scale = mbr.scale;
     this.renderloc.x = mbr.x + (this.location.x * scale);

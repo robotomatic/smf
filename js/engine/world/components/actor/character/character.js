@@ -65,7 +65,7 @@ Character.prototype.update = function(now, player, direction, state)  {
             if (!this.emitter.alive) this.emitter.alive = true;
             var scale = player.box.width / this.width;
             var pl = player.controller.getLocation();
-            this.emitter.update(pl);
+            this.emitter.update(pl, player.controller);
         }
     }
 }
