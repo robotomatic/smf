@@ -58,10 +58,12 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
             // todo: only draw outline on contiguous surfaces - tile of same type must exist on outline side
             //
             this.renderItemParts3D(gamecanvas, item, item.geometry.top, this.colors.top, x, y, scale, debug, false, fill);
-            gamecanvas.setStrokeStyle(this.colors.top);
-            gamecanvas.setLineWidth(1 * scale);
-            gamecanvas.stroke();
-            gamecanvas.commit();
+            if (fill && item.width != "100%") {
+                gamecanvas.setStrokeStyle(this.colors.top);
+                gamecanvas.setLineWidth(1 * scale);
+                gamecanvas.stroke();
+                gamecanvas.commit();
+            }
         }
     }
 
