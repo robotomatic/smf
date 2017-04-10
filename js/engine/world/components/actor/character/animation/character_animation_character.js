@@ -1,12 +1,12 @@
 "use strict";
 
-function CharacterAnimationPuppet() {
+function CharacterAnimatioCharacter() {
     this.animbox = new Rectangle(0, 0, 0, 0);;
     this.animchar = null;
     this.indexchar = null;
 }
 
-CharacterAnimationPuppet.prototype.initialize = function(character) {
+CharacterAnimatioCharacter.prototype.initialize = function(character) {
     
     this.animbox.x = 0;
     this.animbox.y = 0;
@@ -28,7 +28,7 @@ CharacterAnimationPuppet.prototype.initialize = function(character) {
     }
 }
 
-CharacterAnimationPuppet.prototype.updateCharacterKeys = function(parts) {
+CharacterAnimatioCharacter.prototype.updateCharacterKeys = function(parts) {
     var keys = Object.keys(parts);
     if (!keys.length) return;
     parts.keys = new Array();
@@ -42,7 +42,7 @@ CharacterAnimationPuppet.prototype.updateCharacterKeys = function(parts) {
     }
 }
 
-CharacterAnimationPuppet.prototype.indexCharacterPuppetParts = function(parts) {
+CharacterAnimatioCharacter.prototype.indexCharacterPuppetParts = function(parts) {
     var p = Object.keys(parts);
     var t = p.length;
     for (var i = 0 ; i < t; i++) {
@@ -61,16 +61,12 @@ CharacterAnimationPuppet.prototype.indexCharacterPuppetParts = function(parts) {
         pp.last.box = new Rectangle(pp.x, pp.y, pp.width, pp.height);
         pp.last.angle = 0;
         
-        pp.trans = new CharacterAnimationInfo();
-        pp.trans.box = new Rectangle(pp.x, pp.y, pp.width, pp.height);
-        pp.trans.angle = 0;
-        
         this.indexchar[p[i]] = pp;
         if (pp.parts) this.indexCharacterPuppetParts(pp.parts);
     }
 }
 
-CharacterAnimationPuppet.prototype.resetCharacterPuppet = function() {
+CharacterAnimatioCharacter.prototype.resetCharacterPuppet = function() {
     var p = this.indexchar.keys;
     var t = p.length;
     for (var i = 0 ; i < t; i++) {

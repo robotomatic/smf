@@ -6,7 +6,7 @@ function CharacterRenderer() {
 }
 
 CharacterRenderer.prototype.draw = function(gamecanvas, animationchar, debug) {
-    var character = animationchar.animator.puppet.animchar;
+    var character = animationchar.animator.animationcharacter.animchar;
     if (!character) return;
     var color = animationchar.color;
     this.rendermanager.updateCharacter(animationchar.mbr, character, character.pad || 0, color);

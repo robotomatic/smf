@@ -2,7 +2,7 @@
 
 function CharacterAnimator(animations) {
     this.loader = new CharacterAnimationLoader(animations);
-    this.puppet = new CharacterAnimationPuppet();
+    this.animationcharacter = new CharacterAnimatioCharacter();
     this.currentAnimations = new Array();
     this.animstates = new Array();
     this.idlespeed = .1;
@@ -23,7 +23,7 @@ CharacterAnimator.prototype.resume = function(now) {
 }
 
 CharacterAnimator.prototype.animate = function(now, character) {
-    this.puppet.initialize(character);
+    this.animationcharacter.initialize(character);
     this.idlespeed = character.idlespeed;
     this.updateAnimations(now, character.direction, character.state);
     this.reapAnimations(now);
@@ -85,23 +85,23 @@ CharacterAnimator.prototype.animateState = function(now, state) {
         var animname = animtype + "-" + state;
         if (this.currentAnimations[animname]) {
             if (this.currentAnimations[animname].running && !this.currentAnimations[animname].animationOver) {            
-                this.currentAnimations[animname].next(now, this.puppet.indexchar);
+                this.currentAnimations[animname].next(now, this.animationcharacter.indexchar);
             } else {
                 this.currentAnimations[animname].reset(state, stateanim);
-                this.currentAnimations[animname].start(now, this.puppet.indexchar);
+                this.currentAnimations[animname].start(now, this.animationcharacter.indexchar);
             }
         } else {
             this.currentAnimations[animname] = new CharacterAnimationManager(state, stateanim);
-            this.currentAnimations[animname].start(now, this.puppet.indexchar);
+            this.currentAnimations[animname].start(now, this.animationcharacter.indexchar);
         }
     }
 }
 
 CharacterAnimator.prototype.blendAnimations = function(now) {
-    var p = Object.keys(this.puppet.indexchar);
+    var p = Object.keys(this.animationcharacter.indexchar);
     for (var i = 0 ; i < p.length; i++) {
         if (p[i] == "pad" || p[i] == "keys" || p[i] == "group") continue;
-        var pp = this.puppet.indexchar[p[i]];
+        var pp = this.animationcharacter.indexchar[p[i]];
         this.applyBlend(pp);
     }
 }
@@ -197,20 +197,20 @@ CharacterAnimator.prototype.addRandom = function(rand) {
 CharacterAnimator.prototype.animateCharacterBox = function(animation) {
     if (animation.width || animation.width == 0) {
         var aw = animation.width / 100;
-        var nw = this.puppet.animbox.width * aw;
-        var wd = this.puppet.animbox.width - nw;
-        this.puppet.animbox.width = nw;
-        this.puppet.animbox.x += wd / 2;
+        var nw = this.animationcharacter.animbox.width * aw;
+        var wd = this.animationcharacter.animbox.width - nw;
+        this.animationcharacter.animbox.width = nw;
+        this.animationcharacter.animbox.x += wd / 2;
     }
     if (animation.height || animation.height == 0) {
         var ah = animation.height / 100;
-        var nh = this.puppet.animbox.height * ah;
-        var hd = this.puppet.animbox.height - nh;
-        this.puppet.animbox.height = nh;
-        this.puppet.animbox.y -= hd / 2;
+        var nh = this.animationcharacter.animbox.height * ah;
+        var hd = this.animationcharacter.animbox.height - nh;
+        this.animationcharacter.animbox.height = nh;
+        this.animationcharacter.animbox.y -= hd / 2;
     }
-    if (animation.x) this.puppet.animbox.x = animation.x;
-    if (animation.y) this.puppet.animbox.y += animation.y;
+    if (animation.x) this.animationcharacter.animbox.x = animation.x;
+    if (animation.y) this.animationcharacter.animbox.y += animation.y;
     
-    this.puppet.animbox.draw = animation.draw;
+    this.animationcharacter.animbox.draw = animation.draw;
 }
