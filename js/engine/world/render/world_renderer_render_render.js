@@ -37,6 +37,6 @@ WorldRendererRender.prototype.renderPlayer = function(now, window, graphics, cam
     player.render(now, graphics.canvas.width, graphics.canvas.height, graphics.canvas, scale, debug.player, paused);
 }
 
-WorldRendererRender.prototype.renderParticle = function(now, window, graphics, camera, world, particle, distance, scale, debug, paused) {
-    particle.render(graphics.canvas);
+WorldRendererRender.prototype.renderParticle = function(now, window, graphics, camera, world, particleemitter, distance, scale, debug, paused) {
+    particleemitter.render(graphics.canvas);
 }

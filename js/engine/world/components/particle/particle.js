@@ -1,6 +1,8 @@
 "use strict";
 
-function Particle(x, y, radius) {
+function Particle(x, y, size) {
+    this.ox = x;
+    this.oy = y;
     this.speed = { 
         x : 0, 
         y : 0 
@@ -9,25 +11,33 @@ function Particle(x, y, radius) {
         x : 0, 
         y : 0 
     };
+    this.renderloc = {
+        x : 0,
+        y : 0,
+        radius : 0
+    }
+    this.size = size;
     this.radius = 0;
     this.life = 0;
     this.death = 0;
     this.r = 0;
     this.g = 0;
     this.b = 0;    
-    this.reset(x, y, radius);
+    this.halflife = 6;
+    this.quadlife = 3;
+    this.reset();
 }
 
-Particle.prototype.reset = function(x, y, radius) {
+Particle.prototype.reset = function() {
     this.speed = { 
         x : -1 + random() * 2, 
         y : -5 + random() * 5 
     };    
     this.location = {
-        x : x ? x : 0, 
-        y : y ? y : 0 
+        x : this.ox, 
+        y : this.oy 
     };
-    this.radius = radius;
+    this.radius =  this.size + random() * 1;
     this.life = 10 + random() * 10;
     this.death = this.life;
     this.r = 255;
@@ -35,9 +45,22 @@ Particle.prototype.reset = function(x, y, radius) {
     this.b = 0;    
 }
 
-Particle.prototype.translate = function(dx, dy) {
-//    if (dx < this.x) this.x += dx;
-//    else this.x -= dx;
-//    if (dy < this.y) this.y += dx;
-//    else this.y -= dy;
+Particle.prototype.update = function(point) {
+    this.opacity = round(this.death / this.life);
+    this.death--;
+    this.radius -= 0.3;
+    if (this.death > this.halflife) {
+        this.location.x += this.speed.x;
+        this.location.y += this.speed.y;
+    }
+    if(this.death < 0 || this.radius < 0) {
+        this.reset();
+    }
+}
+    
+Particle.prototype.translate = function(mbr) {
+    var scale = mbr.scale;
+    this.renderloc.x = mbr.x + (this.location.x * scale);
+    this.renderloc.y = mbr.y + (this.location.y * scale);
+    this.renderloc.radius = this.radius * scale;
 }

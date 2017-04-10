@@ -79,7 +79,7 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayers = function(mbr, window, 
 }
 
 WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(world, mbr, window, cp, graphics, camera, player, debug) {
-    player.translate(mbr, mbr.width, mbr.height);
+    player.translate(mbr);
     var playermbr = player.getMbr();
     var showing = player.isVisible(window, 50);
     var d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, player.controller, 0, 0, -10);
@@ -91,13 +91,13 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(world, 
     }
     var id = player.name + "-" + player.id;
     if (player.character.emitter) {
-        this.getRenderItemsWorldPlayersPlayerParticleEmitter(id, showing, player.controller, d + playermbr.depth + 1, player.character.emitter, playermbr, blur);
+        this.getRenderItemsWorldPlayersPlayerParticleEmitter(id, mbr, showing, player.controller, d + player.controller.depth + 20, player.character.emitter, playermbr, blur);
     }
     this.setRenderItemsRenderItem("player", id, showing, player.controller, d, player, playermbr, blur);
 }
 
-WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayerParticleEmitter = function(id, showing, box, d, emitter, mbr, blur) {
-    this.setRenderItemsRenderItem("particle", id + "_emitter", showing, box, distance, emitter, mbr, blur);
+WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayerParticleEmitter = function(id, mbr, showing, box, d, emitter, playermbr, blur) {
+    this.setRenderItemsRenderItem("particle", id + "_emitter", showing, box, d, emitter, playermbr, blur);
 }
 
 WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItemCenter = function(mbr, mbrcp, item, ox, oy, oz) {
