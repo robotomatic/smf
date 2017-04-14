@@ -48,7 +48,7 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
     var d = 0;
     if (!item.underwater) {
         item.item3D.createItem3D(item, world.worldrenderer.itemrenderer, mbr, width, height, debug);
-        showing = item.isVisible(window, 300);
+        showing = item.isVisible(window, 500);
         d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, item, 0, 0, 0);
         if (isNaN(d)) d = 0;
     }
