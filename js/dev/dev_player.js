@@ -141,6 +141,24 @@ function createDevPlayerDialog(player, pid) {
             setDevPlayerDebugGuts(player, this.checked);
         }
     }
+    
+    var debugplayercollidefl = findChildById(pd, "dev-player-collision-front-left");
+    if (debugplayercollidefl) {
+        debugplayercollidefl.id = "dev-player-collision-front-left-" + id;
+    }
+    var debugplayercollidefr = findChildById(pd, "dev-player-collision-front-right");
+    if (debugplayercollidefr) {
+        debugplayercollidefr.id = "dev-player-collision-front-right-" + id;
+    }
+    var debugplayercollidebl = findChildById(pd, "dev-player-collision-back-left");
+    if (debugplayercollidebl) {
+        debugplayercollidebl.id = "dev-player-collision-back-left-" + id;
+    }
+    var debugplayercollidebr = findChildById(pd, "dev-player-collision-back-right");
+    if (debugplayercollidebr) {
+        debugplayercollidebr.id = "dev-player-collision-back-right-" + id;
+    }
+    
 
     document.getElementById("main-content").appendChild(pd);
     
@@ -153,6 +171,10 @@ function createDevPlayerDialog(player, pid) {
         sizew : debugplayerw,
         sizeh : debugplayerh,
         sized : debugplayerd,
+        colfl : debugplayercollidefl,
+        colfr : debugplayercollidefr,
+        colbl : debugplayercollidebl,
+        colbr : debugplayercollidebr,
         debugplayer : debugplayer,
         debugcharacter : debugcharacter,
         debugguts : debugguts
@@ -167,6 +189,7 @@ function updateDevPlayer(player) {
     updateDevPlayerPosition(pd, player);
     updateDevPlayerSize(pd, player);
     updateDevPlayerDebug(pd, player);
+    updateDevPlayerCollision(pd, player);
 }
 
 

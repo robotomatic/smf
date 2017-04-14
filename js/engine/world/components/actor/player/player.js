@@ -118,6 +118,7 @@ Player.prototype.reset = function() {
 }
 
 Player.prototype.resetCollisions = function() {
+    this.collider.reset();
     this.controller.reset();
     this.collider.levelcollisions.length = 0;
     this.collided = false;

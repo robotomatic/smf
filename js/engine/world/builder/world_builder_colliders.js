@@ -1,20 +1,10 @@
 "use strict";
 
 function WorldBuilderColliders() {
-    //
-    // TODO: How to save colliders? 
-    // - Nice to use collider index for pathfinding, so surface visibility is necessary (after chunk)
-    //
-    this.indexsize = {
-        width: 100,
-        height: 100,
-        depth : 100
-    }
-    this.collisionindex = new WorldColliderIndex();
 }
 
 WorldBuilderColliders.prototype.reset = function(world) { 
-    this.collisionindex.reset();
+    world.worldcollider.reset();
 }
 
 WorldBuilderColliders.prototype.buildColliders = function(world) {
@@ -28,21 +18,8 @@ WorldBuilderColliders.prototype.buildCollidersColliders = function(world, items)
         var item = items[i];
         if (item.collide === false) continue;
         if (item.isHidden()) continue;
-        this.collisionindex.checkBounds(item); 
-        var newitem = this.buildCollidersCollidersItem(item);
-        if (newitem) {
-            world.worldcollider.colliders.push(newitem);
-        }
+        if (item.geometry.visible.top.visible) item.traversable = true;
+        world.worldcollider.addCollider(item);
     }
-    world.setBounds(this.collisionindex.bounds);
-}
-
-WorldBuilderColliders.prototype.buildCollidersCollidersItem = function(item) {
-//    var newitem = item.clone();
-//    newitem.collide = true;
-//    newitem.initialize();
-//    if (newitem.geometry.visible.top.visible) newitem.traversable = true;
-//    return newitem;
-    if (item.geometry.visible.top.visible) item.traversable = true;
-    return item;
+    world.setBounds();
 }

@@ -137,6 +137,10 @@
     width: 33%;
 }
 
+.dialog-col-50 {
+    width: 50%;
+}
+
 .dialog-col-60 {
     width: 60%;
 }
@@ -190,6 +194,10 @@
     width: 8em;
 }
 
+.dialog-label-mini {
+    width: 2.5em;
+}
+
 .dialog-label-short {
     width: 4.5em;
 }
@@ -218,6 +226,11 @@
     margin-top: -.2em;
     padding-right: 2px;
 }
+
+.dialog-input-mini {
+    width: 7.5em;
+}
+
 
 .dialog-input-small {
     width: 3em;

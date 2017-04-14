@@ -9,11 +9,36 @@ function PlayerCollider(player) {
     this.movebox.depth = 0;
     this.result = null;
     this.updateCollisionBox();
+    
+    
+    this.index = {
+        front : {
+            left : "",
+            right : "",
+        },
+        back : {
+            left : "",
+            right : ""
+        }
+    };
+    
+    
 }
+
+
+
+
 
 PlayerCollider.prototype.reset = function() {
     this.levelcollisions.length = 0;
     this.collisionbox.reset();
+    
+    this.index.front.left = "";
+    this.index.front.right = "";
+    this.index.back.left = "";
+    this.index.back.right = "";
+    
+    
 //    this.lastbox.reset();
 //    this.movebox.reset();
 }

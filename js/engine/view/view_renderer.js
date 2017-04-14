@@ -12,7 +12,10 @@ function ViewRenderer(view) {
     this.camerasettings.setCameraZoom((gamecontroller.gamesettings.settings.camera && gamecontroller.gamesettings.settings.camera.view) || "fit");
 
     this.rendercount = 0;
-    this.renderwait = 0;
+    this.renderwait = 10;
+    
+    this.fitcount = 0;
+    this.fitwait = 10;
     
     this.fps = 0;
     this.avg = 0;
@@ -42,6 +45,7 @@ ViewRenderer.prototype.setCameraZoom = function(zoom) {
 
 ViewRenderer.prototype.reset = function(when) { 
     this.ready = false;
+    this.fitcount = 0;
     this.mbr.width = 0;
     this.mbr.height = 0;
     this.rendercount = 0;
@@ -117,9 +121,11 @@ ViewRenderer.prototype.getViewWindow = function(world) {
     var offz = this.camerasettings.z;
     this.mbr = world.players.getMbr(this.mbr);
     var cname = this.camerasettings.name;
-    
-    if (cname == "fit" || this.mbr && !this.mbr.width && !this.mbr.height) {
+
+    var fit = this.fitcount < this.fitwait;
+    if (fit || cname == "fit" || this.mbr && !this.mbr.width && !this.mbr.height) {
         this.mbr = this.getViewBounds(world, this.mbr);
+        this.fitcount++;
     }
     
     this.camera.offset.x = offx;
@@ -128,7 +134,7 @@ ViewRenderer.prototype.getViewWindow = function(world) {
 }
 
 ViewRenderer.prototype.getViewBounds = function(world, mbr) {
-    var b = world.worldbuilder.collidebuilder.collisionindex.bounds;
+    var b = world.worldcollider.bounds;
     mbr.x = b.min.x;
     mbr.y = 0;
     mbr.z = 0;

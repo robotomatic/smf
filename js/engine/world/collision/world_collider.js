@@ -1,14 +1,21 @@
 "use strict";
 
-
 function WorldCollider() {
-
-    // todo
-    // ---> lookup collisions instead of hunting. we're on a grid so let's use it!!!!
-    // ---> this whole collider business is enfuckulated...
+    this.bounds = {
+        min : {
+            x : null,
+            y : 0,
+            z : null
+        },
+        max : {
+            x : null,
+            y : null,
+            z : null
+        }
+    };
+    this.collisionindex = new WorldColliderIndex();
     
     this.colliders = new Array();
-    
     this.collider = new Collider();
     this.box = {
         x : null,
@@ -21,63 +28,72 @@ function WorldCollider() {
         damage : null,
         action : null
     };    
-
-//    this.collisionindex = null;
-//    this.index = {
-//        x : 0,
-//        y : 0,
-//        z : 0
-//    };
-    
 }
 
+
+
 WorldCollider.prototype.reset = function() {
+    this.bounds.min.x = null;
+    this.bounds.min.y = null;
+    this.bounds.min.z = null;
+    this.bounds.max.x = null;
+    this.bounds.max.y = null;
+    this.bounds.max.z = null;
+    this.collisionindex.reset();
+
     this.colliders.length = 0;
     this.collider = new Collider();
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 WorldCollider.prototype.addCollider = function(c) {
     this.colliders.push(c);
-//    this.addColliderIndex(c);
+    this.checkBounds(c);
+    this.addColliderIndex(c);
+}
+
+WorldCollider.prototype.checkBounds = function(c) {
+    if (c.width == "100%" || c.height == "100%" || c.depth == "100%") return;
+    if (this.bounds.min.x == null || c.x < this.bounds.min.x) this.bounds.min.x = c.x;
+    if (this.bounds.max.x == null || c.x + c.width > this.bounds.max.x) this.bounds.max.x = c.x + c.width;
+    if (c.y < this.bounds.min.y) this.bounds.min.y = c.y;
+    if (this.bounds.max.y == null || c.y + c.height > this.bounds.max.y) this.bounds.max.y = c.y + c.height;
+    if (this.bounds.min.z == null || c.z < this.bounds.min.z) this.bounds.min.z = c.z;
+    if (this.bounds.max.z == null || c.z + c.depth > this.bounds.max.z) this.bounds.max.z = c.z + c.depth;
 }
 
 
 
 WorldCollider.prototype.addColliderIndex = function(c) {
-//    var index = this.getColliderIndex(c);
+    this.collisionindex.indexCollider(c);
 }
 
-
-WorldCollider.prototype.getColliderIndex = function(c) {
-//    return this.getColliderIndexAtPoint(c.x, c.y, c.z);
-}
-
-WorldCollider.prototype.getPlayerColliderIndex = function(p) {
-//    return this.getColliderIndexAtPoint(p.controller.x, p.controller.y, p.controller.z);
-}
-
-
-WorldCollider.prototype.getColliderIndexAtPoint = function(x, y, z) {
-//    var ix = x - this.index.bounds.minx;
-//    var index_x = floor(ix / this.index.size.width);
-//    
-//    var iy = y - this.miny;
-//    var index_y = floor(iy / this.index.size.height);
-//    
-//    var iz = z - this.minz;
-//    var index_z = floor(iz / this.index.size.depth);
-//
-//    this.index.out.x = index_x;
-//    this.index.out.y = index_y;
-//    this.index.out.z = index_z;
-//    
-//    return this.index.out;
+WorldCollider.prototype.getColliderIndex = function(collider, result) {
+    return this.collisionindex.getColliderIndex(collider, result);
 }
 
 
 
-WorldCollider.prototype.logIndex = function() {
-}
+
 
 
 
@@ -104,6 +120,7 @@ WorldCollider.prototype.collideWithWorld = function(player, world) {
     this.collideWithWorldPlayers(player, world.players);
     this.collideWithWorldItems(player, this.colliders);
     player.updateLevelCollisions();
+    this.getColliderIndex(player.controller, player.collider.index);
 }
 
 

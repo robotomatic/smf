@@ -87,7 +87,8 @@ World.prototype.buildLevel = function(now) {
     benchmark("build world - end", "build");
 }
     
-World.prototype.setBounds = function(bounds) { 
+World.prototype.setBounds = function() { 
+    var bounds = this.worldcollider.bounds;
     this.bounds.x = bounds.min.x - this.pad;
     this.bounds.width = (bounds.max.x - bounds.min.x) + (this.pad * 2);
     this.bounds.y = bounds.min.y;
@@ -118,6 +119,7 @@ World.prototype.reset = function(when) {
     this.worldbuilder.reset(this);
     this.worldrenderer.reset();
     this.worldcollider.reset();
+    this.bounds = new Rectangle(0, 0, 0, 0);
     if (this.players) this.players.reset(when);
     if (this.npcs) this.npcs.reset(when);
     benchmark("world reset - end", "reset");
