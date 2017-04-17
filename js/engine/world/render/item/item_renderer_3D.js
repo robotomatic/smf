@@ -28,7 +28,7 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
     var y = item.projectedlocation.y;
 
     var fill = item.draw === false ? false : true;
-    var outline = fill ? true : dodebug ? true : false;
+    var outline = item.draw === false ? false : fill ? true : dodebug ? true : false;
     
     if (item.width != "100%") {
         if (item.geometry.visible.left.visible || item.geometry.visible.right.visible) {
@@ -224,7 +224,7 @@ ItemRenderer3D.prototype.renderItemParts3D = function(gamecanvas, item, geometry
         gamecanvas.fill();
         gamecanvas.commit();
     }
-    if (outline || debug.level) {
+    if (outline || debug.level && item.draw) {
         if (debug.level && !overridecolor) color="gray";
         gamecanvas.setStrokeStyle(color);
         gamecanvas.setLineWidth(1 * scale);

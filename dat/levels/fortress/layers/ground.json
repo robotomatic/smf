@@ -12,6 +12,11 @@
                 "z" : 0,
                 "depth" : 1800,
                 "itemtype" : "ground",
+                "geometry" : {
+                    "visible" : {
+                        "bottom" : false
+                    }
+                },
                 "parts" : [
                     {
                         "x": 0,
@@ -27,6 +32,11 @@
                 "z" : 900,
                 "depth" : 1200,
                 "itemtype" : "ground",
+                "geometry" : {
+                    "visible" : {
+                        "bottom" : false
+                    }
+                },
                 "parts" : [
                     {
                         "x": 0,

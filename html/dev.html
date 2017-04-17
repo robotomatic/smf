@@ -21,7 +21,19 @@
         <a class="float-right dialog-title-title">View</a>
     </div>
     <div class="dialog-wrap">
+        
         <div class="dialog-row dialog-row-border">
+            <div class="dialog-check">
+                <label class="text-left dialog-label-pad-top-small float-left">
+                    <input type="checkbox" checked="" class="dialog-toggle float-left" id="dev-overlay" value="Overlay"> Show Gamepads
+                </label>
+            </div>
+            
+            <input type="button" class="float-right no-margin-right text-center dialog-color-darkest dialog-input-button" id="dev-debug-pause" value="Pause">
+            
+        </div>
+        
+        <div class="dialog-row">
             <div class="dialog-check float-left">
                 <label class="text-left float-left">
                     <input type="checkbox" class="dialog-toggle float-left" id="dev-stretch" value="Stretch" CHECKED> Stretch (<span id="dev-stretch-label"></span>x)
@@ -41,18 +53,15 @@
             <input type="number" class="dialog-input float-right text-right" id="dev-view-ratio" value="" placeholder="Ratio">
             <label class="text-center float-right  dialog-input-label dialog-input-label-short">Ratio :</label> 
         </div>
-        
+
         <div class="dialog-row dialog-row-border">
-            <div class="dialog-check">
-                <label class="text-left dialog-label-pad-top-small float-left">
-                    <input type="checkbox" checked="" class="dialog-toggle float-left" id="dev-overlay" value="Overlay"> Show Gamepads
+            <div class="dialog-check float-left">
+                <label class="text-left float-left">
+                    <input type="checkbox" class="dialog-toggle float-left" id="dev-view-dof-blur" value="Depth Of Field Blur" CHECKED> Depth Of Field Blurtation
                 </label>
             </div>
-            
-            <input type="button" class="float-right no-margin-right text-center dialog-color-darkest dialog-input-button" id="dev-debug-pause" value="Pause">
-            
         </div>
-
+        
         <div class="dialog-row dialog-row-border">
             <div class="float-left dialog-col-25">
                 <div class="dialog-check dialog-check-small float-left">
@@ -187,14 +196,6 @@
         <div class="dialog-row dialog-row-border">
             <label class="text-left float-left dialog-label">Follow Speed :</label>
             <input type="number" class="float-left text-right dialog-input dialog-input-small margin-left" id="dev-camera-follow-speed" min="1" max="10">
-        </div>
-        
-        <div class="dialog-row dialog-row-border">
-            <div class="dialog-check float-left">
-                <label class="text-left float-left">
-                    <input type="checkbox" class="dialog-toggle float-left" id="dev-camera-dof-blur" value="Depth Of Field Blur" CHECKED> Depth Of Field Blurtation
-                </label>
-            </div>
         </div>
         
         <div class="dialog-row">

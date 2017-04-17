@@ -15,6 +15,7 @@ WorldBuilderTheme.prototype.buildTheme = function(world) {
     var newitems = new Array();
     for (var i = 0; i < items.length; i++) {
         var item = items[i];
+        if (item.draw === false) continue;
         if (!item.dotheme) continue;
         if (!item.geometry.visible.top.visible) continue;
         newitems = this.buildThemeItems(itemrenderer, item, newitems);
@@ -112,6 +113,7 @@ WorldBuilderTheme.prototype.buildThemeItemsItem = function(renderer, theme, item
                 item.y += sub;
             }
             item.top = false;
+            item.geometry.visible.top.visible = false;
             item.polygon.points.length = 0;
             item.initialize();
         }

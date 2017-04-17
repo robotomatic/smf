@@ -45,39 +45,41 @@ function ViewCamera() {
     this.blur = {
         blur : true,
         near : {
-            min_distance : 0,
-            max_distance : 100,
-            amount : 10
+            amount : -1
         }, 
         far : {
             min_distance : 2000,
             max_distance : 10000,
             amount : 10
+        }, 
+        mega : {
+            min_distance : 20000,
+            amount : 100
         }
     };
     
     this.fit = false;
     
-    this.center = geometryfactory.getPoint(0, 0);
-    this.center.z = 0;
+    this.center = geometryfactory.getPoint(0, 0, 0);
     
+}
+
+ViewCamera.prototype.setSpeed = function(speed) {
+    this.speed = Number(speed);
+    this.originalspeed = this.speed;
 }
 
 ViewCamera.prototype.shouldBlur = function(distance) {
-    return ((distance >= this.blur.far.min_distance || distance <= this.blur.near.min_distance));
+    return distance >= this.blur.far.min_distance;
 }
 
 ViewCamera.prototype.getBlurAmount = function(distance) {
-
-    if (distance < 100) return 0;
-    
+    if (distance < 10) return this.blur.near.amount;
     if (!this.shouldBlur(distance)) return 0;
+    if (distance >= this.blur.mega.min_distance) return this.blur.mega.amount;
     if (distance >= this.blur.far.max_distance) return this.blur.far.amount;
-//    if (distance <= -this.blur.near.max_distance) return this.blur.near.amount;
-//     if (distance > -this.blur.near.min_distance) return 1;
-//     if (distance < -this.blur.near.min_distance) return this.getBlurAmountByDistance(abs(distance), this.blur.near);
-//     else return this.getBlurAmountByDistance(distance, this.blur.far);
-    return this.getBlurAmountByDistance(distance, this.blur.far);}
+    return this.getBlurAmountByDistance(distance, this.blur.far);
+}
 
 ViewCamera.prototype.getBlurAmountByDistance = function(distance, blur) {
     var maxd = blur.max_distance - blur.min_distance;

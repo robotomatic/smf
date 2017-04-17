@@ -5,14 +5,13 @@ var dev_camera_offset_x_range = null;
 var dev_camera_offset_y_amount = null;
 var dev_camera_offset_y_range = null;
 var dev_camera_offset_z_amount = null;
+var dev_camera_offset_z_range = null;
 
 var dev_camera_offset_fit = null;
 var dev_camera_offset_loose = null;
 var dev_camera_offset_comfy = null;
 var dev_camera_offset_tight = null;
 
-var dev_camera_offset_z_range = null;
-var dev_camera_dof_blur = null;
 var dev_camera_follow_speed = null;
 var dev_camera_drift = null;
 var dev_camera_drift_min = null;
@@ -67,11 +66,6 @@ function initializeDevCamera() {
         setDevCameraOffsetTight();
     };
 
-    dev_camera_dof_blur = document.getElementById("dev-camera-dof-blur");
-    dev_camera_dof_blur.onchange = function() {
-        setDevCameraDepthOfFieldBlur(this.checked);
-    };
-    
     dev_camera_follow_speed = document.getElementById("dev-camera-follow-speed");
     dev_camera_follow_speed.onchange = function() {
         setDevCameraFollowSpeed(this.value);
@@ -111,7 +105,6 @@ function initializeDevCamera() {
 function updateDevViewCamera(v) {
     if (!__dev) return;
     updateDevViewCameraOffset(v);
-    updateDevViewCameraDepthOfFieldBlur(v);
     updateDevViewCameraFollowSpeed(v);
     updateDevViewCameraDrift(v);
     updateDevViewCameraFOV(v);
@@ -211,7 +204,7 @@ function setDevCameraFollowSpeed(speed) {
     if (!__dev) return;
     if (!gamecontroller || !gamecontroller.game) return;
     var vv = gamecontroller.game.loop.gameworld.views[0];
-    vv.renderer.camera.speed = speed;
+    vv.renderer.camera.setSpeed(speed);
     updateDevViewCameraFollowSpeed(vv);
 }
 
@@ -223,23 +216,6 @@ function updateDevViewCameraFollowSpeed(vv) {
 
 
 
-function updateDevViewCameraDepthOfFieldBlur(vv) {
-    if (!__dev) return;
-    var blur = vv.renderer.camera.blur.blur;
-    var vb = dev_camera_dof_blur;
-    vb.checked = blur;
-}
-
-
-
-
-function setDevCameraDepthOfFieldBlur(blur) {
-    if (!__dev) return;
-    if (!gamecontroller || !gamecontroller.game) return;
-    var vv = gamecontroller.game.loop.gameworld.views[0];
-    vv.renderer.camera.blur.blur = blur;
-    updateDevViewCameraDepthOfFieldBlur(vv);
-}
 
 
 

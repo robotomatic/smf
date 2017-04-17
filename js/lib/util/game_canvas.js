@@ -324,6 +324,15 @@ GameCanvas.prototype.arc = function(x, y, radius, start, end, ccw) {
 }
 
 
+GameCanvas.prototype.rect = function(x, y, width, height) {
+    var rx = round(x);
+    var ry = round(y);
+    var rw = round(width);
+    var rh = round(height);
+    this.ctx.rect(rx, ry, rw, rh);
+    this.current.dirty = true;
+}
+
 
 
 

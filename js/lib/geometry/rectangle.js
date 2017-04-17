@@ -17,8 +17,7 @@ function Rectangle(x, y, width, height, angle) {
     
     this.scale = 0;
 
-    this.center = new Point(0, 0);
-    this.center.z = 0;
+    this.center = new Point(0, 0, 0);
     this.mbr = null;
     this.polygon = null;
     

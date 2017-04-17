@@ -50,7 +50,10 @@ function updateDevDebug() {
     updateDevDebugLevel();
     updateDevDebugRender();
     updateDevDebugHSR();
+    updateDevDebugCollision();
 }
+
+
 
 
 
@@ -93,11 +96,9 @@ function updateDevDebugGutss() {
     dev_guts.checked = debug;
 }
 
-function setDebugCollision(debug) {
-    if (!__dev) return;
-    if (!gamecontroller || !gamecontroller.game) return;
-    // todo
-}
+
+
+
 
 function setDebugLevel(debug) {
     if (!__dev) return;
@@ -136,4 +137,22 @@ function updateDevDebugHSR() {
     if (!__dev) return;
     var debug = gamecontroller.gamesettings.settings.debug.level.hsr;
     dev_hsr.checked = debug;
+}
+
+
+
+
+
+
+function setDebugCollision(debug) {
+    if (!__dev) return;
+    if (!gamecontroller || !gamecontroller.game) return;
+    gamecontroller.gamesettings.settings.debug.collision.level = debug;
+    updateDevDebugCollision();
+}
+
+function updateDevDebugCollision() {
+    if (!__dev) return;
+    var debug = gamecontroller.gamesettings.settings.debug.collision.level;
+    dev_collision.checked = debug;
 }

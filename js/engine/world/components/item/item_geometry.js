@@ -70,4 +70,3 @@ ItemGeometry.prototype.initialize = function(item) {
     this.visible.front.coverage.initialize(item.x, item.y, item.z, item.width, item.height, item.depth);
     this.visible.back.coverage.initialize(item.x, item.y, item.z, item.width, item.height, item.depth);
 }
-

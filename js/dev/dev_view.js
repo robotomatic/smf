@@ -10,6 +10,8 @@ var dev_size_view_ratio = null;
 var dev_overlay = null;
 var dev_gamepads = null;
 
+var dev_view_dof_blur = null;
+
 var dev_pause = null;
 
 function initializeDevView() {
@@ -51,6 +53,11 @@ function initializeDevView() {
         devPause();
     };
 
+    dev_view_dof_blur = document.getElementById("dev-view-dof-blur");
+    dev_view_dof_blur.onchange = function() {
+        setDevViewDepthOfFieldBlur(this.checked);
+    };
+    
     initializeDevViewRender();
     updateDevViewOverlay();
 }
@@ -101,6 +108,7 @@ function updateDevView() {
     if (!gamecontroller || !gamecontroller.game) return;
     var vv = gamecontroller.game.loop.gameworld.views[0];
     updateDevViewSize(vv);
+    updateDevViewDepthOfFieldBlur(vv);
     updateDevViewRender();
  }
 
@@ -171,4 +179,18 @@ function devPause() {
 }
 
 
+function updateDevViewDepthOfFieldBlur(vv) {
+    if (!__dev) return;
+    var blur = vv.renderer.camera.blur.blur;
+    var vb = dev_view_dof_blur;
+    vb.checked = blur;
+}
+
+function setDevViewDepthOfFieldBlur(blur) {
+    if (!__dev) return;
+    if (!gamecontroller || !gamecontroller.game) return;
+    var vv = gamecontroller.game.loop.gameworld.views[0];
+    vv.renderer.camera.blur.blur = blur;
+    updateDevViewDepthOfFieldBlur(vv);
+}
 

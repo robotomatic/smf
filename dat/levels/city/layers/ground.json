@@ -12,6 +12,11 @@
                 "z" : 600,
                 "depth" : 2100,
                 "itemtype" : "ground",
+                "geometry" : {
+                    "visible" : {
+                        "bottom" : false
+                    }
+                },
                 "parts" : [
                     {
                         "x": 0,
@@ -27,6 +32,11 @@
                 "z" : 600,
                 "depth" : 2100,
                 "itemtype" : "ground",
+                "geometry" : {
+                    "visible" : {
+                        "bottom" : false
+                    }
+                },
                 "parts" : [
                     {
                         "x": 0,
@@ -48,7 +58,8 @@
                 "itemtype" : "ground",
                 "geometry" : {
                     "visible" : {
-                        "right" : false
+                        "right" : false,
+                        "bottom" : false
                     }
                 },
                 "parts" : [
@@ -68,7 +79,8 @@
                 "itemtype" : "ground",
                 "geometry" : {
                     "visible" : {
-                        "left" : false
+                        "left" : false,
+                        "bottom" : false
                     }
                 },
                 "parts" : [

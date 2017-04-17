@@ -12,6 +12,7 @@
                     "x": 0,
                     "y": 400,
                     "z" : 0,
+                    "bounds" : true,
                     "depth" : 1000,
                     "parts" : [
                         {

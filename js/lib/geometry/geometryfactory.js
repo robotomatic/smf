@@ -49,7 +49,7 @@ function GeometryFactory() {
 GeometryFactory.prototype.init = function() {
     if (!this.factory) return;
     benchmark("geometry factory - start", "gf");
-    for (var i = 0; i < this.pointtot; i++) this.points.push(new Point(0, 0));
+    for (var i = 0; i < this.pointtot; i++) this.points.push(new Point(0, 0, 0));
     for (var i = 0; i < this.linetot; i++) this.lines.push(new Line(new Point(0, 0), new Point(0, 0)));
     for (var i = 0; i < this.circletot; i++) this.circles.push(new Circle(0, 0, 0));
     for (var i = 0; i < this.triangletot; i++) this.triangles.push(new Triangle(0, 0, 0, 0, null));
@@ -108,8 +108,8 @@ GeometryFactory.prototype.reset = function() {
     this.textmax = -1;
 }
 
-GeometryFactory.prototype.getPoint = function(x, y, info = null) {
-    if (!this.factory) return new Point(x, y, info);
+GeometryFactory.prototype.getPoint = function(x, y, z, info = null) {
+    if (!this.factory) return new Point(x, y, z, info);
     this.pointnum++;
     this.pointmax++;
     if (this.pointnum >= this.pointtot) {
@@ -118,6 +118,7 @@ GeometryFactory.prototype.getPoint = function(x, y, info = null) {
     }
     this.points[this.pointnum].x = x;
     this.points[this.pointnum].y = y;
+    this.points[this.pointnum].z = z;
     this.points[this.pointnum].info = info;
     return this.points[this.pointnum];
 }

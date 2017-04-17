@@ -20,6 +20,8 @@ function Item(json) {
     
     this.traversable = false;
     
+    this.bounds = false;
+    
     this.item3D = new Item3D();
     this.itemrenderer = new ItemRenderer();
     
@@ -163,6 +165,8 @@ Item.prototype.loadJson = function(json) {
 
     if (json.graphics) this.graphics = json.graphics;
     this.blur = json.blur;
+
+    if (json.bounds) this.bounds = json.bounds;
     
     this.radius = json.radius;
     this.ramp = json.ramp;
@@ -231,6 +235,7 @@ Item.prototype.clone = function() {
     newitem.angle = this.angle;
     newitem.collide = this.collide;
     newitem.draw = this.draw;
+    newitem.bounds = this.bounds;
     newitem.animate = this.animate;
     newitem.itemtype = this.itemtype;
     newitem.iteminfo = this.iteminfo;
@@ -288,6 +293,7 @@ Item.prototype.initialize = function() {
         this.height = this.mbr.height;
     }
     this.geometry.initialize(this);
+    this.traversable = this.geometry.visible.top.visible;
     this.id = this.name + "_" + this.itemtype + "_" + this.x + "_" + this.y + "_" + this.z + "_" + this.width + "_" + this.height + "_" +  this.depth;
 }
 
@@ -405,6 +411,7 @@ Item.prototype.isVisible = function(w, pad = 0) {
     }
     return true;
 }
+
 
 
 

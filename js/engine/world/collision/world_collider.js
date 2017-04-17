@@ -65,10 +65,10 @@ WorldCollider.prototype.reset = function() {
 
 
 
-WorldCollider.prototype.addCollider = function(c) {
+WorldCollider.prototype.addCollider = function(c, args) {
     this.colliders.push(c);
     this.checkBounds(c);
-    this.addColliderIndex(c);
+    this.addColliderIndex(c, args);
 }
 
 WorldCollider.prototype.checkBounds = function(c) {
@@ -83,8 +83,8 @@ WorldCollider.prototype.checkBounds = function(c) {
 
 
 
-WorldCollider.prototype.addColliderIndex = function(c) {
-    this.collisionindex.indexCollider(c);
+WorldCollider.prototype.addColliderIndex = function(c, args) {
+    this.collisionindex.indexCollider(c, args);
 }
 
 WorldCollider.prototype.getColliderIndex = function(collider, result) {
@@ -204,14 +204,17 @@ WorldCollider.prototype.resetPlayer = function(player) {
     player.controller.stop();
     var t = this.colliders.length;
     if (t == 0) return;
-    var pad = 50;
+    var pad = 10;
     var tpad = pad * 2;
     var spawnitem = null;
     while (spawnitem == null) {
         var r = random(0, t - 1);
         spawnitem = this.colliders[r];
         if (!spawnitem.traversable) spawnitem = null;
-        else if (spawnitem.width < tpad || spawnitem.height < pad || spawnitem.depth < tpad) spawnitem = null;
+  
+// todo --> trouble here...        
+//        else if (spawnitem.width < tpad || spawnitem.height < pad || spawnitem.depth < tpad) spawnitem = null;
+        
         else if ((!spawnitem.traversable) || (spawnitem.damage && spawnitem.damage.hp > 0)) spawnitem = null;
     }
     var box = spawnitem.getMbr();

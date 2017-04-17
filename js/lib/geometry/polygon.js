@@ -181,13 +181,13 @@ Polygon.prototype.updatePoint = function(index, point) {
 
 Polygon.prototype.updatePointXY = function(index, x, y, z, info = null) {
     if (!this.points[index]) {
-        this.points[index] = new Point(x, y, info);
+        this.points[index] = new Point(x, y, z, info);
     } else {
         this.points[index].x = x;
         this.points[index].y = y;
+        this.points[index].z = z;
         this.points[index].info = info;
     }
-    this.points[index].z = z;
 }
 
 
@@ -217,8 +217,7 @@ Polygon.prototype.addPointXY = function(x, y, z, info = null) {
         }
     }
     if (!ok) return;
-    var p = geometryfactory.getPoint(x, y, info);
-    p.z = z;
+    var p = geometryfactory.getPoint(x, y, z, info);
     this.points[this.points.length] = p;
 }
 

@@ -168,6 +168,8 @@ WorldBuilderIntersect.prototype.intersectClipTop = function(item, itemc, newitem
     var dh = item.height - dy;
     item.y = itemc.y;
     item.dotheme = false;
+    item.top = false;
+    item.geometry.visible.top.visible = false;
     var t = item.parts.length;
     for (var i = 0; i < t; i++) {
         var p = item.parts[i];
@@ -179,6 +181,7 @@ WorldBuilderIntersect.prototype.intersectClipTop = function(item, itemc, newitem
         var ph = p.height;
         if (ph > dh) p.height = dy;
     }
+    newitem.geometry.visible.bottom.visible = false;
 }
 
 WorldBuilderIntersect.prototype.intersectClipBottom = function(item, itemc, newitem) {
@@ -190,13 +193,16 @@ WorldBuilderIntersect.prototype.intersectClipBottom = function(item, itemc, newi
         var ph = p.height;
         if (ph > dh) p.height = dh;
     }
+    item.geometry.visible.bottom.visible = false;
     newitem.y = itemc.y + dh;
-    newitem.dotheme = false;
     for (var i = 0; i < t; i++) {
         var p = newitem.parts[i];
         var ph = p.height;
         if (ph > dh) p.height = dy;
     }
+    newitem.dotheme = false;
+    newitem.top = false;
+    newitem.geometry.visible.top.visible = false;
 }
 
 

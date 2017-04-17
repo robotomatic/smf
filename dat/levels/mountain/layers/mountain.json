@@ -10,7 +10,7 @@
             {
                 "x" : 900,
                 "y" : 200,
-                "z" : 900,
+                "z" : 1200,
                 "depth" : 300,
                 "itemtype" : "ground-raised",
                 "parts" : [
@@ -26,7 +26,7 @@
             {
                 "x" : 600,
                 "y" : 600,
-                "z" : 600,
+                "z" : 900,
                 "depth" : 900,
                 "itemtype" : "ground-raised",
                 "parts" : [
@@ -44,6 +44,11 @@
                 "y" : 1000,
                 "z" : 300,
                 "depth" : 1500,
+                "geometry" : {
+                    "visible" : {
+                        "bottom" : false
+                    }
+                },
                 "itemtype" : "ground-raised",
                 "parts" : [
                     {
