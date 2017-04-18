@@ -69,16 +69,48 @@ WorldRendererDebug.prototype.renderDebugCollisionLevel = function(graphics, came
     for (var i = 0; i < keys.length; i++) {
         var k = keys[i];
         var ppp = points[k];
-        var tt = ppp.length;
+        var tt = ppp.top.length;
         for (var ii = 0; ii < tt; ii++) {
-            var pnt = ppp[ii];
+            var pnt = ppp.top[ii];
             if (i == 0 && ii == 0) tbounds = pnt.y;
-            this.renderDebugCollisionLevelPoint(graphics, x, y, z, scale, wc, hbounds, tbounds, pnt);
+            
+            var top = pnt.y - tbounds;
+            var pheight = hbounds - tbounds;
+            var percent = (top / pheight);
+            var r = clamp(255 * percent);
+            var g = 0;
+            var b = 0;
+            var color = "rgb(" + r + ", " + g + ", " + b + ")";
+            
+            this.renderDebugCollisionLevelPoint(graphics, x, y, z, scale, wc, pnt, color, 1);
         }
     }
+    
+    
+    var players = world.players.players;
+    for (var ii = 0; ii < players.length; ii++) {
+        var player = players[ii];
+        var collisions = player.collider.index;
+        var keys = Object.keys(collisions);
+        for (var iii = 0; iii < keys.length; iii++) {
+            var ppp = points[keys[iii]];
+            var tttt = ppp.top.length;
+            for (var iiii = 0; iiii < tttt; iiii++) {
+                var pnt = ppp.top[iiii];
+                this.renderDebugCollisionLevelPoint(graphics, x, y, z, scale, wc, pnt, "yellow", 3);
+            }
+            var tttt = ppp.bottom.length;
+            for (var iiii = 0; iiii < tttt; iiii++) {
+                var pnt = ppp.bottom[iiii];
+                this.renderDebugCollisionLevelPoint(graphics, x, y, z, scale, wc, pnt, "yellow", 3);
+            }
+        }
+    }
+    
+    
 }
 
-WorldRendererDebug.prototype.renderDebugCollisionLevelPoint = function(graphics, x, y, z, scale, wc, bheight, theight, point) {
+WorldRendererDebug.prototype.renderDebugCollisionLevelPoint = function(graphics, x, y, z, scale, wc, point, color, size) {
 
     var px = (point.x - x) * scale;
     var py = (point.y - y) * scale;
@@ -92,23 +124,16 @@ WorldRendererDebug.prototype.renderDebugCollisionLevelPoint = function(graphics,
 
     var np = new Point(0, 0, 0);
     np = projectPoint3D(ppp, pz, scale, x, y, wc, np);
-    var size = 2 * scale;
-    if (size < 2) size = 2;
+    var s = 2 * scale;
+    if (s < 2) s = 2;
+    if (s > 4) s = 4;
+    s *= size;
 
     graphics.canvas.commit();
     graphics.canvas.beginPath();
     
-    var top = point.y - theight;
-    var pheight = bheight - theight;
-    var percent = (top / pheight);
-    
-    var r = clamp(255 * percent);
-    var g = 0;
-    var b = 0;
-    
-    var color = "rgb(" + r + ", " + g + ", " + b + ")";
     graphics.canvas.setFillStyle(color);
 
-    np.draw(graphics.canvas, size);
+    np.draw(graphics.canvas, s);
     graphics.canvas.commit();
 }

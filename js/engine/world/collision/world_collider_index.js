@@ -243,24 +243,29 @@ WorldColliderIndex.prototype.indexColliderXZY = function(xkey, zkey, xzindex, y,
     var x = Number(xkey.replace("x-", ""));
     var z = Number(zkey.replace("z-", ""));
     
-    if (!this.points[indexkey]) this.points[indexkey] = new Array();
-    else this.points[indexkey].length = 0;
+    if (!this.points[indexkey]) {
+        this.points[indexkey] = { 
+            center : null, 
+            top : new Array(), 
+            bottom: new Array() 
+        };
+    }
     
     var cx = x + (this.indexsize.x / 2);
     var cy = y + (this.indexsize.y / 2);
     var cz = z + (this.indexsize.z / 2);
     
-//    this.points[indexkey][0] = new Point(cx, cy, cz);
+    this.points[indexkey].center = new Point(cx, cy, cz);
 
-    this.points[indexkey][0] = new Point(x, y, z);
-    this.points[indexkey][1] = new Point(x + this.indexsize.x, y, z);
-    this.points[indexkey][2] = new Point(x + this.indexsize.x, y, z + this.indexsize.z);
-    this.points[indexkey][3] = new Point(x, y, z + this.indexsize.z);
+    this.points[indexkey].top[0] = new Point(x, y, z);
+    this.points[indexkey].top[1] = new Point(x + this.indexsize.x, y, z);
+    this.points[indexkey].top[2] = new Point(x + this.indexsize.x, y, z + this.indexsize.z);
+    this.points[indexkey].top[3] = new Point(x, y, z + this.indexsize.z);
 
-//    this.points[indexkey][4] = new Point(x, y + this.indexsize.y, z);
-//    this.points[indexkey][5] = new Point(x + this.indexsize.x, y + this.indexsize.y, z);
-//    this.points[indexkey][6] = new Point(x + this.indexsize.x, y + this.indexsize.y, z + this.indexsize.z);
-//    this.points[indexkey][7] = new Point(x, y + this.indexsize.y, z + this.indexsize.z);
+    this.points[indexkey].bottom[0] = new Point(x, y + this.indexsize.y, z);
+    this.points[indexkey].bottom[1] = new Point(x + this.indexsize.x, y + this.indexsize.y, z);
+    this.points[indexkey].bottom[2] = new Point(x + this.indexsize.x, y + this.indexsize.y, z + this.indexsize.z);
+    this.points[indexkey].bottom[3] = new Point(x, y + this.indexsize.y, z + this.indexsize.z);
     
     this.colliders[indexkey] = collider;
 }
@@ -295,13 +300,26 @@ WorldColliderIndex.prototype.indexColliderXZY = function(xkey, zkey, xzindex, y,
 
 
 WorldColliderIndex.prototype.getColliderIndex = function(collider, result) {
-    result.front.left = this.getColliderIndexAtPoint(collider.x, collider.y + collider.height, collider.z, result.front.left);
-    result.front.right = this.getColliderIndexAtPoint(collider.x + collider.width, collider.y + collider.height, collider.z, result.front.right);
-    result.back.left = this.getColliderIndexAtPoint(collider.x, collider.y + collider.height, collider.z + collider.depth, result.back.left);
-    result.back.right = this.getColliderIndexAtPoint(collider.x + collider.width, collider.y + collider.height, collider.z + collider.depth, result.back.right);
+    result = this.getColliderIndexTop(collider, result);
+    result = this.getColliderIndexBottom(collider, result);
     return result;
 }
 
+WorldColliderIndex.prototype.getColliderIndexTop = function(collider, result) {
+    result = this.getColliderIndexAtPoint(collider.x, collider.y, collider.z, result);
+    result = this.getColliderIndexAtPoint(collider.x + collider.width, collider.y, collider.z, result);
+    result = this.getColliderIndexAtPoint(collider.x, collider.y, collider.z + collider.depth, result);
+    result = this.getColliderIndexAtPoint(collider.x + collider.width, collider.y, collider.z + collider.depth, result);
+    return result;
+}
+
+WorldColliderIndex.prototype.getColliderIndexBottom = function(collider, result) {
+    result = this.getColliderIndexAtPoint(collider.x, collider.y + collider.height, collider.z, result);
+    result = this.getColliderIndexAtPoint(collider.x + collider.width, collider.y + collider.height, collider.z, result);
+    result = this.getColliderIndexAtPoint(collider.x, collider.y + collider.height, collider.z + collider.depth, result);
+    result = this.getColliderIndexAtPoint(collider.x + collider.width, collider.y + collider.height, collider.z + collider.depth, result);
+    return result;
+}
 
 WorldColliderIndex.prototype.getColliderIndexAtPoint = function(x, y, z, result) {
     var dx = x % this.indexsize.x;
@@ -321,9 +339,10 @@ WorldColliderIndex.prototype.getColliderIndexAtPoint = function(x, y, z, result)
     for (var i = 0; i < t; i++) {
         var ykey = ykeys[i];
         var yindex = Number(ykey);
-        if (!miny || yindex < miny) miny = ykey;
+        if (!miny || ( yindex <= y && yindex > miny)) miny = ykey;
     }
     if (!miny) return result;
-    result = index[miny][0];
+    var out = index[miny][0];
+    result[out] = out;
     return result;
 }

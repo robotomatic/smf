@@ -10,19 +10,7 @@ function PlayerCollider(player) {
     this.result = null;
     this.updateCollisionBox();
     
-    
-    this.index = {
-        front : {
-            left : "",
-            right : "",
-        },
-        back : {
-            left : "",
-            right : ""
-        }
-    };
-    
-    
+    this.index = new Array();
 }
 
 
@@ -33,10 +21,7 @@ PlayerCollider.prototype.reset = function() {
     this.levelcollisions.length = 0;
     this.collisionbox.reset();
     
-    this.index.front.left = "";
-    this.index.front.right = "";
-    this.index.back.left = "";
-    this.index.back.right = "";
+    this.index = new Array();
     
     
 //    this.lastbox.reset();

@@ -18,7 +18,7 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
     if (!renderer.shouldThemeProject(item)) return;
 
     var dodebug = (debug.level || debug.render || debug.hsr);
-    if (debug.hsr) {
+    if (debug.hsr && item.width != "100%") {
         gamecanvas.setAlpha(this.fadepercent);
     }
     
@@ -167,7 +167,7 @@ ItemRenderer3D.prototype.getColors = function(gamecanvas, renderer, item, debug)
     if (item.width == "100%" || item.height == "100%" || item.depth == "100%") {
         if (debug.level || debug.render || debug.hsr) {
             this.dotop = true;
-            if (debug.level || debug.hsr) dodebug = true;
+            if (debug.level) dodebug = true;
         } else {
             this.dotop = false;
         }
@@ -181,7 +181,8 @@ ItemRenderer3D.prototype.getColors = function(gamecanvas, renderer, item, debug)
         this.colors.top = "#dbdbdb";
         this.colors.bottom = "#c7c7c7";
         if (item.width == "100%") {
-            this.colors.front = "white";
+            if (item.waterline) this.colors.front = this.colors.top;
+            else  this.colors.front = "white";
         }
     }
     if (!theme) return;
@@ -224,7 +225,7 @@ ItemRenderer3D.prototype.renderItemParts3D = function(gamecanvas, item, geometry
         gamecanvas.fill();
         gamecanvas.commit();
     }
-    if (outline || debug.level && item.draw) {
+    if (outline || (debug.level && item.draw && item.width != "100%")) {
         if (debug.level && !overridecolor) color="gray";
         gamecanvas.setStrokeStyle(color);
         gamecanvas.setLineWidth(1 * scale);
