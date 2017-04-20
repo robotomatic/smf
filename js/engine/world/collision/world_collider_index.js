@@ -15,6 +15,7 @@ WorldColliderIndex.prototype.reset = function() {
     this.index = new Array();
     this.points = new Array();
     this.colliders = new Array();
+    this.worldindex = new Array();
 }
 
 WorldColliderIndex.prototype.indexCollider = function(collider, args) {
@@ -27,7 +28,7 @@ WorldColliderIndex.prototype.indexCollider = function(collider, args) {
 
 WorldColliderIndex.prototype.indexWorld = function(collider) {
     //
-    // todo: liquid!
+    // todo!
     //
 }
 

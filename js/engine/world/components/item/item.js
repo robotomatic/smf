@@ -137,11 +137,39 @@ function Item(json) {
         suction : 0
     };
     
-    
-    
+    this.watersurface = {
+        front : {
+            keys : new Array(),
+            points: new Points()
+        },
+        left : {
+            keys : new Array(),
+            points: new Points()
+        },
+        right : {
+            keys : new Array(),
+            points: new Points()
+        }
+    };
     
     if (json) this.loadJson(json);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Item.prototype.loadJson = function(json) {
 
@@ -294,6 +322,20 @@ Item.prototype.initialize = function() {
     }
     this.geometry.initialize(this);
     this.traversable = this.geometry.visible.top.visible;
+    this.watersurface = {
+        front : {
+            keys : new Array(),
+            points: new Points()
+        },
+        left : {
+            keys : new Array(),
+            points: new Points()
+        },
+        right : {
+            keys : new Array(),
+            points: new Points()
+        }
+    };
     this.id = this.name + "_" + this.itemtype + "_" + this.x + "_" + this.y + "_" + this.z + "_" + this.width + "_" + this.height + "_" +  this.depth;
 }
 
@@ -447,6 +489,8 @@ Item.prototype.getPolygon = function() {
 
 
 
+
+
 Item.prototype.update = function(now, delta, paused) { 
 //    this.move(now, delta);
     this.smooth();
@@ -496,7 +540,7 @@ Item.prototype.getLocation = function() {
 
 
 
-Item.prototype.translate = function(window, width, height, waterline) {
+Item.prototype.translate = function(window, width, height) {
     
     var wc = window.getCenter();
     var x = window.x;
@@ -511,12 +555,6 @@ Item.prototype.translate = function(window, width, height, waterline) {
     var iz = (ip.z - z) * scale;
     
     var itemheight = this.height;
-    if (waterline && this.width != "100%") {
-        if (ip.y + itemheight > waterline) {
-            itemheight -= (ip.y + itemheight) - waterline;
-            if (itemheight < 0) itemheight = 0;
-        }
-    }
     
     var iw = this.width * scale;
     var ih = itemheight * scale;

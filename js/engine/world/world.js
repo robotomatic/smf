@@ -10,6 +10,7 @@ function World(level, players, npcs) {
     this.worldbuilder = new WorldBuilder();
     this.worldcollider = new WorldCollider();
     this.worldrenderer = new WorldRenderer();
+    this.waterline = new Waterline();
     this.bounds = new Rectangle(0, 0, 0, 0);
 }
 
@@ -116,6 +117,7 @@ World.prototype.reset = function(when) {
     delete(this.level);
     this.items.length = 0;
     this.renderitems.length = 0;
+    this.waterline.reset();
     this.worldbuilder.reset(this);
     this.worldrenderer.reset();
     this.worldcollider.reset();
@@ -136,7 +138,8 @@ World.prototype.resetPlayers = function() {
     this.worldcollider.resetPlayers(this.players.players);
 }
 
-World.prototype.update = function(now, delta, paused) { 
+World.prototype.update = function(now, delta, paused) {
+    if (!paused) this.waterline.update();
     this.updateItems(now, delta, paused);
     this.updateNPCs(now, delta, paused);
     this.updatePlayers(now, delta, paused);

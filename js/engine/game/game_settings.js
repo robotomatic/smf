@@ -18,10 +18,8 @@ function GameSettings() {
                 character : false,
                 guts : false
             },
-            collision : {
-                level : false,
-                players : false
-            }
+            collision : false,
+            waterline: false
         },
         levelname : "",
         character : "",

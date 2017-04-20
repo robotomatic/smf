@@ -68,6 +68,9 @@ WorldBuilder.prototype.buildWorldTheme = function(world) {
     this.collidebuilder.buildColliders(world);
     benchmark("build world - colliders");
     
+    this.environmentbuilder.buildWaterline(world);
+    benchmark("build world - waterline");
+
     //
     // TODO: Need to handle extruded trim!!!
     //      - Needs to extrude VISIBLE edges outward on X and Z axes

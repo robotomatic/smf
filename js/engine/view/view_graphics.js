@@ -36,7 +36,7 @@ function ViewGraphics() {
             canvas : null,
             css : "",
             scale : 1,
-            blur : 2
+            blur : 1
         }
     }
 }

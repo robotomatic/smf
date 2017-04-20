@@ -7,7 +7,8 @@ function WorldRendererDebug(worldrenderer) {
 
 WorldRendererDebug.prototype.renderDebug = function(now, mbr, window, graphics, camera, world, debug) {
     if (debug.level.render) this.renderDebugItems(graphics.graphics["main"], camera, mbr, window, debug);
-    if (debug.collision.level) this.renderDebugCollisionLevel(graphics.graphics["main"], camera, mbr, window, world, debug);
+    if (debug.collision) this.renderDebugCollisionLevel(graphics.graphics["main"], camera, mbr, window, world, debug);
+    if (debug.waterline) this.renderDebugWaterline(graphics.graphics["main"], camera, mbr, window, world, debug);
 }
 
 WorldRendererDebug.prototype.renderDebugItems = function(graphics, camera, mbr, window, debug) {
@@ -82,11 +83,16 @@ WorldRendererDebug.prototype.renderDebugCollisionLevel = function(graphics, came
             var b = 0;
             var color = "rgb(" + r + ", " + g + ", " + b + ")";
             
-            this.renderDebugCollisionLevelPoint(graphics, x, y, z, scale, wc, pnt, color, 1);
+            graphics.canvas.beginPath();
+            graphics.canvas.setFillStyle(color);
+            this.renderDebugPoint3D(graphics, x, y, z, scale, wc, pnt, 1);
+            graphics.canvas.fill();
+            graphics.canvas.commit();
         }
     }
     
-    
+    graphics.canvas.setFillStyle("yellow");
+    graphics.canvas.beginPath();
     var players = world.players.players;
     for (var ii = 0; ii < players.length; ii++) {
         var player = players[ii];
@@ -97,43 +103,79 @@ WorldRendererDebug.prototype.renderDebugCollisionLevel = function(graphics, came
             var tttt = ppp.top.length;
             for (var iiii = 0; iiii < tttt; iiii++) {
                 var pnt = ppp.top[iiii];
-                this.renderDebugCollisionLevelPoint(graphics, x, y, z, scale, wc, pnt, "yellow", 3);
+                this.renderDebugPoint3D(graphics, x, y, z, scale, wc, pnt, 3);
             }
             var tttt = ppp.bottom.length;
             for (var iiii = 0; iiii < tttt; iiii++) {
                 var pnt = ppp.bottom[iiii];
-                this.renderDebugCollisionLevelPoint(graphics, x, y, z, scale, wc, pnt, "yellow", 3);
+                this.renderDebugPoint3D(graphics, x, y, z, scale, wc, pnt, 3);
             }
         }
     }
-    
-    
+    graphics.canvas.fill();
+    graphics.canvas.commit();
 }
 
-WorldRendererDebug.prototype.renderDebugCollisionLevelPoint = function(graphics, x, y, z, scale, wc, point, color, size) {
 
+
+
+
+
+
+WorldRendererDebug.prototype.renderDebugWaterline = function(graphics, camera, mbr, window, world, debug) {
+    if (!world.worldrenderer.render.world) return;
+    if (!world.waterline || !world.waterline.surface.size) return;
+    var points = world.waterline.surface.points;
+    if (!points) return;
+    window = mbr;
+    var x = window.x;
+    var y = window.y;
+    var z = window.z;
+    var scale = window.scale || 0;
+    var wc = window.getCenter();
+    var showall = false;
+    if (showall) {
+        graphics.canvas.setFillStyle("cyan");
+        graphics.canvas.beginPath();
+        var keys = world.waterline.surface.keys;
+        for (var i = 0; i < keys.length; i++) {
+            var ppp = points[keys[i]].point;
+            this.renderDebugPoint3D(graphics, x, y, z, scale, wc, ppp, 1);
+        }
+        graphics.canvas.fill();
+        graphics.canvas.commit();
+    }
+    var hilights = world.waterline.surface.hilights;
+    if (!hilights) return;
+    graphics.canvas.setFillStyle("blue");
+    graphics.canvas.beginPath();
+    var keys = Object.keys(hilights);
+    for (var i = 0; i < keys.length; i++) {
+        var ppp = points[hilights[keys[i]]].point;
+        this.renderDebugPoint3D(graphics, x, y, z, scale, wc, ppp, 1);
+    }
+    graphics.canvas.fill();
+    graphics.canvas.commit();
+}
+
+
+
+
+
+WorldRendererDebug.prototype.renderDebugPoint3D = function(graphics, x, y, z, scale, wc, point, size) {
     var px = (point.x - x) * scale;
     var py = (point.y - y) * scale;
     var pz = (point.z - z) * scale;
     var ppp = new Point(px, py);
-
     if (pz < -(__fov - 1)) {
         var nz = __fov - 1;
         pz = -nz;
     }
-
     var np = new Point(0, 0, 0);
     np = projectPoint3D(ppp, pz, scale, x, y, wc, np);
     var s = 2 * scale;
     if (s < 2) s = 2;
     if (s > 4) s = 4;
     s *= size;
-
-    graphics.canvas.commit();
-    graphics.canvas.beginPath();
-    
-    graphics.canvas.setFillStyle(color);
-
-    np.draw(graphics.canvas, s);
-    graphics.canvas.commit();
+    np.path(graphics.canvas, s);
 }

@@ -4,9 +4,11 @@ function WorldBuilderEnvironment() {
 }
 
 WorldBuilderEnvironment.prototype.reset = function(world) { 
+    world.waterline.reset();
 }
 
 WorldBuilderEnvironment.prototype.buildEnvironment = function(world) {
+    world.waterline.reset();
     var itemrenderer = world.worldrenderer.itemrenderer;
     var items = world.renderitems;
     for (var i = 0; i < items.length; i++) {
@@ -42,16 +44,28 @@ WorldBuilderEnvironment.prototype.buildEnvironmentItem = function(world, itemren
     
     var waterline = material.waterline;
     if (waterline) {
-        world.worldrenderer.waterline.y = item.y;
-        world.worldrenderer.waterline.z = item.z;
+        world.waterline.y = item.y;
+        world.waterline.z = item.z;
         if (!waterline.flow) {
-            world.worldrenderer.waterline.flow = false;    
+            world.waterline.flow = false;    
             return;
         }
-        world.worldrenderer.waterline.amount = waterline.amount;
-        world.worldrenderer.waterline.miny = waterline.miny;
-        world.worldrenderer.waterline.maxy = waterline.maxy;
-        world.worldrenderer.waterline.flow = true;
+        world.waterline.amount = waterline.amount;
+        world.waterline.miny = waterline.miny;
+        world.waterline.maxy = waterline.maxy;
+        world.waterline.flow = true;
+        
+        if (waterline.surface) {
+            world.waterline.surface.size = waterline.surface.size;
+            world.waterline.surface.depth = waterline.surface.depth;
+            world.waterline.surface.height = waterline.surface.height;
+            world.waterline.surface.frequency = waterline.surface.frequency;
+        }
+        world.waterline.setItem(item);
         item.waterline = true;
     }
+}
+
+WorldBuilderEnvironment.prototype.buildWaterline = function(world) {
+    world.waterline.buildWaterline(world);
 }

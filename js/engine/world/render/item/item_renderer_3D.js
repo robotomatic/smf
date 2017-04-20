@@ -125,8 +125,8 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
                 this.line.path(gamecanvas);
             } 
             if (item.geometry.visible.left.visible) {
-                this.line.start.x = item.geometry.front.geometry.points[3].x;
-                this.line.start.y = item.geometry.front.geometry.points[3].y;
+                this.line.start.x = item.geometry.front.geometry.points[item.geometry.front.geometry.points.length - 1].x;
+                this.line.start.y = item.geometry.front.geometry.points[item.geometry.front.geometry.points.length - 1].y;
                 this.line.end.x = item.geometry.front.geometry.points[0].x;
                 this.line.end.y = item.geometry.front.geometry.points[0].y;
                 this.line.path(gamecanvas);

@@ -37,7 +37,13 @@
             "flow" : true,
             "amount" : 0,
             "miny" : 0,
-            "maxy" : 0
+            "maxy" : 0,
+            "surface" : {
+                "height" : 0,
+                "depth" : 0,
+                "size" : 0,
+                "frequency" : 0
+            }
         },
         "color" : {
             "color" : "#d0dfe3",

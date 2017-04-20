@@ -17,7 +17,6 @@ function WorldRenderer() {
     this.worldrenderer_render = new WorldRendererRender(this);
     this.worldrenderer_debug = new WorldRendererDebug(this);
     this.worldrenderer_end = new WorldRendererEnd(this);
-    this.waterline = new Waterline();
     this.debug = {};
 }
 
@@ -50,7 +49,6 @@ WorldRenderer.prototype.loadTheme = function(theme) {
 }
 
 WorldRenderer.prototype.renderWorld = function(now, graphics, camera, world, mbr, window, paused) {
-    if (!paused) this.waterline.getFlood();
     this.worldrenderer_start.renderStart(now, mbr, window, graphics, camera, world, world.debug);
     this.worldrenderer_render.renderRender(now, mbr, window, graphics, camera, world, world.debug, this.render, paused);
     this.worldrenderer_debug.renderDebug(now, mbr, window, graphics, camera, world, world.debug);

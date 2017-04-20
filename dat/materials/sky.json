@@ -24,9 +24,15 @@
        },
         "waterline" : {
             "flow" : true,
-            "amount" : 0.1,
+            "amount" : 1,
             "miny" : -10,
-            "maxy" : 10
+            "maxy" : 10,
+            "surface" : {
+                "height" : 5,
+                "depth" : 200,
+                "size" : 300,
+                "frequency" : 0.2
+            }
         },
        "properties" : {
            "airfriction" : 2,

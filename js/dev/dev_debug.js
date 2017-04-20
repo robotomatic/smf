@@ -7,6 +7,7 @@ var dev_level = null;
 var dev_render = null;
 var dev_hsr = null;
 var dev_collision = null;
+var dev_waterline = null;
 
 function initializeDevDebug() {
     
@@ -40,6 +41,10 @@ function initializeDevDebug() {
     dev_collision.onchange = function() {
         setDebugCollision(this.checked);
     };
+    dev_waterline = document.getElementById("dev-debug-waterline");
+    dev_waterline.onchange = function() {
+        setDebugWaterline(this.checked);
+    };
 }
 
 function updateDevDebug() {
@@ -51,6 +56,7 @@ function updateDevDebug() {
     updateDevDebugRender();
     updateDevDebugHSR();
     updateDevDebugCollision();
+    updateDevDebugWaterline();
 }
 
 
@@ -147,12 +153,31 @@ function updateDevDebugHSR() {
 function setDebugCollision(debug) {
     if (!__dev) return;
     if (!gamecontroller || !gamecontroller.game) return;
-    gamecontroller.gamesettings.settings.debug.collision.level = debug;
+    gamecontroller.gamesettings.settings.debug.collision = debug;
     updateDevDebugCollision();
 }
 
 function updateDevDebugCollision() {
     if (!__dev) return;
-    var debug = gamecontroller.gamesettings.settings.debug.collision.level;
+    var debug = gamecontroller.gamesettings.settings.debug.collision;
     dev_collision.checked = debug;
+}
+
+
+
+
+
+
+
+function setDebugWaterline(debug) {
+    if (!__dev) return;
+    if (!gamecontroller || !gamecontroller.game) return;
+    gamecontroller.gamesettings.settings.debug.waterline = debug;
+    updateDevDebugWaterline();
+}
+
+function updateDevDebugWaterline() {
+    if (!__dev) return;
+    var debug = gamecontroller.gamesettings.settings.debug.waterline;
+    dev_waterline.checked = debug;
 }

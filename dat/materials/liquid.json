@@ -16,7 +16,13 @@
             "flow" : true,
             "amount" : 0.5,
             "miny" : -10,
-            "maxy" : 10
+            "maxy" : 10,
+            "surface" : {
+                "height" : 50,
+                "depth" : 60,
+                "size" : 200,
+                "frequency" : 1
+            }
         },
         "color" : {
             "color" : "#6094a2",
@@ -40,7 +46,13 @@
             "flow" : true,
             "amount" : 0.3,
             "miny" : -5,
-            "maxy" : 5
+            "maxy" : 5,
+            "surface" : {
+                "height" : 10,
+                "depth" : 80,
+                "size" : 50,
+                "frequency" : 0.2
+            }
         },
         "properties" : {
             "friction" : 2,
@@ -73,7 +85,13 @@
             "flow" : true,
             "amount" : 0.1,
             "miny" : -25,
-            "maxy" : 25
+            "maxy" : 25,
+            "surface" : {
+                "height" : 5,
+                "depth" : 80,
+                "size" : 100,
+                "frequency" : 2
+            }
         },
         "color" : {
             "color" : "#bcea65",

@@ -29,13 +29,13 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
     var itemtype = "item";
     var width = graphics.canvas.getWidth();
     var height = graphics.canvas.getHeight();
-    var waterline = world.worldrenderer.waterline;
+    var waterline = world.waterline;
     var wl = waterline.waterline;
     if (!world.worldrenderer.render.world) {
         waterline = null;
         wl = 0;
     }
-    item.translate(mbr, width, height, wl);
+    item.translate(mbr, width, height);
     item.underwater = false;
     if (waterline && waterline.flow && !item.waterline) {
         var fw = waterline.waterline;
@@ -47,7 +47,14 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
     var showing = false;
     var d = 0;
     if (!item.underwater) {
-        item.item3D.createItem3D(item, world.worldrenderer.itemrenderer, mbr, width, height, debug);
+        item.item3D.createItem3D(item, world, mbr, width, height, debug);
+
+        if (!item.waterline && item.width != "100%") {
+            if (world.worldrenderer.render.world) {
+                waterline.updateItemWaterline(item);
+            }
+        }
+        
         showing = item.isVisible(window, 500);
         d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, item, 0, 0, 0);
         if (isNaN(d)) d = 0;
@@ -65,7 +72,7 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
         if (item.width == "100%") blur = 100000;
     }
     var id = item.id;
-    this.setRenderItemsRenderItem(itemtype, id, showing, item, d, item, itemmbr, blur);
+    this.setRenderItemsRenderItem(itemtype, id, showing, item.box, d, item, itemmbr, blur);
 }
 
 WorldRendererStart.prototype.getRenderItemsWorldPlayers = function(mbr, window, cp, graphics, camera, world, debug) {
@@ -91,9 +98,9 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(world, 
     }
     var id = player.name + "-" + player.id;
     if (player.character.emitter) {
-        this.getRenderItemsWorldPlayersPlayerParticleEmitter(id, mbr, showing, player.controller, d + player.controller.depth + 20, player.character.emitter, playermbr, blur);
+        this.getRenderItemsWorldPlayersPlayerParticleEmitter(id, mbr, showing, player.box, d + player.controller.depth + 20, player.character.emitter, playermbr, blur);
     }
-    this.setRenderItemsRenderItem("player", id, showing, player.controller, d, player, playermbr, blur);
+    this.setRenderItemsRenderItem("player", id, showing, player.box, d, player, playermbr, blur);
 }
 
 WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayerParticleEmitter = function(id, mbr, showing, box, d, emitter, playermbr, blur) {
@@ -131,6 +138,7 @@ WorldRendererStart.prototype.setRenderItemsRenderItem = function(type, id, showi
         newitem.depth = box.depth;
         newitem.distance = distance;
         newitem.blur = blur;
+        newitem.box.copy(box);
     } else {
         var newitem = {
             type : type,
@@ -143,11 +151,13 @@ WorldRendererStart.prototype.setRenderItemsRenderItem = function(type, id, showi
             width : box.width,
             height : box.height,
             depth : box.depth,
+            box : new Rectangle(),
             distance: distance,
             item : item,
             mbr : mbr,
             blur : blur
         }
+        newitem.box.copy(box);
         this.worldrenderer.renderitems.keys[id] = newitem;
     }
     this.worldrenderer.renderitems.all[index] = newitem;

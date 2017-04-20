@@ -54,6 +54,16 @@ Rectangle.prototype.initialize = function(x, y, z, width, height, depth) {
     this.depth = depth;
 }
 
+Rectangle.prototype.copy = function(rectangle) {
+    this.x = rectangle.x;
+    this.y = rectangle.y;
+    this.z = rectangle.z;
+    this.width = rectangle.width;
+    this.height = rectangle.height;
+    this.depth = rectangle.depth;
+}
+
+
 Rectangle.prototype.reset = function() {
     this.x = 0;
     this.y = 0;
