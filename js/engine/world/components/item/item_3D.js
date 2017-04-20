@@ -8,8 +8,7 @@ function Item3D() {
     this.cp = new Point(0, 0);
     this.np1 = new Point(0, 0);
     this.np2 = new Point(0, 0);
-    this.np = new Point(0, 0);
-    this.pp = new Point(0, 0);
+    this.itemwaterline = new Item3DWaterline();
 }
 
 Item3D.prototype.createItem3D = function(item, world, window, width, height, debug = null) {
@@ -29,80 +28,79 @@ Item3D.prototype.createItem3D = function(item, world, window, width, height, deb
     var scale = window.scale || 0;
     var box = item.box;
     var depth = box.depth;
-    this.projectItem3D(world, item, box, depth, scale, x, y, window, width, height);
+    this.projectItem3D(window, world, item, x, y, width, height, depth, scale);
 }
 
-Item3D.prototype.projectItem3D = function(world, item, geom, depth, scale, x, y, window, width, height) {
-
+Item3D.prototype.projectItem3D = function(window, world, item, x, y, width, height, depth, scale) {
     var wc = window.getCenter();
-    
+    this.projectItem3DFront(window, world, item, wc, x, y, width, height, depth, scale);
+    this.projectItem3DSides(item, wc, x, y, width, height, depth, scale);
+    this.projectItem3DTop(item, wc, x, y, width, height, depth, scale);
+}
+
+
+
+
+Item3D.prototype.projectItem3DFront = function(window, world, item, wc, x, y, width, height, depth, scale) {
     item.geometry.front.showing = true;
-    item.geometry.front.geometry.points.length = 3;
-    item.geometry.front.geometry.updatePoints(geom.getPoints());
-    item.geometry.front.geometry.points[0].x -=1;
-    item.geometry.front.geometry.points[0].y -=1;
-    item.geometry.front.geometry.points[1].x +=1;
-    item.geometry.front.geometry.points[1].y -=1;
-    item.geometry.front.geometry.points[2].x +=1;
-    item.geometry.front.geometry.points[3].x -=1;
+    
+    var points = item.box.getPoints();
+    if (!item.geometry.front.geometry.points.length) {
+        item.geometry.front.geometry.updatePoints(points);
+    } else {
+        item.geometry.front.geometry.points[0].x = points[0].x - 1;
+        item.geometry.front.geometry.points[0].y = points[0].y - 1;
+        item.geometry.front.geometry.points[1].x = points[1].x + 1;
+        item.geometry.front.geometry.points[1].y = points[1].y - 1;
+        item.geometry.front.geometry.points[2].x = points[2].x + 1;
+        item.geometry.front.geometry.points[2].y = points[2].y;
+        item.geometry.front.geometry.points[item.geometry.front.geometry.points.length - 1].x = points[3].x - 1;
+        item.geometry.front.geometry.points[item.geometry.front.geometry.points.length - 1].y = points[3].y;
+    }
     
     if (world.worldrenderer.render.world) {
         if (item.watersurface.front.keys.length) {
-            this.projectItem3DWaterlineFront(item, window, wc);
+            this.itemwaterline.projectItem3DWaterlineFront(item, window, wc);
         }
     }
-    
-     if (item.width == "100%" && item.geometry.front.geometry.points.length > 3) {
+    if (item.width == "100%" && item.geometry.front.geometry.points.length > 3) {
          item.geometry.front.geometry.points[0].x = 0;
          item.geometry.front.geometry.points[1].x = width;
          item.geometry.front.geometry.points[2].x = width;
-         item.geometry.front.geometry.points[3].x = 0;
+         item.geometry.front.geometry.points[item.geometry.front.geometry.points.length - 1].x = 0;
      }
+}
 
-    var t = item.geometry.front.geometry.points.length;
-    for (var i = 1; i < t; i++) {
-        
-        this.p1.x = round(item.geometry.front.geometry.points[i - 1].x);
-        this.p2.x = round(item.geometry.front.geometry.points[i].x);
-        
-        if (this.p1.x < this.p2.x) continue;
-        
-        this.p1.y = round(item.geometry.front.geometry.points[i - 1].y);
-        this.p2.y = round(item.geometry.front.geometry.points[i].y);
+Item3D.prototype.projectItem3DSides = function(item, wc, x, y, width, height, depth, scale) {
+    this.p1.x = round(item.geometry.front.geometry.points[1].x);
+    this.p2.x = round(item.geometry.front.geometry.points[2].x);
+    this.p1.y = round(item.geometry.front.geometry.points[1].y);
+    this.p2.y = round(item.geometry.front.geometry.points[2].y);
 
-        if (!shouldProject(this.p1, this.p2, scale, x, y, wc, this.cp)) continue;
+    if (!shouldProject(this.p1, this.p2, scale, x, y, wc, this.cp)) return;
         
-        var horiz = abs(this.p1.y - this.p2.y) < 3;
-        var vert = abs(this.p1.x - this.p2.x) < 3;
-        var top = horiz && (this.p1.x < this.p2.x);
-        var bottom = horiz && !top;
-        var left = vert && (this.p1.y > this.p2.y);
-        var right = vert && !left;
-        var side = left || right;
+    var horiz = abs(this.p1.y - this.p2.y) < 3;
+    var vert = abs(this.p1.x - this.p2.x) < 3;
+    var top = horiz && (this.p1.x < this.p2.x);
+    var bottom = horiz && !top;
+    var left = vert && (this.p1.y > this.p2.y);
+    var right = vert && !left;
+    var side = left || right;
 
-        if (this.p1.x < this.p2.x) continue;
-        
-        var view = null;
-        if (horiz) {
-            if (side) view = left ? item.geometry.left : item.geometry.right;
-            else view = item.geometry.bottom;
-        } else {
-            if (vert) view = left ? item.geometry.left : item.geometry.right;
-            else {
-                var ramptopleft = this.p1.x < this.p2.x && this.p1.y > this.p2.y;
-                var ramptopright = this.p1.x < this.p2.x && this.p1.y < this.p2.y;
-                var ramptop = ramptopleft || ramptopright;
-                var rampbottomleft = this.p1.x > this.p2.x && this.p1.y > this.p2.y;
-                var rampbottomright = this.p1.x > this.p2.x && this.p1.y < this.p2.y;
-                var rampbottom = rampbottomleft || rampbottomright;
-                if (ramptop) view = item.geometry.top;
-                else if (rampbottom) view = item.geometry.bottom;
-                else view = left ? item.geometry.left : item.geometry.right;
-            }
+    if (this.p1.x < this.p2.x) return;
+
+    var view = null;
+    if (horiz) {
+        if (side) view = left ? item.geometry.left : item.geometry.right;
+        else view = item.geometry.bottom;
+    } else {
+        if (vert) view = left ? item.geometry.left : item.geometry.right;
+        else {
+            view = left ? item.geometry.left : item.geometry.right;
         }
-        view.geometry = project3D(this.p1, this.p2, depth, view.geometry, scale, x, y, wc, this.np1, this.np2);
-        view.showing = true;
     }
+    view.geometry = project3D(this.p1, this.p2, depth, view.geometry, scale, x, y, wc, this.np1, this.np2);
+    view.showing = true;
 
     var px = (wc.x - x) * scale;
     this.left = this.p1.x > px;
@@ -129,7 +127,9 @@ Item3D.prototype.projectItem3D = function(world, item, geom, depth, scale, x, y,
         side.geometry = project3D(this.p1, this.p2, depth, side.geometry, scale, x, y, wc, this.np1, this.np2);
         side.showing = true;
     }
-    
+}
+
+Item3D.prototype.projectItem3DTop = function(item, wc, x, y, width, height, depth, scale) {
     var t = item.geometry.front.geometry.points.length;
     for (var i = 1; i < t; i++) {
         this.p1.x = round(item.geometry.front.geometry.points[i - 1].x);
@@ -144,102 +144,14 @@ Item3D.prototype.projectItem3D = function(world, item, geom, depth, scale, x, y,
                 item.geometry.top.geometry.points[0].x = 0;
                 item.geometry.top.geometry.points[1].x = width;
                 item.geometry.top.geometry.points[2].x = width;
-                item.geometry.top.geometry.points[3].x = 0;
+                item.geometry.top.geometry.points[item.geometry.top.geometry.points.length - 1].x = 0;
                 if (item.waterline) {
                     item.geometry.top.geometry.points[2].y += (height - item.geometry.top.geometry.points[2].y);
-                    item.geometry.top.geometry.points[3].y +=  (height - item.geometry.top.geometry.points[3].y);
+                    var hy = height - item.geometry.top.geometry.points[item.geometry.top.geometry.points.length - 1].y;
+                    item.geometry.top.geometry.points[item.geometry.top.geometry.points.length - 1].y += hy;
                 }
             }
         }
         item.geometry.top.showing = true;
     }
-}
-
-Item3D.prototype.projectItem3DWaterlineFront = function(item, window, wc) {
-
-    var waterline = item.watersurface.front.points;
-    if (!waterline.points.length) return;
-
-    var front = item.geometry.front.geometry;
-    
-    var x = window.x;
-    var y = window.y;
-    var z = window.z;
-    var scale = window.scale;
-    
-    var point;
-    var px;
-    var py;
-    var pz;
-    var ppy;
-   
-    for (var i = 1; i < waterline.points.length - 1; i++) {
-        point = waterline.points[i];
-        px = (point.x - x) * scale;
-        py = (point.y - y) * scale;
-        pz = (item.z - z) * scale;
-        if (pz < -(__fov - 1)) {
-            pz = -nz;
-        }
-        this.np.x = px;
-        this.np.y = py;
-        this.pp = projectPoint3D(this.np, pz, scale, x, y, wc, this.pp);
-        front.points.splice(3, 0, new Point(this.pp.x, this.pp.y));
-    }
-
-    
-    point = waterline.points[waterline.points.length - 1];
-    px = (point.x - x) * scale;
-    py = (point.y - y) * scale;
-    pz = (item.z - z) * scale;
-    if (pz < -(__fov - 1)) {
-        pz = -nz;
-    }
-    this.np.x = px;
-    this.np.y = py;
-    this.pp = projectPoint3D(this.np, pz, scale, x, y, wc, this.pp);
-    
-    ppy = this.pp.y;
-    if (this.pp.x > front.points[2].x) {
-        var fp = front.points[2];
-        var l = waterline.points.length - 1;
-        var distx = waterline.points[l].x - waterline.points[l - 1].x;
-        if (distx <= item.width) {
-            distx *= scale;
-            var disty = (waterline.points[l].y - waterline.points[l - 1].y) * scale;
-            var diffx = this.pp.x - fp.x;
-            var p = diffx / distx;       
-            var dy = disty * p;         
-            ppy = front.points[3].y + dy;
-        }
-    }
-    front.points[2].y = ppy;
-
-
-    point = waterline.points[0];
-    px = (point.x - x) * scale;
-    py = (point.y - y) * scale;
-    pz = (item.z - z) * scale;
-    if (pz < -(__fov - 1)) {
-        var nz = __fov - 1;
-        pz = -nz;
-    }
-    this.np.x = px;
-    this.np.y = py;
-    this.pp = projectPoint3D(this.np, pz, scale, x, y, wc, this.pp);
-
-    ppy = this.pp.y;
-    if (this.pp.x < front.points[front.points.length - 1].x) {
-        var fp = front.points[front.points.length - 1];
-        var distx = waterline.points[1].x - waterline.points[0].x;
-        if (distx < item.width) {
-            distx *= scale;
-            var disty = (waterline.points[1].y - waterline.points[0].y) * scale;
-            var diffx = fp.x - this.pp.x;
-            var p = diffx / distx;       
-            var dy = disty * p;         
-            ppy = front.points[front.points.length - 2].y - dy;
-        }
-    }
-    front.points[front.points.length - 1].y = ppy;
 }
