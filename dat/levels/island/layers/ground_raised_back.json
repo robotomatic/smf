@@ -22,12 +22,27 @@
                         "height": 350
                     }
                 ]
-            }        ,
+            },
             {
                 "x" : 1800,
                 "y" : 800,
                 "z" : 3300,
                 "depth" : 900,
+                "itemtype" : "ground-raised",
+                "parts" : [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "width": 1500,
+                        "height": 380
+                    }
+                ]
+            },
+            {
+                "x" : 3300,
+                "y" : 800,
+                "z" : 900,
+                "depth" : 3300,
                 "itemtype" : "ground-raised",
                 "parts" : [
                     {

@@ -95,7 +95,7 @@ Waterline.prototype.buildWaterline = function(world) {
     var oddx = false;
     for (var ix = x; ix < xw; ix += size) {
         var oddz = !oddx;
-        for (var iz = z; iz <= zd; iz += (size / 2)) {
+        for (var iz = z; iz <= zd; iz += size) {
             var offset = oddz ? 0 : this.surface.height;
             var dir = oddz ? 0 : 1;
             var point = new Point(ix, y, iz);
@@ -175,12 +175,12 @@ Waterline.prototype.updateItemWaterline = function(item) {
     if(item.geometry.visible.front.visible) {
         this.updateItemWaterlineFront(item);
     }
-//    if(item.geometry.visible.left.visible) {
-//        this.updateItemWaterlineLeft(item);
-//    }
-//    if(item.geometry.visible.right.visible) {
-//        this.updateItemWaterlineRight(item);
-//    }
+    if(item.geometry.visible.left.visible) {
+        this.updateItemWaterlineLeft(item);
+    }
+    if(item.geometry.visible.right.visible) {
+        this.updateItemWaterlineRight(item);
+    }
 }
     
 Waterline.prototype.updateItemWaterlineFront = function(item) {
@@ -233,7 +233,7 @@ Waterline.prototype.getItemWaterlineLeft = function(item) {
     var z = (zz / this.surface.size) * this.surface.size;
     var depth = item.depth + this.surface.size; 
     var newpoints = new Array();
-    for (var i = 0; i <= depth; i+= this.surface.size / 2) {
+    for (var i = 0; i <= depth; i+= this.surface.size) {
         var iz = z + i;
         var k = "x-" + x + "-z-" + iz;
         var key = this.surface.points[k];
@@ -261,9 +261,10 @@ Waterline.prototype.getItemWaterlineRight = function(item) {
     var dz = item.z % this.surface.size;
     var zz = item.z - dz;
     var z = (zz / this.surface.size) * this.surface.size;
+    var width = item.width;
     var depth = item.depth + this.surface.size; 
     var newpoints = new Array();
-    for (var i = 0; i <= depth; i+= this.surface.size / 2) {
+    for (var i = 0; i <= depth; i+= this.surface.size) {
         var iz = z + i;
         var k = "x-" + x + "-z-" + iz;
         var point = this.surface.points[k];

@@ -133,7 +133,7 @@ WorldRendererDebug.prototype.renderDebugWaterline = function(graphics, camera, m
     var z = window.z;
     var scale = window.scale || 0;
     var wc = window.getCenter();
-    var showall = false;
+    var showall = true;
     if (showall) {
         graphics.canvas.setFillStyle("cyan");
         graphics.canvas.beginPath();

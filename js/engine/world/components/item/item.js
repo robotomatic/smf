@@ -320,6 +320,7 @@ Item.prototype.initialize = function() {
         this.width = this.mbr.width;
         this.height = this.mbr.height;
     }
+    this.geometry.front.geometry.points.length = 0;
     this.geometry.initialize(this);
     this.traversable = this.geometry.visible.top.visible;
     this.watersurface = {
