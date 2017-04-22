@@ -139,11 +139,17 @@ Waterline.prototype.updateWaterline = function() {
         var point = this.surface.points[key];
         var dir = point.dir;
         if (dir == 0) {
-            if (point.offset < height) point.offset += freq;
-            else point.dir = 1;
+            if (point.offset <= height) point.offset += freq;
+            else {
+                point.offset -= freq;
+                point.dir = 1;
+            }
         } else {
-            if (point.offset > 0) point.offset -= freq;
-            else point.dir = 0;
+            if (point.offset >= 0) point.offset -= freq;
+            else {
+                point.offset += freq;
+                point.dir = 0;
+            }
         }
         var pointy = point.offset + this.waterline;
         point.point.y = pointy;
@@ -254,14 +260,14 @@ Waterline.prototype.updateItemWaterlineRight = function(item) {
 }
     
 Waterline.prototype.getItemWaterlineRight = function(item) {
-    var w = item.x + item.width;
+    var w = item.x + item.width - this.surface.size;
     var dx = w % this.surface.size;
     var xx = w - dx;
     var x = (xx / this.surface.size) * this.surface.size;
     var dz = item.z % this.surface.size;
     var zz = item.z - dz;
     var z = (zz / this.surface.size) * this.surface.size;
-    var width = item.width;
+    var width = item.width; 
     var depth = item.depth + this.surface.size; 
     var newpoints = new Array();
     for (var i = 0; i <= depth; i+= this.surface.size) {
