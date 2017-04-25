@@ -380,14 +380,14 @@ GameCanvas.prototype.getData = function() {
 }
 
 GameCanvas.prototype.drawImage = function(data, x, y, w, h, xx, yy, ww, hh) {
-    x = clamp(x);
-    y = clamp(y);
-    w = clamp(w);
-    h = clamp(h);
-    xx = clamp(xx);
-    yy = clamp(yy);
-    ww = clamp(ww);
-    hh = clamp(hh);
+    x = round(x);
+    y = round(y);
+    w = round(w);
+    h = round(h);
+    xx = round(xx);
+    yy = round(yy);
+    ww = round(ww);
+    hh = round(hh);
     if (xx && yy && ww && hh) this.ctx.drawImage(data.canvas, x, y, w, h, xx, yy, ww, hh);
     else this.ctx.drawImage(data.canvas, x, y, w, h);
 }

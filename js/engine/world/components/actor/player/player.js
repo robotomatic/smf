@@ -254,38 +254,30 @@ Player.prototype.render = function(now, width, height, ctx, scale, debug, paused
         this.debugtemp.guts = this.debug.guts ? true : debug.guts;
     }
     debug = debug ? debug : this.debug;
-    if (!ctx) this.renderStart(now, width, height, scale);
-    this.renderRender(now, ctx, scale, this.debugtemp, paused);
-    if (!ctx) this.renderEnd(now);
+    
+    this.renderStart(now, width, height, scale * 2);
+    this.renderRender(now, scale * 2, this.debugtemp, paused);
+    this.renderEnd(now);
+    this.drawImage(ctx, 0.5);
 }
 
 Player.prototype.renderStart = function(now, width, height, scale) {
-
     var sip = this.imagepad;
     var doublepad = sip * 2;
-    
     var bx = this.box.x * scale;
     var by = this.box.y * scale;
-    
     this.projectedlocation.x = bx - sip;
     this.projectedlocation.y = by - sip;
-
     var bw = this.box.width * scale;
     var bh = this.box.height * scale;
     this.gamecanvas.setSize(bw + doublepad, bh + doublepad);
 }
 
-Player.prototype.renderRender = function(now, gamecanvas = null, scale, debug, paused) {
+Player.prototype.renderRender = function(now, scale, debug, paused) {
     var c = this.gamecanvas;
     var ip = this.imagepad;
     var px = 0;
     var py = 0;
-    if (gamecanvas) {
-        c = gamecanvas;
-        ip = 0;
-        px = this.box.x;
-        py = this.box.y;
-    }
     this.character.draw(now, c, this, px, py, scale, ip, debug, paused);
     if (debug) this.playerdebugger.drawDebug(now, c, debug);
 }
@@ -296,16 +288,13 @@ Player.prototype.renderEnd = function(when) {
     this.image.width = this.gamecanvas.width;
     this.image.height = this.gamecanvas.height;
     this.image.data = this.gamecanvas;
-    updateDevPlayer(this.image);
+//    updateDevPlayer(this.image);
 }
 
 Player.prototype.drawImage = function(gamecanvas, scale = 1, offset = 0) {
-    
     var px = this.projectedlocation.x * scale;
     var py = this.projectedlocation.y * scale;
-    
     var cw = this.gamecanvas.width * scale;
     var ch = this.gamecanvas.height * scale;
-    
     this.image.draw(gamecanvas, px + offset, py + offset, cw - (offset * 2), ch - (offset * 2));
 }
