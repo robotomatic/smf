@@ -48,6 +48,11 @@ Item3D.prototype.projectItem3DFront = function(window, world, item, wc, x, y, wi
     if (!item.geometry.front.geometry.points.length) {
         item.geometry.front.geometry.updatePoints(points);
     }
+
+    if (world.waterline.flow && (item.y + item.height <= world.waterline.waterline)) {
+        item.geometry.front.geometry.points.length = 4;    
+    }
+
     item.geometry.front.geometry.points[0].x = points[0].x - 1;
     item.geometry.front.geometry.points[0].y = points[0].y - 1;
     item.geometry.front.geometry.points[1].x = points[1].x + 1;
@@ -63,8 +68,10 @@ Item3D.prototype.projectItem3DFront = function(window, world, item, wc, x, y, wi
     item.geometry.front.geometry.points[item.geometry.front.geometry.points.length - 1].x = points[3].x - 1;
     item.geometry.front.geometry.points[item.geometry.front.geometry.points.length - 1].y = points[3].y;
     if (world.worldrenderer.render.world) {
-        if (item.watersurface.front.keys.length) {
-            this.itemwaterline.projectItem3DWaterlineFront(item, window, wc);
+        if (item.y + item.height > world.waterline.waterline) {
+            if (item.watersurface.front.keys.length) {
+                this.itemwaterline.projectItem3DWaterlineFront(item, window, wc);
+            }
         }
     }
     if (item.width == "100%" && item.geometry.front.geometry.points.length > 3) {
@@ -81,8 +88,13 @@ Item3D.prototype.projectItem3DSides = function(window, world, item, wc, x, y, wi
 }
 
 Item3D.prototype.projectItem3DSidesLeft = function(window, world, item, wc, x, y, width, height, depth, scale) {
-    if (!item.geometry.visible.left.visible) return;
+    if (!item.geometry.visible.left.visible && !world.debug.level.hsr && !world.debug.level.render) return;
     if (!item.geometry.front.geometry.points.length) return;
+
+    if (world.waterline.flow && (item.y + item.height <= world.waterline.waterline)) {
+        item.geometry.left.geometry.points.length = 4;    
+    }
+
     var t = item.geometry.front.geometry.points.length - 1;
     this.p1.x = round(item.geometry.front.geometry.points[t].x);
     this.p1.y = round(item.geometry.front.geometry.points[t].y);
@@ -92,15 +104,22 @@ Item3D.prototype.projectItem3DSidesLeft = function(window, world, item, wc, x, y
     item.geometry.left.geometry = project3D(this.p1, this.p2, depth, item.geometry.left.geometry, scale, x, y, wc, this.np1, this.np2);
     item.geometry.left.showing = this.left;
     if (world.worldrenderer.render.world) {
-        if (item.watersurface.left.keys.length) {
-            this.itemwaterline.projectItem3DWaterlineLeft(item, window, wc);
+        if (item.y + item.height > world.waterline.waterline) {
+            if (item.watersurface.left.keys.length) {
+                this.itemwaterline.projectItem3DWaterlineLeft(item, window, wc);
+            }
         }
     }
 }
     
 Item3D.prototype.projectItem3DSidesRight = function(window, world, item, wc, x, y, width, height, depth, scale) {
-    if (!item.geometry.visible.right.visible) return;
+    if (!item.geometry.visible.right.visible && !world.debug.level.hsr && !world.debug.level.render) return;
     if (!item.geometry.front.geometry.points.length) return;
+
+    if (world.waterline.flow && (item.y + item.height <= world.waterline.waterline)) {
+        item.geometry.right.geometry.points.length = 4;    
+    }
+
     this.p1.x = round(item.geometry.front.geometry.points[1].x);
     this.p1.y = round(item.geometry.front.geometry.points[1].y);
     this.p2.x = round(item.geometry.front.geometry.points[2].x);
@@ -109,14 +128,16 @@ Item3D.prototype.projectItem3DSidesRight = function(window, world, item, wc, x, 
     item.geometry.right.geometry = project3D(this.p1, this.p2, depth, item.geometry.right.geometry, scale, x, y, wc, this.np1, this.np2);
     item.geometry.right.showing = this.right;
     if (world.worldrenderer.render.world) {
-        if (item.watersurface.right.keys.length) {
-            this.itemwaterline.projectItem3DWaterlineRight(item, window, wc);
+        if (item.y + item.height > world.waterline.waterline) {
+            if (item.watersurface.right.keys.length) {
+                this.itemwaterline.projectItem3DWaterlineRight(item, window, wc);
+            }
         }
     }
 }
 
 Item3D.prototype.projectItem3DTop = function(window, world, item, wc, x, y, width, height, depth, scale) {
-    if (!item.geometry.visible.top.visible) return;
+    if (!item.geometry.visible.top.visible && !world.debug.level.hsr && !world.debug.level.render) return;
     if (!item.geometry.front.geometry.points.length) return;
     this.p1.x = round(item.geometry.front.geometry.points[0].x);
     this.p1.y = round(item.geometry.front.geometry.points[0].y);
@@ -141,7 +162,7 @@ Item3D.prototype.projectItem3DTop = function(window, world, item, wc, x, y, widt
 }
 
 Item3D.prototype.projectItem3DBottom = function(window, world, item, wc, x, y, width, height, depth, scale) {
-    if (!item.geometry.visible.bottom.visible) return;
+    if (!item.geometry.visible.bottom.visible && !world.debug.level.hsr && !world.debug.level.render) return;
     if (!item.geometry.front.geometry.points.length) return;
     var t = item.geometry.front.geometry.points.length - 1;
     this.p1.x = round(item.geometry.front.geometry.points[t].x);

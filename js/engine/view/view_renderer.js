@@ -72,7 +72,7 @@ ViewRenderer.prototype.render = function(now, world, paused) {
 
 
 ViewRenderer.prototype.setBackground = function(world) {
-    if (world.debug.level.level) {
+    if (world.debug.level.level || !world.worldrenderer.render.world) {
         this.view.parent.style.background = "white";
         this.view.rendertarget.canvas.setBackground("white");
         this.ready = false;

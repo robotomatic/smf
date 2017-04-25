@@ -21,7 +21,7 @@
                 "height" : 20,
                 "depth" : 60,
                 "size" : 300,
-                "frequency" : 0.1
+                "frequency" : 0.25
             }
         },
         "color" : {
