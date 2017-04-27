@@ -3,6 +3,7 @@
         "name" : "Bluster",
         "width" : 120,
         "height" : 120, 
+        "pad" : 50,
         "debug" : false,
         "idlespeed" : ".45",
         "color" : "#c4dbe5",

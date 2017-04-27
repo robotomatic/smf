@@ -7,6 +7,7 @@ function initializeDevPlayer() {
     if (!__dev) return;
     devplayer = new Array();
     dev_player_template = document.getElementById("dev-dialog-player");
+    initializeDevPlayerCharacter();
 }
 
 function showDevPlayer(player) {
@@ -42,6 +43,19 @@ function createDevPlayerDialog(player, pid) {
         title.innerHTML = player.name;
         title.id = "dev-dialog-player-title-" + id;
     }
+    
+    
+    var char = findChildById(pd, "dev-player-character-character");
+    if (char) {
+        char.id = "dev-player-character-character-" + id;
+        char.onclick = function(e) {
+            showDevPlayerCharacter(player);
+            e.stopPropagation()
+            e.preventDefault();
+            return false;
+        }
+    }
+    
     
     var playerchar = findChildById(pd, "dev-player-character");
     if (playerchar) {
@@ -174,6 +188,7 @@ function updateDevPlayer(player) {
     updateDevPlayerSize(pd, player);
     updateDevPlayerDebug(pd, player);
     updateDevPlayerCollision(pd, player);
+    updateDevPlayerCharacter(pd, player);
 }
 
 
@@ -271,6 +286,8 @@ function removeDevPlayerId(playerid) {
     if (dialog) dialog.parentNode.removeChild(dialog);
     var pid = "dev-dialog-players-player-" + playerid;
     delete devplayer[pid];   
+    removeDevDialog(pid);
+    removeDevPlayerCharacterId(playerid);
 }
 
 
@@ -312,3 +329,12 @@ function changeDevPlayerCharacter(player, char) {
     if (!__dev) return;
     controller.changePlayerCharacter(player, char);
 }
+
+
+
+
+function updateDevPlayerImage(player) {
+    if (!__dev) return;
+    updateDevPlayerCharacterImage(player);
+}
+

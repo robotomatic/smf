@@ -345,6 +345,7 @@
                         <input type="checkbox" class="dialog-toggle float-left dev-toggle-player-camera" id="dev-dialog-players-players-player-template-camera-camera" value="Auto" CHECKED> Camera
                     </label>
                 </div>
+                <p class="text-left float-left dialog-label-subhead" id="dev-dialog-players-players-player-template-character"></p>
             </div>
             
         </div>
@@ -371,15 +372,8 @@
         
         <div class="dialog-row dialog-row-border">
             
-            
-<!--
-            todo: need better id for player
-            todo: add name here too
--->
-            
-            
             <div class="float-left dialog-col-30">
-                <label class="text-left float-left  dialog-label">Character :</label>
+                <a id="dev-player-character-character" class="text-left float-left dialog-label pointer-cursor">Character :</a>
             </div>
             <div class="float-left dialog-col-70">
                 <select class="dialog-select float-left" id="dev-player-character" value=""></select>
@@ -545,5 +539,22 @@
                 
             </tbody>
         </table>
+    </div>
+</div>
+
+
+
+
+<div id="dev-dialog-player-character" class="dialog shadow hidden resize dialog-resize">
+    <div class="dialog-title dialog-drag">
+        <a id="dev-dialog-player-character-close" class="float-left dialog-title-close circle">x</a>
+        <a id="dev-dialog-player-character-title" class="float-right dialog-title-title">Player Character</a>
+    </div>
+    <div class="dialog-wrap resize resize-resize resize-resize-large">
+        
+        <div class="dialog-row dialog-row">
+            <div class="float-left dialog-canvas dialog-color-dark" id="dev-debug-player-character-canvas"></div>
+        </div>
+        
     </div>
 </div>

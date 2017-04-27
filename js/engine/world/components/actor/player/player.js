@@ -14,12 +14,14 @@ function Player(id, name, color, x, y, z, width, height, speed, character, hp, l
     this.box = new Rectangle(0, 0, 0, 0);
     this.scalefactor = 0;
 
+    this.isNPC = true;
+    
     this.getscamera = false;
     
-    this.projectedlocation = new Point(0, 0);
+    this.projectedlocation = new Point(0, 0);   
     this.gamecanvas = new GameCanvas();
+    
     this.image = new Image(null, 0, 0, 0, 0);
-    this.imagepad = 100;
 
     this.showing = false;
     
@@ -254,31 +256,26 @@ Player.prototype.render = function(now, width, height, ctx, scale, debug, paused
         this.debugtemp.guts = this.debug.guts ? true : debug.guts;
     }
     debug = debug ? debug : this.debug;
-    
-    this.renderStart(now, width, height, scale * 2);
-    this.renderRender(now, scale * 2, this.debugtemp, paused);
-    this.renderEnd(now);
-    this.drawImage(ctx, 0.5);
+    var scale = max(this.scale, 1);
+    this.renderStart(now, scale);
+    this.renderRender(now, scale, this.debugtemp, paused);    this.renderEnd(now);
+    this.drawImage(ctx);
 }
 
-Player.prototype.renderStart = function(now, width, height, scale) {
-    var sip = this.imagepad;
+Player.prototype.renderStart = function(now, scale) {
+    var sip = this.character.pad * scale;
     var doublepad = sip * 2;
-    var bx = this.box.x * scale;
-    var by = this.box.y * scale;
-    this.projectedlocation.x = bx - sip;
-    this.projectedlocation.y = by - sip;
-    var bw = this.box.width * scale;
-    var bh = this.box.height * scale;
+    var bw = this.controller.width * scale;
+    var bh = this.controller.height * scale;
     this.gamecanvas.setSize(bw + doublepad, bh + doublepad);
 }
 
 Player.prototype.renderRender = function(now, scale, debug, paused) {
     var c = this.gamecanvas;
-    var ip = this.imagepad;
+    var ip = this.character.pad;
     var px = 0;
     var py = 0;
-    this.character.draw(now, c, this, px, py, scale, ip, debug, paused);
+    this.character.draw(now, c, this, px, py, ip, scale, debug, paused);
     if (debug) this.playerdebugger.drawDebug(now, c, debug);
 }
 
@@ -288,13 +285,15 @@ Player.prototype.renderEnd = function(when) {
     this.image.width = this.gamecanvas.width;
     this.image.height = this.gamecanvas.height;
     this.image.data = this.gamecanvas;
-//    updateDevPlayer(this.image);
+    updateDevPlayerImage(this);
 }
 
-Player.prototype.drawImage = function(gamecanvas, scale = 1, offset = 0) {
-    var px = this.projectedlocation.x * scale;
-    var py = this.projectedlocation.y * scale;
-    var cw = this.gamecanvas.width * scale;
-    var ch = this.gamecanvas.height * scale;
-    this.image.draw(gamecanvas, px + offset, py + offset, cw - (offset * 2), ch - (offset * 2));
+Player.prototype.drawImage = function(gamecanvas) {
+    var px = this.box.x;
+    var py = this.box.y;
+    var is = this.character.pad * this.box.scale;
+    var ts = is * 2;
+    var cw = this.box.width;
+    var ch = this.box.height;
+    this.image.draw(gamecanvas, px - is, py - is, cw + ts, ch + ts);
 }

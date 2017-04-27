@@ -3,6 +3,7 @@
         "name" : "Burnzilla",
         "width" : 60,
         "height" : 100,
+        "pad" : 50,
         "debug" : false,
         "idlespeed" : ".5",
         "color" : "#b23915",

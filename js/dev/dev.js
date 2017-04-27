@@ -175,6 +175,13 @@ function toggleDevDialog(nid, hide = true) {
     ddd.bringToTop();
 }
 
+
+function removeDevDialog(nid) {
+    delete dialogs[nid];
+}
+
+
+
 function hideDialogs(id) {
     var keys = Object.keys(dialogs);
     for (var i = 0; i < keys.length; i++) {

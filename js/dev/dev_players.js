@@ -88,15 +88,22 @@ function addDevPlayersPlayer(player) {
     var pid = item.children.item(0);
     pid.id = "dev-dialog-players-players-player-id-" + id;
     
+    
     var pname = item.children.item(1);
     pname.id = "dev-dialog-players-players-player-name-" + id;
-    pname.innerHTML = name;
+    pname.innerHTML = player.name;
     pname.onclick = function(e) {
         showDevPlayer(player);
         e.stopPropagation();
         e.preventDefault();
         return false;
     }
+
+    var npc = player.isNPC ? "NPC" : "Player";
+    var charname = player.character.name + " - " + npc;
+    var pchar = item.children.item(4);
+    pchar.id = "dev-dialog-players-players-player-character-" + id;
+    pchar.innerHTML = charname;
     
     var pdel = item.children.item(2);
     pdel.id = "dev-dialog-players-players-player-remove-" + id;
@@ -113,12 +120,12 @@ function addDevPlayersPlayer(player) {
     var pcamlabelcam = pcamlabel.children.item(0);
     pcamlabelcam.id = "dev-dialog-players-players-player-camera-camera-" + id;
     pcamlabelcam.checked = player.getscamera;
-    
     pcamlabelcam.onchange = function() {
         var id = this.id.replace("dev-dialog-players-players-player-camera-camera-", "");
         var check = this.checked;
         updateDevPlayersPlayerCamera(id, check);
     };
+    
     
     dev_players_list.appendChild(item);
 

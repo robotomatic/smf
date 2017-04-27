@@ -10,7 +10,7 @@ function Character() {
     this.color;
     this.width;
     this.height;
-    this.pad;
+    this.pad = 10;
     this.idlespeed;
     this.animator;
     this.renderer;
@@ -29,12 +29,12 @@ Character.prototype.loadJson = function(json) {
     this.color = json.color;
     this.width = json.width;
     this.height = json.height;
-    this.pad = json.pad;
     this.idlespeed = json.idlespeed;
     this.groups = json.groups;
     this.parts = json.parts;
     this.animations = json.animations;
     this.hidden = json.hidden;
+    if (json.pad) this.pad = json.pad;
     if (json.emitter) {
         this.emitter = new ParticleEmitter(json.emitter);
     }
@@ -74,14 +74,15 @@ Character.prototype.translate = function(window)  {
     if (this.emitter) this.emitter.translate(window);
 }
 
-Character.prototype.draw = function(now, gamecanvas, player, px, py, scale, pad, debug)  { 
+Character.prototype.draw = function(now, gamecanvas, player, px, py, pad, scale, debug, paused)  { 
     if (!this.paused) {
         this.animator.animate(now, this);
     }
+    pad *= scale;
     this.mbr.x = px + pad;
     this.mbr.y = py + pad;
     this.mbr.z = 0;
-    this.mbr.width = player.box.width * scale;
-    this.mbr.height = player.box.height * scale;
+    this.mbr.width = player.controller.width * scale;
+    this.mbr.height = player.controller.height * scale;
     this.renderer.draw(gamecanvas, this, debug);
 }

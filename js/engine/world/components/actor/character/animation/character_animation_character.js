@@ -16,7 +16,6 @@ CharacterAnimatioCharacter.prototype.initialize = function(character) {
     if (!this.animchar) {
         this.animchar = JSON.parse(JSON.stringify(character.parts));
         this.updateCharacterKeys(this.animchar);
-        if (character.pad) this.animchar.pad = character.pad;
     }
     
     if (!this.indexchar) {
