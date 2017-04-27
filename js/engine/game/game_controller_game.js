@@ -120,7 +120,9 @@ GameControllerGame.prototype.loadPlayers = function() {
         var player = this.loadPlayerCharacter(charname);
         
         var camera = ((i == 0) && (this.gamecontroller.gamesettings.settings.camera && this.gamecontroller.gamesettings.settings.camera.follow));
-        this.addPlayerCharacter(player, camera);
+        var isnpc = i > 0;
+        this.addPlayerCharacter(player, isnpc, camera);
+        
         
         playertotal++;
     }
@@ -216,8 +218,11 @@ GameControllerGame.prototype.loadPlayerCharacter = function(charname) {
     return char;
 }
     
-GameControllerGame.prototype.addPlayerCharacter = function(character, camera = false) {
-    var name = character.name;
+GameControllerGame.prototype.addPlayerCharacter = function(character, isnpc = true, camera = false) {
+    
+    var pt = this.players.players.length;
+    
+    var name = "Player-" + pt;
     var color = character.color;
 
     var x = 0;
@@ -228,7 +233,8 @@ GameControllerGame.prototype.addPlayerCharacter = function(character, camera = f
     var speed = 3;
     var hp = 1000;
 
-    var player = new Player(this.players.players.length, name, color, x, y, z, width, height, speed, character, hp, this);
+    var player = new Player(pt, name, color, x, y, z, width, height, speed, character, hp, this);
+    player.isNPC = isnpc;
     player.getscamera = camera;
     this.players.addPlayer(player);
     
