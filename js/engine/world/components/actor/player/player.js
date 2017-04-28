@@ -17,6 +17,8 @@ function Player(id, name, color, x, y, z, width, height, speed, character, hp, l
     this.isNPC = true;
     
     this.getscamera = false;
+    this.hidef = false;
+    this.hidefsize = 10;
     
     this.projectedlocation = new Point(0, 0);   
     this.gamecanvas = new GameCanvas();
@@ -257,6 +259,7 @@ Player.prototype.render = function(now, width, height, ctx, scale, debug, paused
     }
     debug = debug ? debug : this.debug;
     var scale = max(this.scale, 1);
+    if (this.hidef) scale = this.hidefsize;
     this.renderStart(now, scale);
     this.renderRender(now, scale, this.debugtemp, paused);    this.renderEnd(now);
     this.drawImage(ctx);

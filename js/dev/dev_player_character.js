@@ -39,8 +39,32 @@ function createDevPlayerCharacterDialog(player, pid) {
     
     var title = findChildById(pd, "dev-dialog-player-character-title");
     if (title) {
-        title.innerHTML = player.name;
+        title.innerHTML = player.name + ": " + player.character.name;
         title.id = "dev-dialog-player-character-title-" + id;
+    }
+
+    var hidef = findChildById(pd, "dev-player-character-hidef");
+    if (hidef) {
+        hidef.id = "dev-player-character-hidef-" + id;
+        hidef.onclick = function() {
+            setPlayerHiDef(player, this.checked);
+        }
+    }
+
+    var debugchar = findChildById(pd, "dev-player-character-debug-character");
+    if (debugchar) {
+        debugchar.id = "dev-player-character-debug-character-" + id;
+        debugchar.onclick = function() {
+            setPlayerCharacterDebugCharacter(player, this.checked);
+        }
+    }
+    
+    var debugguts = findChildById(pd, "dev-player-character-debug-guts");
+    if (debugguts) {
+        debugguts.id = "dev-player-character-debug-guts-" + id;
+        debugguts.onclick = function() {
+            setPlayerCharacterDebugGuts(player, this.checked);
+        }
     }
     
     
@@ -58,6 +82,10 @@ function createDevPlayerCharacterDialog(player, pid) {
     return {
         dialog : pd,
         visible : false,
+        tite : title,
+        hidef : hidef,
+        debugchar : debugchar,
+        debugguts : debugguts,
         gamecanvas : gamecanvas
     };
     
@@ -65,6 +93,13 @@ function createDevPlayerCharacterDialog(player, pid) {
 
 
 
+function changeDevPlayerCharacterCharacter(player, char) {
+    if (!__dev) return;
+    var pid = "dev-dialog-players-player-character-" + player.uid;
+    var pcd = devplayercharacter[pid];
+    if (!pcd) return;
+    title.innerHTML = player.name + ": " + player.character.name;
+}
 
 
 function removeDevPlayerCharacterId(playerid) {
@@ -84,6 +119,19 @@ function removeDevPlayerCharacterId(playerid) {
 
 
 
+function setPlayerHiDef(player, hidef) {
+    player.hidef = hidef;
+}
+
+
+function updatePlayerHiDef(player) {
+    if (!__dev) return;
+    var pid = "dev-dialog-players-player-character-" + player.uid;
+    var pcd = devplayercharacter[pid];
+    if (!pcd) return;
+    if (!pcd.visible) return;
+    pcd.hidef.checked = player.hidef;
+}
 
 
 
@@ -91,6 +139,35 @@ function removeDevPlayerCharacterId(playerid) {
 
 
 
+
+function setPlayerCharacterDebugCharacter(player, char) {
+    player.debug.character = char;
+}
+
+function updatePlayerCharacterDebugCharacter(player) {
+    if (!__dev) return;
+    var pid = "dev-dialog-players-player-character-" + player.uid;
+    var pcd = devplayercharacter[pid];
+    if (!pcd) return;
+    if (!pcd.visible) return;
+    pcd.debugchar.checked = player.debug.character;
+}
+
+
+
+
+function setPlayerCharacterDebugGuts(player, guts) {
+    player.debug.guts = guts;
+}
+
+function updatePlayerCharacterDebugGuts(player) {
+    if (!__dev) return;
+    var pid = "dev-dialog-players-player-character-" + player.uid;
+    var pcd = devplayercharacter[pid];
+    if (!pcd) return;
+    if (!pcd.visible) return;
+    pcd.debugguts.checked = player.debug.guts;
+}
 
 
 
@@ -101,6 +178,9 @@ function removeDevPlayerCharacterId(playerid) {
 
 function updateDevPlayerCharacter(player) {
     if (!__dev) return;
+    updatePlayerHiDef(player);
+    updatePlayerCharacterDebugCharacter(player);
+    updatePlayerCharacterDebugGuts(player);
 }
 
 
@@ -113,11 +193,19 @@ function updateDevPlayerCharacterImage(player) {
     var gc = player.gamecanvas;
     var gcw = gc.width;
     var gch = gc.height;
-    var gcr = gcw / gch;
     var cnv = pcd.gamecanvas;
-    cnv.clear();
-    var ch = cnv.canvas.height;
-    var cw = ch * gcr;
+    var cch = cnv.canvas.clientHeight;
+    var ccw = cnv.canvas.clientWidth;
+    cnv.canvas.height = cch;
+    cnv.canvas.width = ccw;
+    var ratio = gch / gcw;
+    var cw = ccw;
+    var ch = cw * ratio;
+    if (ch > cch) {
+        var or = gcw / gch;
+        ch = cch;
+        cw = ch * or;
+    }
     var cx = (cnv.canvas.width - cw) / 2;
     var cy = (cnv.canvas.height - ch) / 2;
     cnv.drawImage(player.gamecanvas, round(cx), round(cy), round(cw), round(ch));

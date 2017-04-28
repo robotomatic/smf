@@ -188,7 +188,7 @@ function updateDevPlayer(player) {
     updateDevPlayerSize(pd, player);
     updateDevPlayerDebug(pd, player);
     updateDevPlayerCollision(pd, player);
-    updateDevPlayerCharacter(pd, player);
+    updateDevPlayerCharacter(player);
 }
 
 
@@ -328,6 +328,7 @@ function setDevPlayerDebugGuts(player, debug) {
 function changeDevPlayerCharacter(player, char) {
     if (!__dev) return;
     controller.changePlayerCharacter(player, char);
+    changeDevPlayerCharacterCharacter(player, char);
 }
 
 

@@ -65,8 +65,9 @@
 .dialog-wrap {
     clear: both;
     float: left;
-    width: 92%;
+    width: 100%;
     padding: 1em;
+    box-sizing: border-box;
     height: auto;
     overflow: hidden;
     position: relative;
@@ -119,6 +120,16 @@
 }
 
 
+
+
+.dialog-col-col {
+    width: 12em;
+    padding-right: 1em;
+}
+
+.dialog-col-full {
+    width: calc(100% - 13em);
+}
 
 
 .dialog-col-20 {
@@ -415,7 +426,6 @@
 .dialog-canvas {
     width: 100%;
     height: 100%;
-    float: left;
 }
 
 .dialog-canvas > canvas {
