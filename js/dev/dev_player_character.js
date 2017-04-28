@@ -82,7 +82,7 @@ function createDevPlayerCharacterDialog(player, pid) {
     return {
         dialog : pd,
         visible : false,
-        title : title,
+        tite : title,
         hidef : hidef,
         debugchar : debugchar,
         debugguts : debugguts,
@@ -98,7 +98,7 @@ function changeDevPlayerCharacterCharacter(player, char) {
     var pid = "dev-dialog-players-player-character-" + player.uid;
     var pcd = devplayercharacter[pid];
     if (!pcd) return;
-    pcd.title.innerHTML = player.name + ": " + player.character.name;
+    title.innerHTML = player.name + ": " + player.character.name;
 }
 
 
