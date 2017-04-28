@@ -84,9 +84,8 @@ Players.prototype.reset = function(when) {
 }
 
 Players.prototype.update = function(when, delta, paused) {
+    updateDevPlayers(this.players);
 }
-
-
 
 Players.prototype.follow = function() {
     if (!this.players.length) return;

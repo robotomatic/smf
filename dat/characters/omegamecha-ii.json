@@ -3,7 +3,7 @@
         "name" : "Omegamecha Blackheart",
         "width" : 27,
         "height" : 80, 
-        "pad" : 20,
+        "pad" : 50,
         "debug" : false, 
         "idlespeed" : 1.9,
         "color" : "#588bb1",

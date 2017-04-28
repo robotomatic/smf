@@ -65,7 +65,18 @@ function updateDevPlayersPlayer(player) {
     if (!__dev) return;
     if (!devplayers) return;
     var id = player.uid;
-    if (!devplayers[id]) addDevPlayersPlayer(player);
+    var dl = devplayers[id];
+    if (!dl) {
+        addDevPlayersPlayer(player);
+        return;
+    }
+    
+    var cname = dl.charname.innerHTML;
+    var pcname = player.character.name + " - " + (player.isNPC ? "NPC" : "Player");
+    if (cname != pcname) dl.charname.innerHTML = pcname;
+
+    var cam = dl.camera.checked;
+    if (cam != player.getscamera) dl.camera.checked = player.getscamera;
 }
 
 
@@ -131,7 +142,9 @@ function addDevPlayersPlayer(player) {
 
     devplayers[id] = {
         player : player,
-        item : item
+        item : item,
+        charname : pchar,
+        camera : pcamlabelcam
     }
 }
 

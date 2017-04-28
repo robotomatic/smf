@@ -4,7 +4,6 @@
         "color" : "#af84c9",
         "width" : 20,
         "height" : 38,
-        "pad" : 1,
         "debug" : false,
         "idlespeed" : 1.5,
         "animations" : [
@@ -43,22 +42,22 @@
                         "group" : "body",
                         "parts" : {
                             "head-top"  : { 
-                                "width" : 40,
-                                "height" : 5,
-                                "x" : 30,
-                                "y" : 0
+                                "width" : 42,
+                                "height" : 7,
+                                "x" : 29,
+                                "y" : -1
                             },
                             "head-middle"  : {
-                                "width" : 60,
-                                "height" : 10,
-                                "x" : 20,
-                                "y" : 6
+                                "width" : 62,
+                                "height" : 12,
+                                "x" : 19,
+                                "y" : 5
                             },
                             "head-bottom"  : {
-                                "width" : 50,
-                                "height" : 5,
-                                "x" : 25,
-                                "y" : 12
+                                "width" : 52,
+                                "height" : 7,
+                                "x" : 24,
+                                "y" : 11
                             }
                         }
                     },
@@ -70,16 +69,16 @@
                                 "width" : 16,
                                 "height" : 1,
                                 "x" : 42,
-                                "y" : 16.5,
+                                "y" : 15.8,
                                 "color" : "#805b96",
                                 "path" : "smooth"
                             },
                             "chin-chin" : {
                                 "zindex" : 601,
                                 "width" : 20,
-                                "height" : 0.01,
+                                "height" : 1,
                                 "x" : 40,
-                                "y" : 16,
+                                "y" : 15,
                                 "path" : "smooth"
                             }
                         }
@@ -154,10 +153,10 @@
                                         "color" : "black",
                                         "zindex" : 1313,
                                         "pointinfo" : {
-                                            "0" : "smooth",
-                                            "2" : "smooth"
+                                            "1" : "smooth",
+                                            "3" : "smooth"
                                         },
-                                        "angle" : -35
+                                        "angle" : 35
                                     }
                                 } 
                             }
@@ -170,10 +169,10 @@
                                 "parts" : {
                                     "left-ear-outer" : {
                                         "zindex" : 83,
-                                        "width" : 15,
-                                        "height" : 12,
-                                        "x" : 10,
-                                        "y" : 5,
+                                        "width" : 17,
+                                        "height" : 14,
+                                        "x" : 9,
+                                        "y" : 4,
                                         "pointinfo" : {
                                             "1" : "smooth",
                                             "3" : "smooth"
@@ -181,10 +180,10 @@
                                     },
                                     "left-ear-inner" : {
                                         "zindex" : 84,
-                                        "width" : 5,
-                                        "height" : 5,
-                                        "x" : 16,
-                                        "y" : 10,
+                                        "width" : 7,
+                                        "height" : 7,
+                                        "x" : 15,
+                                        "y" : 9,
                                         "pointinfo" : {
                                             "1" : "smooth",
                                             "3" : "smooth"
@@ -197,10 +196,10 @@
                                 "parts" : {
                                     "right-ear-outer" : {
                                         "zindex" : 85,
-                                        "width" : 15,
-                                        "height" : 12,
-                                        "x" : 75,
-                                        "y" : 5,
+                                        "width" : 17,
+                                        "height" : 14,
+                                        "x" : 74,
+                                        "y" : 4,
                                         "pointinfo" : {
                                             "0" : "smooth",
                                             "2" : "smooth"
@@ -208,10 +207,10 @@
                                     },
                                     "right-ear-inner" : {
                                         "zindex" : 86,
-                                        "width" : 5,
-                                        "height" : 5,
-                                        "x" : 79    ,
-                                        "y" : 10,
+                                        "width" : 7,
+                                        "height" : 7,
+                                        "x" : 78,
+                                        "y" : 9,
                                         "pointinfo" : {
                                             "0" : "smooth",
                                             "2" : "smooth"
@@ -243,7 +242,7 @@
                                 "width" : 10,
                                 "height" : 1,
                                 "x" : 45,
-                                "y" : 13.2
+                                "y" : 12.2
                             }
                         }
                     },
@@ -251,91 +250,91 @@
                     "teeth" : {
                         "parts" : {
                             "left" : {
-                                "width" : 5,
-                                "height" : 2,
-                                "x" : 26,
-                                "y" : 15.5,
+                                "width" : 7,
+                                "height" : 4,
+                                "x" : 25,
+                                "y" : 15,
                                 "color" : "white",
                                 "zindex" : 5508,
                                 "angle" : 45
                             },
                             "top-left" : {
-                                "width" : 5,
-                                "height" : 2,
-                                "x" : 31,
-                                "y" : 11,
+                                "width" : 7,
+                                "height" : 4,
+                                "x" : 30,
+                                "y" : 10,
                                 "color" : "white",
                                 "zindex" : 5509,
                                 "angle" : 30
                             },
                             "top-mid-left" : {
-                                "width" : 5,
-                                "height" : 2,
-                                "x" : 42,
-                                "y" : 10,
+                                "width" : 7,
+                                "height" : 4,
+                                "x" : 41,
+                                "y" : 9,
                                 "color" : "white",
                                 "zindex" : 5510,
                                 "angle" : 45
                             },
                             "top-mid-right" : {
-                                "width" : 5,
-                                "height" : 2,
-                                "x" : 53,
-                                "y" : 10,
+                                "width" : 7,
+                                "height" : 4,
+                                "x" : 52,
+                                "y" : 9,
                                 "color" : "white",
                                 "zindex" : 5511,
                                 "angle" : 45
                             },
                             "top-right" : {
-                                "width" : 5,
-                                "height" : 2,
-                                "x" : 64,
-                                "y" : 11,
+                                "width" : 7,
+                                "height" : 4,
+                                "x" : 63,
+                                "y" : 10,
                                 "color" : "white",
                                 "zindex" : 5511,
                                 "angle" : 60
                             },
                             "right" : {
-                                "width" : 5,
-                                "height" : 2,
-                                "x" : 69,
-                                "y" : 15.5,
+                                "width" : 7,
+                                "height" : 4,
+                                "x" : 68,
+                                "y" : 14.5,
                                 "color" : "white",
                                 "zindex" : 5508,
                                 "angle" : 45
                             },
                             "bottom-left" : {
-                                "width" : 5,
-                                "height" : 2,
+                                "width" : 7,
+                                "height" : 4,
                                 "x" : 31,
-                                "y" : 20,
+                                "y" : 19,
                                 "color" : "white",
                                 "zindex" : 5512,
                                 "angle" : 60
                             },
                             "bottom-mid-left" : {
-                                "width" : 5,
-                                "height" : 2,
-                                "x" : 42,
-                                "y" : 21,
+                                "width" : 7,
+                                "height" : 4,
+                                "x" : 41,
+                                "y" : 20,
                                 "color" : "white",
                                 "zindex" : 5513,
                                 "angle" : 45
                             },
                             "bottom-mid-right" : {
-                                "width" : 5,
-                                "height" : 2,
-                                "x" : 53,
-                                "y" : 21,
+                                "width" : 7,
+                                "height" : 4,
+                                "x" : 52,
+                                "y" : 20,
                                 "color" : "white",
                                 "zindex" : 5514,
                                 "angle" : 45
                             },
                             "bottom-right" : {
-                                "width" : 5,
-                                "height" : 2,
-                                "x" : 64,
-                                "y" : 20,
+                                "width" : 7,
+                                "height" : 4,
+                                "x" : 62,
+                                "y" : 19,
                                 "color" : "white",
                                 "zindex" : 5515,
                                 "angle" : 30,
@@ -347,19 +346,19 @@
                     "tongue" : {
                         "parts" : {
                             "tongue-left" : {
-                                "width" : 27,
-                                "height" : 10,
-                                "x" : 25,
-                                "y" : 18,
+                                "width" : 29,
+                                "height" : 12,
+                                "x" : 24,
+                                "y" : 17,
                                 "color" : "#6d3d3d",
                                 "path" : "smooth",
                                 "zindex" : 5501
                             },
                             "tongue-right" : {
-                                "width" : 25,
-                                "height" : 10,
-                                "x" : 48,
-                                "y" : 18,
+                                "width" : 27,
+                                "height" : 12,
+                                "x" : 47,
+                                "y" : 17,
                                 "color" : "#6d3d3d",
                                 "path" : "smooth",
                                 "zindex" : 5501
@@ -465,7 +464,7 @@
                                                         "parts" : {
                                                             "left-cuff" : {
                                                                 "width" : 10,
-                                                                "height" : 3,
+                                                                "height" : 4,
                                                                 "x" : 20,
                                                                 "y" : 63,
                                                                 "color" : "#372a62",
@@ -544,7 +543,7 @@
                                                         "parts" : {
                                                             "right-cuff" : {
                                                                 "width" : 10,
-                                                                "height" : 3,
+                                                                "height" : 4,
                                                                 "x" : 70,
                                                                 "y" : 63,
                                                                 "color" : "#372a62",

@@ -328,6 +328,7 @@ function setDevPlayerDebugGuts(player, debug) {
 function changeDevPlayerCharacter(player, char) {
     if (!__dev) return;
     controller.changePlayerCharacter(player, char);
+    updateDevPlayersPlayer(player);
     changeDevPlayerCharacterCharacter(player, char);
 }
 
