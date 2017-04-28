@@ -3,7 +3,7 @@
         "name" : "Omegamecha Candyheart",
         "width" : 27,
         "height" : 80, 
-        "pad" : 20,
+        "pad" : 50,
         "debug" : false, 
         "idlespeed" : 2.2,
         "color" : "#e099bd",
