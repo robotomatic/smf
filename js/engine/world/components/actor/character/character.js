@@ -5,15 +5,15 @@ function Character() {
     this.id;
     this.name;
     this.emitter;
-    this.parts;
-    this.groups;
-    this.color;
+    this.parts = new Array();
+    this.groups = new Array();
+    this.colors = new Array();
     this.width;
     this.height;
     this.pad = 10;
     this.idlespeed;
-    this.animator;
-    this.renderer;
+    this.animator = new CharacterAnimator();
+    this.renderer = new CharacterRenderer();
     this.hidden;
     this.mbr = new Rectangle();
     
@@ -26,13 +26,13 @@ Character.prototype.loadJson = function(json) {
     this.json = json;
     this.id = json.id;
     this.name = json.name;
-    this.color = json.color;
     this.width = json.width;
     this.height = json.height;
     this.idlespeed = json.idlespeed;
-    this.groups = json.groups;
-    this.parts = json.parts;
-    this.animations = json.animations;
+    if (json.colors) this.colors = json.colors;
+    if (json.groups) this.groups = json.groups;
+    if (json.parts) this.parts = json.parts;
+    if (json.animations) this.animations = json.animations;
     this.hidden = json.hidden;
     if (json.pad) this.pad = json.pad;
     if (json.emitter) {
@@ -41,13 +41,10 @@ Character.prototype.loadJson = function(json) {
     return this;
 }
 
-Character.prototype.setAnimator = function(animator) {
-    this.animator = animator;
+Character.prototype.loadAnimations = function(animations) {
+    this.animator.loadAnimations(animations);
 }
 
-Character.prototype.setRenderer = function(renderer) {
-    this.renderer = renderer;
-}
 
 Character.prototype.pause = function(now)  { 
     this.paused = true;

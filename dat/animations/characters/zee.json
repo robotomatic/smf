@@ -10,10 +10,10 @@
                 "implant-main" : {
                     "frames" : [
                         { 
-                            "color" : "#b9f861"
+                            "color" : "implant"
                         },
                         { 
-                            "color" : "#a4ff25"
+                            "color" : "implant-alt"
                         }
                     ]
                 },

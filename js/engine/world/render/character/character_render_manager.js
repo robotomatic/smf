@@ -5,14 +5,14 @@ function CharacterRenderManager() {
     this.groupnames = {};
 }
 
-CharacterRenderManager.prototype.updateCharacter = function(box, character, pad, color) {
+CharacterRenderManager.prototype.updateCharacter = function(character, animchar) {
     if (this.groups.length) this.resetCharacterGroups();
-    this.updateCharacterParts(box, character, pad, color);
-    if (!character.groups) return;
+    this.updateCharacterParts(character, animchar, "");
+    if (!animchar.groups) return;
     for (var i = 0; i < this.groups.length; i++) {
         var group = this.groups[i];
         var name = group.name;
-        var groupdef = character.groups[name];
+        var groupdef = animchar.groups[name];
         if (!groupdef || groupdef.draw == false) continue;
         var z = 100;
         if (groupdef.zindex || groupdef.zindex == 0) z = groupdef.zindex;
@@ -27,38 +27,37 @@ CharacterRenderManager.prototype.resetCharacterGroups = function() {
     }
 }
 
-CharacterRenderManager.prototype.updateCharacterParts = function(box, parts, pad, color) { 
+CharacterRenderManager.prototype.updateCharacterParts = function(character, parts, color) { 
     var keys = parts.keys;
     for (var i = 0; i < keys.length; i++) {
         if (keys[i] == "keys" || keys[i] == "groups") continue;
         var part = keys[i];
         if (part.draw == false) continue;
-        this.updateCharacterPart(box, part, parts[part], pad, color);
+        this.updateCharacterPart(character, part, parts[part], color);
     }
 }
 
-CharacterRenderManager.prototype.updateCharacterPart = function(box, partname, part, pad, color) {
+CharacterRenderManager.prototype.updateCharacterPart = function(character, partname, part, color) {
     if (part.draw === false && !part.link) return;
-    if (part.group) this.updateCharacterGroup(box, part, pad, color);
-    else if (part.height && part.width) this.updatePart(box, partname, part, pad, color);
+    if (!part.color) part.color = color;
+    if (part.group) this.updateCharacterGroup(character, part);
+    else if (part.height && part.width) this.updatePart(character, partname, part);
     if (part.parts) {
-        color = (part.color) ? part.color : color;
-        if (part.group) this.updateCharacterGroup(box, part.parts, pad, color);
-        else this.updateCharacterParts(box, part.parts, pad, color);
+        if (part.group) this.updateCharacterGroup(character, part.parts);
+        else this.updateCharacterParts(character, part.parts, part.color);
     }
 }
 
-CharacterRenderManager.prototype.updateCharacterGroup = function(box, parts, addpad, color) {
+CharacterRenderManager.prototype.updateCharacterGroup = function(character, parts) {
     if (!parts.group) return;
     var group = this.getGroup(parts.group);
-    var pad = .8 + addpad;
-    if (parts.width && parts.height) this.addCharacterGroupPart(parts, box, pad, group, color);
+    if (parts.width && parts.height) this.addCharacterGroupPart(character, parts, group);
     else {
         if (parts.parts) {
             var keys = parts.parts.keys;
             for (var i = 0; i < keys.length; i++) {
                 if (keys[i] == "keys" || keys[i] == "groups") continue;
-                this.addCharacterGroupPart(parts.parts[keys[i]], box, pad, group, color);
+                this.addCharacterGroupPart(character, parts.parts[keys[i]], group);
             }
         }
     }
@@ -66,11 +65,10 @@ CharacterRenderManager.prototype.updateCharacterGroup = function(box, parts, add
     if (parts.draw == false) group.draw = false;
 }
 
-CharacterRenderManager.prototype.updatePart = function(box, partname, part, addpad, color) {
+CharacterRenderManager.prototype.updatePart = function(character, partname, part) {
     if (part.draw === false && !part.link) return;
     var group = this.getGroup(partname);
-    var pad = .8 + addpad;
-    this.addCharacterGroupPart(part, box, pad, group, color);
+    this.addCharacterGroupPart(character, part, group);
 }
 
 CharacterRenderManager.prototype.getGroup = function(groupname) {
@@ -85,13 +83,19 @@ CharacterRenderManager.prototype.getGroup = function(groupname) {
     return group;
 }
 
-CharacterRenderManager.prototype.addCharacterGroupPart = function(part, box, pad, group, color) {
+CharacterRenderManager.prototype.addCharacterGroupPart = function(character, part, group) {
+    
+    var box = character.mbr;
+
+    //
+    // TODO: Nice to remove this someday...
+    //
+    var pad = 0.8;
     
     var part_height = box.height * ((part.height + pad) / 100);
-    var part_width = box.width * ((part.width + pad) / 100);
-    
+    var part_width = box.width * ((part.width + pad) / 100);    
     var part_x = round(box.x + (box.width * ((part.x - (pad / 2)) / 100)));
-    var part_y = round(box.y + (box.height * ((part.y - (pad / 2)) / 100)));
+    var part_y = round(box.y + (box.height * ((part.y - (pad / 2)) / 100)));    
     
     group.rects[group.rects.length] = geometryfactory.getRectangle(part_x, part_y, part_width, part_height);
     
@@ -116,15 +120,15 @@ CharacterRenderManager.prototype.addCharacterGroupPart = function(part, box, pad
             group.parts = part.parts;
         }
     }
-    group.color = part.color ? part.color : color;
+    
+    var color = part.color ? part.color : character.color;
+    group.color = color;
+    
     if (part.zindex || part.zindex == 0) group.zindex = part.zindex;
     else group.zindex = 1000 + group.index;
-    if (part.outline) {
-        group.outline = part.outline;
-        if (part.parts) this.updateGroupOutline(part.parts, part.outline);
-    }
+
     if (part.mask) group.mask = part.mask;
-    if (part.parts) this.updateGroup(part.parts, group.color, part.zindex);
+    if (part.parts) this.updateGroup(character, part.parts, group.color, part.zindex);
     if (part.clip) group.clip = part.clip;
     if (part.path) group.path = part.path;
     if (part.debug) group.debug = part.debug;
@@ -134,7 +138,7 @@ CharacterRenderManager.prototype.addCharacterGroupPart = function(part, box, pad
     if (part.pointinfo) group.pointinfo = part.pointinfo;
 }
 
-CharacterRenderManager.prototype.updateGroup = function(parts, color, zindex) {
+CharacterRenderManager.prototype.updateGroup = function(character, parts, color, zindex) {
     var keys = parts.keys;
     for (var i = 0; i < keys.length; i++) {
         if (keys[i] == "keys" || keys[i] == "groups") continue;
@@ -144,12 +148,5 @@ CharacterRenderManager.prototype.updateGroup = function(parts, color, zindex) {
     }
 }
 
-CharacterRenderManager.prototype.updateGroupOutline = function(parts, outline) {
-    var keys = parts.keys;
-    for (var i = 0; i < keys.length; i++) {
-        if (keys[i] == "keys" || keys[i] == "groups") continue;
-        var part = parts[keys[i]];
-        part.outline = outline;
-        if (part.parts) this.updateGroupOutline(part.parts, outline);
-    }
-}
+
+

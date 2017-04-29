@@ -213,8 +213,7 @@ GameControllerGame.prototype.loadPlayerCharacter = function(charname) {
     var charanims = new Array();
     for (var a in character.animations) charanims[character.animations[a]] = this.gameloader.animations.animations[character.animations[a]];
     var char = new Character().loadJson(character.json);
-    char.setAnimator(new CharacterAnimator(charanims));
-    char.setRenderer(new CharacterRenderer());
+    char.loadAnimations(charanims);
     return char;
 }
     

@@ -261,7 +261,8 @@ Player.prototype.render = function(now, width, height, ctx, scale, debug, paused
     var scale = max(this.scale, 1);
     if (this.hidef) scale = this.hidefsize;
     this.renderStart(now, scale);
-    this.renderRender(now, scale, this.debugtemp, paused);    this.renderEnd(now);
+    this.renderRender(now, scale, this.debugtemp, paused);
+    this.renderEnd(now);
     this.drawImage(ctx);
 }
 

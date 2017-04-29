@@ -6,14 +6,17 @@ function CharacterRendererGroups() {
     this.debugrects = new Array();
 }
 
-CharacterRendererGroups.prototype.renderGroups = function(gamecanvas, character, groupnames, groups, color, debug) {
-    if (debug.character || debug.guts) color = "white";
+CharacterRendererGroups.prototype.renderGroups = function(gamecanvas, character, animchar, rendermanager, debug) {
     this.debugrects.length = 0;        
+    
+    var groupnames = rendermanager.groupnames;
+    var groups = rendermanager.groups;
     if (!groups.length) return;
     groups.sort(sortByZIndex);  
+    
     for (var i = 0; i < groups.length; i++) {
         var group = groups[i];
-        this.grouprenderer.renderGroup(gamecanvas, character.groups[group.name], groupnames, group, color, this.debugrects, debug);
+        this.grouprenderer.renderGroup(gamecanvas, character, animchar.groups[group.name], groupnames, group, this.debugrects, debug);
     }
     this.renderDebug(gamecanvas);
 }
@@ -26,7 +29,7 @@ CharacterRendererGroups.prototype.renderDebug = function(gamecanvas) {
 CharacterRendererGroups.prototype.drawDebugRectangles = function(rects, gamecanvas) { 
     if (!rects.length) return;
     gamecanvas.beginPath();
-    gamecanvas.setStrokeStyle("darkgray");
+    gamecanvas.setStrokeStyle("black");
     gamecanvas.setLineWidth(.5);
     for (var i = 0; i < rects.length; i++) {
         rects[i].path(gamecanvas);

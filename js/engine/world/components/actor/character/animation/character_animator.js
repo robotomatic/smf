@@ -1,13 +1,17 @@
 "use strict";
 
-function CharacterAnimator(animations) {
-    this.loader = new CharacterAnimationLoader(animations);
-    this.animationcharacter = new CharacterAnimatioCharacter();
+function CharacterAnimator() {
+    this.loader = new CharacterAnimationLoader();
+    this.animationcharacter = new CharacterAnimationCharacter();
     this.currentAnimations = new Array();
     this.animstates = new Array();
     this.idlespeed = .1;
 }
 
+CharacterAnimator.prototype.loadAnimations = function(animations) {
+    this.loader.loadAnimations(animations);
+}
+    
 CharacterAnimator.prototype.pause = function(now) {
     var keys = Object.keys(this.currentAnimations);
     for (var i = 0; i < keys.length; i++) {

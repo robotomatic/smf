@@ -6,7 +6,6 @@
         "pad" : 50,
         "debug" : false,
         "idlespeed" : ".5",
-        "color" : "#73a819",
         "animations" : [
             "default", 
             "blink",
@@ -17,22 +16,34 @@
             "tail",
             "chompy"
         ],
+        
+        "colors" : {
+            "skin" : "#73a819",
+            "eye-white" : "white",
+            "eye-color" : "#6c2d1b",
+            "mouth" : "black",
+            "tongue" : "#862f2f",
+            "teeth" : "white",
+            "belly" : "#84bc25"
+        },
+        
         "parts" : {
             "groups" : {
                 "belly" : {
                     "path" : "smooth",
                     "zindex" : 600,
-                    "color" : "#84bc25"
+                    "color" : "belly"
                 },
                 "mouth" : {
                     "path" : "smooth",
                     "zindex" : 5000,
-                    "color" : "black",
+                    "color" : "mouth",
                     "clip" : "start"
                 },
                 "body" : {
                     "zindex" : 500,
-                    "path" : "smooth"
+                    "path" : "smooth",
+                    "color" : "skin"
                 }
             },
             
@@ -68,6 +79,7 @@
                         }
                     },
                     "face" : {
+                        "color" : "skin",
                         "parts" : {
                             "eyes"  : {
                                 "width" : 80,
@@ -87,7 +99,7 @@
                                                     "1" : "smooth",
                                                     "3" : "smooth"
                                                 },
-                                                "color" : "white",
+                                                "color" : "eye-white",
                                                 "clip" : "start",
                                                 "zindex" : 1301
                                             },
@@ -96,7 +108,7 @@
                                                 "height" : 12,
                                                 "x" : 25, 
                                                 "y" : 18,
-                                                "color" : "black",
+                                                "color" : "eye-color",
                                                 "pointinfo" : {
                                                     "0" : "smooth"
                                                 },
@@ -116,7 +128,7 @@
                                                     "0" : "smooth",
                                                     "2" : "smooth"
                                                 },
-                                                "color" : "white",
+                                                "color" : "eye-white",
                                                 "clip" : "start",
                                                 "zindex" : 1303
                                             },
@@ -125,7 +137,7 @@
                                                 "height" : 12,
                                                 "x" : 57, 
                                                 "y" : 18,
-                                                "color" : "black",
+                                                "color" : "eye-color",
                                                 "pointinfo" : {
                                                     "1" : "smooth"
                                                 },
@@ -183,7 +195,7 @@
                                 }  
                             },
                             "tongue" : {
-                                "color" : "#862f2f",
+                                "color" : "tongue",
                                 "width" : 50,
                                 "height" : 10,
                                 "x" : 20,
@@ -192,7 +204,7 @@
                                 "path" : "smooth"
                             },
                             "teeth" : {
-                                "color" : "white",
+                                "color" : "teeth",
                                 "parts" : {
                                     "tooth1" : {
                                         "width" : 7,
@@ -246,6 +258,7 @@
             "body" : {
                 "parts" : {
                     "tail" : {
+                        "color" : "skin",
                         "width" : 1,
                         "height" : 1,
                         "x" : 13,
@@ -322,6 +335,7 @@
                 }
             },
             "arms" : {
+                "color" : "skin",
                 "parts" : {
                     "left-arm" : {
                         "zindex" : 7000,
@@ -450,6 +464,7 @@
                 }
             },            
             "legs" : {
+                "color" : "skin",
                 "parts" : {
                     "left-leg" : { 
                         "zindex" : 1200,

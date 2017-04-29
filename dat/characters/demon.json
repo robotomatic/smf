@@ -1,7 +1,6 @@
 {
     "demon" : {
         "name" : "Gawky",
-        "color" : "#b26464",
         "width" : 16,
         "height" : 40,
         "debug" : false,
@@ -19,17 +18,31 @@
             "size" : 8
         },
         
+        "colors" : {
+            "skin" : "#b26464",
+            "eye-shadow" : "#7b3f3f",
+            "eye-white" : "white",
+            "eye-color" : "green",
+            "eye-pupil" : "black",
+            "mouth" : "black",
+            "lip" : "#804848",
+            "lip-lip" : "#b26464",
+            "gums" : "#744343",
+            "teeth" : "white"
+        },
+        
         "parts" : {
             
             "groups" : {
                 "head" : {
                     "zindex" : 420,
-                    "path" : "smooth"
+                    "path" : "smooth",
+                    "color" : "skin"
                 },
                 "mouth" : {
                     "zindex" : 450,
                     "path" : "smooth",
-                    "color" : "black",
+                    "color" : "mouth",
                     "clip" : "start"
                 }
             },
@@ -96,7 +109,7 @@
                             },
                             
                             "teeth" : {
-                                "color" : "white",
+                                "color" : "teeth",
                                 "parts" : {
                                     "teeth-top" : {
                                         "parts" : {
@@ -105,7 +118,7 @@
                                                 "height" : 5,
                                                 "x" : 20,
                                                 "y" : 15,
-                                                "color" : "#744343",
+                                                "color" : "gums",
                                                 "path" : "smooth"
                                             },
                                             "teeth-top-tooth-1" : {
@@ -168,7 +181,7 @@
                                                 "height" : 5,
                                                 "x" : 20,
                                                 "y" : 30,
-                                                "color" : "#744343",
+                                                "color" : "gums",
                                                 "path" : "smooth"
                                             },
                                             "teeth-bottom-tooth-1" : {
@@ -232,7 +245,7 @@
                                 "height" : 1.2,
                                 "x" : 37.5,
                                 "y" : 24,
-                                "color" : "#804848",
+                                "color" : "lip",
                                 "path" : "smooth",
                                 "parts" : {
                                     "lip-lip" : {
@@ -240,7 +253,7 @@
                                         "height" : 1,
                                         "x" : 25,
                                         "y" : 23.2,
-                                        "color" : "#b26464",
+                                        "color" : "lip-lip",
                                         "path" : "smooth"
                                     }
                                     
@@ -255,7 +268,7 @@
                         "height" : 8.5,
                         "x" : 40,
                         "y" : 4,
-                        "color" : "#7b3f3f",
+                        "color" : "eye-shadow",
                         "pointinfo" : {
                             "1" : "smooth",
                             "3" : "smooth"
@@ -267,7 +280,7 @@
                                 "height" : 7.5,
                                 "x" : 40,
                                 "y" : 4,
-                                "color" : "white",
+                                "color" : "eye-white",
                                 "pointinfo" : {
                                     "1" : "skip",
                                     "3" : "smooth"
@@ -280,7 +293,7 @@
                                 "height" : 4,
                                 "x" : 45,
                                 "y" : 6,
-                                "color" : "green",
+                                "color" : "eye-color",
                                 "pointinfo" : {
                                     "0" : "round",
                                     "1" : "round",
@@ -293,7 +306,7 @@
                                         "height" : 2,
                                         "x" : 47.5,
                                         "y" : 7,
-                                        "color" : "black",
+                                        "color" : "eye-pupil",
                                         "pointinfo" : {
                                             "0" : "round",
                                             "1" : "round",
@@ -313,7 +326,7 @@
                         "height" : 8.5,
                         "x" : 20,
                         "y" : 10,
-                        "color" : "#7b3f3f",
+                        "color" : "eye-shadow",
                         "pointinfo" : {
                             "1" : "smooth",
                             "3" : "smooth"
@@ -325,7 +338,7 @@
                                 "height" : 7.5,
                                 "x" : 20,
                                 "y" : 10,
-                                "color" : "white",
+                                "color" : "eye-white",
                                 "pointinfo" : {
                                     "1" : "skip",
                                     "3" : "smooth"
@@ -338,7 +351,7 @@
                                 "height" : 4,
                                 "x" : 25,
                                 "y" : 12,
-                                "color" : "green",
+                                "color" : "eye-color",
                                 "pointinfo" : {
                                     "0" : "round",
                                     "1" : "round",
@@ -351,7 +364,7 @@
                                         "height" : 2,
                                         "x" : 27.5,
                                         "y" : 13,
-                                        "color" : "black",
+                                        "color" : "eye-pupil",
                                         "pointinfo" : {
                                             "0" : "round",
                                             "1" : "round",
@@ -370,7 +383,7 @@
                         "height" : 8.5,
                         "x" : 60,
                         "y" : 10,
-                        "color" : "#7b3f3f",
+                        "color" : "eye-shadow",
                         "pointinfo" : {
                             "1" : "smooth",
                             "3" : "smooth"
@@ -382,7 +395,7 @@
                                 "height" : 7.5,
                                 "x" : 60,
                                 "y" : 10,
-                                "color" : "white",
+                                "color" : "eye-white",
                                 "pointinfo" : {
                                     "1" : "skip",
                                     "3" : "smooth"
@@ -395,7 +408,7 @@
                                 "height" : 4,
                                 "x" : 65,
                                 "y" : 12,
-                                "color" : "green",
+                                "color" : "eye-color",
                                 "pointinfo" : {
                                     "0" : "round",
                                     "1" : "round",
@@ -408,7 +421,7 @@
                                         "height" : 2,
                                         "x" : 67.5,
                                         "y" : 13,
-                                        "color" : "black",
+                                        "color" : "eye-pupil",
                                         "pointinfo" : {
                                             "0" : "round",
                                             "1" : "round",

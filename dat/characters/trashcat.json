@@ -5,7 +5,6 @@
         "height" : 16, 
         "debug" : false,
         "idlespeed" : 0.3,
-        "color" : "black",
         "animations" : [
             "default", 
             "blink",
@@ -14,28 +13,45 @@
             "arms", 
             "legs"
         ],
+        
+        "colors" : {
+            "skin" : "#DF7401",
+            "skin-light" : "#d8b289",
+            "ears" : "black",
+            "mask" : "#886A08",
+            "eye-white" : "white",
+            "eye-color" : "black",
+            "nose" : "black",
+            "mouth" : "#7e3434",
+            "hands" : "black",
+            "feet" : "black",
+            "belly" : "#d8b289",
+            "tail" : "#886A08"
+        },
+        
         "parts" : {
             "groups" : {
                 "body" : {
                     "zindex" : 400,
-                    "color" : "#DF7401",
+                    "color" : "skin",
                     "path" : "smooth"
                 },
                 "belly" : {
                     "path" : "smooth",
-                    "color" : "#d8b289",
+                    "color" : "belly",
                     "zindex" : 1450
                 },
                 "mask" : {
                     "zindex" : 500,
                     "path" : "smooth",
-                    "color" : "#886A08"
+                    "color" : "mask"
                 }
             },
+            
             "tail" : {
                 "parts" : {
                     "tail-tail" : {
-                        "color" : "#886A08",
+                        "color" : "tail",
                         "width" : 55,
                         "height" : 30,
                         "x" : -25,
@@ -50,10 +66,10 @@
                 }
             },
             "head" : {
-                "color" : "#B18904",
+                "color" : "skin",
                 "parts" : {
                     "horns"  : {
-                        "color" : "black",
+                        "color" : "ears",
                         "parts" : {
                             "left_horn" : { 
                                 "width" : 10, 
@@ -142,7 +158,7 @@
                                                 "height" : 5,
                                                 "x" : 10, 
                                                 "y" : 20,
-                                                "color" : "white",
+                                                "color" : "eye-white",
                                                 "path" : "smooth"
                                             }, 
                                             "left-eye-color" : {
@@ -150,7 +166,7 @@
                                                 "height" : 4,
                                                 "x" : 13, 
                                                 "y" : 21, 
-                                                "color" : "black",
+                                                "color" : "eye-color",
                                                 "path" : "smooth"
                                             }
                                         }
@@ -162,7 +178,7 @@
                                                 "height" : 5,
                                                 "x" : 75, 
                                                 "y" : 20,
-                                                "color" : "white",
+                                                "color" : "eye-white",
                                                 "path" : "smooth"
                                             }, 
                                             "right-eye-color" : {
@@ -170,7 +186,7 @@
                                                 "height" : 4,
                                                 "x" : 79, 
                                                 "y" : 21, 
-                                                "color" : "black",
+                                                "color" : "eye-color",
                                                 "path" : "smooth"
                                             }
                                         } 
@@ -184,7 +200,7 @@
                                         "height" : 5,
                                         "x" : 45,
                                         "y" : 35,
-                                        "color" : "#7e3434",
+                                        "color" : "mouth",
                                         "path" : "smooth"
                                     },
                                     "mouth-cheek-left" : {
@@ -192,7 +208,7 @@
                                         "height" : 5,
                                         "x" : 40,
                                         "y" : 32,
-                                        "color" : "#d8b289",
+                                        "color" : "skin-light",
                                         "path" : "smooth"
                                     },
                                     "mouth-cheek-right" : {
@@ -200,11 +216,11 @@
                                         "height" : 5,
                                         "x" : 50,
                                         "y" : 32,
-                                        "color" : "#d8b289",
+                                        "color" : "skin-light",
                                         "path" : "smooth"
                                     },
                                     "nose" : {
-                                        "color" : "black",
+                                        "color" : "nose",
                                         "width" : 20,
                                         "height" : 10,
                                         "x" : 40,
@@ -217,10 +233,11 @@
                     }
                 }
             },
+            
             "arms" : {
+                "color" : "skin",
                 "parts" : {
                     "left-arm" : {
-                    "color" : "#DF7401",
                         "zindex" : 7000,
                         "parts" : {
                             "left-shoulder" : {
@@ -260,7 +277,7 @@
                                                                 "height" : 2.5,
                                                                 "x" : 10,
                                                                 "y" : 80,
-                                                                "color" : "black",
+                                                                "color" : "hands",
                                                                 "path" : "round",
                                                                 "parts" : {
                                                                     "left-hand-fingers" : {
@@ -268,7 +285,6 @@
                                                                         "height" : 4,
                                                                         "x" : 10,
                                                                         "y" : 82,
-                                                                        "color" : "black",
                                                                         "path" : "round"
                                                                     }
                                                                 }
@@ -285,8 +301,7 @@
                     },
                     
                     "right-arm" : {
-                         "zindex" : 7050,
-                        "color" : "#DF7401",
+                        "zindex" : 7050,
                         "parts" : {
                             "right-shoulder" : {
                                 "link" : "right-arm",
@@ -325,7 +340,7 @@
                                                                 "height" : 2.5,
                                                                 "x" : 80,
                                                                 "y" : 80,
-                                                                "color" : "black",
+                                                                "color" : "hands",
                                                                 "path" : "round",
                                                                 "parts" : {
                                                                     "right-hand-fingers" : {
@@ -333,7 +348,6 @@
                                                                         "height" : 4,
                                                                         "x" : 83,
                                                                         "y" : 82,
-                                                                        "color" : "black",
                                                                         "path" : "round"
                                                                     }
                                                                 }
@@ -350,11 +364,12 @@
                     }
                     
                 }
-            },            
+            },         
+            
             "legs" : {
+                "color" : "skin",
                 "parts" : {
                     "left-leg" : { 
-                        "color" : "#DF7401",
                         "zindex" : 1200,
                         "parts" : {
                             "left-hip" : {
@@ -390,7 +405,7 @@
                                                             "left-foot" : {
                                                                 "width" : 10,
                                                                 "height" : 1,
-                                                                "color" : "black",
+                                                                "color" : "feet",
                                                                 "x" : 25,
                                                                 "y" : 99,
                                                                 "path" : "round"
@@ -407,7 +422,6 @@
                     },
                     "right-leg" : { 
                         "zindex" : 1250,
-                        "color" : "#DF7401",
                         "parts" : {
                             "right-hip" : {
                                 "link" : "right-leg",                        
@@ -442,7 +456,7 @@
                                                             "right-foot" : {
                                                                 "width" : 10,
                                                                 "height" : 1,
-                                                                "color" : "black",
+                                                                "color" : "feet",
                                                                 "x" : 65,
                                                                 "y" : 99,
                                                                 "path" : "round"
@@ -465,7 +479,6 @@
             
             "neck" : {
                 "group" : "body",
-                "color" : "#B18904",
                 "width" : 60,
                 "height" : 22,
                 "x" : 20,

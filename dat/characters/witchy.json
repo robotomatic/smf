@@ -1,7 +1,6 @@
 {
     "witchy" : {
         "name" : "Evilyn Gloom",
-        "color" : "pink",
         "width" : 12,
         "height" : 28,
         "debug" : false,
@@ -16,33 +15,51 @@
             "feet",
             "witchy"
         ],
+        
+        "colors" : {
+            "skin" : "pink",
+            "hair" : "yellow",
+            "eye-shadow" : "black",
+            "eye-white" : "white",
+            "eye-color" : "lightblue",
+            "mouth" : "red",
+            "ribbon" : "red",
+            "clothes" : "#31313e",
+            "clothes-light" : "#e6e6e6",
+            "pants" : "white",
+            "cuff" : "black",
+            "shoes" : "black"
+        },
+        
         "parts" : {
             
             "groups" : {
                 "body" : {
                     "zindex" : 300,
-                    "path" : "smooth"
+                    "path" : "smooth",
+                    "color" : "skin"
                 },
                 "skirt" : {
                     "zindex" : 380,
                     "path" : "smooth",
-                    "color" : "#31313e"
+                    "color" : "clothes"
                 },
                 "hair" : {
                     "zindex" : 310,
                     "path" : "smooth",
-                    "color" : "yellow"
+                    "color" : "hair"
                 },
                 "head" : {
                     "zindex" : 420,
-                    "path" : "smooth"
+                    "path" : "smooth",
+                    "color" : "skin"
                 }
             },
             
             "head" : {
                 "parts" : {
                     "hair" : {
-                        "color" : "yellow",
+                        "color" : "hair",
                         "parts" : {
                             "hair-top" : {
                                 "width" : 42,
@@ -111,7 +128,7 @@
                                         "height" : 5,
                                         "x" : 4,
                                         "y" : 10,
-                                        "color" : "red",
+                                        "color" : "ribbon",
                                         "path" : "round",
                                         "angle" : -25,
                                         "zindex" : 43,
@@ -121,7 +138,6 @@
                                                 "height" : 4,
                                                 "x" : -2,
                                                 "y" : 8,
-                                                "color" : "red",
                                                 "pointinfo" : {
                                                     "0" : "round",
                                                     "1" : "round",
@@ -133,7 +149,6 @@
                                                 "height" : 4,
                                                 "x" : 5,
                                                 "y" : 8,
-                                                "color" : "red",
                                                 "pointinfo" : {
                                                     "0" : "round",
                                                     "1" : "round",
@@ -174,7 +189,7 @@
                                         "height" : 5,
                                         "x" : 91,
                                         "y" : 10,
-                                        "color" : "red",
+                                        "color" : "ribbon",
                                         "path" : "round",
                                         "angle" : 25,
                                         "zindex" : 53,
@@ -184,7 +199,6 @@
                                                 "height" : 4,
                                                 "x" : 86,
                                                 "y" : 8,
-                                                "color" : "red",
                                                 "pointinfo" : {
                                                     "0" : "round",
                                                     "1" : "round",
@@ -196,7 +210,6 @@
                                                 "height" : 4,
                                                 "x" : 93,
                                                 "y" : 8,
-                                                "color" : "red",
                                                 "pointinfo" : {
                                                     "0" : "round",
                                                     "1" : "round",
@@ -246,7 +259,7 @@
                                         "x" : 22,
                                         "y" : 13,
                                         "angle" : 10,
-                                        "color" : "black",
+                                        "color" : "eye-shadow",
                                         "pointinfo" : {
                                             "2" : "round",
                                             "3" : "round"
@@ -257,7 +270,7 @@
                                                 "height" : 2,
                                                 "x" : 23,
                                                 "y" : 14,
-                                                "color" : "white",
+                                                "color" : "eye-white",
                                                 "pointinfo" : {
                                                     "2" : "round",
                                                     "3" : "round"
@@ -268,7 +281,7 @@
                                                 "height" : 1,
                                                 "x" : 29,
                                                 "y" : 14,
-                                                "color" : "black",
+                                                "color" : "eye-color",
                                                 "path" : "smooth"
                                             }
                                         }
@@ -279,7 +292,7 @@
                                         "x" : 60,
                                         "y" : 13,
                                         "angle" : -10,
-                                        "color" : "black",
+                                        "color" : "eye-shadow",
                                         "pointinfo" : {
                                             "2" : "round",
                                             "3" : "round"
@@ -290,7 +303,7 @@
                                                 "height" : 2,
                                                 "x" : 61,
                                                 "y" : 14,
-                                                "color" : "white",
+                                                "color" : "eye-white",
                                                 "pointinfo" : {
                                                     "2" : "round",
                                                     "3" : "round"
@@ -301,7 +314,7 @@
                                                 "height" : 1,
                                                 "x" : 65,
                                                 "y" : 14,
-                                                "color" : "black",
+                                                "color" : "eye-color",
                                                 "path" : "smooth"
                                             }
                                         }
@@ -314,7 +327,7 @@
                                 "height" : 3,
                                 "x"  : 40,
                                 "y" : 22,
-                                "color" : "red",
+                                "color" : "mouth",
                                 "pointinfo" : {
                                     "0" : "round",
                                     "1" : "round"
@@ -325,7 +338,7 @@
                                         "height" : 5,
                                         "x"  : 37,
                                         "y" : 22.5,
-                                        "color" : "pink",
+                                        "color" : "skin",
                                         "pointinfo" : {
                                             "0" : "round",
                                             "1" : "round"
@@ -343,7 +356,7 @@
             "neck" : {
                 "parts" : {
                     "neck-collar" : {
-                        "color" : "#e6e6e6",
+                        "color" : "clothes-light",
                         "path" : "smooth",
                         "width" : 40,
                         "height" : 8,
@@ -375,11 +388,11 @@
                         "height" : 5,
                         "x" : 35,
                         "y" : 62,
-                        "color" : "white",
+                        "color" : "pants",
                         "path" : "smooth"
                     },
                     "skirt" : {
-                        "color" : "#31313e",
+                        "color" : "clothes",
                         "parts" : {
                             "skirt-shoulder" : {
                                 "width" : 40,
@@ -427,6 +440,7 @@
             },
             
             "arms" : {
+                "color" : "skin",
                 "parts" : {
                     "left-arm" : {
                         "parts" : {
@@ -444,7 +458,7 @@
                                         "height" : 10,
                                         "x" : 16,
                                         "y" : 38,
-                                        "color" : "#31313e",
+                                        "color" : "clothes",
                                         "pointinfo" : {
                                             "0" : "round",
                                             "1" : "round"
@@ -455,7 +469,7 @@
                                         "height" : 4,
                                         "x" : 15,
                                         "y" : 46,
-                                        "color" : "#e6e6e6",
+                                        "color" : "clothes-light",
                                         "path" : "smooth"
                                     },
                                     "left-bicep" : {
@@ -488,7 +502,7 @@
                                                                 "height" : 4,
                                                                 "x" : 18,
                                                                 "y" : 63,
-                                                                "color" : "black",
+                                                                "color" : "cuff",
                                                                 "path" : "round"
                                                             },
                                                             "left-hand" : {
@@ -542,7 +556,7 @@
                                         "height" : 10,
                                         "x" : 70,
                                         "y" : 38,
-                                        "color" : "#31313e",
+                                        "color" : "clothes",
                                         "pointinfo" : {
                                             "0" : "round",
                                             "1" : "round"
@@ -553,7 +567,7 @@
                                         "height" : 4,
                                         "x" : 69,
                                         "y" : 46,
-                                        "color" : "#e6e6e6",
+                                        "color" : "clothes-light",
                                         "path" : "smooth"
                                     },
                                     "right-bicep" : {
@@ -583,7 +597,7 @@
                                                                 "height" : 4,
                                                                 "x" : 72,
                                                                 "y" : 63,
-                                                                "color" : "black",
+                                                                "color" : "cuff",
                                                                 "path" : "round"
                                                             },
                                                             "right-hand" : {
@@ -624,6 +638,7 @@
             },            
             
             "legs" : {
+                "color" : "skin",
                 "parts" : {
                     "left-leg" : { 
                         "zindex" : 2000,
@@ -663,14 +678,14 @@
                                                                 "height" : 20,
                                                                 "x" : 19.5,
                                                                 "y" : 80,
-                                                                "color" : "#e6e6e6"
+                                                                "color" : "clothes-light"
                                                             },
                                                             "left-foot" : {
                                                                 "width" : 12,
                                                                 "height" : 1,
                                                                 "x" : 21,
                                                                 "y" : 99,
-                                                                "color" : "black",
+                                                                "color" : "shoes",
                                                                 "pointinfo" : {
                                                                     "0" : "round",
                                                                     "1" : "round"
@@ -725,14 +740,14 @@
                                                                 "height" : 20,
                                                                 "x" : 69.5,
                                                                 "y" : 80,
-                                                                "color" : "#e6e6e6"
+                                                                "color" : "clothes-light"
                                                             },
                                                             "right-foot" : {
                                                                 "width" : 12,
                                                                 "height" : 1,
                                                                 "x" : 70,
                                                                 "y" : 99,
-                                                                "color" : "black",
+                                                                "color" : "shoes",
                                                                 "pointinfo" : {
                                                                     "0" : "round",
                                                                     "1" : "round"

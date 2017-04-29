@@ -5,10 +5,9 @@ function CharacterRenderer() {
     this.grouprenderer = new CharacterRendererGroups();
 }
 
-CharacterRenderer.prototype.draw = function(gamecanvas, animationchar, debug) {
-    var character = animationchar.animator.animationcharacter.animchar;
-    if (!character) return;
-    var color = animationchar.color;
-    this.rendermanager.updateCharacter(animationchar.mbr, character, 0, color);
-    this.grouprenderer.renderGroups(gamecanvas, character, this.rendermanager.groupnames, this.rendermanager.groups, color, debug);
+CharacterRenderer.prototype.draw = function(gamecanvas, character, debug) {
+    var animchar = character.animator.animationcharacter.animchar;
+    if (!animchar) return;
+    this.rendermanager.updateCharacter(character, animchar);
+    this.grouprenderer.renderGroups(gamecanvas, character, animchar, this.rendermanager, debug);
 }

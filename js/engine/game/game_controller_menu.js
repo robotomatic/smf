@@ -52,8 +52,7 @@ GameControllerMenu.prototype.loadCharacter = function(charname) {
 GameControllerMenu.prototype.loadCharacterAnimations = function(character) {
     var charanims = new Array();
     for (var a in character.animations) charanims[character.animations[a]] = this.animations[character.animations[a]];
-    character.setAnimator(new CharacterAnimator(charanims));
-    character.setRenderer(new CharacterRenderer());
+    character.loadAnimations(charanims);
     return character;
 }
     

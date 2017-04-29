@@ -1,7 +1,6 @@
 {
     "psycho" : {
         "name" : "Wisp",
-        "color" : "#5a4747",
         "width" : 12,
         "height" : 26,
         "debug" : false,
@@ -17,31 +16,44 @@
             "legs",
             "feet"
         ],
+        
+        "colors" : {
+            "cloak" : "#5a4747",
+            "cape" : "#5a4747",
+            "mask" : "#eceddd",
+            "mask-hole" : "black",
+            "clothes" : "#8b7b7b",
+            "gloves" : "black",
+            "boots" : "black"
+        },
+        
         "parts" : {
             
             "groups" : {
                 "hood" : {
                     "zindex" : 200,
-                    "path" : "chain"
+                    "path" : "chain",
+                    "color" : "cloak"
                 },
                 "mask" : {
                     "zindex" : 1000,
                     "path" : "smooth",
-                    "color" : "#eceddd"
+                    "color" : "mask"
                 },
                 "body" : {
                     "zindex" : 300,
-                    "path" : "smooth"
+                    "path" : "smooth",
+                    "color" : "cloak"
                 },
                 "collar" : {
                     "zindex" : 8000,
                     "path" : "join",
-                    "color" : "#5a4747"
+                    "color" : "cloak"
                 },
                 "cape" : {
                     "zindex" : -5,
                     "path" : "join",
-                    "color" : "#5a4747"
+                    "color" : "cape"
                 }
             },
             
@@ -97,7 +109,7 @@
                     
                     "mask" : {
                         "zindex" : 1000,
-                        "color" : "#eceddd",
+                        "color" : "mask",
                         "parts" : {
                             "mask-top"  : {
                                 "group" : "mask",
@@ -119,7 +131,6 @@
                                 "x" : 4,
                                 "y" : 25,
                                 "zindex" : 1005,
-                                "color" : "#eceddd",
                                 "path" : "smooth"
                             },
                             "mask-cheek-right"  : {
@@ -128,7 +139,6 @@
                                 "x" : 80,
                                 "y" : 25,
                                 "zindex" : 1006,
-                                "color" : "#eceddd",
                                 "path" : "smooth"
                             },
                             "mask-chin"  : {
@@ -150,7 +160,7 @@
                                     "left-eye" : {
                                         "parts" : {
                                             "left-eye-hole" : { 
-                                                "color" : "black",
+                                                "color" : "mask-hole",
                                                 "width" : 10, 
                                                 "height" : 10,
                                                 "x" : 12, 
@@ -162,7 +172,7 @@
                                     "right-eye" : {
                                         "parts" : {
                                             "right-eye-hole" : { 
-                                                "color" : "black",
+                                                "color" : "mask-hole",
                                                 "width" : 10, 
                                                 "height" : 10,
                                                 "x" : 82, 
@@ -176,7 +186,7 @@
                             
                             
                             "nose" : {
-                                "color" : "black",
+                                "color" : "mask-hole",
                                 "parts" : {
                                     "nose-left" : {
                                         "width" : 8,
@@ -280,14 +290,14 @@
                     "clothes" : {
                         "parts" : {
                             "clothes-torso" : {
-                                "color" : "#8b7b7b",
+                                "color" : "clothes",
                                 "width" : 60,
                                 "height" : 22,
                                 "x" : 20,
                                 "y" : 60
                             },
                             "clothes-pants" : {
-                                "color" : "#8b7b7b",
+                                "color" : "clothes",
                                 "width" : 50,
                                 "height" : 5,
                                 "x" : 25,
@@ -301,7 +311,7 @@
             },
             
             "arms" : {
-                "color" : "#8b7b7b",
+                "color" : "clothes",
                 "parts" : {
                     "left-arm" : {
                         "parts" : {
@@ -345,7 +355,7 @@
                                                                 "height" : 5,
                                                                 "x" : 18,
                                                                 "y" : 76,
-                                                                "color" : "black",
+                                                                "color" : "gloves",
                                                                 "path" : "round"
                                                             },
                                                             "left-hand" : {
@@ -353,13 +363,12 @@
                                                                 "height" : 3,
                                                                 "x" : 20,
                                                                 "y" : 80,
-                                                                "color" : "black",
+                                                                "color" : "gloves",
                                                                 "path" : "round",
                                                                 "parts" : {
                                                                     "left-hand-fingers" : {
                                                                         "width" : 7,
                                                                         "height" : 4,
-                                                                        "color" : "black",
                                                                         "x" : 18,
                                                                         "y" : 82,
                                                                         "path" : "round"
@@ -367,7 +376,6 @@
                                                                     "left-hand-thumb" : {
                                                                         "width" : 2,
                                                                         "height" : 2.5,
-                                                                        "color" : "black",
                                                                         "x" : 26,
                                                                         "y" : 82,
                                                                         "path" : "round"
@@ -424,7 +432,7 @@
                                                                 "height" : 5,
                                                                 "x" : 72,
                                                                 "y" : 76,
-                                                                "color" : "black",
+                                                                "color" : "gloves",
                                                                 "path" : "round"
                                                             },
                                                             "right-hand" : {
@@ -432,13 +440,12 @@
                                                                 "height" : 3,
                                                                 "x" : 74,
                                                                 "y" : 80,
-                                                                "color" : "black",
+                                                                "color" : "gloves",
                                                                 "path" : "round",
                                                                 "parts" : {
                                                                     "right-hand-thumb" : {
                                                                         "width" : 1,
                                                                         "height" : 2.5,
-                                                                        "color" : "black",
                                                                         "x" : 72,
                                                                         "y" : 82,
                                                                         "path" : "round"
@@ -446,7 +453,6 @@
                                                                     "right-hand-fingers" : {
                                                                         "width" : 7,
                                                                         "height" : 4,
-                                                                        "color" : "black",
                                                                         "x" : 74,
                                                                         "y" : 82,
                                                                         "path" : "round"
@@ -468,7 +474,7 @@
             },            
             
             "legs" : {
-                "color" : "#8b7b7b",
+                "color" : "clothes",
                 "parts" : {
                     "left-leg" : { 
                         "zindex" : 2000,
@@ -506,7 +512,7 @@
                                                             "left-boot" : {
                                                                 "width" : 11,
                                                                 "height" : 8,
-                                                                "color" : "black",
+                                                                "color" : "boots",
                                                                 "x" : 19.5,
                                                                 "y" : 92,
                                                                 "path" : "round"
@@ -514,7 +520,7 @@
                                                             "left-foot" : {
                                                                 "width" : 12,
                                                                 "height" : 1,
-                                                                "color" : "black",
+                                                                "color" : "boots",
                                                                 "x" : 21,
                                                                 "y" : 99,
                                                                 "pointinfo" : {
@@ -564,12 +570,11 @@
                                                         "height" :  10,
                                                         "x" : 70,
                                                         "y" : 90,
-                                                        "color" : "black",
                                                         "parts" : {
                                                             "right-boot" : {
                                                                 "width" : 11,
                                                                 "height" : 8,
-                                                                "color" : "black",
+                                                                "color" : "boots",
                                                                 "x" : 69.5,
                                                                 "y" : 92,
                                                                 "path" : "round"
@@ -577,7 +582,7 @@
                                                             "right-foot" : {
                                                                 "width" : 12,
                                                                 "height" : 1,
-                                                                "color" : "black",
+                                                                "color" : "boots",
                                                                 "x" : 70,
                                                                 "y" : 99,
                                                                 "pointinfo" : {
@@ -600,7 +605,7 @@
             },
             
             "cape" : {
-                "color" : "#5a4747",
+                "color" : "cape",
                 "parts" : {
                     "cape-left-shoulder" : {
                         "join" : "collar",

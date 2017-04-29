@@ -1,7 +1,6 @@
 {
     "vampy" : {
         "name" : "Gopnik",
-        "color" : "#af84c9",
         "width" : 20,
         "height" : 38,
         "debug" : false,
@@ -16,21 +15,36 @@
             "vampi"
         ],
         
+        "colors" : {
+            "skin" : "#af84c9",
+            "skin-shadow" : "#805b96",
+            "eye-shadow" : "#4a3557",
+            "eye-white" : "white",
+            "eye-color" : "black",
+            "mouth" : "black",
+            "teeth" : "white",
+            "tongue" : "#6d3d3d",
+            "suit" : "#462d9b",
+            "suit-accent" : "#519dd4",
+            "shoes" : "black"
+        },
+        
         "parts" : {
             "groups" : {
                 "body" : {
                     "zindex" : 380,
-                    "path" : "smooth"
+                    "path" : "smooth",
+                    "color" : "skin"
                 },
                 "suit" : {
                     "zindex" : 300,
                     "path" : "smooth",
-                    "color" : "#462d9b"
+                    "color" : "suit"
                 },
                 "mouth" : {
                     "zindex" : 5500,
                     "path" : "smooth",
-                    "color" : "black",
+                    "color" : "mouth",
                     "clip" : "start"
                 }
             },
@@ -70,7 +84,7 @@
                                 "height" : 1,
                                 "x" : 42,
                                 "y" : 15.8,
-                                "color" : "#805b96",
+                                "color" : "skin-shadow",
                                 "path" : "smooth"
                             },
                             "chin-chin" : {
@@ -79,6 +93,7 @@
                                 "height" : 1,
                                 "x" : 40,
                                 "y" : 15,
+                                "color" : "skin",
                                 "path" : "smooth"
                             }
                         }
@@ -93,7 +108,7 @@
                                         "height" : 5,
                                         "x" : 24, 
                                         "y" : 4,
-                                        "color" : "#4a3557",
+                                        "color" : "eye-shadow",
                                         "path" : "smooth",
                                         "zindex" : 1301,
                                         "angle" : 30
@@ -103,7 +118,7 @@
                                         "height" : 3,
                                         "x" : 25, 
                                         "y" : 5,
-                                        "color" : "white",
+                                        "color" : "eye-white",
                                         "path" : "smooth",
                                         "zindex" : 1302,
                                         "angle" : 30
@@ -113,7 +128,7 @@
                                         "height" : 0.2,
                                         "x" : 35, 
                                         "y" : 6.5, 
-                                        "color" : "black",
+                                        "color" : "eye-color",
                                         "zindex" : 1303,
                                         "pointinfo" : {
                                             "0" : "smooth",
@@ -130,7 +145,7 @@
                                         "height" : 5,
                                         "x" : 59, 
                                         "y" : 4,
-                                        "color" : "#4a3557",
+                                        "color" : "eye-shadow",
                                         "path" : "smooth",
                                         "zindex" : 1311,
                                         "angle" : -30
@@ -140,7 +155,7 @@
                                         "height" : 3,
                                         "x" : 60, 
                                         "y" : 5,
-                                        "color" : "white",
+                                        "color" : "eye-white",
                                         "path" : "smooth",
                                         "zindex" : 1312,
                                         "angle" : -30
@@ -150,7 +165,7 @@
                                         "height" : 0.2,
                                         "x" : 64, 
                                         "y" : 6.5, 
-                                        "color" : "black",
+                                        "color" : "eye-color",
                                         "zindex" : 1313,
                                         "pointinfo" : {
                                             "1" : "smooth",
@@ -168,6 +183,7 @@
                             "left-ear" : {
                                 "parts" : {
                                     "left-ear-outer" : {
+                                        "color" : "skin",
                                         "zindex" : 83,
                                         "width" : 17,
                                         "height" : 14,
@@ -188,13 +204,14 @@
                                             "1" : "smooth",
                                             "3" : "smooth"
                                         },
-                                        "color" : "#805b96"
+                                        "color" : "skin-shadow"
                                     }
                                 }
                             },
                             "right-ear" : {
                                 "parts" : {
                                     "right-ear-outer" : {
+                                        "color" : "skin",
                                         "zindex" : 85,
                                         "width" : 17,
                                         "height" : 14,
@@ -215,7 +232,7 @@
                                             "0" : "smooth",
                                             "2" : "smooth"
                                         },
-                                        "color" : "#805b96"
+                                        "color" : "skin-shadow"
                                     }
                                 }
                             }
@@ -249,93 +266,93 @@
                     
                     "teeth" : {
                         "parts" : {
-                            "left" : {
+                            "teeth-left" : {
                                 "width" : 7,
                                 "height" : 4,
                                 "x" : 25,
                                 "y" : 15,
-                                "color" : "white",
+                                "color" : "teeth",
                                 "zindex" : 5508,
                                 "angle" : 45
                             },
-                            "top-left" : {
+                            "teeth-top-left" : {
                                 "width" : 7,
                                 "height" : 4,
                                 "x" : 30,
                                 "y" : 10,
-                                "color" : "white",
+                                "color" : "teeth",
                                 "zindex" : 5509,
                                 "angle" : 30
                             },
-                            "top-mid-left" : {
+                            "teeth-top-mid-left" : {
                                 "width" : 7,
                                 "height" : 4,
                                 "x" : 41,
                                 "y" : 9,
-                                "color" : "white",
+                                "color" : "teeth",
                                 "zindex" : 5510,
                                 "angle" : 45
                             },
-                            "top-mid-right" : {
+                            "teeth-top-mid-right" : {
                                 "width" : 7,
                                 "height" : 4,
                                 "x" : 52,
                                 "y" : 9,
-                                "color" : "white",
+                                "color" : "teeth",
                                 "zindex" : 5511,
                                 "angle" : 45
                             },
-                            "top-right" : {
+                            "teeth-top-right" : {
                                 "width" : 7,
                                 "height" : 4,
                                 "x" : 63,
                                 "y" : 10,
-                                "color" : "white",
+                                "color" : "teeth",
                                 "zindex" : 5511,
                                 "angle" : 60
                             },
-                            "right" : {
+                            "teeth-right" : {
                                 "width" : 7,
                                 "height" : 4,
                                 "x" : 68,
                                 "y" : 14.5,
-                                "color" : "white",
+                                "color" : "teeth",
                                 "zindex" : 5508,
                                 "angle" : 45
                             },
-                            "bottom-left" : {
+                            "teeth-bottom-left" : {
                                 "width" : 7,
                                 "height" : 4,
                                 "x" : 31,
                                 "y" : 19,
-                                "color" : "white",
+                                "color" : "teeth",
                                 "zindex" : 5512,
                                 "angle" : 60
                             },
-                            "bottom-mid-left" : {
+                            "teeth-bottom-mid-left" : {
                                 "width" : 7,
                                 "height" : 4,
                                 "x" : 41,
                                 "y" : 20,
-                                "color" : "white",
+                                "color" : "teeth",
                                 "zindex" : 5513,
                                 "angle" : 45
                             },
-                            "bottom-mid-right" : {
+                            "teeth-bottom-mid-right" : {
                                 "width" : 7,
                                 "height" : 4,
                                 "x" : 52,
                                 "y" : 20,
-                                "color" : "white",
+                                "color" : "teeth",
                                 "zindex" : 5514,
                                 "angle" : 45
                             },
-                            "bottom-right" : {
+                            "teeth-bottom-right" : {
                                 "width" : 7,
                                 "height" : 4,
                                 "x" : 62,
                                 "y" : 19,
-                                "color" : "white",
+                                "color" : "teeth",
                                 "zindex" : 5515,
                                 "angle" : 30,
                                 "clip" : "end"
@@ -350,7 +367,7 @@
                                 "height" : 12,
                                 "x" : 24,
                                 "y" : 17,
-                                "color" : "#6d3d3d",
+                                "color" : "tongue",
                                 "path" : "smooth",
                                 "zindex" : 5501
                             },
@@ -359,7 +376,7 @@
                                 "height" : 12,
                                 "x" : 47,
                                 "y" : 17,
-                                "color" : "#6d3d3d",
+                                "color" : "tongue",
                                 "path" : "smooth",
                                 "zindex" : 5501
                             }
@@ -391,7 +408,7 @@
                         "y" : 30,
                         "zindex" : 360,
                         "path" : "smooth",
-                        "color" : "#372a62"
+                        "color" : "suit-accent"
                     }
                 }
             },
@@ -429,7 +446,7 @@
             "arms" : {
                 "parts" : {
                     "left-arm" : {
-                        "color" : "#462d9b",
+                        "color" : "suit",
                         "zindex" : 200,
                         "parts" : {
                             "left-shoulder" : {
@@ -467,7 +484,7 @@
                                                                 "height" : 4,
                                                                 "x" : 20,
                                                                 "y" : 63,
-                                                                "color" : "#372a62",
+                                                                "color" : "suit-accent",
                                                                 "path" : "round"
                                                             },
                                                             "left-hand" : {
@@ -475,7 +492,7 @@
                                                                 "height" : 1,
                                                                 "x" : 20,
                                                                 "y" : 67,
-                                                                "color" : "#af84c9",
+                                                                "color" : "skin",
                                                                 "path" : "smooth",
                                                                 "parts" : {
                                                                     "left-hand-fingers" : {
@@ -483,7 +500,6 @@
                                                                         "height" : 4,
                                                                         "x" : 20,
                                                                         "y" : 68,
-                                                                        "color" : "#af84c9",
                                                                         "path" : "round"
                                                                     },
                                                                     "left-hand-thumb" : {
@@ -491,7 +507,6 @@
                                                                         "height" : 2.5,
                                                                         "x" : 28,
                                                                         "y" : 68,
-                                                                        "color" : "#af84c9",
                                                                         "path" : "round"
                                                                     }
                                                                 }
@@ -508,7 +523,7 @@
                     },
                     
                     "right-arm" : {
-                        "color" : "#462d9b",
+                        "color" : "suit",
                         "zindex" : 250,
                         "parts" : {
                             "right-shoulder" : {
@@ -546,7 +561,7 @@
                                                                 "height" : 4,
                                                                 "x" : 70,
                                                                 "y" : 63,
-                                                                "color" : "#372a62",
+                                                                "color" : "suit-accent",
                                                                 "path" : "round"
                                                             },
                                                             "right-hand" : {
@@ -554,7 +569,7 @@
                                                                 "height" : 1,
                                                                 "x" : 70,
                                                                 "y" : 67,
-                                                                "color" : "#af84c9",
+                                                                "color" : "skin",
                                                                 "path" : "smooth",
                                                                 "parts" : {
                                                                     "right-hand-thumb" : {
@@ -562,7 +577,6 @@
                                                                         "height" : 2.5,
                                                                         "x" : 70,
                                                                         "y" : 68,
-                                                                        "color" : "#af84c9",
                                                                         "path" : "round"
                                                                     },
                                                                     "right-hand-fingers" : {
@@ -570,7 +584,6 @@
                                                                         "height" : 4,
                                                                         "x" : 75,
                                                                         "y" : 68,
-                                                                        "color" : "#af84c9",
                                                                         "path" : "round"
                                                                     }
                                                                 }
@@ -592,7 +605,7 @@
             "legs" : {
                 "parts" : {
                     "left-leg" : { 
-                        "color" : "#462d9b",
+                        "color" : "suit",
                         "zindex" : 2000,
                         "parts" : {
                             "left-hip" : {
@@ -629,7 +642,7 @@
                                                                 "height" : 1,
                                                                 "x" : 25,
                                                                 "y" : 99,
-                                                                "color" : "black",
+                                                                "color" : "shoes",
                                                                 "pointinfo" : {
                                                                     "0" : "round",
                                                                     "1" : "round"
@@ -646,7 +659,7 @@
                         }
                     },
                     "right-leg" : { 
-                        "color" : "#462d9b",
+                        "color" : "suit",
                         "zindex" : 2500,
                         "parts" : {
                             "right-hip" : {
@@ -683,7 +696,7 @@
                                                                 "height" : 1,
                                                                 "x" : 65,
                                                                 "y" : 99,
-                                                                "color" : "black",
+                                                                "color" : "shoes",
                                                                 "pointinfo" : {
                                                                     "0" : "round",
                                                                     "1" : "round"

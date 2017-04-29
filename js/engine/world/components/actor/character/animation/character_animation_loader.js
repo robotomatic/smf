@@ -1,9 +1,9 @@
 "use strict";
 
-function CharacterAnimationLoader(animations) {
+function CharacterAnimationLoader() {
     this.stateAnimations = new Array();
     this.animations = new Array();
-    this.loadAnimations(animations);
+    this.loadAnimations();
 }
 
 CharacterAnimationLoader.prototype.loadAnimations = function(charanimations) {
