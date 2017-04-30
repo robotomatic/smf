@@ -3,8 +3,50 @@
 function CharacterRendererRenderer() {
     this.rotatepoly = new Polygon();
     this.rotateline = new Line();
+    this.pathclip = new CharacterRendererGroupsGroupPathClip();
+    this.pathlink = new CharacterRendererGroupsGroupPathLink();
 }
 
+
+
+
+
+
+
+CharacterRendererRenderer.prototype.hasLinkPath = function() { 
+    return this.pathlink.linkpathStart.points.length;
+}
+
+CharacterRendererRenderer.prototype.startLinkPath = function(polygon, color, linktype) { 
+    this.pathlink.startLinkPath(polygon, color, linktype);
+}
+
+CharacterRendererRenderer.prototype.addLinkPath = function(polygon) { 
+    this.pathlink.addLinkPath(polygon);
+}
+
+CharacterRendererRenderer.prototype.endLinkPath = function(gamecanvas) { 
+    this.pathlink.endLinkPath(gamecanvas);
+}
+
+
+
+CharacterRendererRenderer.prototype.startClipPath = function(gamecanvas) { 
+    this.pathclip.startClipPath(gamecanvas);
+}
+
+CharacterRendererRenderer.prototype.endClipPath = function(gamecanvas) { 
+    this.pathclip.endClipPath(gamecanvas);
+}
+
+
+
+
+
+
+
+
+    
 CharacterRendererRenderer.prototype.drawPolygon = function(path, poly, gamecanvas) { 
     if (path == "smooth") poly.drawSmooth(gamecanvas);
     else if (path == "round") poly.drawRound(gamecanvas, 5);

@@ -3,12 +3,12 @@
 function CharacterRendererGroupsGroupPathClip() {
 }
 
-CharacterRendererGroupsGroupPathClip.prototype.startClipPath = function(path, poly, gamecanvas) { 
+CharacterRendererGroupsGroupPathClip.prototype.startClipPath = function(gamecanvas) { 
     gamecanvas.save();
     gamecanvas.clip();
 }
     
-CharacterRendererGroupsGroupPathClip.prototype.endClipPath = function(path, poly, gamecanvas, color) { 
+CharacterRendererGroupsGroupPathClip.prototype.endClipPath = function(gamecanvas) { 
     gamecanvas.restore();
 }
 

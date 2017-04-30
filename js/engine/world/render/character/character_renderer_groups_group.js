@@ -2,8 +2,6 @@
 
 function CharacterRendererGroupsGroup() {
     this.renderer = new CharacterRendererRenderer();
-    this.pathclip = new CharacterRendererGroupsGroupPathClip();
-    this.pathlink = new CharacterRendererGroupsGroupPathLink();
     this.polygon = new Polygon();
     this.debugoutlinecolor = "darkgray";
     this.colors = new Array();
@@ -40,6 +38,12 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(gamecanvas, charac
         if (group.parts) this.renderer.rotateGroup(groupnames, group, null);
     }
     if (!this.polygon.points.length) return;
+    
+    
+    
+    
+    
+    
 
     var gg = groupdef ? groupdef : group;
     if (gg.draw == false) return;
@@ -48,17 +52,20 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(gamecanvas, charac
 
     var color = "white";
     var gcolor = this.getColor(gamecanvas, character, gg.color);
-
+    
+    
+    
+    var linkpath = this.renderer.hasLinkPath();
     if (gg.link && gg.link != "skip") {
-        if (!this.pathlink.linkpathStart.points.length) {
+        if (!linkpath) {
             var cc = dodebug ? color : gcolor ? gcolor : color;
-            this.pathlink.startLinkPath(this.polygon, cc, gg.linktype);
-        } else if (gg.link && this.pathlink.linkpathStart.points.length) {
-            this.pathlink.addLinkPath(this.polygon);
+            this.renderer.startLinkPath(this.polygon, cc, gg.linktype);
+        } else if (gg.link && linkpath) {
+            this.renderer.addLinkPath(this.polygon);
         }
     } else {
-        if (this.pathlink.linkpathStart.points.length && gg.link != "skip") {
-            this.pathlink.endLinkPath(gamecanvas, this.pathlink.linkpathType);
+        if (linkpath && gg.link != "skip") {
+            this.renderer.endLinkPath(gamecanvas);
             
             if (debug.character) {
                 var p = this.pathlink.path;
@@ -74,10 +81,10 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(gamecanvas, charac
         if (gg.clip) {
             if (gg.clip == "start") {
                 this.renderer.drawPolygon(gg.path, this.polygon, gamecanvas);
-                this.pathclip.startClipPath(gg.path, this.polygon, gamecanvas);
+                this.renderer.startClipPath(gamecanvas);
             } else if (gg.clip == "end") {
                 this.renderer.drawPolygon(gg.path, this.polygon, gamecanvas);
-                this.pathclip.endClipPath(gg, this.polygon, gamecanvas, color);
+                this.renderer.endClipPath(gamecanvas);
             }
         } else this.renderer.drawPolygon(gg.path, this.polygon, gamecanvas);
         
