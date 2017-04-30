@@ -26,11 +26,11 @@ WorldRendererRender.prototype.renderRenderItems = function(now, graphics, camera
 }
 
 WorldRendererRender.prototype.renderWorld = function(now, window, graphics, camera, world, item, distance, scale, debug, paused) {
-    item.render(now, world.worldrenderer.itemrenderer, graphics.canvas.width, graphics.canvas.height, graphics.canvas, scale, debug.level, paused);
+    item.render(now, world, world.worldrenderer.itemrenderer, graphics.canvas.width, graphics.canvas.height, graphics.canvas, scale, debug.level, paused);
 }
 
 WorldRendererRender.prototype.renderItem = function(now, window, graphics, camera, world, item, distance, scale, debug, paused) {
-    item.render(now, world.worldrenderer.itemrenderer, graphics.canvas.width, graphics.canvas.height, graphics.canvas, scale, debug.level, paused);
+    item.render(now, world, world.worldrenderer.itemrenderer, graphics.canvas.width, graphics.canvas.height, graphics.canvas, scale, debug.level, paused);
 }
 
 WorldRendererRender.prototype.renderPlayer = function(now, window, graphics, camera, world, player, distance, scale, debug, paused) {

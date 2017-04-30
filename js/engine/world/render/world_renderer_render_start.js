@@ -55,7 +55,7 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
             }
         }
         
-        showing = item.isVisible(window, 500);
+        showing = item.isVisible(window, 600);
         d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, item, 0, 0, 0);
         if (isNaN(d)) d = 0;
     }

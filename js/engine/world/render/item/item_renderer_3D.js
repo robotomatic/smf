@@ -12,7 +12,7 @@ function ItemRenderer3D() {
     this.line = new Line();
 }
 
-ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas, scale, debug) {
+ItemRenderer3D.prototype.renderItem3D = function(now, world, renderer, item, gamecanvas, scale, debug) {
     
     if (item.underwater) return;
     if (!renderer.shouldThemeProject(item)) return;
@@ -22,7 +22,7 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
         gamecanvas.setAlpha(this.fadepercent);
     }
     
-    this.getColors(gamecanvas, renderer, item, debug);
+    this.getColors(world, gamecanvas, renderer, item, debug);
     
     var x = item.projectedlocation.x;
     var y = item.projectedlocation.y;
@@ -162,7 +162,7 @@ ItemRenderer3D.prototype.renderItem3D = function(now, renderer, item, gamecanvas
     
 }
 
-ItemRenderer3D.prototype.getColors = function(gamecanvas, renderer, item, debug) {
+ItemRenderer3D.prototype.getColors = function(world, gamecanvas, renderer, item, debug) {
     var dodebug = debug && debug.level;
     if (item.width == "100%" || item.height == "100%" || item.depth == "100%") {
         if (debug.level || debug.render || debug.hsr) {
@@ -204,7 +204,12 @@ ItemRenderer3D.prototype.getColors = function(gamecanvas, renderer, item, debug)
         themecolor = theme.color;
         if (theme.color.gradient) {
             var gradient = theme.color.gradient;
-            themecolor = gradient.start;
+            
+            var gg = gamecanvas.createLinearGradient(0, 0, 0, item.height);
+            gg.addColorStop(0, gradient.start);
+            gg.addColorStop(1, gradient.stop);
+            
+            themecolor = gg;
         }
     }
     if (!themecolor) return;
@@ -212,6 +217,16 @@ ItemRenderer3D.prototype.getColors = function(gamecanvas, renderer, item, debug)
     if (themecolor.side) this.colors.side = themecolor.side;
     if (themecolor.bottom) this.colors.bottom = themecolor.bottom;
     this.colors.front = themecolor.front ? themecolor.front : themecolor;
+    
+    if (this.colors.front.gradient) {
+        var gradient = this.colors.front.gradient;
+//        var gh = world.bounds.height * item.scale;
+        var gh = world.bounds.height;
+        var gg = gamecanvas.createLinearGradient(0, 0, 0, gh);
+        gg.addColorStop(0, gradient.start);
+        gg.addColorStop(1, gradient.stop);
+        this.colors.front = gg;
+    }
 }
     
 ItemRenderer3D.prototype.renderItemParts3D = function(gamecanvas, item, geometry, color, x, y, scale, debug, outline = true, fill = true, overridecolor = false) {

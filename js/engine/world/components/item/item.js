@@ -616,7 +616,7 @@ Item.prototype.translate = function(window, width, height) {
 
 
 
-Item.prototype.render = function(now, renderer, width, height, gamecanvas, scale, debug, paused) {
+Item.prototype.render = function(now, world, renderer, width, height, gamecanvas, scale, debug, paused) {
 
     this.debugtemp.level = false;
     this.debugtemp.render = false;
@@ -629,10 +629,10 @@ Item.prototype.render = function(now, renderer, width, height, gamecanvas, scale
 
     if (!gamecanvas) {
         this.renderStart(now, width, height, scale);
-        this.renderRender(now, renderer, this.gamecanvas, scale, this.debugtemp, paused);
+        this.renderRender(now, world, renderer, this.gamecanvas, scale, this.debugtemp, paused);
         this.renderEnd(now);
     } else {
-        this.renderRender(now, renderer, gamecanvas, scale, this.debugtemp, paused);
+        this.renderRender(now, world, renderer, gamecanvas, scale, this.debugtemp, paused);
     }
 }
 
@@ -674,8 +674,8 @@ Item.prototype.renderStart = function(now, width, height, scale) {
     this.gamecanvas.setSize(width = iwidth + doublepad, iheight + doublepad);
 }
 
-Item.prototype.renderRender = function(now, renderer, gamecanvas, scale, debug, paused) {
-    this.itemrenderer.renderItem(now, renderer, this, gamecanvas, scale, debug, paused);
+Item.prototype.renderRender = function(now, world, renderer, gamecanvas, scale, debug, paused) {
+    this.itemrenderer.renderItem(now, world, renderer, this, gamecanvas, scale, debug, paused);
 }
 
 Item.prototype.renderEnd = function(when) {

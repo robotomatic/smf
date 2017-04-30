@@ -74,8 +74,8 @@ ItemRenderer.prototype.shouldThemeProject = function(item) {
     return true;
 }
     
-ItemRenderer.prototype.renderItem = function(now, renderer, item, gamecanvas, scale, debug, paused) {
-    this.item3Drenderer.renderItem3D(now, renderer, item, gamecanvas, scale, debug);
+ItemRenderer.prototype.renderItem = function(now, world, renderer, item, gamecanvas, scale, debug, paused) {
+    this.item3Drenderer.renderItem3D(now, world, renderer, item, gamecanvas, scale, debug);
 }
 
 ItemRenderer.prototype.getItemTheme = function(item) {
