@@ -1,23 +1,23 @@
 "use strict";
 
-function CharacterRendererRenderer() {
+function CharacterRendererGroupsGroupRenderer() {
     this.rotatepoly = new Polygon();
     this.rotateline = new Line();
-    this.pathclip = new CharacterRendererGroupsGroupPathClip();
-    this.pathlink = new CharacterRendererGroupsGroupPathLink();
+    this.pathclip = new CharacterRendererGroupsGroupRendererPathClip();
+    this.pathlink = new CharacterRendererGroupsGroupRendererPathLink();
     this.polygon = new Polygon();
 }
 
 
 
-CharacterRendererRenderer.prototype.shouldDraw = function() { 
+CharacterRendererGroupsGroupRenderer.prototype.shouldDraw = function() { 
     return this.polygon.points.length;
 }
 
 
 
 
-CharacterRendererRenderer.prototype.buildPolygon = function(pathtype, groupnames, group) { 
+CharacterRendererGroupsGroupRenderer.prototype.buildPolygon = function(pathtype, groupnames, group) { 
     
     this.polygon.points.length = 0;
     this.polygon.setPoints(group.points);
@@ -44,29 +44,29 @@ CharacterRendererRenderer.prototype.buildPolygon = function(pathtype, groupnames
 
     
     
-CharacterRendererRenderer.prototype.hasLinkPath = function() { 
+CharacterRendererGroupsGroupRenderer.prototype.hasLinkPath = function() { 
     return this.pathlink.linkpathStart.points.length;
 }
 
-CharacterRendererRenderer.prototype.startLinkPath = function(color, linktype) { 
+CharacterRendererGroupsGroupRenderer.prototype.startLinkPath = function(color, linktype) { 
     this.pathlink.startLinkPath(this.polygon, color, linktype);
 }
 
-CharacterRendererRenderer.prototype.addLinkPath = function() { 
+CharacterRendererGroupsGroupRenderer.prototype.addLinkPath = function() { 
     this.pathlink.addLinkPath(this.polygon);
 }
 
-CharacterRendererRenderer.prototype.endLinkPath = function(gamecanvas) { 
+CharacterRendererGroupsGroupRenderer.prototype.endLinkPath = function(gamecanvas) { 
     this.pathlink.endLinkPath(gamecanvas);
 }
 
 
 
-CharacterRendererRenderer.prototype.startClipPath = function(gamecanvas) { 
+CharacterRendererGroupsGroupRenderer.prototype.startClipPath = function(gamecanvas) { 
     this.pathclip.startClipPath(gamecanvas);
 }
 
-CharacterRendererRenderer.prototype.endClipPath = function(gamecanvas) { 
+CharacterRendererGroupsGroupRenderer.prototype.endClipPath = function(gamecanvas) { 
     this.pathclip.endClipPath(gamecanvas);
 }
 
@@ -78,14 +78,14 @@ CharacterRendererRenderer.prototype.endClipPath = function(gamecanvas) {
 
 
     
-CharacterRendererRenderer.prototype.drawPolygon = function(path, gamecanvas) { 
+CharacterRendererGroupsGroupRenderer.prototype.drawPolygon = function(path, gamecanvas) { 
     if (path == "smooth") this.polygon.drawSmooth(gamecanvas);
     else if (path == "round") this.polygon.drawRound(gamecanvas, 5);
     else if (path == "chain") this.polygon.drawRound(gamecanvas, 5);
     else this.polygon.draw(gamecanvas);
 }
 
-CharacterRendererRenderer.prototype.drawPolygonOutline = function(path, gamecanvas, color, lineweight) { 
+CharacterRendererGroupsGroupRenderer.prototype.drawPolygonOutline = function(path, gamecanvas, color, lineweight) { 
     if (path == "smooth") this.polygon.drawOutlineSmooth(gamecanvas, color, lineweight);
     else if (path == "round") this.polygon.drawOutlineRound(gamecanvas, 5, color, lineweight);
     else if (path == "chain") this.polygon.drawOutlineRound(gamecanvas, 5, color, lineweight);
@@ -100,7 +100,7 @@ CharacterRendererRenderer.prototype.drawPolygonOutline = function(path, gamecanv
 
 
 
-CharacterRendererRenderer.prototype.rotateGroup = function(groupnames, group, parts) {
+CharacterRendererGroupsGroupRenderer.prototype.rotateGroup = function(groupnames, group, parts) {
     if (!parts) parts = group.parts;
     var keys = parts.keys;
     for (var i = 0; i < keys.length; i++) {

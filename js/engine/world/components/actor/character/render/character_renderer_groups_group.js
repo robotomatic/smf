@@ -1,7 +1,7 @@
 "use strict";
 
 function CharacterRendererGroupsGroup() {
-    this.renderer = new CharacterRendererRenderer();
+    this.renderer = new CharacterRendererGroupsGroupRenderer();
     this.debugoutlinecolor = "darkgray";
     this.colors = new Array();
 }

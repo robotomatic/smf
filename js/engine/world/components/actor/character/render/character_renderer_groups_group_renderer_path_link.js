@@ -1,6 +1,6 @@
 "use strict";
 
-function CharacterRendererGroupsGroupPathLink() {
+function CharacterRendererGroupsGroupRendererPathLink() {
     this.path = new Polygon();
     this.linkpathStart = new Polygon();
     this.linkpathType = "";
@@ -8,7 +8,7 @@ function CharacterRendererGroupsGroupPathLink() {
     this.linkpathColor = "";
 }
 
-CharacterRendererGroupsGroupPathLink.prototype.startLinkPath = function(poly, color, linktype) { 
+CharacterRendererGroupsGroupRendererPathLink.prototype.startLinkPath = function(poly, color, linktype) { 
     if (!this.linkpathStart.points.length) {
         this.linkpathStart.points.length = 0;
         this.linkpathEnd.points.length = 0;
@@ -18,7 +18,7 @@ CharacterRendererGroupsGroupPathLink.prototype.startLinkPath = function(poly, co
     this.addLinkPath(poly);
 }
     
-CharacterRendererGroupsGroupPathLink.prototype.addLinkPath = function(poly) { 
+CharacterRendererGroupsGroupRendererPathLink.prototype.addLinkPath = function(poly) { 
     if (this.linkpathStart.points.length > 1) {
         var spps = this.linkpathStart.points[this.linkpathStart.points.length - 2];
         var sppe = this.linkpathStart.points[this.linkpathStart.points.length -1];
@@ -38,7 +38,7 @@ CharacterRendererGroupsGroupPathLink.prototype.addLinkPath = function(poly) {
     this.linkpathEnd.addPoint(poly.points[3]);
 }
     
-CharacterRendererGroupsGroupPathLink.prototype.endLinkPath = function(gamecanvas) { 
+CharacterRendererGroupsGroupRendererPathLink.prototype.endLinkPath = function(gamecanvas) { 
     this.path.points.length = 0;
     for (var i = 0; i < this.linkpathStart.points.length; i++) this.path.addPoint(this.linkpathStart.points[i]);
     for (var i = this.linkpathEnd.points.length; i > 0 ; i--) this.path.addPoint(this.linkpathEnd.points[i - 1]);
