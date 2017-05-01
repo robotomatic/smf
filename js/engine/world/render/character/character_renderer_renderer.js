@@ -5,24 +5,55 @@ function CharacterRendererRenderer() {
     this.rotateline = new Line();
     this.pathclip = new CharacterRendererGroupsGroupPathClip();
     this.pathlink = new CharacterRendererGroupsGroupPathLink();
+    this.polygon = new Polygon();
+}
+
+
+
+CharacterRendererRenderer.prototype.shouldDraw = function() { 
+    return this.polygon.points.length;
 }
 
 
 
 
+CharacterRendererRenderer.prototype.buildPolygon = function(pathtype, groupnames, group) { 
+    
+    this.polygon.points.length = 0;
+    this.polygon.setPoints(group.points);
+    
+    var rects = group.rects;
+    if (rects && pathtype) {
+        if (pathtype == "smooth") this.polygon.filterPoints(rects);
+        else if (pathtype == "round") this.polygon.filterPoints(rects); 
+        else if (pathtype == "join") this.polygon.filterPoints(rects); 
+        else if (pathtype == "chain") this.polygon.filterChain(rects); 
+    }
+
+    if (group.angle && pathtype != "join") {
+        this.polygon.setPoints(this.polygon.rotate(group.angle));
+        if (group.parts) this.rotateGroup(groupnames, group, null);
+    }
+}
+
+
+    
+    
 
 
 
+    
+    
 CharacterRendererRenderer.prototype.hasLinkPath = function() { 
     return this.pathlink.linkpathStart.points.length;
 }
 
-CharacterRendererRenderer.prototype.startLinkPath = function(polygon, color, linktype) { 
-    this.pathlink.startLinkPath(polygon, color, linktype);
+CharacterRendererRenderer.prototype.startLinkPath = function(color, linktype) { 
+    this.pathlink.startLinkPath(this.polygon, color, linktype);
 }
 
-CharacterRendererRenderer.prototype.addLinkPath = function(polygon) { 
-    this.pathlink.addLinkPath(polygon);
+CharacterRendererRenderer.prototype.addLinkPath = function() { 
+    this.pathlink.addLinkPath(this.polygon);
 }
 
 CharacterRendererRenderer.prototype.endLinkPath = function(gamecanvas) { 
@@ -47,39 +78,27 @@ CharacterRendererRenderer.prototype.endClipPath = function(gamecanvas) {
 
 
     
-CharacterRendererRenderer.prototype.drawPolygon = function(path, poly, gamecanvas) { 
-    if (path == "smooth") poly.drawSmooth(gamecanvas);
-    else if (path == "round") poly.drawRound(gamecanvas, 5);
-    else if (path == "chain") poly.drawRound(gamecanvas, 5);
-    else poly.draw(gamecanvas);
+CharacterRendererRenderer.prototype.drawPolygon = function(path, gamecanvas) { 
+    if (path == "smooth") this.polygon.drawSmooth(gamecanvas);
+    else if (path == "round") this.polygon.drawRound(gamecanvas, 5);
+    else if (path == "chain") this.polygon.drawRound(gamecanvas, 5);
+    else this.polygon.draw(gamecanvas);
 }
 
-CharacterRendererRenderer.prototype.drawPolygonOutline = function(path, poly, gamecanvas, color, lineweight) { 
-    if (path == "smooth") poly.drawOutlineSmooth(gamecanvas, color, lineweight);
-    else if (path == "round") poly.drawOutlineRound(gamecanvas, 5, color, lineweight);
-    else if (path == "chain") poly.drawOutlineRound(gamecanvas, 5, color, lineweight);
-    else poly.drawOutline(gamecanvas, color, lineweight);
+CharacterRendererRenderer.prototype.drawPolygonOutline = function(path, gamecanvas, color, lineweight) { 
+    if (path == "smooth") this.polygon.drawOutlineSmooth(gamecanvas, color, lineweight);
+    else if (path == "round") this.polygon.drawOutlineRound(gamecanvas, 5, color, lineweight);
+    else if (path == "chain") this.polygon.drawOutlineRound(gamecanvas, 5, color, lineweight);
+    else this.polygon.drawOutline(gamecanvas, color, lineweight);
 }
 
-CharacterRendererRenderer.prototype.setColor = function(color, poly, gamecanvas) { 
-    if (color.gradient) {
-        var gradient = color.gradient;
-        var mbr = poly.getMbr();
-        var mbry = mbr.y;
-        var mbrh  = mbr.y + mbr.height;
-        if (mbry && mbrh) {
-            if (gradient.top) mbry = mbry -= gradient.top;
-            if (gradient.height) mbrh = mbry + gradient.height;
-            var g = gamecanvas.createLinearGradient(0, mbry, 0, mbrh);
-            var start = gradient.start;
-            var stop = gradient.stop;
-            g.addColorStop(0, start);
-            g.addColorStop(1, stop);
-            color = g;
-        } else color = color;
-    }
-    return color;
-}
+
+
+
+
+
+
+
 
 CharacterRendererRenderer.prototype.rotateGroup = function(groupnames, group, parts) {
     if (!parts) parts = group.parts;
