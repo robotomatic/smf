@@ -258,7 +258,7 @@ Player.prototype.render = function(now, width, height, ctx, scale, debug, paused
         this.debugtemp.guts = this.debug.guts ? true : debug.guts;
     }
     debug = debug ? debug : this.debug;
-    var scale = max(this.scale * 2, 1);
+    var scale = this.scale > 2 ? min(this.scale, 3) : max(this.scale * 2, 1);
     if (this.hidef) scale = max(this.hidefsize, scale);
     this.renderStart(now, scale);
     this.renderRender(now, scale, this.debugtemp, paused);

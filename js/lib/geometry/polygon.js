@@ -93,17 +93,18 @@ Polygon.prototype.craziness = function(crazy) {
 
 Polygon.prototype.rotate = function(deg, cp) {
     var center = cp ? cp : this.getCenter();
-    var points = this.getPoints();
-    var out = new Array();
-    var l;
     for (var i = 0; i < this.points.length; i++) {
-        this.line.start = center;
-        this.line.end = points[i];
+        this.line.start.x = center.x;
+        this.line.start.y = center.y;
+        this.line.end.x = this.points[i].x;
+        this.line.end.y = this.points[i].y;
         this.line = this.line.rotate(deg);
-        out[out.length] = this.line.end;
+        this.points[i].x = this.line.end.x;
+        this.points[i].y = this.line.end.y;
     }
-    return out;
 }
+
+
 
 
 Polygon.prototype.getMbr = function() {

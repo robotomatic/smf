@@ -10,10 +10,10 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(gamecanvas, charac
 
     var gp = groupdef ? groupdef.path : "";
     this.renderer.buildPolygon(gp, groupnames, group);
-    if (!this.renderer.shouldDraw()) return;
+    if (!this.renderer.shouldDraw()) return false;
 
     var gg = groupdef ? groupdef : group;
-    if (gg.draw == false) return;
+    if (gg.draw == false) return false;
     
     var dodebug = debug.character || debug.guts;
     var color = dodebug ? "white" : this.getColor(gamecanvas, character, gg.color);
@@ -22,6 +22,11 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(gamecanvas, charac
     if (gg.link && gg.link != "skip") {
         if (!linkpath) {
             this.renderer.startLinkPath(color, gg.linktype);
+        } else if (gg.link && gg.linktype == "end") {
+            if (linkpath && gg.link != "skip") {
+                this.renderer.addLinkPath();
+                this.renderer.endLinkPath(gamecanvas);
+            }
         } else if (gg.link && linkpath) {
             this.renderer.addLinkPath();
         }
@@ -45,20 +50,17 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(gamecanvas, charac
     } 
     
     gamecanvas.commit();
+    return true;
 }
 
 
 CharacterRendererGroupsGroup.prototype.getColor = function(gamecanvas, character, colorname) {
+    this.gradient = false;
     if (this.colors[colorname]) return this.colors[colorname];
     var colors = character.colors;
     if (!colors[colorname]) return "white";
-    
-    //
-    //
-    // TODO: Here is the gradient place for the thing
-    
-    
     var cc = colors[colorname];
+    if (cc.gradient) cc = "black";
     this.colors[colorname] = cc;
     return cc;
 }

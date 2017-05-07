@@ -18,13 +18,20 @@
         ],
         
         "colors" : {
-            "skin" : "#73a819",
+            "skin" : {
+                "gradient" : {
+                    "start" : "#8fc92e",
+                    "stop" : "#67951a",
+                    "top" : 20,
+                    "height" : 60
+                }
+            },
             "eye-white" : "white",
             "eye-color" : "#6c2d1b",
             "mouth" : "black",
             "tongue" : "#862f2f",
             "teeth" : "white",
-            "belly" : "#84bc25"
+            "belly" : "#d8de36"
         },
         
         "parts" : {

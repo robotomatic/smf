@@ -14,7 +14,14 @@
         ],
         
         "colors" : {
-            "skin" : "#e099bd",
+            "skin" : {
+                "gradient" : {
+                    "start" : "#e099bd",
+                    "stop" : "#c38da8",
+                    "top" : 20,
+                    "height" : 60
+                }
+            },
             "skin-dark" : "#aa7590",
             "dark" : "#4b4949",
             "eye-white" : "white",

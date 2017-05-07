@@ -16,7 +16,14 @@
         ],
         
         "colors" : {
-            "skin" : "#c4dbe5",
+            "skin" : {
+                "gradient" : {
+                    "start" : "#e8f3f8",
+                    "stop" : "#75a3b5",
+                    "top" : 30,
+                    "height" : 70
+                }
+            },
             "skin-dark" : "#519eb5",
             "skin-dark-dark" : "black",
             "eye-shadow" : "black",
@@ -386,6 +393,7 @@
                                                 "parts" : {
                                                     "left-forearm" : {
                                                         "link" : "left-arm",
+                                                        "linktype" : "end",
                                                         "width" : 20,
                                                         "height" : 23,
                                                         "x" : -3,
@@ -463,6 +471,7 @@
                                                 "parts" : {
                                                     "right-forearm" : {
                                                         "link" : "right-arm",
+                                                        "linktype" : "end",
                                                         "width" : 20,
                                                         "height" : 23,
                                                         "x" : 85,
@@ -546,6 +555,7 @@
                                                 "parts" : {
                                                     "left-calf" : {
                                                         "link" : "left-leg",                        
+                                                        "linktype" : "end",
                                                         "width" : 10, 
                                                         "height" :  10,
                                                         "x" : 30.5,
@@ -598,6 +608,7 @@
                                                 "parts" : {
                                                     "right-calf" : {
                                                         "link" : "right-leg",                        
+                                                        "linktype" : "end",
                                                         "width" : 10, 
                                                         "height" :  10,
                                                         "x" : 61.5,

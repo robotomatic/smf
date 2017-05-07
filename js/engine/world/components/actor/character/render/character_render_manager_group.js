@@ -18,6 +18,7 @@ function CharacterRenderManagerGroup(groupname) {
     this.outline = false;
     this.linktype = "";
     this.pointinfo = {};
+    this.line = new Line();
 }
 
 CharacterRenderManagerGroup.prototype.reset = function() {
@@ -38,3 +39,15 @@ CharacterRenderManagerGroup.prototype.reset = function() {
     this.pointinfo = {};
 }
 
+
+CharacterRenderManagerGroup.prototype.rotate = function(deg, center) {
+    for (var i = 0; i < this.points.length; i++) {
+        this.line.start.x = center.x;
+        this.line.start.y = center.y;
+        this.line.end.x = this.points[i].x;
+        this.line.end.y = this.points[i].y;
+        this.line = this.line.rotate(deg);
+        this.points[i].x = this.line.end.x;
+        this.points[i].y = this.line.end.y;
+    }
+}

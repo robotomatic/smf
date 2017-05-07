@@ -107,13 +107,15 @@ CharacterRendererGroupsGroupRenderer.prototype.rotateGroup = function(groupnames
         if (keys[i] == "keys" || keys[i] == "groups") continue;
         var gg = groupnames[keys[i]];
         if (!gg) continue;
-        this.rotatepoly.setPoints(gg.points);
-        gg.points = this.rotatepoly.rotate(group.angle, group.center);
+        gg.rotate(group.angle, group.center);
         if (gg.center) {
-            this.rotateline.start = group.center;
-            this.rotateline.end = gg.center;
+            this.rotateline.start.x = group.center.x;
+            this.rotateline.start.y = group.center.y;
+            this.rotateline.end.x = gg.center.x;
+            this.rotateline.end.y = gg.center.y;
             this.rotateline = this.rotateline.rotate(group.angle);
-            gg.center = this.rotateline.end;
+            gg.center.x = this.rotateline.end.x;
+            gg.center.y = this.rotateline.end.y;
         }
         gg.rects[0] = this.rotatepoly.getMbr();
         if (parts[keys[i]].parts) this.rotateGroup(groupnames, group, parts[keys[i]].parts);
