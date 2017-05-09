@@ -11,14 +11,12 @@ function CharacterRendererGroups() {
     this.debugrects = new Array();
 }
 
-CharacterRendererGroups.prototype.renderGroups = function(gamecanvas, character, animchar, rendermanager, scale, debug) {
+CharacterRendererGroups.prototype.renderGroups = function(gamecanvas, character, rendermanager, scale, debug) {
     this.debugrects.length = 0;        
-
     var groupnames = rendermanager.groupnames;
     var groups = rendermanager.groups;
     if (!groups.length) return;
     groups.sort(sortByZIndex);  
-
     for (var i = 0; i < groups.length; i++) {
         var cnv = gamecanvas;
         var group = groups[i];
@@ -36,7 +34,6 @@ CharacterRendererGroups.prototype.renderGroups = function(gamecanvas, character,
             gamecanvas.drawImage(cnv, 0, 0, gamecanvas.canvas.width, gamecanvas.canvas.height);
         }
     }
-    
     this.renderDebug(gamecanvas);
 }
 
@@ -46,8 +43,6 @@ CharacterRendererGroups.prototype.getGradient = function(gamecanvas, colorname, 
     //
     // - need an attribute to group render calls so gradient canvas doesn't get cleared and drawn as often:
     //  --> draww bg arm and leg --> draw body --> draw fg arm
-    //
-    // - peel groupdef out of character parts
     //
     // - debuggeru
     //
