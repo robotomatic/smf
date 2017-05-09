@@ -35,20 +35,20 @@
             "ear-inner" : "#676767"
         },
 
-        "parts" : {
-            
-            "groups" : {
-                "head" : {
-                    "zindex" : 540,
-                    "path" : "smooth",
-                    "color" : "skin"
-                },
-                "belly" : {
-                    "zindex" : 580,
-                    "path" : "smooth",
-                    "color" : "skin-light"
-                }
+        "groups" : {
+            "head" : {
+                "zindex" : 540,
+                "path" : "smooth",
+                "color" : "skin"
             },
+            "belly" : {
+                "zindex" : 580,
+                "path" : "smooth",
+                "color" : "skin-light"
+            }
+        },
+        
+        "parts" : {
             
             "head" : {
                 "color" : "skin",

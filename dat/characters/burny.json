@@ -44,26 +44,27 @@
             },
             "spikes" : "#6c2d1b"
         },
+
+        "groups" : {
+            "belly" : {
+                "path" : "smooth",
+                "zindex" : 600,
+                "color" : "belly"
+            },
+            "mouth" : {
+                "path" : "smooth",
+                "zindex" : 5000,
+                "color" : "mouth",
+                "clip" : "start"
+            },
+            "body" : {
+                "zindex" : 500,
+                "path" : "smooth",
+                "color" : "skin"
+            }
+        },
         
         "parts" : {
-            "groups" : {
-                "belly" : {
-                    "path" : "smooth",
-                    "zindex" : 600,
-                    "color" : "belly"
-                },
-                "mouth" : {
-                    "path" : "smooth",
-                    "zindex" : 5000,
-                    "color" : "mouth",
-                    "clip" : "start"
-                },
-                "body" : {
-                    "zindex" : 500,
-                    "path" : "smooth",
-                    "color" : "skin"
-                }
-            },
             
             "head" : {
                 "parts" : {

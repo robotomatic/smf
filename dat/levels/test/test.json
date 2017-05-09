@@ -1,0 +1,17 @@
+{
+    "name" : "test",
+    "pad" : 500,
+    "layers" : {
+        "sky" : {
+            "file" : "dat/levels/test/layers/sky.json"
+        },
+
+        "ground" : {
+            "file" : "dat/levels/test/layers/ground.json"
+        },
+        
+        "liquid" : {
+            "file" : "dat/levels/test/layers/liquid.json"
+        }
+    }
+ }

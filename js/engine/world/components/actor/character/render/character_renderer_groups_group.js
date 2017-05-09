@@ -22,7 +22,7 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(gamecanvas, charac
         gamecanvas.beginPath();
         this.renderer.drawPolygon(gg.path, gamecanvas);
         if (gg.clip) {
-            this.renderGroupLinkPath(gamecanvas, gg);
+            this.renderGroupClipPath(gamecanvas, gg);
         }
     } 
     gamecanvas.commit();
@@ -50,6 +50,7 @@ CharacterRendererGroupsGroup.prototype.renderGroupClipPath = function(gamecanvas
     if (gg.clip == "start") {
         this.renderer.startClipPath(gamecanvas);
     } else if (gg.clip == "end") {
+        gamecanvas.commit();
         this.renderer.endClipPath(gamecanvas);
     }
 }

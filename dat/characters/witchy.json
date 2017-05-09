@@ -38,32 +38,31 @@
             "cuff" : "black",
             "shoes" : "black"
         },
+
+        "groups" : {
+            "body" : {
+                "zindex" : 300,
+                "path" : "smooth",
+                "color" : "skin"
+            },
+            "skirt" : {
+                "zindex" : 380,
+                "path" : "smooth",
+                "color" : "clothes"
+            },
+            "hair" : {
+                "zindex" : 310,
+                "path" : "smooth",
+                "color" : "hair"
+            },
+            "head" : {
+                "zindex" : 420,
+                "path" : "smooth",
+                "color" : "skin"
+            }
+        },
         
         "parts" : {
-            
-            "groups" : {
-                "body" : {
-                    "zindex" : 300,
-                    "path" : "smooth",
-                    "color" : "skin"
-                },
-                "skirt" : {
-                    "zindex" : 380,
-                    "path" : "smooth",
-                    "color" : "clothes"
-                },
-                "hair" : {
-                    "zindex" : 310,
-                    "path" : "smooth",
-                    "color" : "hair"
-                },
-                "head" : {
-                    "zindex" : 420,
-                    "path" : "smooth",
-                    "color" : "skin"
-                }
-            },
-            
             "head" : {
                 "parts" : {
                     "hair" : {

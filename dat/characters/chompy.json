@@ -42,25 +42,26 @@
             }
         },
         
-        "parts" : {
-            "groups" : {
-                "belly" : {
-                    "path" : "smooth",
-                    "zindex" : 600,
-                    "color" : "belly"
-                },
-                "mouth" : {
-                    "path" : "smooth",
-                    "zindex" : 5000,
-                    "color" : "mouth",
-                    "clip" : "start"
-                },
-                "body" : {
-                    "zindex" : 500,
-                    "path" : "smooth",
-                    "color" : "skin"
-                }
+        "groups" : {
+            "belly" : {
+                "path" : "smooth",
+                "zindex" : 600,
+                "color" : "belly"
             },
+            "mouth" : {
+                "path" : "smooth",
+                "zindex" : 5000,
+                "color" : "mouth",
+                "clip" : "start"
+            },
+            "body" : {
+                "zindex" : 500,
+                "path" : "smooth",
+                "color" : "skin"
+            }
+        },
+
+        "parts" : {
             
             "head" : {
                 "parts" : {
@@ -252,6 +253,7 @@
                     }
                 }
             },
+            
             "neck" : {
                 "group" : "body",
                 "parts" : {
@@ -326,6 +328,7 @@
                     }
                 }
             },
+            
             "belly" : {
                 "group" : "belly",
                 "parts" : {
@@ -349,6 +352,7 @@
                     }
                 }
             },
+            
             "arms" : {
                 "color" : "skin",
                 "parts" : {

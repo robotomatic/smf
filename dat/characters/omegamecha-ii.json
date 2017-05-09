@@ -29,25 +29,26 @@
             "mouth" : "white",
             "metal" : "gray"
         },
+
+        "groups" : {
+            "face" : {
+                "zindex" : 650,
+                "path" : "join",
+                "color" : "dark"
+            },
+            "torso" : {
+                "zindex" : 450,
+                "path" : "join",
+                "color" : "skin"
+            },
+            "hips" : {
+                "zindex" : 400,
+                "path" : "join",
+                "color" : "skin"
+            }
+        },
         
         "parts" : {
-            "groups" : {
-                "face" : {
-                    "zindex" : 650,
-                    "path" : "join",
-                    "color" : "dark"
-                },
-                "torso" : {
-                    "zindex" : 450,
-                    "path" : "join",
-                    "color" : "skin"
-                },
-                "hips" : {
-                    "zindex" : 400,
-                    "path" : "join",
-                    "color" : "skin"
-                }
-            },
 
             "head" : {
                 "parts" : {

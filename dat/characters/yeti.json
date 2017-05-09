@@ -37,20 +37,20 @@
             "feet" : "#519eb5"
         },
 
-        "parts" : {
-            "groups" : {
-                "body" : {
-                    "zindex" : 340,
-                    "path" : "smooth",
-                    "color" : "skin"
-                },
-                "face" : {
-                    "zindex" : 600,
-                    "path" : "smooth",
-                    "color" : "skin-dark"
-                }
+        "groups" : {
+            "body" : {
+                "zindex" : 340,
+                "path" : "smooth",
+                "color" : "skin"
             },
-            
+            "face" : {
+                "zindex" : 600,
+                "path" : "smooth",
+                "color" : "skin-dark"
+            }
+        },
+        
+        "parts" : {
             "head" : {
                 "parts" : {
                     "face" : {

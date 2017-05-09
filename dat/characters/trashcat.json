@@ -36,25 +36,26 @@
             "belly" : "#d8b289",
             "tail" : "#886A08"
         },
+
+        "groups" : {
+            "body" : {
+                "zindex" : 400,
+                "color" : "skin",
+                "path" : "smooth"
+            },
+            "belly" : {
+                "path" : "smooth",
+                "color" : "belly",
+                "zindex" : 1450
+            },
+            "mask" : {
+                "zindex" : 500,
+                "path" : "smooth",
+                "color" : "mask"
+            }
+        },
         
         "parts" : {
-            "groups" : {
-                "body" : {
-                    "zindex" : 400,
-                    "color" : "skin",
-                    "path" : "smooth"
-                },
-                "belly" : {
-                    "path" : "smooth",
-                    "color" : "belly",
-                    "zindex" : 1450
-                },
-                "mask" : {
-                    "zindex" : 500,
-                    "path" : "smooth",
-                    "color" : "mask"
-                }
-            },
             
             "tail" : {
                 "parts" : {

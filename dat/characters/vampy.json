@@ -43,26 +43,27 @@
             "suit-accent" : "#51cad4",
             "shoes" : "black"
         },
+
+        "groups" : {
+            "body" : {
+                "zindex" : 380,
+                "path" : "smooth",
+                "color" : "skin"
+            },
+            "suit" : {
+                "zindex" : 300,
+                "path" : "smooth",
+                "color" : "suit"
+            },
+            "mouth" : {
+                "zindex" : 5500,
+                "path" : "smooth",
+                "color" : "mouth",
+                "clip" : "start"
+            }
+        },
         
         "parts" : {
-            "groups" : {
-                "body" : {
-                    "zindex" : 380,
-                    "path" : "smooth",
-                    "color" : "skin"
-                },
-                "suit" : {
-                    "zindex" : 300,
-                    "path" : "smooth",
-                    "color" : "suit"
-                },
-                "mouth" : {
-                    "zindex" : 5500,
-                    "path" : "smooth",
-                    "color" : "mouth",
-                    "clip" : "start"
-                }
-            },
             
             "head" : {
                 "parts" : {

@@ -8,11 +8,11 @@ function CharacterRenderManager() {
 CharacterRenderManager.prototype.updateCharacter = function(character, animchar) {
     if (this.groups.length) this.resetCharacterGroups();
     this.updateCharacterParts(character, animchar, "");
-    if (!animchar.groups) return;
+    if (!character.groups) return;
     for (var i = 0; i < this.groups.length; i++) {
         var group = this.groups[i];
         var name = group.name;
-        var groupdef = animchar.groups[name];
+        var groupdef = character.groups[name];
         if (!groupdef || groupdef.draw == false) continue;
         var z = 100;
         if (groupdef.zindex || groupdef.zindex == 0) z = groupdef.zindex;

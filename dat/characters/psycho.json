@@ -33,37 +33,36 @@
             "gloves" : "black",
             "boots" : "black"
         },
-        
-        "parts" : {
             
-            "groups" : {
-                "hood" : {
-                    "zindex" : 200,
-                    "path" : "chain",
-                    "color" : "cloak"
-                },
-                "mask" : {
-                    "zindex" : 1000,
-                    "path" : "smooth",
-                    "color" : "mask"
-                },
-                "body" : {
-                    "zindex" : 300,
-                    "path" : "smooth",
-                    "color" : "cloak"
-                },
-                "collar" : {
-                    "zindex" : 8000,
-                    "path" : "join",
-                    "color" : "cloak"
-                },
-                "cape" : {
-                    "zindex" : -5,
-                    "path" : "join",
-                    "color" : "cloak"
-                }
+        "groups" : {
+            "hood" : {
+                "zindex" : 200,
+                "path" : "chain",
+                "color" : "cloak"
             },
+            "mask" : {
+                "zindex" : 1000,
+                "path" : "smooth",
+                "color" : "mask"
+            },
+            "body" : {
+                "zindex" : 300,
+                "path" : "smooth",
+                "color" : "cloak"
+            },
+            "collar" : {
+                "zindex" : 8000,
+                "path" : "join",
+                "color" : "cloak"
+            },
+            "cape" : {
+                "zindex" : -5,
+                "path" : "join",
+                "color" : "cloak"
+            }
+        },
             
+        "parts" : {
             "head" : {
                 "parts" : {
                     "hood-top" : {

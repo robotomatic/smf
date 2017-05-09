@@ -31,5 +31,13 @@
             "default", 
             "space"
         ]
+    },
+    "level-test" : {
+        "name" : "test",
+        "file" : "dat/levels/test/test.json",
+        "themes" : [
+            "default",
+            "jungle"
+        ]
     }
 }

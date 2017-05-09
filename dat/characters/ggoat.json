@@ -44,21 +44,21 @@
             "clothes-shadow" : "#154a77",
             "hoof" : "black"
         },
+
+        "groups" : {
+            "body" : {
+                "zindex" : 480,
+                "path" : "smooth",
+                "color" : "skin"
+            },
+            "clothes" : {
+                "zindex" : 380,
+                "path" : "smooth",
+                "color" : "clothes"
+            }
+        },
         
         "parts" : {
-            
-            "groups" : {
-                "body" : {
-                    "zindex" : 480,
-                    "path" : "smooth",
-                    "color" : "skin"
-                },
-                "clothes" : {
-                    "zindex" : 380,
-                    "path" : "smooth",
-                    "color" : "clothes"
-                }
-            },
             
             "head" : {
                 "parts" : {

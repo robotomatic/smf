@@ -42,31 +42,30 @@
             "shoes" :"black"
         },
         
+        "groups" : {
+            "face" : {
+                "zindex" : 650,
+                "path" : "smooth",
+                "color" : "skin"
+            },
+            "body" : {
+                "zindex" : 500,
+                "path" : "smooth",
+                "color" : "shirt"
+            },
+            "belt" : {
+                "zindex" : 550,
+                "path" : "smooth",
+                "color" : "belt"
+            },
+            "pants" : {
+                "zindex" : 580,
+                "path" : "smooth",
+                "color" : "pants"
+            }
+        },
         
         "parts" : {
-            "groups" : {
-                "face" : {
-                    "zindex" : 650,
-                    "path" : "smooth",
-                    "color" : "skin"
-                },
-                "body" : {
-                    "zindex" : 500,
-                    "path" : "smooth",
-                    "color" : "shirt"
-                },
-                "belt" : {
-                    "zindex" : 550,
-                    "path" : "smooth",
-                    "color" : "belt"
-                },
-                "pants" : {
-                    "zindex" : 580,
-                    "path" : "smooth",
-                    "color" : "pants"
-                }
-            },
-            
             "head" : {
                 "color" : "skin",
                 "parts" : {

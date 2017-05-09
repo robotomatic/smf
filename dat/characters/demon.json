@@ -31,23 +31,23 @@
             "gums" : "#744343",
             "teeth" : "white"
         },
+
+        "groups" : {
+            "head" : {
+                "zindex" : 420,
+                "path" : "smooth",
+                "color" : "skin"
+            },
+            "mouth" : {
+                "zindex" : 450,
+                "path" : "smooth",
+                "color" : "mouth",
+                "clip" : "start"
+            }
+        },
         
         "parts" : {
-            
-            "groups" : {
-                "head" : {
-                    "zindex" : 420,
-                    "path" : "smooth",
-                    "color" : "skin"
-                },
-                "mouth" : {
-                    "zindex" : 450,
-                    "path" : "smooth",
-                    "color" : "mouth",
-                    "clip" : "start"
-                }
-            },
-            
+
             "head" : {
                 "parts" : {
                     
