@@ -9,7 +9,7 @@ function ViewCameraSettings(viewrenderer) {
     this.settings = {
         tight : {
             x : 0,
-            y : -100,
+            y : -25,
             z : 150
         },
         comfy : {

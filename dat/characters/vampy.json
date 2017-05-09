@@ -5,6 +5,7 @@
         "height" : 38,
         "debug" : false,
         "idlespeed" : 1.5,
+        
         "animations" : [
             "default",
             "blink",
@@ -16,7 +17,14 @@
         ],
         
         "colors" : {
-            "skin" : "#af84c9",
+            "skin" : {
+                "gradient" : {
+                    "start" : "#b155e8",
+                    "stop" : "#dbd0e2",
+                    "top" : 0,
+                    "height" : 38
+                }
+            },
             "skin-shadow" : "#805b96",
             "eye-shadow" : "#4a3557",
             "eye-white" : "white",
@@ -24,8 +32,15 @@
             "mouth" : "black",
             "teeth" : "white",
             "tongue" : "#6d3d3d",
-            "suit" : "#462d9b",
-            "suit-accent" : "#519dd4",
+            "suit" : {
+                "gradient" : {
+                    "start" : "#758fbf",
+                    "stop" : "#462d9b",
+                    "top" : 20,
+                    "height" : 38
+                }
+            },
+            "suit-accent" : "#51cad4",
             "shoes" : "black"
         },
         
@@ -396,16 +411,16 @@
                     },
                     "neck-bottom" : {
                         "group" : "body",
-                        "width" : 40,
+                        "width" : 38,
                         "height" : 5,
-                        "x" : 30,
-                        "y" : 32
+                        "x" : 31,
+                        "y" : 27
                     },
                     "collar" : {
                         "width" : 50,
                         "height" : 10,
                         "x" : 25,
-                        "y" : 30,
+                        "y" : 27,
                         "zindex" : 360,
                         "path" : "smooth",
                         "color" : "suit-accent"
@@ -474,6 +489,7 @@
                                                 "parts" : {
                                                     "left-forearm" : {
                                                         "link" : "left-arm",
+                                                        "linktype" : "end",
                                                         "width" : 10,
                                                         "height" : 14,
                                                         "x" : 20,
@@ -551,6 +567,7 @@
                                                 "parts" : {
                                                     "right-forearm" : {
                                                         "link" : "right-arm",
+                                                        "linktype" : "end",
                                                         "width" : 10,
                                                         "height" : 14,
                                                         "x" : 70,
@@ -632,6 +649,7 @@
                                                 "parts" : {
                                                     "left-calf" : {
                                                         "link" : "left-leg",                        
+                                                        "linktype" : "end",
                                                         "width" : 10, 
                                                         "height" :  20,
                                                         "x" : 25,
@@ -686,6 +704,7 @@
                                                 "parts" : {
                                                     "right-calf" : {
                                                         "link" : "right-leg",                        
+                                                        "linktype" : "end",
                                                         "width" : 10, 
                                                         "height" :  20,
                                                         "x" : 65,

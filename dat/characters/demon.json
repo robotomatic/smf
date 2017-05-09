@@ -5,6 +5,7 @@
         "height" : 40,
         "debug" : false,
         "idlespeed" : 2,
+        
         "animations" : [
             "default",
             "arms",

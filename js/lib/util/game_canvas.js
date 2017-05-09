@@ -388,7 +388,7 @@ GameCanvas.prototype.drawImage = function(data, x, y, w, h, xx, yy, ww, hh) {
     yy = round(yy);
     ww = round(ww);
     hh = round(hh);
-    if (xx && yy && ww && hh) this.ctx.drawImage(data.canvas, x, y, w, h, xx, yy, ww, hh);
+    if (ww && hh) this.ctx.drawImage(data.canvas, x, y, w, h, xx, yy, ww, hh);
     else this.ctx.drawImage(data.canvas, x, y, w, h);
 }
 

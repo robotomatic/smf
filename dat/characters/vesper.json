@@ -4,7 +4,8 @@
         "width" : 16,
         "height" : 22, 
         "debug" : false,
-        "idlespeed" : ".45",
+        "idlespeed" : 0.45,
+        
         "animations" : [
             "default",
             "blink",
@@ -16,7 +17,14 @@
         ],
 
         "colors" : {
-            "skin" : "#5cb8e5",
+            "skin" : {
+                "gradient" : {
+                    "start" : "#5cb8e5",
+                    "stop" : "#2182b2",
+                    "top" : 10,
+                    "height" : 22
+                }
+            },
             "skin-light" : "#dbe0ed",
             "skin-dark" : "#6f8e9d",
             "eye-white" : "yellow",
@@ -425,6 +433,7 @@
                                 "parts" : {
                                     "tail-end" : {
                                         "link" : "tail-tail",
+                                        "linktype" : "end",
                                         "width" : 8,
                                         "height" : 10,
                                         "x" : 47.5,
@@ -485,6 +494,7 @@
                                                 "parts" : {
                                                     "left-forearm" : {
                                                         "link" : "left-arm",
+                                                        "linktype" : "end",
                                                         "width" : 10,
                                                         "height" : 15,
                                                         "x" : 22,
@@ -542,6 +552,7 @@
                                                 "parts" : {
                                                     "right-forearm" : {
                                                         "link" : "right-arm",
+                                                        "linktype" : "end",
                                                         "width" : 10,
                                                         "height" : 15,
                                                         "x" : 68,
@@ -610,6 +621,7 @@
                                                         "parts" : {
                                                             "left-ankle" : {
                                                                 "link" : "left-leg",                        
+                                                                "linktype" : "end",
                                                                 "width" : 12,
                                                                 "height" : 8,
                                                                 "x" : 25,
@@ -673,6 +685,7 @@
                                                         "parts" : {
                                                             "right-ankle" : {
                                                                 "link" : "right-leg",                        
+                                                                "linktype" : "end",
                                                                 "width" : 12,
                                                                 "height" : 8,
                                                                 "x" : 63,

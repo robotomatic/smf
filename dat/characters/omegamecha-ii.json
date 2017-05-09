@@ -6,6 +6,7 @@
         "pad" : 50,
         "debug" : false, 
         "idlespeed" : 1.9,
+        
         "animations" : [
             "default",
             "arms",
@@ -17,9 +18,9 @@
             "skin" : {
                 "gradient" : {
                     "start" : "#6ba5d0",
-                    "stop" : "#588bb1",
-                    "top" : 20,
-                    "height" : 60
+                    "stop" : "#324e62",
+                    "top" : 30,
+                    "height" : 80
                 }
             },
             "skin-dark" : "#476d89",
@@ -225,6 +226,7 @@
                             },
                             "body-torso-shadow-left-waist" : {
                                 "link" : "torso-shadow-left",
+                                "linktype" : "end",
                                 "width" : 5,
                                 "height" : 2,
                                 "x" : 30,
@@ -262,6 +264,7 @@
                             },
                             "body-torso-shadow-right-waist" : {
                                 "link" : "torso-shadow-right",
+                                "linktype" : "end",
                                 "width" : 5,
                                 "height" : 2,
                                 "x" : 65,
@@ -399,7 +402,8 @@
                                                                 "height" : 1,
                                                                 "x" : -7.5,
                                                                 "y" : 65,
-                                                                "link" : "left-forearm"
+                                                                "link" : "left-forearm",
+                                                                "linktype" : "end"
                                                             },
                                                             "left-hand" : {
                                                                 "color" : "dark",
@@ -485,7 +489,8 @@
                                                                 "height" : 1,
                                                                 "x" : 93.5,
                                                                 "y" : 65,
-                                                                "link" : "right-forearm"
+                                                                "link" : "right-forearm",
+                                                                "linktype" : "end"
                                                             },
                                                             "right-hand" : {
                                                                 "color" : "dark",
@@ -565,6 +570,7 @@
                                                         "parts" : {
                                                             "left-calf-cuff" : {
                                                                 "link" : "left-calf",
+                                                                "linktype" : "end",
                                                                 "width" : 12,
                                                                 "height" : 1,
                                                                 "x" : 23,
@@ -627,6 +633,7 @@
                                                         "parts" : {
                                                             "right-calf-cuff" : {
                                                                 "link" : "right-calf",
+                                                                "linktype" : "end",
                                                                 "width" : 12,
                                                                 "height" : 1,
                                                                 "x" : 63,

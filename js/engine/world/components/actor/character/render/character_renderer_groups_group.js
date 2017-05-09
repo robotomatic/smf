@@ -22,18 +22,18 @@ CharacterRendererGroupsGroup.prototype.renderGroup = function(gamecanvas, charac
     if (gg.link && gg.link != "skip") {
         if (!linkpath) {
             this.renderer.startLinkPath(color, gg.linktype);
+            return false;
         } else if (gg.link && gg.linktype == "end") {
             if (linkpath && gg.link != "skip") {
                 this.renderer.addLinkPath();
                 this.renderer.endLinkPath(gamecanvas);
+                return true;
             }
         } else if (gg.link && linkpath) {
             this.renderer.addLinkPath();
+            return false;
         }
     } else {
-        if (linkpath && gg.link != "skip") {
-            this.renderer.endLinkPath(gamecanvas);
-        }
 
         gamecanvas.setFillStyle(color);
         gamecanvas.beginPath();

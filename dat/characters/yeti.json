@@ -5,7 +5,8 @@
         "height" : 120, 
         "pad" : 50,
         "debug" : false,
-        "idlespeed" : ".45",
+        "idlespeed" : 0.45,
+        
         "animations" : [
             "default",
             "blink",
@@ -19,9 +20,9 @@
             "skin" : {
                 "gradient" : {
                     "start" : "#e8f3f8",
-                    "stop" : "#75a3b5",
-                    "top" : 30,
-                    "height" : 70
+                    "stop" : "#9ac4d4",
+                    "top" : 40,
+                    "height" : 120
                 }
             },
             "skin-dark" : "#519eb5",

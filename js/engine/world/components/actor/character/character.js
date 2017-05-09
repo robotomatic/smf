@@ -81,5 +81,5 @@ Character.prototype.draw = function(now, gamecanvas, player, px, py, pad, scale,
     this.mbr.z = 0;
     this.mbr.width = player.controller.width * scale;
     this.mbr.height = player.controller.height * scale;
-    this.renderer.draw(gamecanvas, this, debug);
+    this.renderer.draw(gamecanvas, this, scale, debug);
 }

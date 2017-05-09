@@ -9,12 +9,10 @@ function CharacterRendererGroupsGroupRendererPathLink() {
 }
 
 CharacterRendererGroupsGroupRendererPathLink.prototype.startLinkPath = function(poly, color, linktype) { 
-    if (!this.linkpathStart.points.length) {
-        this.linkpathStart.points.length = 0;
-        this.linkpathEnd.points.length = 0;
-        this.linkpathColor = color;
-        this.linkpathType = (linktype) ? linktype : "";
-    }
+    this.linkpathStart.points.length = 0;
+    this.linkpathEnd.points.length = 0;
+    this.linkpathColor = color;
+    this.linkpathType = (linktype) ? linktype : "";
     this.addLinkPath(poly);
 }
     
@@ -43,6 +41,7 @@ CharacterRendererGroupsGroupRendererPathLink.prototype.endLinkPath = function(ga
     for (var i = 0; i < this.linkpathStart.points.length; i++) this.path.addPoint(this.linkpathStart.points[i]);
     for (var i = this.linkpathEnd.points.length; i > 0 ; i--) this.path.addPoint(this.linkpathEnd.points[i - 1]);
     
+    gamecanvas.commit();
     gamecanvas.beginPath();
     gamecanvas.setFillStyle(this.linkpathColor);
     if (this.linkpathType === "join") this.path.draw(gamecanvas);

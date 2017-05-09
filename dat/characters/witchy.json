@@ -4,7 +4,8 @@
         "width" : 12,
         "height" : 28,
         "debug" : false,
-        "idlespeed" : ".5",
+        "idlespeed" : 0.5,
+        
         "animations" : [
             "default",
             "blink",
@@ -17,7 +18,14 @@
         ],
         
         "colors" : {
-            "skin" : "pink",
+            "skin" : {
+                "gradient" : {
+                    "start" : "#ffd2da",
+                    "stop" : "#ffdfe4",
+                    "top" : 0,
+                    "height" : 28
+                }
+            },
             "hair" : "yellow",
             "eye-shadow" : "black",
             "eye-white" : "white",
@@ -113,6 +121,7 @@
                                         "x" : -10,
                                         "y" : 15,
                                         "link" : "pigtail-left",
+                                        "linktype" : "end",
                                         "zindex" : 41
                                     },
                                     "hair-pigtail-left-end" : {
@@ -174,6 +183,7 @@
                                         "x" : 95,
                                         "y" : 15,
                                         "link" : "pigtail-right",
+                                        "linktype" : "end",
                                         "zindex" : 51
                                     },
                                     "hair-pigtail-right-end" : {
@@ -423,7 +433,8 @@
                                 "height" : 1,
                                 "x" : 10,
                                 "y" : 70,
-                                "link" : "skirt"
+                                "link" : "skirt",
+                                "linktype" : "end"
                             },
                             "skirt-hem" : {
                                 "zindex" : 4384,
@@ -491,6 +502,7 @@
                                                 "parts" : {
                                                     "left-forearm" : {
                                                         "link" : "left-arm",
+                                                        "linktype" : "end",
                                                         "width" : 10,
                                                         "height" : 10,
                                                         "x" : 18,
@@ -587,6 +599,7 @@
                                                 "parts" : {
                                                     "right-forearm" : {
                                                         "link" : "right-arm",
+                                                        "linktype" : "end",
                                                         "width" : 10,
                                                         "height" : 10,
                                                         "x" : 72,
@@ -668,6 +681,7 @@
                                                 "parts" : {
                                                     "left-calf" : {
                                                         "link" : "left-leg",                        
+                                                        "linktype" : "end",
                                                         "width" : 10, 
                                                         "height" :  10,
                                                         "x" : 20,
@@ -729,11 +743,11 @@
                                                 "parts" : {
                                                     "right-calf" : {
                                                         "link" : "right-leg",                        
+                                                        "linktype" : "end",
                                                         "width" : 10, 
                                                         "height" :  10,
                                                         "x" : 70,
                                                         "y" : 75,
-                                                        "color" : "black",
                                                         "parts" : {
                                                             "right-sock" : {
                                                                 "width" : 11,

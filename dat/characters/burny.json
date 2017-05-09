@@ -5,7 +5,8 @@
         "height" : 100,
         "pad" : 50,
         "debug" : false,
-        "idlespeed" : ".5",
+        "idlespeed" : 0.5,
+        
         "animations" : [
             "default", 
             "blink",
@@ -22,9 +23,9 @@
             "skin" : {
                 "gradient" : {
                     "start" : "#d87152",
-                    "stop" : "#9a3011",
-                    "top" : 20,
-                    "height" : 70
+                    "stop" : "#aa5840",
+                    "top" : 40,
+                    "height" : 100
                 }
             },
             "eye-shadow" : "#95422a",
@@ -33,7 +34,14 @@
             "mouth" : "black",
             "tongue" : "#862f2f",
             "teeth" : "white",
-            "belly" : "#e8bb24",
+            "belly" : {
+                "gradient" : {
+                    "start" : "#e8bb24",
+                    "stop" : "#be9715",
+                    "top" : 15,
+                    "height" : 30
+                }
+            },
             "spikes" : "#6c2d1b"
         },
         
@@ -459,6 +467,7 @@
                                                 "parts" : {
                                                     "left-forearm" : {
                                                         "link" : "left-arm",
+                                                        "linktype" : "end",
                                                         "width" : 7,
                                                         "height" : 5,
                                                         "x" : 10,
@@ -521,6 +530,7 @@
                                                 "parts" : {
                                                     "right-forearm" : {
                                                         "link" : "right-arm",
+                                                        "linktype" : "end",
                                                         "width" : 7,
                                                         "height" : 5,
                                                         "x" : 67,
@@ -586,6 +596,7 @@
                                                 "parts" : {
                                                     "left-calf" : {
                                                         "link" : "left-leg",                        
+                                                        "linktype" : "end",
                                                         "width" : 15, 
                                                         "height" :  5,
                                                         "x" : 8,
@@ -636,6 +647,7 @@
                                                 "parts" : {
                                                     "right-calf" : {
                                                         "link" : "right-leg",                        
+                                                        "linktype" : "end",
                                                         "width" : 15, 
                                                         "height" :  5,
                                                         "x" : 62,

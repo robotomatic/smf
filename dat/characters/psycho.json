@@ -4,7 +4,8 @@
         "width" : 12,
         "height" : 26,
         "debug" : false,
-        "idlespeed" : ".35",
+        "idlespeed" : 0.35,
+        
         "animations" : [
             "default",
             "blink",
@@ -18,11 +19,17 @@
         ],
         
         "colors" : {
-            "cloak" : "#5a4747",
-            "cape" : "#5a4747",
+            "cloak" : "#392d2d",
             "mask" : "#eceddd",
             "mask-hole" : "black",
-            "clothes" : "#8b7b7b",
+            "clothes" : {
+                "gradient" : {
+                    "start" : "#adadad",
+                    "stop" : "#605b5b",
+                    "top" : 10,
+                    "height" : 26
+                }
+            },
             "gloves" : "black",
             "boots" : "black"
         },
@@ -53,7 +60,7 @@
                 "cape" : {
                     "zindex" : -5,
                     "path" : "join",
-                    "color" : "cape"
+                    "color" : "cloak"
                 }
             },
             
@@ -344,6 +351,7 @@
                                                 "parts" : {
                                                     "left-forearm" : {
                                                         "link" : "left-arm",
+                                                        "linktype" : "end",
                                                         "width" : 10,
                                                         "height" : 10,
                                                         "x" : 18,
@@ -422,6 +430,7 @@
                                                 "parts" : {
                                                     "right-forearm" : {
                                                         "link" : "right-arm",
+                                                        "linktype" : "end",
                                                         "width" : 10,
                                                         "height" : 10,
                                                         "x" : 72,
@@ -504,6 +513,7 @@
                                                 "parts" : {
                                                     "left-calf" : {
                                                         "link" : "left-leg",                        
+                                                        "linktype" : "end",
                                                         "width" : 10, 
                                                         "height" :  10,
                                                         "x" : 20,
@@ -566,6 +576,7 @@
                                                 "parts" : {
                                                     "right-calf" : {
                                                         "link" : "right-leg",                        
+                                                        "linktype" : "end",
                                                         "width" : 10, 
                                                         "height" :  10,
                                                         "x" : 70,
@@ -605,7 +616,7 @@
             },
             
             "cape" : {
-                "color" : "cape",
+                "color" : "cloak",
                 "parts" : {
                     "cape-left-shoulder" : {
                         "join" : "collar",
