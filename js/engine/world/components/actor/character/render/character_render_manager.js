@@ -5,10 +5,13 @@ function CharacterRenderManager() {
     this.groupnames = {};
 }
 
-CharacterRenderManager.prototype.updateCharacter = function(character, animchar) {
+CharacterRenderManager.prototype.updateCharacter = function(character) {
     if (this.groups.length) this.resetCharacterGroups();
-    this.updateCharacterParts(character, animchar, "");
+    
+    this.updateCharacterParts(character, character.parts.parts, "");
+    
     if (!character.groups) return;
+    
     for (var i = 0; i < this.groups.length; i++) {
         var group = this.groups[i];
         var name = group.name;
@@ -26,6 +29,9 @@ CharacterRenderManager.prototype.resetCharacterGroups = function() {
         this.groups[i].reset();
     }
 }
+
+
+
 
 CharacterRenderManager.prototype.updateCharacterParts = function(character, parts, color) { 
     var keys = parts.keys;

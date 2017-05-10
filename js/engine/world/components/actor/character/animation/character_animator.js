@@ -2,7 +2,6 @@
 
 function CharacterAnimator() {
     this.loader = new CharacterAnimationLoader();
-    this.animationcharacter = new CharacterAnimationCharacter();
     this.currentAnimations = new Array();
     this.animstates = new Array();
     this.idlespeed = .1;
@@ -27,12 +26,11 @@ CharacterAnimator.prototype.resume = function(now) {
 }
 
 CharacterAnimator.prototype.animate = function(now, character) {
-    this.animationcharacter.initialize(character);
     this.idlespeed = character.idlespeed;
     this.updateAnimations(now, character.direction, character.state);
     this.reapAnimations(now);
-    this.runAnimations(now);
-    this.blendAnimations(now);
+    this.runAnimations(now, character);
+    this.blendAnimations(now, character);
 }
     
 CharacterAnimator.prototype.updateAnimations = function(now, direction, state) {
@@ -63,21 +61,25 @@ CharacterAnimator.prototype.reapAnimations = function(now) {
             var animname = this.animstates[ii];
             if (!animname) continue;
             if (curanim.name == animname) {
-                this.currentAnimations[key].running = true;            
+                curanim.running = true;            
                 break;
             }
         }
     }
 }
 
-CharacterAnimator.prototype.runAnimations = function(now) {
+
+
+
+CharacterAnimator.prototype.runAnimations = function(now, character) {
+    character.parts.reset();
     for (var i = 0; i < this.animstates.length; i++) {
         if (!this.animstates[i]) continue;
-        this.animateState(now, this.animstates[i]);
+        this.animateState(now, this.animstates[i], character);
     }
 }
 
-CharacterAnimator.prototype.animateState = function(now, state) {
+CharacterAnimator.prototype.animateState = function(now, state, character) {
     if (!this.loader.stateAnimations[state]) return;
     var sa = this.loader.stateAnimations[state];
     for (var animtype in sa) {
@@ -85,28 +87,31 @@ CharacterAnimator.prototype.animateState = function(now, state) {
         var stateanim = animations[state];
         if (!stateanim) continue;
         if (state == "idle") stateanim.duration = this.idlespeed;
-        this.animateCharacterBox(stateanim);
+        this.animateCharacterBox(stateanim, character);
         var animname = animtype + "-" + state;
         if (this.currentAnimations[animname]) {
             if (this.currentAnimations[animname].running && !this.currentAnimations[animname].animationOver) {            
-                this.currentAnimations[animname].next(now, this.animationcharacter.indexchar);
+                this.currentAnimations[animname].next(now, character.parts.index);
             } else {
                 this.currentAnimations[animname].reset(state, stateanim);
-                this.currentAnimations[animname].start(now, this.animationcharacter.indexchar);
+                this.currentAnimations[animname].start(now, character.parts.index);
             }
         } else {
             this.currentAnimations[animname] = new CharacterAnimationManager(state, stateanim);
-            this.currentAnimations[animname].start(now, this.animationcharacter.indexchar);
+            this.currentAnimations[animname].start(now, character.parts.index);
         }
     }
 }
 
-CharacterAnimator.prototype.blendAnimations = function(now) {
-    var p = Object.keys(this.animationcharacter.indexchar);
-    for (var i = 0 ; i < p.length; i++) {
-        if (p[i] == "pad" || p[i] == "keys" || p[i] == "group") continue;
-        var pp = this.animationcharacter.indexchar[p[i]];
-        this.applyBlend(pp);
+
+
+
+CharacterAnimator.prototype.blendAnimations = function(now, character) {
+    var keys = character.keys;
+    for (var i = 0 ; i < keys.length; i++) {
+        var key = keys[i];
+        var part = character.parts.index[key];
+        this.applyBlend(part);
     }
 }
 
@@ -143,6 +148,10 @@ CharacterAnimator.prototype.applyBlend = function(part) {
         part.angle = part.angle + ba;
     }
 }
+
+
+
+
 
 
 CharacterAnimator.prototype.addBlink = function() {
@@ -198,23 +207,22 @@ CharacterAnimator.prototype.addRandom = function(rand) {
     }
 }
 
-CharacterAnimator.prototype.animateCharacterBox = function(animation) {
+CharacterAnimator.prototype.animateCharacterBox = function(animation, character) {
     if (animation.width || animation.width == 0) {
         var aw = animation.width / 100;
-        var nw = this.animationcharacter.animbox.width * aw;
-        var wd = this.animationcharacter.animbox.width - nw;
-        this.animationcharacter.animbox.width = nw;
-        this.animationcharacter.animbox.x += wd / 2;
+        var nw = character.parts.box.width * aw;
+        var wd = character.parts.box.width - nw;
+        character.parts.box.width = nw;
+        character.parts.box.x += wd / 2;
     }
     if (animation.height || animation.height == 0) {
         var ah = animation.height / 100;
-        var nh = this.animationcharacter.animbox.height * ah;
-        var hd = this.animationcharacter.animbox.height - nh;
-        this.animationcharacter.animbox.height = nh;
-        this.animationcharacter.animbox.y -= hd / 2;
+        var nh = character.parts.box.height * ah;
+        var hd = character.parts.box.height - nh;
+        character.parts.box.height = nh;
+        character.parts.box.y -= hd / 2;
     }
-    if (animation.x) this.animationcharacter.animbox.x = animation.x;
-    if (animation.y) this.animationcharacter.animbox.y += animation.y;
-    
-    this.animationcharacter.animbox.draw = animation.draw;
+    if (animation.x) character.parts.box.x = animation.x;
+    if (animation.y) character.parts.box.y += animation.y;
+    character.parts.box.draw = animation.draw;
 }

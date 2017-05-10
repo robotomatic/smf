@@ -6,8 +6,6 @@ function CharacterRenderer() {
 }
 
 CharacterRenderer.prototype.draw = function(gamecanvas, character, scale, debug) {
-    var animchar = character.animator.animationcharacter.animchar;
-    if (!animchar) return;
-    this.rendermanager.updateCharacter(character, animchar);
+    this.rendermanager.updateCharacter(character);
     this.grouprenderer.renderGroups(gamecanvas, character, this.rendermanager, scale, debug);
 }

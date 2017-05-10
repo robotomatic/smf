@@ -5,7 +5,8 @@ function Character() {
     this.id;
     this.name;
     this.emitter;
-    this.parts = new Array();
+    this.parts = new CharacterParts();
+    this.keys = new Array();
     this.groups = new Array();
     this.colors = new Array();
     this.width;
@@ -31,7 +32,8 @@ Character.prototype.loadJson = function(json) {
     this.idlespeed = json.idlespeed;
     if (json.colors) this.colors = json.colors;
     if (json.groups) this.groups = json.groups;
-    if (json.parts) this.parts = json.parts;
+    if (json.parts) this.parts.initialize(this.width, this.height, json.parts);
+    this.keys = this.parts.keys;
     if (json.animations) this.animations = json.animations;
     this.hidden = json.hidden;
     if (json.pad) this.pad = json.pad;
@@ -72,9 +74,7 @@ Character.prototype.translate = function(window)  {
 }
 
 Character.prototype.draw = function(now, gamecanvas, player, px, py, pad, scale, debug, paused)  { 
-    if (!this.paused) {
-        this.animator.animate(now, this);
-    }
+    if (!this.paused) this.animator.animate(now, this);
     pad *= scale;
     this.mbr.x = px + pad;
     this.mbr.y = py + pad;

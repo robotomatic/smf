@@ -13,8 +13,10 @@ function CharacterRendererGroups() {
 
 CharacterRendererGroups.prototype.renderGroups = function(gamecanvas, character, rendermanager, scale, debug) {
     this.debugrects.length = 0;        
+    
     var groupnames = rendermanager.groupnames;
     var groups = rendermanager.groups;
+    
     if (!groups.length) return;
     groups.sort(sortByZIndex);  
     for (var i = 0; i < groups.length; i++) {

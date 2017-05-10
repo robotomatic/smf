@@ -64,7 +64,6 @@ CharacterAnimationManager.prototype.animate = function(indexchar, lerp) {
     var animparts = this.animation.parts;
     var keys = Object.keys(animparts);
     for (var i = 0; i < keys.length; i++)  {
-        if (keys[i] == "keys" || keys[i] == "group") continue;
         this.animateCharacterState(indexchar, keys[i], animparts[keys[i]], lerp, null);
     }
 }

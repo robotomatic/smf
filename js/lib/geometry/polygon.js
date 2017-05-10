@@ -231,6 +231,8 @@ Polygon.prototype.addPointXY = function(x, y, z, info = null) {
 
 
 Polygon.prototype.filterChain = function(rects) {
+    
+    if (!rects.length) return;
 
     this.points.length = 0;
     

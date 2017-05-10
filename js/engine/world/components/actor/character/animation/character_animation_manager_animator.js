@@ -3,7 +3,11 @@
 function CharacterAnimationManagerAnimator() { }
 
 CharacterAnimationManagerAnimator.prototype.applyAnimation = function(prevanimation, animation, part, t, parent) {
+    
+    
     if (!animation || !part.height || !part.width) return;
+    
+    
     this.applyAnimationPosition(prevanimation, animation, part, t);
     this.applyAnimationSize(prevanimation, animation, part, t);
     if ((animation.angle || animation.angle == 0) && !parent) part = this.applyAnimationAngle(prevanimation, animation, part, t);
