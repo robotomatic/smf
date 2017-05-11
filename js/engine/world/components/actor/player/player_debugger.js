@@ -14,72 +14,40 @@ PlayerDebugger.prototype.drawDebug = function(now, gamecanvas, debug) {
     
     gamecanvas.beginPath();
     this.player.box.drawOutline(gamecanvas, "blue", 2);
+    gamecanvas.commit();
     
-//    ctx.beginPath();
-//    this.player.camera.camerabox.drawOutline(ctx, "blue", 2);
-    
-//    var cb = this.player.camera.camerabox;
-//    this.rect.x = (cb.x - x) * scale;
-//    this.rect.y = (cb.y - y) * scale;
-//    this.rect.width = cb.width * scale;
-//    this.rect.height = cb.height * scale;
-//    ctx.beginPath();
-//    this.rect.drawOutline(ctx, "white", 2);
-    
+
     var gp = this.player.controller.gp;
     gamecanvas.beginPath();
     gamecanvas.setFillStyle("red");
     gp.draw(gamecanvas, 5);
-    
-    
-    
-//    var cb = this.player.camera.camerabox;
-//    this.rect.x = (cb.x - x) * scale;
-//    this.rect.y = (cb.y - y) * scale;
-//    this.rect.width = cb.width * scale;
-//    this.rect.height = cb.height * scale;
-//    this.rect.drawOutline(ctx, "white", 2);
-    
-    
-//    var pp = this.player.getLocation();
-//    var px = pp.x;
-//    var py = pp.y;
-    
-//    var lx = (this.player.collider.lastbox.x - px) * scale;
-//    var ly = (this.player.collider.lastbox.y - py) * scale;
-//    this.drawDebugRect(window, ctx, x + lx, y + ly, scale, this.player.collider.lastbox, "yellow");
-//    
-//    var mx = (this.player.collider.movebox.x - px) * scale;
-//    var my = (this.player.collider.movebox.y - py) * scale;
-//    this.drawDebugRect(window, ctx, x + mx, y + my, scale, this.player.collider.movebox, "black");
+    gamecanvas.commit();
 
-//    var hx = (this.player.collider.collisionbox.x - px) * scale;
-//    var hy = (this.player.collider.collisionbox.y - py) * scale;
-//    this.drawDebugRect(window, ctx, x + hx, y + hy, scale, this.player.collider.collisionbox, "red");
-    
-    
 
-//    for (var i = 0; i < this.player.collider.levelcollisions.length; i++) {
-//        this.drawDebugItem(window, ctx, x, y, scale, this.player.collider.levelcollisions[i]);
-//    }
+    var scale = this.player.box.scale;
+    var cb = this.player.camera.camerabox;
 
-//    var jpx = (this.player.controller.jumpstartx - this.player.controller.x) * scale;
-//    var jpy = (this.player.controller.jumpstarty - this.player.controller.y) * scale;
-//    var jr = geometryfactory.getRectangle(x + jpx - 5, y + jpy - 5, 10, 10);
-//    ctx.fillStyle = "red";
-//    ctx.beginPath();
-//    jr.draw(ctx);
+    var cbw = cb.width * scale;
+    var cbh = cb.height * scale;
+
+    var cbx = gp.x - (cbw / 2);
+    var cby = max(y + this.player.box.height, gp.y) - cbh;
+
+    this.rect.x = cbx;
+    this.rect.y = cby;
+    this.rect.width = cbw;
+    this.rect.height = cbh;
+
+    gamecanvas.beginPath();
+    this.rect.drawOutline(gamecanvas, "yellow", 2);
+    gamecanvas.commit();
+
     
     
-//    var gpx = (this.player.controller.groundpoint.x - px) * scale;
-//    var gpy = (this.player.controller.groundpoint.y - py) * scale;
-//    var gr = geometryfactory.getRectangle(x + gpx - 2, y + gpy - 4, 4, 8);
-//    ctx.fillStyle = "white";
-//    ctx.beginPath();
-//    gr.draw(ctx);
-//    
     
-    this.drawDebugText(gamecanvas, x, y, 1);
+    
+    
+//    this.drawDebugText(gamecanvas, x, y, 1);
 }
 
 

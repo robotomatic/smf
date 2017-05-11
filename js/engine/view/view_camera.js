@@ -4,6 +4,7 @@ function ViewCamera() {
 
     this.speed = 5;
     this.originalspeed = this.speed;
+    this.max = 20;
     
     this.offset = {
         x : 0,
@@ -61,7 +62,6 @@ function ViewCamera() {
     this.fit = false;
     
     this.center = geometryfactory.getPoint(0, 0, 0);
-    
 }
 
 ViewCamera.prototype.setSpeed = function(speed) {
@@ -103,7 +103,7 @@ ViewCamera.prototype.isShaking = function() {
 }
 
 ViewCamera.prototype.getView = function(now, mbr, width, height, follow, paused) {
-    
+
     if (!follow) {
         if (this.speed != 1) this.originalspeed = this.speed;
         this.speed = 1;
@@ -117,7 +117,7 @@ ViewCamera.prototype.getView = function(now, mbr, width, height, follow, paused)
     mbr = this.roundMbr(mbr);
     mbr = this.getCameraBox(mbr);
     mbr = this.getCenterPoint(now, mbr, paused);
-    
+
     return mbr;
 }
 
@@ -201,7 +201,7 @@ ViewCamera.prototype.getCenterPointShake = function(now) {
 
 
 ViewCamera.prototype.scaleMbr = function(mbr, width, height) {
-
+    
    var scale = width / mbr.width;
     var svh = height / scale;
     if (svh < mbr.height) {
@@ -268,28 +268,33 @@ ViewCamera.prototype.smoothCameraBox = function(mbr) {
     
     var dx = (mbr.x - this.lastview.x) / d;
     var nx = this.lastview.x + dx; 
-
+    var ddx = mbr.x - nx;
+    if (ddx > this.max) nx = mbr.x - this.max;
+    else if (ddx < -this.max) nx = mbr.x + this.max;
+    mbr.x = nx;
+    
     var dy = (mbr.y - this.lastview.y) / d;
     var ny = this.lastview.y + dy;
+    mbr.y = ny;
 
     var dz = (mbr.z - this.lastview.z) / d;
     var nz = this.lastview.z + dz;
+    var ddz = mbr.z - nz;
+    if (ddz > this.max) nz = mbr.z - this.max;
+    else if (ddz < -this.max) nz = mbr.z + this.max;
+    mbr.z = nz;
 
     var dw = (mbr.width - this.lastview.width) / d;
     var nw = this.lastview.width + dw;
+    mbr.width = nw;
     
     var dh = (mbr.height - this.lastview.height) / d;
     var nh = this.lastview.height + dh;
+    mbr.height = nh;
 
     var dd = (mbr.depth - this.lastview.depth) / d;
     var nd = this.lastview.depth + dd;
-    
-    mbr.x = round(nx);
-    mbr.y = round(ny);
-    mbr.z = round(nz);
-    mbr.width = round(nw);
-    mbr.height = round(nh);
-    mbr.depth = round(nd);
+    mbr.depth = nd;
     
     return mbr;
 }
