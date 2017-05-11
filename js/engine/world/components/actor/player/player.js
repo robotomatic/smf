@@ -138,6 +138,7 @@ Player.prototype.collideWith = function(collider, result, debug) {
     this.collider.collideWith(collider, result, debug);
     if (result.collided()) {
         this.collided = true;
+        this.collider.collideWith(collider, result, debug);
         this.controller.groundfriction = result.friction;
         this.controller.airfriction = result.airfriction;
     }
@@ -176,6 +177,7 @@ Player.prototype.update = function(now, delta, physics) {
     if (state == "idle") this.controller.idle(now);
     this.character.update(now, this, dir, state);
     this.collider.updateCollisionBox(this);
+    this.camera.updateCameraBox();
     updateDevPlayer(this);
 }
 
@@ -213,13 +215,13 @@ Player.prototype.translate = function(window) {
     
     var scale = window.scale;
     
-    this.box.x = round((this.controller.lastX - x) * scale);
-    this.box.y = round((this.controller.lastY - y) * scale);
-    this.box.z = round((this.controller.lastZ - z) * scale);
+    this.box.x = (this.controller.x - x) * scale;
+    this.box.y = (this.controller.y - y) * scale;
+    this.box.z = (this.controller.z - z) * scale;
     
-    this.box.width = round(this.controller.width * scale);
-    this.box.height = round(this.controller.height * scale);
-    this.box.depth = round(this.controller.depth * scale);
+    this.box.width = this.controller.width * scale;
+    this.box.height = this.controller.height * scale;
+    this.box.depth = this.controller.depth * scale;
     
     var bw = this.box.width;
     var wc = window.getCenter();
@@ -232,12 +234,11 @@ Player.prototype.translate = function(window) {
     this.box.depth *= this.scalefactor;
     this.box.scale = this.scale;
     
+    this.controller.gp.x = round(this.box.x + (this.box.width / 2));
+    this.controller.gp.z = round(this.box.z);
     if (this.controller.grounded) {
-        this.controller.gp.x = round(this.box.x + (this.box.width / 2));
         this.controller.gp.y = round(this.box.y + this.box.height);
-        this.controller.gp.z = round(this.box.z);
     }
-    this.camera.updateCameraBox(window, width, height);
     
     this.character.translate(this.box);
 }
@@ -267,6 +268,7 @@ Player.prototype.render = function(now, width, height, ctx, scale, debug, paused
     this.renderRender(now, scale, this.debugtemp, paused);
     this.renderEnd(now);
     this.drawImage(ctx);
+    if (debug) this.playerdebugger.drawDebug(now, ctx, debug);
 }
 
 Player.prototype.renderStart = function(now, scale) {
@@ -283,7 +285,6 @@ Player.prototype.renderRender = function(now, scale, debug, paused) {
     var px = 0;
     var py = 0;
     this.character.draw(now, c, this, px, py, ip, scale, debug, paused);
-    if (debug) this.playerdebugger.drawDebug(now, c, debug);
 }
 
 Player.prototype.renderEnd = function(when) {
