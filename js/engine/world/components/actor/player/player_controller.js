@@ -455,7 +455,7 @@ PlayerController.prototype.updateJumpHeight = function(physics) {
     var jumpspeed = -this.jumpspeed;
     var jumpspeedsquare = pow(jumpspeed, 2);
     var jumpgravity = 2 * physics.gravity;
-    this.maxjumpheight = jumpspeedsquare / jumpgravity;
+    this.maxjumpheight = (jumpspeedsquare / jumpgravity) + this.height;
 }
 
 PlayerController.prototype.updateJumpDistance = function(physics) {
@@ -517,8 +517,8 @@ PlayerController.prototype.update = function(now, delta, physics) {
 PlayerController.prototype.applyPhysics = function(now, delta, physics) {
     var inair = this.jumping || this.falling;
     
-    var friction = (this.groundfriction ? this.groundfriction : physics.friction) * delta;
-    var airfriction = (this.airfriction ? this.airfriction : physics.airfriction) * delta;
+    var friction = this.groundfriction ? this.groundfriction : physics.friction;
+    var airfriction = this.airfriction ? this.airfriction : physics.airfriction;
     
     if (this.velX > 0) {
         this.velX -= (inair) ? airfriction : friction;
@@ -563,7 +563,7 @@ PlayerController.prototype.applyPhysics = function(now, delta, physics) {
 PlayerController.prototype.updateLocation = function(now, delta, physics) {
     if (!this.player.info.ready) return;
     
-    var acceleration = this.acceleration;
+    var acceleration = this.acceleration * delta;
     var speed = this.speed;
     var jumpspeed = this.jumpspeed;
     var terminalVelocity = physics.terminalVelocity;
@@ -573,9 +573,11 @@ PlayerController.prototype.updateLocation = function(now, delta, physics) {
     var velZ = 0;
     
     
+    
 //    NewVelocity = Velocity + Acceleration * DeltaTime;
 //    Position += (1/2) * (Velocity + NewVelocity) * DeltaTime;
 //    Velocity = NewVelocity;    
+    
     
 
     if (this.move_left && this.move_right) {
@@ -600,9 +602,9 @@ PlayerController.prototype.updateLocation = function(now, delta, physics) {
     velY *= delta;
     velZ *= delta;
     
-    this.velX += velX;
-    this.velY += velY;
-    this.velZ += velZ;
+    this.velX = round(this.velX + velX);
+    this.velY = round(this.velY + velY);
+    this.velZ = round(this.velZ + velZ);
     
     if (this.velX < -speed) this.velX = -speed;
     else if (this.velX > speed) this.velX = speed;
@@ -616,6 +618,10 @@ PlayerController.prototype.updateLocation = function(now, delta, physics) {
     this.x += this.velX;
     this.y += this.velY;
     this.z += this.velZ;
+    
+    this.x = round(this.x);
+    this.y = round(this.y);
+    this.z = round(this.z);
     
     if (this.grounded) {
         this.groundpoint.x = this.x + (this.width / 2);    
