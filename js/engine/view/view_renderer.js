@@ -5,6 +5,7 @@ function ViewRenderer(view) {
     this.view = view;
     this.debug = false;
     this.mbr = geometryfactory.getRectangle(0, 0, 0, 0);
+    this.lastmbr = geometryfactory.getRectangle(0, 0, 0, 0);
     this.window = geometryfactory.getRectangle(0, 0, 0, 0);
     this.camera = new ViewCamera();
 
@@ -123,10 +124,26 @@ ViewRenderer.prototype.getViewWindow = function(world) {
     var cname = this.camerasettings.name;
 
     var fit = this.fitcount < this.fitwait;
-    if (fit || cname == "fit" || this.mbr && !this.mbr.width && !this.mbr.height) {
+    if (fit || cname == "fit" || (!this.mbr.width && !this.lastmbr.width)) {
         this.mbr = this.getViewBounds(world, this.mbr);
         this.fitcount++;
+    } if (this.mbr && !this.mbr.width && !this.mbr.height) {
+        this.mbr.x = this.lastmbr.x;
+        this.mbr.y = this.lastmbr.y;
+        this.mbr.z = this.lastmbr.z;
+        this.mbr.width = this.lastmbr.width;
+        this.mbr.height = this.lastmbr.height;
+        this.mbr.depth = this.lastmbr.depth;
+        this.mbr.scale = this.lastmbr.scale;
     }
+    
+    this.lastmbr.x = this.mbr.x;
+    this.lastmbr.y = this.mbr.y;
+    this.lastmbr.z = this.mbr.z;
+    this.lastmbr.width = this.mbr.width;
+    this.lastmbr.height = this.mbr.height;
+    this.lastmbr.depth = this.mbr.depth;
+    this.lastmbr.scale = this.mbr.scale;
     
     this.camera.offset.x = offx;
     this.camera.offset.y = offy;

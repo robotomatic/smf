@@ -11,12 +11,14 @@ PlayerCamera.prototype.reset = function() {
 }
 
 
-PlayerCamera.prototype.updateCameraBox = function(scale) {
-    this.camerabox.x = this.player.controller.lastX;
-    this.camerabox.y = this.player.controller.lastY - this.player.controller.maxjumpheight;
+PlayerCamera.prototype.updateCameraBox = function() {
+    this.camerabox.x = this.player.controller.x;
+    var jp = max(this.player.controller.groundpoint.y, this.player.controller.y + this.player.controller.height);
+    var jh = this.player.controller.maxjumpheight + this.player.controller.height;
+    this.camerabox.y = jp - jh;
     this.camerabox.z = this.player.controller.lastZ;
     this.camerabox.width = this.player.controller.width;
-    this.camerabox.height = this.player.controller.height + this.player.controller.maxjumpheight;
+    this.camerabox.height = jh;
     this.camerabox.depth = this.player.controller.depth;
     this.ready = true;
 }
