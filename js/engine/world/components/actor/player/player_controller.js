@@ -22,8 +22,11 @@ function PlayerController(player, x, y, z, width, height, speed) {
     
     this.acceleration = 1;
     this.depthacceleration = 1;
+    
+    
+    // todo: this is char specific...
     this.speed = speed;
-    this.jumpspeed = this.speed * 3;
+    this.jumpspeed = this.speed * 2.5;
     
     this.groundfriction = 0;
     this.airfriction = 0;
