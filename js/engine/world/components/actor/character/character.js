@@ -23,7 +23,8 @@ function Character() {
     this.paused = false;
 }
 
-Character.prototype.loadJson = function(json) {
+Character.prototype.loadJson = function(charjson) {
+    var json = cloneObject(charjson);
     this.json = json;
     this.id = json.id;
     this.name = json.name;
