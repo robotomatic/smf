@@ -163,7 +163,7 @@ ViewRenderer.prototype.getViewBounds = function(world, mbr) {
         return mbr;
     }
     var width = this.view.width;
-    if (width < mbr.width) {
+//    if (width < mbr.width) {
        var dw = width / mbr.width;
        mbr.scale = dw;
        var newheight = mbr.height * dw;
@@ -172,7 +172,7 @@ ViewRenderer.prototype.getViewBounds = function(world, mbr) {
        mbr.height = newheight;
        mbr.x *= dw;
        mbr.width = width;
-   }
+//   }
     var height = this.view.height;
     var hd = height - mbr.height;
     mbr.y = -hd;
