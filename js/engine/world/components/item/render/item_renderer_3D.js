@@ -176,13 +176,15 @@ ItemRenderer3D.prototype.getColors = function(world, gamecanvas, renderer, item,
     }
     var theme = (renderer && renderer.theme) ? renderer.theme.items[item.itemtype] : null;
     if (dodebug || !theme){
-        this.colors.front = "#ededed";
-        this.colors.side = "#d3d3d3";
-        this.colors.top = "#dbdbdb";
+        this.colors.front = "#dddddd";
+        this.colors.side = "#b9b9b9";
+        this.colors.top = "#e8e8e8";
         this.colors.bottom = "#c7c7c7";
         if (item.width == "100%") {
-            if (item.waterline) this.colors.front = this.colors.top;
-            else  this.colors.front = "white";
+            if (item.waterline) {
+                this.colors.top = "#8e8e8e";
+                this.colors.front = this.colors.top;
+            } else  this.colors.front = "white";
         }
     }
     if (!theme) return;
