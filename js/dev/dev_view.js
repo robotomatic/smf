@@ -87,7 +87,7 @@ function changeDevViewSize() {
     var w = ww.value;
     var hh = dev_size_view_height;
     var h = hh.value;
-    if (dev_size_auto.checked) toggleAuto();
+    if (dev_size_auto.checked) toggleDevViewAuto();
     updateViews("setSize", [w, h]);
     updateDevView();
 }
