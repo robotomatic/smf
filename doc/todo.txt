@@ -2,30 +2,14 @@ todo:
 
     // todo: set timeout to hide cursor on game view. wake up on interaction....
         
-    // new camera fix is fucky when jumping - can be fixed by earthquaking the view?
-    
-    // collision renders strange on test level..?
     
     
 
 - fix blur so items don't get bigger
-- find and remove hidden geometry
-- find slowdown - are players rendering when offscreen? are items?
 
-
-*** break "wide" or "high" or "deep" geometries up a bit -- add a point every x (or so) units so occlusion code is work good
-
-
-    // fix pillar problem by making item parts that are not glommed into poly
-    // even better make glommed items into glom group in file
-    
 
 
 - jump, collisions
-
-- better dev control ov views
-
-- items to image because blur
 
 
 - platform tops
@@ -43,11 +27,6 @@ todo:
 
 
 
-
-- return player instead of render because blur
-- return item instead of render because blur
-
-
 - fix projection seams!!!!!
 
 
@@ -59,29 +38,16 @@ todo:
 
 
 - get char liquid intersection point!!!!!
-- liquid properties set by theme!!!!
-- add solid liquid you can run on?????
 
 
 - fix npc roam code
-- add npc to map
 - npc number/type/frequency and kind set in level and theme respectively
 
-
-
-- create a type of platform that has a green front. use it.
 
 
 *** nice to have top, side and front views..........
 
 
-
-
-
-- grass sticks out a bit on the right side
-
-- turn on/off & set tilt shift effect (radius, amount)
-- tilt radius needs to elongate when jumping. will have to lerp back to size
 
 
 - platform tops (grass etc) should project a bit. also roundness is double-plus good.
@@ -94,11 +60,6 @@ todo:
 
 
 
-
-- grass needs more pad room
-
-
-- dev: set camera x, y, z & snap (window to one/several/all chars) or stick to coords
 
 
 
@@ -117,15 +78,11 @@ todo:
 - fade colors on blur canvas
 - find a way to bleach items in distance
 
-- make graphics an object
-
-- fix draw order
 
 
 
 - better specificity for which edges to draw - i.e. platform backgrounds need top edges
 - draw shadders under top edge
-- player can fall off left side of level
 
 
 - option to make liquid transparent...need to use render mask with graident. would look supercool
@@ -143,34 +100,16 @@ dialogs
 - respond to window resize
 
 
-debug dialogs
-==================================
-- show under menu, need to decide how to collapse
 
-
-
-- sky doesn't fit
 
 
 - make background items animate less frewuently
 - control item animation rate in cache?
 - item animation cycle can be handled in cache (instead of individual classes)
 
-- grass fucky when zoomed in...?
-
-- clouds not projecting right
 
 
 
-- item debug isn't projecting right
-- player collision debug isn't projecting right...maybe related to collision issues???
-
-- clear out memory
-
-
-
-
-- re-do stars....want to work like cache but occasionally animate
 
 
 - select item to debug
@@ -182,13 +121,11 @@ debug dialogs
 - set camera sway by view type and level
 
 
-***** figure out render x y z order ******
 
 
 - how hard and expensive is it to skew?
 - how hard and expensive is it to light?
 
-- theme & default renderer
 
 - slopes a bit slopery
 
@@ -222,7 +159,6 @@ debug dialogs
 
 
 
-- add a grass knuckle
 - make sure wind is in the overall same direction for all grass
 
     
@@ -250,10 +186,6 @@ debug dialogs
 
 
 
----> consolidate all draw calls into geom classes
--------------- scratch that --> all CANVAS calls? 
------> geom classes inherit shape prototype
---------> shape class handles ALL draw calls and shape cache
 
 
 - slopes jittery going up and in general
@@ -282,7 +214,6 @@ debug dialogs
 
 
 
-- game slow after running level chooser. need to refresh to fix...?
 
 
 - jump max height only when button held
@@ -299,8 +230,6 @@ debug dialogs
 
 - particles (flames) need blank canvas so bg doesn't influence color
 
-
-- logging & error trapping: window.on_error()
 
 
 - better scenery rendering :
@@ -333,7 +262,6 @@ debug dialogs
 - curve and hump geometry support
 
 
-- quad tree????!?!??!?!?!?!!??!??
 
 
 - jump window before/after touch ground - need to fix this
@@ -367,7 +295,6 @@ debug dialogs
 
 - (full) controller support
 
-- make sure spawn is safe
 
 
 
@@ -376,19 +303,9 @@ debug dialogs
 
 
 
-- grass should always render in front of player
-** Nope : Player remains behind colliders _unless_ player is jumping!!!1
-- control player z-index somehow
 
 
 
-
-- wave (actually, all) physics should be loaded from level instead of theme (or hard coded...i'm looking at YOU world.js)
-
-
-
-
-- add shadow to bg - store bg id & poly memory, clip and draw shadow later...can use this for trees tooo 
 
 
 
@@ -454,7 +371,6 @@ debug dialogs
 
 
 
-- center player better when not on lowest ground layer...need to hamdle ground not being bottom of level!!!!! 
 
 
 
@@ -476,15 +392,10 @@ debug dialogs
 
 
 
-- smoother scrolling on level chooser: maybe 1 double-sized canvas panel?
-
-
-- more than 1 visible canvas: 1 for each cached layer. draw once and move relative to fg canvas
 
 
 - need list of item properties : draw, collide, collide-top, canjump, collide-damage, collide-kill, collide-bounce...
 
-- add optional theme physics modifiers (jungle, lava, ice, space, ...)
 
 - implement "real" WebRTC phone controller
 
@@ -505,15 +416,11 @@ debug dialogs
 
 - fix all animations
 
-- add random blink, look around state
 - need multiple "idle" animations (choose randomly but wisely!)
 
 - custom name, color, stats
 
-- draw pixel grid if debug mode
 
-- quads for render and collide: load static level items in areaQuad, actors in pointQuad
-  https://github.com/mikechambers/ExamplesByMesh/tree/master/JavaScript/QuadTree
 
 - find out why player4 is "stronger" than other players - something to do with update order...? (he gets processed last so always wins)
 
@@ -591,7 +498,6 @@ debug dialogs
 
 
 
-yeti walk **chest
 
 
 
@@ -627,7 +533,7 @@ Glowin' Joe O'Malley:
 - Not himself lately but totally not a zombie so don't ask or go poking around in the old abandoned mine over yonder
 
 Yury:
-- Russian Vampyr Maffia
+- Russian Vampyr Mafia
 - Getting long in the tooth
 - Needs blood supply maybe?
 
@@ -654,10 +560,12 @@ Gawky:
 
 - Everyone hates goats. With good reason. They are assholes.
 
-
+- yeti walk **chest
 - Evilyn and Joe noses
 - Gawky arms, tenticles
 
+
+Potential Character Names:
 - Gnarbo
 - Zephyr & Vesper & Esmer
 - Bleek, Rez
@@ -677,26 +585,19 @@ Gawky:
 - Lark
 - Bloak - an asshole
 - louche - disreputable or sordid in a rakish or appealing way.
-- Mya Goodnes
-
-- 8-bit reservoir dogs chars? "kill the gimp!"
+- Mya Goodness
+- River Haunts
 - horses in suits named Charlie and Whinney
 - Business Ferrets
+- magpie, mags
 
 
 - Character who is a bottle (or glass) of booze - possibly gets picked up, broken and brandished by boss 
-
 - A character that hates tall people
 
 
 - Onesday, Twosday, Threeday, Foursday, Swozzle
 
 
-- "Unhand me this instant!" 
-[cuts off hands] - "OK" 
-- "You know that's not what I meant!"
-
-SKULL HUCKERS
 
 
-magpie
