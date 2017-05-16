@@ -11,6 +11,10 @@ function Players(players) {
         height : 5
     };
     this.mbr = new Rectangle(0, 0, 0, 0);
+    this.camera = {
+        count : 0,
+        player : null
+    }
 }
 
 Players.prototype.loadJson = function(json) {
@@ -117,14 +121,18 @@ Players.prototype.getMbr = function(mbr) {
     var minx, miny, maxx, maxy, minz, maxz;
     
     var found = false;
+    this.camera.count = 0;
+    this.camera.player = null;
     var t = this.players.length;
     for (var i = 0; i < t; i++) {
         var player = this.players[i];
         if (!player) continue;
         if (!player.getscamera) continue;
         if (!player.camera.ready) continue;
+        this.camera.count++;
         var item = player.getMbr();
         found = true;
+        if (!this.camera.player) this.camera.player = player;
         if (!minx || item.x <= minx) minx = item.x;
         if (!miny || item.y <= miny) miny = item.y;
         if (!maxx || item.x + item.width >= maxx) maxx = item.x + item.width;

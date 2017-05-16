@@ -242,9 +242,11 @@ Player.prototype.translate = function(window) {
     
     this.controller.gp.x = round(this.box.x + (this.box.width / 2));
     this.controller.gp.z = round(this.box.z);
-    if (this.controller.grounded) {
-        this.controller.gp.y = round(this.box.y + this.box.height);
-    }
+
+    var gpy = (this.controller.groundpoint.y - y) * scale;
+    var d = (wc.y - y) * scale;
+    var npy = projectPoint3DCoord(gpy, this.box.z, d);
+    this.controller.gp.y = npy;
     
     this.character.translate(this.box);
 }

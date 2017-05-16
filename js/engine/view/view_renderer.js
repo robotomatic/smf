@@ -4,9 +4,9 @@ function ViewRenderer(view) {
 
     this.view = view;
     this.debug = false;
-    this.mbr = geometryfactory.getRectangle(0, 0, 0, 0);
-    this.lastmbr = geometryfactory.getRectangle(0, 0, 0, 0);
-    this.window = geometryfactory.getRectangle(0, 0, 0, 0);
+    this.mbr = new Rectangle(0, 0, 0, 0);
+    this.lastmbr = new Rectangle(0, 0, 0, 0);
+    this.window = new Rectangle(0, 0, 0, 0);
     this.camera = new ViewCamera();
 
     this.camerasettings = new ViewCameraSettings(this);
@@ -137,6 +137,17 @@ ViewRenderer.prototype.getViewWindow = function(world) {
         this.mbr.height = this.lastmbr.height;
         this.mbr.depth = this.lastmbr.depth;
         this.mbr.scale = this.lastmbr.scale;
+    } else {
+        if (world.players.camera.count == 1) {
+            if (offy < 0) {
+                var player = world.players.camera.player;
+                var py = player.controller.y;
+                var ny = py + (offy * this.mbr.scale);
+                if (this.mbr.y > ny) {
+                    this.mbr.y = ny;         
+                }
+            }
+        }
     }
     
     this.lastmbr.x = this.mbr.x;
@@ -150,12 +161,6 @@ ViewRenderer.prototype.getViewWindow = function(world) {
     this.camera.offset.x = offx;
     this.camera.offset.y = offy;
     this.camera.offset.z = offz;
-    
-    
-    
-    
-    
-    
 }
 
 ViewRenderer.prototype.getViewBounds = function(world, mbr) {
