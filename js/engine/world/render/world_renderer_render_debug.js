@@ -24,15 +24,16 @@ WorldRendererDebug.prototype.renderDebugItemsItem = function(graphics, camera, i
     if (!item.showing) return;
     if (item.item.width == "100%") return;
     if (item.type == "player") return;
+    if (item.type == "particle") return;
     if (item.item.isHidden()) return;
-    if (item.item.draw === false) return;
+    if (item.item.draw === false && !item.item.bounds) return;
     this.renderDebugItemsItemGeometry(graphics, item.item, mbr.scale, debug);
 }
 
 WorldRendererDebug.prototype.renderDebugItemsItemGeometry = function(graphics, item, scale, debug) {
     var geom = item.geometry;
     if (!geom) return;
-    var color = debug.level.level ? "black" : "white";
+    var color = debug.level.level ? "black" : item.bounds ? "black" : "white";
     graphics.canvas.setStrokeStyle(color);
     var lw = debug.level.level ? .1 : 1;
     graphics.canvas.setLineWidth(lw * scale);
