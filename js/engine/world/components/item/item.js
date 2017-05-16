@@ -387,25 +387,31 @@ Item.prototype.getProjectedMbr = function() {
 
 Item.prototype.getProjectedGeometryMbr = function(geometry, mbr) {
     if (!geometry.showing) return mbr;
-    var gmbr =  geometry.geometry.getMbr();
+    var gmbr = geometry.geometry.getMbr();
     if (gmbr.x < mbr.x) {
         var d = mbr.x - gmbr.x;
         mbr.x = gmbr.x;
         mbr.width += d;
     }
-    if ((gmbr.x + gmbr.width) >= mbr.x + mbr.width) mbr.width = gmbr.x + gmbr.width - mbr.x;
+    if ((gmbr.x + gmbr.width) >= mbr.x + mbr.width) {
+        mbr.width = gmbr.x + gmbr.width - mbr.x;
+    }
     if (gmbr.y < mbr.y) {
         var d = mbr.y - gmbr.y;
         mbr.y = gmbr.y;
         mbr.height += d;
     }
-    if ((gmbr.y + gmbr.height) >= mbr.y + mbr.height) mbr.height = gmbr.y + gmbr.height - mbr.y;
+    if ((gmbr.y + gmbr.height) >= mbr.y + mbr.height) {
+        mbr.height = gmbr.y + gmbr.height - mbr.y;
+    }
     if (gmbr.z != 0 && gmbr.z < mbr.z) {
         var d = mbr.z - gmbr.z;
         mbr.z = gmbr.z;
         mbr.depth += d;
     }
-    if (gmbr.z != 0 && (gmbr.z + gmbr.depth) >= mbr.z + mbr.depth) mbr.depth = gmbr.z + gmbr.depth - mbr.z;
+    if (gmbr.z != 0 && (gmbr.z + gmbr.depth) >= mbr.z + mbr.depth) {
+        mbr.depth = gmbr.z + gmbr.depth - mbr.z;
+    }
     return mbr;
 }
 
@@ -424,8 +430,29 @@ Item.prototype.isHidden = function() {
 
 
 Item.prototype.isVisible = function(w, pad = 0) {
+
     var mbr = this.getProjectedMbr();
-    var wx = w.x + w.offset.x;
+    
+   var wz = w.z;
+   var wd = w.depth;
+   if (this.depth != "100%") {
+       if (mbr.z + mbr.depth < wz - pad) {
+           return false;
+       }
+   }
+   
+   var wy = w.y;
+   var wh = w.height;
+   if (this.height != "100%") {
+//        if (mbr.y > (wy + wh + pad)) {
+//            return false;
+//        }
+       if ((mbr.y + mbr.height) < wy - pad) {
+           return false;
+       }
+   }
+    
+    var wx = w.x;
     var ww = w.width;
     if (this.width != "100%") {
         if (mbr.x > (wx + ww + pad)) {
@@ -435,23 +462,7 @@ Item.prototype.isVisible = function(w, pad = 0) {
             return false;
         }
     }
-    var wy = w.y;
-    var wh = w.height;
-    if (this.height != "100%") {
-//        if (mbr.y > (wy + wh + (pad * 2))) {
-//            return false;
-//        }
-        if ((mbr.y + mbr.height) < wy - pad) {
-            return false;
-        }
-    }
-    var wz = w.z + w.offset.z;
-    var wd = w.depth;
-    if (this.depth != "100%") {
-        if (mbr.z + mbr.depth < wz - (pad * 2)) {
-            return false;
-        }
-    }
+    
     return true;
 }
 

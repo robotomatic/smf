@@ -200,25 +200,6 @@ ViewCamera.prototype.getCenterPointShake = function(now) {
 }
 
 
-ViewCamera.prototype.scaleMbr = function(mbr, width, height) {
-    
-   var scale = width / mbr.width;
-    var svh = height / scale;
-    if (svh < mbr.height) {
-        var d = mbr.height / svh;
-        mbr.y += svh / 2;
-        mbr.height = svh;
-        var dw = mbr.width * d;
-        mbr.x = mbr.x + (mbr.width - dw) / 2;
-        mbr.width = dw;
-        mbr.scale = width / mbr.width;
-    }
-    
-    return mbr;    
-}
-
-
-
 ViewCamera.prototype.reset = function() {
     this.lastview.x = 0;
     this.lastview.y = 0;
@@ -266,11 +247,13 @@ ViewCamera.prototype.smoothCameraBox = function(mbr) {
 
     var d = this.speed;
     
+    var max = this.max;
+    
     var dx = (mbr.x - this.lastview.x) / d;
     var nx = this.lastview.x + dx; 
     var ddx = mbr.x - nx;
-    if (ddx > this.max) nx = mbr.x - this.max;
-    else if (ddx < -this.max) nx = mbr.x + this.max;
+    if (ddx > max) nx = mbr.x - max;
+    else if (ddx < -max) nx = mbr.x + max;
     mbr.x = nx;
     
     var dy = (mbr.y - this.lastview.y) / d;
@@ -280,8 +263,8 @@ ViewCamera.prototype.smoothCameraBox = function(mbr) {
     var dz = (mbr.z - this.lastview.z) / d;
     var nz = this.lastview.z + dz;
     var ddz = mbr.z - nz;
-    if (ddz > this.max) nz = mbr.z - this.max;
-    else if (ddz < -this.max) nz = mbr.z + this.max;
+    if (ddz > max) nz = mbr.z - max;
+    else if (ddz < -max) nz = mbr.z + max;
     mbr.z = nz;
 
     var dw = (mbr.width - this.lastview.width) / d;
@@ -298,3 +281,29 @@ ViewCamera.prototype.smoothCameraBox = function(mbr) {
     
     return mbr;
 }
+
+
+
+
+
+ViewCamera.prototype.scaleMbr = function(mbr, width, height) {
+    
+    var scale = width / mbr.width;
+
+    var svh = height / scale;
+    if (svh < mbr.height) {
+        var d = mbr.height / svh;
+        mbr.y += svh / 2;
+        mbr.height = svh;
+        var dw = mbr.width * d;
+        mbr.x = mbr.x + ((mbr.width - dw) / 2);
+        mbr.width = dw;
+        mbr.scale = width / mbr.width;
+    }
+    
+    return mbr;    
+}
+
+
+
+

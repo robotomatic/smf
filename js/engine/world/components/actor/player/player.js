@@ -92,15 +92,21 @@ Player.prototype.getLocation = function() {
 
 
 Player.prototype.isVisible = function(w, pad = 0) {
+    
+    
     var mbr = this.box;
-    var wx = w.x + w.offset.x;
+    
+    var wx = w.x;
     if (mbr.x > (wx + w.width + pad)) return false;
     if ((mbr.x + mbr.width) < wx - pad) return false;
+    
     var wy = w.y;
     if (mbr.y > (wy + w.height + pad)) return false;
     if ((mbr.y + mbr.height) < wy - pad) return false;
-    var wz = w.z + w.offset.z;
+    
+    var wz = w.z;
     if (mbr.z + mbr.depth < wz - pad) return false;
+    
     return true;
 }
 

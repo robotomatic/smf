@@ -109,7 +109,7 @@ Polygon.prototype.rotate = function(deg, cp) {
 
 Polygon.prototype.getMbr = function() {
     
-    if (this.mbr.width) return this.mbr;
+//    if (this.mbr.width) return this.mbr;
     
     var minx;
     var miny;

@@ -1,5 +1,12 @@
 todo:
 
+    // todo: set timeout to hide cursor on game view. wake up on interaction....
+        
+    // new camera fix is fucky when jumping - can be fixed by earthquaking the view?
+    
+    // collision renders strange on test level..?
+    
+    
 
 - fix blur so items don't get bigger
 - find and remove hidden geometry

@@ -55,7 +55,8 @@ WorldRendererStart.prototype.getRenderItemsWorldLevelLayerItemsItem = function(m
             }
         }
         
-        showing = item.isVisible(window, 600);
+        var viewpad = 100 * window.scale;
+        showing = item.isVisible(window, viewpad);
         d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, item, 0, 0, 0);
         if (isNaN(d)) d = 0;
     }
@@ -88,7 +89,8 @@ WorldRendererStart.prototype.getRenderItemsWorldPlayers = function(mbr, window, 
 WorldRendererStart.prototype.getRenderItemsWorldPlayersPlayer = function(world, mbr, window, cp, graphics, camera, player, debug) {
     player.translate(mbr);
     var playermbr = player.getMbr();
-    var showing = player.isVisible(window, 50);
+    var viewpad = 50 * window.scale;
+    var showing = player.isVisible(window, viewpad);
     var d = this.getRenderItemsWorldLevelLayerItemsItemCenter(mbr, cp, player.controller, 0, 0, -10);
     if (!showing || isNaN(d)) d = 0;
     var blur = "";

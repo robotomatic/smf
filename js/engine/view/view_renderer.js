@@ -101,9 +101,11 @@ ViewRenderer.prototype.renderWorld = function(now, world, paused) {
     var height = this.view.rendertarget.canvas.height;
     var follow = true;
     this.mbr = this.camera.getView(now, this.mbr, width, height, follow, paused);
-    this.window.x = 0;
-    this.window.y = 0;
-    this.window.z = -(this.mbr.z + this.camera.offset.z);
+    
+    this.window.x = 0 - this.camera.offset.x;
+    this.window.y = 0 - this.camera.offset.y;
+    this.window.z = 0 - this.camera.offset.z;
+    
     this.window.width = width;
     this.window.height = height;
     this.window.depth = 1;
@@ -148,6 +150,12 @@ ViewRenderer.prototype.getViewWindow = function(world) {
     this.camera.offset.x = offx;
     this.camera.offset.y = offy;
     this.camera.offset.z = offz;
+    
+    
+    
+    
+    
+    
 }
 
 ViewRenderer.prototype.getViewBounds = function(world, mbr) {
@@ -163,16 +171,14 @@ ViewRenderer.prototype.getViewBounds = function(world, mbr) {
         return mbr;
     }
     var width = this.view.width;
-//    if (width < mbr.width) {
-       var dw = width / mbr.width;
-       mbr.scale = dw;
-       var newheight = mbr.height * dw;
-       var newy = mbr.height - newheight;
-       mbr.y -= (newy / 2);
-       mbr.height = newheight;
-       mbr.x *= dw;
-       mbr.width = width;
-//   }
+    var dw = width / mbr.width;
+    mbr.scale = dw;
+    var newheight = mbr.height * dw;
+    var newy = mbr.height - newheight;
+    mbr.y -= (newy / 2);
+    mbr.height = newheight;
+    mbr.x *= dw;
+    mbr.width = width;
     var height = this.view.height;
     var hd = height - mbr.height;
     mbr.y = -hd;
