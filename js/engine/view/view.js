@@ -13,9 +13,18 @@ function View(game, id, quality, action) {
     this.viewscale = 1;
     this.paused = false; 
     
+    this.cursor = {
+        timeout : 100,
+        current : 0,
+        pointer : true
+    };
+    
     this.parent = document.getElementById("main");
+    var v = this;
+    this.parent.onmousemove = function(e) {
+        v.setCursorPointer();
+    }
     if (action) {
-        var v = this;
         this.parent.onclick = function(e) {
             if (v.paused) return;
             action(e, game);
@@ -37,6 +46,23 @@ function View(game, id, quality, action) {
 }
 
 
+View.prototype.setCursorPointer = function() {
+    this.cursor.current = 0;
+    if (!this.cursor.pointer) {
+        this.parent.style.cursor = "default";
+        this.cursor.pointer = true;
+    }
+}
+
+View.prototype.setCursorNone = function() {
+    this.cursor.current++;
+    if (this.cursor.current >= this.cursor.timeout) {
+        if (this.cursor.pointer) {
+            this.parent.style.cursor = "none";
+            this.cursor.pointer = false;
+        }
+    }
+}
 
 
 View.prototype.setCameraFit = function() {
@@ -153,6 +179,11 @@ View.prototype.hide = function() { }
 
 
 View.prototype.update = function(now, delta, world, paused) {
+    if (this.paused) {
+        this.setCursorPointer();
+    } else {
+        this.setCursorNone();
+    }
 }
 
 

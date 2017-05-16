@@ -1,8 +1,5 @@
 todo:
 
-    // todo: set timeout to hide cursor on game view. wake up on interaction....
-        
-    
     
 
 - fix blur so items don't get bigger
