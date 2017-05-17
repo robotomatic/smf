@@ -101,7 +101,7 @@ Player.prototype.isVisible = function(w, pad = 0) {
     if ((mbr.x + mbr.width) < wx - pad) return false;
     
     var wy = w.y;
-    if (mbr.y > (wy + w.height + pad)) return false;
+//    if (mbr.y > (wy + w.height + pad)) return false;
     if ((mbr.y + mbr.height) < wy - pad) return false;
     
     var wz = w.z;

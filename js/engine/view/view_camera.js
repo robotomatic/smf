@@ -287,20 +287,21 @@ ViewCamera.prototype.smoothCameraBox = function(mbr) {
 
 
 ViewCamera.prototype.scaleMbr = function(mbr, width, height) {
-    
     var scale = width / mbr.width;
-
     var svh = height / scale;
     if (svh < mbr.height) {
         var d = mbr.height / svh;
-        mbr.y += svh / 2;
+        mbr.y += svh / 4;
         mbr.height = svh;
         var dw = mbr.width * d;
         mbr.x = mbr.x + ((mbr.width - dw) / 2);
         mbr.width = dw;
         mbr.scale = width / mbr.width;
+    } else {
+        var dh = svh - mbr.height;
+        var hdh = dh / 2;
+        mbr.y = -hdh;
     }
-    
     return mbr;    
 }
 
